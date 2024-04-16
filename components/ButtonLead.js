@@ -44,7 +44,7 @@ const ButtonLead = ({ extraStyle }) => {
         value={email}
         ref={inputRef}
         autoComplete="email"
-        placeholder="tom@cruise.com"
+        placeholder="satoshi@bitcoin.com"
         className="input input-bordered w-full placeholder:opacity-60"
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -54,7 +54,7 @@ const ButtonLead = ({ extraStyle }) => {
         type="submit"
         disabled={isDisabled}
       >
-        Join waitlist
+        Join the community
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
         ) : (

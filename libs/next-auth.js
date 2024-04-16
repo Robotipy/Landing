@@ -1,4 +1,4 @@
-import GoogleProvider from "next-auth/providers/google";
+// import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import config from "@/config";
@@ -8,20 +8,20 @@ export const authOptions = {
   // Set any random key in .env.local
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
-    GoogleProvider({
-      // Follow the "Login with Google" tutorial to get your credentials
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      async profile(profile) {
-        return {
-          id: profile.sub,
-          name: profile.given_name ? profile.given_name : profile.name,
-          email: profile.email,
-          image: profile.picture,
-          createdAt: new Date(),
-        };
-      },
-    }),
+    // GoogleProvider({
+    //   // Follow the "Login with Google" tutorial to get your credentials
+    //   clientId: process.env.GOOGLE_ID,
+    //   clientSecret: process.env.GOOGLE_SECRET,
+    //   async profile(profile) {
+    //     return {
+    //       id: profile.sub,
+    //       name: profile.given_name ? profile.given_name : profile.name,
+    //       email: profile.email,
+    //       image: profile.picture,
+    //       createdAt: new Date(),
+    //     };
+    //   },
+    // }),
     // Follow the "Login with Email" tutorial to set up your email server
     // Requires a MongoDB database. Set MONOGODB_URI env variable.
     ...(connectMongo
