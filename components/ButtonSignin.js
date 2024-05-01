@@ -14,6 +14,7 @@ const ButtonSignin = ({ text = "Get started", extraStyle }) => {
   const { data: session, status } = useSession();
 
   const handleClick = () => {
+    console.log(status)
     if (status === "authenticated") {
       router.push(config.auth.callbackUrl);
     } else {

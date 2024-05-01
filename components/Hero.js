@@ -3,6 +3,9 @@ import TestimonialsAvatars from "./TestimonialsAvatars";
 import config from "@/config";
 import bitcoin from "@/app/bitcoin_banner.jpg";
 import ButtonLead from "./ButtonLead";
+import ButtonCheckout from "./ButtonCheckout";
+import ButtonAccount from "./ButtonAccount";
+import ButtonSignin from "./ButtonSignin";
 
 const Hero = () => {
   return (
@@ -29,7 +32,7 @@ const Hero = () => {
         <p className="text-lg opacity-80 leading-relaxed">
           Join to the best community of bitcoin and learn everything about it.
         </p>
-        <ButtonLead />
+        <ButtonSignin />
         <TestimonialsAvatars priority={true} />
       </div>
       <div className="lg:w-full">
