@@ -32,7 +32,7 @@ const Hero = () => {
         <p className="text-lg opacity-80 leading-relaxed">
           Join to the best community of bitcoin and learn everything about it.
         </p>
-        <ButtonSignin />
+        <ButtonLead />
         <TestimonialsAvatars priority={true} />
       </div>
       <div className="lg:w-full">
