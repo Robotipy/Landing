@@ -7,6 +7,10 @@ const nextConfig = {
       "pbs.twimg.com",
       "images.unsplash.com",
       "logos-world.net",
+      "novagric.com",
+      "marketersgroup.es",
+      "media.licdn.com",
+
     ],
   },
 };

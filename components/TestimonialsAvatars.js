@@ -26,7 +26,7 @@ const avatars = [
 
 const TestimonialsAvatars = ({ priority = false }) => {
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-3">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-3">
       {/* AVATARS */}
       <div className={`-space-x-5 avatar-group justy-start`}>
         {avatars.map((image, i) => (
@@ -44,7 +44,7 @@ const TestimonialsAvatars = ({ priority = false }) => {
 
       {/* RATING */}
       <div className="flex flex-col justify-center items-center md:items-start gap-1">
-        <div className="rating">
+        {/* <div className="rating">
           {[...Array(5)].map((_, i) => (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,10 +60,10 @@ const TestimonialsAvatars = ({ priority = false }) => {
               />
             </svg>
           ))}
-        </div>
+        </div> */}
 
         <div className="text-base text-base-content/80">
-          <span className="font-semibold text-base-content">32</span> investors joined to the community
+          <span className="font-semibold text-base-content">+200</span> RPA developers joined to the community
         </div>
       </div>
     </div>

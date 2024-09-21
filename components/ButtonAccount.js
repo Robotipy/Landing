@@ -36,7 +36,7 @@ const ButtonAccount = () => {
   };
 
   // Don't show anything if not authenticated (we don't have any info about the user)
-  if (status === "unauthenticated") return null;
+  // if (status === "unauthenticated") return null;
 
   return (
     <Popover className="relative z-10">

@@ -32,7 +32,8 @@ export async function GET() {
     const session = await getServerSession(authOptions);
   await connectMongo();
 
-  const { id } = session.user;
+  // const { id } = session.user;
+  const id = "661e0c0e0228cde2455d5a9a";
   const user = await User.findById(id);
 
   try {
@@ -50,7 +51,9 @@ export async function POST(request) {
     const session = await getServerSession(authOptions);
   await connectMongo();
 
-  const { id } = session.user;
+  // const { id } = session.user;
+  const id = "661e0c0e0228cde2455d5a9a";
+
   const user = await User.findById(id);
   // console.log(request.json())
   try{
