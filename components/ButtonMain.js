@@ -15,7 +15,6 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
       backgroundColor: config.colors.main,
       color: "white",
       border: "none",
-      padding: "10px 20px",
       cursor: "pointer",
       borderRadius: rounded ? "10px" : "0px",
     };    
@@ -24,7 +23,6 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
       backgroundColor: "white",
       color: config.colors.main,
       border: "1px solid " + config.colors.main,
-      padding: "10px 20px",
       cursor: "pointer",
     };
   }
@@ -37,6 +35,8 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
       data-tooltip-id="tooltip"
       data-tooltip-content={tooltipText}
       title={text}
+      className="px-3 py-2"
+      
     >
       {text}
     </button>

@@ -31,7 +31,7 @@ const avatars = [
 
 const TrustInUs = ({ priority = false }) => {
   return (
-    <div className="flex flex-col md:flex-row  gap-3 px-16 py-16">
+    <div className="flex flex-col md:flex-row  gap-3 lg:px-16 py-16">
       {/* RATING */}
       <div className="flex flex-col justify-center items-center md:items-start gap-1">
 
@@ -42,7 +42,7 @@ const TrustInUs = ({ priority = false }) => {
       {/* AVATARS */}
       <div className={`-space-x-5 avatar-group justy-start`}>
         {avatars.map((image, i) => (
-          <div className="w-44 flex items-center justify-center" key={i}>
+          <div className="w-25 lg:w-44 flex items-center justify-center px-5" key={i}>
             <a href={image.link} target="_blank" rel="noopener noreferrer">
             <Image
               src={image.src}

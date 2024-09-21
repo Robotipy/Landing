@@ -57,39 +57,34 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`Last Updated: September 21, 2024
 
-Welcome to ShipFast!
+Welcome to Robotipy! By accessing or using our website (https://robotipy.com), you agree to comply with and be bound by the following Terms & Services. Please read these terms carefully before using the website.
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+1. General Terms
+Robotipy is a software factory providing automation solutions. By using our services, you agree to these Terms & Services, and you are responsible for compliance with any applicable local laws.
 
-1. Description of ShipFast
+2. Ownership
+Robotipy resells products from other companies, and the ownership of these products remains with the respective companies.
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+3. User Data Collection
+We collect personal information including your name, email, and payment information to provide our services. Non-personal data such as web cookies are also collected for website functionality and improvement.
 
-2. Ownership and Usage Rights
+4. Privacy Policy
+For details on how we collect, use, and protect your data, please review our Privacy Policy.
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+5. Changes to Terms
+We reserve the right to update these terms at any time. Any changes will be communicated via email.
 
-3. User Data and Privacy
+6. Governing Law
+These terms are governed by and construed in accordance with the laws of the USA.
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+7. Contact Information
+For any questions regarding these Terms & Services, please contact us at: danilo@robotipy.com.
 
-4. Non-Personal Data Collection
+By using our services, you agree to these terms. If you do not agree, please refrain from using the website.
 
-We use web cookies to collect non-personal data for the purpose of improving our services and user experience.
-
-5. Governing Law
-
-These Terms are governed by the laws of France.
-
-6. Updates to the Terms
-
-We may update these Terms from time to time. Users will be notified of any changes via email.
-
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
-
-Thank you for using ShipFast!`}
+`}
         </pre>
       </div>
     </main>

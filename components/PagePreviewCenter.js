@@ -43,10 +43,10 @@ const PagePreviewCenter = () => {
   return (
     <section className="bg-neutral text-neutral-content">
       <div className="mx-auto px-8 py-16 md:py-32 text-center">
-        <h2 className="mx-auto text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-        <strong>Automation</strong> and <strong>Artificial intelligence</strong>: <br/>the future of business
+        <h2 className="mx-auto text-3xl md:text-5xl tracking-tight mb-6 md:mb-8">
+          <strong>Automation</strong> and <strong>Artificial intelligence</strong>: <br/>the future of business
         </h2>
-        <p className="mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20 px-8 lg:px-96">
+        <p className="mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20 px-5 lg:px-96">
         The combination of RPA and artificial intelligence makes it possible to automate complex tasks and make data-driven decisions in real time. At Robotipy, we help companies implement solutions that go beyond the traditional, integrating AI to maximize efficiency and innovation.
         </p>
 
