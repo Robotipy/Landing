@@ -6,6 +6,7 @@ const avatars = [
     // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
     src: "/images/novagric.png",
     link: "https://novagric.com/",
+    width: 130,
   },
   {
     alt: "Kabeli",
