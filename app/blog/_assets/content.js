@@ -235,7 +235,7 @@ export const articles = [
 
           <ul className={styles.ul}>
             <li className={styles.li}>.env.local</li>
-            <li className={styles.li}>.env.production</li>
+            <li className={styles.li}>.env.production</li>  
           </ul>
         </section>
       </>

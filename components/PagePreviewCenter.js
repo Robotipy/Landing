@@ -1,3 +1,6 @@
+import config from "@/config";
+import ButtonMain from "./ButtonMain";
+
 const Arrow = ({ extraStyle }) => {
   return (
     <svg
@@ -41,16 +44,23 @@ const Step = ({ emoji, text }) => {
 // - Features: "ShipFast has user auth, Stripe, emails all set up for you"
 const PagePreviewCenter = () => {
   return (
-    <section className="bg-neutral text-neutral-content">
+    <section className="text-neutral-content" style={{ 
+      backgroundColor: config.colors.secondary,
+      borderStyle: "solid",
+      borderWidth: "4px",
+      borderImage: "linear-gradient(90deg, " + config.colors.main + " 0%, " + config.colors.secondary + " 100%) 1",
+      }}>
       <div className="mx-auto px-8 py-16 md:py-32 text-center">
-        <h2 className="mx-auto text-3xl md:text-5xl tracking-tight mb-6 md:mb-8">
-          <strong>Automation</strong> and <strong>Artificial intelligence</strong>: <br/>the future of business
+        <h2 className="mx-auto text-3xl md:text-6xl tracking-tight mb-6 md:mb-8">
+          <strong>Automation</strong> and <strong>Artificial intelligence</strong>
         </h2>
-        <p className="mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20 px-5 lg:px-96">
+        <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-96 pb-10">
         The combination of RPA and artificial intelligence makes it possible to automate complex tasks and make data-driven decisions in real time. At Robotipy, we help companies implement solutions that go beyond the traditional, integrating AI to maximize efficiency and innovation.
         </p>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
+        <ButtonMain text="Read more" link="/#" type="tertiary" />
+
+        {/* <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
           <Step emoji="🧑‍💻" text="8 hrs learning about automation" />
 
           <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
@@ -61,7 +71,7 @@ const PagePreviewCenter = () => {
 
           <Step emoji="😩" text="Lose money in first time" />
 
-        </div>
+        </div> */}
       </div>
     </section>
   );

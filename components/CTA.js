@@ -14,7 +14,7 @@ const CTA = () => {
       {/* <div className="relative hero-overlay"></div> */}
       <div className="relative hero-content text-center p-2 lg:p-8">
         <div className="flex flex-col items-center p-8 md:p-0 ">
-          <h2 className="text-4xl md:text-5xl tracking-tight mb-8 md:mb-12">
+          <h2 className="text-4xl md:text-6xl tracking-tight mb-8 md:mb-12">
             Ready to start <strong>automating</strong> your business?
           </h2>
           <p className="text-lg mb-12 md:mb-16 lg:px-40">

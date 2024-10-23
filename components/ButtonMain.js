@@ -2,9 +2,10 @@
 
 import config from "@/config";
 
+
 // Use this button if chat is hidden on some routes. config.js has onlyShowOnRoutes set to ["/"] so it will be hidden on all routes except the home page.
 // If Crisp is not enable, it will open the support email in the default email client.
-const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=false }) => {
+const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=false, ...props }) => {
   const handleClick = () => {
     // open default email client in new window with "need help with ${config.appName}" as subject
     window.open(`${link}`, "_blank");
@@ -12,18 +13,28 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
   let buttonStyle;
   if (type === "primary") {
     buttonStyle = {
-      backgroundColor: config.colors.main,
+      backgroundColor: config.colors.background,
       color: "white",
-      border: "none",
+      border: "1px solid " + config.colors.secondary,
       cursor: "pointer",
       borderRadius: rounded ? "10px" : "0px",
     };    
   }else if(type === "secondary"){
     buttonStyle = {
-      backgroundColor: "white",
-      color: config.colors.main,
-      border: "1px solid " + config.colors.main,
+      backgroundColor: "transparent",
+      color: "white",
+      border: "none",
       cursor: "pointer",
+    };
+  }else if(type === "tertiary"){
+    buttonStyle = {
+      backgroundColor: "transparent",
+      // color: config.colors.main,
+      border: "none",
+      borderBottom: "2px solid",
+      borderImage: "linear-gradient(90deg, " + config.colors.main + " 0%, " + config.colors.secondary + " 100%) 1",
+      cursor: "pointer",
+      padding: ".3rem 0",
     };
   }
 
@@ -35,7 +46,8 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
       data-tooltip-id="tooltip"
       data-tooltip-content={tooltipText}
       title={text}
-      className="px-3 py-2"
+      className="px-6 py-4 text-white rounded-lg"
+      {...props}
       
     >
       {text}

@@ -23,7 +23,7 @@ const links = [
   },
 ];
 
-const cta = <ButtonMain text="Contact us" link="mailto:danilo@robotipy.com" type="primary" rounded={true} />;
+const cta = <ButtonMain text="Contact us" link="mailto:danilo@robotipy.com" type="primary"/>;
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
@@ -37,9 +37,9 @@ const Header = () => {
   }, [searchParams]);
 
   return (
-    <header className="-bg-base-200">
+    <header className="background-image-2">
       <nav
-        className="container flex items-center justify-between px-8 py-4 mx-auto"
+        className="container flex items-center justify-between py-5 mx-10"
         aria-label="Global"
       >
         {/* Your logo/name on large screens */}
@@ -72,9 +72,9 @@ const Header = () => {
         </div>
 
         {/* Your links on large screens */}
-        <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center">
+        <div className="hidden lg:flex lg:justify-center lg:gap-5 lg:items-center">
         <Link
-            className="flex items-center gap-2 shrink-0 "
+            className="flex items-center gap-2 shrink-0 text-white"
             href="/"
             title={`${config.appName} hompage`}
           >
@@ -93,7 +93,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover"
+              className="link link-hover px-4 text-sm text-white"
               title={link.label}
             >
               {link.label}
