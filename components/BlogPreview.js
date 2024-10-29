@@ -47,7 +47,7 @@ const BlogPreview = () => {
           <BlogCards posts={list} />
 
           <div className="flex justify-center mt-8">
-          <ButtonMain text="See all posts" type="tertiary" className="text-black" link="/blog"/>
+          <ButtonMain text="See all posts" type="tertiary" className="text-white" link="/blog"/>
 
           </div>
 
