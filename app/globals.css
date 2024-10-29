@@ -30,6 +30,10 @@ progress::-webkit-progress-value {
   height: 600px;
 }
 
+.w-800{
+  width: 800px;
+}
+
 .background-image{
   background-image: url('/images/background.png');
   background-size: 100% 100%;

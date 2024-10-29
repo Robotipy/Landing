@@ -31,8 +31,6 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
       backgroundColor: "transparent",
       // color: config.colors.main,
       border: "none",
-      borderBottom: "2px solid",
-      borderImage: "linear-gradient(90deg, " + config.colors.main + " 0%, " + config.colors.secondary + " 100%) 1",
       cursor: "pointer",
       padding: ".3rem 0",
     };
