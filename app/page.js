@@ -56,12 +56,12 @@ export default function Home() {
         <PagePreview
           title={
             <>
-              Why choose automation with <strong>RPA</strong> and{" "}
-              <strong>Robotipy</strong>?
+              Why RPA and why Robotipy?
             </>
           }
           position="right"
           link="/#"
+          srcImage={"/assets/pc-robotipy.png"}
         >
           <p className="text-md">
             Process automation with RPA reduces errors, improves efficiency and
@@ -75,6 +75,7 @@ export default function Home() {
           position="left"
           link="/#"
           buttonText="See all services ➡️"
+          srcImage={"/assets/ilus-automation.png"}
         >
           <>
             <ServicesList />

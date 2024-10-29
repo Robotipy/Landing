@@ -39,5 +39,5 @@ progress::-webkit-progress-value {
 .background-image-2{
   background-image: url('/images/background.png');
   background-size: auto;
-  background-position: top;
+  background-position: 10px 100px;
 }
