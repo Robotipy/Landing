@@ -23,7 +23,7 @@ const Testimonial = ({ i, list }) => {
               </div>
               {testimonial.username && (
                 <div className="mt-0.5 text-sm /80">
-                  @{testimonial.username}
+                  {/* @{testimonial.username} */}
                 </div>
               )}
             </div>

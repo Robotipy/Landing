@@ -2,7 +2,7 @@ import config from "@/config";
 import ButtonMain from "./ButtonMain";
 const Hero = () => {
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center px-12 py-20 lg:py-20 lg:px-12 h-600 background-image">
+    <section className="flex flex-col lg:flex-row items-center justify-center px-12 py-20 lg:py-20 lg:px-20 h-600 background-image">
       <div className="flex flex-col gap-4 lg:gap-8 items-center self-stretch text-center w-1200 text-white">
         <h1
           className="text-4xl lg:text-7xl tracking-tight text-center"

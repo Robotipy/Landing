@@ -21,7 +21,7 @@ const CTA = () => {
             Unlock the power of automation and take your business to the next level.
           </p>
 
-          <ButtonMain text="Talk with us" />
+          <ButtonMain text="Talk with us" link="/contact" />
            
           
         </div>

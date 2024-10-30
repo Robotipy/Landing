@@ -12,7 +12,7 @@ const PagePreview = ({
   // position = "left", "right", "center", "cover"
   const src = srcImage ? srcImage : "/images/empty_rectangle.png";
   return (
-    <section className="mx-auto text-white flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-8 px-12 py-20 lg:py-20 lg:px-12">
+    <section className="mx-auto text-white flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-8 px-12 py-20 lg:py-20 lg:px-20">
       {position == "left" ? (
         <>
           <div className="flex flex-col gap-10 lg:gap-12 items-center justify-center text-center lg:text-left lg:items-start">

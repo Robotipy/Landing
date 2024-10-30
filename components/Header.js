@@ -81,13 +81,15 @@ const Header = () => {
             <Image
               src={logo}
               alt={`${config.appName} logo`}
-              className="w-8"
-              placeholder="blur"
+              className="w-32"
+              unoptimized={true}
+              // // placeholder not blur
+              // placeholder="blur"
               priority={true}
               width={32}
               height={32}
             />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            {/* <span className="font-extrabold text-lg">{config.appName}</span> */}
           </Link>
           {links.map((link) => (
             <Link

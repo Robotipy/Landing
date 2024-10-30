@@ -4,20 +4,20 @@ const avatars = [
   {
     alt: "Novagric",
     // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
-    src: "/images/novagric.png",
+    src: "/assets/logo-novagric.png",
     link: "https://novagric.com/",
     width: 130,
   },
   {
     alt: "Kabeli",
-    src: "/images/kabeli.png",
+    src: "/assets/logo-kabeli.png",
     link: "https://kabeli.cl",
     width: 130,
 
   },
   {
     alt: "Marketers Group",
-    src: "https://marketersgroup.es/wp-content/uploads/2018/07/logo-marketersgroup.png.webp",
+    src: "/assets/logo-marketersgroup.png",
     link: "https://marketersgroup.es/",
     width: 200,
   },
@@ -29,14 +29,19 @@ const avatars = [
   },
   {
     alt: "(Rabbit)²",
-    src: "/images/rabbit2.png",
+    src: "/assets/logo-rabbit.png",
     link: "#"
+  },
+  {
+    alt: "Crespodev",
+    src: "/assets/logo-crespodev.png",
+    link: "https://crespodev.com"
   },
 ];
 
 const TrustInUs = ({ priority = false }) => {
   return (
-    <section className="flex flex-col md:flex-row gap-6 lg:px-12 py-12 text-white">
+    <section className="flex flex-col md:flex-row gap-10 lg:px-20 py-12 text-white">
       {/* RATING */}
       <div className="flex flex-col justify-center items-center md:items-start gap-1 w-1/3">
 

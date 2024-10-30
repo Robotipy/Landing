@@ -30,7 +30,7 @@ const list = [
 
 const BlogPreview = () => {
   return (
-    <section className="relative hero overflow-hidden my-5 lg:py-20 lg:px-12 text-white">
+    <section className="relative hero overflow-hidden lg:py-20 lg:px-12 text-white">
       {/* <Image
         src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80"
         alt="Background"
@@ -41,13 +41,13 @@ const BlogPreview = () => {
       <div className="relative  py-6">
         <div className="flex flex-col p-8 md:p-0 ">
           <h2 className="text-4xl md:text-6xl tracking-tight mb-4 md:mb-8">
-            Visit our blog
+            Trusted by the best
           </h2>
 
           <BlogCards posts={list} />
 
           <div className="flex justify-center mt-8">
-          <ButtonMain text="See all posts" type="tertiary" className="text-white" link="/blog"/>
+          {/* <ButtonMain text="See all posts" type="tertiary" className="text-white" link="/blog"/> */}
 
           </div>
 
