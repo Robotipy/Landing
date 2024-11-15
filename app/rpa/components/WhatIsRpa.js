@@ -9,11 +9,9 @@ const WhatIsRpa = () => {
   return (
     <section className="flex flex-col justify-center items-center text-neutral-content lg:p-12 lg:my-20 lg:mx-32">
       <div className="flex flex-col mx-auto px-1 lg:px-12 py-12 lg:py-16 text-start justify-center items-start">
-        <h2 className="mx-auto text-5xl md:text-6xl tracking-tight mb-6 md:mb-8 w-full px-5 lg:px-40">
-          <h1>
-            What is <strong>RPA?</strong>
-          </h1>
-        </h2>
+        <h1 className="mx-auto text-5xl md:text-6xl tracking-tight mb-6 md:mb-8 w-full px-5 lg:px-40">
+          What is <strong>RPA?</strong>
+        </h1>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-40 pb-4">
           Automation with RPA is a powerful tool that enables you to improve the
           performance of your business. We’re not just talking about eliminating
@@ -35,7 +33,7 @@ const WhatIsRpa = () => {
         <div className="mx-auto flex justify-start items-start text-5xl md:text-6xl tracking-tight mb-6 md:mb-8 w-full px-5 lg:px-40">
           <h1 className="flex flex-row justify-center items-center gap-x-4">
             <strong>Rocketbot</strong>
-            <h1>RPA</h1>
+            RPA
           </h1>
         </div>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-40 pb-4">
