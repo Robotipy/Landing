@@ -37,7 +37,7 @@ const VisitOurBlog = () => {
       <div className="flex flex-row justify-center items-center gap-x-6 h-[150px]">
         {items.map((e) => {
           return (
-            <div className="flex flex-row justify-start items-start gap-x-4 w-full h-full">
+            <div className="flex flex-row justify-start items-start gap-x-4 w-full h-full" key={e.title}>
               <h1 className="bg-white w-full h-full"></h1>
               <div className="flex flex-col justify-start items-start">
                 <h1 className="text-teal-700 text-xl">{e.title}</h1>
