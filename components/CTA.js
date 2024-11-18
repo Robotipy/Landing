@@ -4,7 +4,7 @@ import ButtonMain from "./ButtonMain";
 
 const CTA = () => {
   return (
-    <section className="flex flex-col item-center justify-center overflow-hidden min-h-screen lg:py-24 py-12 lg:px-12 px-4 text-white">
+    <section className="flex flex-col item-center justify-center overflow-hidden lg:py-12 py-4 lg:px-12 px-4 text-white">
       {/* <Image
         src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80"
         alt="Background"

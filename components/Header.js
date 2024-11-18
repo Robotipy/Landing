@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <header className="background-image-2">
       <nav
-        className="container flex items-center justify-between py-5 mx-10"
+        className="container-full flex items-center justify-between py-5 mx-10"
         aria-label="Global"
       >
         {/* Your logo/name on large screens */}
