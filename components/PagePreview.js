@@ -20,7 +20,8 @@ const PagePreview = ({
               {title}
             </h2>
             {children}
-            <ButtonMain text={buttonText} link={link} type="tertiary" />
+            <ButtonMain text={buttonText} link={link} type="tertiary" noblank={true}/>
+
           </div>
           <div className="w-full">
             <Image
@@ -50,7 +51,7 @@ const PagePreview = ({
               {title}
             </h2>
             {children}
-            <ButtonMain text="Read more ➡️" link={link} type="tertiary" />
+            <ButtonMain text="Read more ➡️" link={link} type="tertiary" noblank={true}/>
           </div>
         </>
       )}

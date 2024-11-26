@@ -56,7 +56,7 @@ export default function Rpa() {
       <main>
         <HeroRPA />
         <WhatIsRpa />
-        <BlogPreview />
+        {/* <BlogPreview /> */}
         <CTA />
       </main>
       <Footer />

@@ -76,7 +76,8 @@ const WhatIsRpa = () => {
             {config.appName}
           </strong>
         </Link>
-        <Image src={Rocketbot} className="h-44 w-44 lg:w-[280px] mt-1"></Image>
+        +
+        <Image src={Rocketbot} alt="Rocketbot Logo" className="h-44 w-44 lg:w-[280px] mt-1"></Image>
       </div>
     </section>
   );

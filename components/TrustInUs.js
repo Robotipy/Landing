@@ -30,7 +30,7 @@ const avatars = [
   {
     alt: "(Rabbit)²",
     src: "/assets/logo-rabbit.png",
-    link: "#"
+    link: "https://www.linkedin.com/company/rabbit-%C2%B2"
   },
   {
     alt: "Crespodev",

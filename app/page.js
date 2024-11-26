@@ -60,7 +60,7 @@ export default function Home() {
             </>
           }
           position="right"
-          link="/#"
+          link="/rpa"
           srcImage={"/assets/pc-robotipy.png"}
         >
           <p className="text-md">
@@ -73,7 +73,7 @@ export default function Home() {
         <PagePreview
           title="Comprehensive automation solutions for every need"
           position="left"
-          link="/#"
+          link="/solutions"
           buttonText="See all services ➡️"
           srcImage={"/assets/ilus-automation.png"}
         >
@@ -82,7 +82,7 @@ export default function Home() {
           </>
         </PagePreview>
         <PagePreviewCenter />
-        <BlogPreview />
+        {/* <BlogPreview /> */}
         {/* <FeaturesAccordion />
         <Pricing />
         <FAQ /> */}

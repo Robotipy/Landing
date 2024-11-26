@@ -10,15 +10,15 @@ import ButtonMain from "./ButtonMain";
 
 const links = [
   {
-    href: "/#rpa",
+    href: "/rpa",
     label: "RPA",
   },
   {
-    href: "/#solutions",
+    href: "/solutions",
     label: "Solutions",
   },
   {
-    href: "/#resources",
+    href: "/resources",
     label: "Resources",
   },
 ];

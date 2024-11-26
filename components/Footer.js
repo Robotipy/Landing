@@ -41,10 +41,10 @@ const Footer = () => {
                 RPA
               </div>
               <div className="flex flex-col gap-4 justify-center items-center md:items-start mb-10 text-sm">
-                <Link href="/#pricing" className="link link-hover">
+                <Link href="/rpa" className="link link-hover">
                   Why RPA
                 </Link>
-                <Link href="/blog" className="link link-hover">
+                <Link href="#" className="link link-hover">
                   Rocketbot RPA
                 </Link>
                 <a href="/#" target="_blank" className="link link-hover">
@@ -58,19 +58,19 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
-                <Link href="/#pricing" className="link link-hover">
+                <Link href="/solutions" className="link link-hover">
                   Team Training
                 </Link>
-                <Link href="/#pricing" className="link link-hover">
+                <Link href="/solutions" className="link link-hover">
                   Process automations
                 </Link>
-                <Link href="/blog" className="link link-hover">
+                <Link href="/solutions" className="link link-hover">
                   Chatbots
                 </Link>
-                <Link href="/blog" className="link link-hover">
+                <Link href="/solutions" className="link link-hover">
                   Software development
                 </Link>
-                <Link href="/blog" className="link link-hover">
+                <Link href="/solutions" className="link link-hover">
                   AI Solutions
                 </Link>
               </div>
@@ -81,13 +81,13 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
-                <Link href="/tos" className="link link-hover">
+                <Link href="/blog.robotipy.com" className="link link-hover">
                   Blog
                 </Link>
-                <Link href="/privacy-policy" className="link link-hover">
+                <Link href="/#" className="link link-hover">
                   Training
                 </Link>
-                <Link href="/privacy-policy" className="link link-hover">
+                <Link href="/#" className="link link-hover">
                   Forum
                 </Link>
               </div>

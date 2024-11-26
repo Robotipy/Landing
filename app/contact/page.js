@@ -54,7 +54,7 @@ export default function Dashboard() {
                         value={user?.firstName}
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 text-left">
                       <label
                         htmlFor="email"
                         className="text-cyan-50 uppercase text-xs block"
@@ -70,7 +70,7 @@ export default function Dashboard() {
                         value={user?.email}
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 text-left">
                       <label
                         htmlFor="company"
                         className="text-cyan-50 uppercase text-xs block"
@@ -86,7 +86,7 @@ export default function Dashboard() {
                         value={user?.company}
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 text-left">
                       <label
                         htmlFor="phone"
                         className="text-cyan-50 uppercase text-xs block"
@@ -103,7 +103,7 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-left">
                     <label
                       htmlFor="size"
                       className="text-cyan-50 uppercase text-xs block"
@@ -126,7 +126,7 @@ export default function Dashboard() {
                       <option value="501+">501+ employees</option>
                     </select>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-left">
                     <label
                       htmlFor="description"
                       className="text-cyan-50 uppercase text-xs block"

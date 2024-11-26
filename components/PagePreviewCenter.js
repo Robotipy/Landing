@@ -57,7 +57,7 @@ const PagePreviewCenter = () => {
         The combination of RPA and artificial intelligence makes it possible to automate complex tasks and make data-driven decisions in real time. At Robotipy, we help companies implement solutions that go beyond the traditional, integrating AI to maximize efficiency and innovation.
         </p>
 
-        <ButtonMain text="Read more" link="/#" type="tertiary" />
+        <ButtonMain text="Read more" link="/#" type="tertiary" noblank={true}/>
 
         {/* <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
           <Step emoji="🧑‍💻" text="8 hrs learning about automation" />
