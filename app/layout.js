@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       {config.domainName && (
         <head>
           <PlausibleProvider domain={config.domainName} />
-          <Script id="google-tag-manager" strategy="afterInteractive">
+          <script id="google-tag-manager" strategy="afterInteractive">
             {`
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-56CGK5FP');
             `}
-          </Script>
+          </script>
         </head>
       )}
       <body style={{ backgroundColor: config.colors.background }}>
