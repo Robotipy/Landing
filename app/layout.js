@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
       )}
       <body style={{ backgroundColor: config.colors.background }}>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
+        <ClientLayout>{children}</ClientLayout>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56CGK5FP"
           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </body>
