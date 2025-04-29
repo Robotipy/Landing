@@ -6,7 +6,13 @@ import Lead from "@/models/Lead";
 // The API call is initiated by <ButtonLead /> component
 // Duplicate emails just return 200 OK
 export async function POST(req) {
-  await connectMongo();
+  const connection = await connectMongo();
+  
+  if (!connection) {
+    return NextResponse.json({ 
+      error: "Database connection not available. Some features might be limited." 
+    }, { status: 503 });
+  }
 
   const body = await req.json();
 

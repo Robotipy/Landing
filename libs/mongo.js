@@ -13,21 +13,29 @@ let clientPromise;
 if (!uri) {
   console.group("⚠️ MONGODB_URI missing from .env");
   console.error(
-    "It's not mandatory but a database is required for Magic Links."
+    "It's not mandatory but a database is required for some features like Magic Links, User Management, etc."
   );
   console.error(
-    "If you don't need it, remove the code from /libs/next-auth.js (see connectMongo())"
+    "If you don't need it, you can remove the MongoDB-dependent features"
   );
   console.groupEnd();
-} else if (process.env.NODE_ENV === "development") {
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
-  }
-  clientPromise = global._mongoClientPromise;
+  clientPromise = null;
 } else {
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+  try {
+    if (process.env.NODE_ENV === "development") {
+      if (!global._mongoClientPromise) {
+        client = new MongoClient(uri, options);
+        global._mongoClientPromise = client.connect();
+      }
+      clientPromise = global._mongoClientPromise;
+    } else {
+      client = new MongoClient(uri, options);
+      clientPromise = client.connect();
+    }
+  } catch (e) {
+    console.error("MongoDB Client Error: " + e.message);
+    clientPromise = null;
+  }
 }
 
 export default clientPromise;
