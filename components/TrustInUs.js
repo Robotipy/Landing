@@ -6,7 +6,7 @@ const avatars = [
     // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
     src: "/assets/logo-novagric.png",
     link: "https://novagric.com/",
-    width: 130,
+    width: 150,
   },
   {
     alt: "Kabeli",
@@ -30,41 +30,90 @@ const avatars = [
   {
     alt: "(Rabbit)²",
     src: "/assets/logo-rabbit.png",
-    link: "https://www.linkedin.com/company/rabbit-%C2%B2"
+    link: "https://www.linkedin.com/company/rabbit-%C2%B2",
+    width: 150,
   },
   {
     alt: "Crespodev",
     src: "/assets/logo-crespodev.png",
-    link: "https://crespodev.com"
+    link: "https://crespodev.com",
+    width: 150,
+  },
+  {
+    alt: "Digital Bank",
+    src: "/assets/logo-digitalbankla.png",
+    link: "https://www.digitalbankla.com",
+    width: 200,
+  },
+  {
+    alt: "Xinerlink",
+    src: "/assets/logo-xinerlink.png",
+    link: "https://www.xinerlink.cl",
+    width: 150,
+  },
+  {
+    alt: "Mitta",
+    src: "/assets/logo-mitta.png",
+    link: "https://www.mitta.cl",
+    width: 120,
+  },
+  {
+    alt: "Cerezo Software",
+    src: "/assets/logo-cerezosoftware.png",
+    link: "https://cerezosoftware.com/",
+    width: 150,
   },
 ];
 
 const TrustInUs = ({ priority = false }) => {
+  // Split avatars into two rows
+  const firstRow = avatars.slice(0, 5);
+  const secondRow = avatars.slice(5);
+
   return (
     <section className="flex flex-col md:flex-row gap-10 lg:px-20 py-12 text-white">
-      {/* RATING */}
-      <div className="flex flex-col justify-center items-center md:items-start gap-1 w-1/3">
-
+      {/* Column 1: Text */}
+      <div className="flex flex-col justify-center md:w-1/3">
         <p className="lg:text-2xl">
-        Leading companies trust our team to revolutionize their processes with RPA.
-
+          Leading companies trust our team to revolutionize their processes with RPA.
         </p>
       </div>
-      {/* AVATARS */}
-      <div className={`-space-x-5 avatar-group justy-start gap-6`}>
-        {avatars.map((image, i) => (
-          <div className="w-50 lg:w-60 flex items-center justify-center px-5" key={i}>
-            <a href={image.link} target="_blank" rel="noopener noreferrer">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              priority={priority}
-              width={image.width || 150}
-              height={100}
-            />
-            </a>
-          </div>
-        ))}
+
+      {/* Column 2: Logos in two rows */}
+      <div className="flex flex-col gap-2 md:w-2/3">
+        {/* First row of logos */}
+        <div className="flex flex-wrap justify-start gap-14">
+          {firstRow.map((image, i) => (
+            <div className="flex items-center justify-center" key={i} style={{ height: 70 }}>
+              <a href={image.link} target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  priority={priority}
+                  width={image.width || 150}
+                  height={70}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Second row of logos */}
+        <div className="flex flex-wrap justify-start gap-10">
+          {secondRow.map((image, i) => (
+            <div className="flex items-center justify-center" key={i}>
+              <a href={image.link} target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  priority={priority}
+                  width={image.width || 150}
+                  height={100}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
