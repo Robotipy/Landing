@@ -18,7 +18,7 @@ export default function ClientInfoPage() {
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
                 Let&apos;s Build Something Amazing Together
               </h1>
-              <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl">
+              <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
                 Share your automation challenges with us. Our team of experts will analyze your needs 
                 and create a customized solution that transforms your business processes.
               </p>
