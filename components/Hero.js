@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="flex flex-row gap-4">
           <ButtonMain text="Learn with us" link="https://blog.robotipy.com" type="secondary" tooltipText="Just in Spanish" />
           {/* <ButtonMain text="Contact us" link="/contact" type="primary" /> */}
-          <ButtonMain text="Contact us" link="mailto:danilo@robotipy.com" type="primary"/>;
+          <ButtonMain text="Contact us" link="https://calendar.app.google/bp4toLzqWLMT6BWi8" type="primary"/>;
         </div>
       </div>
     </section>
