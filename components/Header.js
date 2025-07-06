@@ -23,7 +23,7 @@ const links = [
   },
 ];
 
-const cta = <ButtonMain text="Contact us" link="mailto:danilo@robotipy.com" type="primary"/>;
+const cta = <ButtonMain text="Contact us" link="/client-info" type="primary"/>;
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
