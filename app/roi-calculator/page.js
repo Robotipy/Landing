@@ -16,6 +16,7 @@ const ROCKETBOT_LICENSES = {
   orchestratorStandard: { name: "Orquestador Standard", price: 4290 },
   orchestratorEnterprise: { name: "Orquestador Enterprise", price: 8690 },
   orchestratorCorporate: { name: "Orquestador Corporate", price: 13090 }
+  
 };
 
 // Industry templates
