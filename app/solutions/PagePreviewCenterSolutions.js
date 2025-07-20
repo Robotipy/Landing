@@ -44,7 +44,7 @@ const Step = ({ emoji, text }) => {
 // - Features: "ShipFast has user auth, Stripe, emails all set up for you"
 const PagePreviewCenterSolutions = () => {
   return (
-    <section className="text-neutral-content m-8 lg:m-0 lg:p-12 lg:my-20 lg:mx-32" style={{ 
+    <section className="text-neutral-content m-8 lg:m-0 lg:p-12 lg:my-20 lg:mx-32" style={{
       borderColor: config.colors.secondary,
       borderStyle: "solid",
       borderWidth: "4px",
@@ -53,7 +53,7 @@ const PagePreviewCenterSolutions = () => {
         <h2 className="mx-auto text-3xl md:text-6xl tracking-tight mb-6 md:mb-8 ">
           <strong>Automation</strong> and <strong>Artificial intelligence</strong>
         </h2>
-        <p className="mx-auto text-lg opacity-90 leading-relaxed px-0 lg:px-80 pb-10">
+        <p className="mx-auto text-lg opacity-90 leading-relaxed px-0  pb-10 lg:max-w-6xl">
         The combination of RPA and artificial intelligence makes it possible to automate complex tasks and make data-driven decisions in real time. At Robotipy, we help companies implement solutions that go beyond the traditional, integrating AI to maximize efficiency and innovation.
         </p>
 

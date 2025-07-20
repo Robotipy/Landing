@@ -71,18 +71,18 @@ const TrustInUs = ({ priority = false }) => {
   const secondRow = avatars.slice(5);
 
   return (
-    <section className="flex flex-col md:flex-row gap-10 lg:px-20 py-12 text-white">
+    <section className="flex flex-col gap-10 lg:px-20 py-12 text-white w-full justify-center">
       {/* Column 1: Text */}
-      <div className="flex flex-col justify-center md:w-1/3">
-        <p className="lg:text-2xl">
-          Leading companies trust our team to revolutionize their processes with RPA.
+      <div className="mx-auto text-center">
+        <p className="text-2xl lg:text-4xl text-balance">
+          Leading companies trust our team to revolutionize their processes with RPA
         </p>
       </div>
 
       {/* Column 2: Logos in two rows */}
-      <div className="flex flex-col gap-2 md:w-2/3">
+      <div className="flex flex-col gap-2 md:w-2/3 mx-auto">
         {/* First row of logos */}
-        <div className="flex flex-wrap justify-start gap-14">
+        <div className="flex flex-wrap justify-around gap-4">
           {firstRow.map((image, i) => (
             <div className="flex items-center justify-center" key={i} style={{ height: 70 }}>
               <a href={image.link} target="_blank" rel="noopener noreferrer">
@@ -99,7 +99,7 @@ const TrustInUs = ({ priority = false }) => {
         </div>
 
         {/* Second row of logos */}
-        <div className="flex flex-wrap justify-start gap-10">
+        <div className="flex flex-wrap justify-around gap-4">
           {secondRow.map((image, i) => (
             <div className="flex items-center justify-center" key={i}>
               <a href={image.link} target="_blank" rel="noopener noreferrer">
