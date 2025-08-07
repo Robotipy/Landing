@@ -16,11 +16,7 @@ const links = [
   {
     href: "/solutions",
     label: "Solutions",
-  },
-  {
-    href: "/resources",
-    label: "Resources",
-  },
+  }
 ];
 
 const cta = <ButtonMain text="Contact us" link="/client-info" type="primary"/>;

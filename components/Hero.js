@@ -13,7 +13,7 @@ const Hero = () => {
           Optimize your processes with our automation solutions <strong>RPA, artificial intelligence and software development.</strong>
           </p>
         <div className="flex flex-row gap-4">
-          <ButtonMain text="Contact us" link="/client-info" type="secondary"/>
+          <ButtonMain text="Contact us" link="/client-info" type="quaternary"/>
           {/* <ButtonMain text="Contact us" link="/contact" type="primary" /> */}
           <ButtonMain text="Schedule a call" link="https://calendar.app.google/bp4toLzqWLMT6BWi8" type="primary"/>
         </div>
