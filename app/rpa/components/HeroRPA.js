@@ -6,7 +6,7 @@ const HeroRPA = () => {
         <h1
           className="text-5xl lg:text-7xl tracking-tight text-center font-medium"
         >
-          Welcome to the era of automation
+          Bienvenido a la era de la automatización
         </h1>
       </div>
     </section>

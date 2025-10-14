@@ -4,7 +4,8 @@ import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
-import GoogleTagManager from "@/components/GoogleTagManager";
+import GoogleTagManager from "@/components/scripts/GoogleTagManager";
+import ZohoSalesIQ from "@/components/scripts/ZohoSalesIQ";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
+      <ZohoSalesIQ />
       </body>
     </html>
   );

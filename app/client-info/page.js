@@ -16,11 +16,11 @@ export default function ClientInfoPage() {
           <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto text-center text-white">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                Let&apos;s Build Something Amazing Together
+                Construyamos Algo Increíble Juntos
               </h1>
               <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
-                Share your automation challenges with us. Our team of experts will analyze your needs 
-                and create a customized solution that transforms your business processes.
+                Comparte tus desafíos de automatización con nosotros. Nuestro equipo de expertos analizará tus necesidades 
+                y creará una solución personalizada que transforme tus procesos comerciales.
               </p>
             </div>
             
@@ -28,7 +28,7 @@ export default function ClientInfoPage() {
             
             <div className="mt-8 text-center text-cyan-400 text-sm">
               <p>
-                Need immediate assistance? Contact us directly at{" "}
+                ¿Necesitas asistencia inmediata? Contáctanos directamente en{" "}
                 <a 
                   href={`mailto:${config.mailgun.supportEmail}`}
                   className="text-teal-400 hover:text-teal-300 underline"

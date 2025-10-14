@@ -35,7 +35,7 @@ const ClientForm = ({ extraStyle }) => {
     // Validate required fields
     if (!formData.name || !formData.email || !formData.phone || !formData.companyName || 
         !formData.role || !formData.companySize) {
-      toast.error("Please fill in all required fields");
+      toast.error("Por favor completa todos los campos requeridos");
       return;
     }
 
@@ -43,7 +43,7 @@ const ClientForm = ({ extraStyle }) => {
 
     try {
       await apiClient.post("/client", formData);
-      toast.success("Thank you! Your information has been submitted successfully. We'll contact you soon.");
+      toast.success("¡Gracias! Tu información ha sido enviada exitosamente. Te contactaremos pronto.");
       
       // Reset form
       setFormData({
@@ -58,7 +58,7 @@ const ClientForm = ({ extraStyle }) => {
       });
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error(error.message || "Something went wrong. Please try again.");
+      toast.error(error.message || "Algo salió mal. Por favor intenta de nuevo.");
     } finally {
       setIsLoading(false);
     }
@@ -72,10 +72,10 @@ const ClientForm = ({ extraStyle }) => {
       >
         <div className="mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-cyan-50 mb-2">
-            Get in Touch
+            Ponte en Contacto
           </h2>
           <p className="text-cyan-300">
-            Tell us about your company and how we can help you with automation solutions.
+            Cuéntanos sobre tu empresa y cómo podemos ayudarte con soluciones de automatización.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ const ClientForm = ({ extraStyle }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label htmlFor="name" className="text-cyan-50 uppercase text-xs block">
-                Full Name *
+                Nombre Completo *
               </label>
               <input
                 id="name"
@@ -95,13 +95,13 @@ const ClientForm = ({ extraStyle }) => {
                 className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                    text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                    focus:ring-teal-500 focus:border-transparent"
-                placeholder="John Doe"
+                placeholder="Juan Pérez"
               />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="email" className="text-cyan-50 uppercase text-xs block">
-                Email *
+                Correo Electrónico *
               </label>
               <input
                 id="email"
@@ -113,13 +113,13 @@ const ClientForm = ({ extraStyle }) => {
                 className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                    text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                    focus:ring-teal-500 focus:border-transparent"
-                placeholder="john@company.com"
+                placeholder="juan@empresa.com"
               />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="phone" className="text-cyan-50 uppercase text-xs block">
-                Phone Number *
+                Número de Teléfono *
               </label>
               <input
                 id="phone"
@@ -131,13 +131,13 @@ const ClientForm = ({ extraStyle }) => {
                 className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                    text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                    focus:ring-teal-500 focus:border-transparent"
-                placeholder="+1 (555) 123-4567"
+                placeholder="+52 (55) 1234-5678"
               />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
-                Company Name *
+                Nombre de la Empresa *
               </label>
               <input
                 id="companyName"
@@ -149,13 +149,13 @@ const ClientForm = ({ extraStyle }) => {
                 className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                    text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                    focus:ring-teal-500 focus:border-transparent"
-                placeholder="Your Company Inc."
+                placeholder="Tu Empresa S.A."
               />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
-                Role *
+                Cargo *
               </label>
               <input
                 id="role"
@@ -167,13 +167,13 @@ const ClientForm = ({ extraStyle }) => {
                 className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                    text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                    focus:ring-teal-500 focus:border-transparent"
-                placeholder="CEO, CTO, Manager, etc."
+                placeholder="CEO, CTO, Gerente, etc."
               />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
-                Company Size *
+                Tamaño de la Empresa *
               </label>
               <select
                 id="companySize"
@@ -185,20 +185,20 @@ const ClientForm = ({ extraStyle }) => {
                    text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 
                    focus:border-transparent"
               >
-                <option value="">Select company size</option>
-                <option value="1-10">1-10 employees</option>
-                <option value="11-50">11-50 employees</option>
-                <option value="51-200">51-200 employees</option>
-                <option value="201-500">201-500 employees</option>
-                <option value="501-1000">501-1000 employees</option>
-                <option value="1000+">1000+ employees</option>
+                <option value="">Selecciona el tamaño de la empresa</option>
+                <option value="1-10">1-10 empleados</option>
+                <option value="11-50">11-50 empleados</option>
+                <option value="51-200">51-200 empleados</option>
+                <option value="201-500">201-500 empleados</option>
+                <option value="501-1000">501-1000 empleados</option>
+                <option value="1000+">1000+ empleados</option>
               </select>
             </div>
           </div>
 
           <div className="space-y-2">
             <label htmlFor="website" className="text-cyan-50 uppercase text-xs block">
-              Company Website
+              Sitio Web de la Empresa
             </label>
             <input
               id="website"
@@ -209,13 +209,13 @@ const ClientForm = ({ extraStyle }) => {
               className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                  text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                  focus:ring-teal-500 focus:border-transparent"
-              placeholder="https://yourcompany.com"
+              placeholder="https://tuempresa.com"
             />
           </div>
 
           <div className="space-y-2">
             <label htmlFor="additionalInfo" className="text-cyan-50 uppercase text-xs block">
-              Additional Information
+              Información Adicional
             </label>
             <textarea
               id="additionalInfo"
@@ -226,7 +226,7 @@ const ClientForm = ({ extraStyle }) => {
               className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                  text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                  focus:ring-teal-500 focus:border-transparent"
-              placeholder="Tell us more about your business and automation needs..."
+              placeholder="Cuéntanos más sobre tu negocio y necesidades de automatización..."
             />
           </div>
 
@@ -242,10 +242,10 @@ const ClientForm = ({ extraStyle }) => {
               {isLoading ? (
                 <>
                   <span className="loading loading-spinner loading-sm mr-2"></span>
-                  Submitting...
+                  Enviando...
                 </>
               ) : (
-                "Submit Information"
+                "Enviar Información"
               )}
             </button>
           </div>

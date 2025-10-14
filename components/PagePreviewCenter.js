@@ -51,13 +51,13 @@ const PagePreviewCenter = () => {
       }}>
       <div className="flex flex-col mx-auto px-12 py-12 lg:py-16 text-center gap-4 justify-center items-center">
         <h2 className="mx-auto text-3xl md:text-6xl tracking-tight mb-6 md:mb-8 ">
-          <strong>Automation</strong> and <strong>Artificial intelligence</strong>
+          <strong>Automatización</strong> e <strong>Inteligencia artificial</strong>
         </h2>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:max-w-6xl pb-10">
-        The combination of RPA and artificial intelligence makes it possible to automate complex tasks and make data-driven decisions in real time. At Robotipy, we help companies implement solutions that go beyond the traditional, integrating AI to maximize efficiency and innovation.
+        La combinación de RPA e inteligencia artificial permite automatizar tareas complejas y tomar decisiones basadas en datos en tiempo real. En Robotipy, ayudamos a las empresas a implementar soluciones que van más allá de lo tradicional, integrando IA para maximizar la eficiencia y la innovación.
         </p>
 
-        <ButtonMain text="Read more" link="/#" type="tertiary" noblank={true}/>
+        <ButtonMain text="Leer más" link="/#" type="tertiary" noblank={true}/>
 
         {/* <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
           <Step emoji="🧑‍💻" text="8 hrs learning about automation" />

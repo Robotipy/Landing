@@ -12,14 +12,14 @@ import Image from "next/image";
 function ServicesList() {
   return (
     <div>
-      At <strong>Robotipy</strong>, we offer a full range of solutions that will
-      transform your business:
+      En <strong>Robotipy</strong>, ofrecemos una gama completa de soluciones que
+      transformarán tu negocio:
       <ul className="space-y-1">
         {[
-          "Process automation",
-          "RPA training",
-          "Personalized chatbots",
-          "Software development",
+          "Automatización de procesos",
+          "Capacitación en RPA",
+          "Chatbots personalizados",
+          "Desarrollo de software",
         ].map((item) => (
           <li key={item} className="flex items-center gap-3">
             <svg
@@ -56,7 +56,7 @@ export default function Home() {
         <PagePreview
           title={
             <>
-              Why RPA and why Robotipy?
+              ¿Por qué RPA y por qué Robotipy?
             </>
           }
           position="right"
@@ -64,17 +64,17 @@ export default function Home() {
           srcImage={"/assets/pc-robotipy.png"}
         >
           <p className="text-md">
-            Process automation with RPA reduces errors, improves efficiency and
-            saves time in repetitive tasks. At Robotipy, we integrate the latest
-            RPA technology and artificial intelligence models, guaranteeing a
-            fast implementation tailored to your company&rsquo;s needs.
+            La automatización de procesos con RPA reduce errores, mejora la eficiencia y
+            ahorra tiempo en tareas repetitivas. En Robotipy, integramos la tecnología
+            RPA más avanzada y modelos de inteligencia artificial, garantizando una
+            implementación rápida adaptada a las necesidades de tu empresa.
           </p>
         </PagePreview>
         <PagePreview
-          title="Comprehensive automation solutions for every need"
+          title="Soluciones integrales de automatización para cada necesidad"
           position="left"
           link="/solutions"
-          buttonText="See all services ➡️"
+          buttonText="Ver todos los servicios ➡️"
           srcImage={"/assets/ilus-automation.png"}
         >
           <>

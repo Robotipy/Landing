@@ -110,7 +110,7 @@ export default function MyPortfolio() {
         return (
           <div className="flex justify-center space-x-4">
             {/* Add trash icon here */}
-            <button className="btn btn-sm btn-danger">Delete</button>
+            <button className="btn btn-sm btn-danger">Eliminar</button>
           </div>
         );
       }
@@ -150,11 +150,11 @@ export default function MyPortfolio() {
     <main className=" min-h-screen p-8 pb-24">
       <section className="container mx-auto space-y-8">
         <ButtonAccount />
-        <h1 className="text-3xl md:text-4xl font-extrabold">Portfolio</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold">Portafolio</h1>
         <InputSearch
           datalist={cryptos.map((crypto) => crypto.name)}
           dataId="crypto-list"
-          btnName="Add crypto"
+          btnName="Agregar crypto"
           callback={addCryptoCallback}
         />
         <Table aria-label="Example table with custom cells">
@@ -183,9 +183,9 @@ export default function MyPortfolio() {
         </Table>
       </section>
       <section className="my-7 container mx-auto space-y-8">
-        <h1 className="text-2xl font-bold">Portfolio Map</h1>
+        <h1 className="text-2xl font-bold">Mapa del Portafolio</h1>
         <p className="text-gray-500">
-          A visual representation of your portfolio
+          Una representación visual de tu portafolio
         </p>
         <br />
         <div className="mx-auto flex justify-center">

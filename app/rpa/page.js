@@ -15,14 +15,14 @@ import VisitOurBlog from "./components/VisitOurBlog";
 function ServicesList() {
   return (
     <div>
-      At <strong>Robotipy</strong>, we offer a full range of solutions that will
-      transform your business:
+      En <strong>Robotipy</strong>, ofrecemos una gama completa de soluciones que
+      transformarán tu negocio:
       <ul className="space-y-1">
         {[
-          "Process automation",
-          "RPA training",
-          "Personalized chatbots",
-          "Software development",
+          "Automatización de procesos",
+          "Capacitación en RPA",
+          "Chatbots personalizados",
+          "Desarrollo de software",
         ].map((item) => (
           <li key={item} className="flex items-center gap-3">
             <svg

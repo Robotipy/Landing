@@ -15,13 +15,13 @@ const CTA = () => {
       <div className="text-center p-2 lg:p-8">
         <div className="flex flex-col gap-5 items-center p-8 md:p-0 ">
           <h2 className="text-4xl md:text-7xl tracking-tight">
-            Ready to <strong>automate</strong>?
+            ¿Listo para <strong>automatizar</strong>?
           </h2>
           <p className="text-base lg:px-40">
-            Unlock the power of automation and take your business to the next level.
+            Libera el poder de la automatización y lleva tu negocio al siguiente nivel.
           </p>
 
-          <ButtonMain text="Talk with us" link="/contact" noblank={true}/>
+          <ButtonMain text="Habla con nosotros" link="/contact" noblank={true}/>
            
           
         </div>

@@ -15,11 +15,11 @@ const links = [
   },
   {
     href: "/solutions",
-    label: "Solutions",
+    label: "Soluciones",
   }
 ];
 
-const cta = <ButtonMain text="Contact us" link="/client-info" type="primary"/>;
+const cta = <ButtonMain text="Contáctanos" link="/client-info" type="primary"/>;
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.

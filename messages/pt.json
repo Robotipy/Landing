@@ -1,0 +1,110 @@
+{
+  "navigation": {
+    "rpa": "RPA",
+    "solutions": "Soluções",
+    "contact": "Entre em contato",
+    "schedule": "Agendar uma chamada"
+  },
+  "header": {
+    "rpa": "RPA",
+    "solutions": "Soluções",
+    "contactUs": "Entre em contato"
+  },
+  "hero": {
+    "title": "Deixe os robôs trabalharem para você",
+    "subtitle": "Otimize seus processos com nossas soluções de automação RPA, inteligência artificial e desenvolvimento de software.",
+    "contactButton": "Entre em contato",
+    "scheduleButton": "Agendar uma chamada"
+  },
+  "homepage": {
+    "whyRpaTitle": "Por que RPA e por que Robotipy?",
+    "whyRpaDescription": "A automação de processos com RPA reduz erros, melhora a eficiência e economiza tempo em tarefas repetitivas. Na Robotipy, integramos a mais recente tecnologia RPA e modelos de inteligência artificial, garantindo uma implementação rápida adaptada às necessidades da sua empresa.",
+    "solutionsTitle": "Soluções abrangentes de automação para cada necessidade",
+    "solutionsButton": "Ver todos os serviços ➡️",
+    "servicesIntro": "Na Robotipy, oferecemos uma gama completa de soluções que transformarão seu negócio:",
+    "services": {
+      "automation": "Automação de processos",
+      "training": "Treinamento em RPA",
+      "chatbots": "Chatbots personalizados",
+      "development": "Desenvolvimento de software"
+    }
+  },
+  "pagePreviewCenter": {
+    "title": "Automação e Inteligência artificial",
+    "description": "A combinação de RPA e inteligência artificial possibilita automatizar tarefas complexas e tomar decisões baseadas em dados em tempo real. Na Robotipy, ajudamos empresas a implementar soluções que vão além do tradicional, integrando IA para maximizar eficiência e inovação.",
+    "readMore": "Ler mais"
+  },
+  "cta": {
+    "title": "Pronto para automatizar?",
+    "subtitle": "Libere o poder da automação e leve seu negócio ao próximo nível.",
+    "button": "Fale conosco"
+  },
+  "clientInfo": {
+    "title": "Vamos Construir Algo Incrível Juntos",
+    "subtitle": "Compartilhe seus desafios de automação conosco. Nossa equipe de especialistas analisará suas necessidades e criará uma solução personalizada que transforme seus processos comerciais.",
+    "assistanceText": "Precisa de assistência imediata? Entre em contato diretamente em"
+  },
+  "form": {
+    "getInTouch": "Entre em Contato",
+    "tellUs": "Conte-nos sobre sua empresa e como podemos ajudá-lo com soluções de automação.",
+    "fullName": "Nome Completo",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "companyName": "Nome da Empresa",
+    "role": "Seu Cargo",
+    "companySize": "Tamanho da Empresa",
+    "website": "Website",
+    "additionalInfo": "Informações Adicionais",
+    "submit": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "required": "obrigatório",
+    "optional": "opcional",
+    "errors": {
+      "required": "Por favor, preencha todos os campos obrigatórios",
+      "error": "Algo deu errado. Por favor, tente novamente."
+    },
+    "success": "Obrigado! Suas informações foram enviadas com sucesso. Entraremos em contato em breve.",
+    "placeholders": {
+      "fullName": "João Silva",
+      "email": "joao@empresa.com",
+      "phone": "+55 (11) 1234-5678",
+      "companyName": "Sua Empresa Ltda.",
+      "role": "CEO, CTO, etc.",
+      "website": "https://suaempresa.com",
+      "additionalInfo": "Conte-nos sobre suas necessidades de automação..."
+    },
+    "companySizes": {
+      "1-10": "1-10 funcionários",
+      "11-50": "11-50 funcionários",
+      "51-200": "51-200 funcionários",
+      "201-500": "201-500 funcionários", 
+      "500+": "500+ funcionários"
+    }
+  },
+  "footer": {
+    "description": "Robotipy é uma empresa de software que fornece soluções RPA para empresas.",
+    "copyright": "Copyright © {year} - Todos os direitos reservados",
+    "rpa": {
+      "title": "RPA",
+      "whyRpa": "Por que RPA",
+      "rocketbot": "Rocketbot RPA",
+      "process": "Processo Robotipy"
+    },
+    "solutions": {
+      "title": "SOLUÇÕES"
+    }
+  },
+  "rpa": {
+    "hero": {
+      "title": "Bem-vindo à era da automação"
+    },
+    "whatIsRpa": {
+      "title": "O que é RPA?",
+      "description1": "A automação com RPA é uma ferramenta poderosa que permite melhorar o desempenho do seu negócio. Não estamos falando apenas sobre eliminar tarefas repetitivas, mas otimizar esses processos vitais que definem o sucesso da sua organização. E se os processos que mais importam - financeiros, logísticos ou de tomada de decisão - pudessem ser executados com precisão cirúrgica e velocidade incomparável?",
+      "description2": "O impacto seria significativo: tempos de resposta mais rápidos, custos operacionais reduzidos, maior precisão na execução e, mais importante, a capacidade de focar recursos humanos em atividades que realmente impulsionam a inovação e o crescimento estratégico do negócio.",
+      "rocketbotTitle": "Rocketbot RPA",
+      "rocketbotDescription1": "Rocketbot é a plataforma RPA ideal para impulsionar a transformação digital de empresas de qualquer tamanho. Com um investimento global em RPA que já excede $60 bilhões, Rocketbot se posicionou como uma solução chave, ajudando mais de 500 clientes e automatizando mais de 5.000 processos mundialmente. Sua capacidade de executar processos de forma ágil e eficiente permite gerenciar até 10 tarefas em paralelo dentro do mesmo ambiente, acelerando operações sem aumentar custos adicionais.",
+      "rocketbotDescription2": "O que realmente diferencia o Rocketbot é sua flexibilidade e escalabilidade. Desenvolvido em Python, oferece uma facilidade única de integração com diferentes ambientes, seja local (on-premise) ou na nuvem, adaptando-se às necessidades específicas de cada organização, desde pequenas empresas até grandes corporações. Além disso, seu foco na democratização da automação permite que qualquer pessoa dentro de uma organização, independentemente de sua experiência técnica, possa criar e gerenciar robôs autonomamente. Com suas licenças acessíveis e expansíveis do desktop aos servidores, Rocketbot garante um ROI otimizado, fornecendo às empresas uma solução que cresce com elas sem pagar a mais por executar processos críticos em paralelo."
+    }
+  }
+}

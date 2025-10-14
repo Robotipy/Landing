@@ -25,11 +25,11 @@ export default function Dashboard() {
         <section className="flex flex-col lg:flex-row items-center justify-center px-12 py-20 lg:py-20 lg:px-20 background-image">
           <div className="flex flex-col gap-4 lg:gap-8 items-center self-stretch text-center w-1200 text-white">
             <h1 className="text-4xl lg:text-7xl tracking-tight text-center">
-              Reach us
+              Contáctanos
             </h1>
             <p className="text-lg lg:text-xl w-3/4">
-              Explain to us your problems and book a call so we can discuss the
-              best way to make your life easier.
+              Explícanos tus problemas y agenda una llamada para que podamos discutir la
+              mejor manera de hacer tu vida más fácil.
             </p>
             <div
               className="w-full max-w-2xl bg-transparent border border-cyan-800/20 rounded-lg"
@@ -43,7 +43,7 @@ export default function Dashboard() {
                         htmlFor="firstName"
                         className="text-cyan-50 uppercase text-xs block"
                       >
-                        First Name
+                        Nombre
                       </label>
                       <input
                         id="firstName"
@@ -59,7 +59,7 @@ export default function Dashboard() {
                         htmlFor="email"
                         className="text-cyan-50 uppercase text-xs block"
                       >
-                        Business Email
+                        Correo Empresarial
                       </label>
                       <input
                         id="email"
@@ -75,7 +75,7 @@ export default function Dashboard() {
                         htmlFor="company"
                         className="text-cyan-50 uppercase text-xs block"
                       >
-                        Company Name
+                        Nombre de la Empresa
                       </label>
                       <input
                         id="company"
@@ -91,12 +91,12 @@ export default function Dashboard() {
                         htmlFor="phone"
                         className="text-cyan-50 uppercase text-xs block"
                       >
-                        Phone Number
+                        Número de Teléfono
                       </label>
                       <input
                         id="phone"
                         type="tel"
-                        placeholder="Enter your phone number"
+                        placeholder="Ingresa tu número de teléfono"
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                            focus:ring-teal-500 focus:border-transparent"
@@ -108,7 +108,7 @@ export default function Dashboard() {
                       htmlFor="size"
                       className="text-cyan-50 uppercase text-xs block"
                     >
-                      Company Size
+                      Tamaño de la Empresa
                     </label>
                     <select
                       id="size"
@@ -117,13 +117,13 @@ export default function Dashboard() {
                          focus:border-transparent"
                     >
                       <option value="" disabled selected>
-                        Select company size
+                        Selecciona el tamaño de la empresa
                       </option>
-                      <option value="1-10">1-10 employees</option>
-                      <option value="11-50">11-50 employees</option>
-                      <option value="51-200">51-200 employees</option>
-                      <option value="201-500">201-500 employees</option>
-                      <option value="501+">501+ employees</option>
+                      <option value="1-10">1-10 empleados</option>
+                      <option value="11-50">11-50 empleados</option>
+                      <option value="51-200">51-200 empleados</option>
+                      <option value="201-500">201-500 empleados</option>
+                      <option value="501+">501+ empleados</option>
                     </select>
                   </div>
                   <div className="space-y-2 text-left">
@@ -131,11 +131,11 @@ export default function Dashboard() {
                       htmlFor="description"
                       className="text-cyan-50 uppercase text-xs block"
                     >
-                      Description
+                      Descripción
                     </label>
                     <textarea
                       id="description"
-                      placeholder="Tell us about your needs"
+                      placeholder="Cuéntanos sobre tus necesidades"
                       className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                          text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                          focus:ring-teal-500 focus:border-transparent min-h-[120px]"
@@ -147,7 +147,7 @@ export default function Dashboard() {
                        focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 
                        disabled:cursor-not-allowed"
                   >
-                    Book a call
+                    Agendar una llamada
                   </button>
                 </form>
               </div>

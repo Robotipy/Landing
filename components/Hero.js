@@ -7,15 +7,15 @@ const Hero = () => {
         <h1
           className="text-4xl lg:text-7xl tracking-tight text-center"
         >
-          Let the robots work for you
+          Deja que los robots trabajen por ti
         </h1>
         <p className="text-lg lg:text-xl w-3/4">
-          Optimize your processes with our automation solutions <strong>RPA, artificial intelligence and software development.</strong>
+          Optimiza tus procesos con nuestras soluciones de automatización <strong>RPA, inteligencia artificial y desarrollo de software.</strong>
           </p>
         <div className="flex flex-row gap-4">
-          <ButtonMain text="Contact us" link="/client-info" type="quaternary"/>
+          <ButtonMain text="Contáctanos" link="/client-info" type="quaternary"/>
           {/* <ButtonMain text="Contact us" link="/contact" type="primary" /> */}
-          <ButtonMain text="Schedule a call" link="https://calendar.app.google/bp4toLzqWLMT6BWi8" type="primary"/>
+          <ButtonMain text="Agendar una llamada" link="https://calendar.app.google/bp4toLzqWLMT6BWi8" type="primary"/>
         </div>
       </div>
     </section>

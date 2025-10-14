@@ -6,27 +6,27 @@ import Software from "@/public/assets/ilus-coding.png";
 
 const offers = [
   {
-    title: "Team trainings",
+    title: "Capacitación de equipos",
     description:
-      "At Robotipy, we train your team to efficiently use Rocketbot for process automation. Our training focuses on teaching you how to develop optimized bots, manage variables, handle logs, and perform debugging. With a hands-on approach, we aim to boost productivity and tailor automations to your business’s evolving needs.",
+      "En Robotipy, capacitamos a tu equipo para usar eficientemente Rocketbot para la automatización de procesos. Nuestra capacitación se enfoca en enseñarte cómo desarrollar bots optimizados, gestionar variables, manejar logs y realizar debugging. Con un enfoque práctico, buscamos impulsar la productividad y adaptar las automatizaciones a las necesidades cambiantes de tu negocio.",
     image: TeamTraining,
   },
   {
-    title: "Process automations",
+    title: "Automatizaciones de procesos",
     description:
-      "We specialize in automating not just repetitive tasks but also critical processes that demand precision and reliability. Utilizing Rocketbot, we transform complex workflows, optimizing everything from data capture to integration with key systems. Our solutions enhance efficiency, reduce errors, and ensure that your essential business processes run smoothly and seamlessly.",
+      "Nos especializamos en automatizar no solo tareas repetitivas sino también procesos críticos que demandan precisión y confiabilidad. Utilizando Rocketbot, transformamos flujos de trabajo complejos, optimizando todo desde la captura de datos hasta la integración con sistemas clave. Nuestras soluciones mejoran la eficiencia, reducen errores y aseguran que tus procesos comerciales esenciales funcionen de manera fluida y sin problemas.",
     image: Automation,
   },
   {
     title: "Chatbots",
     description:
-      "Our chatbots enhance customer interaction in an automated and efficient manner. Our intelligent bots are designed to handle inquiries, guide users through processes, and provide 24/7 support, seamlessly integrating with your systems. With advanced technology, our chatbots not only answer questions but also optimize the user experience and improve your business’s operational efficiency.",
+      "Nuestros chatbots mejoran la interacción con el cliente de manera automatizada y eficiente. Nuestros bots inteligentes están diseñados para manejar consultas, guiar a los usuarios a través de procesos y brindar soporte 24/7, integrándose perfectamente con tus sistemas. Con tecnología avanzada, nuestros chatbots no solo responden preguntas sino que también optimizan la experiencia del usuario y mejoran la eficiencia operacional de tu negocio.",
     image: Chatbot,
   },
   {
-    title: "Software development",
+    title: "Desarrollo de software",
     description:
-      "We create custom software solutions tailored to your business needs. We specialize in designing robust, scalable, and easy-to-maintain applications that integrate the latest technologies. Whether you need to optimize internal processes, develop new features, or enhance user experience, our focus is on delivering agile and efficient solutions that drive your operations and accelerate your growth.",
+      "Creamos soluciones de software personalizadas adaptadas a las necesidades de tu negocio. Nos especializamos en diseñar aplicaciones robustas, escalables y fáciles de mantener que integran las últimas tecnologías. Ya sea que necesites optimizar procesos internos, desarrollar nuevas funcionalidades o mejorar la experiencia del usuario, nuestro enfoque está en entregar soluciones ágiles y eficientes que impulsen tus operaciones y aceleren tu crecimiento.",
     image: Software,
   },
 ];
@@ -36,11 +36,11 @@ const Offers = () => {
     <section className="flex flex-col justify-center items-center bg-dark-blue py-16">
       <div className="flex flex-col gap-4 lg:gap-8 items-center text-center w-full text-white">
         <h1 className="text-4xl lg:text-7xl tracking-tight">
-          What do we offer?
+          ¿Qué ofrecemos?
         </h1>
         <p className="text-lg lg:text-xl w-3/4 lg:w-2/4">
-          Discover our comprehensive range of automation services designed to
-          streamline your operations and enhance efficiency.
+          Descubre nuestra gama integral de servicios de automatización diseñados para
+          optimizar tus operaciones y mejorar la eficiencia.
         </p>
       </div>
 

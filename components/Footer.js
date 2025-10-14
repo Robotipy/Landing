@@ -32,7 +32,7 @@ const Footer = () => {
 
             <p className="mt-3 text-sm">{config.appDescription}</p>
             <p className="mt-3 text-sm">
-              Copyright © {new Date().getFullYear()} - All rights reserved
+              Copyright © {new Date().getFullYear()} - Todos los derechos reservados
             </p>
           </div>
           <div className="grid grid-cols-2 md:flex md:flex-row gap-4 md:gap-16 justify-center -mb-10 md:mt-0 mt-10 text-center">
@@ -42,64 +42,64 @@ const Footer = () => {
               </div>
               <div className="flex flex-col gap-4 justify-center items-center md:items-start mb-10 text-sm">
                 <Link href="/rpa" className="link link-hover text-start">
-                  Why RPA
+                  Por qué RPA
                 </Link>
                 <Link href="#" className="link link-hover text-start">
                   Rocketbot RPA
                 </Link>
                 <a href="/#" target="_blank" className="link link-hover text-start">
-                  Robotipy Process
+                  Proceso Robotipy
                 </a>
               </div>
             </div>
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
-                SOLUTIONS
+                SOLUCIONES
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
                 <Link href="/solutions" className="link link-hover text-start">
-                  Team Training
+                  Capacitación de Equipos
                 </Link>
                 <Link href="/solutions" className="link link-hover text-start">
-                  Process automations
+                  Automatizaciones de procesos
                 </Link>
                 <Link href="/solutions" className="link link-hover text-start">
                   Chatbots
                 </Link>
                 <Link href="/solutions" className="link link-hover text-start">
-                  Software development
+                  Desarrollo de software
                 </Link>
                 <Link href="/solutions" className="link link-hover text-start">
-                  AI Solutions
+                  Soluciones de IA
                 </Link>
               </div>
             </div>
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
-                RESOURCES
+                RECURSOS
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
                 <Link href="//blog.robotipy.com" className="link link-hover text-start">
                   Blog
                 </Link>
                 <Link href="/#" className="link link-hover text-start">
-                  Training
+                  Capacitación
                 </Link>
                 <Link href="/#" className="link link-hover text-start">
-                  Forum
+                  Foro
                 </Link>
               </div>
             </div>
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
-                COMPANY
+                EMPRESA
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
                 <Link href="/tos" className="link link-hover text-start">
-                  Terms of services
+                  Términos de servicio
                 </Link>
                 <Link href="/privacy-policy" className="link link-hover text-start">
-                  Privacy policy
+                  Política de privacidad
                 </Link>
               </div>
             </div>

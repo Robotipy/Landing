@@ -10,21 +10,20 @@ const WhatIsRpa = () => {
     <section className="flex flex-col justify-center items-center text-neutral-content lg:p-12 lg:my-20 lg:mx-32">
       <div className="flex flex-col mx-auto px-1 lg:px-12 py-12 lg:py-16 text-start justify-center items-start">
         <h1 className="mx-auto text-5xl md:text-6xl tracking-tight mb-6 md:mb-8 w-full px-5 lg:px-40">
-          What is <strong>RPA?</strong>
+          ¿Qué es <strong>RPA?</strong>
         </h1>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-40 pb-4">
-          Automation with RPA is a powerful tool that enables you to improve the
-          performance of your business. We’re not just talking about eliminating
-          repetitive tasks, but optimizing those vital processes that define the
-          success of your organization. What if the processes that matter most -
-          financial, logistical or decision-making - could be executed with
-          surgical precision and unparalleled speed?
+          La automatización con RPA es una herramienta poderosa que te permite mejorar el
+          rendimiento de tu negocio. No solo hablamos de eliminar tareas repetitivas,
+          sino de optimizar esos procesos vitales que definen el éxito de tu organización.
+          ¿Qué tal si los procesos que más importan - financieros, logísticos o de toma
+          de decisiones - pudieran ejecutarse con precisión quirúrgica y velocidad incomparable?
         </p>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-40">
-          The impact would be significant: faster response times, reduced
-          operating costs, increased accuracy in execution and, most
-          importantly, the ability to focus human resources on activities that
-          truly drive innovation and strategic business growth.
+          El impacto sería significativo: tiempos de respuesta más rápidos, costos
+          operativos reducidos, mayor precisión en la ejecución y, lo más importante,
+          la capacidad de enfocar los recursos humanos en actividades que realmente
+          impulsen la innovación y el crecimiento estratégico del negocio.
         </p>
       </div>
       <Image src={ilusflow} alt="ilus-flow.png"></Image>
@@ -37,27 +36,26 @@ const WhatIsRpa = () => {
           </h1>
         </div>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-40 pb-4">
-          Rocketbot is the ideal RPA platform to drive the digital
-          transformation of companies of any size. With a global investment in
-          RPA that already exceeds $60 billion, Rocketbot has positioned itself
-          as a key solution, helping more than 500 customers and automating more
-          than 5,000 processes worldwide. Its ability to execute processes in an
-          agile and efficient manner allows it to manage up to 10 tasks in
-          parallel within the same environment, accelerating operations without
-          increasing additional costs.
+          Rocketbot es la plataforma RPA ideal para impulsar la transformación
+          digital de empresas de cualquier tamaño. Con una inversión global en
+          RPA que ya supera los $60 mil millones, Rocketbot se ha posicionado
+          como una solución clave, ayudando a más de 500 clientes y automatizando más
+          de 5,000 procesos en todo el mundo. Su capacidad para ejecutar procesos de
+          manera ágil y eficiente le permite gestionar hasta 10 tareas en paralelo
+          dentro del mismo entorno, acelerando las operaciones sin aumentar costos adicionales.
         </p>
         <p className="mx-auto text-lg opacity-90 leading-relaxed px-5 lg:px-40">
-          What really sets Rocketbot apart is its flexibility and scalability.
-          Developed in Python, it offers a unique ease of integration with
-          different environments, whether local (on-premise) or in the cloud,
-          adapting to the specific needs of each organization, from small
-          businesses to large corporations. Furthermore, its focus on the
-          democratization of automation allows anyone within an organization,
-          regardless of their technical expertise, to create and manage robots
-          autonomously. With its affordable and expandable licenses from the
-          desktop to servers, Rocketbot guarantees an optimized ROI, providing
-          companies with a solution that grows with them without overpaying for
-          running critical processes in parallel.
+          Lo que realmente distingue a Rocketbot es su flexibilidad y escalabilidad.
+          Desarrollado en Python, ofrece una facilidad única de integración con
+          diferentes entornos, ya sea local (on-premise) o en la nube, adaptándose
+          a las necesidades específicas de cada organización, desde pequeñas empresas
+          hasta grandes corporaciones. Además, su enfoque en la democratización de
+          la automatización permite que cualquier persona dentro de una organización,
+          independientemente de su experiencia técnica, pueda crear y gestionar robots
+          de forma autónoma. Con sus licencias asequibles y expandibles desde el escritorio
+          hasta servidores, Rocketbot garantiza un ROI optimizado, proporcionando a las
+          empresas una solución que crece con ellas sin pagar de más por ejecutar procesos
+          críticos en paralelo.
         </p>
       </div>
       <div className="flex flex-row justify-center items-center gap-x-12 h-[80px] mb-10">
