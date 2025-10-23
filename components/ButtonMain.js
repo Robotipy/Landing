@@ -20,7 +20,7 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
     console.log(event.target.style.borderColor);
   };
   let buttonStyle;
-  if (type === "primary") {
+  if (type === "primary" || type === "primary-sm") {
     buttonStyle = {
       backgroundColor: config.colors.background,
       color: "white",
@@ -52,6 +52,10 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
     };
   }
 
+  if (type.includes("sm")) {
+    buttonStyle.padding = ".6rem";
+  }
+
 
   return (
     <button
@@ -62,7 +66,7 @@ const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=fa
       data-tooltip-id="tooltip"
       data-tooltip-content={tooltipText}
       title={text}
-      className="px-6 py-4 text-white rounded-lg"
+      className={"px-3 lg:px-6 py-2 lg:py-4 text-white rounded-lg" + (props.className ? props.className : "")}
       {...props}
       
     >

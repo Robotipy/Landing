@@ -7,15 +7,15 @@ const Hero = () => {
         <h1
           className="text-4xl lg:text-7xl tracking-tight text-center"
         >
-          Deja que los robots trabajen por ti
+          Creamos la <strong>inteligencia</strong> que<br /> tu <strong>negocio</strong> necesita.
         </h1>
         <p className="text-lg lg:text-xl w-3/4">
-          Optimiza tus procesos con nuestras soluciones de automatización <strong>RPA, inteligencia artificial y desarrollo de software.</strong>
+          Optimiza tus procesos con nuestras soluciones de automatización <br /><strong>inteligencia artificial y desarrollo de software.</strong>
           </p>
-        <div className="flex flex-row gap-4">
-          <ButtonMain text="Contáctanos" link="/client-info" type="quaternary"/>
+        <div className="flex flex-row gap-4 mt-8">
+          <ButtonMain text="Contáctanos" link="/contact-us" type="quaternary"/>
           {/* <ButtonMain text="Contact us" link="/contact" type="primary" /> */}
-          <ButtonMain text="Agendar una llamada" link="https://calendar.app.google/bp4toLzqWLMT6BWi8" type="primary"/>
+          <ButtonMain text="Ve nuestros proyectos" link="/portfolio" type="primary"/>
         </div>
       </div>
     </section>

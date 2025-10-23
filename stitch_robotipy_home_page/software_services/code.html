@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Robotipy - Custom Software Development</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0A2540",
+              secondary: "#00C49A",
+              "background-light": "#F6F9FC",
+              "background-dark": "#101922",
+              "text-light": "#333333",
+              "text-dark": "#F6F9FC",
+              "text-muted-light": "#6b7280",
+              "text-muted-dark": "#9dabb9",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
+  >
+    <div
+      class="relative flex h-auto w-full flex-col group/design-root overflow-x-hidden"
+    >
+      <!-- Hero Section -->
+      <div
+        class="relative flex h-auto min-h-screen w-full flex-col bg-[#111418] dark group/design-root overflow-x-hidden"
+      >
+        <div class="layout-container flex h-full grow flex-col">
+          <div
+            class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-5"
+          >
+            <div
+              class="layout-content-container flex flex-col max-w-[960px] flex-1"
+            >
+              <div class="@container">
+                <div class="@[480px]:p-4">
+                  <div
+                    class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
+                    data-alt="Abstract blue and green geometric pattern"
+                    style="
+                      background-image: linear-gradient(
+                        rgba(10, 37, 64, 0.8) 0%,
+                        rgba(16, 25, 34, 0.9) 100%
+                      );
+                    "
+                  >
+                    <div class="flex flex-col gap-2 text-center">
+                      <h1
+                        class="text-white text-4xl font-black leading-tight tracking-tighter @[480px]:text-5xl"
+                      >
+                        We Build the Technology Your Business Needs to Win
+                      </h1>
+                      <h2
+                        class="text-text-muted-dark text-base font-normal leading-normal @[480px]:text-lg max-w-3xl mx-auto"
+                      >
+                        We design and develop robust, scalable, and secure web,
+                        mobile, and enterprise systems that are tailored to your
+                        unique business objectives.
+                      </h2>
+                    </div>
+                    <button
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-wide hover:bg-opacity-90 transition-colors"
+                    >
+                      <span class="truncate">Quote Your Project</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Feature Section -->
+      <div
+        class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-10 sm:py-16 bg-background-light dark:bg-background-dark"
+      >
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] flex-1"
+        >
+          <div class="flex flex-col gap-10 @container">
+            <div class="flex flex-col gap-4 text-center">
+              <h1
+                class="text-text-light dark:text-text-dark tracking-tight text-3xl font-bold @[480px]:text-4xl max-w-[720px] mx-auto"
+              >
+                The Custom Advantage
+              </h1>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-base font-normal leading-relaxed max-w-[720px] mx-auto"
+              >
+                Off-the-shelf software doesn't fit every business. We address
+                the limitations of generic solutions, legacy systems, and
+                integration challenges by building custom software that gives
+                you full control, boosts efficiency, and scales with your
+                growth.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div
+                class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 p-6 flex-col items-center text-center"
+              >
+                <span class="material-symbols-outlined text-secondary text-4xl"
+                  >tune</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h2
+                    class="text-text-light dark:text-text-dark text-lg font-bold leading-tight"
+                  >
+                    100% Tailor-Made
+                  </h2>
+                  <p
+                    class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Your software is designed from the ground up to match your
+                    exact workflows and requirements.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 p-6 flex-col items-center text-center"
+              >
+                <span class="material-symbols-outlined text-secondary text-4xl"
+                  >trending_up</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h2
+                    class="text-text-light dark:text-text-dark text-lg font-bold leading-tight"
+                  >
+                    Built to Scale
+                  </h2>
+                  <p
+                    class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Your application will be engineered to handle growth, from a
+                    handful of users to enterprise-level demand.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 p-6 flex-col items-center text-center"
+              >
+                <span class="material-symbols-outlined text-secondary text-4xl"
+                  >lan</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h2
+                    class="text-text-light dark:text-text-dark text-lg font-bold leading-tight"
+                  >
+                    Seamless Integration
+                  </h2>
+                  <p
+                    class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    We ensure your new software communicates flawlessly with
+                    your existing tools and systems.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 p-6 flex-col items-center text-center"
+              >
+                <span class="material-symbols-outlined text-secondary text-4xl"
+                  >verified_user</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h2
+                    class="text-text-light dark:text-text-dark text-lg font-bold leading-tight"
+                  >
+                    Full IP Ownership
+                  </h2>
+                  <p
+                    class="text-text-muted-light dark:text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    You own the source code and intellectual property of the
+                    software we build for you.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Timeline Section -->
+      <div
+        class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-10 sm:py-16 bg-white dark:bg-gray-900/50"
+      >
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] flex-1"
+        >
+          <h2
+            class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight px-4 pb-8 text-center"
+          >
+            Our Development Methodology
+          </h2>
+          <div class="grid grid-cols-[auto_1fr] gap-x-4 px-4">
+            <div class="flex flex-col items-center gap-2 pt-3">
+              <div class="bg-secondary rounded-full p-2">
+                <span class="material-symbols-outlined text-white">search</span>
+              </div>
+              <div
+                class="w-[2px] bg-gray-300 dark:bg-gray-600 h-full grow"
+              ></div>
+            </div>
+            <div class="flex flex-1 flex-col pb-8 pt-2">
+              <p class="text-text-light dark:text-text-dark text-lg font-bold">
+                Phase 1: Discovery
+              </p>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-base font-normal"
+              >
+                We start by understanding your business goals, target audience,
+                and technical requirements through collaborative workshops and
+                in-depth analysis.
+              </p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <div class="w-[2px] bg-gray-300 dark:bg-gray-600 h-2"></div>
+              <div class="bg-secondary rounded-full p-2">
+                <span class="material-symbols-outlined text-white"
+                  >design_services</span
+                >
+              </div>
+              <div
+                class="w-[2px] bg-gray-300 dark:bg-gray-600 h-full grow"
+              ></div>
+            </div>
+            <div class="flex flex-1 flex-col pb-8 pt-2">
+              <p class="text-text-light dark:text-text-dark text-lg font-bold">
+                Phase 2: UX/UI Design
+              </p>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-base font-normal"
+              >
+                Our team creates intuitive wireframes, mockups, and prototypes
+                to visualize the user journey and ensure a seamless, engaging
+                user experience.
+              </p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <div class="w-[2px] bg-gray-300 dark:bg-gray-600 h-2"></div>
+              <div class="bg-secondary rounded-full p-2">
+                <span class="material-symbols-outlined text-white">code</span>
+              </div>
+              <div
+                class="w-[2px] bg-gray-300 dark:bg-gray-600 h-full grow"
+              ></div>
+            </div>
+            <div class="flex flex-1 flex-col pb-8 pt-2">
+              <p class="text-text-light dark:text-text-dark text-lg font-bold">
+                Phase 3: Agile Development
+              </p>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-base font-normal"
+              >
+                We use an agile approach, building your software in iterative
+                sprints. This allows for flexibility, transparency, and
+                continuous feedback throughout the development lifecycle.
+              </p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <div class="w-[2px] bg-gray-300 dark:bg-gray-600 h-2"></div>
+              <div class="bg-secondary rounded-full p-2">
+                <span class="material-symbols-outlined text-white"
+                  >bug_report</span
+                >
+              </div>
+              <div
+                class="w-[2px] bg-gray-300 dark:bg-gray-600 h-full grow"
+              ></div>
+            </div>
+            <div class="flex flex-1 flex-col pb-8 pt-2">
+              <p class="text-text-light dark:text-text-dark text-lg font-bold">
+                Phase 4: Testing &amp; QA
+              </p>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-base font-normal"
+              >
+                Rigorous testing is conducted at every stage to ensure the final
+                product is secure, bug-free, and performs flawlessly across all
+                devices and platforms.
+              </p>
+            </div>
+            <div class="flex flex-col items-center gap-2 pb-3">
+              <div class="w-[2px] bg-gray-300 dark:bg-gray-600 h-2"></div>
+              <div class="bg-secondary rounded-full p-2">
+                <span class="material-symbols-outlined text-white"
+                  >cloud_upload</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col pt-2">
+              <p class="text-text-light dark:text-text-dark text-lg font-bold">
+                Phase 5: Deployment &amp; Support
+              </p>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-base font-normal"
+              >
+                We manage the deployment process from start to finish and
+                provide ongoing support and maintenance to ensure your software
+                remains optimal and up-to-date.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tech Stack Section -->
+      <div
+        class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-10 sm:py-16 bg-background-light dark:bg-background-dark"
+      >
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] flex-1"
+        >
+          <h2
+            class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight pb-8 text-center"
+          >
+            Our Tech Stack
+          </h2>
+          <div class="flex flex-col gap-8">
+            <div class="tech-category">
+              <h3
+                class="text-lg font-semibold text-center mb-4 text-text-muted-light dark:text-text-muted-dark"
+              >
+                Frontend
+              </h3>
+              <div
+                class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 items-center justify-items-center"
+              >
+                <img
+                  class="h-12 w-12"
+                  data-alt="React logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuARcp7cN327O35e61j73dknQ9wQqSkhDe2y5zSrIvQULtd0ue9XqeMjpC6Cm_atC5rXTfh5L_sGeuXruZwidWS8MNEVSvKYY-d6Mp42vXsFVFe-L0hPoUoSOmUzhBGeq8Umz70PGcH4cXrNm74CnYH2n7vV2f5b5CYh2nm-sDYfxFCx0z6SPY8NWmhO7tKxKIMVedL9VPaj4CivW4265M-en7YZkXK_nb4YZNbpX6A2aKvJmfuILOWjpKBQKO5JLHvDZBrqxsrAJyU"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Vue.js logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzbAVjr3zDdHqMsbKw0Esg9Wew1PqrGwiSU0Pm4_eh1ATIfCweRW-73sbUHZa3g60zBa87B4AHDRIrmvWpuCPVlO-ItUGvUKbFEKZNGPD8gA9T4VBz1R2NL4C-izKheUEEJYqw8n7Z7tnE0pkC9xZOLd8lijkE26TXlGNGiMv4-T0GEVkxIC1nNV6jaSBIRIs1fXOdUmE-Z6vUk6kcNsjMkXpW6GiFnSoDB7rRayLsUeiTtpQjNVS-Qo1Y47JuqUrSOy1b7i2nakM"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Angular logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnszgdGZx22bwGGoIBx5ihEIbgKzB34c8Zy-tLD9ySOgTp-4JsS7uT95BKRdvma32kh3SiKmuT26hNxaSAogE9bVAa80fKUIPjIB5WoBNY3qViLIviI6iZkxBB71Mi3ovHY3_RQr6T4Btugt_NgjA97ekkhYNPAoRGY-Y-PziI96_qtnqkY_KBuAA60nNdDjd799i_Y73BvqLZ7Z-zXZiS9SqYE68u5YrbBrDrPNNdd1EvG154tpuknZqMDpEL6SCpPDVPd75UtzE"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="HTML5 logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAbesp7J0HnY9Prz_K1qFIWLDEsvmspeMW6BtIDdPdpzxUZfodF7fpWfXjEMYgZk1njPYLbTe7p3NO72I6UTJAOzURKz2k9bK57Couep3PJm2vPVUR22z6Bf19sQjsQ-2AOVn-MckWuVuU9JOsMfnhs4U4wvG0Jw8yJ_6huYTGb3sNILErkbXP2aiXsMMypmAJ5lEnT4HqKqmHNK6gUClDzAk21ZLPeogh-8raGlZYSfjypx7vfSYCRqya40fu9TYd-HchWjR3QyQ"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="CSS3 logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr84y5vP_ZkLtwWeFpt4p4wP0r3HmfWkEsKLm8XFAfMEofVfsK2ZJwD4lZjWMT7Hi-SRFUj_gld4g6099Aw5AffnmmvFT0qjxKdr5IoRpDzV1TpmIOONKSd5yOcJsI-7HJNykPywRxmJ2zUbOPGcHQHJDaiT8VKXRvWR8WxbDH9y0X-O4JQZC6ZsjmuvWP2v5Q3p5-2_WG8gHvoUKh9Qe-twizuPkTXz4ZJnCBqVd3vpCE3-M-Y6-6TM1CLnxQq8wdePlVt3y-wIc"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="TypeScript logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8ZwoUC9OCJuUlDJg79pFyH92FsHESKdoqxH9zv4udYePYq0ZYcM9cPrYpbNpxnU4QJaLFCRrVjP1bReG7e70Rz1g2OZTovnoBywFRmzbE1R2MRuANm9yyILWlmIvGVCnpSOaiTG85x69YcBY5MNo6xT1BtnUTRGSAf90vKcwtf_FKESjBwfIkVvv2KoYcZsqnEdzTfOGh09LRVoQkDbondIrJk3MypJ9mb58vHsQuR4NdFbbTkKOP4-V8kv63SaALM_6mrEKCIec"
+                />
+              </div>
+            </div>
+            <div class="tech-category">
+              <h3
+                class="text-lg font-semibold text-center mb-4 text-text-muted-light dark:text-text-muted-dark"
+              >
+                Backend
+              </h3>
+              <div
+                class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 items-center justify-items-center"
+              >
+                <img
+                  class="h-12 w-12"
+                  data-alt="Node.js logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFk5uNGUFvSfml7dhchtMsB_CaYBnjMY-VaXMD57RLvt4gVxPyZlWMv2v8VJmoUjcqNyMuJfeslL7y5pAUs96xuvEqLpVYSG_bnve0CcQN61WuX3oZQJG3gn8Wc0nXEIaAYiTngrKDHO-HePqffUuoaDTojRIRAWQbp0r8yEtZptJSAasa_iDbwIHPMUXTrnw94GZpImnf_eGFqh4I0oDntbWIfznepKrPHHKFxnL0X7GkT2ivYsRLGfyqx_02bIv0GFIGpE8L9Sk"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Python logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMyS5M4ZBsJqvi5sQCPUcn9iYUmeQiqo-MknHA3Xv51MT1h4HZsbT3tjQcRF0tp1oQUDOpBRXM8RogdszoVgTTJ1GoL-HhtK5S3AS9p6AmJv4R8LGjksekpQVXZoPvI1FWEsHfWyQ0iphZHWXfEbZY-lKhA0GHfFqR9cF4OtdVtSxqMITdlvxYO0qp0HuKDs7aBxd1Ucro3IO1uvImKNDyuQz8Q3D-v6vHtJtibtc0_lrePJzgu8vUg9wKWfnJFl2Qb7zNeR6nyv4"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Java logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf_q6APv6hwwI-ULnIDz1mb_bxNpa_VZy-0rHDj1K_iAAREaWUtBORv2cijgz5lRlA-8DmTCuggRD-l7KwrH0FHCSahwLkuysmzEFKDlprUvj5nySVHYHCwXLpjfjf_vj9P82v8JMcgHhkA-OCADME4HMqcuyBwb_KESHVlxOVLMsIm_9UsW5xRtWXE58dprq_EvFTI3g9BTj0Z31qm5prWOj27t56ljxNSP6lUa97MTiZX44_-2PedQNuqSQp592mnHUrGbWZxKE"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="C# logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLcFmzr5WsJsmxRiUCce7J1MtTOULHrxfEkyyD-vv4BcAGX21FVbVwjWqJKk1mtL-zifp3kMZQhLod-J_xPgZ_COaz6gn4KLtgWXMMvaF4r0QYkTC03n7SnQ0S-IUTeRcHO6YuELw7k5o3RGFMvG8ctIFNtc60KGkf-J4eYDzlF5TFQ-pmeQdoKGzjHJBWGQQVhVnx-FwghNNk9rAAn7aWSb2slcK2jcfGvEo2u9RYSoqEBp1pYWjpDDGQIWYyVP9VJGoPhFWJF_4"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Go logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZL8t5QJR-AqzbX-aNwRfl_KVQ52hVeIfb0l8auXAZbsECAMd2BLrEl49aWNfycXbHjBnBD4AbJaBPpChJSicynG0ZN8_3zipIh1WtvK3cCYfkiU9TQy2CWszs7G5CqCcB8cIFcGCCSFv0gMtH-PoT1us2sQNpjjx2atu9mZNBzFFWOVRllNHKwPdkURTsLwZkSvLJ6Pak65-v4qMp-J7xzDzqqh8n8CqmjI9dSw3TPgoANbfrjEfya7gSLYk4PPdy5BpIrgya0fA"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="PHP logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuiWc9cBErr_vxXnVMhzMs96fgFL7GrahjbTvVT5qFYtSMsTBmfaPA5xCXLuWaqeA86XsyUIpOO6nHS5PS_RarESYWpuMABSXSeIOFSv5-kfmwYaJwnesoV0dFy0sGPJBOARDoaRrx5_IauCepIDqVR1bd3s0cD4fm_-3vvHckuIy2FNsLuYYpmkxD1aGeWbdfmk0SvqsCUjgSAEJnBdCaGUiEpU_rAawnncZEfHtZjoIAB2BkwzPIbaW3aLub-E5xRLXFs4iESOs"
+                />
+              </div>
+            </div>
+            <div class="tech-category">
+              <h3
+                class="text-lg font-semibold text-center mb-4 text-text-muted-light dark:text-text-muted-dark"
+              >
+                Mobile, Databases &amp; Cloud
+              </h3>
+              <div
+                class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 items-center justify-items-center"
+              >
+                <img
+                  class="h-12 w-12"
+                  data-alt="Flutter logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIQ-QjTuJkQU9OfPlZd35Iz64TyXiyLYotRTOjP6vgARKWzYdEZ0oZIF3KiMxGIxUpsBdRkCPLHe_CCdiAM3twe2UE-FZoLg0ZrQ1Y_iIT-NKr9JpUt33gQClnHVc5D5mTLJW_1UfG57SHqwbrLs2ZbX5rnXAwrSpPpYk84Xw7M_Ey7qN5s8EF0dmCGB0MSxFnVcbEcR3BQjRd39_DV8fz2XUruJS3wZldiTi4J3ymGpOtdw-GDgrheZXMFg7oNiJJB0Y663pTcm8"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Swift logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkiUqZ3Gl2p2K2lystXj_oaztPbtAy6JMpFOtHau9RZw6kCCJ8fwCuwHo9oG990uDmtWI4tQqBvaNYT309naik0Q5ZXxLFYJlIsVHTQBd1v3EqkP-Ze4A5zAgFmBPW-LuS1t8waXDguvLqWIa5k9BopoQUJ5xzBJeii6hF0cCsPEg1DdhKjxiGSiIrf8Mnqh_7a0JR7FGlOdUb9r1s2RhMrffIwQpzoZBTBfZ7vM0fTpp5Rg4kJdZV-I5fgSePPmj6VfT9lIl_24Q"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="PostgreSQL logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJY3UCym5u-mVlzN2t_owqmOZE-6VCBhPvkv329jND1BGxddWYYMCXK5RaMYchDEjgLgnd2y72dQyiVBJfIQhMf1bPTkDNQYnyf4G4fprh0vaH5--FyXsyzNvkHmcaEpitxLqEx6x-8SAk15hIa0aydIZ2Y47HPiRlQ6IVL1IzeJvafSSUm4kP47aRIgJsUZ-fWjmDwyv0jf3uQrDZV8iCnka_Rw-nRDN5eSgonOCieo7Sitc4LNY5vpDXWl9-I9JyI6p2acVuezc"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="MongoDB logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7WyxIKJla4IOypWDAtr7fbMLSmixKfFr_NRgrqBg4uw6JxyhIUsUdB6ZH_qsfcR46-qqgcoPj_ofSNcdIFIyHiLiXenoq6oKbR-wQLF7UDH7Y2cPwNa3FnBp6lxtw8nnjNmq733alCtPUK8gN4TGMINQPwnyFdfyKav4ADCBFoCM33nz82NssYpbsIQ1HNx5Fw88Hx5GfweLoYkOj8NbGjqrluYuJsDcAoQN4WkDAxy2Xqk53K8nemrBpRgMxQshEEzRedQ0quO0"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="AWS S3 logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Zr2ioNkDgoDUNSjcI1toFC9_eKkctYOr1_NxMTZSEekuMwXTSjIUUZU9VpOqut8hrky1Fe2ksHf3iAZXS0J7CKshmilWqhoWq0OoEaeiXuWF1xvCctTr3_X9ekn_1g9OiNNoU4Q-V5v-fsM3xLlOBS1SY-Ylf38o62VhwXQ4V4ZW_xvG195hYU69MJxa5v9HtZTfC_eRntz7q3G3vCvf1e-2qIIHCL237NHIWP7pERHtXZroutI8YWKpxUNlyMoHWOJUHubGCfc"
+                />
+                <img
+                  class="h-12 w-12"
+                  data-alt="Google Cloud logo"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFFabLbx9gAHvRjfEAB1e5jRHWrKKk4c5HwLkeIOAxNW6io4qxDjlTbBhmo4HpSD0Cb-3Wc-yaFUL45IFYtqFjGGmKzNdUFilPIdnfbPbWtrO6-zqbbwBPvc_mPqvhXXSUPBAa1Z1byZn3ZZhMO1OjRU__ryX6TfyqHna5L3Ti7e9WwNg4AbNVjZzhRKImCjsazXpbNRg64F6DWdHsW0tKuhoMDPohQL3GizXo_1AcUH2LJf2p2sv6v3xYqYc4j3AawlLePSOIVjg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Success Stories Section -->
+      <div
+        class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-10 sm:py-16 bg-white dark:bg-gray-900/50"
+      >
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] flex-1"
+        >
+          <h2
+            class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight pb-8 text-center"
+          >
+            Success Stories
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-background-light dark:bg-background-dark rounded-lg shadow-md p-6 flex flex-col"
+            >
+              <img
+                class="h-12 w-auto mb-4 self-start"
+                data-alt="Client A logo"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa4md0m-2lGDqjv_4ZYnqiMcN0c0DiQR3Dm0WQkYyVdMTVaMj5g9GbjaSlYecKrzs3PDr1EAHvWVP0ryV4OmWgFh7DuDbaLFgXStFr4eGu6ozlLDCZgTaMCqgAs9AYoDkGhF1QBM0jg32XggPQ2J6Ux2ilgAXwRS_NIxe79lAhp6acwLndMUqezEMYBbRJGqPJJLyJUKo4-3zbqTJ0VQUEAUByNGLu0EE24gaVpKQ7kPzZxXrxCprSmBwd6PwZWH6vEoxDQtpjZnA"
+              />
+              <h3
+                class="font-bold text-lg mb-2 text-text-light dark:text-text-dark"
+              >
+                Automated Inventory Management
+              </h3>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-sm mb-4 flex-grow"
+              >
+                Developed a custom system that automated stock tracking and
+                ordering, reducing manual errors and saving time.
+              </p>
+              <div
+                class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700"
+              >
+                <p class="font-bold text-secondary text-2xl">40%</p>
+                <p
+                  class="text-sm text-text-muted-light dark:text-text-muted-dark"
+                >
+                  Increase in Efficiency
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-background-light dark:bg-background-dark rounded-lg shadow-md p-6 flex flex-col"
+            >
+              <img
+                class="h-12 w-auto mb-4 self-start"
+                data-alt="Client B logo"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyg3UgcdnPI9dHYKFJOMmKWe_tadVHXrQLSxSWM4Jk2Y_ZzUBNtqUOOvqPchplZNOwCKC4GuvAB7s6VLHJY11B8S3jm5sh1v0oTZHdieLQ_J1EL7eOeR4W5kl03FyMhMCzVp462ZIzUQwxBh1kUNhLjt-u7TKUofmE6vQcA3yFQux80BVlTg0gXjHDs6ejTao6s-3wckTAcn-5qjABc8XHRXNrK13S9_9TRYlbOlL5Ypnnd2gjJ1RCK89qG1jiVoXFEfrqYF1ZXpM"
+              />
+              <h3
+                class="font-bold text-lg mb-2 text-text-light dark:text-text-dark"
+              >
+                Customer Relationship Portal
+              </h3>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-sm mb-4 flex-grow"
+              >
+                Built a secure client portal for a financial services firm,
+                improving communication and data access for their customers.
+              </p>
+              <div
+                class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700"
+              >
+                <p class="font-bold text-secondary text-2xl">30%</p>
+                <p
+                  class="text-sm text-text-muted-light dark:text-text-muted-dark"
+                >
+                  Higher Customer Satisfaction
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-background-light dark:bg-background-dark rounded-lg shadow-md p-6 flex flex-col"
+            >
+              <img
+                class="h-12 w-auto mb-4 self-start"
+                data-alt="Client C logo"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSf_7baTlkYZNSqnNqOCzM-lfREEuM-MWCNrrXXWgGdSUsdpLQclBkfO9pSOQAVFP5KoxoERg6mqwJFshG-mcAlLZgM_5IZvhc4NhC4I87kUYtHde4OFixPz1JvMWCOpfiCuzofBNrES4vMzvyHR0-bdj7NuEzCXKPO29pu_B8ssW73HfX8abAe67ztmelIVCWEAxwsccxAW0C2pvrN55SHx8o8LJUkrB_mN-nu5HpXIlf5kis3y82M4qzD3huW8cqTfcJqm2cB-o"
+              />
+              <h3
+                class="font-bold text-lg mb-2 text-text-light dark:text-text-dark"
+              >
+                Mobile App for Field Agents
+              </h3>
+              <p
+                class="text-text-muted-light dark:text-text-muted-dark text-sm mb-4 flex-grow"
+              >
+                Created a cross-platform mobile app for real-time data entry and
+                reporting, empowering field agents on the go.
+              </p>
+              <div
+                class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700"
+              >
+                <p class="font-bold text-secondary text-2xl">2x</p>
+                <p
+                  class="text-sm text-text-muted-light dark:text-text-muted-dark"
+                >
+                  Faster Data Collection
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FAQ Section -->
+      <div
+        class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-10 sm:py-16 bg-background-light dark:bg-background-dark"
+      >
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] flex-1"
+        >
+          <h2
+            class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight pb-8 text-center"
+          >
+            Frequently Asked Questions
+          </h2>
+          <div class="space-y-4">
+            <details class="group rounded-lg bg-white dark:bg-gray-900/50 p-6">
+              <summary
+                class="flex cursor-pointer items-center justify-between font-medium text-text-light dark:text-text-dark"
+              >
+                How long does it take to develop a custom software application?
+                <span
+                  class="material-symbols-outlined transition group-open:rotate-180"
+                  >expand_more</span
+                >
+              </summary>
+              <p class="mt-4 text-text-muted-light dark:text-text-muted-dark">
+                Development timelines vary based on project complexity,
+                features, and technology stack. A simple project might take 2-4
+                months, while a complex enterprise system could take a year or
+                more. We provide a detailed timeline after the initial discovery
+                phase.
+              </p>
+            </details>
+            <details class="group rounded-lg bg-white dark:bg-gray-900/50 p-6">
+              <summary
+                class="flex cursor-pointer items-center justify-between font-medium text-text-light dark:text-text-dark"
+              >
+                What project management methodology do you use?
+                <span
+                  class="material-symbols-outlined transition group-open:rotate-180"
+                  >expand_more</span
+                >
+              </summary>
+              <p class="mt-4 text-text-muted-light dark:text-text-muted-dark">
+                We primarily use the Agile methodology, which allows us to be
+                flexible and responsive to change. We work in sprints, providing
+                regular updates and demos to ensure the project stays on track
+                and aligned with your vision.
+              </p>
+            </details>
+            <details class="group rounded-lg bg-white dark:bg-gray-900/50 p-6">
+              <summary
+                class="flex cursor-pointer items-center justify-between font-medium text-text-light dark:text-text-dark"
+              >
+                Who owns the source code and intellectual property?
+                <span
+                  class="material-symbols-outlined transition group-open:rotate-180"
+                  >expand_more</span
+                >
+              </summary>
+              <p class="mt-4 text-text-muted-light dark:text-text-muted-dark">
+                You do. Upon final payment and project completion, you receive
+                full ownership of the source code and all intellectual property
+                rights for the custom software we build for you.
+              </p>
+            </details>
+            <details class="group rounded-lg bg-white dark:bg-gray-900/50 p-6">
+              <summary
+                class="flex cursor-pointer items-center justify-between font-medium text-text-light dark:text-text-dark"
+              >
+                Do you provide post-launch support and maintenance?
+                <span
+                  class="material-symbols-outlined transition group-open:rotate-180"
+                  >expand_more</span
+                >
+              </summary>
+              <p class="mt-4 text-text-muted-light dark:text-text-muted-dark">
+                Yes, we offer various support and maintenance packages to ensure
+                your application runs smoothly after launch. This can include
+                bug fixes, performance monitoring, security updates, and feature
+                enhancements.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+      <!-- Final CTA Section -->
+      <div class="bg-primary">
+        <div
+          class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-16 sm:py-24"
+        >
+          <div
+            class="layout-content-container flex flex-col items-center max-w-[960px] flex-1 text-center"
+          >
+            <h2
+              class="text-white text-3xl md:text-4xl font-bold tracking-tight mb-4"
+            >
+              Ready to build the tool that will take your business to the next
+              level?
+            </h2>
+            <p class="text-text-muted-dark text-lg mb-8 max-w-2xl">
+              Let's discuss your ideas and see how we can turn them into a
+              reality.
+            </p>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-secondary text-primary font-bold leading-normal tracking-wide text-base hover:bg-opacity-90 transition-colors"
+            >
+              <span class="truncate"
+                >Schedule a Free Technical Consultation</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

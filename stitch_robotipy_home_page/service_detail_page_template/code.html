@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Robotipy - RPA Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0A2540",
+                        "accent": "#00C49A",
+                        "background-light": "#F6F9FC",
+                        "background-dark": "#101922",
+                        "text-light": "#525F7F",
+                        "text-dark": "#E0E6F1"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto w-full flex-col group/design-root overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="px-4 md:px-8 lg:px-16 mx-auto">
+<div class="flex items-center justify-between h-16">
+<div class="flex-shrink-0">
+<a class="text-2xl font-bold text-primary dark:text-white" href="#">Robotipy</a>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">RPA</a>
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">AI</a>
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">Custom Development</a>
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">About Us</a>
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">Contact</a>
+</div>
+</div>
+<div class="hidden md:block">
+<a class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-accent hover:bg-accent/90" href="#">
+                        Request a Demo
+                    </a>
+</div>
+<div class="-mr-2 flex md:hidden">
+<button aria-controls="mobile-menu" aria-expanded="false" class="bg-background-light dark:bg-background-dark inline-flex items-center justify-center p-2 rounded-md text-text-light dark:text-text-dark hover:text-primary dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark focus:ring-white" type="button">
+<span class="sr-only">Open main menu</span>
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-6xl flex-1 px-4 sm:px-6 lg:px-8">
+<!-- Hero Section -->
+<div class="@container">
+<div class="@[480px]:p-4">
+<div class="flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-center px-6 pb-10 @[480px]:px-12" data-alt="Abstract blue and green gradient background" style='background-image: linear-gradient(rgba(10, 37, 64, 0.8) 0%, rgba(10, 37, 64, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWVmSrbI7ev2yvScMR8hHxoDl1rtqV2VCW8KrXUoC21SBFTKDkxBJ9mJwxWlE2RhaNGZETtSqq9z64bcnMFe0PRNidCQVWjZCSiO8KKyP3DDWW6vH69Q3-qCoIsC7gWW4F6hXSZTbwxl7aITTZvWFTW76WCTKX4HAEE9hN7LntOLF0qKZ66AIOvmMhCIbzCzCxPtLxzuEo43YRr79HhB33ZJxdeoSxLmg2h_NJ_VnugIUmwmtGYLGVRMfYE00LIqhLyy2o4f6JKxM");'>
+<div class="flex flex-col gap-4 text-left max-w-3xl">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                    Eliminate Repetitive Tasks and Reduce Human Error.
+                                </h1>
+<h2 class="text-slate-200 text-lg font-normal leading-normal @[480px]:text-xl @[480px]:font-normal @[480px]:leading-normal">
+                                    Unlock operational efficiency, minimize costs, and free up your team for higher-value work with our intelligent automation solutions.
+                                </h2>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 @[480px]:h-14 @[480px]:px-8 bg-accent hover:bg-accent/90 text-white text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-lg @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] transition-colors">
+<span class="truncate">Request an Automation Demo</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Feature Section -->
+<div class="flex flex-col gap-10 px-4 py-16 @container">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-4 max-w-[720px] mx-auto text-center">
+<h1 class="text-primary dark:text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                Tired of Manual Processes Holding You Back?
+                            </h1>
+<p class="text-text-light dark:text-text-dark text-lg font-normal leading-relaxed">
+                                Manual, repetitive tasks are a drain on your resources and a barrier to growth. They introduce errors, slow down your operations, and prevent your team from focusing on what truly matters. We help you break free from these limitations.
+                            </p>
+</div>
+</div>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6 p-0">
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
+<div class="text-accent bg-accent/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-primary dark:text-white text-lg font-bold leading-tight">High Operational Costs</h2>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-normal">Repetitive tasks consume valuable employee time and increase overhead.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
+<div class="text-accent bg-accent/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-3xl">cancel</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-primary dark:text-white text-lg font-bold leading-tight">Manual Data Entry Errors</h2>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-normal">Manual data handling is prone to mistakes that can cost you dearly.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
+<div class="text-accent bg-accent/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-3xl">mood_bad</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-primary dark:text-white text-lg font-bold leading-tight">Employee Burnout</h2>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-normal">Mundane, repetitive work leads to disengagement and high turnover.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
+<div class="text-accent bg-accent/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-3xl">hourglass_empty</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-primary dark:text-white text-lg font-bold leading-tight">Slow Process Cycles</h2>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-normal">Manual processes create bottlenecks, delaying critical business outcomes.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ROI Calculator Section -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl my-16 p-8 lg:p-12">
+<div class="max-w-[720px] mx-auto text-center mb-8">
+<h1 class="text-primary dark:text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                Calculate Your Potential ROI
+                            </h1>
+<p class="text-text-light dark:text-text-dark text-lg mt-2">See how much your business can save with automation.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-col gap-6">
+<div class="@container">
+<div class="relative flex w-full flex-col items-start justify-between gap-3 p-4 @[480px]:flex-row">
+<p class="text-primary dark:text-white text-base font-medium leading-normal w-full shrink-[3]">Hours Saved per Week</p>
+<div class="flex h-[38px] w-full pt-1.5">
+<div class="flex h-1.5 w-full rounded-full bg-slate-200 dark:bg-slate-700 pl-[25%]">
+<div class="relative">
+<div class="absolute -left-3 -top-2 flex flex-col items-center gap-1">
+<div class="size-5 rounded-full bg-accent ring-2 ring-white dark:ring-slate-800"></div>
+<p class="text-primary dark:text-white text-sm font-semibold leading-normal">10 Hours</p>
+</div>
+</div>
+<div class="h-1.5 flex-1 rounded-full bg-accent"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="@container">
+<div class="relative flex w-full flex-col items-start justify-between gap-3 p-4 @[480px]:flex-row">
+<p class="text-primary dark:text-white text-base font-medium leading-normal w-full shrink-[3]">Average Employee Cost</p>
+<div class="flex h-[38px] w-full pt-1.5">
+<div class="flex h-1.5 w-full rounded-full bg-slate-200 dark:bg-slate-700 pl-[50%]">
+<div class="relative">
+<div class="absolute -left-3 -top-2 flex flex-col items-center gap-1">
+<div class="size-5 rounded-full bg-accent ring-2 ring-white dark:ring-slate-800"></div>
+<p class="text-primary dark:text-white text-sm font-semibold leading-normal">$50/hr</p>
+</div>
+</div>
+<div class="h-1.5 flex-1 rounded-full bg-accent"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center bg-background-light dark:bg-background-dark p-8 rounded-lg">
+<h3 class="text-text-light dark:text-text-dark text-lg font-medium">Estimated Annual Savings</h3>
+<p class="text-5xl font-black text-accent my-2">$26,000</p>
+<p class="text-text-light dark:text-text-dark">This is a potential saving that could be reinvested into growth and innovation.</p>
+</div>
+</div>
+</div>
+<!-- How it works Section -->
+<div class="py-16">
+<div class="max-w-[720px] mx-auto text-center mb-12">
+<h1 class="text-primary dark:text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                Our Proven Process
+                            </h1>
+<p class="text-text-light dark:text-text-dark text-lg mt-2">From concept to completion, we make automation simple.</p>
+</div>
+<div class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 px-4 max-w-2xl mx-auto">
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-12 rounded-full bg-accent/10 text-accent">
+<span class="material-symbols-outlined">search</span>
+</div>
+<div class="w-px bg-slate-300 dark:bg-slate-600 grow"></div>
+</div>
+<div class="flex flex-1 flex-col pb-12">
+<p class="text-primary dark:text-white text-xl font-bold leading-normal">1. Discovery</p>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed mt-1">We work with you to identify the best opportunities for automation within your current workflows, ensuring maximum impact.</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-12 rounded-full bg-accent/10 text-accent">
+<span class="material-symbols-outlined">code</span>
+</div>
+<div class="w-px bg-slate-300 dark:bg-slate-600 grow"></div>
+</div>
+<div class="flex flex-1 flex-col pb-12">
+<p class="text-primary dark:text-white text-xl font-bold leading-normal">2. Development</p>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed mt-1">Our experts design and build robust automation solutions tailored to your specific needs, using industry-leading tools.</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-12 rounded-full bg-accent/10 text-accent">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col pb-3">
+<p class="text-primary dark:text-white text-xl font-bold leading-normal">3. Deployment</p>
+<p class="text-text-light dark:text-text-dark text-base font-normal leading-relaxed mt-1">We deploy the solution seamlessly into your environment and provide comprehensive training and support to your team.</p>
+</div>
+</div>
+</div>
+<!-- Testimonials Section -->
+<div class="py-16">
+<div class="max-w-[720px] mx-auto text-center mb-12">
+<h1 class="text-primary dark:text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                Trusted by Industry Leaders
+                            </h1>
+</div>
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex items-stretch p-4 gap-8">
+<div class="flex h-full flex-1 flex-col gap-4 text-center rounded-lg min-w-80 pt-4 bg-white dark:bg-slate-800/50 p-6 shadow-sm">
+<img class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex flex-col self-center w-20 h-20" data-alt="Portrait of Jane Smith" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJHK3LGviEgTDKr7HoP_KGlVSms3hqLmPtOPuYNybywHf4lZ4gLEDBicD3dFWcZtUTU6chkNXplqnGFDZ264v4_RRPF9UUi3qtXp_NuS__eljifn7JNvZiEYXQrVmnSrrzyMi30X6HvwDAaHbstDisDvWfwgiRQtvCWtDtxQW7KE4cjYaUQsZilYkFkJ_dUIHdXbvoJ93WElY4qG-S-EvviIanHMPek_nom3gxPLzo8Q0baxq5DX2gsRadkBS4a3DRkBtRAAFOxo4"/>
+<div>
+<p class="text-primary dark:text-white text-lg font-medium leading-normal">Jane Smith, COO</p>
+<p class="text-text-light dark:text-text-dark text-sm font-normal leading-normal mt-2">"The ROI was almost immediate. Our team is so much happier and more productive."</p>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 text-center rounded-lg min-w-80 pt-4 bg-white dark:bg-slate-800/50 p-6 shadow-sm">
+<img class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex flex-col self-center w-20 h-20" data-alt="Portrait of John Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFA4GdVzF9tPL68juwa2PjI9VH9PStv4kO-lGOJQ9478rCSlaTlhukFxau1H3pDrpITFlsCS43OdVUWSBqdjMfyCUQx-fYVovepMauVftUIKS7GGqBNsk6gbaFdtbUY-DEa04fKqWAN5QndMm_YLjO4Y1XfJzpMn4tpM-y2NgiM7r53Uv-I02LX_b1pPiVFI8dlwI64sWh5ahdr1s7D9_m2KL0u3quZWmBZIw54E60XwwKs4QK02NP4U9jcnwmw2RzBSvNK1-GnjM"/>
+<div>
+<p class="text-primary dark:text-white text-lg font-medium leading-normal">John Doe, Operations Mgr.</p>
+<p class="text-text-light dark:text-text-dark text-sm font-normal leading-normal mt-2">"Robotipy transformed our operations. We've saved thousands of hours."</p>
+</div>
+</div>
+<div class="flex h-full flex-1 flex-col gap-4 text-center rounded-lg min-w-80 pt-4 bg-white dark:bg-slate-800/50 p-6 shadow-sm">
+<img class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex flex-col self-center w-20 h-20" data-alt="Portrait of Sam Wilson" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDAF4bUuLx7H1WsYrNwzs9bjidVmWIPgw7qUQ_pwyajmznJ77voYUD_Om4YCCTm6SB0Toks9jGhzGJT_1xkxaRL-0toFbV-UbLjfIs1KHH2WFpj4k3wCvuZwqMjpds5xmKjpnbIsbydfTAm9_WFhfhL2HZZxCph5DZwy83AdVsI3x9PF9yCDwkWDBdZ_BbcSwgyxUYD_40KyfR4ZXRiBdbyU1ZWB4yCV1sZbD1zQ3PMDaPC4BIzM3hK4kiWo4LGLRphyYKdAjghm8"/>
+<div>
+<p class="text-primary dark:text-white text-lg font-medium leading-normal">Sam Wilson, IT Director</p>
+<p class="text-text-light dark:text-text-dark text-sm font-normal leading-normal mt-2">"A seamless and professional experience from start to finish. Highly recommended."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="bg-primary dark:bg-slate-800 rounded-xl my-16 text-center text-white p-12 lg:p-16">
+<h2 class="text-3xl lg:text-4xl font-black">Ready to Start Automating?</h2>
+<p class="max-w-2xl mx-auto mt-4 text-lg text-slate-200">
+                        Let's discuss how Robotipy can help your business achieve new levels of efficiency and growth. Schedule your free, no-obligation demo today.
+                    </p>
+<button class="mt-8 flex mx-auto min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 @[480px]:h-14 @[480px]:px-8 bg-accent hover:bg-accent/90 text-white text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-lg @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] transition-colors">
+<span class="truncate">Request a Free Automation Demo</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

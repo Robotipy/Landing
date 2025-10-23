@@ -47,9 +47,9 @@ const Footer = () => {
                 <Link href="#" className="link link-hover text-start">
                   Rocketbot RPA
                 </Link>
-                <a href="/#" target="_blank" className="link link-hover text-start">
+                {/* <a href="/#" target="_blank" className="link link-hover text-start">
                   Proceso Robotipy
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">
@@ -57,20 +57,17 @@ const Footer = () => {
                 SOLUCIONES
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
-                <Link href="/solutions" className="link link-hover text-start">
+                <Link href="/capacitaciones" className="link link-hover text-start">
                   Capacitación de Equipos
                 </Link>
-                <Link href="/solutions" className="link link-hover text-start">
+                <Link href="/automation" className="link link-hover text-start">
                   Automatizaciones de procesos
                 </Link>
-                <Link href="/solutions" className="link link-hover text-start">
+                <Link href="/chatbot" className="link link-hover text-start">
                   Chatbots
                 </Link>
-                <Link href="/solutions" className="link link-hover text-start">
+                <Link href="/desarrollo-software" className="link link-hover text-start">
                   Desarrollo de software
-                </Link>
-                <Link href="/solutions" className="link link-hover text-start">
-                  Soluciones de IA
                 </Link>
               </div>
             </div>
@@ -82,12 +79,12 @@ const Footer = () => {
                 <Link href="//blog.robotipy.com" className="link link-hover text-start">
                   Blog
                 </Link>
-                <Link href="/#" className="link link-hover text-start">
+                {/* <Link href="/#" className="link link-hover text-start">
                   Capacitación
                 </Link>
                 <Link href="/#" className="link link-hover text-start">
                   Foro
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">

@@ -6,12 +6,6 @@ import Software from "@/public/assets/ilus-coding.png";
 
 const offers = [
   {
-    title: "Capacitación de equipos",
-    description:
-      "En Robotipy, capacitamos a tu equipo para usar eficientemente Rocketbot para la automatización de procesos. Nuestra capacitación se enfoca en enseñarte cómo desarrollar bots optimizados, gestionar variables, manejar logs y realizar debugging. Con un enfoque práctico, buscamos impulsar la productividad y adaptar las automatizaciones a las necesidades cambiantes de tu negocio.",
-    image: TeamTraining,
-  },
-  {
     title: "Automatizaciones de procesos",
     description:
       "Nos especializamos en automatizar no solo tareas repetitivas sino también procesos críticos que demandan precisión y confiabilidad. Utilizando Rocketbot, transformamos flujos de trabajo complejos, optimizando todo desde la captura de datos hasta la integración con sistemas clave. Nuestras soluciones mejoran la eficiencia, reducen errores y aseguran que tus procesos comerciales esenciales funcionen de manera fluida y sin problemas.",
@@ -29,6 +23,12 @@ const offers = [
       "Creamos soluciones de software personalizadas adaptadas a las necesidades de tu negocio. Nos especializamos en diseñar aplicaciones robustas, escalables y fáciles de mantener que integran las últimas tecnologías. Ya sea que necesites optimizar procesos internos, desarrollar nuevas funcionalidades o mejorar la experiencia del usuario, nuestro enfoque está en entregar soluciones ágiles y eficientes que impulsen tus operaciones y aceleren tu crecimiento.",
     image: Software,
   },
+  {
+    title: "Capacitación de equipos",
+    description:
+      "En Robotipy, capacitamos a tu equipo para usar eficientemente Rocketbot para la automatización de procesos. Nuestra capacitación se enfoca en enseñarte cómo desarrollar bots optimizados, gestionar variables, manejar logs y realizar debugging. Con un enfoque práctico, buscamos impulsar la productividad y adaptar las automatizaciones a las necesidades cambiantes de tu negocio.",
+    image: TeamTraining,
+  }
 ];
 
 const Offers = () => {

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Robotipy Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0A2540",
+              "secondary": "#00BFFF",
+              "background-light": "#F7F7F7",
+              "background-dark": "#101922",
+              "text-light": "#333333",
+              "text-dark": "#F7F7F7",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="px-4 md:px-10 lg:px-20">
+<div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 py-3">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_330">
+<rect fill="white" height="48" width="48"></rect>
+</clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Robotipy</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">Services</a>
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">Case Studies</a>
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">About Us</a>
+<a class="text-sm font-medium leading-normal text-text-light dark:text-text-dark" href="#">Contact</a>
+</div>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Request a Demo</span>
+</button>
+</div>
+</div>
+<div class="md:hidden">
+<button class="text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<div class="px-4 md:px-10 lg:px-20 py-10">
+<div class="mx-auto max-w-4xl">
+<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-4 text-center" data-alt="Abstract blue and teal geometric shapes" style='background-image: linear-gradient(rgba(10, 37, 64, 0.7) 0%, rgba(10, 37, 64, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBw5NjdlRQPP_PWeSQzZ-cdHlCGezeKZ9rJgj-M1iyBCgFxYa3f8JZKyDr8VC72qJdh1jCI0UgAt7XxZbK8B2PFsk1KCXEN48zXu6tQc1_-6PYzme7VZN3zpF2iGkPFbL3250xe2fBoAslbMDRwF3DuZETwVYmjDnZQg7kJLIsu5MLj89yKAyOK-ESYlDhWDfNrlYtFTT6xaS5YXBVtkc8S4UnNn5X9Iw1sQJV9NBrNQHdYbnO8kpv9Q4hveL4Yj9Ni_BdwK8g9Ma4");'>
+<div class="flex flex-col gap-4">
+<h1 class="text-white text-4xl md:text-5xl font-black leading-tight tracking-tighter">
+                                    How FinCorp Reduced Processing Time by 90% with Robotipy's RPA Solution
+                                </h1>
+<h2 class="text-gray-200 text-lg md:text-xl font-normal leading-normal">
+                                    A case study on achieving unprecedented efficiency and accuracy.
+                                </h2>
+</div>
+</div>
+<div class="py-16 text-center">
+<img alt="FinCorp Logo" class="mx-auto h-12 mb-12 grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2j9__2mgw1lqgPoWX4PUbxEM4nmH0uXMb6mGZEGrGk2LLSKC5mhzzJ7A9NvABQV68METsNYEk-teQcMArOlmSc3J-iaYxSZjzvyYP1lTwC5wgv8TU2CLMuTuRtJQIUl3SRKumZTpFjgbRGJ_jC7rD7uMwaHrkskflTbbhV0dfymcWwphjPicVW1vNzbZieNJ_F4YgCxTFLivTUmiZbrXtomDyF4ZggSN6ESGLqKxMFAorAqEscJCtF05ls8z2sD0K1QQX_tOqc4c"/>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-background-light dark:bg-background-dark shadow-lg">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-secondary text-4xl">savings</span>
+<p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">Cost Savings</p>
+</div>
+<p class="text-primary tracking-tight text-5xl font-bold leading-tight">45%</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal">Reduction in operational costs</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-background-light dark:bg-background-dark shadow-lg">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-secondary text-4xl">timer</span>
+<p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">Time Saved</p>
+</div>
+<p class="text-primary tracking-tight text-5xl font-bold leading-tight">90%</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal">Faster process execution</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-background-light dark:bg-background-dark shadow-lg">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-secondary text-4xl">task_alt</span>
+<p class="text-text-light dark:text-text-dark text-lg font-medium leading-normal">Error Reduction</p>
+</div>
+<p class="text-primary tracking-tight text-5xl font-bold leading-tight">95%</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal">Improvement in data accuracy</p>
+</div>
+</div>
+</div>
+<div class="space-y-16">
+<div>
+<h2 class="text-3xl font-bold leading-tight tracking-tighter text-primary mb-4">The Challenge</h2>
+<p class="text-lg leading-relaxed text-text-light dark:text-text-dark">FinCorp, a leading financial services provider, was struggling with manual, repetitive tasks in their loan processing department. This led to high operational costs, long processing times, and a significant risk of human error, impacting customer satisfaction and overall business efficiency. They needed a solution to automate these workflows and scale their operations without a proportional increase in headcount.</p>
+</div>
+<div>
+<h2 class="text-3xl font-bold leading-tight tracking-tighter text-primary mb-4">Our Solution</h2>
+<p class="text-lg leading-relaxed text-text-light dark:text-text-dark mb-8">Robotipy implemented a comprehensive Robotic Process Automation (RPA) solution tailored to FinCorp's unique needs. We deployed a fleet of software bots to handle data entry, validation, and reconciliation across multiple systems. Our solution integrated seamlessly with their existing infrastructure, using AI-powered Optical Character Recognition (OCR) to extract data from documents and machine learning to handle exceptions, ensuring a high degree of automation and accuracy.</p>
+<div class="w-full gap-4 overflow-hidden rounded-xl flex aspect-video">
+<div class="w-full bg-center bg-no-repeat bg-cover flex-1" data-alt="A clean infographic showing a workflow from manual data entry to an automated RPA process with icons for each step." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4ocCT3QeKIKd9j9vYoZq6aUf2W_9c5yqzNS9jtB_8jd0Kab6NWeFcD_b5C4WQCx9q1laLSSmi3154JL14u-MkzF-4WHrh94r2gtvOmwxEjGmBIRTdAwSGcqicP7eGTH2eZLHQWwZ4zR7h_gy-bfR8SO2Jc1BgUjMD9zBbIqQiY4oaTcY-aLLsZTTMt7EESEgZxTquplYTvb0FkMBqTddEYPAROqAfma7V2MLflOJoomoiMQ24MZ1If_Bnx5pqzzB89yn4P4_qzNM");'></div>
+</div>
+</div>
+<div class="bg-primary/10 dark:bg-primary/20 rounded-xl p-8 md:p-12">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<img alt="Jane Doe, CFO of FinCorp" class="w-24 h-24 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCQfRX5GibK-qfknWXiKR5t_eO5Bm3e5Wg-ndZw_PTVxk3FhVRpbMehmRlyDS96AVrM6eRHC5cA5JXG9i6YMT6QqCAbo5aIaW83fz9Bt813BDY8oIEdTYDOeHUv8PnA5HTsmJD9mpbQeuy7nR6uqEqxMoj6kmmQ9dO7bxjMhA3iG6Q0Q2GQf5X0kOTlBWEXLVhJrWQVtRBNf-Y2dgMTZGR4b2cML1iL0VzVp76x9e2A6xmJkSJvI-CnXD7Ziv1Q0f2XJKTKP9LnME"/>
+<div class="text-center md:text-left">
+<p class="text-2xl font-medium italic text-primary leading-snug">"Working with Robotipy was a game-changer. Their RPA solution didn't just meet our expectations; it exceeded them. We've seen a dramatic improvement in our efficiency and can now focus on providing higher-value services to our clients."</p>
+<p class="mt-4 font-bold text-text-light dark:text-text-dark">Jane Doe</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">Chief Financial Officer, FinCorp</p>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-3xl font-bold leading-tight tracking-tighter text-primary mb-4">The Results</h2>
+<p class="text-lg leading-relaxed text-text-light dark:text-text-dark mb-8">The implementation of Robotipy's RPA solution delivered transformative results for FinCorp. The project not only achieved its primary objectives but also unlocked additional value. The key outcomes included a 45% reduction in operational costs, a 90% decrease in loan processing time, and a 95% reduction in errors, leading to enhanced compliance and customer trust.</p>
+<div class="w-full bg-background-light dark:bg-background-dark shadow-lg rounded-xl p-4 md:p-6">
+<div class="h-80">
+<img alt="Bar chart showing processing time reduction from 48 hours to 5 hours." class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxW8ftX7GWL1iEXCgR9F8noSGVvD3v6rl13zwQqNVIVRKR83JVfBk7dEcJDCGAp6zcWa_GvHXIiCkS4TiGIV67GMLUFA5w-55wHUGrv-yLB5rFjhOSjlF66zoz3WZnXT0sRTSg2kLzh5HsgPiy3dkQOG0JcLxmd6l6Y0H-lgtaJhv1_6zGIS7VyF8-kBpTypkkeQd9zLroVWD9WrLPcfIwD6tvhDOUfHxt3TBd_9rBbur8ua3daTApOzL1quSy6b7kcOAsIna9Ss"/>
+</div>
+</div>
+</div>
+<div class="text-center py-16">
+<h2 class="text-3xl font-bold leading-tight tracking-tighter text-text-light dark:text-text-dark mb-4">Ready to transform your business?</h2>
+<p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Get in touch with our experts to learn how Robotipy can help you achieve your goals.</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] mx-auto hover:bg-primary/90 transition-colors">
+<span class="truncate">Contact Us</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

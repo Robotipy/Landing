@@ -7,6 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        "primary": "rgb(0, 24, 43)", // Teal primary from home_page_2
+        "secondary": "#11222c", // Electric Blue
+        "accent": "rgb(3, 150, 149)", // Teal accent
+        "background-light": "#f5f8f8", // Light teal background
+        "background-dark": "#0f2322", // Dark teal background
+        "background-secondary": "#11222c", // Dark teal background
+        "text-light": "#6B7280",
+        "text-dark": "#F5F5F5",
+        "text-primary": "#0A2540",
+        "text-primary-dark": "#FFFFFF"
+      },
+      fontFamily: {
+        "display": ["Inter", "sans-serif"],
+        "heading": ["Inter", "sans-serif"]
+      },
       backgroundImage: {
         gradient:
           "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",

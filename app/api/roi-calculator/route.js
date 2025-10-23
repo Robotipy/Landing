@@ -327,7 +327,7 @@ export async function POST(req) {
           <h3>Ready to Move Forward?</h3>
           <p>Our team is ready to help you implement this automation solution and achieve these results.</p>
           <a href="https://${config.domainName}/contact">Contact Our Sales Team</a>
-          <a href="https://${config.domainName}/client-info">Schedule a Demo</a>
+          <a href="https://${config.domainName}/contact-us">Schedule a Demo</a>
           <p style="margin-top: 20px; font-size: 14px;">
             Questions? Reply to this email or contact us at ${config.mailgun.supportEmail}
           </p>

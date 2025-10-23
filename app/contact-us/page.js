@@ -4,8 +4,25 @@ import Header from "@/components/Header";
 import ClientForm from "@/components/ClientForm";
 import { Suspense } from "react";
 import config from "@/config";
+import { useSearchParams } from "next/navigation";
 
 export default function ClientInfoPage() {
+  const searchParams = useSearchParams();
+  const submitted = searchParams.has("submitted");
+  
+  // Extract form parameters from URL
+  const formParams = {
+    name: searchParams.get("name") || "",
+    email: searchParams.get("email") || "",
+    phone: searchParams.get("phone") || "",
+    companyName: searchParams.get("companyName") || "",
+    role: searchParams.get("role") || "",
+    companySize: searchParams.get("companySize") || "",
+    website: searchParams.get("website") || "",
+    additionalInfo: searchParams.get("additionalInfo") || "",
+  };
+
+  // if submitted is true, show the success message
   return (
     <>
       <Suspense>
@@ -23,8 +40,15 @@ export default function ClientInfoPage() {
                 y creará una solución personalizada que transforme tus procesos comerciales.
               </p>
             </div>
-            
-            <ClientForm />
+            {submitted ? (
+              <div className="flex flex-col items-center justify-center px-4 py-20 lg:py-20 lg:px-8 background-image">
+                <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                  ¡Gracias! Tu información ha sido enviada exitosamente. Te contactaremos pronto.
+                </h1>
+              </div>
+            ) : (
+              <ClientForm initialValues={formParams} />
+            )}
             
             <div className="mt-8 text-center text-cyan-400 text-sm">
               <p>

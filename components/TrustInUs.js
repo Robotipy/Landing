@@ -40,16 +40,16 @@ const avatars = [
     width: 150,
   },
   {
+    alt: "Grupo Delirio",
+    src: "/assets/logo-delirio.png",
+    link: "https://grupodelirio.cl",
+    width: 110,
+  },
+  {
     alt: "Digital Bank",
     src: "/assets/logo-digitalbankla.png",
     link: "https://www.digitalbankla.com",
     width: 200,
-  },
-  {
-    alt: "Xinerlink",
-    src: "/assets/logo-xinerlink.png",
-    link: "https://www.xinerlink.cl",
-    width: 150,
   },
   {
     alt: "Mitta",
@@ -75,12 +75,12 @@ const TrustInUs = ({ priority = false }) => {
       {/* Column 1: Text */}
       <div className="mx-auto text-center">
         <p className="text-2xl lg:text-4xl text-balance">
-          Leading companies trust our team to revolutionize their processes with RPA
+          Las empresas líderes confían en nuestro equipo para revolucionar sus procesos
         </p>
       </div>
 
       {/* Column 2: Logos in two rows */}
-      <div className="flex flex-col gap-2 md:w-2/3 mx-auto">
+      <div className="flex flex-col md:w-2/3 mx-auto">
         {/* First row of logos */}
         <div className="flex flex-wrap justify-around gap-4">
           {firstRow.map((image, i) => (

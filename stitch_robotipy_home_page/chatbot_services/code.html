@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Robotipy - Chatbot Services</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0f66bd",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display">
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1"
+          >
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <div
+                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
+                  data-alt="Abstract background with blue and purple gradients"
+                  style="
+                    background-image: linear-gradient(
+                        rgba(0, 0, 0, 0.4) 0%,
+                        rgba(0, 0, 0, 0.7) 100%
+                      ),
+                      url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4px-ds_--UF3FNyM1-EcDA3ztowFIPp2OpX9oq3B8Rm3qlCT1lw0KRoyzOhzlaQ-Ez-EsUjAt3Yij4mdL7gDI2YLBvMfXcHByo8IGJ1Q7sXL5THKUNFnf1Jx-M8nXM6pMQulLixd00As74Ogg0cbf-3Yc9PsIcccLgUf7S3SUSV1AWf9B-D1LppDzUk6zODpPaBzTEARongg65-Cv99y7l5Dx9IjQhTKh0t4oqyJAqXMw_srL4_MG9ZSARe-Hewuxrh2wKw86pxI');
+                  "
+                >
+                  <div class="flex flex-col gap-2 text-center">
+                    <h1
+                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Conversations that Drive Your Business, Inside and Out
+                    </h1>
+                    <h2
+                      class="text-white/80 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal max-w-3xl"
+                    >
+                      Empower your teams with instant access to ERP data and
+                      delight your customers with 24/7, intelligent service.
+                      Robotipy's AI-powered conversational assistants bridge the
+                      gap between your data and the people who need it most.
+                    </h2>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-primary/90 transition-colors"
+                  >
+                    <span class="truncate">Request a Personalized Demo</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-10 px-4 py-10 @container">
+              <div class="flex flex-col gap-4 text-center items-center">
+                <h1
+                  class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+                >
+                  Unlock the Power of Conversation
+                </h1>
+                <p
+                  class="text-slate-600 dark:text-white/70 text-base font-normal leading-normal max-w-[720px]"
+                >
+                  Tired of navigating complex ERP systems and leaving customers
+                  waiting? Our AI-powered conversational assistants connect
+                  seamlessly to your data sources, providing a natural language
+                  interface for both your internal teams and your external
+                  clients. This means faster, more accurate information for your
+                  employees and instant, 24/7 support for your customers,
+                  transforming how your business communicates.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div
+                  class="flex flex-1 gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-slate-900/50 p-4 flex-col"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-size: 28px"
+                    >groups</span
+                  >
+                  <div class="flex flex-col gap-1">
+                    <h2
+                      class="text-slate-900 dark:text-white text-lg font-bold leading-tight"
+                    >
+                      For Your Teams
+                    </h2>
+                    <p
+                      class="text-slate-600 dark:text-white/60 text-sm font-normal leading-normal"
+                    >
+                      Enable natural language queries of your ERP, democratize
+                      data access, and boost team productivity.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-1 gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-slate-900/50 p-4 flex-col"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary"
+                    style="font-size: 28px"
+                    >support_agent</span
+                  >
+                  <div class="flex flex-col gap-1">
+                    <h2
+                      class="text-slate-900 dark:text-white text-lg font-bold leading-tight"
+                    >
+                      For Your Clients
+                    </h2>
+                    <p
+                      class="text-slate-600 dark:text-white/60 text-sm font-normal leading-normal"
+                    >
+                      Provide 24/7 attention, deliver instant answers to common
+                      questions, and elevate the customer experience.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2
+              class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+            >
+              Our Process
+            </h2>
+            <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
+              <div class="flex flex-col items-center gap-2 pt-3">
+                <div
+                  class="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >search</span
+                  >
+                </div>
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+              </div>
+              <div class="flex flex-1 flex-col pt-3 pb-8">
+                <h3
+                  class="text-slate-900 dark:text-white text-base font-medium leading-normal"
+                >
+                  Discovery
+                </h3>
+                <p class="text-slate-600 dark:text-white/60 text-sm">
+                  We start by understanding your unique challenges and business
+                  goals to tailor the perfect solution.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+                <div
+                  class="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >architecture</span
+                  >
+                </div>
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+              </div>
+              <div class="flex flex-1 flex-col pt-3 pb-8">
+                <h3
+                  class="text-slate-900 dark:text-white text-base font-medium leading-normal"
+                >
+                  Architecture Design
+                </h3>
+                <p class="text-slate-600 dark:text-white/60 text-sm">
+                  Our experts design a robust and scalable chatbot architecture
+                  that fits your existing infrastructure.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+                <div
+                  class="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >security</span
+                  >
+                </div>
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+              </div>
+              <div class="flex flex-1 flex-col pt-3 pb-8">
+                <h3
+                  class="text-slate-900 dark:text-white text-base font-medium leading-normal"
+                >
+                  Secure Integration
+                </h3>
+                <p class="text-slate-600 dark:text-white/60 text-sm">
+                  We ensure seamless and secure integration with your ERP and
+                  other critical business systems.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+                <div
+                  class="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >model_training</span
+                  >
+                </div>
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+              </div>
+              <div class="flex flex-1 flex-col pt-3 pb-8">
+                <h3
+                  class="text-slate-900 dark:text-white text-base font-medium leading-normal"
+                >
+                  Training
+                </h3>
+                <p class="text-slate-600 dark:text-white/60 text-sm">
+                  We train the AI model on your data to ensure it understands
+                  your business context and terminology.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+                <div
+                  class="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >rocket_launch</span
+                  >
+                </div>
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+              </div>
+              <div class="flex flex-1 flex-col pt-3 pb-8">
+                <h3
+                  class="text-slate-900 dark:text-white text-base font-medium leading-normal"
+                >
+                  Launch
+                </h3>
+                <p class="text-slate-600 dark:text-white/60 text-sm">
+                  We deploy the chatbot and support your team through the
+                  go-live process for a smooth launch.
+                </p>
+              </div>
+              <div class="flex flex-col items-center gap-2 pb-3">
+                <div
+                  class="w-[2px] bg-slate-200 dark:bg-slate-800 h-full grow"
+                ></div>
+                <div
+                  class="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >trending_up</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col pt-3 pb-5">
+                <h3
+                  class="text-slate-900 dark:text-white text-base font-medium leading-normal"
+                >
+                  Optimization
+                </h3>
+                <p class="text-slate-600 dark:text-white/60 text-sm">
+                  We continuously monitor performance and optimize the chatbot
+                  for even better results over time.
+                </p>
+              </div>
+            </div>
+            <h2
+              class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10"
+            >
+              Use Cases
+            </h2>
+            <div class="p-4">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div
+                  class="rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-slate-900/50 p-4"
+                >
+                  <h3 class="text-primary font-bold text-lg mb-2">
+                    Operations
+                  </h3>
+                  <p class="text-slate-600 dark:text-white/60 text-sm">
+                    Automate inventory checks, track order statuses, and manage
+                    logistics with simple voice or text commands.
+                  </p>
+                </div>
+                <div
+                  class="rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-slate-900/50 p-4"
+                >
+                  <h3 class="text-primary font-bold text-lg mb-2">Sales</h3>
+                  <p class="text-slate-600 dark:text-white/60 text-sm">
+                    Instantly access customer history, product availability, and
+                    pricing information to close deals faster.
+                  </p>
+                </div>
+                <div
+                  class="rounded-lg border border-slate-200 dark:border-slate-800 bg-background-light dark:bg-slate-900/50 p-4"
+                >
+                  <h3 class="text-primary font-bold text-lg mb-2">
+                    E-commerce
+                  </h3>
+                  <p class="text-slate-600 dark:text-white/60 text-sm">
+                    Provide 24/7 customer support, answer product questions, and
+                    guide users through the checkout process.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <h2
+              class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10"
+            >
+              Frequently Asked Questions
+            </h2>
+            <div class="p-4 space-y-3">
+              <details
+                class="group rounded-lg bg-background-light dark:bg-slate-900/50 p-4 border border-slate-200 dark:border-slate-800 cursor-pointer"
+              >
+                <summary
+                  class="flex items-center justify-between font-medium text-slate-900 dark:text-white"
+                >
+                  How secure is my data?
+                  <span
+                    class="material-symbols-outlined transition group-open:rotate-180"
+                    >expand_more</span
+                  >
+                </summary>
+                <p class="mt-2 text-slate-600 dark:text-white/60 text-sm">
+                  Security is our top priority. We use end-to-end encryption and
+                  comply with industry-leading security standards to ensure your
+                  data is always protected.
+                </p>
+              </details>
+              <details
+                class="group rounded-lg bg-background-light dark:bg-slate-900/50 p-4 border border-slate-200 dark:border-slate-800 cursor-pointer"
+              >
+                <summary
+                  class="flex items-center justify-between font-medium text-slate-900 dark:text-white"
+                >
+                  What if the chatbot doesn't know the answer?
+                  <span
+                    class="material-symbols-outlined transition group-open:rotate-180"
+                    >expand_more</span
+                  >
+                </summary>
+                <p class="mt-2 text-slate-600 dark:text-white/60 text-sm">
+                  Our chatbots are designed to seamlessly escalate complex
+                  queries to a human agent when necessary, ensuring your
+                  customers always get the help they need.
+                </p>
+              </details>
+              <details
+                class="group rounded-lg bg-background-light dark:bg-slate-900/50 p-4 border border-slate-200 dark:border-slate-800 cursor-pointer"
+              >
+                <summary
+                  class="flex items-center justify-between font-medium text-slate-900 dark:text-white"
+                >
+                  What platforms do you integrate with?
+                  <span
+                    class="material-symbols-outlined transition group-open:rotate-180"
+                    >expand_more</span
+                  >
+                </summary>
+                <p class="mt-2 text-slate-600 dark:text-white/60 text-sm">
+                  We offer extensive integration capabilities with major ERP
+                  systems like SAP, Oracle, and Microsoft Dynamics, as well as
+                  various CRM and e-commerce platforms.
+                </p>
+              </details>
+            </div>
+            <div
+              class="mt-10 text-center bg-slate-100 dark:bg-slate-900/50 rounded-lg p-10 mx-4"
+            >
+              <h2
+                class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight mb-4"
+              >
+                Ready to give your operation a brain?
+              </h2>
+              <p
+                class="text-slate-600 dark:text-white/70 mb-6 max-w-xl mx-auto"
+              >
+                Take the next step in business process automation. Let's discuss
+                how our intelligent assistants can transform your operations.
+              </p>
+              <button
+                class="flex mx-auto min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+              >
+                <span class="truncate">Schedule Your Strategic Demo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

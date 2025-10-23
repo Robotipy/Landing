@@ -19,10 +19,10 @@ const ROCKETBOT_LICENSES = {
   
 };
 
-// Industry templates
+// Plantillas de industria
 const INDUSTRY_TEMPLATES = {
   banking: {
-    name: "Banking",
+    name: "Bancario",
     peopleInProcess: 5,
     daysPerMonth: 22,
     hoursPerDay: 8,
@@ -32,7 +32,7 @@ const INDUSTRY_TEMPLATES = {
     overtimeCost: 200
   },
   manufacturing: {
-    name: "Manufacturing", 
+    name: "Manufactura", 
     peopleInProcess: 3,
     daysPerMonth: 20,
     hoursPerDay: 8,
@@ -42,7 +42,7 @@ const INDUSTRY_TEMPLATES = {
     overtimeCost: 160
   },
   healthcare: {
-    name: "Healthcare",
+    name: "Salud",
     peopleInProcess: 4,
     daysPerMonth: 22,
     hoursPerDay: 8,
@@ -52,7 +52,7 @@ const INDUSTRY_TEMPLATES = {
     overtimeCost: 180
   },
   insurance: {
-    name: "Insurance",
+    name: "Seguros",
     peopleInProcess: 6,
     daysPerMonth: 22,
     hoursPerDay: 8,
@@ -67,10 +67,10 @@ const ROICalculator = () => {
   // Form state for inputs
   const [formData, setFormData] = useState({
     // Process inputs
-    peopleInProcess: 3,
-    daysPerMonth: 6,
+    peopleInProcess: 2,
+    daysPerMonth: 15,
     hoursPerDay: 8,
-    avgMonthlyCostPerPerson: 1500,
+    avgMonthlyCostPerPerson: 1000,
     workingDaysPerMonth: 22,
     workingHoursPerDay: 8,
     
@@ -100,7 +100,7 @@ const ROICalculator = () => {
     },
     
     // Partner costs
-    robotDevelopmentCost: 7800,
+    robotDevelopmentCost: 4500,
     annualMaintenanceCost: 450
   });
 
@@ -121,6 +121,21 @@ const ROICalculator = () => {
 
   // Calculated values
   const [calculations, setCalculations] = useState({});
+
+  // Read URL parameters and pre-fill form
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.size > 0) {
+      setFormData(prev => ({
+        ...prev,
+        peopleInProcess: parseInt(urlParams.get('peopleInProcess')) || prev.peopleInProcess,
+        hoursPerDay: parseInt(urlParams.get('hoursPerDay')) || prev.hoursPerDay,
+        avgMonthlyCostPerPerson: parseInt(urlParams.get('avgMonthlyCostPerPerson')) || prev.avgMonthlyCostPerPerson,
+        workingDaysPerMonth: parseInt(urlParams.get('workingDaysPerMonth')) || prev.workingDaysPerMonth,
+        workingHoursPerDay: parseInt(urlParams.get('workingHoursPerDay')) || prev.workingHoursPerDay
+      }));
+    }
+  }, []);
 
   // Real-time calculations
   useEffect(() => {
@@ -143,25 +158,30 @@ const ROICalculator = () => {
       exchangeRate,
       selectedLicenses,
       robotDevelopmentCost,
-      annualMaintenanceCost
+      annualMaintenanceCost,
     } = formData;
 
     // Basic calculations
     const totalRepetitiveHours = peopleInProcess * daysPerMonth * hoursPerDay;
     const costPerHour = avgMonthlyCostPerPerson / (workingDaysPerMonth * workingHoursPerDay);
-    const monthlyProductivitySavings = totalRepetitiveHours * costPerHour;
+    const annualProductivitySavings = totalRepetitiveHours * costPerHour * 12;
+    console.log(annualProductivitySavings, 'annualProductivitySavings', totalRepetitiveHours, costPerHour);
     
     // Error costs
-    const monthlyReprocessCosts = reprocessHours * costPerHour;
+    const annualReprocessCosts = reprocessHours * costPerHour * 12;
     
     // Overtime costs
-    const monthlyOvertimeCosts = overtimeHours * overtimeCost;
-    
-    // Total monthly benefits
-    const monthlyBenefits = monthlyProductivitySavings + monthlyReprocessCosts + monthlyOvertimeCosts + monthlyFines + monthlyLosses;
+    const annualOvertimeCosts = overtimeHours * overtimeCost * 12;
+
+    // Fines costs
+    const annualFines = monthlyFines * 12;
+
+    // Losses costs
+    const annualLosses = monthlyLosses * 12;
     
     // Annual benefits
-    const annualBenefits = monthlyBenefits * 12;
+    const annualBenefits = annualProductivitySavings + annualReprocessCosts + annualOvertimeCosts + annualFines + annualLosses;
+    
     
     // License costs
     const totalLicenseCostUSD = Object.keys(selectedLicenses).reduce((total, key) => {
@@ -175,16 +195,19 @@ const ROICalculator = () => {
     
     // Annual costs (licenses + maintenance)
     const year1Cost = totalInvestment + annualMaintenanceCost;
-    const year2Cost = annualMaintenanceCost + (totalLicenseCostLocal * 0.2); // Assume 20% annual license fee
-    const year3Cost = annualMaintenanceCost + (totalLicenseCostLocal * 0.2);
+    const year2Cost = annualMaintenanceCost + totalLicenseCostLocal; // Assume 20% annual license fee
+    const year3Cost = annualMaintenanceCost + totalLicenseCostLocal;
     
     // 3-year analysis
     const totalBenefits3Years = annualBenefits * 3;
     const totalCosts3Years = year1Cost + year2Cost + year3Cost;
+
+    const totalBenefitsNPV = calculateNPV(0.10, [annualBenefits, annualBenefits, annualBenefits]);
+    const totalCostNPV = calculateNPV(0.10, [year1Cost, year2Cost, year3Cost]);
     
     // ROI calculations
-    const roi = ((totalBenefits3Years - totalCosts3Years) / totalCosts3Years) * 100;
-    const paybackMonths = (totalInvestment / monthlyBenefits);
+    const roi = ((totalBenefitsNPV - totalCostNPV) / totalCostNPV) * 100;
+    const paybackMonths = (year1Cost / (annualBenefits/12));
     
     // NPV calculation (10% discount rate)
     const discountRate = 0.10;
@@ -195,10 +218,11 @@ const ROICalculator = () => {
 
     setCalculations({
       totalRepetitiveHours,
-      monthlyProductivitySavings,
-      monthlyReprocessCosts,
-      monthlyOvertimeCosts,
-      monthlyBenefits,
+      annualProductivitySavings,
+      annualReprocessCosts,
+      annualOvertimeCosts,
+      annualFines,
+      annualLosses,
       annualBenefits,
       totalLicenseCostUSD,
       totalLicenseCostLocal,
@@ -261,18 +285,29 @@ const ROICalculator = () => {
 
   const resetForm = () => {
     setFormData({
-      peopleInProcess: 3,
-      daysPerMonth: 6,
+      // Process inputs
+      peopleInProcess: 2,
+      daysPerMonth: 15,
       hoursPerDay: 8,
-      avgMonthlyCostPerPerson: 1500,
+      avgMonthlyCostPerPerson: 1000,
       workingDaysPerMonth: 22,
       workingHoursPerDay: 8,
+      
+      // Error/reprocess inputs
       reprocessHours: 0,
+      
+      // Overtime inputs
       overtimeHours: 0,
       overtimeCost: 160,
+      
+      // Penalties/fines
       monthlyFines: 0,
       monthlyLosses: 0,
+      
+      // Currency
       exchangeRate: 1,
+      
+      // Selected licenses
       selectedLicenses: {
         licenseS: 1,
         licenseM: 0,
@@ -282,11 +317,13 @@ const ROICalculator = () => {
         orchestratorEnterprise: 0,
         orchestratorCorporate: 0
       },
-      robotDevelopmentCost: 7800,
+      
+      // Partner costs
+      robotDevelopmentCost: 4500,
       annualMaintenanceCost: 450
     });
     setSelectedTemplate('');
-    toast.success("Form reset to default values");
+    toast.success("Formulario restablecido a valores predeterminados");
   };
 
   const handleEmailRequest = () => {
@@ -298,7 +335,7 @@ const ROICalculator = () => {
     
     // Validate required fields
     if (!leadData.name || !leadData.email || !leadData.companyName) {
-      toast.error("Please fill in all required fields");
+      toast.error("Por favor completa todos los campos requeridos");
       return;
     }
 
@@ -315,7 +352,7 @@ const ROICalculator = () => {
         calculations
       });
       
-      toast.success("ROI report sent to your email successfully!");
+      toast.success("¡Reporte de ROI enviado a tu email exitosamente!");
       setShowLeadForm(false);
       
       // Reset lead form
@@ -329,7 +366,7 @@ const ROICalculator = () => {
       });
     } catch (error) {
       console.error('Error sending ROI report:', error);
-      toast.error(error.message || "Failed to send report. Please try again.");
+      toast.error(error.message || "Error al enviar el reporte. Por favor intenta de nuevo.");
     } finally {
       setIsSubmittingEmail(false);
     }
@@ -343,6 +380,56 @@ const ROICalculator = () => {
     return `${percentage.toFixed(2)}%`;
   };
 
+  // Generate ROI summary for contact form
+  const generateROISummary = () => {
+    const { 
+      peopleInProcess, 
+      daysPerMonth, 
+      hoursPerDay, 
+      avgMonthlyCostPerPerson,
+      annualBenefits,
+      roi,
+      paybackMonths,
+      netPresentValue
+    } = { ...formData, ...calculations };
+
+    const totalHours = peopleInProcess * daysPerMonth * hoursPerDay;
+    const monthlyCost = avgMonthlyCostPerPerson * peopleInProcess;
+
+    return `Realicé el cálculo del ROI para un proceso que quiero automatizar y quiero más detalles.
+
+ROI: ${formatPercentage(roi || 0)}
+Beneficio: ${formatCurrency(annualBenefits || 0)} anuales
+Período de recuperación: ${(paybackMonths || 0).toFixed(1)} meses
+
+Detalles del proceso:
+- Horas: ${totalHours} horas mensuales
+- Personas: ${peopleInProcess} personas
+- Días por mes: ${daysPerMonth}
+- Costo total mensual: ${formatCurrency(monthlyCost)}
+
+¿Podrían contactarme para discutir la implementación de esta automatización?`;
+  };
+
+  // Handle contact sales button click
+  const handleContactSales = () => {
+    const roiSummary = generateROISummary();
+    const queryParams = new URLSearchParams({
+      additionalInfo: roiSummary
+    });
+    
+    window.location.href = `/contact-us?${queryParams.toString()}`;
+  };
+
+  // Función VPL (NPV) equivalente a Excel
+  const calculateNPV = (rate, values) => {
+    let npv = 0;
+    for (let i = 0; i < values.length; i++) {
+      npv += values[i] / Math.pow(1 + rate, i + 1);
+    }
+    return npv;
+  };
+
   return (
     <>
       <Suspense>
@@ -353,11 +440,11 @@ const ROICalculator = () => {
           <div className="max-w-7xl mx-auto text-white">
             <div className="text-center mb-12">
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
-                ROI Calculator
+                Calculadora de ROI
               </h1>
               <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
-                Calculate the return on investment for your automation project. 
-                Configure your parameters and see instant results.
+                Calcula el retorno de inversión para tu proyecto de automatización. 
+                Configura tus parámetros y ve resultados instantáneos.
               </p>
             </div>
 
@@ -389,11 +476,11 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Process Parameters</h3>
+                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Parámetros del Proceso</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        People Involved in Process
+                        Personas Involucradas en el Proceso
                       </label>
                       <input
                         name="peopleInProcess"
@@ -406,7 +493,7 @@ const ROICalculator = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Days per Month (Process Runs)
+                        Días por Mes (Ejecución del Proceso)
                       </label>
                       <input
                         name="daysPerMonth"
@@ -416,11 +503,11 @@ const ROICalculator = () => {
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
-                      <p className="text-cyan-400 text-xs">How many days per month this specific process is executed</p>
+                      <p className="text-cyan-400 text-xs">Cuántos días por mes se ejecuta este proceso específico</p>
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Hours per Day (Dedicated to Process)
+                        Horas por Día (Dedicadas al Proceso)
                       </label>
                       <input
                         name="hoursPerDay"
@@ -430,11 +517,11 @@ const ROICalculator = () => {
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
-                      <p className="text-cyan-400 text-xs">How many hours per day each person spends on this process</p>
+                      <p className="text-cyan-400 text-xs">Cuántas horas por día cada persona dedica a este proceso</p>
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Monthly Salary per Person ($)
+                        Salario Mensual por Persona ($)
                       </label>
                       <input
                         name="avgMonthlyCostPerPerson"
@@ -444,7 +531,7 @@ const ROICalculator = () => {
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
-                      <p className="text-cyan-400 text-xs">Average monthly salary cost per employee</p>
+                      <p className="text-cyan-400 text-xs">Costo promedio mensual de salario por empleado</p>
                     </div>
                   </div>
                 </div>
@@ -454,11 +541,11 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Working Schedule (for cost calculation)</h3>
+                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Horario de Trabajo (para cálculo de costos)</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Working Days per Month
+                        Días Laborales por Mes
                       </label>
                       <input
                         name="workingDaysPerMonth"
@@ -468,11 +555,11 @@ const ROICalculator = () => {
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
-                      <p className="text-cyan-400 text-xs">Total working days per month (typically 20-22)</p>
+                      <p className="text-cyan-400 text-xs">Total de días laborales por mes (típicamente 20-22)</p>
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Working Hours per Day
+                        Horas Laborales por Día
                       </label>
                       <input
                         name="workingHoursPerDay"
@@ -482,7 +569,7 @@ const ROICalculator = () => {
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
-                      <p className="text-cyan-400 text-xs">Standard working hours per day (typically 8)</p>
+                      <p className="text-cyan-400 text-xs">Horas laborales estándar por día (típicamente 8)</p>
                     </div>
                   </div>
                 </div>
@@ -492,11 +579,11 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Additional Costs</h3>
+                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Costos Adicionales</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Reprocess Hours/Month
+                        Horas de Reprocesamiento/Mes
                       </label>
                       <input
                         name="reprocessHours"
@@ -509,7 +596,7 @@ const ROICalculator = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Overtime Hours/Month
+                        Horas Extra/Mes
                       </label>
                       <input
                         name="overtimeHours"
@@ -522,7 +609,7 @@ const ROICalculator = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Overtime Cost per Hour ($)
+                        Costo de Hora Extra ($)
                       </label>
                       <input
                         name="overtimeCost"
@@ -535,7 +622,7 @@ const ROICalculator = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Exchange Rate (USD to Local)
+                        Tipo de Cambio (USD a Local)
                       </label>
                       <input
                         name="exchangeRate"
@@ -555,7 +642,7 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">RocketBot Licensing</h3>
+                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Licencias de RocketBot</h3>
                   <div className="space-y-4">
                     {Object.entries(ROCKETBOT_LICENSES).map(([key, license]) => (
                       <div key={key} className="flex items-center justify-between">
@@ -583,11 +670,11 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Implementation Costs</h3>
+                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Costos de Implementación</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Robot Development Cost ($)
+                        Costo de Desarrollo del Robot ($)
                       </label>
                       <input
                         name="robotDevelopmentCost"
@@ -600,7 +687,7 @@ const ROICalculator = () => {
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
-                        Annual Maintenance ($)
+                        Mantenimiento Anual ($)
                       </label>
                       <input
                         name="annualMaintenanceCost"
@@ -621,7 +708,7 @@ const ROICalculator = () => {
                     className="px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white rounded-md 
                        transition-colors duration-200 font-semibold"
                   >
-                    Reset Form
+                    Restablecer Formulario
                   </button>
                 </div>
               </div>
@@ -633,31 +720,31 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-6"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Monthly Benefits</h3>
+                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Beneficios Anuales</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-cyan-300">Productivity Savings:</span>
+                      <span className="text-cyan-300">Ahorros de Productividad Anual:</span>
                       <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.monthlyProductivitySavings || 0)}
+                        {formatCurrency(calculations.annualBenefits || 0)}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-cyan-300">Error Reduction:</span>
+                      <span className="text-cyan-300">Reducción de Errores:</span>
                       <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.monthlyReprocessCosts || 0)}
+                        {formatCurrency(calculations.annualReprocessCosts || 0)}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-cyan-300">Overtime Savings:</span>
+                      <span className="text-cyan-300">Ahorros en Horas Extra:</span>
                       <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.monthlyOvertimeCosts || 0)}
+                        {formatCurrency(calculations.annualOvertimeCosts || 0)}
                       </span>
                     </div>
                     <div className="border-t border-cyan-800/30 pt-3">
                       <div className="flex justify-between">
-                        <span className="text-cyan-50 font-semibold">Total Monthly:</span>
+                        <span className="text-cyan-50 font-semibold">Total Anual:</span>
                         <span className="text-teal-400 font-bold text-lg">
-                          {formatCurrency(calculations.monthlyBenefits || 0)}
+                          {formatCurrency(calculations.annualBenefits || 0)}
                         </span>
                       </div>
                     </div>
@@ -669,32 +756,90 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-6"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Investment</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Licenses (USD):</span>
-                      <span className="text-cyan-50">
-                        ${(calculations.totalLicenseCostUSD || 0).toLocaleString()}
-                      </span>
+                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Inversión</h3>
+                  <div className="space-y-4">
+                    {/* Pago Único */}
+                    <div className="bg-cyan-900/20 rounded-lg p-4">
+                      <h4 className="text-md font-semibold text-cyan-200 mb-3 flex items-center">
+                        <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                        Pago Inicial (Solo Año 1)
+                      </h4>
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <span className="text-cyan-300">Desarrollo del Robot:</span>
+                          <span className="text-cyan-50 font-semibold">
+                            {formatCurrency(formData.robotDevelopmentCost)}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-cyan-300">Licencias (USD):</span>
+                          <span className="text-cyan-50">
+                            ${(calculations.totalLicenseCostUSD || 0).toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-cyan-300">Licencias (Local):</span>
+                          <span className="text-cyan-50">
+                            {formatCurrency(calculations.totalLicenseCostLocal || 0)}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-cyan-300">Mantenimiento:</span>
+                          <span className="text-cyan-50 font-semibold">
+                            {formatCurrency(formData.annualMaintenanceCost)}
+                          </span>
+                        </div>
+                        <div className="border-t border-cyan-700/50 pt-2 mt-3">
+                          <div className="flex justify-between">
+                            <span className="text-cyan-200 font-semibold">Total Pago Único:</span>
+                            <span className="text-blue-400 font-bold">
+                              {formatCurrency(calculations.year1Cost || 0)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Licenses (Local):</span>
-                      <span className="text-cyan-50">
-                        {formatCurrency(calculations.totalLicenseCostLocal || 0)}
-                      </span>
+
+                    {/* Pago Anual Recurrente */}
+                    <div className="bg-cyan-900/20 rounded-lg p-4">
+                      <h4 className="text-md font-semibold text-cyan-200 mb-3 flex items-center">
+                        <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                        Pago Anual Recurrente (Años 2, 3 y 4)
+                      </h4>
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <span className="text-cyan-300">Mantenimiento Anual:</span>
+                          <span className="text-cyan-50 font-semibold">
+                            {formatCurrency(formData.annualMaintenanceCost)}
+                          </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-cyan-300">Licencias Anuales (20%):</span>
+                          <span className="text-cyan-50">
+                            {formatCurrency((calculations.totalLicenseCostLocal || 0) )}
+                          </span>
+                        </div>
+                        <div className="border-t border-cyan-700/50 pt-2 mt-3">
+                          <div className="flex justify-between">
+                            <span className="text-cyan-200 font-semibold">Total Anual:</span>
+                            <span className="text-green-400 font-bold">
+                              {formatCurrency(formData.annualMaintenanceCost + (calculations.totalLicenseCostLocal || 0))}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Development:</span>
-                      <span className="text-cyan-50">
-                        {formatCurrency(formData.robotDevelopmentCost)}
-                      </span>
-                    </div>
-                    <div className="border-t border-cyan-800/30 pt-3">
-                      <div className="flex justify-between">
-                        <span className="text-cyan-50 font-semibold">Total Investment:</span>
-                        <span className="text-yellow-400 font-bold text-lg">
-                          {formatCurrency(calculations.totalInvestment || 0)}
-                        </span>
+
+                    {/* Resumen Total */}
+                    <div className="bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4">
+                      <div className="text-center">
+                        <div className="text-cyan-300 text-sm mb-1">Inversión Total Inicial</div>
+                        <div className="text-yellow-400 font-bold text-xl">
+                          {formatCurrency(calculations.year1Cost || 0)}
+                        </div>
+                        <div className="text-cyan-400 text-xs mt-1">
+                          + {formatCurrency(formData.annualMaintenanceCost + (calculations.totalLicenseCostLocal || 0))} anuales los años siguientes
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -705,29 +850,29 @@ const ROICalculator = () => {
                   className="bg-transparent border border-cyan-800/20 rounded-lg p-6"
                   style={{ backgroundColor: config.colors.background }}
                 >
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">ROI Analysis</h3>
+                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Análisis de ROI a 3 años</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-cyan-300">Annual Benefits:</span>
+                      <span className="text-cyan-300">Beneficio Total:</span>
                       <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.annualBenefits || 0)}
+                        {formatCurrency(calculations.totalBenefits3Years || 0)}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-cyan-300">3-Year ROI:</span>
+                      <span className="text-cyan-300">Retorno de la inversión:</span>
                       <span className="text-green-400 font-bold text-lg">
                         {formatPercentage(calculations.roi || 0)}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-cyan-300">Payback Period:</span>
+                      <span className="text-cyan-300">Período de Recuperación:</span>
                       <span className="text-cyan-50 font-semibold">
-                        {(calculations.paybackMonths || 0).toFixed(1)} months
+                        {(calculations.paybackMonths || 0).toFixed(1)} meses
                       </span>
                     </div>
                     <div className="border-t border-cyan-800/30 pt-3">
                       <div className="flex justify-between">
-                        <span className="text-cyan-50 font-semibold">Net Present Value:</span>
+                        <span className="text-cyan-50 font-semibold">Valor Presente Neto:</span>
                         <span className="text-green-400 font-bold text-lg">
                           {formatCurrency(calculations.netPresentValue || 0)}
                         </span>
@@ -746,18 +891,18 @@ const ROICalculator = () => {
                     📧 Email Detailed Report
                   </button> */}
                   <button
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={handleContactSales}
                     className="w-full bg-cyan-700 hover:bg-cyan-600 text-white py-3 px-6 rounded-md 
                        transition-colors duration-200 font-semibold"
                   >
-                    💬 Contact Sales
+                    💬 Contactar Ventas
                   </button>
                   <button
                     onClick={() => window.location.href = 'https://calendar.app.google/bp4toLzqWLMT6BWi8'}
                     className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 px-6 rounded-md 
                        transition-colors duration-200 font-semibold"
                   >
-                    📅 Schedule Demo
+                    📅 Programar Demo
                   </button>
                 </div>
               </div>
@@ -773,16 +918,16 @@ const ROICalculator = () => {
               style={{ backgroundColor: config.colors.background }}
             >
               <h3 className="text-2xl font-bold text-cyan-50 mb-6">
-                Get Your ROI Report
+                Obtén tu Reporte de ROI
               </h3>
               <p className="text-cyan-300 mb-6">
-                Enter your details to receive the detailed ROI analysis via email.
+                Ingresa tus datos para recibir el análisis detallado de ROI por email.
               </p>
               
               <form onSubmit={submitEmailRequest} className="space-y-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-cyan-50 uppercase text-xs block">
-                    Full Name *
+                    Nombre Completo *
                   </label>
                   <input
                     id="name"
@@ -794,13 +939,13 @@ const ROICalculator = () => {
                     className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                        text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                        focus:ring-teal-500 focus:border-transparent"
-                    placeholder="John Doe"
+                    placeholder="Juan Pérez"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-cyan-50 uppercase text-xs block">
-                    Email *
+                    Correo Electrónico *
                   </label>
                   <input
                     id="email"
@@ -812,13 +957,13 @@ const ROICalculator = () => {
                     className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                        text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                        focus:ring-teal-500 focus:border-transparent"
-                    placeholder="john@company.com"
+                    placeholder="juan@empresa.com"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
-                    Company Name *
+                    Nombre de la Empresa *
                   </label>
                   <input
                     id="companyName"
@@ -830,13 +975,13 @@ const ROICalculator = () => {
                     className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                        text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                        focus:ring-teal-500 focus:border-transparent"
-                    placeholder="Your Company Inc."
+                    placeholder="Tu Empresa S.A."
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="phone" className="text-cyan-50 uppercase text-xs block">
-                    Phone Number
+                    Número de Teléfono
                   </label>
                   <input
                     id="phone"
@@ -847,13 +992,13 @@ const ROICalculator = () => {
                     className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                        text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                        focus:ring-teal-500 focus:border-transparent"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+52 (55) 1234-5678"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
-                    Role
+                    Cargo
                   </label>
                   <input
                     id="role"
@@ -864,13 +1009,13 @@ const ROICalculator = () => {
                     className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                        text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                        focus:ring-teal-500 focus:border-transparent"
-                    placeholder="CEO, CTO, Manager, etc."
+                    placeholder="CEO, CTO, Gerente, etc."
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
-                    Company Size
+                    Tamaño de la Empresa
                   </label>
                   <select
                     id="companySize"
@@ -881,13 +1026,13 @@ const ROICalculator = () => {
                        text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 
                        focus:border-transparent"
                   >
-                    <option value="">Select company size</option>
-                    <option value="1-10">1-10 employees</option>
-                    <option value="11-50">11-50 employees</option>
-                    <option value="51-200">51-200 employees</option>
-                    <option value="201-500">201-500 employees</option>
-                    <option value="501-1000">501-1000 employees</option>
-                    <option value="1000+">1000+ employees</option>
+                    <option value="">Seleccionar tamaño de empresa</option>
+                    <option value="1-10">1-10 empleados</option>
+                    <option value="11-50">11-50 empleados</option>
+                    <option value="51-200">51-200 empleados</option>
+                    <option value="201-500">201-500 empleados</option>
+                    <option value="501-1000">501-1000 empleados</option>
+                    <option value="1000+">1000+ empleados</option>
                   </select>
                 </div>
 
@@ -898,7 +1043,7 @@ const ROICalculator = () => {
                     className="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-3 px-6 rounded-md 
                        transition-colors duration-200 font-semibold"
                   >
-                    Cancel
+                    Cancelar
                   </button>
                   <button
                     type="submit"
@@ -911,10 +1056,10 @@ const ROICalculator = () => {
                     {isSubmittingEmail ? (
                       <>
                         <span className="loading loading-spinner loading-sm mr-2"></span>
-                        Sending...
+                        Enviando...
                       </>
                     ) : (
-                      "Send Report"
+                      "Enviar Reporte"
                     )}
                   </button>
                 </div>
@@ -923,6 +1068,25 @@ const ROICalculator = () => {
           </div>
         )}
       </main>
+      
+      {/* Copyright Footer */}
+      <footer className="bg-cyan-900/30 border-t border-cyan-800/20 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-cyan-400 text-sm">
+              © {new Date().getFullYear()} Robotipy. Calculadora de ROI basada en la metodología de 
+              <a 
+                href="https://rocketbot.com" 
+                target="_blank" 
+                rel="noopener"
+                className="text-cyan-300 hover:text-cyan-200 ml-1 font-semibold"
+              >
+                Rocketbot
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };

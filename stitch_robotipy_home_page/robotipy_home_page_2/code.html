@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Robotipy - Automate. Amplify. Accelerate.</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#04908e",
+              secondary: "#0066FF",
+              accent: "rgb(3, 150, 149)",
+              "background-light": "#f5f8f8",
+              "background-dark": "#0f2322",
+              "text-light": "#6B7280",
+              "text-dark": "#F5F5F5",
+              "text-primary": "#0A2540",
+              "text-primary-dark": "#FFFFFF",
+            },
+            fontFamily: { display: "Inter" },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display">
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header
+          class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm"
+        >
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+              <div
+                class="flex items-center gap-4 text-text-primary dark:text-text-primary-dark"
+              >
+                <div class="size-8 text-primary dark:text-accent">
+                  <svg
+                    fill="none"
+                    viewbox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_6_330)">
+                      <path
+                        clip-rule="evenodd"
+                        d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clippath id="clip0_6_330">
+                        <rect fill="white" height="48" width="48"></rect>
+                      </clippath>
+                    </defs>
+                  </svg>
+                </div>
+                <h2 class="text-xl font-bold">Robotipy</h2>
+              </div>
+              <div class="hidden md:flex items-center gap-8">
+                <a
+                  class="text-sm font-medium text-text-primary dark:text-text-dark hover:text-accent dark:hover:text-accent transition-colors"
+                  href="#"
+                  >Services</a
+                >
+                <a
+                  class="text-sm font-medium text-text-primary dark:text-text-dark hover:text-accent dark:hover:text-accent transition-colors"
+                  href="#"
+                  >Case Studies</a
+                >
+                <a
+                  class="text-sm font-medium text-text-primary dark:text-text-dark hover:text-accent dark:hover:text-accent transition-colors"
+                  href="#"
+                  >Training</a
+                >
+                <a
+                  class="text-sm font-medium text-text-primary dark:text-text-dark hover:text-accent dark:hover:text-accent transition-colors"
+                  href="#"
+                  >Insights</a
+                >
+              </div>
+              <button
+                class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold shadow-md hover:bg-opacity-90 transition-all"
+              >
+                <span class="truncate">Schedule a Meeting</span>
+              </button>
+              <button
+                class="md:hidden flex items-center justify-center size-10 rounded-lg bg-gray-100 dark:bg-gray-800 text-text-primary dark:text-text-dark"
+              >
+                <span class="material-symbols-outlined">menu</span>
+              </button>
+            </div>
+          </div>
+        </header>
+        <main class="flex-1">
+          <section class="py-20 md:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="grid md:grid-cols-1 gap-12 items-center">
+                <div class="flex flex-col gap-8 text-center">
+                  <div class="flex flex-col gap-4">
+                    <h1
+                      class="text-primary dark:text-text-primary-dark text-4xl md:text-6xl font-black leading-tight tracking-tighter"
+                    >
+                      Automate Your Processes. Amplify Your Intelligence.
+                    </h1>
+                    <h2
+                      class="text-text-light dark:text-text-dark text-lg md:text-xl font-normal leading-normal max-w-3xl mx-auto"
+                    >
+                      We specialize in RPA, AI, and Custom Development to help
+                      you transform and grow your business. Master automation
+                      with our expert-led training.
+                    </h2>
+                  </div>
+                  <div class="flex flex-wrap gap-4 justify-center">
+                    <button
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-accent text-white text-base font-bold shadow-lg hover:bg-opacity-90 transition-all transform hover:scale-105"
+                    >
+                      <span class="truncate">Schedule a Meeting</span>
+                    </button>
+                    <button
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-transparent border-2 border-primary dark:border-white text-primary dark:text-white text-base font-bold hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-primary transition-all transform hover:scale-105"
+                    >
+                      <span class="truncate">View Our Projects</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="py-16 bg-gray-50 dark:bg-background-dark/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 items-center"
+              >
+                <div class="lg:col-span-2">
+                  <h3
+                    class="text-center lg:text-left text-sm font-bold text-text-light dark:text-text-dark uppercase tracking-widest mb-4"
+                  >
+                    Trusted By Industry Leaders &amp; Certified Experts
+                  </h3>
+                  <div
+                    class="flex justify-center lg:justify-start flex-wrap gap-x-8 gap-y-4"
+                  >
+                    <img
+                      class="h-8 grayscale opacity-60"
+                      data-alt="Google Logo"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB02VaR9k_XC7qL0DSyrgmcXqxhJqh-yuqinjCNpm2UjKVoYhKEfGb0ea7SL74Bje2dEru69HOEwu8JMI_zXn3IjeN7pxQ7LvQQSyFsukR05DvueBu329p5G0KkADxlgU7shSRDhVIMAn24LJvi0-l1-CtfiQiQVHxZfkRPo1oX_JPRNNgcS-eaW53Fk9qZS61JpYM8wfnhHKP-qWqFiozi2bWPczAdx8PqlKhMQEqOsbILulI_UevUUknswZwtnQPfsZhz94hm4U"
+                    />
+                    <img
+                      class="h-8 grayscale opacity-60"
+                      data-alt="Microsoft Logo"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUPRKO7f3BTlxB84WC5aO0RDt1yQ8vzA_U-VETg3u0DiDb3JeW-stjnTx0WncCQo_MLEP_CFZey2oY8fj0THdE-eQKtcEUwQByitY40YI3nO7FhJpHxuiHh99D6mcabZPNvsH8M1_N5JKbWZQQf10I8kqioUitL2AwHeMRclSF86xLFvPoYfms931ZhpkfzLsEQEDxL437QKj2S6Ww1nVDJt7c_Bd_3W53QFGTnjPf93wqTJYAq5451iURLnOr5eBEVfRySM0XD3I"
+                    />
+                    <img
+                      class="h-8 grayscale opacity-60"
+                      data-alt="AWS Logo"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOLS5aEQq00_O2t-jlcX0Yh6xrYxlGy6xMsD-tODUSGZQ_k1ArbFnLCNKb16N64JBbKiGBk2721-WSHIvse1ogWCzgTHPrKgCORgKlI7WpX8XkaqHvnL2bLfzyrA7hwpMX2yaNTyqKnuwJ2EQ2IXvFn7VF27upDmJTaYL9i3Uke9UETS0yhLa7BZDMv9-30TUlACCa4hubuhJhFMoTIhuNLug8ohwwHBxlYWiJ9_P1W_OVG50F-q8wwky1gwU5VvfmGaDQYa2HFQw"
+                    />
+                    <img
+                      class="h-8 grayscale opacity-60"
+                      data-alt="UiPath Logo"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGlgMtT_wXedQQJhCtuHN2xCIuDlzj-qKSAtGY11tlFAhZqS8xVjwzibwj46dxYkctERyCPutbtmfC0S1BaruJNTW_fojx1JiVKpVKIgut5JOgofekFYCQoBokIu_H80jiBS1Iznykh9eg_r_cIMBjP7AmKtMd-PfwDRJ2YMwIQdlo29oc2RqceUBejb6ZTPhFucYic6V35SXpGgMY9n0ObzLKLN3-sNpQc-DMxxbKhNxM7fwvunc84UdQ_f2qxR9GGmju3HPN8zU"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8"
+                >
+                  <div class="text-center">
+                    <p class="text-accent text-5xl font-bold">+50</p>
+                    <p
+                      class="text-text-light dark:text-text-dark text-base font-medium"
+                    >
+                      Projects Delivered
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <p class="text-accent text-5xl font-bold">+10</p>
+                    <p
+                      class="text-text-light dark:text-text-dark text-base font-medium"
+                    >
+                      Years of Experience
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <p class="text-accent text-5xl font-bold">98%</p>
+                    <p
+                      class="text-text-light dark:text-text-dark text-base font-medium"
+                    >
+                      Client Satisfaction
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="py-20 md:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-12">
+                <h2
+                  class="text-3xl md:text-4xl font-bold text-primary dark:text-text-primary-dark"
+                >
+                  Our Services
+                </h2>
+                <p class="mt-4 text-lg text-text-light dark:text-text-dark">
+                  Tailored services to drive your business forward.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                  class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <span class="material-symbols-outlined text-accent text-5xl"
+                    >smart_toy</span
+                  >
+                  <h3
+                    class="text-xl font-bold text-primary dark:text-text-primary-dark"
+                  >
+                    RPA
+                  </h3>
+                  <p class="text-text-light dark:text-text-dark text-base">
+                    Automate repetitive tasks and streamline your workflows for
+                    maximum efficiency.
+                  </p>
+                  <a class="mt-4 font-bold text-accent hover:underline" href="#"
+                    >Learn More →</a
+                  >
+                </div>
+                <div
+                  class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <span class="material-symbols-outlined text-accent text-5xl"
+                    >chat_bubble</span
+                  >
+                  <h3
+                    class="text-xl font-bold text-primary dark:text-text-primary-dark"
+                  >
+                    Chatbot
+                  </h3>
+                  <p class="text-text-light dark:text-text-dark text-base">
+                    Engage customers with intelligent, automated conversational
+                    experiences.
+                  </p>
+                  <a class="mt-4 font-bold text-accent hover:underline" href="#"
+                    >Learn More →</a
+                  >
+                </div>
+                <div
+                  class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <span class="material-symbols-outlined text-accent text-5xl"
+                    >psychology</span
+                  >
+                  <h3
+                    class="text-xl font-bold text-primary dark:text-text-primary-dark"
+                  >
+                    AI &amp; Machine Learning
+                  </h3>
+                  <p class="text-text-light dark:text-text-dark text-base">
+                    Leverage AI to gain insights, make predictions, and drive
+                    intelligent innovation.
+                  </p>
+                  <a class="mt-4 font-bold text-accent hover:underline" href="#"
+                    >Learn More →</a
+                  >
+                </div>
+                <div
+                  class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <span class="material-symbols-outlined text-accent text-5xl"
+                    >school</span
+                  >
+                  <h3
+                    class="text-xl font-bold text-primary dark:text-text-primary-dark"
+                  >
+                    Courses &amp; Training
+                  </h3>
+                  <p class="text-text-light dark:text-text-dark text-base">
+                    Empower your team with hands-on training in RPA and AI
+                    development.
+                  </p>
+                  <a class="mt-4 font-bold text-accent hover:underline" href="#"
+                    >Learn More →</a
+                  >
+                </div>
+                <div
+                  class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <span class="material-symbols-outlined text-accent text-5xl"
+                    >code_blocks</span
+                  >
+                  <h3
+                    class="text-xl font-bold text-primary dark:text-text-primary-dark"
+                  >
+                    Software Development
+                  </h3>
+                  <p class="text-text-light dark:text-text-dark text-base">
+                    Get tailor-made software solutions that perfectly fit your
+                    unique business needs.
+                  </p>
+                  <a class="mt-4 font-bold text-accent hover:underline" href="#"
+                    >Learn More →</a
+                  >
+                </div>
+                <div
+                  class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-gray-800 p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <span class="material-symbols-outlined text-accent text-5xl"
+                    >image_search</span
+                  >
+                  <h3
+                    class="text-xl font-bold text-primary dark:text-text-primary-dark"
+                  >
+                    Object Detection
+                  </h3>
+                  <p class="text-text-light dark:text-text-dark text-base">
+                    Implement computer vision to identify and analyze objects in
+                    images and video.
+                  </p>
+                  <a class="mt-4 font-bold text-accent hover:underline" href="#"
+                    >Learn More →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="py-20 md:py-28 bg-gray-50 dark:bg-background-dark/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-12">
+                <h2
+                  class="text-3xl md:text-4xl font-bold text-primary dark:text-text-primary-dark"
+                >
+                  Featured Case Studies
+                </h2>
+                <p class="mt-4 text-lg text-text-light dark:text-text-dark">
+                  Real-world results we've delivered for our clients.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                  class="bg-background-light dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                >
+                  <img
+                    class="w-full h-56 object-cover"
+                    data-alt="A team collaborating on a project."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj_N9U-Z5MSVD6H4kuiPh8fXWfgm9ox-SwthzY7LBWJK726c10qE0TmVhs1TNgAiCfEu1vKO8Q1no847q94NY_6NurdYM5Y48_oqI4Y3zLmHQXs9wwZqqhctEwghGPsb_M6zBujfcu2oI8VCOkar1tjZp6frmjT0oHv_wEoGNejugx7HJjYqFi377iC4Vc0KABdVKfmvQIm1bDiP5tfAx3lUFz9l7W_Z9k05kyjxrV7tJqf1HvoQxnrBNIhFC9itn01CepCgx9FhE"
+                  />
+                  <div class="p-6">
+                    <p class="text-sm text-accent font-semibold">
+                      FINANCIAL SERVICES
+                    </p>
+                    <h3
+                      class="mt-2 text-xl font-bold text-primary dark:text-text-primary-dark"
+                    >
+                      Automated Invoice Processing
+                    </h3>
+                    <p class="mt-2 text-text-light dark:text-text-dark">
+                      Reduced manual data entry by
+                      <span class="font-bold text-accent">95%</span>.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="bg-background-light dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                >
+                  <img
+                    class="w-full h-56 object-cover"
+                    data-alt="Data analytics dashboard on a screen."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSj6S98lxf_Mr3BkTFleMOkuoaJD2HGa_-niCCpE-Td5HMCwkvBqkKh9I6oXi6KCRjQi-Pc0aEgosrMhP2i0QAysTM_1eTs6nVPF3Ba317TYtLjHYUEMjwLsrbL6XQaRw1uSJ_o7VJXvea1OfI_5kQyL_FQ5EJbZ7avHUTEd_Z6lXXhvTVuhpfjL8-HgZNczat_Q_4WnHmxr0WIAslMD-3KvwpaDBZDYOEzvdjr6Kc34wWO-uw0GypLcXY9HuGHRrAA74dzEx0-D8"
+                  />
+                  <div class="p-6">
+                    <p class="text-sm text-accent font-semibold">ECOMMERCE</p>
+                    <h3
+                      class="mt-2 text-xl font-bold text-primary dark:text-text-primary-dark"
+                    >
+                      AI-Powered Lead Scoring
+                    </h3>
+                    <p class="mt-2 text-text-light dark:text-text-dark">
+                      Increased lead processing speed by
+                      <span class="font-bold text-accent">300%</span>.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="bg-background-light dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                >
+                  <img
+                    class="w-full h-56 object-cover"
+                    data-alt="Manufacturing robot arm in action."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWlqQ8DBNIk_LP3IkH42RQzWLaVG4aooJ2vLYik8NjCi06NSMlPiyaoBXgrq1iqOJqrOiTXFQTDkls4_bkYHuo2K7uu2c8WZ73VV1sDitreixe-wQXn5BOxL3H56X9pePmztN0NhgKvKR6bU_nWcIhBNL8QArFayjJ1WBqoNGz62CMsOSZPSxeplVnd5-8NKOdK32zFDOm08_LRIFy6sJ5mpLlDJwwieXPlv4XMprvqmjMM5Ul18d2vCo1M5vSjGK1lGblhqEbAi8"
+                  />
+                  <div class="p-6">
+                    <p class="text-sm text-accent font-semibold">
+                      MANUFACTURING
+                    </p>
+                    <h3
+                      class="mt-2 text-xl font-bold text-primary dark:text-text-primary-dark"
+                    >
+                      Quality Control Automation
+                    </h3>
+                    <p class="mt-2 text-text-light dark:text-text-dark">
+                      Improved defect detection accuracy by
+                      <span class="font-bold text-accent">40%</span>.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="bg-background-light dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                >
+                  <img
+                    class="w-full h-56 object-cover"
+                    data-alt="Healthcare professional using a tablet."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgBCIR-vWys_UZ4kZQRsnf4IkwhVxTCmstURSo_eotJ6BdGd5sm2-Z2gBms0ZJOCO7Q88-vYDHAFNAoslJcKJg_wPvcvfv_pE5gscnQZFqQU0bvSpwOaaGXnz7BEipsIocps-L_x34R_bn6m6kMSjhcAMQes7KEAMSdeL2evGm869OCDDfX-03Ne5QdVvKyGZZ4I0wcuIsf1E5PoMXuufriVHn0iLqGVVkUHVTxasqfulEdADdt0CggSTOVftP3u9pw2BMa0CKqb4"
+                  />
+                  <div class="p-6">
+                    <p class="text-sm text-accent font-semibold">HEALTHCARE</p>
+                    <h3
+                      class="mt-2 text-xl font-bold text-primary dark:text-text-primary-dark"
+                    >
+                      Patient Data Management
+                    </h3>
+                    <p class="mt-2 text-text-light dark:text-text-dark">
+                      Automated data entry, saving
+                      <span class="font-bold text-accent">20+ hours</span> per
+                      week.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="py-20 md:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-12">
+                <h2
+                  class="text-3xl md:text-4xl font-bold text-primary dark:text-text-primary-dark"
+                >
+                  Insights from Our Experts
+                </h2>
+                <p class="mt-4 text-lg text-text-light dark:text-text-dark">
+                  The latest news, articles, and perspectives from our team.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group">
+                  <div class="overflow-hidden rounded-xl">
+                    <img
+                      class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                      data-alt="A person writing on a notebook"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgBCIR-vWys_UZ4kZQRsnf4IkwhVxTCmstURSo_eotJ6BdGd5sm2-Z2gBms0ZJOCO7Q88-vYDHAFNAoslJcKJg_wPvcvfv_pE5gscnQZFqQU0bvSpwOaaGXnz7BEipsIocps-L_x34R_bn6m6kMSjhcAMQes7KEAMSdeL2evGm869OCDDfX-03Ne5QdVvKyGZZ4I0wcuIsf1E5PoMXuufriVHn0iLqGVVkUHVTxasqfulEdADdt0CggSTOVftP3u9pw2BMa0CKqb4"
+                    />
+                  </div>
+                  <div class="p-4">
+                    <h3
+                      class="text-lg font-bold text-primary dark:text-text-primary-dark group-hover:text-accent transition-colors"
+                    >
+                      The Future of Work: How AI is Reshaping Industries
+                    </h3>
+                    <p class="mt-2 text-sm text-text-light dark:text-text-dark">
+                      Explore the transformative impact of artificial
+                      intelligence on modern workplaces and what it means for
+                      your business.
+                    </p>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="overflow-hidden rounded-xl">
+                    <img
+                      class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                      data-alt="A robot arm moving blocks"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWlqQ8DBNIk_LP3IkH42RQzWLaVG4aooJ2vLYik8NjCi06NSMlPiyaoBXgrq1iqOJqrOiTXFQTDkls4_bkYHuo2K7uu2c8WZ73VV1sDitreixe-wQXn5BOxL3H56X9pePmztN0NhgKvKR6bU_nWcIhBNL8QArFayjJ1WBqoNGz62CMsOSZPSxeplVnd5-8NKOdK32zFDOm08_LRIFy6sJ5mpLlDJwwieXPlv4XMprvqmjMM5Ul18d2vCo1M5vSjGK1lGblhqEbAi8"
+                    />
+                  </div>
+                  <div class="p-4">
+                    <h3
+                      class="text-lg font-bold text-primary dark:text-text-primary-dark group-hover:text-accent transition-colors"
+                    >
+                      5 Common Pitfalls in RPA Implementation (And How to Avoid
+                      Them)
+                    </h3>
+                    <p class="mt-2 text-sm text-text-light dark:text-text-dark">
+                      Learn how to navigate the challenges of RPA adoption to
+                      ensure a successful and scalable automation strategy.
+                    </p>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="overflow-hidden rounded-xl">
+                    <img
+                      class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                      data-alt="Code on a computer screen"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZGKOXIR2ivOV5REqjX2V8vdlybVhcpZBrLdtIGwkokUX92TpEeZRBhnO4HtJgeioSwQgxQfP9vxNDKf8K4jf6NJ9nx7d3fX-JcavnSnd0cUzqIvr9iiVLvnygx6Pt20yKet0WfpNm7_Zn6YY1ZJ16NA8gOBaxu9fVD5YZDKGoBQggVvGX7CdKS8rtNsQY_2O3BfdLcvpUZWjjcLhIOm8UjCtgUzDKrWky-5Q_9iL1D4nI4udRsaN_KWyEFMi045JtM_HT2AStkiQ"
+                    />
+                  </div>
+                  <div class="p-4">
+                    <h3
+                      class="text-lg font-bold text-primary dark:text-text-primary-dark group-hover:text-accent transition-colors"
+                    >
+                      Why a Custom Solution Might Be Your Best Investment
+                    </h3>
+                    <p class="mt-2 text-sm text-text-light dark:text-text-dark">
+                      Discover the long-term benefits of tailor-made software
+                      compared to off-the-shelf products for unique business
+                      needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="py-20 md:py-28 bg-primary dark:bg-primary/95 text-white"
+          >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold">
+                    Ready to transform your operation?
+                  </h2>
+                  <p class="mt-4 text-lg text-gray-200">
+                    Let's discuss how our expertise in automation and AI can
+                    help you achieve your goals. We're committed to delivering
+                    measurable results and building lasting partnerships.
+                  </p>
+                  <button
+                    class="mt-8 flex-shrink-0 mx-auto md:mx-0 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-accent text-primary text-lg font-bold shadow-2xl hover:bg-opacity-90 transition-all transform hover:scale-105"
+                  >
+                    <span class="truncate">Schedule Your Free Meeting</span>
+                  </button>
+                </div>
+                <div class="flex justify-center">
+                  <img
+                    class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-4 border-accent"
+                    data-alt="Professional headshot of the CEO of Robotipy."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaK46XFYn4w_bjY2dND0LdSN9TZ4hpgflPqa36XKa_H1DFqfYKPq4kkhyLcju5JxftA_CUeCrVydnYG2IxqYCrlzJJAEzS045n7fln2IypcuqspvO1c3ggsaPg_KDTyQ7N0HVEzJoLqR2LWswdnNNAFrjhs93dpucFbf_f3ddHeILycOB3s10TtmZo4uP60Jemr2zYimkORbmUHHfONKCyEIbO8mZO8CbChd56-OPnuzZGfMDIaqQx70jLjsTp010mzht0Ubf1ZhA"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

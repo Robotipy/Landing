@@ -24,12 +24,15 @@ export const metadata = getSEOTags({ canonicalUrlRelative: "/" });
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
-      {config.domainName && (
-        <head>
-          <PlausibleProvider domain={config.domainName} />
-          <GoogleTagManager />
-        </head>
-      )}
+      <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        {config.domainName && (
+          <>
+            <PlausibleProvider domain={config.domainName} />
+            <GoogleTagManager />
+          </>
+        )}
+      </head>
       <body style={{ backgroundColor: config.colors.background }}>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
         <ClientLayout>{children}</ClientLayout>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Robotipy Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0057FF",
+              "background-light": "#FFFFFF",
+              "background-dark": "#101922",
+              "text-light": "#1A1A1A",
+              "text-dark": "#F0F2F5",
+              "subtle-light": "#F0F2F5",
+              "subtle-dark": "#1A1A1A"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<!-- Hero Section -->
+<div class="@container mb-8">
+<div class="@[480px]:p-4">
+<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 text-center" data-alt="Abstract background with blue and purple gradients representing technology and innovation." style='background-image: linear-gradient(rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAogIi3D7qd3IhSumZ8vzafS_huI_bZr4lThLgqTWcH7sJHxanBJIPLCJpi_vrGuta_sfjDMlGl9XzOO3p20Wgw0Emp47Z2BWCTMHja9dzV99jpgyUnxA6fg9Yy-OXuC4gOz80xK0QcZEiu02DK6sXnIX25zXWUOnt207lQYHseKCD1PlcBMoC2RFwXSIl3VRSZg5mxe665W8vur9i7Dj8x_LFWjODaq-gcAOdLUIQZyTOMa_B86MhlCOZ4EF_hJ92KC73qzDxNsO8");'>
+<div class="flex flex-col gap-4">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                        Your Gateway to Automation and AI Excellence
+                                    </h1>
+<h2 class="text-slate-200 text-base font-normal leading-normal @[480px]:text-lg @[480px]:font-normal @[480px]:leading-normal max-w-3xl mx-auto">
+                                        Explore our collection of articles, guides, and tutorials to unlock the full potential of your business.
+                                    </h2>
+</div>
+</div>
+</div>
+</div>
+<!-- Search and Filter Section -->
+<div class="px-4 py-3 flex flex-col md:flex-row gap-4 items-center">
+<div class="w-full md:flex-1">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-gray-200 dark:border-gray-700 bg-subtle-light dark:bg-subtle-dark">
+<div class="text-text-light/60 dark:text-text-dark/60 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-light/60 dark:placeholder:text-text-dark/60 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search resources..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-2 p-1 flex-wrap justify-center">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary pl-4 pr-4 text-white">
+<p class="text-sm font-medium leading-normal">All</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-subtle-light dark:bg-subtle-dark pl-4 pr-4 text-text-light dark:text-text-dark hover:bg-primary/20 dark:hover:bg-primary/30">
+<p class="text-sm font-medium leading-normal">Process Optimization</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-subtle-light dark:bg-subtle-dark pl-4 pr-4 text-text-light dark:text-text-dark hover:bg-primary/20 dark:hover:bg-primary/30">
+<p class="text-sm font-medium leading-normal">AI Innovation</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-subtle-light dark:bg-subtle-dark pl-4 pr-4 text-text-light dark:text-text-dark hover:bg-primary/20 dark:hover:bg-primary/30">
+<p class="text-sm font-medium leading-normal">Strategic Software Development</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-subtle-light dark:bg-subtle-dark pl-4 pr-4 text-text-light dark:text-text-dark hover:bg-primary/20 dark:hover:bg-primary/30">
+<p class="text-sm font-medium leading-normal">Guides and Tutorials</p>
+</button>
+</div>
+</div>
+<!-- Featured Section -->
+<div class="mt-8">
+<h2 class="text-text-light dark:text-text-dark text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured Resources</h2>
+<div class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex items-stretch p-4 gap-6">
+<!-- Featured Card 1 -->
+<div class="flex h-full flex-1 flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm min-w-80 w-80 transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="A person interacting with a futuristic digital interface." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBaP43Z3nO5jSNmBsNZKwGTMQz4wbwrZ3bJoIKfXg1BBRmsj_LPLopuDKn1f9V0kmKTzpvi0t5cbhAIp8qSKT-5u_eOfmLyNlso4RBpQ3fuj0V6Pa5bFpEXW8yF-_JLOoc3namB-Omunk_EAfOejm8U_Ua6lm8A79LZASxZ9aCYWVyYWIiJgVmHUILGJNkjJuq7GPf41VHu5m4ZaMgXvwYT8ny6SJUdZjUo2hSiGI6za0-Y5Dhm-8ZH0Te8bR_spCdU1SMmLsGHLvk");'>
+<div class="absolute top-2 left-2 bg-green-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">article</span>Article</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">The Ultimate Guide to RPA Implementation</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">A comprehensive guide to implementing Robotic Process Automation in your organization.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+<!-- Featured Card 2 -->
+<div class="flex h-full flex-1 flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm min-w-80 w-80 transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="A glowing brain icon made of circuits, symbolizing artificial intelligence." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUxHfp1Y-rbk7QCWQ462m9v0fgfGgNGWEoJ9L_P58Wt63guBJYHJvWC05JhRlfVbbasHO-KmHKvcyori81-ZJeHngf8XD_ygnlXrFo99z_CcEgetxannUmI_n0q4Q2w5FQaHNqpeiM2f7PrFe-T_YOVh6jS2TxXj7bBeYne0UTa0kNkyOjIQNcqGvkQs8_LzrnO3tL-n3yjQ0BKASQJy0e7dxhVDeTjZMx4kSqXY0g40eDOzMdZQFPZ8kkhflaL41xz2UD-1HEzCg");'>
+<div class="absolute top-2 left-2 bg-orange-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">download</span>Checklist</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Process Automation Readiness Checklist</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">Is your organization ready for automation? Download this checklist to find out.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Download Now</span>
+</button>
+</div>
+</div>
+<!-- Featured Card 3 -->
+<div class="flex h-full flex-1 flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm min-w-80 w-80 transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="A person coding on a laptop with lines of code visible on the screen." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwriNtdvSz-90gKlV-of6xYD5x3YFvaZ-tGeHCOXumdnKEqFVntpH27YyN7EKEr_OLgvQgjy86uDzl7jWo4A2F7_9z95DtpZOVng3EBYlZjPu3D6kskFHQ4iVjqsL7Duqy38dByMFUjbI6PSmO9zh3f6-fb9L2pQJNHg5pOX3755XH3LIwG0cfijRd5-o0X8dx1IS8ZOeKUU9jOv64zhB2zTL7kQBUGdpdeWag2uInlQIAJmnhWDpEqvGy2wbCId1DA9lg41QrQS0");'>
+<div class="absolute top-2 left-2 bg-blue-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">play_circle</span>Video</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Developing Scalable Software Solutions</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">Learn the key principles of building software that grows with your business.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Watch Video</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- All Resources Grid -->
+<div class="mt-8">
+<h2 class="text-text-light dark:text-text-dark text-2xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">All Resources</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+<!-- Card 1 -->
+<div class="flex flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="Abstract image of network connections." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSUqXTW06WuvqSsttCqKKcKLdLgdrHMtT3jdTp_M5xQioDQfzggt-lZ3POCPk1Q1Ap2O52uhWM7n0n9VtiPuixaQ8O3A7y0MWfjnxlA6oHn_XGbvH1sxIjg_89XcOD7Zmn1b6BCUN1RsvAIpMXSa0VLdkvYqpFVFHWyO-UfCijhrisdCKnWTpyJa49fSue2aQPviBe0U3ITg39AnXKlslZGFpWx39v3aCGVJNvH51gdkPIuazNay6oCSpFfkrZ2w1rbKt1Al4LC3c");'>
+<div class="absolute top-2 left-2 bg-green-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">article</span>Article</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">RPA Use Cases in Finance</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">Explore how Robotic Process Automation is transforming the financial industry.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 dark:hover:bg-primary/40">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="A technical blueprint or schematic, representing whitepapers." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTcz5ufwKw0idmlEhyh0z3HapgAhdjjGP9LuLPaa3B4lVTbdTt80sq78ZqjLRF2cLs6QpGumi1NhaV3hxtwCvgklwfn4YzaDFvEsgkmSrZRUXH0SqnKpgf3Gq7ujLkYlBtCt5IPR3tVlJunN1rNMAbxMLhHRDSufd3GqV3WTgteDwTuUqOm_-JwPedeaE7fk4M7Cf-duAQ3hm-QF2Ur15wzB85NQ-AahV8AdUL-a24s28b0FYRMAvtcG0YMB3JH3JLFCe1YOtnj90");'>
+<div class="absolute top-2 left-2 bg-purple-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">description</span>Whitepaper</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Advanced AI Models for Business</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">A technical deep-dive into the latest AI models and their practical applications.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 dark:hover:bg-primary/40">
+<span class="truncate">Download Now</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="A person teaching or presenting in front of a whiteboard." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARsgKKF7M7d6fA5STY2kcqK70iOXiKKQsztuFtchV_p3AjdqafJ3a2oO_4cm3n0abtnsl2VEEDHc1kOsHx7Z0ukzioCjpFB2ZJFP3SH77xXn_tyIzj-U9zKmN-ZcTgZH5zYkvPgf9DZYdcfyvWZn3ECd-s2cPS3LBmPnPxgKajisWQO5fVWGhG5gyWSsC4LoyGIiyT2KHBKE7aNZInD2cSSsnbY4E8E-dgrzlZOrDw-qXyrkr0NTmhDJtk4FbglF9uOIvNj9HBE4Y");'>
+<div class="absolute top-2 left-2 bg-blue-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">play_circle</span>Video</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Tutorial: Using AI for Data Analysis</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">A step-by-step video guide on leveraging AI tools for insightful data analysis.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 dark:hover:bg-primary/40">
+<span class="truncate">Watch Video</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="Two people collaborating on a software development project." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFqXq5TNPOtyy5y_oFWHjX3iZD8__958OswqvoIKlB1ltE2LyyNeI2bzcmMjqovGw628U3iAFj0hI6X1dLiJu71WfijFTQLU3cZlXUZML3DDfZMie50FCb-owmmL2vr_vyQ3y0gs28AESbgvhHwXHQOitxIvpDgp1NF9XFUUA7ZAr6rH9e-2dFEEH6y_WgiesVfNuprFGXL04bheR1hdcRASz_Do9gISaL3Bfz2RQjgIjjr-yonJY252spAtKe532Z_wD2zeDLsI8");'>
+<div class="absolute top-2 left-2 bg-green-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">article</span>Article</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Agile Development for AI Projects</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">How to adapt agile methodologies for the unique challenges of AI development.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 dark:hover:bg-primary/40">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="flex flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="A checklist on a clipboard." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXgR2PJNkeT1HeB1wOiXbVsMhAIRf_rmSRk48C5eZqxF-Cy3IyFGwmavT3yQCg6btzV9w0wYzQ2zgCEZLd_ZbUqwlFSEnpJUo80YH8lb9dnbf3vdMOoYrkZ0P3BWva6-iAUbfVsJJ5aC_4IZ5PWsH-jmnEP3qIOF5Goz9U7ZdQv3813q6l1kfGdDjGTjglgeOKgHeSd7O6vNjLfcZWZDmojDM6IvMHr3rfe2J7QEtOsRsNr9XVxEfelEcVDRtaFcVpY3zgS-L3vL4");'>
+<div class="absolute top-2 left-2 bg-orange-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">download</span>Checklist</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">Software Project Kick-off Checklist</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">Ensure your next custom software project starts on the right foot with this guide.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 dark:hover:bg-primary/40">
+<span class="truncate">Download Now</span>
+</button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="flex flex-col gap-4 rounded-xl bg-subtle-light dark:bg-subtle-dark shadow-sm transform transition-transform duration-300 hover:scale-105">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col relative" data-alt="Abstract image of data streams and digital bits." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoprOtcj7qABfFnDNWLXv6EENyxEX951GoTt6MFm9jF1rBM9gUdvfWY9W5nDLIPno1iryTWEFaIu9KMsqd-sMmWybKjHi27y5JM7QNzaMo-sjx0BBuyW531nYD1A9TKRw1CR9f39m7vBZrft-Wm5OYWLrXe4gVP0C5_OfalotnkKxFbp2WWIUOfBcOZZpixDnnlXGX1hgXTrMUWQakEtFHxRSwT1qdcxOkg1TUu0dOPcqZLUBLooCjkLbiIzsVoiTFNyQE8cVbqds");'>
+<div class="absolute top-2 left-2 bg-green-500/80 text-white text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">article</span>Article</div>
+</div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-text-light dark:text-text-dark text-lg font-bold leading-normal">AI in 2024: Trends to Watch</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal mt-1">Discover the latest trends in Artificial Intelligence and how they can benefit your business.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/30 dark:hover:bg-primary/40">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center p-4 mt-8">
+<button class="flex min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90">
+<span class="truncate">Load More</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
