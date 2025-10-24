@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
 import config from "@/config";
 
-const currentUrl = window.location.href || "";
-const submitted = currentUrl.includes("?submitted=true");
-
 // This component is used to collect basic client contact information
 // It calls the /api/client route and stores a Client document in the database
 const ClientForm = ({ extraStyle, initialValues = {} }) => {
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     name: initialValues.name || "",
     email: initialValues.email || "",
@@ -23,6 +22,9 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  // Check if form was submitted successfully
+  const submitted = searchParams?.has("submitted") || false;
 
 
   const handleSubmit = async (e) => {
