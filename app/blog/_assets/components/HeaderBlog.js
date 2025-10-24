@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
@@ -287,4 +287,12 @@ const HeaderBlog = () => {
   );
 };
 
-export default HeaderBlog;
+function HeaderBlogWithSuspense() {
+  return (
+    <Suspense fallback={<div className="h-16 bg-gray-900"></div>}>
+      <HeaderBlog />
+    </Suspense>
+  );
+}
+
+export default HeaderBlogWithSuspense;

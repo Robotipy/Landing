@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import config from "@/config";
 import { useSearchParams } from "next/navigation";
 
-export default function ClientInfoPage() {
+function ContactUsContent() {
   const searchParams = useSearchParams();
   const submitted = searchParams.has("submitted");
   
@@ -25,9 +25,7 @@ export default function ClientInfoPage() {
   // if submitted is true, show the success message
   return (
     <>
-      <Suspense>
-        <Header />
-      </Suspense>
+      <Header />
       <main>
         <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 lg:py-20 lg:px-8 background-image">
           <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto text-center text-white">
@@ -65,5 +63,13 @@ export default function ClientInfoPage() {
         </section>
       </main>
     </>
+  );
+}
+
+export default function ClientInfoPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactUsContent />
+    </Suspense>
   );
 } 
