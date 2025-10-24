@@ -2,13 +2,13 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { tools } from "@/libs/tools";
+import SuccessCaseCard from "@/components/SuccessCaseCard";
 
 export default function AgriculturaSuccessCases() {
   const successCases = [
     {
       id: 1,
-      industry: "Agricultura",
+      industry: "Agrotecnología",
       challenge:
         "Generación manual de ofertas técnicas en documentos word con diferentes plantillas e información personalizada para clientes",
       solution:
@@ -24,9 +24,23 @@ export default function AgriculturaSuccessCases() {
     },
     {
       id: 2,
-      industry: "Agricultura",
+      industry: "Agroindustria",
+      challenge: "Conciliar los movimientos de diferentes bancos argentinos y los movimientos de finnegans",
+      solution: "Automatización de la descarga de movimientos de cada banco, comparación con los movimientos de finnegans y conciliación de los mismos",
+      results: {
+        manualExecution: "2 hr",
+        automatedExecution: "5 min",
+        timeSaving: "96%",
+      },
+      name: "Conciliación Bancaria",
+      tools: ["finnegans", "excel", "outlook"],
+      platform: "rocketbot",
+    },
+    {
+      id: 3,
+      industry: "Agrotecnología",
       challenge:
-        "Los operarios poco técnicosen terreno, debían buscar en la base de datos los artículos para presupuestar.",
+        "Los operarios poco técnicos en terreno, debían buscar en la base de datos los artículos para presupuestar.",
       solution:
         "Extracción de los articulos desde un audio enviado por el operario, y envío de la información al sistema de presupuestos.",
       results: {
@@ -39,8 +53,8 @@ export default function AgriculturaSuccessCases() {
       platform: "rocketbot",
     },
     {
-      id: 3,
-      industry: "Agricultura",
+      id: 4,
+      industry: "Frutícola",
       challenge: "Bajar los documentos desde el SII, y carga de cada uno junto a la respectiva orden de compra en su ERP Quality (Q-biz).",
       solution: "Automatización de la descarga de facturas del SII, búsqueda de la respectiva orden de compra y carga en ERP Quality (Q-Biz) ",
       results: {
@@ -53,8 +67,8 @@ export default function AgriculturaSuccessCases() {
       platform: "rocketbot",
     },
     {
-      id: 4,
-      industry: "Agricultura",
+      id: 5,
+      industry: "Agrotecnología",
       challenge: "Generación de Planos DWG e imagenes TIFF descargando archivos KMZ de diferentes plataformas incluyendo google earth",
       solution: "Automatización de la descarga de archivos KMZ y control de las aplicaciones de Google Earth, BricsCad y QGIS para generar los planos y imagenes TIFF",
       results: {
@@ -98,102 +112,7 @@ export default function AgriculturaSuccessCases() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
               {successCases.map((caseStudy) => (
-                <div
-                  key={caseStudy.id}
-                  className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-success mb-3">
-                      {caseStudy.name}
-                    </h3>
-
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Desafío:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.challenge}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Solución:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.solution}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-400">
-                          {caseStudy.results.manualExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Manual
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.automatedExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Automatizada
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.timeSaving}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ahorro de Tiempo
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                      {caseStudy.description}
-                    </p> */}
-
-                    {/* Tools Section */}
-
-                    <div className="mt-4 justify-between items-center hidden md:flex">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5 text-success">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 justify-between items-center md:hidden text-gray-400">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2 w-2/5">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                        <span>Herramientas automatizadas:</span>
-                      <div className="flex flex-wrap gap-3 w-fit px-0 items-center">
-                        
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <SuccessCaseCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>

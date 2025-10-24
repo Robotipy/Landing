@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { tools } from "@/libs/tools";
+import SuccessCaseCard from "@/components/SuccessCaseCard";
 
 export default function TransporteSuccessCases() {
   const successCases = [
@@ -12,14 +13,14 @@ export default function TransporteSuccessCases() {
       challenge:
         "Validación manual de expedientes pendientes de acuse en la Agencia Tributaria de España, proceso lento y propenso a errores.",
       solution:
-        "Automatización de la validación de expedientes pendientes de acuse en la Agencia Tributaria de España, actualizando automáticamente el estado en Dynamics.",
+        "Automatización que actualiza en Dynamics NAV el estado de los expedientes pendientes de acuse en la Agencia Tributaria de España.",
       results: {
         manualExecution: "6 hr",
         automatedExecution: "30 min",
         timeSaving: "92%",
       },
       name: "Expedientes Pendientes Acuse",
-      tools: ["excel", "web-scraping", "dynamics"],
+      tools: ["dynamics", "chrome", "outlook"],
       platform: "rocketbot",
     },
     {
@@ -35,11 +36,27 @@ export default function TransporteSuccessCases() {
         timeSaving: "92%",
       },
       name: "Expedientes Pendientes Recepción",
-      tools: ["excel", "web-scraping", "dynamics"],
+      tools: ["dynamics", "chrome", "outlook"],
       platform: "rocketbot",
     },
     {
       id: 3,
+      industry: "Logística",
+      challenge:
+        "Ingresar al sistema Kipintoch e ingresar en cada módulo para descargar sus reportes (Rentabilidad, Comercial, etc)",
+      solution:
+        "Automatización de la descarga de reportes del sistema Kipintoch, permitiendo parametrizar los filtros y exportarlos en Excel",
+      results: {
+        manualExecution: "1 hr",
+        automatedExecution: "10 min",
+        timeSaving: "92%",
+      },
+      name: "Descarga de Estadisticas",
+      tools: ["chrome", "outlook", "excel"],
+      platform: "uipath",
+    },
+    {
+      id: 4,
       industry: "Transporte",
       challenge:
         "Envío manual de datos de expedientes de la AEAT (España) desde Dynamics NAV, incluyendo extracción, validación y firma digital.",
@@ -50,24 +67,8 @@ export default function TransporteSuccessCases() {
         automatedExecution: "45 min",
         timeSaving: "91%",
       },
-      name: "Expediente Pendiente Válido España",
-      tools: ["excel", "dynamics", "web-scraping"],
-      platform: "rocketbot",
-    },
-    {
-      id: 4,
-      industry: "Transporte",
-      challenge:
-        "Gestión manual de expedientes de Portugal en Dynamics NAV, incluyendo consulta con NIF y validación con la AEAT.",
-      solution:
-        "Automatización de la gestión de expedientes de Portugal en Dynamics NAV, incluyendo consulta con NIF, validación con la AEAT y presentación automática.",
-      results: {
-        manualExecution: "7 hr",
-        automatedExecution: "40 min",
-        timeSaving: "90%",
-      },
-      name: "Expedientes Pendientes Portugal",
-      tools: ["excel", "dynamics", "web-scraping"],
+      name: "Expediente Pendiente España y Portugal",
+      tools: ["dynamics", "chrome", "outlook"],
       platform: "rocketbot",
     },
     {
@@ -76,14 +77,14 @@ export default function TransporteSuccessCases() {
       challenge:
         "Actualización manual de vehículos de Gasóleo Profesional, consultando la AEAT y extrayendo datos a Excel para importación.",
       solution:
-        "Automatización de la actualización de vehículos de Gasóleo Profesional, consultando la AEAT, extrayendo datos a Excel e importando automáticamente al sistema.",
+        "Automatización de la actualización de vehículos de Gasóleo Profesional, consultando la AEAT, extrayendo datos a Excel e importando datos al sistema.",
       results: {
         manualExecution: "4 hr",
         automatedExecution: "20 min",
         timeSaving: "92%",
       },
       name: "Vehículos Declarados",
-      tools: ["excel", "web-scraping", "dynamics"],
+      tools: ["excel", "chrome", "dynamics"],
       platform: "rocketbot",
     },
     {
@@ -99,9 +100,10 @@ export default function TransporteSuccessCases() {
         timeSaving: "92%",
       },
       name: "Estado Devoluciones Gasóleo Profesional",
-      tools: ["excel", "web-scraping", "dynamics"],
+      tools: ["dynamics", "chrome", "outlook"],
       platform: "rocketbot",
     },
+
   ];
 
   return (
@@ -109,9 +111,10 @@ export default function TransporteSuccessCases() {
       <Header />
       <main className="min-h-screen bg-gray-900">
         {/* Hero Section */}
-        <section className="py-20 lg:py-32 bg-gradient-to-br from-gray-800 to-gray-900">
+        <section className="py-20 lg:py-32 bg-gradient-to-br from-gray-800 to-gray-900"
+        style={{ backgroundImage: "url('/assets/banners/logistica.jpeg')", backgroundSize: "cover", backgroundPosition: "center" }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
+            <div className="text-center bg-primary/35 md:bg-primary/35 py-4 text-white">
               <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
                 Soluciones para el Sector Transporte
               </h1>
@@ -131,97 +134,7 @@ export default function TransporteSuccessCases() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
               {successCases.map((caseStudy) => (
-                <div
-                  key={caseStudy.id}
-                  className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-success mb-3">
-                      {caseStudy.name}
-                    </h3>
-
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Desafío:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.challenge}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Solución:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.solution}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-400">
-                          {caseStudy.results.manualExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Manual
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.automatedExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Automatizada
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.timeSaving}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ahorro de Tiempo
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tools Section */}
-                    <div className="mt-4 justify-between items-center hidden md:flex">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5 text-success">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 justify-between items-center md:hidden text-gray-400">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2 w-2/5">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                        <span>Herramientas automatizadas:</span>
-                      <div className="flex flex-wrap gap-3 w-fit px-0 items-center">
-                        
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <SuccessCaseCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>

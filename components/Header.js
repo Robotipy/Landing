@@ -24,7 +24,7 @@ const links = [
     dropdownItems: [
       {
         href: "/casos-exito/agricola",
-        label: "Agricultura, Agroalimentación y Agrotecnología",
+        label: "Agrícola",
         description: "Automatización de procesos agrícolas, fruticultura y agrotecnológicos"
       },
       {
@@ -34,14 +34,14 @@ const links = [
       },
       {
         href: "/casos-exito/financiero",
-        label: "Servicios Financieros",
-        description: "Optimización de operaciones bancarias y seguros"
+        label: "Financiero",
+        description: "Optimización de operaciones bancarias, seguros y contables"
       },
-      {
-        href: "/casos-exito/alimentos",
-        label: "Alimentos y Bebidas",
-        description: "Automatización de procesos alimentarios"
-      },
+      // {
+      //   href: "/casos-exito/alimentos",
+      //   label: "Alimentos",
+      //   description: "Automatización de procesos alimentarios"
+      // },
       {
         href: "/casos-exito/transporte",
         label: "Transporte y Logística",
@@ -52,11 +52,11 @@ const links = [
         label: "Servicios Profesionales",
         description: "Automatización de estudios contables, jurídicos y de software"
       },
-      {
-        href: "/casos-exito/salud",
-        label: "Salud",
-        description: "Digitalización de procesos médicos y sanitarios"
-      }
+      // {
+      //   href: "/casos-exito/salud",
+      //   label: "Salud",
+      //   description: "Digitalización de procesos médicos y sanitarios"
+      // }
     ]
   },
    {

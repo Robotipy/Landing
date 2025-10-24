@@ -23,7 +23,7 @@ const Solutions = () => {
       title: "Capacitación de equipos",
       description:
         "Fortalece tu equipo con capacitación práctica en Inteligencia Artificial y automatización de procesos.",
-      link: "/training",
+      link: "/capacitaciones",
     },
     {
       icon: "/assets/icons/ai_icon.png",
@@ -41,10 +41,10 @@ const Solutions = () => {
     },
     {
       icon: "/assets/icons/object_icon.png",
-      title: "Detección de objetos",
+      title: "Staff Outsourcing",
       description:
-        "Implementa visión por computadora para identificar y analizar objetos en imágenes y videos.",
-      link: "/object-detection",
+        "Suma a tu equipo un experto dedicado exclusivamente a tus proyectos. El talento que necesitas, para alcanzar tus metas.",
+      link: "/contact-us",
     },
   ];
 

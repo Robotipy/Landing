@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { tools } from "@/libs/tools";
+import SuccessCaseCard from "@/components/SuccessCaseCard";
 
 export default function FinancieroSuccessCases() {
   const successCases = [
@@ -16,50 +16,78 @@ export default function FinancieroSuccessCases() {
         automatedExecution: "18 min",
         timeSaving: "94%"
       },
-      name: "Carga de Contratos en la dirección del trabajo",
-      tools: ["excel", "midt"],
+      name: "Carga de Contratos en MIDT",
+      tools: ["excel", "midt", "outlook"],
       platform: "rocketbot"
     },
     {
       id: 2,
-      industry: "Banca",
-      challenge: "Validación de dominios de correos electrónicos de contacto para documentos a ratificar.",
-      solution: "Automatización de la búsqueda de dominios de correos electrónicos de contacto en los sitios de godaddy, nic chile y whois",
+      industry: "Seguros",
+      challenge: "Buscar el estado de los siniestros abiertos en cada plataforma de seguros y actualizar la información en el portal de elevia",
+      solution: "Automatización que ingresa al sistema de cada seguro, obtiene las observaciones, descarga los adjuntos y actualiza la información en el portal de elevia",
       results: {
         manualExecution: "4 hr",
         automatedExecution: "15 min",
         timeSaving: "94%"
+      },
+      name: "Actualización de Siniestros",
+      tools: ["chrome", "reale-seguros", "mapfre", "allianz", "axa"],
+      platform: "rocketbot"
+    },
+    {
+      id: 3,
+      industry: "Banca",
+      challenge: "Validación de dominios de correos electrónicos de contacto para documentos a ratificar.",
+      solution: "Automatización de la búsqueda de dominios de correos electrónicos de contacto en los sitios de godaddy, nic chile y whois",
+      results: {
+        manualExecution: "5 hr",
+        automatedExecution: "1 hr",
+        timeSaving: "80%"
       },
       name: "Ratificación de Dominios",
       tools: ["chrome", "sharepoint"],
       platform: "rocketbot"
     },
     {
-      id: 3,
-      industry: "Banca",
-      challenge: "Descarga manual de documentos del SII y gestión de datos",
-      solution: "Automatización de descarga y gestión de documentos fiscales",
+      id: 4,
+      industry: "Estudio Contable",
+      challenge: "Extracción manual de información de Facturas de Cereal, Leche y Hacienda para ingreso en documentos de Compra y Venta.",
+      solution: "Automatización que recibe las facturas desde un formulario web y genera los reportes de compra, venta y bienes y servicios",
       results: {
-        manualExecution: "6 hr",
-        automatedExecution: "25 min",
-        timeSaving: "93%"
+        manualExecution: "1 hr",
+        automatedExecution: "7 min",
+        timeSaving: "88%"
       },
-      name: "Descarga de Documentos SII",
-      tools: ["excel", "sii"],
+      name: "Lectura de Facturas",
+      tools: ["excel", "pdf", "outlook", "chrome"],
       platform: "rocketbot"
     },
     {
-      id: 4,
+      id: 5,
       industry: "Seguros",
-      challenge: "Procesamiento manual de siniestros y notificaciones",
-      solution: "Automatización de procesamiento y notificación de siniestros",
+      challenge: "Notificar por email y whatsapp a los clientes y responsables el estado de los siniestros pendientes en el software ebroker",
+      solution: "Automatización de que ingresa al sistema ebroker, y notifica a los usuarios o respnsables a través de correo o whatsapp el estado de los siniestros",
       results: {
-        manualExecution: "5 hr",
-        automatedExecution: "20 min",
-        timeSaving: "93%"
+        manualExecution: "8 hr",
+        automatedExecution: "1 hr",
+        timeSaving: "88%"
       },
       name: "Notificación de Siniestros",
-      tools: ["excel", "outlook"],
+      tools: ["excel", "outlook", "ebroker", "chrome"],
+      platform: "rocketbot"
+    },
+    {
+      id: 6,
+      industry: "Seguros",
+      challenge: "Resolver tareas pendientes y crear, asignar y/o actualizar siniestros en elevia y reale seguros",
+      solution: "Automatización de que ingresa al sistema elevia, y según el tipo de tarea, crea, asigna y actualiza los siniestros en reale seguros",
+      results: {
+        manualExecution: "30 min",
+        automatedExecution: "1 min",
+        timeSaving: "97%"
+      },
+      name: "Gestión de tareas",
+      tools: ["excel", "outlook", "reale-seguros"],
       platform: "rocketbot"
     }
   ];
@@ -94,83 +122,7 @@ export default function FinancieroSuccessCases() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
               {successCases.map((caseStudy) => (
-                <div
-                  key={caseStudy.id}
-                  className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-success mb-3">
-                      {caseStudy.name}
-                    </h3>
-                    
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">Desafío:</h4>
-                        <p className="text-gray-400 text-sm">{caseStudy.challenge}</p>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">Solución:</h4>
-                        <p className="text-gray-400 text-sm">{caseStudy.solution}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-400">
-                          {caseStudy.results.manualExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">Ejecución Manual</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.automatedExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">Ejecución Automatizada</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.timeSaving}
-                        </div>
-                        <div className="text-xs text-gray-400">Ahorro de Tiempo</div>
-                      </div>
-                    </div>
-                    
-                    {/* Tools Section */}
-                    <div className="mt-4 justify-between items-center hidden md:flex">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5 text-success">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 justify-between items-center md:hidden text-gray-400">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2 w-2/5">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                        <span>Herramientas automatizadas:</span>
-                      <div className="flex flex-wrap gap-3 w-fit px-0 items-center">
-                        
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <SuccessCaseCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>

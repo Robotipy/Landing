@@ -14,7 +14,7 @@ const SoftwareHero = () => {
                   <h1 className="text-white text-6xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
                     Construimos la Tecnología que <br/>tu negocio necesita para ganar
                   </h1>
-                  <h2 className="text-white/80 text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                  <h2 className="text-white/80 text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal pt-10 pb-5">
                     Diseñamos y desarrollamos sistemas web, móviles y empresariales robustos, escalables y seguros que se adaptan a tus objetivos comerciales únicos.
                   </h2>
                 </div>

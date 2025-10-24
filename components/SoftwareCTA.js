@@ -6,10 +6,10 @@ const SoftwareCTA = () => {
     <section className="py-16 lg:py-32 bg-primary dark:bg-primary/95">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 py-5">
             ¿Listo para construir la herramienta que llevará tu negocio al siguiente nivel?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed py-5">
             Hablemos sobre tus ideas y veamos cómo podemos convertirlas en realidad.
             <br/>Construyamos juntos el software que transformará tu empresa.
           </p>

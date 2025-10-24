@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { tools } from "@/libs/tools";
+import SuccessCaseCard from "@/components/SuccessCaseCard";
 
 export default function AutomotrizSuccessCases() {
   const successCases = [
@@ -37,26 +37,9 @@ export default function AutomotrizSuccessCases() {
       name: "Descarga de Órdenes y Facturas",
       tools: ["excel", "chrome", "outlook"],
       platform: "rocketbot",
-    },
-    {
+    },{
       id: 3,
-      industry: "Automotriz",
-      challenge:
-        "Valoración manual de baterías de vehículos en el portal de Allianz con verificación de estado y documentación.",
-      solution:
-        "Automatización de la valoración de baterías en el portal de Allianz, incluyendo verificación de estado, documentación y generación de reportes.",
-      results: {
-        manualExecution: "3 hr",
-        automatedExecution: "20 min",
-        timeSaving: "89%",
-      },
-      name: "Valoración de Baterías",
-      tools: ["excel", "chrome", "pdf", "outlook"],
-      platform: "rocketbot",
-    },
-    {
-      id: 4,
-      industry: "Automotriz",
+      industry: "Rent-a-car",
       challenge: "El proceso de generación de órdenes de compra, debía cargar datos a SAP y mandar la OC al proveedor, pasando por diferentes etapas de aprobación y validación.",
       solution:
         "Automatización de la generación de órdenes de compra, incluyendo estandarización, carga de datos a SAP y envío de la OC al proveedor 24/7.",
@@ -69,6 +52,22 @@ export default function AutomotrizSuccessCases() {
       tools: ["excel", "sap","pdf","outlook"],
       platform: "rocketbot",
     },
+    {
+      id: 4,
+      industry: "Logística",
+      challenge:
+        "Valoración manual de baterías de vehículos en el portal de Allianz con verificación de estado y documentación.",
+      solution:
+        "Automatización de la valoración de baterías en el portal de Allianz, incluyendo verificación de estado, documentación y generación de reportes.",
+      results: {
+        manualExecution: "3 hr",
+        automatedExecution: "20 min",
+        timeSaving: "89%",
+      },
+      name: "Valoración de Baterías",
+      tools: ["excel", "chrome", "pdf", "outlook"],
+      platform: "rocketbot",
+    }
   ];
 
   return (
@@ -100,97 +99,7 @@ export default function AutomotrizSuccessCases() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
               {successCases.map((caseStudy) => (
-                <div
-                  key={caseStudy.id}
-                  className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-success mb-3">
-                      {caseStudy.name}
-                    </h3>
-
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Desafío:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.challenge}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Solución:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.solution}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-400">
-                          {caseStudy.results.manualExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Manual
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.automatedExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Automatizada
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.timeSaving}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ahorro de Tiempo
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tools Section */}
-                    <div className="mt-4 justify-between items-center hidden md:flex">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5 text-success">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 justify-between items-center md:hidden text-gray-400">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2 w-2/5">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                        <span>Herramientas automatizadas:</span>
-                      <div className="flex flex-wrap gap-3 w-fit px-0 items-center">
-                        
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <SuccessCaseCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>

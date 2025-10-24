@@ -897,13 +897,13 @@ Detalles del proceso:
                   >
                     💬 Contactar Ventas
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => window.location.href = 'https://calendar.app.google/bp4toLzqWLMT6BWi8'}
                     className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 px-6 rounded-md 
                        transition-colors duration-200 font-semibold"
                   >
                     📅 Programar Demo
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

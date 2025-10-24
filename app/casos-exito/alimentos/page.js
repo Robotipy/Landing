@@ -18,7 +18,7 @@ export default function AlimentosSuccessCases() {
         automatedExecution: "20 min",
         timeSaving: "92%",
       },
-      name: "Ratificación OP",
+      name: "Mercadería OP",
       tools: ["excel", "pdf", "dynamics"],
       platform: "rocketbot",
     },

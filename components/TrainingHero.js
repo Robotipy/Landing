@@ -19,7 +19,7 @@ const TrainingHero = () => {
                   </h2>
                 </div>
                 <ButtonMain 
-                  text="Ver Cursos y Rutas de Aprendizaje" 
+                  text="Solicitar Capacitación" 
                   link="/contact-us" 
                   type="primary"
                 />

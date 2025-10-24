@@ -26,7 +26,7 @@ export default function Home() {
         <Hero />
         <TrustInUs priority={true} />
         <Solutions />
-        <FeaturedCaseStudies />
+        {/* <FeaturedCaseStudies /> */}
         <MapsSolutions />
         {/* <PagePreviewCenter /> */}
         {/* <BlogPreview /> */}
