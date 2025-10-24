@@ -45,10 +45,10 @@ const ChatbotUseCases = () => {
                 <div className="text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                   {useCase.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   {useCase.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed">
                   {useCase.description}
                 </p>
               </div>
