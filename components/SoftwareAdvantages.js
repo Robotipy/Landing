@@ -42,10 +42,10 @@ const SoftwareAdvantages = () => {
     <section className="py-10 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             La Ventaja del Software Personalizado
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
             El software genérico no se adapta a todos los negocios. Abordamos las limitaciones de las soluciones genéricas, sistemas heredados y desafíos de integración construyendo software personalizado que te da control total, aumenta la eficiencia y escala con tu crecimiento.
           </p>
         </div>
@@ -53,14 +53,14 @@ const SoftwareAdvantages = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {advantages.map((advantage, index) => (
             <div key={index} className="text-center">
-              <div className="bg-gray-50 dark:bg-secondary rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full border border-gray-200 dark:border-gray-600">
-                <div className="text-green-600 dark:text-green-400 mb-6 flex justify-center">
+              <div className="bg-secondary rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full border border-gray-600">
+                <div className="text-green-400 mb-6 flex justify-center">
                   {advantage.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl font-bold text-white mb-4">
                   {advantage.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   {advantage.description}
                 </p>
               </div>

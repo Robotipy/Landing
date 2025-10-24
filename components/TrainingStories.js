@@ -17,17 +17,17 @@ const TrainingStories = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white dark:bg-gray-900">
+    <section className="py-16 lg:py-24 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Historias de Transformación
           </h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {stories.map((story, index) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+            <div key={index} className="bg-gray-800 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center mb-6">
                 <Image
                   className="w-16 h-16 rounded-full object-cover mr-4"
@@ -37,15 +37,15 @@ const TrainingStories = () => {
                   height={64}
                 />
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-lg font-bold text-white">
                     {story.name}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-400">
                     {story.role}
                   </p>
                 </div>
               </div>
-              <blockquote className="text-gray-700 dark:text-gray-300 italic text-lg leading-relaxed">
+              <blockquote className="text-gray-300 italic text-lg leading-relaxed">
                 &quot;{story.testimonial}&quot;
               </blockquote>
             </div>

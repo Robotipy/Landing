@@ -30,7 +30,7 @@ const Solutions = () => {
       title: "AI & Machine Learning",
       description:
         "Utilice la IA para obtener insights, hacer predicciones y impulsar la innovación inteligente.",
-      link: "/ai",
+      link: "/contact-us",
     },
     {
       icon: "/assets/icons/software_icon.png",

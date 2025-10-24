@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const SoftwareCTA = () => {
   return (
-    <section className="py-16 lg:py-32 bg-primary dark:bg-primary/95">
+    <section className="py-16 lg:py-32 bg-primary/95">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 py-5">

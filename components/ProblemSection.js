@@ -26,10 +26,10 @@ const ProblemSection = () => {
     <div className="flex flex-col gap-10 px-4 py-16 @container">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4 max-w-[720px] mx-auto text-center">
-          <h1 className="text-primary dark:text-white tracking-light text-4xl font-bold leading-tight">
+          <h1 className="text-white tracking-light text-4xl font-bold leading-tight">
             ¿Cansado de que los Procesos Manuales Te Retengan?
           </h1>
-          <p className="text-text-light dark:text-text-dark text-lg font-normal leading-relaxed">
+          <p className="text-text-dark text-lg font-normal leading-relaxed">
             Las tareas manuales y repetitivas son un drenaje de tus recursos y una barrera para el crecimiento. Introducen errores, ralentizan tus operaciones y previenen que tu equipo se enfoque en lo que realmente importa. Te ayudamos a liberarte de estas limitaciones.
           </p>
         </div>
@@ -38,15 +38,15 @@ const ProblemSection = () => {
         {problems.map((problem, index) => (
           <div 
             key={index}
-            className="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-background-secondary p-6 flex-col text-center items-center"
+            className="flex flex-1 gap-4 rounded-xl border border-slate-700 bg-background-secondary p-4 flex-col text-center items-center"
             
           >
-            <div className="p-4">
-              <span className="material-icons text-3xl text-primary dark:text-white">{problem.icon}</span>
+            <div className="p-3">
+              <span className="material-icons text-3xl text-white">{problem.icon}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <h2 className="text-primary dark:text-white text-lg font-bold leading-tight">{problem.title}</h2>
-              <p className="text-sm text-text-light dark:text-text-dark text-base font-normal leading-normal">{problem.description}</p>
+              <h2 className="text-white text-lg font-bold leading-tight">{problem.title}</h2>
+              <p className="text-sm text-text-dark text-base font-normal leading-normal">{problem.description}</p>
             </div>
           </div>
         ))}

@@ -2,7 +2,7 @@ import ButtonMain from "./ButtonMain";
 
 const AutomationCTA = () => {
   return (
-    <div className="bg-primary dark:bg-slate-800 rounded-xl my-16 text-center text-white py-16 p-10 md:p-12 lg:p-16">
+    <div className="bg-slate-800 rounded-xl my-16 text-center text-white py-16 p-10 md:p-12 lg:p-16">
       <h2 className="text-3xl lg:text-4xl font-black">
         ¿Listo para Comenzar a Automatizar?
       </h2>

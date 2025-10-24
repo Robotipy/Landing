@@ -28,9 +28,9 @@ const SoftwareMethodology = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-800">
+    <section className="py-16 lg:py-24 bg-gray-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 text-center">
           Nuestra Metodología de Desarrollo
         </h2>
         
@@ -44,14 +44,14 @@ const SoftwareMethodology = () => {
                   </span>
                 </div>
                 {index < phases.length - 1 && (
-                  <div className="w-[2px] bg-gray-300 dark:bg-gray-600 h-full grow"></div>
+                  <div className="w-[2px] bg-gray-600 h-full grow"></div>
                 )}
               </div>
               <div className="flex flex-1 flex-col pt-3 pb-8">
-                <h3 className="text-gray-900 dark:text-white text-lg font-bold leading-normal mb-2">
+                <h3 className="text-white text-lg font-bold leading-normal mb-2">
                   {phase.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-base">
+                <p className="text-gray-300 text-base">
                   {phase.description}
                 </p>
               </div>

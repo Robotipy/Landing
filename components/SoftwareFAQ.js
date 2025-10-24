@@ -32,10 +32,10 @@ const SoftwareFAQ = () => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-white dark:bg-gray-900">
+    <section className="py-16 lg:py-24 bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Preguntas Frecuentes
           </h2>
         </div>
@@ -44,18 +44,18 @@ const SoftwareFAQ = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+              className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
             >
               <button
                 className="w-full px-8 py-6 text-left focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-inset"
                 onClick={() => toggleFAQ(index)}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white pr-4">
+                  <h3 className="text-lg font-semibold text-white pr-4">
                     {faq.question}
                   </h3>
                   <div className={`flex-shrink-0 transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}>
-                    <svg className="w-6 h-6 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
@@ -64,8 +64,8 @@ const SoftwareFAQ = () => {
               
               {openIndex === index && (
                 <div className="px-8 pb-6">
-                  <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <div className="border-t border-gray-700 pt-4">
+                    <p className="text-gray-300 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>

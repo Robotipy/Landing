@@ -32,10 +32,10 @@ const ProcessSection = () => {
   return (
     <div className="py-16">
       <div className="max-w-[720px] mx-auto text-center mb-12">
-        <h1 className="text-primary dark:text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+        <h1 className="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
           Nuestro Proceso Probado
         </h1>
-        <p className="text-text-light dark:text-text-dark text-lg mt-2 px-3">
+        <p className="text-white text-lg mt-2 px-3">
           Desde el concepto hasta la finalización, hacemos que la automatización sea simple.
         </p>
       </div>
@@ -47,12 +47,12 @@ const ProcessSection = () => {
                 {step.icon}
               </div>
               {index < steps.length - 1 && (
-                <div className="w-px h-8 bg-slate-300 dark:bg-slate-600 mt-4"></div>
+                <div className="w-px h-8 bg-slate-700 mt-4"></div>
               )}
             </div>
             <div className="flex flex-1 flex-col">
-              <p className="text-primary dark:text-white text-xl font-bold leading-normal">{step.title}</p>
-              <p className="text-text-light dark:text-text-dark text-base font-normal leading-relaxed mt-1">
+              <p className="text-white text-xl font-bold leading-normal">{step.title}</p>
+              <p className="text-white text-base font-normal leading-relaxed mt-1">
                 {step.description}
               </p>
             </div>

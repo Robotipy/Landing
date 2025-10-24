@@ -27,10 +27,10 @@ const TrainingMethodology = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-800">
+    <section className="py-16 lg:py-24 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Nuestra Metodología de Aprendizaje
           </h2>
         </div>
@@ -38,14 +38,14 @@ const TrainingMethodology = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {methodologies.map((methodology, index) => (
             <div key={index} className="text-center">
-              <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+              <div className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
                 <span className="material-icons text-success">
                   {methodology.icon}
                 </span>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-lg font-bold text-white mb-4">
                   {methodology.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   {methodology.description}
                 </p>
               </div>
