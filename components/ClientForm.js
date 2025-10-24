@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
 import config from "@/config";
@@ -10,6 +10,7 @@ import config from "@/config";
 // It calls the /api/client route and stores a Client document in the database
 const ClientForm = ({ extraStyle, initialValues = {} }) => {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [formData, setFormData] = useState({
     name: initialValues.name || "",
     email: initialValues.email || "",
@@ -23,7 +24,8 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // Check if form was submitted successfully
+  // Get current URL safely using Next.js hooks
+  const currentUrl = `${config.domainName}${pathname}`;
   const submitted = searchParams?.has("submitted") || false;
 
 
