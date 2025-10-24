@@ -157,7 +157,7 @@ const AboutPage = () => {
             <div className="text-center py-16 px-4">
               <h2 className="text-2xl font-bold text-text-primary dark:text-text-primary-dark font-heading">Ready to Automate Your Success?</h2>
               <p className="text-text-light dark:text-text-dark mt-2 max-w-xl mx-auto">
-                Let's discuss how Robotipy can help your business thrive with intelligent automation.
+                Let&apos;s discuss how Robotipy can help your business thrive with intelligent automation.
               </p>
               <button className="mt-6 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 mx-auto bg-accent text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors">
                 <span>Contact Us</span>

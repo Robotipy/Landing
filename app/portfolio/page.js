@@ -5,14 +5,7 @@ import InputSearch from "@/components/InputSearch";
 
 import { getCryptos } from "@/libs/binance";
 
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
+// Removed NextUI table imports - using regular HTML table instead
 
 const columns = [
   { name: "TICKER", uid: "ticker" },
@@ -157,30 +150,33 @@ export default function MyPortfolio() {
           btnName="Agregar crypto"
           callback={addCryptoCallback}
         />
-        <Table aria-label="Example table with custom cells">
-          <TableHeader columns={columns}>
-            {(column) => (
-              <TableColumn
-                key={column.uid}
-                align={column.uid === "actions" ? "center" : "start"}
-              >
-                {column.name}
-              </TableColumn>
-            )}
-          </TableHeader>
-          <TableBody items={userPortfolio}>
-            {(item) => (
-              // add tree for each row
-              <TableRow key={item.name}>
+        <div className="overflow-x-auto">
+          <table className="table table-zebra w-full">
+            <thead>
+              <tr>
                 {columns.map((column) => (
-                  <TableCell key={column.uid}>
-                    {renderCell(item, column.uid)}
-                  </TableCell>
+                  <th
+                    key={column.uid}
+                    className={column.uid === "actions" ? "text-center" : "text-left"}
+                  >
+                    {column.name}
+                  </th>
                 ))}
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              </tr>
+            </thead>
+            <tbody>
+              {userPortfolio.map((item) => (
+                <tr key={item.name}>
+                  {columns.map((column) => (
+                    <td key={column.uid}>
+                      {renderCell(item, column.uid)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
       <section className="my-7 container mx-auto space-y-8">
         <h1 className="text-2xl font-bold">Mapa del Portafolio</h1>

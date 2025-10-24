@@ -8,8 +8,8 @@ const FinalCTA = () => {
           <div className="text-center md:text-left">
             <h2 className="text-4xl md:text-5xl font-bold">Ready to transform your operation?</h2>
             <p className="mt-4 text-lg text-gray-200">
-              Let's discuss how our expertise in automation and AI can help you achieve your goals. 
-              We're committed to delivering measurable results and building lasting partnerships.
+              Let&apos;s discuss how our expertise in automation and AI can help you achieve your goals. 
+              We&apos;re committed to delivering measurable results and building lasting partnerships.
             </p>
             <Link
               href="/contact"

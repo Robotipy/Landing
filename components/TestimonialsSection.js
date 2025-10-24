@@ -44,7 +44,7 @@ const TestimonialsSection = () => {
                   {testimonial.name}
                 </p>
                 <p className="text-text-light dark:text-text-dark text-sm font-normal leading-normal mt-2">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </p>
               </div>
             </div>

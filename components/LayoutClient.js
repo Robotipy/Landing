@@ -7,7 +7,7 @@ import { Crisp } from "crisp-sdk-web";
 import { SessionProvider } from "next-auth/react";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
-import { Tooltip } from "react-tooltip";
+// Removed react-tooltip import - using native HTML title attribute instead
 import config from "@/config";
 
 // Crisp customer chat support:
@@ -68,11 +68,7 @@ const ClientLayout = ({ children }) => {
           }}
         />
 
-        {/* Show tooltips if any JSX elements has these 2 attributes: data-tooltip-id="tooltip" data-tooltip-content="" */}
-        <Tooltip
-          id="tooltip"
-          className="z-[60] !opacity-100 max-w-sm shadow-lg"
-        />
+        {/* Tooltips removed - use native HTML title attribute instead */}
 
         {/* Set Crisp customer chat support */}
         <CrispChat />
