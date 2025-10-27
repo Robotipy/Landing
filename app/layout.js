@@ -16,7 +16,6 @@ export const viewport = {
   initialScale: 1,
 };
 
-
 // This adds default SEO tags to all pages in our app.
 // You can override them in each page passing params to getSOTags() function.
 export const metadata = getSEOTags({ canonicalUrlRelative: "/" });
@@ -25,7 +24,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
       <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
         {config.domainName && (
           <>
             <PlausibleProvider domain={config.domainName} />
@@ -37,14 +39,16 @@ export default function RootLayout({ children }) {
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
         <ClientLayout>{children}</ClientLayout>
         <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-56CGK5FP"
-          height="0"
-          width="0"
-          style={{ display: "none", visibility: "hidden" }}
-        />
-      </noscript>
-      <ZohoSalesIQ />
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-KBLGJHLN"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
+        </noscript>
+        <ZohoSalesIQ />
       </body>
     </html>
   );
