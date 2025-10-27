@@ -100,8 +100,8 @@ const ROICalculator = () => {
     },
     
     // Partner costs
-    robotDevelopmentCost: 4500,
-    annualMaintenanceCost: 450
+    robotDevelopmentCost: 5800,
+    annualMaintenanceCost: 580
   });
 
   // Lead capture state
@@ -319,8 +319,8 @@ const ROICalculator = () => {
       },
       
       // Partner costs
-      robotDevelopmentCost: 4500,
-      annualMaintenanceCost: 450
+      robotDevelopmentCost: 5800,
+      annualMaintenanceCost: 580
     });
     setSelectedTemplate('');
     toast.success("Formulario restablecido a valores predeterminados");
@@ -684,6 +684,7 @@ Detalles del proceso:
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
+                      <p className="text-cyan-400 text-xs">El costo de desarrollo varía según la complejidad del robot. En promedio, el costo de desarrollo es de $5,800 USD.</p>
                     </div>
                     <div className="space-y-2">
                       <label className="text-cyan-50 uppercase text-xs block">
@@ -697,6 +698,7 @@ Detalles del proceso:
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                            text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
                       />
+                      <p className="text-cyan-400 text-xs">El mantenimiento anual suele ser un 10% del costo de desarrollo del robot.</p>
                     </div>
                   </div>
                 </div>

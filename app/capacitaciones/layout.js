@@ -2,8 +2,8 @@ import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export const metadata = getSEOTags({
-  title: `Client Information | ${config.appName}`,
-  description: "Share your automation needs with us. Our team will create a customized RPA solution for your business.",
+  title: `Capacitaciones prácticas de IA y Automatización para Empresas | ${config.appName}`,
+  description: "Capacitaciones en IA y Automatización para todo tu equipo. Cursos prácticos para que usuarios de negocio automaticen sus tareas y programas avanzados para especializar a tus desarrolladores",
   canonicalUrlRelative: "/capacitaciones",
 });
 

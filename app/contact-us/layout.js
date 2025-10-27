@@ -2,9 +2,9 @@ import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export const metadata = getSEOTags({
-  title: `Client Information | ${config.appName}`,
-  description: "Share your automation needs with us. Our team will create a customized RPA solution for your business.",
-  canonicalUrlRelative: "/contact-us",
+  title: `Contacto | ${config.appName}`,
+  description: "Explícanos tus problemas y agenda una llamada para que podamos discutir la mejor manera de hacer tu vida más fácil.",
+  canonicalUrlRelative: "/contact",
 });
 
 export default function Layout({ children }) {
