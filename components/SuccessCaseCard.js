@@ -1,8 +1,22 @@
 "use client";
 
 import { tools } from "@/libs/tools";
+import Link from "next/link";
 
-export default function SuccessCaseCard({ caseStudy }) {
+export default function SuccessCaseCard({ caseStudy, showIndustryLink = false }) {
+  const industryLabel = showIndustryLink && caseStudy.categoria ? (
+    <Link 
+      href={`/casos-exito/${caseStudy.categoria}`}
+      className="text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm hover:bg-gray-600 hover:text-white transition-colors cursor-pointer"
+    >
+      {caseStudy.industry}
+    </Link>
+  ) : (
+    <label className="text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm">
+      {caseStudy.industry}
+    </label>
+  );
+
   return (
     <div className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       <div className="p-6">
@@ -10,9 +24,7 @@ export default function SuccessCaseCard({ caseStudy }) {
           <h3 className="md:text-xl text-lg font-bold text-success">
             {caseStudy.name}
           </h3>
-          <label className="text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm">
-            {caseStudy.industry}
-          </label>
+          {industryLabel}
         </div>
         
         <div className="space-y-3 mb-4">

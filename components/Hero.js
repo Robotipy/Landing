@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="flex flex-row gap-4 mt-8">
           <ButtonMain text="Contáctanos" link="/contact-us" type="quaternary"/>
           {/* <ButtonMain text="Contact us" link="/contact" type="primary" /> */}
-          <ButtonMain text="Ve nuestros proyectos" link="/portfolio" type="primary"/>
+          <ButtonMain text="Ve nuestros proyectos" link="/portafolio" type="primary" noblank={true} />
         </div>
       </div>
     </section>
