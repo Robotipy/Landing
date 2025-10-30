@@ -676,17 +676,12 @@ export default function PortfolioPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {[
                 { name: "Agricultura", url: "/casos-exito/agricola", color: "bg-green-600" },
-                { name: "Alimentos", url: "/casos-exito/alimentos", color: "bg-orange-600" },
+                // { name: "Alimentos", url: "/casos-exito/alimentos", color: "bg-orange-600" },
                 { name: "Automotriz", url: "/casos-exito/automotriz", color: "bg-blue-600" },
                 { name: "Financiero", url: "/casos-exito/financiero", color: "bg-yellow-600" },
-                { name: "Salud", url: "/casos-exito/salud", color: "bg-emerald-600" },
-                { name: "Seguros", url: "/casos-exito/seguros", color: "bg-yellow-500" },
+                // { name: "Salud", url: "/casos-exito/salud", color: "bg-emerald-600" },
                 { name: "Servicios Profesionales", url: "/casos-exito/servicios-profesionales", color: "bg-purple-600" },
-                { name: "Servicios Técnicos", url: "/casos-exito/servicios-tecnicos", color: "bg-gray-600" },
-                { name: "Industrias Tecnológicas", url: "/casos-exito/industrias-tecnologicas", color: "bg-violet-600" },
-                { name: "Software", url: "/casos-exito/software", color: "bg-indigo-600" },
-                { name: "Estudio Jurídico", url: "/casos-exito/estudio-juridico", color: "bg-red-600" },
-                { name: "Transporte", url: "/casos-exito/transporte", color: "bg-teal-600" },
+                { name: "Transporte y Logística", url: "/casos-exito/transporte", color: "bg-teal-600" },
               ].map((industry) => (
                 <Link
                   key={industry.name}
