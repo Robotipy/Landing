@@ -628,6 +628,7 @@ Detalles del proceso:
                         name="exchangeRate"
                         type="number"
                         step="0.01"
+                        disabled
                         value={formData.exchangeRate}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
@@ -816,7 +817,7 @@ Detalles del proceso:
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-cyan-300">Licencias Anuales (20%):</span>
+                          <span className="text-cyan-300">Licencias Anuales:</span>
                           <span className="text-cyan-50">
                             {formatCurrency((calculations.totalLicenseCostLocal || 0) )}
                           </span>
