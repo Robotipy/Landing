@@ -635,7 +635,7 @@ export default function PortfolioPage() {
                 <div className="text-gray-300">Casos de Éxito</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-success mb-2">15+</div>
+                <div className="text-4xl font-bold text-success mb-2">10+</div>
                 <div className="text-gray-300">Industrias</div>
               </div>
               <div>

@@ -21,7 +21,7 @@ const CTA = () => {
             Libera el poder de la automatización y lleva tu negocio al siguiente nivel.
           </p>
 
-          <ButtonMain text="Habla con nosotros" link="/contact" noblank={true}/>
+          <ButtonMain text="Habla con nosotros" link="/contact-us" noblank={true}/>
            
           
         </div>
