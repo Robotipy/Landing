@@ -118,6 +118,7 @@ const ROICalculator = () => {
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState('');
+  const [showDemoModal, setShowDemoModal] = useState(false);
 
   // Calculated values
   const [calculations, setCalculations] = useState({});
@@ -446,6 +447,28 @@ Detalles del proceso:
                 Calcula el retorno de inversión para tu proyecto de automatización. 
                 Configura tus parámetros y ve resultados instantáneos.
               </p>
+              <div className="m-4">
+                <button
+                  onClick={() => setShowDemoModal(true)}
+                  className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-lg 
+                    transition-colors duration-200 font-semibold text-base lg:text-lg shadow-lg hover:shadow-xl"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.78-.217-2.78-1.643V5.653z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Ver Demo
+                </button>
+              </div>
+              
             </div>
 
             {/* Industry Templates */}
@@ -912,6 +935,52 @@ Detalles del proceso:
             </div>
           </div>
         </section>
+
+        {/* Video Demo Modal */}
+        {showDemoModal && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4"
+            onClick={() => setShowDemoModal(false)}
+          >
+            <div 
+              className="bg-transparent border border-cyan-800/20 rounded-lg p-6 max-w-5xl w-full relative"
+              style={{ backgroundColor: config.colors.background }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowDemoModal(false)}
+                className="absolute -top-2 -right-2 bg-cyan-700 hover:bg-cyan-600 text-white rounded-full w-10 h-10 
+                  flex items-center justify-center transition-colors duration-200 z-10 shadow-lg"
+                aria-label="Cerrar modal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                </svg>
+              </button>
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                <iframe
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 0
+                  }}
+                  src="https://www.tella.tv/video/cmhich2io00ha04jugkg8h8ag/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=1"
+                  allowFullScreen
+                  allowTransparency
+                  title="Demo Video"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Lead Capture Modal */}
         {showLeadForm && (
