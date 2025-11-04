@@ -18,7 +18,7 @@ export default async function Blog() {
     .slice(0, 6);
   return (
     <>
-      <section className="text-center max-w-5xl mx-auto mt-12 mb-24 md:mb-32">
+      <section className="text-center max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto mt-12 mb-24 md:mb-32">
         <h1 className="text-white text-3xl lg:text-5xl tracking-tight mb-6">
           The {config.appName} Blog
         </h1>
@@ -27,7 +27,7 @@ export default async function Blog() {
         </p>
       </section>
 
-      <section className="grid lg:grid-cols-2 mb-24 md:mb-32 gap-8 max-w-5xl mx-auto">
+      <section className="grid lg:grid-cols-2 mb-24 md:mb-32 gap-8 max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto">
         {articlesToDisplay.map((article, i) => (
           <CardArticle
             article={article}
