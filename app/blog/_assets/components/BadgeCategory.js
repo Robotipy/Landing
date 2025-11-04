@@ -5,7 +5,7 @@ const Category = ({ category, extraStyle }) => {
   return (
     <Link
       href={`/blog/category/${category.slug}`}
-      className={`badge badge-sm md:badge-md hover:badge-primary ${
+      className={`badge badge-sm md:badge-md hover:badge-primary hover:border-white text-primary bg-white ${
         extraStyle ? extraStyle : ""
       }`}
       title={`Posts in ${category.title}`}

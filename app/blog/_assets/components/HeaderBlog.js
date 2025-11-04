@@ -7,18 +7,18 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/icon.png";
 import config from "@/config";
-import { categories } from "../content";
+import { categories } from "../categories.js";
 import ButtonSignin from "@/components/ButtonSignin";
 
 const links = [
   {
     href: "/blog/",
-    label: "All Posts",
+    label: "Todos los Posts",
   },
 ];
 
 const cta = (
-  <ButtonSignin text="Prevent disputes" extraStyle="btn-primary md:btn-sm" />
+  <ButtonSignin text="Contáctanos" extraStyle="btn-white md:btn-sm" />
 );
 
 const ButtonPopoverCategories = () => {
@@ -27,10 +27,10 @@ const ButtonPopoverCategories = () => {
       {({ open }) => (
         <>
           <Popover.Button
-            className="link no-underline flex flex-nowrap items-center gap-1 text-base-content/80 hover:text-base-content active:text-base-content focus:text-base-content duration-100"
-            title="Open Blog categories"
+            className="link no-underline flex flex-nowrap items-center gap-1 text-white hover:text-white/70 active:text-white focus:text-white duration-100"
+            title="Abrir categorías del blog"
           >
-            Categories
+            Categorías
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -61,7 +61,7 @@ const ButtonPopoverCategories = () => {
                     {categories.map((category) => (
                       <div key={category.slug} onClick={() => close()}>
                         <Link
-                          className="block text-left p-3 -m-1 cursor-pointer hover:bg-base-200 rounded-box duration-200"
+                          className="block text-left p-3 -m-1 cursor-pointer hover:bg-secondary rounded-box duration-200"
                           href={`/blog/category/${category.slug}`}
                         >
                           <div className="">
@@ -99,7 +99,7 @@ const ButtonAccordionCategories = () => {
         }}
         aria-expanded={isOpen}
         type="button"
-        className="link no-underline flex justify-between items-center w-full "
+        className="link no-underline flex justify-between items-center w-full text-white"
       >
         Categories
         <svg
@@ -124,7 +124,7 @@ const ButtonAccordionCategories = () => {
             <li key={category.slug}>
               <Link
                 href={`/blog/category/${category.slug}`}
-                className="text-base-content/80 hover:text-base-content duration-100 link link-hover"
+                className="text-white/80 hover:text-primary duration-100 link link-hover"
               >
                 {category?.titleShort || category.title}
               </Link>
@@ -149,7 +149,7 @@ const HeaderBlog = () => {
   }, [searchParams]);
 
   return (
-    <header className="bg-base-200">
+    <header className="py-3">
       <nav className="max-w-7xl flex items-center justify-between px-8 py-3 mx-auto">
         {/* Your logo/name on large screens */}
         <div className="flex lg:flex-1">
@@ -166,7 +166,7 @@ const HeaderBlog = () => {
               width={32}
               height={32}
             />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            <span className="text-white font-extrabold text-lg">{config.appName}</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
@@ -183,7 +183,7 @@ const HeaderBlog = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 text-base-content"
+              className="w-6 h-6 text-white"
             >
               <path
                 strokeLinecap="round"
@@ -200,7 +200,7 @@ const HeaderBlog = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover text-base-content/80 hover:text-base-content active:text-base-content focus:text-base-content duration-100"
+              className="link link-hover text-white/80 hover:text-white active:text-white focus:text-white duration-100"
               title={link.label}
             >
               {link.label}
@@ -217,7 +217,7 @@ const HeaderBlog = () => {
       {/* Mobile menu, show/hide based on menu state. */}
       <div className={`relative z-50 ${isOpen ? "" : "hidden"}`}>
         <div
-          className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-3 overflow-y-auto bg-base-200 sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
+          className={`fixed inset-y-0 right-0 z-10 w-full px-8 py-3 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
         >
           {/* Your logo/name on small screens */}
           <div className="flex items-center justify-between">
@@ -235,7 +235,7 @@ const HeaderBlog = () => {
                 width={32}
                 height={32}
               />
-              <span className="font-extrabold text-lg">{config.appName}</span>
+              <span className="text-white font-extrabold text-lg">{config.appName}</span>
             </Link>
             <button
               type="button"
@@ -249,7 +249,7 @@ const HeaderBlog = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -268,7 +268,7 @@ const HeaderBlog = () => {
                   <Link
                     href={link.href}
                     key={link.href}
-                    className="link link-hover"
+                    className="link link-hover text-white"
                     title={link.label}
                   >
                     {link.label}

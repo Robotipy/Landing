@@ -13,7 +13,7 @@ const CardArticle = ({
   const TitleTag = tag;
 
   return (
-    <article className="card bg-base-200 rounded-box overflow-hidden">
+    <article className="card bg-white rounded-box overflow-hidden">
       {article.image?.src && (
         <Link
           href={`/blog/${article.slug}`}
@@ -48,7 +48,7 @@ const CardArticle = ({
         <TitleTag className="mb-1 text-xl md:text-2xl font-bold">
           <Link
             href={`/blog/${article.slug}`}
-            className="link link-hover hover:link-primary"
+            className="link link-hover hover:link-primary text-primary"
             title={article.title}
             rel="bookmark"
           >
@@ -56,9 +56,9 @@ const CardArticle = ({
           </Link>
         </TitleTag>
 
-        <div className=" text-base-content/80 space-y-4">
+        <div className=" text-primary space-y-4">
           {/* DESCRIPTION */}
-          <p className="">{article.description}</p>
+          <p className="text-primary">{article.description}</p>
 
           {/* AUTHOR & DATE */}
           <div className="flex items-center gap-4 text-sm">

@@ -74,11 +74,11 @@ export default async function Article({ params }) {
       />
 
       {/* GO BACK LINK */}
-      <div>
+      <div className="max-w-6xl mx-auto">
         <Link
           href="/blog"
-          className="link !no-underline text-base-content/80 hover:text-base-content inline-flex items-center gap-1"
-          title="Back to Blog"
+          className="link !no-underline text-white/80 hover:text-white inline-flex items-center gap-1"
+          title="Volver al Blog"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -92,13 +92,13 @@ export default async function Article({ params }) {
               clipRule="evenodd"
             />
           </svg>
-          Back to Blog
+          Volver al Blog
         </Link>
       </div>
 
-      <article>
+      <article className="max-w-6xl mx-auto">
         {/* HEADER WITH CATEGORIES AND DATE AND TITLE */}
-        <section className="my-12 md:my-20 max-w-[800px]">
+        <section className="my-8 md:my-12">
           <div className="flex items-center gap-4 mb-6">
             {article.categories.map((category) => (
               <BadgeCategory
@@ -107,7 +107,7 @@ export default async function Article({ params }) {
                 extraStyle="!badge-lg"
               />
             ))}
-            <span className="text-base-content/80" itemProp="datePublished">
+            <span className="text-white/80" itemProp="datePublished">
               {new Date(article.publishedAt).toLocaleDateString("en-US", {
                 month: "long",
                 day: "numeric",
@@ -116,26 +116,26 @@ export default async function Article({ params }) {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 md:mb-8">
+          <h1 className="text-white text-4xl md:text-5xl font-extrabold tracking-tight mb-3 md:mb-4">
             {article.title}
           </h1>
-
-          <p className="text-base-content/80 md:text-lg max-w-[700px]">
+{/* 
+          <p className="text-white/80 md:text-lg max-w-[700px]">
             {article.description}
-          </p>
+          </p> */}
         </section>
 
         <div className="flex flex-col md:flex-row">
           {/* SIDEBAR WITH AUTHORS AND 3 RELATED ARTICLES */}
-          <section className="max-md:pb-4 md:pl-12 max-md:border-b md:border-l md:order-last md:w-72 shrink-0 border-base-content/10">
-            <p className="text-base-content/80 text-sm mb-2 md:mb-3">
-              Posted by
+          <section className="basis-1/6 max-md:pb-4 md:pl-3 lg:pl-12 max-md:border-b md:border-l md:order-last md:w-72 shrink-0 border-white/10">
+            <p className="text-white/80 text-sm mb-2 md:mb-3 lg:text-lg">
+              Publicado por
             </p>
             <Avatar article={article} />
 
             {articlesRelated.length > 0 && (
               <div className="hidden md:block mt-12">
-                <p className=" text-base-content/80 text-sm  mb-2 md:mb-3">
+                <p className=" text-white/80 text-sm  mb-2 md:mb-3">
                   Related reading
                 </p>
                 <div className="space-y-2 md:space-y-5">
@@ -151,7 +151,7 @@ export default async function Article({ params }) {
                           {article.title}
                         </Link>
                       </p>
-                      <p className="text-base-content/80 max-w-full text-sm">
+                      <p className="text-white/80 max-w-full text-sm">
                         {article.description}
                       </p>
                     </div>
@@ -162,7 +162,7 @@ export default async function Article({ params }) {
           </section>
 
           {/* ARTICLE CONTENT */}
-          <section className="w-full max-md:pt-4 md:pr-20 space-y-12 md:space-y-20">
+          <section className="basis-5/6 w-full max-md:pt-2 md:pr-20 space-y-12">
             {article.content}
           </section>
         </div>
