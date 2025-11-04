@@ -27,7 +27,7 @@ export default async function Blog() {
         </p>
       </section>
 
-      <section className="grid lg:grid-cols-2 mb-24 md:mb-32 gap-8">
+      <section className="grid lg:grid-cols-2 mb-24 md:mb-32 gap-8 max-w-5xl mx-auto">
         {articlesToDisplay.map((article, i) => (
           <CardArticle
             article={article}

@@ -25,17 +25,19 @@ const links = [
       {
         href: "/casos-exito/agricola",
         label: "Agrícola",
-        description: "Automatización de procesos agrícolas, fruticultura y agrotecnológicos"
+        description:
+          "Automatización de procesos agrícolas, fruticultura y agrotecnológicos",
       },
       {
         href: "/casos-exito/automotriz",
         label: "Automotriz",
-        description: "Automatización de procesos automotrices"
+        description: "Automatización de procesos automotrices",
       },
       {
         href: "/casos-exito/financiero",
         label: "Financiero",
-        description: "Optimización de operaciones bancarias, seguros y contables"
+        description:
+          "Optimización de operaciones bancarias, seguros y contables",
       },
       // {
       //   href: "/casos-exito/alimentos",
@@ -45,27 +47,34 @@ const links = [
       {
         href: "/casos-exito/transporte",
         label: "Transporte y Logística",
-        description: "Automatización de procesos de transporte y logística"
+        description: "Automatización de procesos de transporte y logística",
       },
       {
         href: "/casos-exito/servicios-profesionales",
         label: "Servicios Profesionales",
-        description: "Automatización de estudios contables, jurídicos y de software"
+        description:
+          "Automatización de estudios contables, jurídicos y de software",
       },
       // {
       //   href: "/casos-exito/salud",
       //   label: "Salud",
       //   description: "Digitalización de procesos médicos y sanitarios"
       // }
-    ]
+    ],
   },
-   {
-     href: "/capacitaciones",
-     label: "Capacitación",
-   }
+  {
+    href: "/capacitaciones",
+    label: "Capacitación",
+  },
+  {
+    href: "/blog",
+    label: "Blog",
+  },
 ];
 
-const cta = <ButtonMain text="Contáctanos" link="/contact-us" type="primary-sm"/>;
+const cta = (
+  <ButtonMain text="Contáctanos" link="/contact-us" type="primary-sm" />
+);
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
@@ -138,15 +147,25 @@ const Header = () => {
                 >
                   {link.label}
                   {link.hasDropdown && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   )}
                 </Link>
-                
+
                 {/* Dropdown Menu */}
                 {link.hasDropdown && activeDropdown === link.href && (
-                  <div 
+                  <div
                     className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
                     onMouseEnter={() => {
                       if (hoverTimeout) {
@@ -182,19 +201,29 @@ const Header = () => {
           {cta}
 
           {/* Mobile menu button */}
-          <button 
+          <button
             className="md:hidden flex items-center justify-center size-10 rounded-lg bg-gray-100 dark:bg-gray-800 text-text-primary dark:text-text-dark"
             onClick={() => setIsOpen(true)}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div className={`relative z-50 min-h-screen ${isOpen ? "" : "hidden"}` }>
+      <div className={`relative z-50 min-h-screen ${isOpen ? "" : "hidden"}`}>
         <div className="fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-background-light dark:bg-background-dark sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300">
           {/* Mobile header */}
           <div className="flex items-center justify-between">
@@ -211,7 +240,9 @@ const Header = () => {
                 width={32}
                 height={32}
               />
-              <span className="font-extrabold text-lg text-text-primary dark:text-text-primary-dark">{config.appName}</span>
+              <span className="font-extrabold text-lg text-text-primary dark:text-text-primary-dark">
+                {config.appName}
+              </span>
             </Link>
             <button
               type="button"
@@ -219,8 +250,18 @@ const Header = () => {
               onClick={() => setIsOpen(false)}
             >
               <span className="sr-only">Close menu</span>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -234,17 +275,28 @@ const Header = () => {
                     {link.hasDropdown ? (
                       <div>
                         <button
-                          onClick={() => setActiveDropdown(activeDropdown === link.href ? null : link.href)}
+                          onClick={() =>
+                            setActiveDropdown(
+                              activeDropdown === link.href ? null : link.href
+                            )
+                          }
                           className="text-base font-medium text-text-primary dark:text-text-dark hover:text-accent transition-colors flex items-center gap-2 w-full text-left"
                         >
                           {link.label}
-                          <svg 
-                            className={`w-4 h-4 transition-transform ${activeDropdown === link.href ? 'rotate-180' : ''}`} 
-                            fill="none" 
-                            stroke="currentColor" 
+                          <svg
+                            className={`w-4 h-4 transition-transform ${
+                              activeDropdown === link.href ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
                           </svg>
                         </button>
                         {activeDropdown === link.href && (
