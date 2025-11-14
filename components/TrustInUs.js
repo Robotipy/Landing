@@ -2,63 +2,63 @@ import Image from "next/image";
 
 const avatars = [
   {
-    alt: "Novagric",
+    alt: "Novagric - España",
     // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
     src: "/assets/logo-novagric.png",
     link: "https://novagric.com/",
     width: 150,
   },
   {
-    alt: "Kabeli",
+    alt: "Kabeli - Chile",
     src: "/assets/logo-kabeli.png",
     link: "https://kabeli.cl",
     width: 130,
 
   },
   {
-    alt: "Marketers Group",
+    alt: "Marketers Group - España",
     src: "/assets/logo-marketersgroup.png",
     link: "https://marketersgroup.es/",
     width: 200,
   },
   {
-    alt: "Rocketbot",
+    alt: "Rocketbot - Chile",
     src: "/images/rocketbot.svg",
     link: "https://rocketbot.com/",
     width: 190,
   },
   {
-    alt: "(Rabbit)²",
+    alt: "(Rabbit)² - Argentina",
     src: "/assets/logo-rabbit.png",
     link: "https://www.linkedin.com/company/rabbit-%C2%B2",
     width: 150,
   },
   {
-    alt: "Crespodev",
-    src: "/assets/logo-crespodev.png",
-    link: "https://crespodev.com",
+    alt: "Minuto Verde - Chile",
+    src: "/assets/logo-minutoverde.png",
+    link: "https://minutoverde.com",
     width: 150,
   },
   {
-    alt: "Grupo Delirio",
+    alt: "Grupo Delirio - Chile",
     src: "/assets/logo-delirio.png",
     link: "https://grupodelirio.cl",
     width: 110,
   },
   {
-    alt: "Digital Bank",
+    alt: "Digital Bank - Chile",
     src: "/assets/logo-digitalbankla.png",
     link: "https://www.digitalbankla.com",
     width: 200,
   },
   {
-    alt: "Mitta",
+    alt: "Mitta - Chile",
     src: "/assets/logo-mitta.png",
     link: "https://www.mitta.cl",
     width: 120,
   },
   {
-    alt: "Cerezo Software",
+    alt: "Cerezo Software - Uruguay",
     src: "/assets/logo-cerezosoftware.png",
     link: "https://cerezosoftware.com/",
     width: 150,
@@ -92,6 +92,7 @@ const TrustInUs = ({ priority = false }) => {
                   priority={priority}
                   width={image.width || 150}
                   height={70}
+                  title={image.alt}
                 />
               </a>
             </div>
@@ -109,6 +110,7 @@ const TrustInUs = ({ priority = false }) => {
                   priority={priority}
                   width={image.width || 150}
                   height={100}
+                  title={image.alt}
                 />
               </a>
             </div>
