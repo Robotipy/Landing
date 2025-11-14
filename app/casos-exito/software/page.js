@@ -3,6 +3,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { tools } from "@/libs/tools";
+import { getSEOTags } from "@/libs/seo";
+import config from "@/config";
+
+export const metadata = getSEOTags({
+  title: `${config.appName} Desarrollo de Software a medida`,
+  description: "Desarrollamos tu software de forma rápida con ayuda de la inteligencia artificial. Desde sistemas internos hasta plataformas completas, nos encargamos de todo.",
+  canonicalUrlRelative: "/desarrollo-software",
+});
 
 export default function SoftwareSuccessCases() {
   const successCases = [
