@@ -36,11 +36,13 @@ const CardArticle = ({
       )}
       <div className="card-body">
         {/* CATEGORIES */}
-        {showCategory && (
+        {showCategory && article.categories && article.categories.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            {article.categories.map((category) => (
-              <BadgeCategory category={category} key={category.slug} />
-            ))}
+            {article.categories
+              .filter((category) => category && category.slug)
+              .map((category) => (
+                <BadgeCategory category={category} key={category.slug} />
+              ))}
           </div>
         )}
 

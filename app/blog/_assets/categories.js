@@ -7,22 +7,66 @@ export const categorySlugs = {
   agricultura: "Agricultura",
   tutoriales: "Tutoriales",
   rpa: "RPA",
+  agtech: "agtech",
+  fintech: "fintech",
+  logistica: "logistica",
+  capacitacion: "capacitacion",
 };
 
 // All the blog categories data display in the /blog/category/[categoryI].js pages.
 export const categories = [
   {
-    // The slug to use in the URL, from the categorySlugs object above.
     slug: categorySlugs.rpa,
-    // The title to display the category title (h1), the category badge, the category filter, and more. Less than 60 characters.
     title: "RPA",
-    // A short version of the title above, display in small components like badges. 1 or 2 words
     titleShort: "RPA",
-    // The description of the category to display in the category page. Up to 160 characters.
     description:
       "Automatización Robótica de Procesos y cálculo de ROI en proyectos de automatización",
-    // A short version of the description above, only displayed in the <Header /> on mobile. Up to 60 characters.
     descriptionShort:
       "Automatización Robótica de Procesos",
+  },
+  {
+    slug: categorySlugs.tutoriales,
+    title: "Tutoriales",
+    titleShort: "Tutoriales",
+    description:
+      "Guías paso a paso y tutoriales sobre automatización, RPA y desarrollo de software",
+    descriptionShort:
+      "Tutoriales",
+  },
+  {
+    slug: categorySlugs.agtech,
+    title: "AgTech",
+    titleShort: "AgTech",
+    description:
+      "Tecnología aplicada a la agricultura: IoT, Drones y Automatización para el agro.",
+    descriptionShort:
+      "Tecnología Agrícola",
+  },
+  {
+    slug: categorySlugs.fintech,
+    title: "FinTech",
+    titleShort: "FinTech",
+    description:
+      "Innovación financiera, cumplimiento normativo y automatización bancaria.",
+    descriptionShort:
+      "Tecnología Financiera",
+  },
+  {
+    slug: categorySlugs.logistica,
+    title: "Logística",
+    titleShort: "Logística",
+    description:
+      "Optimización de la cadena de suministro y automatización logística.",
+    descriptionShort:
+      "Logística y Retail",
+  },
+  {
+    slug: categorySlugs.capacitacion,
+    title: "Capacitación",
+    titleShort: "Capacitación",
+    description:
+      "Formación y capacitación en automatización, RPA y desarrollo de software.",
+    descriptionShort:
+      "Formación y capacitación",
   },
 ];

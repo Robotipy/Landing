@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <footer className="border-t border-base-content/10 text-white">
       <div className="px-12 mx-auto py-24">
-        <div className="flex flex-col xl:flex-row gap-36 w-full">
-          <div className="flex-shrink-0 mx-auto md:mx-0 text-center md:text-left">
+        <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 w-full">
+          <div className="w-full xl:w-1/3 mx-auto md:mx-0 text-center md:text-left">
             <Link
               href="/#"
               aria-current="page"
@@ -30,14 +30,14 @@ const Footer = () => {
               </strong>
             </Link>
 
-            <p className="mt-3 text-sm">{config.appDescription}</p>
+            <p className="mt-3 text-sm md:text-base leading-relaxed">{config.appDescriptionShort}</p>
             <p className="mt-3 text-sm">
               Copyright © {new Date().getFullYear()} - Todos los derechos reservados
             </p>
           </div>
-          <div className="grid grid-cols-2 md:flex md:flex-row gap-4 md:gap-16 justify-center -mb-10 md:mt-0 mt-10 text-center">
-            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
-              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
+          <div className="w-full xl:w-2/3 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-8 justify-center md:justify-end">
+            <div className="w-full md:w-auto px-4">
+              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
                 RPA
               </div>
               <div className="flex flex-col gap-4 justify-center items-center md:items-start mb-10 text-sm">
@@ -52,8 +52,8 @@ const Footer = () => {
                 </a> */}
               </div>
             </div>
-            <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
+            <div className="w-full md:w-auto px-4">
+              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
                 SOLUCIONES
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
@@ -71,8 +71,8 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
+            <div className="w-full md:w-auto px-4">
+              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
                 RECURSOS
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
@@ -87,8 +87,8 @@ const Footer = () => {
                 </Link> */}
               </div>
             </div>
-            <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3">
+            <div className="w-full md:w-auto px-4">
+              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
                 EMPRESA
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">

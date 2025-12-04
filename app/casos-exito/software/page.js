@@ -3,8 +3,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { tools } from "@/libs/tools";
-import { getSEOTags } from "@/libs/seo";
-import config from "@/config";
 
 
 export default function SoftwareSuccessCases() {

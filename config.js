@@ -6,6 +6,8 @@ const config = {
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
     "Robotipy es una empresa especializada en automatización de procesos (RPA) con tecnología Rocketbot. Ofrece desarrollo de bots a medida, automatización de tareas administrativas, integración con sistemas empresariales, capacitación y soporte. Con amplia experiencia en múltiples industrias (Agricola, Banca, Estudios contables, Alimentos, etc.), Robotipy ayuda a las empresas a optimizar procesos, reducir costos y acelerar su transformación digital con soluciones rápidas, profesionales y accesibles.",
+  appDescriptionShort:
+    "Robotipy es una empresa especializada en automatización de procesos (RPA) y desarrollo de software a medida. Inteligencia Artificial, Agentes, Software personalizado.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "robotipy.com",
   crisp: {

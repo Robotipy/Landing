@@ -96,7 +96,7 @@ export default async function Article({ params }) {
         </Link>
       </div>
 
-      <article className="max-w-6xl mx-auto">
+      <article className="max-w-7xl mx-auto">
         {/* HEADER WITH CATEGORIES AND DATE AND TITLE */}
         <section className="my-8 md:my-12">
           <div className="flex items-center gap-4 mb-6">
@@ -127,7 +127,7 @@ export default async function Article({ params }) {
 
         <div className="flex flex-col md:flex-row">
           {/* SIDEBAR WITH AUTHORS AND 3 RELATED ARTICLES */}
-          <section className="basis-1/6 max-md:pb-4 md:pl-3 lg:pl-12 max-md:border-b md:border-l md:order-last md:w-72 shrink-0 border-white/10">
+          <section className="basis-2/7 max-md:pb-4 md:pl-3 lg:pl-5 max-md:border-b md:border-l md:order-last md:w-72 shrink-0 border-white/10">
             <p className="text-white/80 text-sm mb-2 md:mb-3 lg:text-lg">
               Publicado por
             </p>
@@ -135,8 +135,8 @@ export default async function Article({ params }) {
 
             {articlesRelated.length > 0 && (
               <div className="hidden md:block mt-12">
-                <p className=" text-white/80 text-sm  mb-2 md:mb-3">
-                  Related reading
+                <p className=" text-white/80 text-lg  mb-2 md:mb-3">
+                  Artículos relacionados
                 </p>
                 <div className="space-y-2 md:space-y-5">
                   {articlesRelated.map((article) => (
@@ -144,7 +144,7 @@ export default async function Article({ params }) {
                       <p className="mb-0.5">
                         <Link
                           href={`/blog/${article.slug}`}
-                          className="link link-hover hover:link-primary font-medium"
+                          className="link link-hover link-success font-medium"
                           title={article.title}
                           rel="bookmark"
                         >
@@ -162,7 +162,7 @@ export default async function Article({ params }) {
           </section>
 
           {/* ARTICLE CONTENT */}
-          <section className="basis-5/6 w-full max-md:pt-2 md:pr-20 space-y-12">
+          <section className="basis-5/7 w-full max-md:pt-2 md:pr-20 space-y-12">
             {article.content}
           </section>
         </div>
