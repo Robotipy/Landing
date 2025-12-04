@@ -25,7 +25,7 @@ export const post = {
     <>
       <section className="space-y-3">
         <p className={styles.p}>
-          La logística moderna es una carrera contra el tiempo. En el sector retail, la promesa de "entrega en 24 horas" ha pasado de ser una ventaja competitiva a un estándar de la industria. Sin embargo, detrás de esa promesa, muchas empresas luchan con procesos manuales, desconexión entre sistemas y errores de inventario.
+          La logística moderna es una carrera contra el tiempo. En el sector retail, la promesa de &quot;entrega en 24 horas&quot; ha pasado de ser una ventaja competitiva a un estándar de la industria. Sin embargo, detrás de esa promesa, muchas empresas luchan con procesos manuales, desconexión entre sistemas y errores de inventario.
         </p>
         <p className={styles.p}>
           En este caso de estudio, exploramos cómo ayudamos a un importante actor del retail a transformar su operación logística mediante <strong>RPA (Robotic Process Automation)</strong>.

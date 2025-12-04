@@ -28,7 +28,7 @@ export const post = {
           En el mundo empresarial actual, la eficiencia no es un lujo, es una necesidad. Aquí es donde entra en juego la <strong>RPA (Robotic Process Automation)</strong> o Automatización Robótica de Procesos. Pero, ¿qué es exactamente y por qué todos hablan de ella?
         </p>
         <p className={styles.p}>
-          RPA es una tecnología que permite configurar software informático, o un "robot", para emular e integrar las acciones de una interacción humana en sistemas digitales para ejecutar un proceso comercial. Los robots RPA utilizan la interfaz de usuario para capturar datos y manipular aplicaciones tal como lo hacen los humanos.
+          RPA es una tecnología que permite configurar software informático, o un &quot;robot&quot;, para emular e integrar las acciones de una interacción humana en sistemas digitales para ejecutar un proceso comercial. Los robots RPA utilizan la interfaz de usuario para capturar datos y manipular aplicaciones tal como lo hacen los humanos.
         </p>
         <p className={styles.p}>
           Interpretan, activan respuestas y se comunican con otros sistemas para realizar una gran variedad de tareas repetitivas. Solo que sustancialmente mejor: un robot RPA nunca duerme y no comete errores.

@@ -38,7 +38,7 @@ export const post = {
         </p>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            <strong className={styles.strong}>Recomendaciones Personalizadas:</strong> "Veo que estás buscando zapatillas de running, ¿prefieres para asfalto o montaña?"
+            <strong className={styles.strong}>Recomendaciones Personalizadas:</strong> &quot;Veo que estás buscando zapatillas de running, ¿prefieres para asfalto o montaña?&quot;
           </li>
           <li className={styles.li}>
             <strong className={styles.strong}>Recuperación de Carritos:</strong> Puede interactuar proactivamente con usuarios que dudan en el checkout.

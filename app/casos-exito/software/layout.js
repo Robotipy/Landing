@@ -1,5 +1,4 @@
 import { getSEOTags } from "@/libs/seo";
-import config from "@/config";
 
 export const metadata = getSEOTags({
   title: "Soluciones para el Sector Software | Casos de Éxito Robotipy",

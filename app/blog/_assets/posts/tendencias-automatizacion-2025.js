@@ -57,10 +57,10 @@ export const post = {
       <section className="space-y-3">
         <h3 className={styles.h3}>3. Democratización del Desarrollo (Low-Code/No-Code)</h3>
         <p className={styles.p}>
-          La escasez de talento TI en LatAm seguirá siendo un desafío. La respuesta será el auge de plataformas Low-Code y No-Code, permitiendo que los "Citizen Developers" (empleados no técnicos) creen sus propias automatizaciones simples.
+          La escasez de talento TI en LatAm seguirá siendo un desafío. La respuesta será el auge de plataformas Low-Code y No-Code, permitiendo que los &quot;Citizen Developers&quot; (empleados no técnicos) creen sus propias automatizaciones simples.
         </p>
         <p className={styles.p}>
-          Sin embargo, esto trae el desafío de la gobernanza. Las empresas deberán equilibrar la agilidad con la seguridad y el control centralizado para evitar el "Shadow IT".
+          Sin embargo, esto trae el desafío de la gobernanza. Las empresas deberán equilibrar la agilidad con la seguridad y el control centralizado para evitar el &quot;Shadow IT&quot;.
         </p>
       </section>
 
