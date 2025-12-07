@@ -22,7 +22,7 @@ const avatars = [
     width: 200,
   },
   {
-    alt: "Rocketbot - Chile",
+    alt: "Robotipy es Partner Oficial de Rocketbot RPA en Latinoamerica",
     src: "/images/rocketbot.svg",
     link: "https://rocketbot.com/",
     width: 190,

@@ -22,6 +22,13 @@ const SoftwareTechStack = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Nuestro Stack Tecnológico
           </h2>
+          <p className="max-w-4xl mx-auto text-lg text-gray-300 leading-relaxed">
+            En Robotipy somos expertos en el desarrollo de soluciones robustas utilizando 
+            lenguajes y frameworks modernos como <strong>Python (Django/FastAPI), Node.js y React</strong>. 
+            Desplegamos infraestructura escalable en <strong>AWS y Google Cloud (GCP)</strong>, 
+            y gestionamos datos complejos con <strong>PostgreSQL y MongoDB</strong>. 
+            Nuestra versatilidad nos permite integrar RPA con desarrollo a medida en cualquier entorno.
+          </p>
         </div>
 
         <div className="space-y-12 text-center">

@@ -21,6 +21,28 @@ export const viewport = {
 export const metadata = getSEOTags({ canonicalUrlRelative: "/" });
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "name": "Robotipy",
+    "url": "https://robotipy.com",
+    "logo": "https://www.robotipy.com/_next/static/media/icon.0921702f.png",
+    "description": "Expertos en automatización de procesos (RPA), Chatbots con IA y desarrollo de software a medida.",
+    "memberOf": {
+      "@type": "Organization",
+      "name": "Rocketbot",
+      "description": "Platinum Partner"
+    },
+    "awards": [
+      "Certificación RPA Developer", 
+      "Rocketbot Expert Certification",
+      "Mejor caso de éxito en Rocketbot"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/robotipy",
+      "https://www.instagram.com/robotipy.dev",
+    ]
+  };
   return (
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
       <head>
@@ -38,6 +60,10 @@ export default function RootLayout({ children }) {
       <body style={{ backgroundColor: config.colors.background }}>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
         <ClientLayout>{children}</ClientLayout>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <noscript>
           <noscript>
             <iframe

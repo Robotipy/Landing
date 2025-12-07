@@ -9,9 +9,9 @@ import logo from "@/app/icon.png";
 const Footer = () => {
   return (
     <footer className="border-t border-base-content/10 text-white">
-      <div className="px-12 mx-auto py-24">
+      <div className="px-8 md:px-12 mx-auto py-24">
         <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 w-full">
-          <div className="w-full xl:w-1/3 mx-auto md:mx-0 text-center md:text-left">
+          <div className="w-full mx-auto md:mx-0 text-center md:text-left">
             <Link
               href="/#"
               aria-current="page"
@@ -30,10 +30,29 @@ const Footer = () => {
               </strong>
             </Link>
 
-            <p className="mt-3 text-sm md:text-base leading-relaxed">{config.appDescriptionShort}</p>
-            <p className="mt-3 text-sm">
-              Copyright © {new Date().getFullYear()} - Todos los derechos reservados
+            <p className="mt-3 text-sm md:text-base leading-relaxed">
+              {config.appDescriptionShort}
             </p>
+            <p className="mt-3 text-sm md:text-base leading-relaxed">
+              Servicios de RPA, IA y Desarrollo de Software en <strong className="text-white">Chile, Argentina, Colombia y España.</strong>
+            </p>
+            <p className="mt-3 text-sm">
+              Copyright © {new Date().getFullYear()} - Todos los derechos
+              reservados
+            </p>
+          </div>
+          <div className="mt-4 flex flex-col gap-3 text-center md:text-left">
+            <span className="text-sm font-semibold text-gray-400">
+              Partners & Certificaciones:
+            </span>
+            <div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
+              <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors">
+                Platinum Partner Rocketbot
+              </span>
+              <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors">
+                Certified Developers
+              </span>
+            </div>
           </div>
           <div className="w-full xl:w-2/3 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-8 justify-center md:justify-end">
             <div className="w-full md:w-auto px-4">
@@ -57,7 +76,10 @@ const Footer = () => {
                 SOLUCIONES
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
-                <Link href="/capacitaciones" className="link link-hover text-start">
+                <Link
+                  href="/capacitaciones"
+                  className="link link-hover text-start"
+                >
                   Capacitación de Equipos
                 </Link>
                 <Link href="/automation" className="link link-hover text-start">
@@ -66,7 +88,10 @@ const Footer = () => {
                 <Link href="/chatbot" className="link link-hover text-start">
                   Chatbots
                 </Link>
-                <Link href="/desarrollo-software" className="link link-hover text-start">
+                <Link
+                  href="/desarrollo-software"
+                  className="link link-hover text-start"
+                >
                   Desarrollo de software
                 </Link>
               </div>
@@ -76,7 +101,10 @@ const Footer = () => {
                 RECURSOS
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
-                <Link href="//blog.robotipy.com" className="link link-hover text-start">
+                <Link
+                  href="//blog.robotipy.com"
+                  className="link link-hover text-start"
+                >
                   Blog
                 </Link>
                 {/* <Link href="/#" className="link link-hover text-start">
@@ -95,7 +123,10 @@ const Footer = () => {
                 <Link href="/tos" className="link link-hover text-start">
                   Términos de servicio
                 </Link>
-                <Link href="/privacy-policy" className="link link-hover text-start">
+                <Link
+                  href="/privacy-policy"
+                  className="link link-hover text-start"
+                >
                   Política de privacidad
                 </Link>
               </div>

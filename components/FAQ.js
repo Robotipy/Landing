@@ -7,22 +7,33 @@ import { useRef, useState } from "react";
 
 const faqList = [
   {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    question: "¿Cuánto cuesta desarrollar un software a medida o un bot RPA?",
+    answer: <div className="space-y-2 leading-relaxed">
+      El costo varía según la complejidad del proceso. Para RPA, los proyectos suelen partir desde soluciones rápidas de implementación (semanas) hasta orquestaciones complejas. Agendamos una llamada de descubrimiento gratuita para evaluar tu caso y entregarte un presupuesto exacto y el ROI estimado antes de comenzar.
+    </div>,
   },
   {
-    question: "Can I get a refund?",
+    question: "¿Es seguro integrar robots en nuestros sistemas bancarios o internos?",
     answer: (
-      <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
-      </p>
+      <div className="space-y-2 leading-relaxed">
+        Absolutamente. La seguridad es nuestra prioridad. Trabajamos bajo estándares bancarios y nuestras implementaciones de RPA (con Rocketbot o Python) no requieren modificar sus sistemas actuales; interactúan a nivel de interfaz de usuario o API segura, manteniendo la integridad de sus datos y cumpliendo con normativas de compliance.
+      </div>
     ),
   },
   {
-    question: "I have another question",
+    question: "¿Qué pasa si el software o el bot falla después de la entrega?",
     answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
+      <div className="space-y-2 leading-relaxed">
+        Ofrecemos un periodo de garantía post-implementación donde corregimos cualquier error derivado del desarrollo sin costo adicional. Además, ofrecemos planes de soporte y mantenimiento (SLA) para asegurar que tus automatizaciones sigan operando 24/7 ante cambios en tus sistemas o actualizaciones de terceros.
+      </div>
+    ),
+  },
+  {
+    question: "¿Trabajan con empresas fuera de Chile?",
+    answer: (
+      <div className="space-y-2 leading-relaxed">
+        Sí. Actualmente brindamos servicios de desarrollo de software y RPA a empresas en <strong>Chile, Argentina, Perú, España y resto de Latinoamérica</strong>. Nuestro equipo trabaja de forma remota y eficiente, coordinando con tu zona horaria.
+      </div>
     ),
   },
 ];

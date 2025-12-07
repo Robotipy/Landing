@@ -6,24 +6,24 @@ const SoftwareFAQ = () => {
 
   const faqs = [
     {
-      question: "¿Cuánto tiempo toma desarrollar una aplicación de software personalizada?",
-      answer: "Los tiempos de desarrollo varían según la complejidad del proyecto, características y stack tecnológico. Un proyecto simple puede tomar 2-4 meses, mientras que un sistema empresarial complejo podría tomar un año o más. Proporcionamos un cronograma detallado después de la fase inicial de descubrimiento."
+      question: "¿Cuánto cuesta desarrollar un software a medida o un bot RPA?",
+      answer: "El costo depende del alcance. Desarrollamos desde scripts de automatización RPA rápidos (RPA con Python o Rocketbot) hasta sistemas empresariales complejos. Tras una fase de descubrimiento gratuita, te entregamos un presupuesto detallado y un cálculo del ROI estimado."
     },
     {
-      question: "¿Qué metodología de gestión de proyectos utilizan?",
-      answer: "Utilizamos principalmente la metodología Ágil, que nos permite ser flexibles y receptivos al cambio. Trabajamos en sprints, proporcionando actualizaciones regulares y demos para asegurar que el proyecto se mantenga en el camino correcto y alineado con tu visión."
+      question: "¿Es seguro integrar robots con nuestros sistemas bancarios o ERP?",
+      answer: "Absolutamente. La seguridad es nuestra prioridad. Nuestras soluciones de automatización y software interactúan de forma segura (encriptación TLS, manejo de credenciales) con sistemas como SAP, Salesforce o portales bancarios, sin comprometer la integridad de tus datos ni el compliance."
     },
     {
       question: "¿Quién es propietario del código fuente y la propiedad intelectual?",
-      answer: "Tú eres el propietario. Al completar el pago final y la finalización del proyecto, recibes la propiedad completa del código fuente y todos los derechos de propiedad intelectual del software personalizado que construimos para ti."
+      answer: "Tú eres el propietario. A diferencia de las soluciones SaaS cerradas, en Robotipy entregamos la propiedad completa del código fuente y los derechos intelectuales del software o bots que construimos para tu empresa al finalizar el proyecto."
     },
     {
-      question: "¿Proporcionan soporte y mantenimiento post-lanzamiento?",
-      answer: "Sí, ofrecemos varios paquetes de soporte y mantenimiento para asegurar que tu aplicación funcione sin problemas después del lanzamiento. Esto puede incluir corrección de errores, monitoreo de rendimiento, actualizaciones de seguridad y mejoras de características."
+      question: "¿Brindan servicios fuera de Chile?",
+      answer: "Sí. Trabajamos de forma remota con empresas líderes en Chile, Argentina, Perú y España. Nuestro equipo se adapta a tu zona horaria para reuniones de seguimiento (Sprints) y soporte continuo."
     },
     {
-      question: "¿Pueden integrar el nuevo software con nuestros sistemas existentes?",
-      answer: "Absolutamente. La integración perfecta es una de nuestras especialidades. Analizamos tu infraestructura actual y diseñamos soluciones que se comunican efectivamente con tus herramientas y sistemas existentes, minimizando la interrupción de tus operaciones."
+      question: "¿Pueden integrar el nuevo software con nuestros sistemas legacy?",
+      answer: "Es nuestra especialidad. Diseñamos APIs y conectores RPA para que tu nuevo software moderno se comunique fluidamente con infraestructura antigua o herramientas de terceros, extendiendo la vida útil de tus sistemas actuales."
     }
   ];
 
@@ -38,6 +38,9 @@ const SoftwareFAQ = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Preguntas Frecuentes
           </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Resolvemos tus dudas sobre desarrollo de software, seguridad en automatización y nuestros procesos de trabajo en Latinoamérica.
+          </p>
         </div>
         
         <div className="space-y-4">
