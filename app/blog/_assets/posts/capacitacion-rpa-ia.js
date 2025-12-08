@@ -2,7 +2,7 @@ import Image from "next/image";
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
-import thumbnail from "@/public/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg"; // TODO: Replace
+import thumbnail from "@/public/blog/capacitacion-rpa-ia/header.jpeg"; // TODO: Replace
 import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
@@ -18,7 +18,7 @@ export const post = {
   publishedAt: "2026-01-21",
   image: {
     src: thumbnail,
-    urlRelative: "/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg", // TODO: Update
+    urlRelative: "/blog/capacitacion-rpa-ia/header.jpeg", // TODO: Update
     alt: "Capacitacion RPA IA",
   },
   content: (
