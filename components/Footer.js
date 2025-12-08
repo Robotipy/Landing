@@ -46,10 +46,10 @@ const Footer = () => {
               Partners & Certificaciones:
             </span>
             <div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
-              <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors">
+              <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors whitespace-nowrap">
                 Platinum Partner Rocketbot
               </span>
-              <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors">
+              <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors whitespace-nowrap">
                 Certified Developers
               </span>
             </div>
