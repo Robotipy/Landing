@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
-import { styles } from "../styles";
-import thumbnail from "@/public/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg"; // TODO: Replace with specific image
+  import { styles } from "../styles";
+  import thumbnail from "@/public/blog/que-es-rpa/header.jpeg"; // TODO: Replace with specific image
 import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
@@ -17,8 +17,8 @@ export const post = {
   author: authors.find((author) => author.slug === authorSlugs.DaniloToro),
   publishedAt: "2025-11-26",
   image: {
-    src: thumbnail,
-    urlRelative: "/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg", // TODO: Update
+      src: thumbnail,
+      urlRelative: "/blog/que-es-rpa/header.jpeg",
     alt: "¿Qué es RPA?",
   },
   content: (

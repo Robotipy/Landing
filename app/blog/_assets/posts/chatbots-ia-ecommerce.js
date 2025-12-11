@@ -2,7 +2,7 @@ import Image from "next/image";
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
-import thumbnail from "@/public/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg"; // TODO: Replace
+import thumbnail from "@/public/blog/chatbots-ia-ecommerce/header.jpeg";
 import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
@@ -17,7 +17,7 @@ export const post = {
   publishedAt: "2025-12-10",
   image: {
     src: thumbnail,
-    urlRelative: "/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg", // TODO: Update
+    urlRelative: "/blog/chatbots-ia-ecommerce/header.jpeg", 
     alt: "Chatbots IA Ecommerce",
   },
   content: (
