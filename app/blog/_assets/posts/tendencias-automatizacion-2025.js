@@ -2,7 +2,7 @@ import Image from "next/image";
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
-import thumbnail from "@/public/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg"; // TODO: Replace
+import thumbnail from "@/public/blog/tendencias-automatizacion-2025/header.jpeg"; // TODO: Replace
 import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
@@ -18,7 +18,7 @@ export const post = {
   publishedAt: "2026-01-07",
   image: {
     src: thumbnail,
-    urlRelative: "/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg", // TODO: Update
+    urlRelative: "/blog/tendencias-automatizacion-2025/header.jpeg", // TODO: Update
     alt: "Tendencias Automatizacion 2025",
   },
   content: (
