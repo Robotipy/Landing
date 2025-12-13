@@ -1,5 +1,18 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+  return windowWidth;
+};
 const avatars = [
   {
     alt: "Novagric - España",
@@ -37,7 +50,7 @@ const avatars = [
     alt: "Minuto Verde - Chile",
     src: "/assets/logo-minutoverde.png",
     link: "https://minutoverde.com",
-    width: 150,
+    width: 120,
   },
   {
     alt: "Grupo Delirio - Chile",
@@ -63,12 +76,31 @@ const avatars = [
     link: "https://cerezosoftware.com/",
     width: 150,
   },
+  {
+    alt: "Interact Solutions - Latinoamerica",
+    src: "/assets/logo-interact.png",
+    link: "https://www.interactsolutions.com",
+    width: 150,
+  },
+  {
+    alt: "Grupo Cintac - Chile",
+    src: "/assets/logo-cintac.png",
+    link: "https://www.cintac.cl",
+    width: 150,
+  }
 ];
 
 const TrustInUs = ({ priority = false }) => {
   // Split avatars into two rows
-  const firstRow = avatars.slice(0, 5);
-  const secondRow = avatars.slice(5);
+  const windowWidth = useWindowWidth();
+  let rows = 6;
+  if (windowWidth < 1024) {
+    rows = 10;
+    
+  }
+  const firstRow = avatars.slice(0, rows);
+  const secondRow = avatars.slice(rows);
+  
 
   return (
     <section className="flex flex-col gap-10 lg:px-20 py-12 text-white w-full justify-center">
@@ -80,9 +112,9 @@ const TrustInUs = ({ priority = false }) => {
       </div>
 
       {/* Column 2: Logos in two rows */}
-      <div className="flex flex-col md:w-2/3 mx-auto">
+      <div className="flex flex-col md:w-full lg:w-2/3 mx-auto">
         {/* First row of logos */}
-        <div className="flex flex-wrap justify-around gap-4">
+        <div className="flex flex-wrap justify-around gap-0 lg:gap-4">
           {firstRow.map((image, i) => (
             <div className="flex items-center justify-center" key={i} style={{ height: 70 }}>
               <a href={image.link} target="_blank" rel="noopener noreferrer">
@@ -100,7 +132,7 @@ const TrustInUs = ({ priority = false }) => {
         </div>
 
         {/* Second row of logos */}
-        <div className="flex flex-wrap justify-around gap-4">
+        <div className="flex flex-wrap justify-around gap-0 lg:gap-4">
           {secondRow.map((image, i) => (
             <div className="flex items-center justify-center" key={i}>
               <a href={image.link} target="_blank" rel="noopener noreferrer">
