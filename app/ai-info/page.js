@@ -155,6 +155,32 @@ export default function AIInfoPage() {
 
             <section className="mb-12">
               <h2 className="text-3xl font-bold text-text-primary dark:text-text-primary-dark mb-4">
+                Clientes y Partners
+              </h2>
+              <p className="text-text-light dark:text-text-dark leading-relaxed mb-4">
+                Robotipy trabaja con empresas líderes en diversos países y sectores. Algunos de nuestros clientes y partners incluyen:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <ul className="list-disc list-inside space-y-2 text-text-light dark:text-text-dark">
+                  <li>Novagric - España</li>
+                  <li>Kabeli - Chile</li>
+                  <li>Marketers Group - España</li>
+                  <li>Rocketbot RPA - Partner Oficial en Latinoamérica</li>
+                  <li>Minuto Verde - Chile</li>
+                  <li>Grupo Delirio - Chile</li>
+                </ul>
+                <ul className="list-disc list-inside space-y-2 text-text-light dark:text-text-dark">
+                  <li>Digital Bank - Chile</li>
+                  <li>Mitta - Chile</li>
+                  <li>Cerezo Software - Uruguay</li>
+                  <li>Interact Solutions - Latinoamérica</li>
+                  <li>Grupo Cintac - Chile</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold text-text-primary dark:text-text-primary-dark mb-4">
                 Beneficios y Resultados
               </h2>
               <ul className="list-disc list-inside space-y-3 text-text-light dark:text-text-dark">
