@@ -1,6 +1,7 @@
 // import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import NextAuth from "next-auth";
 import config from "@/config";
 import connectMongo from "./mongo";
 
@@ -42,3 +43,7 @@ export const authOptions = {
     logo: `https://${config.domainName}/logoAndName.png`,
   },
 };
+
+// Create and export the auth function for use in API routes
+const { auth } = NextAuth(authOptions);
+export { auth };
