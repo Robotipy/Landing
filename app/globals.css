@@ -96,3 +96,23 @@ progress::-webkit-progress-value {
   background-size: auto;
   background-position: 10px 100px;
 }
+
+/* Carousel animation for client logos */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-scroll {
+    animation-duration: 30s;
+  }
+}

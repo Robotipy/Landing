@@ -1,22 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-const useWindowWidth = () => {
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleResize = () => setWindowWidth(window.innerWidth);
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
-  }, []);
-  return windowWidth;
-};
+import { useEffect, useState, useRef } from "react";
 const avatars = [
   {
     alt: "Novagric - España",
-    // Ideally, load from a statically generated image for better SEO performance (import userImage from "@/public/userImage.png")
     src: "/assets/logo-novagric.png",
     link: "https://novagric.com/",
     width: 150,
@@ -25,8 +12,7 @@ const avatars = [
     alt: "Kabeli - Chile",
     src: "/assets/logo-kabeli.png",
     link: "https://kabeli.cl",
-    width: 130,
-
+    width: 120,
   },
   {
     alt: "Marketers Group - España",
@@ -39,12 +25,6 @@ const avatars = [
     src: "/images/rocketbot.svg",
     link: "https://rocketbot.com/",
     width: 190,
-  },
-  {
-    alt: "(Rabbit)² - Argentina",
-    src: "/assets/logo-rabbit.png",
-    link: "https://www.linkedin.com/company/rabbit-%C2%B2",
-    width: 150,
   },
   {
     alt: "Minuto Verde - Chile",
@@ -62,7 +42,7 @@ const avatars = [
     alt: "Digital Bank - Chile",
     src: "/assets/logo-digitalbankla.png",
     link: "https://www.digitalbankla.com",
-    width: 200,
+    width: 130,
   },
   {
     alt: "Mitta - Chile",
@@ -74,13 +54,13 @@ const avatars = [
     alt: "Cerezo Software - Uruguay",
     src: "/assets/logo-cerezosoftware.png",
     link: "https://cerezosoftware.com/",
-    width: 150,
+    width: 100,
   },
   {
     alt: "Interact Solutions - Latinoamerica",
     src: "/assets/logo-interact.png",
     link: "https://www.interactsolutions.com",
-    width: 150,
+    width: 120,
   },
   {
     alt: "Grupo Cintac - Chile",
@@ -91,64 +71,70 @@ const avatars = [
 ];
 
 const TrustInUs = ({ priority = false }) => {
-  // Split avatars into two rows
-  const windowWidth = useWindowWidth();
-  let rows = 6;
-  if (windowWidth < 1024) {
-    rows = 10;
-    
-  }
-  const firstRow = avatars.slice(0, rows);
-  const secondRow = avatars.slice(rows);
-  
+  const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = useRef(null);
+
+  // Duplicate logos for infinite scroll
+  const duplicatedLogos = [...avatars, ...avatars];
 
   return (
-    <section className="flex flex-col gap-10 lg:px-20 py-12 text-white w-full justify-center">
+    <section className="flex flex-col gap-8 md:gap-10 lg:px-20 px-4 py-8 md:py-12 text-white w-full justify-center overflow-hidden">
       {/* Column 1: Text */}
-      <div className="mx-auto text-center">
-        <p className="text-2xl lg:text-4xl text-balance">
+      <div className="mx-auto text-center px-4">
+        <p className="text-xl md:text-2xl lg:text-4xl text-balance">
           Las empresas líderes confían en nuestro equipo para revolucionar sus procesos
         </p>
       </div>
 
-      {/* Column 2: Logos in two rows */}
-      <div className="flex flex-col md:w-full lg:w-2/3 mx-auto">
-        {/* First row of logos */}
-        <div className="flex flex-wrap justify-around gap-0 lg:gap-4">
-          {firstRow.map((image, i) => (
-            <div className="flex items-center justify-center" key={i} style={{ height: 70 }}>
-              <a href={image.link} target="_blank" rel="noopener noreferrer">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  priority={priority}
-                  width={image.width || 150}
-                  height={70}
-                  title={image.alt}
-                />
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Second row of logos */}
-        <div className="flex flex-wrap justify-around gap-0 lg:gap-4">
-          {secondRow.map((image, i) => (
-            <div className="flex items-center justify-center" key={i}>
-              <a href={image.link} target="_blank" rel="noopener noreferrer">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  priority={priority}
-                  width={image.width || 150}
-                  height={100}
-                  title={image.alt}
-                />
+      {/* Column 2: Carousel */}
+      <div 
+        className="relative w-full"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div 
+          ref={carouselRef}
+          className="flex gap-8 md:gap-12 lg:gap-16 animate-scroll"
+          style={{
+            animationPlayState: isPaused ? 'paused' : 'running',
+          }}
+        >
+          {duplicatedLogos.map((image, i) => (
+            <div 
+              key={`${i}-${image.alt}`}
+              className="flex items-center justify-center flex-shrink-0 px-4 transition-opacity hover:opacity-80"
+            >
+              <a 
+                href={image.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center h-full"
+              >
+                {image.src.endsWith('.svg') ? (
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    title={image.alt}
+                    className="object-contain h-[80px] w-auto max-w-[200px]"
+                    style={{ height: '80px', width: 'auto' }}
+                  />
+                ) : (
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    priority={priority && i < 6}
+                    width={image.width || 80}
+                    height={80}
+                    title={image.alt}
+                    className="object-contain h-full w-auto"
+                  />
+                )}
               </a>
             </div>
           ))}
         </div>
       </div>
+
     </section>
   );
 };
