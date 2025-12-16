@@ -20,7 +20,7 @@ const SoftwareHero = () => {
                 </div>
                 <ButtonMain 
                   text="Cotizar tu Proyecto" 
-                  link="https://zfrmz.com/5qF4fJBL86AmHtyluQjh" 
+                  link="https://forms.zoho.com/robotipy/form/CotizacinProyecto" 
                   type="primary"
                 />
               </div>
