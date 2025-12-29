@@ -7,7 +7,24 @@ import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export async function generateMetadata({ params }) {
-  const article = articles.find((article) => article.slug === params.articleId);
+  const resolvedParams = await params;
+  const articleId = resolvedParams?.articleId;
+  
+  if (!articleId || !Array.isArray(articles)) {
+    return getSEOTags({
+      title: "Article Not Found",
+      description: "The requested article could not be found.",
+    });
+  }
+
+  const article = articles.find((article) => article.slug === articleId);
+
+  if (!article) {
+    return getSEOTags({
+      title: "Article Not Found",
+      description: "The requested article could not be found.",
+    });
+  }
 
   return getSEOTags({
     title: article.title,
@@ -33,13 +50,29 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Article({ params }) {
-  const article = articles.find((article) => article.slug === params.articleId);
+  const resolvedParams = await params;
+  const articleId = resolvedParams?.articleId;
+  
+  if (!articleId || !Array.isArray(articles)) {
+    return <div>Article not found</div>;
+  }
+
+  const article = articles.find((article) => article.slug === articleId);
+  
+  if (!article) {
+    return <div>Article not found</div>;
+  }
+
+  const articleCategories = (article.categories || []).filter(Boolean);
+  
   const articlesRelated = articles
     .filter(
       (a) =>
-        a.slug !== params.articleId &&
-        a.categories.some((c) =>
-          article.categories.map((c) => c.slug).includes(c.slug)
+        a.slug !== articleId &&
+        a.categories &&
+        Array.isArray(a.categories) &&
+        a.categories.filter(Boolean).some((c) =>
+          articleCategories.map((cat) => cat.slug).includes(c.slug)
         )
     )
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
@@ -100,7 +133,7 @@ export default async function Article({ params }) {
         {/* HEADER WITH CATEGORIES AND DATE AND TITLE */}
         <section className="my-8 md:my-12">
           <div className="flex items-center gap-4 mb-6">
-            {article.categories.map((category) => (
+            {articleCategories.map((category) => (
               <BadgeCategory
                 category={category}
                 key={category.slug}

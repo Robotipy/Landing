@@ -12,7 +12,7 @@ const MapsSolutions = () => {
           {/* <p className="mt-4 text-lg text-white">Resultados reales que hemos entregado a nuestros clientes.</p> */}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16 items-center">
-          <div class="lg:col-span-2 flex justify-center">
+          <div className="lg:col-span-2 flex justify-center">
             <Image
               src="/assets/mapa.png"
               alt="Mapa"

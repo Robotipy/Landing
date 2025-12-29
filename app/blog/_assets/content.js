@@ -8,6 +8,7 @@ import { post as chatbotsIaEcommerce } from "./posts/chatbots-ia-ecommerce.js";
 import { post as casoExitoLogistica } from "./posts/caso-exito-logistica.js";
 import { post as tendenciasAutomatizacion2025 } from "./posts/tendencias-automatizacion-2025.js";
 import { post as capacitacionRpaIa } from "./posts/capacitacion-rpa-ia.js";
+import { post as porqueElegirRocketbot } from "./posts/porque-elegir-rocketbot.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
@@ -17,6 +18,7 @@ const rawArticles = [
   casoExitoLogistica,
   tendenciasAutomatizacion2025,
   capacitacionRpaIa,
+  porqueElegirRocketbot,
 ];
 
 // Debugging: Log any undefined articles
