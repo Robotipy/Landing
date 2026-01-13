@@ -34,8 +34,8 @@ function ContactUsContent() {
                 Construyamos Algo Increíble Juntos
               </h1>
               <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
-                Comparte tus desafíos de automatización con nosotros. Nuestro equipo de expertos analizará tus necesidades 
-                y creará una solución personalizada que transforme tus procesos comerciales.
+                Comparte tus desafíos de automatización o desarrollo de software con nosotros. Nuestro equipo de expertos analizará tus necesidades 
+                y creará una solución personalizada que transforme los procesos de tu empresa.
               </p>
             </div>
             {submitted ? (
