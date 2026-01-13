@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendLeadNotification, sendResendEmail } from "@/libs/resend";
-import config from "@/config";
+import { sendLeadNotification } from "@/libs/resend";
 
 // This route is used to send client information via email
 // The API call is initiated by the ClientForm component
@@ -45,27 +44,6 @@ export async function POST(req) {
       `,
       replyTo: body.email,
     });
-
-    // Send confirmation email to client
-    try {
-      await sendResendEmail({
-        to: body.email,
-        subject: `Gracias por tu interés en ${config.appName}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #039695;">¡Gracias por contactarnos!</h2>
-            <p>Estimado/a ${body.name},</p>
-            <p>Hemos recibido tu información de contacto. Nuestro equipo revisará tu solicitud en breve.</p>
-            <p>Te contactaremos dentro de las próximas 24 horas para discutir cómo podemos ayudarte a automatizar los procesos de tu empresa.</p>
-            <p>Mientras tanto, te invitamos a explorar nuestra web o contactarnos directamente si tienes alguna pregunta urgente.</p>
-            <p>Saludos cordiales,<br>El equipo de ${config.appName}</p>
-          </div>
-        `,
-      });
-    } catch (emailError) {
-      console.error('Failed to send confirmation email:', emailError);
-      // Don't fail the request if confirmation email fails
-    }
 
     return NextResponse.json({
       message: "Information sent successfully",
