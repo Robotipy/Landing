@@ -33,14 +33,15 @@ export const getSEOTags = ({
       description: openGraph?.description || config.appDescription,
       url: openGraph?.url || `https://${config.domainName}/`,
       siteName: openGraph?.title || config.appName,
-      // If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
-      // images: [
-      //   {
-      //     url: `https://${config.domainName}/share.png`,
-      //     width: 1200,
-      //     height: 660,
-      //   },
-      // ],
+      // Bing requires og:image with minimum 1200x630 pixels
+      images: openGraph?.images || [
+        {
+          url: `https://${config.domainName}/images/robotipy-logo.png`,
+          width: 1200,
+          height: 630,
+          alt: config.appName,
+        },
+      ],
       locale: "en_US",
       type: "website",
     },
@@ -48,8 +49,15 @@ export const getSEOTags = ({
     twitter: {
       title: openGraph?.title || config.appName,
       description: openGraph?.description || config.appDescription,
-      // If you add an twitter-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
-      // images: [openGraph?.image || defaults.og.image],
+      // Twitter card image (also used by Bing as fallback)
+      images: openGraph?.images || [
+        {
+          url: `https://${config.domainName}/images/robotipy-logo.png`,
+          width: 1200,
+          height: 630,
+          alt: config.appName,
+        },
+      ],
       card: "summary_large_image",
       creator: "@robotipy",
     },
@@ -58,6 +66,12 @@ export const getSEOTags = ({
     ...(canonicalUrlRelative && {
       alternates: { canonical: canonicalUrlRelative },
     }),
+
+    // Microsoft/Bing specific meta tags for better thumbnail support
+    other: {
+      "msapplication-TileImage": `https://${config.domainName}/images/robotipy-logo.png`,
+      "msapplication-TileColor": config.colors.main,
+    },
 
     // If you want to add extra tags, you can pass them here
     ...extraTags,

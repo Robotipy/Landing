@@ -50,6 +50,9 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
+        {/* Microsoft/Bing specific meta tags for thumbnail support */}
+        <meta name="msapplication-TileImage" content={`https://${config.domainName}/images/robotipy-logo.png`} />
+        <meta name="msapplication-TileColor" content={config.colors.main} />
         {config.domainName && (
           <>
             <PlausibleProvider domain={config.domainName} />
