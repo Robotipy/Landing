@@ -1,16 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams, usePathname } from "next/navigation";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
 import config from "@/config";
 
+// Google Calendar link for scheduling meetings after form submission
+const CALENDAR_REDIRECT_URL = "https://calendar.app.google/KE5eYDUF4qy11yVz9";
+
 // This component is used to collect basic client contact information
-// It calls the /api/client route and stores a Client document in the database
+// It calls the /api/client route and sends the data via email
 const ClientForm = ({ extraStyle, initialValues = {} }) => {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const showInvestmentField = searchParams?.get("sd") === "true";
+
   const [formData, setFormData] = useState({
     name: initialValues.name || "",
     email: initialValues.email || "",
@@ -20,13 +24,10 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
     companySize: initialValues.companySize || "",
     website: initialValues.website || "",
     additionalInfo: initialValues.additionalInfo || "",
+    canInvest: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
-
-  // Get current URL safely using Next.js hooks
-  const currentUrl = `${config.domainName}${pathname}`;
-  const submitted = searchParams?.has("submitted") || false;
 
 
   const handleSubmit = async (e) => {
@@ -45,13 +46,31 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
       return;
     }
 
+    // Validate investment field if sd=true
+    if (showInvestmentField && !formData.canInvest) {
+      toast.error("Por favor indica si tu empresa puede realizar la inversión");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
       await apiClient.post("/client", formData);
-      toast.success(
-        "¡Gracias! Tu información ha sido enviada exitosamente. Te contactaremos pronto."
-      );
+      
+      // If user selected "no" for investment, don't redirect to calendar
+      if (showInvestmentField && formData.canInvest === "no") {
+        toast.success(
+          "¡Gracias por tu interés! Te contactaremos cuando tengamos opciones que se ajusten a tu presupuesto."
+        );
+      } else {
+        toast.success(
+          "¡Gracias! Redirigiendo para agendar una reunión..."
+        );
+        // Redirect to Google Calendar after successful submission
+        setTimeout(() => {
+          window.location.href = CALENDAR_REDIRECT_URL;
+        }, 1500);
+      }
 
       // Reset form
       setFormData({
@@ -63,6 +82,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
         companySize: "",
         website: "",
         additionalInfo: "",
+        canInvest: "",
       });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -92,20 +112,10 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
         <form
           className="space-y-6"
-          action="https://forms.zohopublic.com/danilorobo1/form/Contactus/formperma/no2pDtrp9eFNKfuckCQF94Nqn8IlzyY0t1KZWqa4-Fs/htmlRecords/submit"
-          method="POST"
-          acceptCharset="UTF-8"
-          encType="multipart/form-data"
+          onSubmit={handleSubmit}
           id="form"
           name="form"
         >
-          <input type="hidden" name="zf_referrer_name" value="" />
-          <input
-            type="hidden"
-            name="zf_redirect_url"
-            value={currentUrl + "?submitted=true"}
-          />
-          <input type="hidden" name="zc_gad" value="" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label
@@ -116,7 +126,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </label>
               <input
                 id="name"
-                name="SingleLine"
+                name="name"
                 type="text"
                 required
                 value={formData.name}
@@ -137,7 +147,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </label>
               <input
                 id="email"
-                name="Email"
+                name="email"
                 type="email"
                 required
                 value={formData.email}
@@ -158,7 +168,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </label>
               <input
                 id="phone"
-                name="PhoneNumber_countrycode"
+                name="phone"
                 maxLength="20"
                 type="tel"
                 required
@@ -182,7 +192,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </label>
               <input
                 id="companyName"
-                name="SingleLine1"
+                name="companyName"
                 type="text"
                 required
                 value={formData.companyName}
@@ -203,7 +213,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </label>
               <input
                 id="role"
-                name="SingleLine2"
+                name="role"
                 type="text"
                 required
                 value={formData.role}
@@ -224,7 +234,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </label>
               <select
                 id="companySize"
-                name="Dropdown"
+                name="companySize"
                 required
                 value={formData.companySize}
                 onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
@@ -251,7 +261,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             </label>
             <input
               id="website"
-              name="Website"
+              name="website"
               type="url"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
@@ -262,6 +272,31 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             />
           </div>
 
+          {showInvestmentField && (
+            <div className="space-y-2">
+              <label
+                htmlFor="canInvest"
+                className="text-cyan-50 text-sm block"
+              >
+                Nuestros proyectos de desarrollo de software tienen un rango de inversión entre <strong>USD $5,500 y $11,000</strong>. 
+              </label>
+              <select
+                id="canInvest"
+                name="canInvest"
+                required
+                value={formData.canInvest}
+                onChange={(e) => setFormData({ ...formData, canInvest: e.target.value })}
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
+                   text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 
+                   focus:border-transparent"
+              >
+                <option value="">¿Tu empresa puede invertir en este monto (total o en cuotas)? *</option>
+                <option value="yes">Sí, podemos invertir (total o en cuotas)</option>
+                <option value="no">No podemos invertir en este momento</option>
+              </select>
+            </div>
+          )}
+
           <div className="space-y-2">
             <label
               htmlFor="additionalInfo"
@@ -271,7 +306,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             </label>
             <textarea
               id="additionalInfo"
-              name="MultiLine"
+              name="additionalInfo"
               rows={4}
               value={formData.additionalInfo}
               onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}

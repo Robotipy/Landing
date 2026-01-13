@@ -1,20 +1,10 @@
 import { NextResponse } from "next/server";
-import connectMongo from "@/libs/mongoose";
-import Client from "@/models/Client";
-import { sendGmailEmail } from "@/libs/gmail";
+import { sendLeadNotification, sendResendEmail } from "@/libs/resend";
 import config from "@/config";
 
-// This route is used to store client information from the client information form
+// This route is used to send client information via email
 // The API call is initiated by the ClientForm component
 export async function POST(req) {
-  const connection = await connectMongo();
-  
-  if (!connection) {
-    return NextResponse.json({ 
-      error: "Database connection not available. Some features might be limited." 
-    }, { status: 503 });
-  }
-
   try {
     const body = await req.json();
 
@@ -26,93 +16,63 @@ export async function POST(req) {
       }
     }
 
-    // Check if client already exists
-    const existingClient = await Client.findOne({ email: body.email });
-    if (existingClient) {
-      return NextResponse.json({ error: "A client with this email already exists" }, { status: 409 });
-    }
+    // Format investment capability if provided
+    const canInvestText = body.canInvest 
+      ? (body.canInvest === 'yes' ? '✅ Sí, puede invertir' : '❌ No puede invertir')
+      : null;
 
-    // Create new client
-    const client = await Client.create(body);
-
-    // Send notification email to admin
-    try {
-      await sendGmailEmail({
-        to: process.env.GMAIL_USER_EMAIL || 'admin@robotipy.com',
-        subject: `New Client Information Submitted - ${client.companyName}`,
-        html: `
-           <h2>New Contact Information Submitted</h2>
-           <p><strong>Name:</strong> ${client.name}</p>
-           <p><strong>Email:</strong> ${client.email}</p>
-           <p><strong>Phone:</strong> ${client.phone || 'Not provided'}</p>
-           <p><strong>Company:</strong> ${client.companyName}</p>
-           <p><strong>Role:</strong> ${client.role || 'Not provided'}</p>
-           <p><strong>Company Size:</strong> ${client.companySize || 'Not provided'}</p>
-           <p><strong>Website:</strong> ${client.website || 'Not provided'}</p>
-           <p><strong>Additional Info:</strong> ${client.additionalInfo || 'Not provided'}</p>
-           <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
-         `,
-        replyTo: client.email,
-      });
-    } catch (emailError) {
-      console.error('Failed to send notification email:', emailError);
-      // Don't fail the request if email fails
-    }
+    // Send notification email to all recipients in LEADS_FORWARD
+    await sendLeadNotification({
+      subject: `Nuevo Lead - ${body.companyName}${body.canInvest === 'no' ? ' ⚠️ Sin presupuesto' : ''}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #039695;">Nuevo Lead Recibido</h2>
+          ${body.canInvest === 'no' ? '<p style="background-color: #fef3c7; color: #92400e; padding: 10px; border-radius: 4px;"><strong>⚠️ Este lead indicó que NO puede invertir en el rango de $5,500 - $11,000 USD</strong></p>' : ''}
+          ${body.canInvest === 'yes' ? '<p style="background-color: #d1fae5; color: #065f46; padding: 10px; border-radius: 4px;"><strong>✅ Este lead indicó que SÍ puede invertir en el rango de $5,500 - $11,000 USD</strong></p>' : ''}
+          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+            <p><strong>Nombre:</strong> ${body.name}</p>
+            <p><strong>Email:</strong> <a href="mailto:${body.email}">${body.email}</a></p>
+            <p><strong>Teléfono:</strong> ${body.phone || 'No proporcionado'}</p>
+            <p><strong>Empresa:</strong> ${body.companyName}</p>
+            <p><strong>Cargo:</strong> ${body.role || 'No proporcionado'}</p>
+            <p><strong>Tamaño de Empresa:</strong> ${body.companySize || 'No proporcionado'}</p>
+            <p><strong>Sitio Web:</strong> ${body.website || 'No proporcionado'}</p>
+            <p><strong>Información Adicional:</strong> ${body.additionalInfo || 'No proporcionado'}</p>
+            ${canInvestText ? `<p><strong>Capacidad de Inversión ($5,500 - $11,000 USD):</strong> ${canInvestText}</p>` : ''}
+            <p><strong>Fecha:</strong> ${new Date().toLocaleString('es-CL', { timeZone: 'America/Santiago' })}</p>
+          </div>
+        </div>
+      `,
+      replyTo: body.email,
+    });
 
     // Send confirmation email to client
     try {
-      await sendGmailEmail({
-        to: client.email,
-        subject: `Thank you for your interest in ${config.appName}`,
+      await sendResendEmail({
+        to: body.email,
+        subject: `Gracias por tu interés en ${config.appName}`,
         html: `
-           <h2>Thank you for reaching out!</h2>
-           <p>Dear ${client.name},</p>
-           <p>Thank you for submitting your contact information. We've received your request and will review it shortly.</p>
-           <p>Our team will contact you within 24 hours to discuss how we can help automate your business processes.</p>
-           <p>In the meantime, feel free to explore our website or contact us directly if you have any urgent questions.</p>
-           <p>Best regards,<br>The ${config.appName} Team</p>
-         `,
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #039695;">¡Gracias por contactarnos!</h2>
+            <p>Estimado/a ${body.name},</p>
+            <p>Hemos recibido tu información de contacto. Nuestro equipo revisará tu solicitud en breve.</p>
+            <p>Te contactaremos dentro de las próximas 24 horas para discutir cómo podemos ayudarte a automatizar los procesos de tu empresa.</p>
+            <p>Mientras tanto, te invitamos a explorar nuestra web o contactarnos directamente si tienes alguna pregunta urgente.</p>
+            <p>Saludos cordiales,<br>El equipo de ${config.appName}</p>
+          </div>
+        `,
       });
     } catch (emailError) {
       console.error('Failed to send confirmation email:', emailError);
-      // Don't fail the request if email fails
+      // Don't fail the request if confirmation email fails
     }
 
     return NextResponse.json({
-      message: "Client information submitted successfully",
-      clientId: client._id,
+      message: "Information sent successfully",
     });
 
   } catch (error) {
-    console.error('Error creating client:', error);
-    
-    // Handle duplicate key error
-    if (error.code === 11000) {
-      return NextResponse.json({ error: "A client with this email already exists" }, { status: 409 });
-    }
-    
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    console.error('Error sending lead notification:', error);
+    return NextResponse.json({ error: "Failed to send information" }, { status: 500 });
   }
 }
-
-// GET route to fetch all clients (for admin dashboard)
-export async function GET(req) {
-  const connection = await connectMongo();
-  
-  if (!connection) {
-    return NextResponse.json({ 
-      error: "Database connection not available. Some features might be limited." 
-    }, { status: 503 });
-  }
-
-  try {
-    const clients = await Client.find({})
-      .sort({ createdAt: -1 })
-      .limit(50); // Limit to 50 most recent clients
-
-    return NextResponse.json({ clients });
-  } catch (error) {
-    console.error('Error fetching clients:', error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-  }
-} 
