@@ -14,10 +14,10 @@ export const getSEOTags = ({
   extraTags,
 } = {}) => {
   return {
-    // up to 50 characters (what does your app do for the user?) > your main should be here
-    title: title || config.appName,
-    // up to 160 characters (how does your app help the user?)
-    description: description || config.appDescription,
+    // 50-60 characters recommended by Bing (what does your app do for the user?)
+    title: title || config.appTitle || config.appName,
+    // 120-160 characters recommended by Bing (how does your app help the user?)
+    description: description || config.appDescriptionSEO || config.appDescription,
     // some keywords separated by commas. by default it will be your app name
     keywords: keywords || [config.appName],
     applicationName: config.appName,

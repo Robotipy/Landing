@@ -3,9 +3,14 @@ import themes from "daisyui/src/theming/themes.js";
 const config = {
   // REQUIRED
   appName: "Robotipy",
+  // SEO Title (50-60 characters recommended by Bing)
+  appTitle: "Robotipy - Automatización RPA, Chatbots IA y Software",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
     "Robotipy es una empresa especializada en automatización de procesos (RPA) con tecnología Rocketbot. Ofrece desarrollo de bots a medida, automatización de tareas administrativas, integración con sistemas empresariales, capacitación y soporte. Con amplia experiencia en múltiples industrias (Agricola, Banca, Estudios contables, Alimentos, etc.), Robotipy ayuda a las empresas a optimizar procesos, reducir costos y acelerar su transformación digital con soluciones rápidas, profesionales y accesibles.",
+  // SEO Meta Description (120-160 characters recommended by Bing)
+  appDescriptionSEO:
+    "Automatización de procesos (RPA), Chatbots con IA y desarrollo de software a medida. Soluciones profesionales para optimizar procesos y reducir costos empresariales.",
   appDescriptionShort:
     "Robotipy es una empresa especializada en automatización de procesos (RPA) y desarrollo de software a medida. Inteligencia Artificial, Agentes, Software personalizado.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
