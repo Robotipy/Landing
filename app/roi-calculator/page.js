@@ -166,7 +166,6 @@ const ROICalculator = () => {
     const totalRepetitiveHours = peopleInProcess * daysPerMonth * hoursPerDay;
     const costPerHour = avgMonthlyCostPerPerson / (workingDaysPerMonth * workingHoursPerDay);
     const annualProductivitySavings = totalRepetitiveHours * costPerHour * 12;
-    console.log(annualProductivitySavings, 'annualProductivitySavings', totalRepetitiveHours, costPerHour);
     
     // Error costs
     const annualReprocessCosts = reprocessHours * costPerHour * 12;

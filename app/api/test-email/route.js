@@ -2,9 +2,12 @@ import { sendGmailEmail, verifyGmailConnection } from "@/libs/gmail";
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  // Block in production - this endpoint is for development testing only
+  if (process.env.NODE_ENV !== "development") {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
   try {
-    // Test connection first
-    console.log('🔍 Testing Gmail API connection...');
     const connectionTest = await verifyGmailConnection();
     
     if (!connectionTest.success) {
