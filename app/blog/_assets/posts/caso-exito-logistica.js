@@ -7,9 +7,9 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-logistica",
-  title: "Caso de éxito Robotipy: Implementación de RPA en logística y retail",
+  title: "Logística y retail: 3 robots, cero errores",
   description:
-    "Analizamos cómo una empresa de retail optimizó su cadena de suministro y redujo tiempos de entrega mediante la automatización de procesos logísticos.",
+    "Se automatizó el procesamiento de pedidos en una empresa de retail, integrando marketplaces, ERP y couriers con 3 robots RPA especializados.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.logistica),
     categories.find((category) => category.slug === categorySlugs.rpa),
@@ -28,12 +28,12 @@ export const post = {
           La logística moderna es una carrera contra el tiempo. En el sector retail, la promesa de &quot;entrega en 24 horas&quot; ha pasado de ser una ventaja competitiva a un estándar de la industria. Sin embargo, detrás de esa promesa, muchas empresas luchan con procesos manuales, desconexión entre sistemas y errores de inventario.
         </p>
         <p className={styles.p}>
-          En este caso de estudio, exploramos cómo ayudamos a un importante actor del retail a transformar su operación logística mediante <strong>RPA (Robotic Process Automation)</strong>.
+          En este ejemplo, se explora cómo un importante actor del retail transformó su operación logística mediante <strong>RPA (Robotic Process Automation)</strong>.
         </p>
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>El Desafío: Cuellos de Botella en el Despacho</h3>
+        <h2 className={styles.h2}>El Desafío: Cuellos de Botella en el Despacho</h2>
         <p className={styles.p}>
           El cliente enfrentaba un problema crítico: su volumen de ventas online crecía, pero su capacidad de procesamiento de órdenes estaba estancada. Los desafíos incluían:
         </p>
@@ -45,9 +45,9 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>La Solución: Orquestación Digital</h3>
+        <h2 className={styles.h2}>La Solución: Orquestación Digital</h2>
         <p className={styles.p}>
-          Implementamos una fuerza de trabajo digital compuesta por 3 robots RPA especializados:
+          Se implementó una fuerza de trabajo digital compuesta por 3 robots RPA especializados:
         </p>
         <ol className={styles.ol}>
           <li className={styles.li}>
@@ -63,7 +63,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>Resultados Cuantificables</h3>
+        <h2 className={styles.h2}>Resultados Cuantificables</h2>
         <p className={styles.p}>
           Tras 3 meses de implementación, los resultados transformaron la operación:
         </p>

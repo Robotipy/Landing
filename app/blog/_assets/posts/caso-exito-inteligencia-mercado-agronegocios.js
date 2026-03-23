@@ -5,9 +5,9 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-inteligencia-mercado-agronegocios",
-  title: "Caso de Éxito: Inteligencia de mercado automatizada para agronegocios en Argentina",
+  title: "Inteligencia de mercado automatizada para el campo",
   description:
-    "Cómo una consultora de agronegocios en Argentina automatizó el monitoreo diario de precios de commodities, tasas bancarias y datos macroeconómicos de más de 10 fuentes públicas con RPA.",
+    "Se automatizó el monitoreo diario de precios de commodities, tasas bancarias y datos macro de más de 10 fuentes públicas para una consultora de agronegocios en Argentina.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.casosDeExito),
     categories.find((category) => category.slug === categorySlugs.agtech),
@@ -31,7 +31,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>El Desafío: 10+ fuentes públicas, horas de trabajo manual</h3>
+        <h2 className={styles.h2}>El Desafío: 10+ fuentes públicas, horas de trabajo manual</h2>
         <p className={styles.p}>
           La consultora necesitaba monitorear diariamente precios de commodities agrícolas (granos, ganadería), tasas bancarias de crédito agro, y datos macroeconómicos de más de 10 fuentes públicas diferentes:
         </p>
@@ -48,7 +48,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>La Solución: Bot RPA con scraping inteligente</h3>
+        <h2 className={styles.h2}>La Solución: Bot RPA con scraping inteligente</h2>
         <ol className={styles.ol}>
           <li className={styles.li}>
             <strong className={styles.strong}>Extracción automatizada:</strong> Bot RPA que recorre automáticamente 10+ fuentes web públicas extrayendo precios de granos, precios y pesos de ganadería (novillitos, vacas, terneros), y tasas de crédito agro.
@@ -76,7 +76,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>Resultados</h3>
+        <h2 className={styles.h2}>Resultados</h2>
         <ul className={styles.ul}>
           <li className={styles.li}><strong>Proceso de horas reducido a 10-20 minutos</strong> de ejecución automatizada.</li>
           <li className={styles.li}><strong>Datos disponibles diariamente</strong> para análisis interno y reuniones con clientes.</li>
@@ -91,7 +91,7 @@ export const post = {
           Este caso demuestra que <strong>RPA no es solo para grandes corporaciones con SAP</strong>. Una consultora pequeña puede usar un robot para tener inteligencia de mercado a nivel de Bloomberg, pero para su nicho específico.
         </p>
         <p className={styles.p}>
-          El cliente lo dijo mejor: los datos son valiosos no cuando los envías, sino <strong>cuando te sientas a analizarlos en una reunión de decisión</strong>.
+          Como se identificó durante el proyecto: los datos son valiosos no cuando los envías, sino <strong>cuando te sientas a analizarlos en una reunión de decisión</strong>.
         </p>
         <p className={`${styles.p} font-semibold text-cyan-400`}>
           El bot no reemplazó al analista, le dio la materia prima para que haga su trabajo real: pensar.
