@@ -5,9 +5,9 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-automatizacion-ordenes-sap-siderurgia",
-  title: "Caso de Éxito: Automatización de órdenes SAP para empresa siderúrgica",
+  title: "Órdenes SAP automatizadas en siderurgia",
   description:
-    "Cómo un grupo siderúrgico en Chile conectó HubSpot, SAP y el portal de Cencosud con RPA, eliminando errores de transcripción y reduciendo el tiempo de procesamiento de órdenes.",
+    "Se automatizó el ciclo completo de órdenes de compra en una empresa siderúrgica: desde la lectura de tickets hasta la creación de pedidos en SAP, sin intervención manual.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.casosDeExito),
     categories.find((category) => category.slug === categorySlugs.rpa),
@@ -31,37 +31,37 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>El Desafío: Tres sistemas desconectados</h3>
+        <h2 className={styles.h2}>El Desafío: Tres sistemas desconectados</h2>
         <p className={styles.p}>
           La gestión de órdenes de compra involucraba tres sistemas que no se comunicaban entre sí:
         </p>
         <ul className={styles.ul}>
-          <li className={styles.li}><strong>HubSpot (CRM):</strong> Tickets con PDFs de órdenes de compra adjuntos.</li>
+          <li className={styles.li}><strong>Sistema de tickets (CRM):</strong> Tickets con PDFs de órdenes de compra adjuntos.</li>
           <li className={styles.li}><strong>SAP (ERP):</strong> Donde se crean los pedidos con la transacción VA01.</li>
-          <li className={styles.li}><strong>Portal de Cencosud:</strong> Donde se consultan y validan órdenes.</li>
+          <li className={styles.li}><strong>Portal del cliente retail:</strong> Donde se consultan y validan órdenes.</li>
         </ul>
         <p className={styles.p}>
-          Un operador debía abrir cada ticket en HubSpot, extraer datos del PDF adjunto, ingresar manualmente a SAP para crear el pedido, anotar el número generado, volver a HubSpot a actualizar el estado, y luego verificar en Cencosud. <strong>Cada ciclo tomaba minutos y era propenso a errores de transcripción.</strong>
+          Un operador debía abrir cada ticket en el sistema de tickets, extraer datos del PDF adjunto, ingresar manualmente a SAP para crear el pedido, anotar el número generado, volver al sistema de tickets a actualizar el estado, y luego verificar en el portal del cliente. <strong>Cada ciclo tomaba minutos y era propenso a errores de transcripción.</strong>
         </p>
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>La Solución: Robot RPA como integrador</h3>
+        <h2 className={styles.h2}>La Solución: Robot RPA como integrador</h2>
         <p className={styles.p}>
-          Implementamos un robot RPA que ejecuta el ciclo completo de forma autónoma:
+          Se implementó un robot RPA que ejecuta el ciclo completo de forma autónoma:
         </p>
         <ol className={styles.ol}>
           <li className={styles.li}>
-            <strong className={styles.strong}>Lectura de tickets:</strong> El bot lee cada ticket de HubSpot y extrae los datos del PDF de orden de compra adjunto mediante OCR.
+            <strong className={styles.strong}>Lectura de tickets:</strong> El bot lee cada ticket del sistema de tickets y extrae los datos del PDF de orden de compra adjunto mediante OCR.
           </li>
           <li className={styles.li}>
             <strong className={styles.strong}>Creación en SAP:</strong> Con los datos extraídos, crea el pedido en SAP (transacción VA01) y captura el número de pedido generado.
           </li>
           <li className={styles.li}>
-            <strong className={styles.strong}>Actualización de CRM:</strong> Vuelve a HubSpot para actualizar el ticket con el número de pedido y el estado.
+            <strong className={styles.strong}>Actualización de CRM:</strong> Vuelve al sistema de tickets para actualizar el ticket con el número de pedido y el estado.
           </li>
           <li className={styles.li}>
-            <strong className={styles.strong}>Validación en Cencosud:</strong> Módulo adicional para consultar, filtrar y extraer órdenes del portal automáticamente.
+            <strong className={styles.strong}>Validación en portal:</strong> Módulo adicional para consultar, filtrar y extraer órdenes del portal del cliente automáticamente.
           </li>
           <li className={styles.li}>
             <strong className={styles.strong}>Validación de datos:</strong> Reglas de negocio aplicadas antes del ingreso a SAP para prevenir errores.
@@ -74,14 +74,14 @@ export const post = {
         <ul className={styles.ul}>
           <li className={styles.li}><strong>RPA:</strong> Rocketbot</li>
           <li className={styles.li}><strong>ERP:</strong> SAP VA01</li>
-          <li className={styles.li}><strong>CRM:</strong> HubSpot</li>
-          <li className={styles.li}><strong>Portal:</strong> Cencosud</li>
+          <li className={styles.li}><strong>CRM:</strong> Sistema de tickets</li>
+          <li className={styles.li}><strong>Portal:</strong> Portal del cliente retail</li>
           <li className={styles.li}><strong>Otros:</strong> Excel, OCR</li>
         </ul>
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>Resultados</h3>
+        <h2 className={styles.h2}>Resultados</h2>
         <ul className={styles.ul}>
           <li className={styles.li}><strong>Proceso de minutos reducido</strong> a ejecución automatizada sin intervención humana.</li>
           <li className={styles.li}><strong>Eliminación de errores de transcripción</strong> entre los tres sistemas.</li>

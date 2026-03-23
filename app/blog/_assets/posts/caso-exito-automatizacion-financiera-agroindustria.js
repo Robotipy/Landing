@@ -5,9 +5,9 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-automatizacion-financiera-agroindustria",
-  title: "Caso de Éxito: Automatización financiera para grupo agroindustrial en Chile",
+  title: "Conciliaciones financieras sin intervención manual",
   description:
-    "Cómo un holding agroindustrial en Chile automatizó conciliaciones bancarias y revisión de facturas con RPA, reduciendo errores y liberando al equipo financiero para tareas estratégicas.",
+    "Se automatizaron las conciliaciones bancarias y la revisión de facturas en un holding agroindustrial en Chile, reduciendo errores y liberando al equipo financiero.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.casosDeExito),
     categories.find((category) => category.slug === categorySlugs.fintech),
@@ -31,7 +31,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>El Desafío: Conciliaciones manuales entre múltiples bancos y sistemas</h3>
+        <h2 className={styles.h2}>El Desafío: Conciliaciones manuales entre múltiples bancos y sistemas</h2>
         <p className={styles.p}>
           El grupo manejaba conciliaciones bancarias y revisión de facturas de forma manual entre múltiples bancos y sistemas contables. Los problemas incluían:
         </p>
@@ -43,7 +43,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>La Solución: Automatización integral del proceso financiero</h3>
+        <h2 className={styles.h2}>La Solución: Automatización integral del proceso financiero</h2>
         <ol className={styles.ol}>
           <li className={styles.li}>
             <strong className={styles.strong}>Conciliaciones bancarias automatizadas:</strong> Robot que extrae movimientos de bancos, los cruza con registros contables, e identifica diferencias automáticamente.
@@ -70,7 +70,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>Resultados</h3>
+        <h2 className={styles.h2}>Resultados</h2>
         <ul className={styles.ul}>
           <li className={styles.li}><strong>Reducción drástica del tiempo</strong> de conciliación bancaria.</li>
           <li className={styles.li}><strong>Detección temprana de discrepancias</strong> en facturas antes de pago.</li>

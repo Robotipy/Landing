@@ -14,8 +14,7 @@ export const metadata = getSEOTags({
 
 export default async function Blog() {
   const articlesToDisplay = articles
-    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-    .slice(0, 6);
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   return (
     <>
       <section className="text-center max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto mt-12 mb-24 md:mb-32">

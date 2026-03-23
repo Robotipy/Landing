@@ -5,9 +5,9 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-cartolas-factoring-vitivinicola",
-  title: "Caso de Éxito: Automatización de cartolas y factoring para empresa vitivinícola",
+  title: "Cartolas y factoring automatizados en viticultura",
   description:
-    "Cómo una empresa vitivinícola y frutícola en Chile automatizó la carga de cartolas bancarias y gestión de factoring con RPA, reduciendo horas de trabajo diario a minutos.",
+    "Se automatizó la carga diaria de cartolas bancarias y la gestión de factoring en una empresa vitivinícola con operaciones de exportación, reduciendo horas de trabajo a minutos.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.casosDeExito),
     categories.find((category) => category.slug === categorySlugs.fintech),
@@ -31,7 +31,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>El Desafío: Procesos financieros manuales en múltiples monedas</h3>
+        <h2 className={styles.h2}>El Desafío: Procesos financieros manuales en múltiples monedas</h2>
         <p className={styles.p}>
           La empresa manejaba procesos financieros críticos de forma manual:
         </p>
@@ -43,7 +43,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>La Solución: Automatización de carga y factoring</h3>
+        <h2 className={styles.h2}>La Solución: Automatización de carga y factoring</h2>
         <ol className={styles.ol}>
           <li className={styles.li}>
             <strong className={styles.strong}>Carga automática de cartolas:</strong> Descarga automática desde portales bancarios, formateo según requerimientos del sistema contable, y carga directa sin intervención humana.
@@ -67,7 +67,7 @@ export const post = {
       </section>
 
       <section className="space-y-3">
-        <h3 className={styles.h3}>Resultados</h3>
+        <h2 className={styles.h2}>Resultados</h2>
         <ul className={styles.ul}>
           <li className={styles.li}><strong>Proceso diario de carga de cartolas</strong> reducido de horas a minutos.</li>
           <li className={styles.li}><strong>Eliminación de errores de transcripción</strong> en datos bancarios.</li>
