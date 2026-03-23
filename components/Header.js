@@ -55,6 +55,18 @@ const links = [
         description:
           "Automatización de estudios contables, jurídicos y de software",
       },
+      {
+        href: "/blog/caso-exito-rpa-ia-mineria-costos",
+        label: "Minería",
+        description:
+          "RPA + IA para reportes de costos y consultas en lenguaje natural",
+      },
+      {
+        href: "/blog/caso-exito-automatizacion-ordenes-sap-siderurgia",
+        label: "Siderurgia",
+        description:
+          "Automatización de órdenes SAP conectando HubSpot y Cencosud",
+      },
       // {
       //   href: "/casos-exito/salud",
       //   label: "Salud",

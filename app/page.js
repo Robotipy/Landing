@@ -13,6 +13,7 @@ import Offers from "./solutions/Offers";
 import Solutions from "@/components/Solutions";
 import FeaturedCaseStudies from "@/components/FeaturedCaseStudies";
 import MapsSolutions from "@/components/MapsSolutions";
+import CasosDeExito from "@/components/CasosDeExito";
 
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
         <Hero />
         <TrustInUs priority={true} />
         <Solutions />
-        {/* <FeaturedCaseStudies /> */}
+        <CasosDeExito />
         <MapsSolutions />
         {/* <PagePreviewCenter /> */}
         {/* <BlogPreview /> */}
