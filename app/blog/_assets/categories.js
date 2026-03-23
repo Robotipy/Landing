@@ -11,6 +11,7 @@ export const categorySlugs = {
   fintech: "fintech",
   logistica: "logistica",
   capacitacion: "capacitacion",
+  casosDeExito: "casos-de-exito",
 };
 
 // All the blog categories data display in the /blog/category/[categoryI].js pages.
@@ -68,5 +69,14 @@ export const categories = [
       "Formación y capacitación en automatización, RPA y desarrollo de software.",
     descriptionShort:
       "Formación y capacitación",
+  },
+  {
+    slug: categorySlugs.casosDeExito,
+    title: "Casos de Éxito",
+    titleShort: "Casos",
+    description:
+      "Casos reales de automatización RPA e inteligencia artificial en empresas de Latinoamérica",
+    descriptionShort:
+      "Casos de éxito reales",
   },
 ];
