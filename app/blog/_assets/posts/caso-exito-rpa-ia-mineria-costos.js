@@ -1,6 +1,7 @@
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
+import thumbnail from "@/public/blog/caso-exito-rpa-ia-mineria-costos/header.jpeg";
 import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
@@ -15,7 +16,7 @@ export const post = {
   author: authors.find((author) => author.slug === authorSlugs.DaniloToro),
   publishedAt: "2026-03-20",
   image: {
-    src: null,
+    src: thumbnail,
     urlRelative: "/blog/caso-exito-rpa-ia-mineria-costos/header.jpeg",
     alt: "Automatización RPA e IA en minería del cobre Chile",
   },

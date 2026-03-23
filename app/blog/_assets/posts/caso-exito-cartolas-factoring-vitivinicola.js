@@ -1,6 +1,7 @@
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
+import thumbnail from "@/public/blog/caso-exito-cartolas-factoring-vitivinicola/header.jpeg";
 import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
@@ -15,7 +16,7 @@ export const post = {
   author: authors.find((author) => author.slug === authorSlugs.DaniloToro),
   publishedAt: "2026-03-16",
   image: {
-    src: null,
+    src: thumbnail,
     urlRelative: "/blog/caso-exito-cartolas-factoring-vitivinicola/header.jpeg",
     alt: "Automatización cartolas factoring vitivinícola Chile",
   },
