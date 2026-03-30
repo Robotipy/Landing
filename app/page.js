@@ -14,6 +14,7 @@ import Solutions from "@/components/Solutions";
 import FeaturedCaseStudies from "@/components/FeaturedCaseStudies";
 import MapsSolutions from "@/components/MapsSolutions";
 import CasosDeExito from "@/components/CasosDeExito";
+import ProductsShowcase from "@/components/ProductsShowcase";
 
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
         <Hero />
         <TrustInUs priority={true} />
         <Solutions />
+        <ProductsShowcase />
         <CasosDeExito />
         <MapsSolutions />
         {/* <PagePreviewCenter /> */}

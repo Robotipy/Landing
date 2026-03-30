@@ -98,21 +98,39 @@ const Footer = () => {
             </div>
             <div className="w-full md:w-auto px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
+                PRODUCTOS
+              </div>
+              <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
+                <Link href="/projects" className="link link-hover text-start">
+                  Projects (Gestión PM)
+                </Link>
+                <Link href="/monitor" className="link link-hover text-start">
+                  Monitor (Monitoreo RPA)
+                </Link>
+                <Link href="/analysis" className="link link-hover text-start">
+                  Analysis (Análisis Video)
+                </Link>
+              </div>
+            </div>
+            <div className="w-full md:w-auto px-4">
+              <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
                 RECURSOS
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
                 <Link
-                  href="//blog.robotipy.com"
+                  href="/blog"
                   className="link link-hover text-start"
                 >
                   Blog
                 </Link>
-                {/* <Link href="/#" className="link link-hover text-start">
-                  Capacitación
-                </Link>
-                <Link href="/#" className="link link-hover text-start">
-                  Foro
-                </Link> */}
+                <a
+                  href="https://newsletter.robotipy.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link link-hover text-start"
+                >
+                  Newsletter
+                </a>
               </div>
             </div>
             <div className="w-full md:w-auto px-4">
