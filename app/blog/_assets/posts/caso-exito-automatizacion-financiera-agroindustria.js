@@ -91,6 +91,9 @@ export const post = {
       </section>
 
       <section className="space-y-3">
+        <p className={styles.p}>
+          Escalar automatizaciones a múltiples unidades de negocio requiere planificación. <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> te ayuda a gestionar recursos, timelines y clientes en un solo lugar.
+        </p>
         <div className="flex justify-center mt-4">
           <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
         </div>
