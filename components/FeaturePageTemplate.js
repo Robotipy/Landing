@@ -21,7 +21,7 @@ const FeaturePageTemplate = ({
           title={title}
           subtitle={subtitle}
           ctaText="Empieza gratis"
-          ctaLink="https://robotipy.dev"
+          ctaLink="https://projects.robotipy.dev"
           ctaSecondaryText="Ver todas las funciones"
           ctaSecondaryLink="/projects"
         />
@@ -70,7 +70,7 @@ const FeaturePageTemplate = ({
           title="Empieza a gestionar tu consultora de forma profesional"
           subtitle="30 días gratis. Sin tarjeta de crédito."
           ctaText="Empieza gratis"
-          ctaLink="https://robotipy.dev"
+          ctaLink="https://projects.robotipy.dev"
         />
       </main>
       <Footer />

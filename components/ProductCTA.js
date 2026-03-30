@@ -4,7 +4,7 @@ const ProductCTA = ({
   title = "Empieza a gestionar tu consultora de forma profesional",
   subtitle = "Prueba gratis por 30 días. Sin tarjeta de crédito.",
   ctaText = "Empieza gratis",
-  ctaLink = "https://robotipy.dev",
+  ctaLink = "https://projects.robotipy.dev",
 }) => {
   return (
     <section className="py-16 lg:py-32 bg-primary/95">
