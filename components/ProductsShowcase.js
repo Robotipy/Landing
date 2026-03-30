@@ -68,7 +68,7 @@ const ProductsShowcase = () => {
         </div>
         <div className="text-center mt-8">
           <a
-            href="https://robotipy.dev"
+            href="https://projects.robotipy.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline font-medium"

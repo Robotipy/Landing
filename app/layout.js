@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
     "sameAs": [
       "https://www.linkedin.com/company/robotipy",
       "https://www.instagram.com/robotipy.dev",
-      "https://robotipy.dev",
+      "https://projects.robotipy.dev",
       "https://newsletter.robotipy.com"
     ]
   };

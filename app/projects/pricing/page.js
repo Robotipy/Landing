@@ -142,7 +142,7 @@ export default function PricingPage() {
                 </ul>
                 <ButtonMain
                   text="Empieza gratis"
-                  link="https://robotipy.dev"
+                  link="https://projects.robotipy.dev"
                   type="primary"
                 />
               </div>
@@ -200,7 +200,7 @@ export default function PricingPage() {
                 </ul>
                 <ButtonMain
                   text="Empieza gratis"
-                  link="https://robotipy.dev"
+                  link="https://projects.robotipy.dev"
                   type="primary"
                 />
               </div>

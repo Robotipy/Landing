@@ -15,7 +15,7 @@ export default function ProjectsPage() {
     name: "Robotipy Projects",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    url: "https://robotipy.dev",
+    url: "https://projects.robotipy.dev",
     description:
       "Software de gestión de proyectos para consultoras de software y RPA. Gestiona proyectos, recursos, propuestas y soporte en un solo lugar.",
     offers: {
@@ -40,7 +40,7 @@ export default function ProjectsPage() {
           title="El sistema operativo para consultoras de software y RPA"
           subtitle="Deja de gestionar tu consultora con WhatsApp y Excel. Centraliza proyectos, recursos, estimaciones y soporte en un solo lugar."
           ctaText="Empieza gratis"
-          ctaLink="https://robotipy.dev"
+          ctaLink="https://projects.robotipy.dev"
           ctaSecondaryText="Ver precios"
           ctaSecondaryLink="/projects/pricing"
         />
@@ -52,7 +52,7 @@ export default function ProjectsPage() {
           title="Empieza a gestionar tu consultora de forma profesional"
           subtitle="30 días gratis. Sin tarjeta de crédito. Configurado en minutos."
           ctaText="Empieza gratis"
-          ctaLink="https://robotipy.dev"
+          ctaLink="https://projects.robotipy.dev"
         />
       </main>
       <Footer />
