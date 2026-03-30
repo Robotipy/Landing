@@ -14,6 +14,31 @@ const links = [
     label: "Servicios",
   },
   {
+    href: "/projects",
+    label: "Productos",
+    hasDropdown: true,
+    dropdownItems: [
+      {
+        href: "/projects",
+        label: "Projects",
+        description:
+          "Gestión de proyectos, recursos y propuestas para consultoras",
+      },
+      {
+        href: "/monitor",
+        label: "Monitor",
+        description:
+          "Monitoreo en tiempo real de robots RPA",
+      },
+      {
+        href: "/analysis",
+        label: "Analysis",
+        description:
+          "Análisis de video con inteligencia artificial",
+      },
+    ],
+  },
+  {
     href: "/desarrollo-software",
     label: "Desarrollo",
   },

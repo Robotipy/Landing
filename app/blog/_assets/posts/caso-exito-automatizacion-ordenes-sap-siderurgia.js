@@ -102,6 +102,9 @@ export const post = {
       </section>
 
       <section className="space-y-3">
+        <p className={styles.p}>
+          Proyectos con integraciones complejas como este requieren visibilidad total del avance. Conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> para gestionar este tipo de iniciativas de forma profesional.
+        </p>
         <div className="flex justify-center mt-4">
           <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
         </div>

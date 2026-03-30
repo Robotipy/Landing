@@ -102,6 +102,9 @@ export const post = {
       </section>
 
       <section className="space-y-3">
+        <p className={styles.p}>
+          Si gestionas proyectos de automatización como este, conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> — nuestra herramienta para gestionar proyectos, recursos y clientes de consultoras de tecnología.
+        </p>
         <div className="flex justify-center mt-4">
           <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
         </div>
