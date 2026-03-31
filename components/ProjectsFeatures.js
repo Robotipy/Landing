@@ -1,4 +1,3 @@
-import ProductFeatureCard from "./ProductFeatureCard";
 import ProductFeatureShowcase from "./ProductFeatureShowcase";
 
 const showcaseFeatures = [
@@ -13,11 +12,11 @@ const showcaseFeatures = [
   },
   {
     image: "/projects/proyecto-cliente.png",
-    alt: "Portal de clientes con vista de avance del proyecto",
-    title: "Portal de Clientes",
+    alt: "Gantt y Timeline con vista de avance del proyecto",
+    title: "Gantt y Timeline",
     description:
-      "Tus clientes ven el avance de sus proyectos en tiempo real. Sin WhatsApp, sin emails.",
-    link: "/projects/portal-clientes",
+      "Planifica y visualiza tus proyectos con diagramas de Gantt interactivos. Tus clientes ven el avance en tiempo real.",
+    link: null,
     position: "left",
   },
   {
@@ -49,23 +48,6 @@ const showcaseFeatures = [
   },
 ];
 
-const cardFeatures = [
-  {
-    icon: "\u{1F4DD}",
-    title: "Cotizador de Propuestas",
-    description:
-      "Crea propuestas profesionales y conviértelas en proyectos con un click.",
-    link: "/projects/cotizador",
-  },
-  {
-    icon: "\u{1F4CA}",
-    title: "Gantt y Timeline",
-    description:
-      "Planifica y visualiza tus proyectos con diagramas de Gantt interactivos.",
-    link: null,
-  },
-];
-
 const ProjectsFeatures = () => {
   return (
     <section className="py-16 lg:py-24">
@@ -88,18 +70,6 @@ const ProjectsFeatures = () => {
               title={feature.title}
               description={feature.description}
               position={feature.position}
-              link={feature.link}
-            />
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-16">
-          {cardFeatures.map((feature, index) => (
-            <ProductFeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
               link={feature.link}
             />
           ))}
