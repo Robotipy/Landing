@@ -43,6 +43,8 @@ export default function ProjectsPage() {
           ctaLink="https://projects.robotipy.dev"
           ctaSecondaryText="Ver precios"
           ctaSecondaryLink="/projects/pricing"
+          heroImage="/projects/home.png"
+          heroImageAlt="Dashboard principal de Robotipy Projects"
         />
         <ProjectsProblem />
         <ProjectsFeatures />
