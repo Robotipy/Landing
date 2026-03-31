@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ButtonMain from "./ButtonMain";
 
 const ProductHero = ({
@@ -7,6 +8,8 @@ const ProductHero = ({
   ctaLink = "https://projects.robotipy.dev",
   ctaSecondaryText,
   ctaSecondaryLink,
+  heroImage,
+  heroImageAlt,
 }) => {
   return (
     <div className="relative flex h-auto w-full flex-col overflow-x-hidden">
@@ -34,6 +37,18 @@ const ProductHero = ({
                     />
                   )}
                 </div>
+                {heroImage && (
+                  <div className="mt-12 w-full max-w-5xl">
+                    <Image
+                      src={heroImage}
+                      alt={heroImageAlt || "Product screenshot"}
+                      width={1200}
+                      height={675}
+                      className="w-full rounded-xl border border-white/10 shadow-2xl"
+                      priority={true}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
