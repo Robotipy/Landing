@@ -5,7 +5,7 @@ import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
 import GoogleTagManager from "@/components/scripts/GoogleTagManager";
-import MetaPixel from "@/components/scripts/MetaPixel";
+import MetaPixel, { MetaPixelNoScript } from "@/components/scripts/MetaPixel";
 import ZohoSalesIQ from "@/components/scripts/ZohoSalesIQ";
 
 const font = Inter({ subsets: ["latin"] });
@@ -72,15 +72,14 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <noscript>
-          <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-KBLGJHLN"
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            ></iframe>
-          </noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KBLGJHLN"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
         </noscript>
+        <MetaPixelNoScript />
         <ZohoSalesIQ />
       </body>
     </html>
