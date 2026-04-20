@@ -5,6 +5,7 @@ import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
 import GoogleTagManager from "@/components/scripts/GoogleTagManager";
+import MetaPixel from "@/components/scripts/MetaPixel";
 import ZohoSalesIQ from "@/components/scripts/ZohoSalesIQ";
 
 const font = Inter({ subsets: ["latin"] });
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
           <>
             <PlausibleProvider domain={config.domainName} />
             <GoogleTagManager />
+            <MetaPixel />
           </>
         )}
       </head>
