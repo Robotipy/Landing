@@ -42,10 +42,12 @@ export default function RootLayout({ children }) {
     "sameAs": [
       "https://www.linkedin.com/company/robotipy",
       "https://www.instagram.com/robotipy.dev",
+      "https://projects.robotipy.dev",
+      "https://newsletter.robotipy.com"
     ]
   };
   return (
-    <html lang="en" data-theme={config.colors.theme} className={font.className}>
+    <html lang="es" data-theme={config.colors.theme} className={font.className}>
       <head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"

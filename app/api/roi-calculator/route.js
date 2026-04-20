@@ -3,6 +3,7 @@ import connectMongo from "@/libs/mongoose";
 import { sendGmailEmail } from "@/libs/gmail";
 import config from "@/config";
 import ROICalculation from "@/models/ROICalculation";
+import { escapeHtml } from "@/libs/escapeHtml";
 
 // This route is used to handle ROI calculator submissions and email reports
 export async function POST(req) {
@@ -77,7 +78,6 @@ export async function POST(req) {
       };
 
       const savedCalculation = await ROICalculation.create(roiCalculationData);
-      console.log('ROI calculation saved with ID:', savedCalculation._id);
     } catch (dbError) {
       console.error('Failed to save ROI calculation to database:', dbError);
       // Don't fail the request if database save fails
@@ -198,12 +198,12 @@ export async function POST(req) {
       <body>
         <div class="header">
           <h1>🚀 Your ROI Analysis Report</h1>
-          <p>Automation Investment Analysis for ${leadData.companyName}</p>
+          <p>Automation Investment Analysis for ${escapeHtml(leadData.companyName)}</p>
         </div>
 
         <div class="section">
           <h2>Executive Summary</h2>
-          <p>Dear ${leadData.name},</p>
+          <p>Dear ${escapeHtml(leadData.name)},</p>
           <p>Thank you for using our ROI Calculator. Based on your inputs, we've analyzed the potential return on investment for implementing RPA automation in your organization.</p>
           
           <div class="highlight">
@@ -344,11 +344,11 @@ export async function POST(req) {
     // Create summary email for admin notification
     const adminEmailHtml = `
       <h2>New ROI Calculator Submission</h2>
-      <p><strong>Company:</strong> ${leadData.companyName}</p>
-      <p><strong>Contact:</strong> ${leadData.name} (${leadData.email})</p>
-      <p><strong>Phone:</strong> ${leadData.phone || 'Not provided'}</p>
-      <p><strong>Role:</strong> ${leadData.role || 'Not provided'}</p>
-      <p><strong>Company Size:</strong> ${leadData.companySize || 'Not provided'}</p>
+      <p><strong>Company:</strong> ${escapeHtml(leadData.companyName)}</p>
+      <p><strong>Contact:</strong> ${escapeHtml(leadData.name)} (${escapeHtml(leadData.email)})</p>
+      <p><strong>Phone:</strong> ${escapeHtml(leadData.phone) || 'Not provided'}</p>
+      <p><strong>Role:</strong> ${escapeHtml(leadData.role) || 'Not provided'}</p>
+      <p><strong>Company Size:</strong> ${escapeHtml(leadData.companySize) || 'Not provided'}</p>
       
       <h3>Key Results:</h3>
       <ul>
@@ -386,7 +386,7 @@ export async function POST(req) {
     try {
       await sendGmailEmail({
         to: process.env.GMAIL_USER_EMAIL || 'admin@robotipy.com',
-        subject: `New ROI Calculator Submission - ${leadData.companyName} (${formatPercentage(calculations.roi || 0)} ROI)`,
+        subject: `New ROI Calculator Submission - ${escapeHtml(leadData.companyName)} (${formatPercentage(calculations.roi || 0)} ROI)`,
         html: adminEmailHtml,
         replyTo: leadData.email,
       });

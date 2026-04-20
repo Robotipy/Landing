@@ -97,6 +97,9 @@ export const post = {
       </section>
 
       <section className="space-y-3">
+        <p className={styles.p}>
+          Coordinar proyectos multi-entidad como este es más fácil con las herramientas correctas. Descubre <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> para gestionar tus proyectos de automatización.
+        </p>
         <div className="flex justify-center mt-4">
           <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
         </div>

@@ -42,7 +42,7 @@ export const getSEOTags = ({
           alt: config.appName,
         },
       ],
-      locale: "en_US",
+      locale: "es_ES",
       type: "website",
     },
 

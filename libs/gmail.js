@@ -12,8 +12,6 @@ const GMAIL_CONFIG = {
   userEmail: process.env.GMAIL_USER_EMAIL,
 };
 
-console.log("************ GMAIL_CONFIG ************");
-console.log(GMAIL_CONFIG);
 
 if (process.env.NODE_ENV === "development" && !process.env.GMAIL_CLIENT_ID) {
   console.group("⚠️ Gmail API credentials missing from .env");

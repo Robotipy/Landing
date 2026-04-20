@@ -76,6 +76,9 @@ export const post = {
         <p className={styles.p}>
           La automatización no solo redujo costos, sino que habilitó la escalabilidad necesaria para afrontar eventos de alta demanda sin contratar personal temporal excesivo.
         </p>
+        <p className={styles.p}>
+          Orquestar múltiples bots requiere gestión profesional de proyectos. Conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> — diseñado para consultoras que gestionan automatizaciones en producción.
+        </p>
         <div className="flex justify-center mt-4">
           <ButtonMain text="Ver más Casos de Éxito" link="/casos-exito" type="primary"/>
         </div>
