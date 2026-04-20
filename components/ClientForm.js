@@ -54,8 +54,16 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
     setIsLoading(true);
 
+    const normalizedWebsite = formData.website.trim()
+      ? /^https?:\/\//i.test(formData.website.trim())
+        ? formData.website.trim()
+        : `https://${formData.website.trim()}`
+      : "";
+
+    const payload = { ...formData, website: normalizedWebsite };
+
     try {
-      await apiClient.post("/client", formData);
+      await apiClient.post("/client", payload);
       
       // If user selected "no" for investment, don't redirect to calendar
       if (showInvestmentField && formData.canInvest === "no") {
@@ -262,13 +270,17 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             <input
               id="website"
               name="website"
-              type="url"
+              type="text"
+              inputMode="url"
+              autoComplete="url"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+              pattern="^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/.*)?$"
+              title="Ingresa un dominio válido. Ej: tuempresa.com o https://tuempresa.com"
               className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
                  text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
                  focus:ring-teal-500 focus:border-transparent"
-              placeholder="https://tuempresa.com"
+              placeholder="tuempresa.com"
             />
           </div>
 
