@@ -1,16 +1,17 @@
 "use client";
 
+import { Suspense } from "react";
+import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import ClientForm from "@/components/ClientForm";
-import { Suspense } from "react";
 import config from "@/config";
-import { useSearchParams } from "next/navigation";
 
 function ContactUsContent() {
+  const t = useTranslations("contactPage");
   const searchParams = useSearchParams();
   const submitted = searchParams.has("submitted");
-  
-  // Extract form parameters from URL
+
   const formParams = {
     name: searchParams.get("name") || "",
     email: searchParams.get("email") || "",
@@ -22,7 +23,6 @@ function ContactUsContent() {
     additionalInfo: searchParams.get("additionalInfo") || "",
   };
 
-  // if submitted is true, show the success message
   return (
     <>
       <Header />
@@ -31,27 +31,26 @@ function ContactUsContent() {
           <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto text-center text-white">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                Construyamos Algo Increíble Juntos
+                {t("title")}
               </h1>
               <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
-                Comparte tus desafíos de automatización o desarrollo de software con nosotros. Nuestro equipo de expertos analizará tus necesidades 
-                y creará una solución personalizada que transforme los procesos de tu empresa.
+                {t("subtitle")}
               </p>
             </div>
             {submitted ? (
               <div className="flex flex-col items-center justify-center px-4 py-20 lg:py-20 lg:px-8 background-image">
                 <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-white">
-                  ¡Gracias! Tu información ha sido enviada exitosamente. Te contactaremos pronto.
+                  {t("successMessage")}
                 </h1>
               </div>
             ) : (
               <ClientForm initialValues={formParams} />
             )}
-            
+
             <div className="mt-8 text-center text-cyan-400 text-sm">
               <p>
-                ¿Necesitas asistencia inmediata? Contáctanos directamente en{" "}
-                <a 
+                {t("assistanceText")}{" "}
+                <a
                   href={`mailto:${config.mailgun.supportEmail}`}
                   className="text-teal-400 hover:text-teal-300 underline"
                 >
@@ -72,4 +71,4 @@ export default function ClientInfoPage() {
       <ContactUsContent />
     </Suspense>
   );
-} 
+}

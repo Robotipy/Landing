@@ -2,16 +2,15 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { toast } from "react-hot-toast";
 import apiClient from "@/libs/api";
 import config from "@/config";
 
-// Google Calendar link for scheduling meetings after form submission
 const CALENDAR_REDIRECT_URL = "https://calendar.app.google/KE5eYDUF4qy11yVz9";
 
-// This component is used to collect basic client contact information
-// It calls the /api/client route and sends the data via email
 const ClientForm = ({ extraStyle, initialValues = {} }) => {
+  const t = useTranslations("clientForm");
   const searchParams = useSearchParams();
   const showInvestmentField = searchParams?.get("sd") === "true";
 
@@ -29,11 +28,9 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate required fields
     if (
       !formData.name ||
       !formData.email ||
@@ -42,13 +39,12 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
       !formData.role ||
       !formData.companySize
     ) {
-      toast.error("Por favor completa todos los campos requeridos");
+      toast.error(t("errors.required"));
       return;
     }
 
-    // Validate investment field if sd=true
     if (showInvestmentField && !formData.canInvest) {
-      toast.error("Por favor indica si tu empresa puede realizar la inversión");
+      toast.error(t("errors.investmentRequired"));
       return;
     }
 
@@ -64,23 +60,16 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
     try {
       await apiClient.post("/client", payload);
-      
-      // If user selected "no" for investment, don't redirect to calendar
+
       if (showInvestmentField && formData.canInvest === "no") {
-        toast.success(
-          "¡Gracias por tu interés! Te contactaremos cuando tengamos opciones que se ajusten a tu presupuesto."
-        );
+        toast.success(t("toast.cannotInvest"));
       } else {
-        toast.success(
-          "¡Gracias! Redirigiendo para agendar una reunión..."
-        );
-        // Redirect to Google Calendar after successful submission
+        toast.success(t("toast.redirecting"));
         setTimeout(() => {
           window.location.href = CALENDAR_REDIRECT_URL;
         }, 1500);
       }
 
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -94,9 +83,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
       });
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error(
-        error.message || "Algo salió mal. Por favor intenta de nuevo."
-      );
+      toast.error(error.message || t("errors.submitError"));
     } finally {
       setIsLoading(false);
     }
@@ -110,27 +97,16 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
       >
         <div className="mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-cyan-50 mb-2">
-            Ponte en Contacto
+            {t("getInTouch")}
           </h2>
-          <p className="text-cyan-300">
-            Cuéntanos sobre tu empresa y cómo podemos ayudarte con soluciones de
-            automatización.
-          </p>
+          <p className="text-cyan-300">{t("tellUs")}</p>
         </div>
 
-        <form
-          className="space-y-6"
-          onSubmit={handleSubmit}
-          id="form"
-          name="form"
-        >
+        <form className="space-y-6" onSubmit={handleSubmit} id="form" name="form">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label
-                htmlFor="name"
-                className="text-cyan-50 uppercase text-xs block"
-              >
-                Nombre Completo *
+              <label htmlFor="name" className="text-cyan-50 uppercase text-xs block">
+                {t("fields.fullName")} *
               </label>
               <input
                 id="name"
@@ -139,19 +115,14 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                   focus:ring-teal-500 focus:border-transparent"
-                placeholder="Juan Pérez"
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder={t("placeholders.fullName")}
               />
             </div>
 
             <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="text-cyan-50 uppercase text-xs block"
-              >
-                Correo Electrónico *
+              <label htmlFor="email" className="text-cyan-50 uppercase text-xs block">
+                {t("fields.email")} *
               </label>
               <input
                 id="email"
@@ -160,19 +131,14 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                   focus:ring-teal-500 focus:border-transparent"
-                placeholder="juan@empresa.com"
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder={t("placeholders.email")}
               />
             </div>
 
             <div className="space-y-2">
-              <label
-                htmlFor="phone"
-                className="text-cyan-50 uppercase text-xs block"
-              >
-                Número de Teléfono *
+              <label htmlFor="phone" className="text-cyan-50 uppercase text-xs block">
+                {t("fields.phone")} *
               </label>
               <input
                 id="phone"
@@ -183,20 +149,15 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 pattern="^\+\d{1,4}\s?\(?\d+\)?[\s\-]?\d+[\s\-]?\d*$"
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                   focus:ring-teal-500 focus:border-transparent"
-                placeholder="+52 (55) 1234-5678"
-                title="Introduce un número con formato internacional. Ej: +52 (55) 1234-5678"
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder={t("placeholders.phone")}
+                title={t("titles.phone")}
               />
             </div>
 
             <div className="space-y-2">
-              <label
-                htmlFor="companyName"
-                className="text-cyan-50 uppercase text-xs block"
-              >
-                Nombre de la Empresa *
+              <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
+                {t("fields.companyName")} *
               </label>
               <input
                 id="companyName"
@@ -205,19 +166,14 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 required
                 value={formData.companyName}
                 onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                   focus:ring-teal-500 focus:border-transparent"
-                placeholder="Tu Empresa S.A."
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder={t("placeholders.companyName")}
               />
             </div>
 
             <div className="space-y-2">
-              <label
-                htmlFor="role"
-                className="text-cyan-50 uppercase text-xs block"
-              >
-                Cargo *
+              <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
+                {t("fields.role")} *
               </label>
               <input
                 id="role"
@@ -226,19 +182,14 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 required
                 value={formData.role}
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                   focus:ring-teal-500 focus:border-transparent"
-                placeholder="CEO, CTO, Gerente, etc."
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder={t("placeholders.role")}
               />
             </div>
 
             <div className="space-y-2">
-              <label
-                htmlFor="companySize"
-                className="text-cyan-50 uppercase text-xs block"
-              >
-                Tamaño de la Empresa *
+              <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
+                {t("fields.companySize")} *
               </label>
               <select
                 id="companySize"
@@ -246,26 +197,21 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 required
                 value={formData.companySize}
                 onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 
-                   focus:border-transparent"
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               >
-                <option value="">Selecciona el tamaño de la empresa</option>
-                <option value="1-10 Empleados">1-10 empleados</option>
-                <option value="11-50 Empleados">11-50 empleados</option>
-                <option value="51-200 Empleados">51-200 empleados</option>
-                <option value="201-50 Empleados">201-500 Empleados</option>
-                <option value="+500">+500 empleados</option>
+                <option value="">{t("companySizeOptions.placeholder")}</option>
+                <option value="1-10 Empleados">{t("companySizeOptions.1-10")}</option>
+                <option value="11-50 Empleados">{t("companySizeOptions.11-50")}</option>
+                <option value="51-200 Empleados">{t("companySizeOptions.51-200")}</option>
+                <option value="201-50 Empleados">{t("companySizeOptions.201-500")}</option>
+                <option value="+500">{t("companySizeOptions.500+")}</option>
               </select>
             </div>
           </div>
 
           <div className="space-y-2">
-            <label
-              htmlFor="website"
-              className="text-cyan-50 uppercase text-xs block"
-            >
-              Sitio Web de la Empresa
+            <label htmlFor="website" className="text-cyan-50 uppercase text-xs block">
+              {t("fields.website")}
             </label>
             <input
               id="website"
@@ -276,21 +222,18 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
               pattern="^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/.*)?$"
-              title="Ingresa un dominio válido. Ej: tuempresa.com o https://tuempresa.com"
-              className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                 text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                 focus:ring-teal-500 focus:border-transparent"
-              placeholder="tuempresa.com"
+              title={t("titles.website")}
+              className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder={t("placeholders.website")}
             />
           </div>
 
           {showInvestmentField && (
             <div className="space-y-2">
-              <label
-                htmlFor="canInvest"
-                className="text-cyan-50 text-sm block"
-              >
-                Nuestros proyectos de desarrollo de software tienen un rango de inversión entre <strong>USD $5,500 y $11,000</strong>. 
+              <label htmlFor="canInvest" className="text-cyan-50 text-sm block">
+                {t.rich("investmentDescription", {
+                  strong: (chunks) => <strong>{chunks}</strong>,
+                })}
               </label>
               <select
                 id="canInvest"
@@ -298,23 +241,18 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 required
                 value={formData.canInvest}
                 onChange={(e) => setFormData({ ...formData, canInvest: e.target.value })}
-                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                   text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 
-                   focus:border-transparent"
+                className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               >
-                <option value="">¿Tu empresa puede invertir en este monto (total o en cuotas)? *</option>
-                <option value="yes">Sí, podemos invertir (total o en cuotas)</option>
-                <option value="no">No podemos invertir en este momento</option>
+                <option value="">{t("investmentOptions.placeholder")}</option>
+                <option value="yes">{t("investmentOptions.yes")}</option>
+                <option value="no">{t("investmentOptions.no")}</option>
               </select>
             </div>
           )}
 
           <div className="space-y-2">
-            <label
-              htmlFor="additionalInfo"
-              className="text-cyan-50 uppercase text-xs block"
-            >
-              Información Adicional
+            <label htmlFor="additionalInfo" className="text-cyan-50 uppercase text-xs block">
+              {t("fields.additionalInfo")}
             </label>
             <textarea
               id="additionalInfo"
@@ -322,10 +260,8 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               rows={4}
               value={formData.additionalInfo}
               onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-              className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                 text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                 focus:ring-teal-500 focus:border-transparent"
-              placeholder="Cuéntanos más sobre tu negocio y necesidades de automatización..."
+              className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder={t("placeholders.additionalInfo")}
             />
           </div>
 
@@ -333,18 +269,15 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md 
-                 transition-colors duration-200 focus:outline-none focus:ring-2 
-                 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 
-                 disabled:cursor-not-allowed font-semibold"
+              className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
             >
               {isLoading ? (
                 <>
                   <span className="loading loading-spinner loading-sm mr-2"></span>
-                  Enviando...
+                  {t("sending")}
                 </>
               ) : (
-                "Enviar Información"
+                t("submit")
               )}
             </button>
           </div>

@@ -1,9 +1,13 @@
 import { Inter } from "next/font/google";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import PlausibleProvider from "next-plausible";
 import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
-import "./globals.css";
+import { routing } from "@/i18n/routing";
+import "../globals.css";
 import GoogleTagManager from "@/components/scripts/GoogleTagManager";
 import MetaPixel, { MetaPixelNoScript } from "@/components/scripts/MetaPixel";
 import ZohoSalesIQ from "@/components/scripts/ZohoSalesIQ";
@@ -11,17 +15,34 @@ import ZohoSalesIQ from "@/components/scripts/ZohoSalesIQ";
 const font = Inter({ subsets: ["latin"] });
 
 export const viewport = {
-  // Will use the primary color of your theme to show a nice theme color in the URL bar of supported browsers
   themeColor: config.colors.main,
   width: "device-width",
   initialScale: 1,
 };
 
-// This adds default SEO tags to all pages in our app.
-// You can override them in each page passing params to getSOTags() function.
-export const metadata = getSEOTags({ canonicalUrlRelative: "/" });
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
-export default function RootLayout({ children }) {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo.pages.home" });
+  return getSEOTags({
+    locale,
+    canonicalUrlRelative: "/",
+    title: t("title"),
+    description: t("description"),
+  });
+}
+
+export default async function RootLayout({ children, params }) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
+  const messages = await getMessages();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Corporation",
@@ -32,28 +53,28 @@ export default function RootLayout({ children }) {
     "memberOf": {
       "@type": "Organization",
       "name": "Rocketbot",
-      "description": "Platinum Partner"
+      "description": "Platinum Partner",
     },
     "awards": [
-      "Certificación RPA Developer", 
+      "Certificación RPA Developer",
       "Rocketbot Expert Certification",
-      "Mejor caso de éxito en Rocketbot"
+      "Mejor caso de éxito en Rocketbot",
     ],
     "sameAs": [
       "https://www.linkedin.com/company/robotipy",
       "https://www.instagram.com/robotipy.dev",
       "https://projects.robotipy.dev",
-      "https://newsletter.robotipy.com"
-    ]
+      "https://newsletter.robotipy.com",
+    ],
   };
+
   return (
-    <html lang="es" data-theme={config.colors.theme} className={font.className}>
+    <html lang={locale} data-theme={config.colors.theme} className={font.className}>
       <head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
-        {/* Microsoft/Bing specific meta tags for thumbnail support */}
         <meta name="msapplication-TileImage" content={`https://${config.domainName}/images/robotipy-logo.png`} />
         <meta name="msapplication-TileColor" content={config.colors.main} />
         {config.domainName && (
@@ -65,8 +86,9 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body style={{ backgroundColor: config.colors.background }}>
-        {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
-        <ClientLayout>{children}</ClientLayout>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ClientLayout>{children}</ClientLayout>
+        </NextIntlClientProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

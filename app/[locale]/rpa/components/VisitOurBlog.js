@@ -1,9 +1,9 @@
 import config from "@/config";
-import ilusflow from "../../../public/assets/ilus-flow.png";
+import ilusflow from "../../../../public/assets/ilus-flow.png";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/icon.png";
-import Rocketbot from "../../../public/images/rocketbotwhite.svg";
+import Rocketbot from "../../../../public/images/rocketbotwhite.svg";
 
 const items = [
   {

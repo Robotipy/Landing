@@ -1,48 +1,38 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 const products = [
   {
     icon: "\u{1F4CA}",
-    title: "Projects",
-    description:
-      "Gestión de proyectos, recursos, propuestas y soporte para consultoras de software y RPA.",
+    key: "projects",
     link: "/projects",
-    status: "LIVE",
   },
   {
     icon: "\u{1F50D}",
-    title: "Monitor",
-    description:
-      "Monitoreo en tiempo real de robots RPA. Alertas, logs y métricas de tus automatizaciones en producción.",
+    key: "monitor",
     link: "/monitor",
-    status: "LIVE",
   },
   {
     icon: "\u{1F3A5}",
-    title: "Analysis",
-    description:
-      "Análisis de video con inteligencia artificial. Extrae insights automatizados de tus grabaciones.",
+    key: "analysis",
     link: "/analysis",
-    status: "LIVE",
   },
 ];
 
 const ProductsShowcase = () => {
+  const t = useTranslations("productsShowcase");
   return (
     <section className="py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Nuestros Productos
+            {t("title")}
           </h2>
-          <p className="mt-4 text-lg text-white/80">
-            Herramientas que construimos desde nuestra experiencia como
-            consultora.
-          </p>
+          <p className="mt-4 text-lg text-white/80">{t("subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((product) => (
-            <Link key={product.title} href={product.link}>
+            <Link key={product.key} href={product.link}>
               <div
                 className="flex flex-col gap-4 rounded-xl p-8 text-center items-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full"
                 style={{ backgroundColor: "#11222c" }}
@@ -50,17 +40,17 @@ const ProductsShowcase = () => {
                 <div className="flex items-center gap-2">
                   <span className="text-3xl">{product.icon}</span>
                   <span className="badge badge-outline badge-sm text-green-400 border-green-400">
-                    {product.status}
+                    {t("status")}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-white">
-                  {product.title}
+                  {t(`items.${product.key}.title`)}
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  {product.description}
+                  {t(`items.${product.key}.description`)}
                 </p>
                 <span className="mt-auto font-bold text-accent hover:underline">
-                  Conocer más &rarr;
+                  {t("learnMore")}
                 </span>
               </div>
             </Link>
@@ -73,7 +63,7 @@ const ProductsShowcase = () => {
             rel="noopener noreferrer"
             className="text-accent hover:underline font-medium"
           >
-            Ver todos nuestros productos &rarr;
+            {t("seeAll")}
           </a>
         </div>
       </div>

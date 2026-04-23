@@ -1,7 +1,30 @@
+const locales = ["es", "en", "pt"];
+const defaultLocale = "es";
+
 module.exports = {
-  // REQUIRED: add your own domain name here (e.g. https://shipfa.st),
   siteUrl: process.env.SITE_URL || "https://robotipy.com",
   generateRobotsTxt: true,
-  // use this to exclude routes from the sitemap (i.e. a user dashboard). By default, NextJS app router metadata files are excluded (https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
   exclude: ["/twitter-image.*", "/opengraph-image.*", "/icon.*"],
+  alternateRefs: locales.map((l) => ({
+    href: `${process.env.SITE_URL || "https://robotipy.com"}/${l}`,
+    hreflang: l,
+  })),
+  transform: async (config, path) => {
+    const localeMatch = path.match(/^\/([a-z]{2})(\/|$)/);
+    const pathLocale = localeMatch ? localeMatch[1] : null;
+    if (pathLocale && pathLocale !== defaultLocale) {
+      return null;
+    }
+    const pathWithoutLocale = pathLocale ? path.replace(`/${pathLocale}`, "") || "/" : path;
+    return {
+      loc: path,
+      changefreq: config.changefreq,
+      priority: config.priority,
+      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      alternateRefs: locales.map((l) => ({
+        href: `${config.siteUrl}/${l}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`,
+        hreflang: l,
+      })),
+    };
+  },
 };

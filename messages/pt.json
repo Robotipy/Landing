@@ -1,110 +1,403 @@
 {
-  "navigation": {
-    "rpa": "RPA",
-    "solutions": "Soluções",
-    "contact": "Entre em contato",
-    "schedule": "Agendar uma chamada"
-  },
   "header": {
-    "rpa": "RPA",
-    "solutions": "Soluções",
-    "contactUs": "Entre em contato"
+    "cta": "Fale conosco",
+    "nav": {
+      "services": "Serviços",
+      "products": "Produtos",
+      "development": "Desenvolvimento",
+      "cases": "Casos de Estudo",
+      "training": "Capacitação",
+      "blog": "Blog"
+    },
+    "dropdowns": {
+      "products": {
+        "projects": {
+          "label": "Projects",
+          "description": "Gestão de projetos, recursos e propostas para consultorias"
+        },
+        "monitor": {
+          "label": "Monitor",
+          "description": "Monitoramento em tempo real de robôs RPA"
+        },
+        "analysis": {
+          "label": "Analysis",
+          "description": "Análise de vídeo com inteligência artificial"
+        }
+      },
+      "cases": {
+        "agricola": {
+          "label": "Agrícola",
+          "description": "Automação de processos agrícolas, fruticultura e agrotecnológicos"
+        },
+        "automotriz": {
+          "label": "Automotivo",
+          "description": "Automação de processos automotivos"
+        },
+        "financiero": {
+          "label": "Financeiro",
+          "description": "Otimização de operações bancárias, seguros e contábeis"
+        },
+        "transporte": {
+          "label": "Transporte e Logística",
+          "description": "Automação de processos de transporte e logística"
+        },
+        "serviciosProfesionales": {
+          "label": "Serviços Profissionais",
+          "description": "Automação para escritórios contábeis, jurídicos e de software"
+        },
+        "mineria": {
+          "label": "Mineração",
+          "description": "RPA + IA para relatórios de custos e consultas em linguagem natural"
+        },
+        "siderurgia": {
+          "label": "Siderurgia",
+          "description": "Automação de pedidos SAP conectando HubSpot e Cencosud"
+        }
+      }
+    }
   },
   "hero": {
-    "title": "Deixe os robôs trabalharem para você",
-    "subtitle": "Otimize seus processos com nossas soluções de automação RPA, inteligência artificial e desenvolvimento de software.",
-    "contactButton": "Entre em contato",
-    "scheduleButton": "Agendar uma chamada"
-  },
-  "homepage": {
-    "whyRpaTitle": "Por que RPA e por que Robotipy?",
-    "whyRpaDescription": "A automação de processos com RPA reduz erros, melhora a eficiência e economiza tempo em tarefas repetitivas. Na Robotipy, integramos a mais recente tecnologia RPA e modelos de inteligência artificial, garantindo uma implementação rápida adaptada às necessidades da sua empresa.",
-    "solutionsTitle": "Soluções abrangentes de automação para cada necessidade",
-    "solutionsButton": "Ver todos os serviços ➡️",
-    "servicesIntro": "Na Robotipy, oferecemos uma gama completa de soluções que transformarão seu negócio:",
-    "services": {
-      "automation": "Automação de processos",
-      "training": "Treinamento em RPA",
-      "chatbots": "Chatbots personalizados",
-      "development": "Desenvolvimento de software"
-    }
-  },
-  "pagePreviewCenter": {
-    "title": "Automação e Inteligência artificial",
-    "description": "A combinação de RPA e inteligência artificial possibilita automatizar tarefas complexas e tomar decisões baseadas em dados em tempo real. Na Robotipy, ajudamos empresas a implementar soluções que vão além do tradicional, integrando IA para maximizar eficiência e inovação.",
-    "readMore": "Ler mais"
+    "title": "Criamos a <strong>inteligência</strong> que<br></br> seu <strong>negócio</strong> precisa.",
+    "subtitle": "Otimize seus processos com nossas soluções de automação, <br></br><strong>inteligência artificial e desenvolvimento de software.</strong>",
+    "contactButton": "Fale conosco",
+    "projectsButton": "Veja nossos projetos"
   },
   "cta": {
-    "title": "Pronto para automatizar?",
-    "subtitle": "Libere o poder da automação e leve seu negócio ao próximo nível.",
-    "button": "Fale conosco"
+    "title": "Pronto para <strong>automatizar</strong>?",
+    "subtitle": "Liberte o poder da automação e leve seu negócio para o próximo nível.",
+    "button": "Fale com a gente"
   },
-  "clientInfo": {
-    "title": "Vamos Construir Algo Incrível Juntos",
-    "subtitle": "Compartilhe seus desafios de automação conosco. Nossa equipe de especialistas analisará suas necessidades e criará uma solução personalizada que transforme seus processos comerciais.",
-    "assistanceText": "Precisa de assistência imediata? Entre em contato diretamente em"
-  },
-  "form": {
-    "getInTouch": "Entre em Contato",
-    "tellUs": "Conte-nos sobre sua empresa e como podemos ajudá-lo com soluções de automação.",
-    "fullName": "Nome Completo",
-    "email": "E-mail",
-    "phone": "Telefone",
-    "companyName": "Nome da Empresa",
-    "role": "Seu Cargo",
-    "companySize": "Tamanho da Empresa",
-    "website": "Website",
-    "additionalInfo": "Informações Adicionais",
-    "submit": "Enviar Mensagem",
-    "sending": "Enviando...",
-    "required": "obrigatório",
-    "optional": "opcional",
-    "errors": {
-      "required": "Por favor, preencha todos os campos obrigatórios",
-      "error": "Algo deu errado. Por favor, tente novamente."
-    },
-    "success": "Obrigado! Suas informações foram enviadas com sucesso. Entraremos em contato em breve.",
-    "placeholders": {
-      "fullName": "João Silva",
-      "email": "joao@empresa.com",
-      "phone": "+55 (11) 1234-5678",
-      "companyName": "Sua Empresa Ltda.",
-      "role": "CEO, CTO, etc.",
-      "website": "https://suaempresa.com",
-      "additionalInfo": "Conte-nos sobre suas necessidades de automação..."
-    },
-    "companySizes": {
-      "1-10": "1-10 funcionários",
-      "11-50": "11-50 funcionários",
-      "51-200": "51-200 funcionários",
-      "201-500": "201-500 funcionários", 
-      "500+": "500+ funcionários"
+  "solutions": {
+    "sectionTitle": "Nossos Serviços",
+    "sectionSubtitle": "Serviços sob medida para impulsionar seu negócio.",
+    "learnMore": "Saiba mais →",
+    "items": {
+      "rpa": {
+        "title": "RPA",
+        "description": "Impulsione o crescimento do seu negócio com automação inteligente de processos."
+      },
+      "chatbot": {
+        "title": "Chatbot",
+        "description": "Acesse em segundos informações-chave da sua empresa e ofereça suporte instantâneo aos clientes."
+      },
+      "training": {
+        "title": "Capacitação de equipes",
+        "description": "Fortaleça seu time com capacitação prática em Inteligência Artificial e automação de processos."
+      },
+      "ai": {
+        "title": "AI & Machine Learning",
+        "description": "Use IA para obter insights, fazer previsões e impulsionar a inovação inteligente."
+      },
+      "software": {
+        "title": "Desenvolvimento de software",
+        "description": "Crie soluções de software personalizadas que se ajustam às necessidades únicas do seu negócio."
+      },
+      "staffOutsourcing": {
+        "title": "Staff Outsourcing",
+        "description": "Adicione um especialista dedicado ao seu time. O talento que você precisa para alcançar suas metas."
+      }
     }
   },
+  "trustInUs": {
+    "heading": "Empresas líderes confiam em nossa equipe para revolucionar seus processos"
+  },
+  "productsShowcase": {
+    "title": "Nossos Produtos",
+    "subtitle": "Ferramentas que construímos a partir da nossa experiência como consultoria.",
+    "status": "LIVE",
+    "learnMore": "Conheça mais →",
+    "seeAll": "Ver todos os nossos produtos →",
+    "items": {
+      "projects": {
+        "title": "Projects",
+        "description": "Gestão de projetos, recursos, propostas e suporte para consultorias de software e RPA."
+      },
+      "monitor": {
+        "title": "Monitor",
+        "description": "Monitoramento em tempo real de robôs RPA. Alertas, logs e métricas das suas automações em produção."
+      },
+      "analysis": {
+        "title": "Analysis",
+        "description": "Análise de vídeo com inteligência artificial. Extraia insights automatizados das suas gravações."
+      }
+    }
+  },
+  "casosDeExitoSection": {
+    "title": "Casos de Automação",
+    "subtitle": "Exemplos reais de automação em empresas da América Latina.",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "keyResultLabel": "Resultado-chave",
+    "seeDetail": "Ver detalhes",
+    "seeAllPosts": "Ver todos os artigos do blog",
+    "cases": {
+      "mineriaCobre": {
+        "industry": "Mineração de Cobre",
+        "title": "RPA + Agente IA para relatórios de custos",
+        "challenge": "Relatórios semanais de custos do SAP levavam horas e dependiam de uma única pessoa.",
+        "keyResult": "Acesso 24/7 aos dados de custos via agente IA"
+      },
+      "siderurgia": {
+        "industry": "Siderurgia",
+        "title": "Automação de pedidos SAP",
+        "challenge": "Três sistemas desconectados com entrada manual de dados sujeita a erros de transcrição.",
+        "keyResult": "Zero erros de transcrição entre 3 sistemas"
+      },
+      "agronegocios": {
+        "industry": "Agronegócio",
+        "title": "Inteligência de mercado automatizada",
+        "challenge": "Monitoramento diário de preços de commodities e dados macro de mais de 10 fontes públicas, tudo manual.",
+        "keyResult": "Mais de 10 fontes consolidadas em 10-20 minutos"
+      },
+      "agroindustria": {
+        "industry": "Agroindústria",
+        "title": "Automação financeira multi-entidade",
+        "challenge": "Conciliações bancárias e revisão de faturas manuais entre múltiplos bancos e sistemas.",
+        "keyResult": "Detecção precoce de divergências antes do pagamento"
+      },
+      "vitivinicultura": {
+        "industry": "Vinícola",
+        "title": "Extratos bancários e factoring automatizado",
+        "challenge": "Carga manual diária de extratos bancários e gestão de factoring em múltiplas moedas.",
+        "keyResult": "De horas diárias a minutos automatizados"
+      },
+      "agropecuario": {
+        "industry": "Agropecuário",
+        "title": "Conciliação bancária multi-banco com ERP",
+        "challenge": "Conciliação manual entre múltiplos bancos e ERP com operações geograficamente dispersas.",
+        "keyResult": "1 robô conectando 3 bancos com 1 ERP"
+      }
+    }
+  },
+  "mapsSolutions": {
+    "title": "Nossas soluções pelo mundo",
+    "mapAlt": "Mapa de presença",
+    "projectsLabel": "PROJETOS",
+    "countriesLabel": "PAÍSES"
+  },
   "footer": {
-    "description": "Robotipy é uma empresa de software que fornece soluções RPA para empresas.",
+    "description": "A Robotipy é uma empresa especializada em automação de processos (RPA) e desenvolvimento de software sob medida. Inteligência Artificial, Agentes, Software personalizado.",
+    "regions": "Serviços de RPA, IA e Desenvolvimento de Software no <strong>Chile, Argentina, Colômbia e Espanha.</strong>",
     "copyright": "Copyright © {year} - Todos os direitos reservados",
-    "rpa": {
-      "title": "RPA",
-      "whyRpa": "Por que RPA",
-      "rocketbot": "Rocketbot RPA",
-      "process": "Processo Robotipy"
+    "partnersTitle": "Parceiros e Certificações:",
+    "partners": {
+      "platinum": "Platinum Partner Rocketbot",
+      "certified": "Desenvolvedores Certificados"
     },
-    "solutions": {
-      "title": "SOLUÇÕES"
+    "sections": {
+      "rpa": {
+        "title": "RPA",
+        "whyRpa": "Por que RPA",
+        "rocketbot": "Rocketbot RPA"
+      },
+      "solutions": {
+        "title": "SOLUÇÕES",
+        "training": "Capacitação de Equipes",
+        "automation": "Automação de processos",
+        "chatbots": "Chatbots",
+        "software": "Desenvolvimento de software"
+      },
+      "products": {
+        "title": "PRODUTOS",
+        "projects": "Projects (Gestão PM)",
+        "monitor": "Monitor (Monitoramento RPA)",
+        "analysis": "Analysis (Análise de Vídeo)"
+      },
+      "resources": {
+        "title": "RECURSOS",
+        "blog": "Blog",
+        "newsletter": "Newsletter"
+      },
+      "company": {
+        "title": "EMPRESA",
+        "tos": "Termos de serviço",
+        "privacy": "Política de privacidade"
+      }
     }
   },
   "rpa": {
     "hero": {
       "title": "Bem-vindo à era da automação"
     },
-    "whatIsRpa": {
-      "title": "O que é RPA?",
-      "description1": "A automação com RPA é uma ferramenta poderosa que permite melhorar o desempenho do seu negócio. Não estamos falando apenas sobre eliminar tarefas repetitivas, mas otimizar esses processos vitais que definem o sucesso da sua organização. E se os processos que mais importam - financeiros, logísticos ou de tomada de decisão - pudessem ser executados com precisão cirúrgica e velocidade incomparável?",
-      "description2": "O impacto seria significativo: tempos de resposta mais rápidos, custos operacionais reduzidos, maior precisão na execução e, mais importante, a capacidade de focar recursos humanos em atividades que realmente impulsionam a inovação e o crescimento estratégico do negócio.",
-      "rocketbotTitle": "Rocketbot RPA",
-      "rocketbotDescription1": "Rocketbot é a plataforma RPA ideal para impulsionar a transformação digital de empresas de qualquer tamanho. Com um investimento global em RPA que já excede $60 bilhões, Rocketbot se posicionou como uma solução chave, ajudando mais de 500 clientes e automatizando mais de 5.000 processos mundialmente. Sua capacidade de executar processos de forma ágil e eficiente permite gerenciar até 10 tarefas em paralelo dentro do mesmo ambiente, acelerando operações sem aumentar custos adicionais.",
-      "rocketbotDescription2": "O que realmente diferencia o Rocketbot é sua flexibilidade e escalabilidade. Desenvolvido em Python, oferece uma facilidade única de integração com diferentes ambientes, seja local (on-premise) ou na nuvem, adaptando-se às necessidades específicas de cada organização, desde pequenas empresas até grandes corporações. Além disso, seu foco na democratização da automação permite que qualquer pessoa dentro de uma organização, independentemente de sua experiência técnica, possa criar e gerenciar robôs autonomamente. Com suas licenças acessíveis e expansíveis do desktop aos servidores, Rocketbot garante um ROI otimizado, fornecendo às empresas uma solução que cresce com elas sem pagar a mais por executar processos críticos em paralelo."
+    "whatIs": {
+      "title": "O que é <strong>RPA?</strong>",
+      "paragraph1": "A automação com RPA é uma ferramenta poderosa para melhorar o desempenho do seu negócio. Não falamos apenas de eliminar tarefas repetitivas, mas de otimizar os processos vitais que definem o sucesso da sua organização. E se os processos mais importantes — financeiros, logísticos ou de tomada de decisão — pudessem ser executados com precisão cirúrgica e velocidade incomparável?",
+      "paragraph2": "O impacto seria significativo: tempos de resposta mais rápidos, custos operacionais reduzidos, maior precisão na execução e, o mais importante, a capacidade de focar os recursos humanos em atividades que realmente impulsionam a inovação e o crescimento estratégico do negócio.",
+      "rocketbotParagraph1": "O Rocketbot é a plataforma RPA ideal para impulsionar a transformação digital de empresas de qualquer tamanho. Com investimento global em RPA já superior a US$ 60 bilhões, o Rocketbot se posicionou como uma solução-chave, ajudando mais de 500 clientes e automatizando mais de 5.000 processos no mundo todo. Sua capacidade de executar processos de forma ágil e eficiente permite gerenciar até 10 tarefas em paralelo no mesmo ambiente, acelerando as operações sem custos adicionais.",
+      "rocketbotParagraph2": "O que realmente diferencia o Rocketbot é sua flexibilidade e escalabilidade. Desenvolvido em Python, oferece integração única com diferentes ambientes — local (on-premise) ou na nuvem — adaptando-se às necessidades específicas de cada organização, de pequenas empresas a grandes corporações. Seu foco na democratização da automação permite que qualquer pessoa em uma organização, independentemente da experiência técnica, possa criar e gerenciar robôs de forma autônoma. Com licenças acessíveis e expansíveis do desktop ao servidor, o Rocketbot garante um ROI otimizado, oferecendo uma solução que cresce com a empresa sem pagar a mais para executar processos críticos em paralelo."
+    }
+  },
+  "contactPage": {
+    "title": "Vamos Construir Algo Incrível Juntos",
+    "subtitle": "Compartilhe seus desafios de automação ou desenvolvimento de software conosco. Nossa equipe de especialistas analisará suas necessidades e criará uma solução personalizada que transforme os processos da sua empresa.",
+    "successMessage": "Obrigado! Suas informações foram enviadas com sucesso. Entraremos em contato em breve.",
+    "assistanceText": "Precisa de assistência imediata? Fale conosco diretamente em"
+  },
+  "clientForm": {
+    "getInTouch": "Entre em Contato",
+    "tellUs": "Conte-nos sobre sua empresa e como podemos ajudar com soluções de automação.",
+    "submit": "Enviar Informações",
+    "sending": "Enviando...",
+    "fields": {
+      "fullName": "Nome Completo",
+      "email": "Email",
+      "phone": "Telefone",
+      "companyName": "Nome da Empresa",
+      "role": "Cargo",
+      "companySize": "Tamanho da Empresa",
+      "website": "Site da Empresa",
+      "additionalInfo": "Informações Adicionais"
+    },
+    "placeholders": {
+      "fullName": "João Silva",
+      "email": "joao@empresa.com",
+      "phone": "+55 (11) 91234-5678",
+      "companyName": "Sua Empresa Ltda.",
+      "role": "CEO, CTO, Gerente, etc.",
+      "website": "suaempresa.com",
+      "additionalInfo": "Conte-nos mais sobre seu negócio e necessidades de automação..."
+    },
+    "titles": {
+      "phone": "Digite um número no formato internacional. Ex: +55 (11) 91234-5678",
+      "website": "Digite um domínio válido. Ex: suaempresa.com ou https://suaempresa.com"
+    },
+    "companySizeOptions": {
+      "placeholder": "Selecione o tamanho da empresa",
+      "1-10": "1-10 funcionários",
+      "11-50": "11-50 funcionários",
+      "51-200": "51-200 funcionários",
+      "201-500": "201-500 funcionários",
+      "500+": "+500 funcionários"
+    },
+    "investmentDescription": "Nossos projetos de desenvolvimento de software têm uma faixa de investimento entre <strong>USD $5.500 e $11.000</strong>.",
+    "investmentOptions": {
+      "placeholder": "Sua empresa pode investir esse valor (à vista ou parcelado)? *",
+      "yes": "Sim, podemos investir (à vista ou parcelado)",
+      "no": "Não podemos investir neste momento"
+    },
+    "errors": {
+      "required": "Por favor, preencha todos os campos obrigatórios",
+      "investmentRequired": "Por favor, indique se sua empresa pode realizar o investimento",
+      "submitError": "Algo deu errado. Por favor, tente novamente."
+    },
+    "toast": {
+      "cannotInvest": "Obrigado pelo interesse! Entraremos em contato quando tivermos opções que se ajustem ao seu orçamento.",
+      "redirecting": "Obrigado! Redirecionando para agendar uma reunião..."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Humanizando a Tecnologia",
+      "subtitle": "Nossa missão é combinar a precisão robótica com a engenhosidade humana para criar soluções de automação inteligente. Nossa visão é um futuro em que a tecnologia capacita as pessoas a alcançar todo o seu potencial."
+    },
+    "principles": {
+      "title": "Nossos Princípios",
+      "items": {
+        "results": {
+          "title": "Compromisso com Resultados",
+          "description": "Somos dedicados a entregar resultados mensuráveis e valor tangível aos nossos clientes."
+        },
+        "innovation": {
+          "title": "Inovação Constante",
+          "description": "Buscamos incansavelmente novas ideias e tecnologias para nos manter na vanguarda do setor."
+        },
+        "transparency": {
+          "title": "Transparência Radical",
+          "description": "Acreditamos na comunicação aberta e honesta, construindo confiança com clientes e parceiros."
+        }
+      }
+    },
+    "team": {
+      "title": "As Mentes Por Trás da Mágica",
+      "members": {
+        "alice": {
+          "name": "Alice Johnson",
+          "role": "CEO e Fundadora",
+          "description": "Alice é uma líder visionária com mais de 20 anos de experiência na indústria de tecnologia. Apaixonada por usar a tecnologia para resolver problemas reais."
+        },
+        "bob": {
+          "name": "Bob Williams",
+          "role": "CTO",
+          "description": "Bob é o gênio técnico por trás de nossas soluções inovadoras. Tem profundo conhecimento de IA e RPA, e talento para construir sistemas escaláveis."
+        },
+        "charlie": {
+          "name": "Charlie Brown",
+          "role": "Lead Developer",
+          "description": "Charlie é mestre em código, liderando nossa equipe de desenvolvimento com precisão e compromisso com a qualidade. Especialista full-stack apaixonado por arquitetura limpa."
+        },
+        "diana": {
+          "name": "Diana Prince",
+          "role": "Líder UX/UI",
+          "description": "Diana garante que nossas soluções não sejam apenas poderosas, mas também intuitivas e fáceis de usar. Defende uma abordagem de design centrada no ser humano."
+        }
+      }
+    },
+    "process": {
+      "title": "Como Trabalhamos com Você",
+      "steps": {
+        "discovery": {
+          "title": "Descoberta",
+          "description": "Começamos compreendendo profundamente seus desafios e objetivos. A colaboração com o cliente é fundamental para definir o escopo do projeto e os critérios de sucesso."
+        },
+        "design": {
+          "title": "Design",
+          "description": "Nossa equipe projeta uma solução centrada no usuário, criando wireframes e protótipos. Trabalhamos com você para refinar o design até a perfeição."
+        },
+        "development": {
+          "title": "Desenvolvimento",
+          "description": "Nossos desenvolvedores dão vida ao design usando metodologia ágil. Você terá atualizações e demos regulares para acompanhar o progresso."
+        },
+        "deployment": {
+          "title": "Implantação",
+          "description": "Cuidamos de todo o processo de implantação e oferecemos suporte contínuo para garantir uma transição tranquila e sucesso duradouro."
+        }
+      }
+    },
+    "cta": {
+      "title": "Pronto para Automatizar seu Sucesso?",
+      "subtitle": "Vamos conversar sobre como a Robotipy pode ajudar seu negócio a prosperar com automação inteligente.",
+      "button": "Fale Conosco"
+    }
+  },
+  "trainingHero": {
+    "title": "Capacite Sua Equipe. <br></br>Domine a Automação e a IA",
+    "subtitle": "Liberte o potencial da sua equipe com nossos cursos práticos e especializações avançadas em RPA e IA.",
+    "cta": "Solicitar Capacitação"
+  },
+  "softwareHero": {
+    "title": "Construímos a tecnologia <br></br>que seu negócio precisa para vencer",
+    "subtitle": "Projetamos e desenvolvemos sistemas web, móveis e empresariais robustos, escaláveis e seguros, adaptados aos seus objetivos únicos.",
+    "cta": "Cotar seu Projeto"
+  },
+  "seo": {
+    "defaultTitle": "Robotipy - Automação RPA, Chatbots IA e Software",
+    "defaultDescription": "A Robotipy é uma empresa especializada em automação de processos (RPA) com tecnologia Rocketbot. Desenvolvemos bots sob medida, automatizamos tarefas administrativas, integramos com sistemas empresariais e oferecemos capacitação e suporte.",
+    "defaultDescriptionShort": "Automação de processos (RPA), Chatbots com IA e desenvolvimento de software sob medida. Soluções profissionais para otimizar processos e reduzir custos.",
+    "pages": {
+      "home": {
+        "title": "Robotipy - Automação RPA, Chatbots IA e Software",
+        "description": "Automação de processos (RPA), Chatbots com IA e desenvolvimento de software sob medida. Soluções profissionais para otimizar processos e reduzir custos."
+      },
+      "rpa": {
+        "title": "RPA com Rocketbot - Automação de Processos | Robotipy",
+        "description": "Implemente automação RPA com Rocketbot. Reduza erros, ganhe tempo e escale suas operações com nossa experiência na América Latina."
+      },
+      "contact": {
+        "title": "Contato | Robotipy",
+        "description": "Conte-nos seus desafios e agende uma chamada para discutirmos a melhor forma de tornar sua vida mais fácil."
+      },
+      "about": {
+        "title": "Sobre Nós | Robotipy",
+        "description": "Conheça a Robotipy: nossa equipe, princípios e processo para entregar automação inteligente que humaniza a tecnologia."
+      },
+      "capacitaciones": {
+        "title": "Capacitação em IA e Automação | Robotipy",
+        "description": "Capacite sua equipe com nossos cursos práticos e especializações avançadas em RPA e IA. Treinamento para equipes empresariais e técnicas."
+      },
+      "desarrolloSoftware": {
+        "title": "Desenvolvimento de Software Personalizado | Robotipy",
+        "description": "Construímos a tecnologia que seu negócio precisa para vencer. Desenvolvimento de software robusto, escalável e seguro adaptado aos seus objetivos únicos."
+      }
     }
   }
 }

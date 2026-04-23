@@ -1,10 +1,28 @@
 import config from "@/config";
+import { routing, ogLocaleMap, htmlLangMap } from "@/i18n/routing";
+
+const buildAlternates = (locale, canonicalUrlRelative) => {
+  if (!canonicalUrlRelative) return undefined;
+  const path = canonicalUrlRelative.startsWith("/")
+    ? canonicalUrlRelative
+    : `/${canonicalUrlRelative}`;
+  const suffix = path === "/" ? "" : path;
+  const languages = {};
+  routing.locales.forEach((l) => {
+    languages[htmlLangMap[l] || l] = `/${l}${suffix}`;
+  });
+  languages["x-default"] = `/${routing.defaultLocale}${suffix}`;
+  return {
+    canonical: `/${locale}${suffix}`,
+    languages,
+  };
+};
 
 // These are all the SEO tags you can add to your pages.
-// It prefills data with default title/description/OG, etc.. and you can cusotmize it for each page.
+// It prefills data with default title/description/OG, etc.. and you can customize it for each page.
 // It's already added in the root layout.js so you don't have to add it to every pages
 // But I recommend to set the canonical URL for each page (export const metadata = getSEOTags({canonicalUrlRelative: "/"});)
-// See https://shipfa.st/docs/features/seo
+// Pass `locale` from generateMetadata({ params }) so og:locale and hreflang alternates reflect the active language.
 export const getSEOTags = ({
   title,
   description,
@@ -12,12 +30,20 @@ export const getSEOTags = ({
   openGraph,
   canonicalUrlRelative,
   extraTags,
+  locale,
 } = {}) => {
+  const activeLocale =
+    locale && routing.locales.includes(locale) ? locale : routing.defaultLocale;
+
+  const finalTitle = title || config.appTitle || config.appName;
+  const finalDescription =
+    description || config.appDescriptionSEO || config.appDescription;
+
   return {
     // 50-60 characters recommended by Bing (what does your app do for the user?)
-    title: title || config.appTitle || config.appName,
+    title: finalTitle,
     // 120-160 characters recommended by Bing (how does your app help the user?)
-    description: description || config.appDescriptionSEO || config.appDescription,
+    description: finalDescription,
     // some keywords separated by commas. by default it will be your app name
     keywords: keywords || [config.appName],
     applicationName: config.appName,
@@ -29,10 +55,10 @@ export const getSEOTags = ({
     ),
 
     openGraph: {
-      title: openGraph?.title || config.appName,
-      description: openGraph?.description || config.appDescription,
-      url: openGraph?.url || `https://${config.domainName}/`,
-      siteName: openGraph?.title || config.appName,
+      title: openGraph?.title || finalTitle,
+      description: openGraph?.description || finalDescription,
+      url: openGraph?.url || `https://${config.domainName}/${activeLocale}`,
+      siteName: config.appName,
       // Bing requires og:image with minimum 1200x630 pixels
       images: openGraph?.images || [
         {
@@ -42,13 +68,13 @@ export const getSEOTags = ({
           alt: config.appName,
         },
       ],
-      locale: "es_ES",
+      locale: ogLocaleMap[activeLocale] || "es_ES",
       type: "website",
     },
 
     twitter: {
-      title: openGraph?.title || config.appName,
-      description: openGraph?.description || config.appDescription,
+      title: openGraph?.title || finalTitle,
+      description: openGraph?.description || finalDescription,
       // Twitter card image (also used by Bing as fallback)
       images: openGraph?.images || [
         {
@@ -62,9 +88,9 @@ export const getSEOTags = ({
       creator: "@robotipy",
     },
 
-    // If a canonical URL is given, we add it. The metadataBase will turn the relative URL into a fully qualified URL
+    // If a canonical URL is given, we add it (locale-prefixed) plus hreflang alternates.
     ...(canonicalUrlRelative && {
-      alternates: { canonical: canonicalUrlRelative },
+      alternates: buildAlternates(activeLocale, canonicalUrlRelative),
     }),
 
     // Microsoft/Bing specific meta tags for better thumbnail support
