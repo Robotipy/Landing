@@ -4,7 +4,7 @@ import ButtonMain from "./ButtonMain";
 const ProductHero = ({
   title,
   subtitle,
-  ctaText = "Empieza gratis",
+  ctaText,
   ctaLink = "https://projects.robotipy.dev",
   ctaSecondaryText,
   ctaSecondaryLink,
@@ -41,7 +41,7 @@ const ProductHero = ({
                   <div className="mt-12 w-full max-w-5xl">
                     <Image
                       src={heroImage}
-                      alt={heroImageAlt || "Product screenshot"}
+                      alt={heroImageAlt}
                       width={1200}
                       height={675}
                       className="w-full rounded-xl border border-white/10 shadow-2xl"

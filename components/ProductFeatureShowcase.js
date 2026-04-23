@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const ProductFeatureShowcase = ({
   image,
@@ -9,6 +10,7 @@ const ProductFeatureShowcase = ({
   position = "right",
   link,
 }) => {
+  const t = useTranslations("productShared");
   const imageBlock = (
     <div className="rounded-xl border border-white/10 shadow-2xl overflow-hidden">
       <Image
@@ -30,7 +32,7 @@ const ProductFeatureShowcase = ({
           href={link}
           className="font-bold text-accent hover:underline mt-2"
         >
-          Más información &rarr;
+          {t("learnMore")}
         </Link>
       )}
     </div>

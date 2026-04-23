@@ -1,59 +1,57 @@
 "use client";
 
 import { Suspense, useState } from "react";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ButtonMain from "@/components/ButtonMain";
 
-const faqs = [
-  {
-    question: "¿Hay un período de prueba gratuito?",
-    answer:
-      "Sí, todos los planes incluyen 30 días de prueba gratuita. No necesitas ingresar tarjeta de crédito para empezar.",
-  },
-  {
-    question: "¿Los clientes (Guests) cuentan como usuarios pagos?",
-    answer:
-      "No. Los clientes que acceden al portal de clientes son Guests y no cuentan como usuarios pagos. Puedes invitar clientes ilimitados sin costo adicional.",
-  },
-  {
-    question: "¿Puedo cambiar de plan en cualquier momento?",
-    answer:
-      "Sí, puedes cambiar de plan cuando quieras. Si subes de plan, se prorratea la diferencia. Si bajas, el cambio aplica en tu próximo ciclo de facturación.",
-  },
-  {
-    question: "¿Qué métodos de pago aceptan?",
-    answer:
-      "Aceptamos tarjetas de crédito y débito (Visa, Mastercard, American Express). Para planes anuales también ofrecemos transferencia bancaria.",
-  },
-  {
-    question: "¿Hay descuento por pago anual?",
-    answer:
-      "Sí, el pago anual tiene un 20% de descuento respecto al pago mensual.",
-  },
-  {
-    question: "¿Necesito instalar algo?",
-    answer:
-      "No. Robotipy Projects es 100% web. Solo necesitas un navegador moderno para acceder desde cualquier dispositivo.",
-  },
+const faqKeys = [
+  "trial",
+  "guests",
+  "switchPlan",
+  "payment",
+  "annualDiscount",
+  "noInstall",
+];
+const freelancerFeatureKeys = [
+  "users",
+  "clients",
+  "projects",
+  "clientPortal",
+  "basicSupport",
+];
+const studioFeatureKeys = [
+  "users",
+  "everythingFromFreelancer",
+  "resources",
+  "quote",
+  "integrations",
+  "prioritySupport",
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
-
 export default function PricingPage() {
+  const t = useTranslations("productsProjects.pricingPage");
   const [isAnnual, setIsAnnual] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = faqKeys.map((key) => ({
+    question: t(`faq.items.${key}.question`),
+    answer: t(`faq.items.${key}.answer`),
+  }));
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <>
@@ -65,18 +63,15 @@ export default function PricingPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-                Planes simples para consultoras de cualquier tamaño
+                {t("heading")}
               </h1>
-              <p className="text-lg text-white/70 mb-8">
-                30 días gratis. Sin tarjeta de crédito. Los clientes (Guests) no
-                cuentan como usuarios pagos.
-              </p>
+              <p className="text-lg text-white/70 mb-8">{t("subtitle")}</p>
 
               <div className="flex items-center justify-center gap-3 mb-12">
                 <span
                   className={`text-sm font-medium ${!isAnnual ? "text-white" : "text-gray-400"}`}
                 >
-                  Mensual
+                  {t("toggle.monthly")}
                 </span>
                 <button
                   onClick={() => setIsAnnual(!isAnnual)}
@@ -89,8 +84,10 @@ export default function PricingPage() {
                 <span
                   className={`text-sm font-medium ${isAnnual ? "text-white" : "text-gray-400"}`}
                 >
-                  Anual{" "}
-                  <span className="text-green-400 font-bold">(-20%)</span>
+                  {t("toggle.annual")}{" "}
+                  <span className="text-green-400 font-bold">
+                    {t("toggle.annualBadge")}
+                  </span>
                 </span>
               </div>
             </div>
@@ -102,46 +99,34 @@ export default function PricingPage() {
                 style={{ backgroundColor: "#11222c" }}
               >
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Freelancer
+                  {t("plans.freelancer.name")}
                 </h3>
                 <p className="text-gray-400 text-sm mb-6">
-                  Para consultores independientes
+                  {t("plans.freelancer.tagline")}
                 </p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-white">
                     ${isAnnual ? "15" : "19"}
                   </span>
-                  <span className="text-gray-400">/mes</span>
+                  <span className="text-gray-400">
+                    {t("plans.freelancer.priceSuffix")}
+                  </span>
                   {isAnnual && (
                     <span className="text-sm text-gray-500 line-through ml-2">
-                      $19/mes
+                      $19{t("plans.freelancer.strikethroughSuffix")}
                     </span>
                   )}
                 </div>
                 <ul className="text-gray-300 text-sm space-y-3 mb-8 flex-1">
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>1
-                    usuario
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>Clientes
-                    ilimitados
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>
-                    Proyectos ilimitados
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>Portal de
-                    clientes
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>Soporte
-                    básico
-                  </li>
+                  {freelancerFeatureKeys.map((key) => (
+                    <li key={key} className="flex items-start gap-2">
+                      <span className="text-accent mt-0.5">&#10003;</span>
+                      {t(`plans.freelancer.features.${key}`)}
+                    </li>
+                  ))}
                 </ul>
                 <ButtonMain
-                  text="Empieza gratis"
+                  text={t("plans.freelancer.cta")}
                   link="https://projects.robotipy.dev"
                   type="primary"
                 />
@@ -153,53 +138,39 @@ export default function PricingPage() {
                 style={{ backgroundColor: "#11222c" }}
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-2xl font-bold text-white">Studio</h3>
+                  <h3 className="text-2xl font-bold text-white">
+                    {t("plans.studio.name")}
+                  </h3>
                   <span className="badge badge-sm bg-accent text-white border-accent">
-                    Popular
+                    {t("plans.studio.popularBadge")}
                   </span>
                 </div>
                 <p className="text-gray-400 text-sm mb-6">
-                  Para equipos y consultoras
+                  {t("plans.studio.tagline")}
                 </p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-white">
                     ${isAnnual ? "39" : "49"}
                   </span>
-                  <span className="text-gray-400">/usuario/mes</span>
+                  <span className="text-gray-400">
+                    {t("plans.studio.priceSuffix")}
+                  </span>
                   {isAnnual && (
                     <span className="text-sm text-gray-500 line-through ml-2">
-                      $49/mes
+                      $49{t("plans.studio.strikethroughSuffix")}
                     </span>
                   )}
                 </div>
                 <ul className="text-gray-300 text-sm space-y-3 mb-8 flex-1">
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>Usuarios
-                    ilimitados
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>Todo de
-                    Freelancer
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>
-                    Planificación de recursos
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>
-                    Cotizador de propuestas
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>
-                    Integraciones
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">&#10003;</span>Soporte
-                    prioritario
-                  </li>
+                  {studioFeatureKeys.map((key) => (
+                    <li key={key} className="flex items-start gap-2">
+                      <span className="text-accent mt-0.5">&#10003;</span>
+                      {t(`plans.studio.features.${key}`)}
+                    </li>
+                  ))}
                 </ul>
                 <ButtonMain
-                  text="Empieza gratis"
+                  text={t("plans.studio.cta")}
                   link="https://projects.robotipy.dev"
                   type="primary"
                 />
@@ -213,7 +184,7 @@ export default function PricingPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Preguntas Frecuentes
+                {t("faq.heading")}
               </h2>
             </div>
             <div className="space-y-4">

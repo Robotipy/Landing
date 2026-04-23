@@ -1,47 +1,59 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+
+const freelancerFeatureKeys = ["users", "clients", "projects", "clientPortal"];
+const studioFeatureKeys = [
+  "users",
+  "everythingFromFreelancer",
+  "resources",
+  "integrations",
+];
 
 const ProjectsPricingPreview = () => {
+  const t = useTranslations("productsProjects.pricingPreview");
+
   return (
     <section className="py-16 lg:py-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Planes simples, sin sorpresas
+            {t("heading")}
           </h2>
-          <p className="mt-4 text-lg text-white/70">
-            30 días gratis. Sin tarjeta de crédito. Los clientes (Guests) no
-            cuentan como usuarios pagos.
-          </p>
+          <p className="mt-4 text-lg text-white/70">{t("subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           <div
             className="rounded-xl p-8 text-center"
             style={{ backgroundColor: "#11222c" }}
           >
-            <h3 className="text-xl font-bold text-white mb-2">Freelancer</h3>
+            <h3 className="text-xl font-bold text-white mb-2">
+              {t("plans.freelancer.name")}
+            </h3>
             <p className="text-gray-400 text-sm mb-4">
-              Para consultores independientes
+              {t("plans.freelancer.tagline")}
             </p>
             <ul className="text-gray-300 text-sm space-y-2 text-left mb-6">
-              <li>&#10003; 1 usuario</li>
-              <li>&#10003; Clientes ilimitados</li>
-              <li>&#10003; Proyectos ilimitados</li>
-              <li>&#10003; Portal de clientes</li>
+              {freelancerFeatureKeys.map((key) => (
+                <li key={key}>
+                  &#10003; {t(`plans.freelancer.features.${key}`)}
+                </li>
+              ))}
             </ul>
           </div>
           <div
             className="rounded-xl p-8 text-center border border-accent/30"
             style={{ backgroundColor: "#11222c" }}
           >
-            <h3 className="text-xl font-bold text-white mb-2">Studio</h3>
+            <h3 className="text-xl font-bold text-white mb-2">
+              {t("plans.studio.name")}
+            </h3>
             <p className="text-gray-400 text-sm mb-4">
-              Para equipos y consultoras
+              {t("plans.studio.tagline")}
             </p>
             <ul className="text-gray-300 text-sm space-y-2 text-left mb-6">
-              <li>&#10003; Usuarios ilimitados</li>
-              <li>&#10003; Todo de Freelancer</li>
-              <li>&#10003; Planificación de recursos</li>
-              <li>&#10003; Integraciones</li>
+              {studioFeatureKeys.map((key) => (
+                <li key={key}>&#10003; {t(`plans.studio.features.${key}`)}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -50,7 +62,7 @@ const ProjectsPricingPreview = () => {
             href="/projects/pricing"
             className="text-accent hover:underline font-bold text-lg"
           >
-            Ver planes y precios &rarr;
+            {t("ctaText")}
           </Link>
         </div>
       </div>
