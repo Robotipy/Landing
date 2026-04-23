@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductHero from "@/components/ProductHero";
@@ -9,6 +10,8 @@ import ProjectsPricingPreview from "@/components/ProjectsPricingPreview";
 import ProductCTA from "@/components/ProductCTA";
 
 export default function ProjectsPage() {
+  const t = useTranslations("productsProjects");
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -37,23 +40,23 @@ export default function ProjectsPage() {
       </Suspense>
       <main>
         <ProductHero
-          title="El sistema operativo para consultoras de software y RPA"
-          subtitle="Deja de gestionar tu consultora con WhatsApp y Excel. Centraliza proyectos, recursos, estimaciones y soporte en un solo lugar."
-          ctaText="Empieza gratis"
+          title={t("hero.title")}
+          subtitle={t("hero.subtitle")}
+          ctaText={t("hero.ctaText")}
           ctaLink="https://projects.robotipy.dev"
-          ctaSecondaryText="Ver precios"
+          ctaSecondaryText={t("hero.ctaSecondaryText")}
           ctaSecondaryLink="/projects/pricing"
           heroImage="/projects/home.png"
-          heroImageAlt="Dashboard principal de Robotipy Projects"
+          heroImageAlt={t("hero.heroImageAlt")}
         />
         <ProjectsProblem />
         <ProjectsFeatures />
         <ProjectsDifferentiator />
         <ProjectsPricingPreview />
         <ProductCTA
-          title="Empieza a gestionar tu consultora de forma profesional"
-          subtitle="30 días gratis. Sin tarjeta de crédito. Configurado en minutos."
-          ctaText="Empieza gratis"
+          title={t("cta.title")}
+          subtitle={t("cta.subtitle")}
+          ctaText={t("cta.ctaText")}
           ctaLink="https://projects.robotipy.dev"
         />
       </main>

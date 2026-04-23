@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductHero from "@/components/ProductHero";
@@ -8,9 +9,10 @@ const FeaturePageTemplate = ({
   title,
   subtitle,
   howItWorks,
-  problemTitle,
   problemDescription,
 }) => {
+  const t = useTranslations("productsProjects.featurePages.common");
+
   return (
     <>
       <Suspense>
@@ -20,16 +22,16 @@ const FeaturePageTemplate = ({
         <ProductHero
           title={title}
           subtitle={subtitle}
-          ctaText="Empieza gratis"
+          ctaText={t("ctaPrimary")}
           ctaLink="https://projects.robotipy.dev"
-          ctaSecondaryText="Ver todas las funciones"
+          ctaSecondaryText={t("ctaSecondary")}
           ctaSecondaryLink="/projects"
         />
 
         <section className="py-16 lg:py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-              Cómo funciona
+              {t("howItWorksHeading")}
             </h2>
             <div className="space-y-6">
               {howItWorks.map((item, index) => (
@@ -58,7 +60,7 @@ const FeaturePageTemplate = ({
         <section className="py-16 lg:py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              {problemTitle}
+              {t("problemHeading")}
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
               {problemDescription}
@@ -67,9 +69,9 @@ const FeaturePageTemplate = ({
         </section>
 
         <ProductCTA
-          title="Empieza a gestionar tu consultora de forma profesional"
-          subtitle="30 días gratis. Sin tarjeta de crédito."
-          ctaText="Empieza gratis"
+          title={t("bottomCta.title")}
+          subtitle={t("bottomCta.subtitle")}
+          ctaText={t("bottomCta.ctaText")}
           ctaLink="https://projects.robotipy.dev"
         />
       </main>

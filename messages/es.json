@@ -369,6 +369,358 @@
     "subtitle": "Diseñamos y desarrollamos sistemas web, móviles y empresariales robustos, escalables y seguros que se adaptan a tus objetivos comerciales únicos.",
     "cta": "Cotizar tu Proyecto"
   },
+  "productShared": {
+    "learnMore": "Más información →",
+    "productImageAlt": "Captura del producto"
+  },
+  "productsMonitor": {
+    "hero": {
+      "title": "Monitoreo en tiempo real para tus robots RPA",
+      "subtitle": "Detecta fallos antes que tus clientes. Monitorea ejecuciones, recibe alertas y analiza el rendimiento de todas tus automatizaciones en producción.",
+      "ctaText": "Acceder a Monitor"
+    },
+    "features": {
+      "heading": "Todo lo que necesitas para mantener tus bots bajo control",
+      "items": {
+        "alerts": {
+          "title": "Alertas en tiempo real",
+          "description": "Recibe notificaciones instantáneas cuando un robot falla, se detiene o muestra comportamiento anómalo."
+        },
+        "dashboard": {
+          "title": "Dashboard de métricas",
+          "description": "Visualiza ejecuciones, tiempos de procesamiento, tasas de éxito y errores en un solo panel."
+        },
+        "logs": {
+          "title": "Logs centralizados",
+          "description": "Accede a los logs de todos tus robots en un solo lugar. Busca, filtra y analiza sin conectarte a cada máquina."
+        },
+        "history": {
+          "title": "Historial de ejecuciones",
+          "description": "Revisa el historial completo de cada robot: cuándo se ejecutó, cuánto tardó y si terminó correctamente."
+        }
+      }
+    },
+    "origin": {
+      "heading": "Nacido de la experiencia real",
+      "paragraph": "Después de implementar +60 robots RPA en producción, sabemos que el mayor desafío no es construir el bot, sino mantenerlo funcionando. Monitor nace de esa necesidad: una herramienta simple para saber qué está pasando con tus automatizaciones sin tener que revisar cada máquina manualmente."
+    },
+    "cta": {
+      "title": "Mantén tus robots bajo control",
+      "subtitle": "Monitorea todas tus automatizaciones en un solo lugar.",
+      "ctaText": "Acceder a Monitor"
+    }
+  },
+  "productsAnalysis": {
+    "hero": {
+      "title": "Análisis de video con inteligencia artificial",
+      "subtitle": "Extrae insights automatizados de tus grabaciones. Detecta patrones, genera reportes y toma decisiones basadas en datos visuales.",
+      "ctaText": "Acceder a Analysis"
+    },
+    "features": {
+      "heading": "Convierte video en datos accionables",
+      "items": {
+        "detection": {
+          "title": "Detección automática",
+          "description": "Identifica objetos, personas, eventos y patrones en tus videos automáticamente con modelos de IA avanzados."
+        },
+        "insights": {
+          "title": "Insights automatizados",
+          "description": "Genera reportes y métricas a partir del contenido de tus videos sin procesamiento manual."
+        },
+        "processing": {
+          "title": "Procesamiento eficiente",
+          "description": "Analiza grandes volúmenes de video de forma rápida y escalable en la nube."
+        },
+        "integration": {
+          "title": "Integración con tus sistemas",
+          "description": "Conecta los resultados del análisis con tus dashboards, ERPs o sistemas de alertas existentes."
+        }
+      }
+    },
+    "origin": {
+      "heading": "IA aplicada a problemas reales",
+      "paragraph": "Analysis combina nuestra experiencia en inteligencia artificial con las necesidades reales de las empresas. Desde control de calidad en manufactura hasta análisis de seguridad, el video contiene información valiosa que hoy se pierde. Nosotros la convertimos en datos."
+    },
+    "cta": {
+      "title": "Descubre lo que tus videos pueden contarte",
+      "subtitle": "Análisis de video potenciado por inteligencia artificial.",
+      "ctaText": "Acceder a Analysis"
+    }
+  },
+  "productsProjects": {
+    "hero": {
+      "title": "El sistema operativo para consultoras de software y RPA",
+      "subtitle": "Deja de gestionar tu consultora con WhatsApp y Excel. Centraliza proyectos, recursos, estimaciones y soporte en un solo lugar.",
+      "ctaText": "Empieza gratis",
+      "ctaSecondaryText": "Ver precios",
+      "heroImageAlt": "Dashboard principal de Robotipy Projects"
+    },
+    "cta": {
+      "title": "Empieza a gestionar tu consultora de forma profesional",
+      "subtitle": "30 días gratis. Sin tarjeta de crédito. Configurado en minutos.",
+      "ctaText": "Empieza gratis"
+    },
+    "problem": {
+      "heading": "¿Tu consultora sufre de estos problemas?",
+      "subtitle": "Si gestionas una consultora de software o RPA, probablemente te identificas con esto.",
+      "items": {
+        "scopeCreep": {
+          "title": "Scope creep sin control",
+          "description": "Los proyectos crecen sin que nadie lo note hasta que el margen desaparece."
+        },
+        "availability": {
+          "title": "No sabes quién está libre",
+          "description": "Asignas personas a proyectos sin visibilidad real de su carga de trabajo."
+        },
+        "excelProposals": {
+          "title": "Propuestas en Excel",
+          "description": "Las cotizaciones se hacen en planillas que se pierden y no se conectan con los proyectos."
+        },
+        "whatsappClients": {
+          "title": "Clientes preguntan por WhatsApp",
+          "description": "\"¿Cómo va mi proyecto?\" es la pregunta que más recibes, y nunca tienes la respuesta a mano."
+        }
+      }
+    },
+    "features": {
+      "heading": "Todo lo que necesitas, nada que no",
+      "subtitle": "Cada función diseñada para resolver problemas reales de consultoras.",
+      "items": {
+        "resourcePlanning": {
+          "title": "Planificación de Recursos",
+          "description": "Visualiza la disponibilidad de tu equipo y asigna personas a proyectos sin sobrecargar a nadie.",
+          "alt": "Vista del planificador de recursos mostrando disponibilidad del equipo"
+        },
+        "ganttTimeline": {
+          "title": "Gantt y Timeline",
+          "description": "Planifica y visualiza tus proyectos con diagramas de Gantt interactivos. Tus clientes ven el avance en tiempo real.",
+          "alt": "Gantt y Timeline con vista de avance del proyecto"
+        },
+        "helpDesk": {
+          "title": "Mesa de Ayuda",
+          "description": "Gestiona el soporte post-entrega con tickets, SLAs y portal de clientes integrado.",
+          "alt": "Mesa de ayuda con tickets y gestión de SLAs"
+        },
+        "dashboardKpis": {
+          "title": "Dashboard y KPIs",
+          "description": "Métricas en tiempo real: rentabilidad, utilización, avance y más.",
+          "alt": "Dashboard principal con KPIs y métricas en tiempo real"
+        },
+        "licenses": {
+          "title": "Gestión de Licencias y Activos",
+          "description": "Gestiona de forma centralizada las licencias, dominios y activos digitales de tus clientes.",
+          "alt": "Gestión centralizada de licencias y activos digitales"
+        }
+      }
+    },
+    "differentiator": {
+      "heading": "Construido por una consultora, para consultoras",
+      "paragraph1": "Robotipy nace de nuestra propia necesidad. Somos una consultora de RPA con <b>+60 proyectos</b> en <b>8 países</b>. Construimos esta herramienta porque ninguna existente resolvía nuestros problemas reales.",
+      "paragraph2": "No es un software genérico adaptado. Es una herramienta nacida desde la trinchera de gestionar proyectos de automatización, desarrollo de software y consultoría tecnológica."
+    },
+    "pricingPreview": {
+      "heading": "Planes simples, sin sorpresas",
+      "subtitle": "30 días gratis. Sin tarjeta de crédito. Los clientes (Guests) no cuentan como usuarios pagos.",
+      "plans": {
+        "freelancer": {
+          "name": "Freelancer",
+          "tagline": "Para consultores independientes",
+          "features": {
+            "users": "1 usuario",
+            "clients": "Clientes ilimitados",
+            "projects": "Proyectos ilimitados",
+            "clientPortal": "Portal de clientes"
+          }
+        },
+        "studio": {
+          "name": "Studio",
+          "tagline": "Para equipos y consultoras",
+          "features": {
+            "users": "Usuarios ilimitados",
+            "everythingFromFreelancer": "Todo de Freelancer",
+            "resources": "Planificación de recursos",
+            "integrations": "Integraciones"
+          }
+        }
+      },
+      "ctaText": "Ver planes y precios →"
+    },
+    "pricingPage": {
+      "heading": "Planes simples para consultoras de cualquier tamaño",
+      "subtitle": "30 días gratis. Sin tarjeta de crédito. Los clientes (Guests) no cuentan como usuarios pagos.",
+      "toggle": {
+        "monthly": "Mensual",
+        "annual": "Anual",
+        "annualBadge": "(-20%)"
+      },
+      "plans": {
+        "freelancer": {
+          "name": "Freelancer",
+          "tagline": "Para consultores independientes",
+          "priceSuffix": "/mes",
+          "strikethroughSuffix": "/mes",
+          "features": {
+            "users": "1 usuario",
+            "clients": "Clientes ilimitados",
+            "projects": "Proyectos ilimitados",
+            "clientPortal": "Portal de clientes",
+            "basicSupport": "Soporte básico"
+          },
+          "cta": "Empieza gratis"
+        },
+        "studio": {
+          "name": "Studio",
+          "tagline": "Para equipos y consultoras",
+          "popularBadge": "Popular",
+          "priceSuffix": "/usuario/mes",
+          "strikethroughSuffix": "/mes",
+          "features": {
+            "users": "Usuarios ilimitados",
+            "everythingFromFreelancer": "Todo de Freelancer",
+            "resources": "Planificación de recursos",
+            "quote": "Cotizador de propuestas",
+            "integrations": "Integraciones",
+            "prioritySupport": "Soporte prioritario"
+          },
+          "cta": "Empieza gratis"
+        }
+      },
+      "faq": {
+        "heading": "Preguntas Frecuentes",
+        "items": {
+          "trial": {
+            "question": "¿Hay un período de prueba gratuito?",
+            "answer": "Sí, todos los planes incluyen 30 días de prueba gratuita. No necesitas ingresar tarjeta de crédito para empezar."
+          },
+          "guests": {
+            "question": "¿Los clientes (Guests) cuentan como usuarios pagos?",
+            "answer": "No. Los clientes que acceden al portal de clientes son Guests y no cuentan como usuarios pagos. Puedes invitar clientes ilimitados sin costo adicional."
+          },
+          "switchPlan": {
+            "question": "¿Puedo cambiar de plan en cualquier momento?",
+            "answer": "Sí, puedes cambiar de plan cuando quieras. Si subes de plan, se prorratea la diferencia. Si bajas, el cambio aplica en tu próximo ciclo de facturación."
+          },
+          "payment": {
+            "question": "¿Qué métodos de pago aceptan?",
+            "answer": "Aceptamos tarjetas de crédito y débito (Visa, Mastercard, American Express). Para planes anuales también ofrecemos transferencia bancaria."
+          },
+          "annualDiscount": {
+            "question": "¿Hay descuento por pago anual?",
+            "answer": "Sí, el pago anual tiene un 20% de descuento respecto al pago mensual."
+          },
+          "noInstall": {
+            "question": "¿Necesito instalar algo?",
+            "answer": "No. Robotipy Projects es 100% web. Solo necesitas un navegador moderno para acceder desde cualquier dispositivo."
+          }
+        }
+      }
+    },
+    "featurePages": {
+      "common": {
+        "howItWorksHeading": "Cómo funciona",
+        "problemHeading": "El problema que resuelve",
+        "ctaPrimary": "Empieza gratis",
+        "ctaSecondary": "Ver todas las funciones",
+        "bottomCta": {
+          "title": "Empieza a gestionar tu consultora de forma profesional",
+          "subtitle": "30 días gratis. Sin tarjeta de crédito.",
+          "ctaText": "Empieza gratis"
+        }
+      },
+      "recursos": {
+        "title": "Nunca más pierdas un proyecto por no saber quién está libre",
+        "subtitle": "Visualiza la disponibilidad real de tu equipo y toma decisiones de asignación basadas en datos, no en suposiciones.",
+        "howItWorks": {
+          "capacityView": {
+            "title": "Vista de capacidad del equipo",
+            "description": "Ve la carga de trabajo de cada miembro del equipo en un timeline visual. Identifica quién tiene disponibilidad y quién está al límite."
+          },
+          "smartAssign": {
+            "title": "Asignación inteligente",
+            "description": "Asigna personas a proyectos considerando sus habilidades, disponibilidad y carga actual. Evita la sobreasignación automáticamente."
+          },
+          "forecast": {
+            "title": "Planificación a futuro",
+            "description": "Proyecta la demanda de recursos a 30, 60 y 90 días. Anticipa cuellos de botella antes de que se conviertan en problemas."
+          },
+          "alerts": {
+            "title": "Alertas de capacidad",
+            "description": "Recibe notificaciones cuando un recurso está sobreasignado o cuando hay capacidad ociosa que podrías aprovechar."
+          }
+        },
+        "problemDescription": "En una consultora, el recurso más valioso es el tiempo de tu equipo. Sin visibilidad de la capacidad real, terminas rechazando proyectos porque 'todos están ocupados' o aceptando proyectos sin saber que ya estás al límite. El resultado: burnout, entregas tarde y clientes insatisfechos. La planificación de recursos te da el control que necesitas para crecer sin caos."
+      },
+      "soporte": {
+        "title": "El soporte post-entrega que tus clientes merecen",
+        "subtitle": "Gestiona tickets de soporte, cumple SLAs y dale a tus clientes un canal profesional para reportar incidencias.",
+        "howItWorks": {
+          "ticketPortal": {
+            "title": "Portal de tickets para clientes",
+            "description": "Tus clientes crean tickets de soporte desde su portal. Sin emails, sin WhatsApp. Todo registrado y trazable."
+          },
+          "slas": {
+            "title": "Gestión de SLAs",
+            "description": "Define tiempos de respuesta y resolución por tipo de ticket y cliente. El sistema alerta cuando un SLA está en riesgo."
+          },
+          "assignment": {
+            "title": "Asignación y escalamiento",
+            "description": "Asigna tickets automáticamente según tipo, prioridad o disponibilidad del equipo. Escala cuando sea necesario."
+          },
+          "metrics": {
+            "title": "Métricas de soporte",
+            "description": "Mide tiempos de respuesta, resolución, satisfacción del cliente y carga del equipo de soporte."
+          }
+        },
+        "problemDescription": "Después de entregar un proyecto, el soporte se convierte en un caos. Los clientes escriben por WhatsApp, email o llaman directamente a los desarrolladores. No hay registro de qué se pidió, cuándo se resolvió ni cuánto tiempo tomó. La mesa de ayuda profesionaliza tu soporte post-entrega, mejora la satisfacción del cliente y te da datos para tomar decisiones sobre contratos de mantenimiento."
+      },
+      "portalClientes": {
+        "title": "Transparencia que genera confianza con tus clientes",
+        "subtitle": "Dale a cada cliente un portal donde puede ver el avance de sus proyectos, aprobar entregables y comunicarse con tu equipo.",
+        "howItWorks": {
+          "customPortal": {
+            "title": "Portal personalizado por cliente",
+            "description": "Cada cliente accede a su propio espacio donde ve solo sus proyectos, avance, documentos y comunicaciones."
+          },
+          "realtimeUpdates": {
+            "title": "Actualizaciones en tiempo real",
+            "description": "Los clientes ven el progreso del proyecto actualizado automáticamente. Sin necesidad de enviar reportes manuales."
+          },
+          "approval": {
+            "title": "Aprobación de entregables",
+            "description": "Los clientes aprueban o solicitan cambios directamente en el portal. Todo queda documentado con fechas y comentarios."
+          },
+          "centralComms": {
+            "title": "Comunicación centralizada",
+            "description": "Reemplaza los hilos de WhatsApp y email por una comunicación organizada por proyecto y entregable."
+          }
+        },
+        "problemDescription": "Cada semana recibes el mismo mensaje: \"¿Cómo va mi proyecto?\". Respondes por WhatsApp, buscas la información en distintos lugares, armas un resumen y lo envías. Al día siguiente, otro cliente pregunta lo mismo. El portal de clientes elimina este ciclo. Tus clientes tienen acceso directo a la información que necesitan, cuando la necesitan. El resultado: menos interrupciones para tu equipo, más confianza del cliente y una imagen profesional que te diferencia de la competencia."
+      },
+      "cotizador": {
+        "title": "De la propuesta al proyecto sin copiar-pegar",
+        "subtitle": "Crea propuestas profesionales con estimaciones detalladas y conviértelas en proyectos activos con un solo click.",
+        "howItWorks": {
+          "templates": {
+            "title": "Plantillas de propuesta",
+            "description": "Usa plantillas pre-armadas para distintos tipos de proyecto (RPA, desarrollo, consultoría). Personaliza y envía en minutos."
+          },
+          "estimation": {
+            "title": "Estimación detallada",
+            "description": "Desglosa el proyecto en fases, tareas y recursos. El cotizador calcula costos, márgenes y tiempos automáticamente."
+          },
+          "toProject": {
+            "title": "De propuesta a proyecto",
+            "description": "Cuando el cliente aprueba, convierte la propuesta en un proyecto con un click. Fases, tareas y asignaciones ya están listas."
+          },
+          "versionHistory": {
+            "title": "Historial de versiones",
+            "description": "Cada cambio en la propuesta queda registrado. Compara versiones y ve qué cambió entre la propuesta original y la final."
+          }
+        },
+        "problemDescription": "Las propuestas se hacen en Excel, Word o Google Docs. Cada una empieza de cero o se copia de otra anterior (con datos que no se actualizan). Cuando el cliente aprueba, alguien tiene que crear el proyecto manualmente, re-ingresando toda la información. Este proceso no escala. Con el cotizador, la propuesta es el inicio del proyecto. Todo fluye sin fricciones y sin pérdida de información."
+      }
+    }
+  },
   "seo": {
     "defaultTitle": "Robotipy - Automatización RPA, Chatbots IA y Software",
     "defaultDescription": "Robotipy es una empresa especializada en automatización de procesos (RPA) con tecnología Rocketbot. Ofrece desarrollo de bots a medida, automatización de tareas administrativas, integración con sistemas empresariales, capacitación y soporte.",

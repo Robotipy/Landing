@@ -369,6 +369,358 @@
     "subtitle": "We design and develop robust, scalable and secure web, mobile and enterprise systems tailored to your unique business goals.",
     "cta": "Quote your Project"
   },
+  "productShared": {
+    "learnMore": "Learn more →",
+    "productImageAlt": "Product screenshot"
+  },
+  "productsMonitor": {
+    "hero": {
+      "title": "Real-time monitoring for your RPA robots",
+      "subtitle": "Catch failures before your clients do. Monitor executions, get alerts, and analyze the performance of every automation in production.",
+      "ctaText": "Go to Monitor"
+    },
+    "features": {
+      "heading": "Everything you need to keep your bots under control",
+      "items": {
+        "alerts": {
+          "title": "Real-time alerts",
+          "description": "Get instant notifications whenever a robot fails, stops, or shows anomalous behavior."
+        },
+        "dashboard": {
+          "title": "Metrics dashboard",
+          "description": "Visualize runs, processing times, success rates and errors in a single panel."
+        },
+        "logs": {
+          "title": "Centralized logs",
+          "description": "Access the logs of all your robots in one place. Search, filter and analyze without connecting to each machine."
+        },
+        "history": {
+          "title": "Execution history",
+          "description": "Review the full history of every robot: when it ran, how long it took, and whether it finished correctly."
+        }
+      }
+    },
+    "origin": {
+      "heading": "Born from real-world experience",
+      "paragraph": "After deploying 60+ RPA robots in production, we know the hardest part isn't building the bot — it's keeping it running. Monitor was born from that need: a simple tool to know what's happening with your automations without having to check every machine manually."
+    },
+    "cta": {
+      "title": "Keep your robots under control",
+      "subtitle": "Monitor all your automations in a single place.",
+      "ctaText": "Go to Monitor"
+    }
+  },
+  "productsAnalysis": {
+    "hero": {
+      "title": "Video analysis powered by artificial intelligence",
+      "subtitle": "Extract automated insights from your recordings. Detect patterns, generate reports, and make decisions based on visual data.",
+      "ctaText": "Go to Analysis"
+    },
+    "features": {
+      "heading": "Turn video into actionable data",
+      "items": {
+        "detection": {
+          "title": "Automatic detection",
+          "description": "Identify objects, people, events and patterns in your videos automatically with advanced AI models."
+        },
+        "insights": {
+          "title": "Automated insights",
+          "description": "Generate reports and metrics from the content of your videos with no manual processing."
+        },
+        "processing": {
+          "title": "Efficient processing",
+          "description": "Analyze large volumes of video quickly and at scale in the cloud."
+        },
+        "integration": {
+          "title": "Integrates with your systems",
+          "description": "Connect analysis results with your existing dashboards, ERPs or alerting systems."
+        }
+      }
+    },
+    "origin": {
+      "heading": "AI applied to real problems",
+      "paragraph": "Analysis combines our experience in artificial intelligence with the real needs of businesses. From manufacturing quality control to security analysis, video contains valuable information that today gets lost. We turn it into data."
+    },
+    "cta": {
+      "title": "Discover what your videos can tell you",
+      "subtitle": "Video analysis powered by artificial intelligence.",
+      "ctaText": "Go to Analysis"
+    }
+  },
+  "productsProjects": {
+    "hero": {
+      "title": "The operating system for software and RPA consultancies",
+      "subtitle": "Stop running your consultancy on WhatsApp and Excel. Centralize projects, resources, estimates and support in a single place.",
+      "ctaText": "Get started free",
+      "ctaSecondaryText": "See pricing",
+      "heroImageAlt": "Robotipy Projects main dashboard"
+    },
+    "cta": {
+      "title": "Start running your consultancy the professional way",
+      "subtitle": "30 days free. No credit card required. Up and running in minutes.",
+      "ctaText": "Get started free"
+    },
+    "problem": {
+      "heading": "Does your consultancy struggle with these problems?",
+      "subtitle": "If you run a software or RPA consultancy, this probably sounds familiar.",
+      "items": {
+        "scopeCreep": {
+          "title": "Uncontrolled scope creep",
+          "description": "Projects grow without anyone noticing until the margin is gone."
+        },
+        "availability": {
+          "title": "You don't know who's available",
+          "description": "You assign people to projects without real visibility into their workload."
+        },
+        "excelProposals": {
+          "title": "Proposals in Excel",
+          "description": "Quotes live in spreadsheets that get lost and don't connect with the actual projects."
+        },
+        "whatsappClients": {
+          "title": "Clients ask via WhatsApp",
+          "description": "\"How's my project going?\" is the question you get the most, and you never have the answer at hand."
+        }
+      }
+    },
+    "features": {
+      "heading": "Everything you need, nothing you don't",
+      "subtitle": "Every feature designed to solve real problems consultancies face.",
+      "items": {
+        "resourcePlanning": {
+          "title": "Resource Planning",
+          "description": "See your team's availability and assign people to projects without overloading anyone.",
+          "alt": "Resource planner view showing team availability"
+        },
+        "ganttTimeline": {
+          "title": "Gantt and Timeline",
+          "description": "Plan and visualize your projects with interactive Gantt charts. Your clients see progress in real time.",
+          "alt": "Gantt and Timeline showing project progress"
+        },
+        "helpDesk": {
+          "title": "Help Desk",
+          "description": "Handle post-delivery support with tickets, SLAs and an integrated client portal.",
+          "alt": "Help desk with tickets and SLA management"
+        },
+        "dashboardKpis": {
+          "title": "Dashboard and KPIs",
+          "description": "Real-time metrics: profitability, utilization, progress and more.",
+          "alt": "Main dashboard with KPIs and real-time metrics"
+        },
+        "licenses": {
+          "title": "License and Asset Management",
+          "description": "Centrally manage your clients' licenses, domains and digital assets.",
+          "alt": "Centralized management of licenses and digital assets"
+        }
+      }
+    },
+    "differentiator": {
+      "heading": "Built by a consultancy, for consultancies",
+      "paragraph1": "Robotipy was born out of our own need. We're an RPA consultancy with <b>60+ projects</b> across <b>8 countries</b>. We built this tool because none of the existing ones solved our real problems.",
+      "paragraph2": "This isn't a generic tool retrofitted for consulting. It's a tool born from the trenches of running automation, software development and tech consulting projects."
+    },
+    "pricingPreview": {
+      "heading": "Simple plans, no surprises",
+      "subtitle": "30 days free. No credit card required. Clients (Guests) don't count as paid users.",
+      "plans": {
+        "freelancer": {
+          "name": "Freelancer",
+          "tagline": "For independent consultants",
+          "features": {
+            "users": "1 user",
+            "clients": "Unlimited clients",
+            "projects": "Unlimited projects",
+            "clientPortal": "Client portal"
+          }
+        },
+        "studio": {
+          "name": "Studio",
+          "tagline": "For teams and consultancies",
+          "features": {
+            "users": "Unlimited users",
+            "everythingFromFreelancer": "Everything in Freelancer",
+            "resources": "Resource planning",
+            "integrations": "Integrations"
+          }
+        }
+      },
+      "ctaText": "See plans and pricing →"
+    },
+    "pricingPage": {
+      "heading": "Simple plans for consultancies of any size",
+      "subtitle": "30 days free. No credit card required. Clients (Guests) don't count as paid users.",
+      "toggle": {
+        "monthly": "Monthly",
+        "annual": "Annual",
+        "annualBadge": "(-20%)"
+      },
+      "plans": {
+        "freelancer": {
+          "name": "Freelancer",
+          "tagline": "For independent consultants",
+          "priceSuffix": "/mo",
+          "strikethroughSuffix": "/mo",
+          "features": {
+            "users": "1 user",
+            "clients": "Unlimited clients",
+            "projects": "Unlimited projects",
+            "clientPortal": "Client portal",
+            "basicSupport": "Basic support"
+          },
+          "cta": "Get started free"
+        },
+        "studio": {
+          "name": "Studio",
+          "tagline": "For teams and consultancies",
+          "popularBadge": "Popular",
+          "priceSuffix": "/user/mo",
+          "strikethroughSuffix": "/mo",
+          "features": {
+            "users": "Unlimited users",
+            "everythingFromFreelancer": "Everything in Freelancer",
+            "resources": "Resource planning",
+            "quote": "Proposal quote builder",
+            "integrations": "Integrations",
+            "prioritySupport": "Priority support"
+          },
+          "cta": "Get started free"
+        }
+      },
+      "faq": {
+        "heading": "Frequently Asked Questions",
+        "items": {
+          "trial": {
+            "question": "Is there a free trial?",
+            "answer": "Yes, every plan includes a 30-day free trial. You don't need to enter a credit card to get started."
+          },
+          "guests": {
+            "question": "Do Clients (Guests) count as paid users?",
+            "answer": "No. Clients accessing the client portal are Guests and don't count as paid users. You can invite unlimited clients at no extra cost."
+          },
+          "switchPlan": {
+            "question": "Can I change plans at any time?",
+            "answer": "Yes, you can change plans whenever you want. If you upgrade, we prorate the difference. If you downgrade, the change takes effect on your next billing cycle."
+          },
+          "payment": {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept credit and debit cards (Visa, Mastercard, American Express). For annual plans we also offer bank transfer."
+          },
+          "annualDiscount": {
+            "question": "Is there a discount for annual billing?",
+            "answer": "Yes, annual billing is 20% cheaper than monthly billing."
+          },
+          "noInstall": {
+            "question": "Do I need to install anything?",
+            "answer": "No. Robotipy Projects is 100% web-based. All you need is a modern browser to access it from any device."
+          }
+        }
+      }
+    },
+    "featurePages": {
+      "common": {
+        "howItWorksHeading": "How it works",
+        "problemHeading": "The problem it solves",
+        "ctaPrimary": "Get started free",
+        "ctaSecondary": "See all features",
+        "bottomCta": {
+          "title": "Start running your consultancy the professional way",
+          "subtitle": "30 days free. No credit card required.",
+          "ctaText": "Get started free"
+        }
+      },
+      "recursos": {
+        "title": "Never lose a project because you didn't know who was available",
+        "subtitle": "See your team's real availability and make assignment decisions based on data, not guesswork.",
+        "howItWorks": {
+          "capacityView": {
+            "title": "Team capacity view",
+            "description": "See every team member's workload on a visual timeline. Spot who has availability and who's at the limit."
+          },
+          "smartAssign": {
+            "title": "Smart assignment",
+            "description": "Assign people to projects based on their skills, availability and current workload. Avoid over-allocation automatically."
+          },
+          "forecast": {
+            "title": "Forecast planning",
+            "description": "Project resource demand 30, 60 and 90 days out. Anticipate bottlenecks before they become problems."
+          },
+          "alerts": {
+            "title": "Capacity alerts",
+            "description": "Get notified when a resource is over-assigned or when there's idle capacity you could put to work."
+          }
+        },
+        "problemDescription": "In a consultancy, the most valuable resource is your team's time. Without visibility into real capacity, you end up turning down projects because 'everyone's busy' or accepting projects without realizing you're already at the limit. The result: burnout, late deliveries, and unhappy clients. Resource planning gives you the control you need to grow without chaos."
+      },
+      "soporte": {
+        "title": "The post-delivery support your clients deserve",
+        "subtitle": "Handle support tickets, meet SLAs, and give your clients a professional channel to report issues.",
+        "howItWorks": {
+          "ticketPortal": {
+            "title": "Client ticket portal",
+            "description": "Clients create support tickets from their portal. No emails, no WhatsApp. Everything logged and traceable."
+          },
+          "slas": {
+            "title": "SLA management",
+            "description": "Define response and resolution times per ticket type and client. The system alerts you when an SLA is at risk."
+          },
+          "assignment": {
+            "title": "Assignment and escalation",
+            "description": "Auto-assign tickets by type, priority or team availability. Escalate when needed."
+          },
+          "metrics": {
+            "title": "Support metrics",
+            "description": "Track response times, resolution times, customer satisfaction and support team workload."
+          }
+        },
+        "problemDescription": "After delivering a project, support turns into chaos. Clients write on WhatsApp, email, or call developers directly. There's no record of what was requested, when it was solved, or how long it took. A professional help desk formalizes your post-delivery support, improves client satisfaction, and gives you data to make decisions about maintenance contracts."
+      },
+      "portalClientes": {
+        "title": "Transparency that builds trust with your clients",
+        "subtitle": "Give every client a portal where they can see project progress, approve deliverables, and communicate with your team.",
+        "howItWorks": {
+          "customPortal": {
+            "title": "Custom portal per client",
+            "description": "Each client gets their own space where they only see their projects, progress, documents and communications."
+          },
+          "realtimeUpdates": {
+            "title": "Real-time updates",
+            "description": "Clients see project progress update automatically. No need to send manual reports."
+          },
+          "approval": {
+            "title": "Deliverable approval",
+            "description": "Clients approve or request changes directly from the portal. Everything is logged with dates and comments."
+          },
+          "centralComms": {
+            "title": "Centralized communication",
+            "description": "Replace WhatsApp and email threads with communication organized by project and deliverable."
+          }
+        },
+        "problemDescription": "Every week you get the same message: \"How's my project going?\". You reply on WhatsApp, hunt for the info across different places, put together a summary, and send it. The next day, another client asks the same thing. The client portal ends this cycle. Your clients have direct access to the information they need, when they need it. The result: fewer interruptions for your team, more client trust, and a professional image that sets you apart."
+      },
+      "cotizador": {
+        "title": "From proposal to project without copy-paste",
+        "subtitle": "Create professional proposals with detailed estimates and turn them into active projects with a single click.",
+        "howItWorks": {
+          "templates": {
+            "title": "Proposal templates",
+            "description": "Use ready-made templates for different project types (RPA, development, consulting). Customize and send in minutes."
+          },
+          "estimation": {
+            "title": "Detailed estimation",
+            "description": "Break the project down into phases, tasks and resources. The quote builder calculates costs, margins and timelines automatically."
+          },
+          "toProject": {
+            "title": "From proposal to project",
+            "description": "When the client approves, turn the proposal into a project with one click. Phases, tasks and assignments are already set up."
+          },
+          "versionHistory": {
+            "title": "Version history",
+            "description": "Every change to the proposal is recorded. Compare versions and see what changed between the original and final proposal."
+          }
+        },
+        "problemDescription": "Proposals are made in Excel, Word or Google Docs. Each one starts from scratch or gets copied from a previous one (with data that isn't up to date). When the client approves, someone has to create the project manually, re-entering all the information. This doesn't scale. With the quote builder, the proposal is the beginning of the project. Everything flows without friction and without losing information."
+      }
+    }
+  },
   "seo": {
     "defaultTitle": "Robotipy - RPA Automation, AI Chatbots and Software",
     "defaultDescription": "Robotipy is a company specialized in process automation (RPA) using Rocketbot technology. We build custom bots, automate administrative tasks, integrate with enterprise systems, and provide training and support.",
