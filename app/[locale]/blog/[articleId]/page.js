@@ -1,6 +1,7 @@
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import Script from "next/script";
-import { articles } from "../_assets/content";
+import { getArticlesByLocale } from "../_assets/content";
 import BadgeCategory from "../_assets/components/BadgeCategory";
 import Avatar from "../_assets/components/Avatar";
 import { getSEOTags } from "@/libs/seo";
@@ -9,15 +10,17 @@ import config from "@/config";
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const articleId = resolvedParams?.articleId;
-  
-  if (!articleId || !Array.isArray(articles)) {
+  const locale = resolvedParams?.locale;
+  const localeArticles = getArticlesByLocale(locale);
+
+  if (!articleId || !Array.isArray(localeArticles)) {
     return getSEOTags({
       title: "Article Not Found",
       description: "The requested article could not be found.",
     });
   }
 
-  const article = articles.find((article) => article.slug === articleId);
+  const article = localeArticles.find((article) => article.slug === articleId);
 
   if (!article) {
     return getSEOTags({
@@ -52,20 +55,22 @@ export async function generateMetadata({ params }) {
 export default async function Article({ params }) {
   const resolvedParams = await params;
   const articleId = resolvedParams?.articleId;
-  
-  if (!articleId || !Array.isArray(articles)) {
-    return <div>Article not found</div>;
+  const locale = resolvedParams?.locale;
+  const localeArticles = getArticlesByLocale(locale);
+
+  if (!articleId) {
+    notFound();
   }
 
-  const article = articles.find((article) => article.slug === articleId);
-  
+  const article = localeArticles.find((article) => article.slug === articleId);
+
   if (!article) {
-    return <div>Article not found</div>;
+    notFound();
   }
 
   const articleCategories = (article.categories || []).filter(Boolean);
-  
-  const articlesRelated = articles
+
+  const articlesRelated = localeArticles
     .filter(
       (a) =>
         a.slug !== articleId &&

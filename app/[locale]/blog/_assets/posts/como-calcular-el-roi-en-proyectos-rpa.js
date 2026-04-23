@@ -8,6 +8,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 export const post = {
   // The unique slug to use in the URL. It's also used to generate the canonical URL.
   slug: "como-calcular-el-roi-en-proyectos-rpa",
+  locale: "es",
   // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
   title: "¿Cómo Calcular el ROI en Proyectos de Automatización?",
   // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.

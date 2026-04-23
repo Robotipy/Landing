@@ -6,6 +6,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-automatizacion-financiera-agroindustria",
+  locale: "es",
   title: "Conciliaciones financieras sin intervención manual",
   description:
     "Se automatizaron las conciliaciones bancarias y la revisión de facturas en un holding agroindustrial en Chile, reduciendo errores y liberando al equipo financiero.",

@@ -7,6 +7,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "porque-elegir-rocketbot",
+  locale: "es",
   title: "¿Por qué elegir Rocketbot para tu automatización?",
   description:
     "Descubre por qué Rocketbot es la mejor herramienta para automatizar tus procesos. Con Rocketbot, puedes automatizar tus procesos de manera sencilla y eficiente.",

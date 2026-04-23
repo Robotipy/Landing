@@ -7,6 +7,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "capacitacion-rpa-ia",
+  locale: "es",
   title: "Capacitación en RPA e IA: Importancia de formar equipos técnicos",
   description:
     "La tecnología por sí sola no transforma empresas; las personas sí. Descubre por qué la capacitación en RPA e IA es la mejor inversión para tu equipo.",

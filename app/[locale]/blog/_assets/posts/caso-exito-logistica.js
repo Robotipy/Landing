@@ -7,6 +7,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-logistica",
+  locale: "es",
   title: "Logística y retail: 3 robots, cero errores",
   description:
     "Se automatizó el procesamiento de pedidos en una empresa de retail, integrando marketplaces, ERP y couriers con 3 robots RPA especializados.",

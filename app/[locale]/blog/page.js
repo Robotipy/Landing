@@ -1,4 +1,4 @@
-import { articles } from "./_assets/content";
+import { getArticlesByLocale } from "./_assets/content";
 import { categories } from "./_assets/categories.js";
 import CardArticle from "./_assets/components/CardArticle";
 import CardCategory from "./_assets/components/CardCategory";
@@ -12,8 +12,9 @@ export const metadata = getSEOTags({
   canonicalUrlRelative: "/blog",
 });
 
-export default async function Blog() {
-  const articlesToDisplay = articles
+export default async function Blog({ params }) {
+  const { locale } = await params;
+  const articlesToDisplay = getArticlesByLocale(locale)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   return (
     <>

@@ -6,6 +6,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-automatizacion-ordenes-sap-siderurgia",
+  locale: "es",
   title: "Órdenes SAP automatizadas en siderurgia",
   description:
     "Se automatizó el ciclo completo de órdenes de compra en una empresa siderúrgica: desde la lectura de tickets hasta la creación de pedidos en SAP, sin intervención manual.",

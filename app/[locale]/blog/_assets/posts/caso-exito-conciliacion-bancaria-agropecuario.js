@@ -6,6 +6,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-conciliacion-bancaria-agropecuario",
+  locale: "es",
   title: "Conciliación multi-banco con ERP automatizada",
   description:
     "Se automatizó la conciliación de múltiples bancos con el ERP Finnegans en un grupo agropecuario en Argentina, ejecutando en minutos lo que antes tomaba horas.",

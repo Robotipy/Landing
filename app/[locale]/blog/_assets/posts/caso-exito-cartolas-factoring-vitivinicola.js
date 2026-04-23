@@ -6,6 +6,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-cartolas-factoring-vitivinicola",
+  locale: "es",
   title: "Cartolas y factoring automatizados en viticultura",
   description:
     "Se automatizó la carga diaria de cartolas bancarias y la gestión de factoring en una empresa vitivinícola con operaciones de exportación, reduciendo horas de trabajo a minutos.",
