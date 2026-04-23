@@ -3,7 +3,7 @@ const defaultLocale = "es";
 
 module.exports = {
   siteUrl: process.env.SITE_URL || "https://robotipy.com",
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   exclude: ["/twitter-image.*", "/opengraph-image.*", "/icon.*"],
   alternateRefs: locales.map((l) => ({
     href: `${process.env.SITE_URL || "https://robotipy.com"}/${l}`,
