@@ -1,14 +1,13 @@
 import { categories } from "../../_assets/categories";
-import { articles } from "../../_assets/content";
+import { getArticlesByLocale } from "../../_assets/content";
 import CardArticle from "../../_assets/components/CardArticle";
 import CardCategory from "../../_assets/components/CardCategory";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export async function generateMetadata({ params }) {
-  const category = categories.find(
-    (category) => category.slug === params.categoryId
-  );
+  const { categoryId } = await params;
+  const category = categories.find((category) => category.slug === categoryId);
 
   return getSEOTags({
     title: `${category.title} | Blog by ${config.appName}`,
@@ -18,10 +17,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Category({ params }) {
-  const category = categories.find(
-    (category) => category.slug === params.categoryId
-  );
-  const articlesInCategory = articles
+  const { categoryId, locale } = await params;
+  const category = categories.find((category) => category.slug === categoryId);
+  const articlesInCategory = getArticlesByLocale(locale)
     .filter((article) =>
       article.categories.map((c) => c.slug).includes(category.slug)
     )

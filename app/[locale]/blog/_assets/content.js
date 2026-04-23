@@ -39,3 +39,6 @@ rawArticles.forEach((a, i) => {
 });
 
 export const articles = rawArticles.filter(Boolean);
+
+export const getArticlesByLocale = (locale) =>
+  articles.filter((a) => a.locale === locale);

@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { authors } from "../../_assets/authors";
-import { articles } from "../../_assets/content";
+import { getArticlesByLocale } from "../../_assets/content";
 import CardArticle from "../../_assets/components/CardArticle";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export async function generateMetadata({ params }) {
-  const author = authors.find((author) => author.slug === params.authorId);
+  const { authorId } = await params;
+  const author = authors.find((author) => author.slug === authorId);
 
   return getSEOTags({
     title: `${author.name}, Author at ${config.appName}'s Blog`,
@@ -16,8 +17,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Author({ params }) {
-  const author = authors.find((author) => author.slug === params.authorId);
-  const articlesByAuthor = articles
+  const { authorId, locale } = await params;
+  const author = authors.find((author) => author.slug === authorId);
+  const articlesByAuthor = getArticlesByLocale(locale)
     .filter((article) => article.author.slug === author.slug)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 

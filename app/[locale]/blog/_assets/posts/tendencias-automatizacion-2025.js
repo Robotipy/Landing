@@ -7,6 +7,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "tendencias-automatizacion-2025",
+  locale: "es",
   title: "Tendencias 2025 en Automatización e IA: Qué esperar en Latinoamérica",
   description:
     "Exploramos las tendencias tecnológicas que definirán el 2025 en LatAm: Hiperautomatización, IA Generativa y la democratización del desarrollo de software.",

@@ -5,6 +5,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-inteligencia-mercado-agronegocios",
+  locale: "es",
   title: "Inteligencia de mercado automatizada para el campo",
   description:
     "Se automatizó el monitoreo diario de precios de commodities, tasas bancarias y datos macro de más de 10 fuentes públicas para una consultora de agronegocios en Argentina.",

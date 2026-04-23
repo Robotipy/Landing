@@ -6,6 +6,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-rpa-ia-mineria-costos",
+  locale: "es",
   title: "RPA + Agente IA: Reportes de Costos en minería",
   description:
     "Se automatizaron los reportes de costos de una empresa minera de cobre en Chile con RPA y un agente de IA que responde preguntas en lenguaje natural, eliminando la dependencia de una sola persona.",

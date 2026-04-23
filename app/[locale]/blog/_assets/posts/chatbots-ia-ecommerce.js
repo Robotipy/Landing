@@ -7,6 +7,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "chatbots-ia-ecommerce",
+  locale: "es",
   title: "Chatbots con IA para ventas y soporte: Cómo los asistentes virtuales mejoran el e-commerce",
   description:
     "Descubre cómo los chatbots impulsados por IA están revolucionando el e-commerce, mejorando la atención al cliente y aumentando las ventas 24/7.",

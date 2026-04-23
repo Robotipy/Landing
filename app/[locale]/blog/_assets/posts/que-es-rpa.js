@@ -7,6 +7,7 @@ import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "que-es-rpa",
+  locale: "es",
   title: "¿Qué es RPA? Introducción a la automatización de procesos empresariales",
   description:
     "Descubre qué es RPA (Automatización Robótica de Procesos), cómo funciona y por qué es clave para la transformación digital de tu empresa.",
