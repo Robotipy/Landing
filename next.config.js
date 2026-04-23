@@ -37,6 +37,10 @@ const nextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
+          {
+            key: "Vary",
+            value: "Accept",
+          },
         ],
       },
     ];
