@@ -2,120 +2,102 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import logo from "@/app/icon.png";
 import config from "@/config";
 import ButtonMain from "./ButtonMain";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const links = [
+const buildLinks = (t) => [
   {
     href: "/#services",
-    label: "Servicios",
+    label: t("nav.services"),
   },
   {
     href: "/projects",
-    label: "Productos",
+    label: t("nav.products"),
     hasDropdown: true,
     dropdownItems: [
       {
         href: "/projects",
-        label: "Projects",
-        description:
-          "Gestión de proyectos, recursos y propuestas para consultoras",
+        label: t("dropdowns.products.projects.label"),
+        description: t("dropdowns.products.projects.description"),
       },
       {
         href: "/monitor",
-        label: "Monitor",
-        description:
-          "Monitoreo en tiempo real de robots RPA",
+        label: t("dropdowns.products.monitor.label"),
+        description: t("dropdowns.products.monitor.description"),
       },
       {
         href: "/analysis",
-        label: "Analysis",
-        description:
-          "Análisis de video con inteligencia artificial",
+        label: t("dropdowns.products.analysis.label"),
+        description: t("dropdowns.products.analysis.description"),
       },
     ],
   },
   {
     href: "/desarrollo-software",
-    label: "Desarrollo",
+    label: t("nav.development"),
   },
   {
     href: "/#",
-    label: "Casos de Estudio",
+    label: t("nav.cases"),
     hasDropdown: true,
     dropdownItems: [
       {
         href: "/casos-exito/agricola",
-        label: "Agrícola",
-        description:
-          "Automatización de procesos agrícolas, fruticultura y agrotecnológicos",
+        label: t("dropdowns.cases.agricola.label"),
+        description: t("dropdowns.cases.agricola.description"),
       },
       {
         href: "/casos-exito/automotriz",
-        label: "Automotriz",
-        description: "Automatización de procesos automotrices",
+        label: t("dropdowns.cases.automotriz.label"),
+        description: t("dropdowns.cases.automotriz.description"),
       },
       {
         href: "/casos-exito/financiero",
-        label: "Financiero",
-        description:
-          "Optimización de operaciones bancarias, seguros y contables",
+        label: t("dropdowns.cases.financiero.label"),
+        description: t("dropdowns.cases.financiero.description"),
       },
-      // {
-      //   href: "/casos-exito/alimentos",
-      //   label: "Alimentos",
-      //   description: "Automatización de procesos alimentarios"
-      // },
       {
         href: "/casos-exito/transporte",
-        label: "Transporte y Logística",
-        description: "Automatización de procesos de transporte y logística",
+        label: t("dropdowns.cases.transporte.label"),
+        description: t("dropdowns.cases.transporte.description"),
       },
       {
         href: "/casos-exito/servicios-profesionales",
-        label: "Servicios Profesionales",
-        description:
-          "Automatización de estudios contables, jurídicos y de software",
+        label: t("dropdowns.cases.serviciosProfesionales.label"),
+        description: t("dropdowns.cases.serviciosProfesionales.description"),
       },
       {
         href: "/blog/caso-exito-rpa-ia-mineria-costos",
-        label: "Minería",
-        description:
-          "RPA + IA para reportes de costos y consultas en lenguaje natural",
+        label: t("dropdowns.cases.mineria.label"),
+        description: t("dropdowns.cases.mineria.description"),
       },
       {
         href: "/blog/caso-exito-automatizacion-ordenes-sap-siderurgia",
-        label: "Siderurgia",
-        description:
-          "Automatización de órdenes SAP conectando HubSpot y Cencosud",
+        label: t("dropdowns.cases.siderurgia.label"),
+        description: t("dropdowns.cases.siderurgia.description"),
       },
-      // {
-      //   href: "/casos-exito/salud",
-      //   label: "Salud",
-      //   description: "Digitalización de procesos médicos y sanitarios"
-      // }
     ],
   },
   {
     href: "/capacitaciones",
-    label: "Capacitación",
+    label: t("nav.training"),
   },
   {
     href: "/blog",
-    label: "Blog",
+    label: t("nav.blog"),
   },
 ];
-
-const cta = (
-  <ButtonMain text="Contáctanos" link="/contact-us" type="primary-sm" />
-);
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.
 const Header = () => {
+  const t = useTranslations("header");
+  const links = buildLinks(t);
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -140,7 +122,7 @@ const Header = () => {
     if (link.hasDropdown) {
       const timeout = setTimeout(() => {
         setActiveDropdown(null);
-      }, 150); // Small delay to allow moving to dropdown
+      }, 150);
       setHoverTimeout(timeout);
     }
   };
@@ -173,7 +155,7 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <div
-                key={link.href}
+                key={link.href + link.label}
                 className="relative"
                 onMouseEnter={() => handleMouseEnter(link)}
                 onMouseLeave={() => handleMouseLeave(link)}
@@ -234,8 +216,15 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA Button - desktop */}
-          {cta}
+          {/* Language switcher + CTA - desktop */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSwitcher />
+            <ButtonMain
+              text={t("cta")}
+              link="/contact-us"
+              type="primary-sm"
+            />
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -308,7 +297,7 @@ const Header = () => {
             <div className="py-4">
               <div className="flex flex-col gap-y-4 items-start">
                 {links.map((link) => (
-                  <div key={link.href} className="w-full">
+                  <div key={link.href + link.label} className="w-full">
                     {link.hasDropdown ? (
                       <div>
                         <button
@@ -361,6 +350,9 @@ const Header = () => {
                     )}
                   </div>
                 ))}
+                <div className="pt-2">
+                  <LanguageSwitcher variant="mobile" />
+                </div>
               </div>
             </div>
             <div className="border-t border-gray-200 dark:border-gray-700 my-4"></div>
@@ -368,7 +360,7 @@ const Header = () => {
               href="/contact-us"
               className="flex w-full items-center justify-center rounded-lg h-10 px-4 bg-accent text-white text-sm font-bold hover:bg-opacity-90 transition-all"
             >
-              Contáctanos
+              {t("cta")}
             </Link>
           </div>
         </div>

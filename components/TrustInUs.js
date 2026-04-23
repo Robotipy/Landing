@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 const avatars = [
   {
     alt: "Novagric - España",
@@ -71,6 +72,7 @@ const avatars = [
 ];
 
 const TrustInUs = ({ priority = false }) => {
+  const t = useTranslations("trustInUs");
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef(null);
 
@@ -82,7 +84,7 @@ const TrustInUs = ({ priority = false }) => {
       {/* Column 1: Text */}
       <div className="mx-auto text-center px-4">
         <p className="text-xl md:text-2xl lg:text-4xl text-balance">
-          Las empresas líderes confían en nuestro equipo para revolucionar sus procesos
+          {t("heading")}
         </p>
       </div>
 

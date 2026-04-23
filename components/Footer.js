@@ -1,12 +1,11 @@
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import config from "@/config";
 import logo from "@/app/icon.png";
 
-// Add the Footer to the bottom of your landing page and more.
-// The support link is connected to the config.js file. If there's no config.mailgun.supportEmail, the link won't be displayed.
-
 const Footer = () => {
+  const t = useTranslations("footer");
   return (
     <footer className="border-t border-base-content/10 text-white">
       <div className="px-8 md:px-12 mx-auto py-24">
@@ -31,97 +30,94 @@ const Footer = () => {
             </Link>
 
             <p className="mt-3 text-sm md:text-base leading-relaxed">
-              {config.appDescriptionShort}
+              {t("description")}
             </p>
             <p className="mt-3 text-sm md:text-base leading-relaxed">
-              Servicios de RPA, IA y Desarrollo de Software en <strong className="text-white">Chile, Argentina, Colombia y España.</strong>
+              {t.rich("regions", {
+                strong: (chunks) => (
+                  <strong className="text-white">{chunks}</strong>
+                ),
+              })}
             </p>
             <p className="mt-3 text-sm">
-              Copyright © {new Date().getFullYear()} - Todos los derechos
-              reservados
+              {t("copyright", { year: new Date().getFullYear() })}
             </p>
           </div>
           <div className="mt-4 flex flex-col gap-3 text-center md:text-left">
             <span className="text-sm font-semibold text-gray-400">
-              Partners & Certificaciones:
+              {t("partnersTitle")}
             </span>
             <div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
               <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors whitespace-nowrap">
-                Platinum Partner Rocketbot
+                {t("partners.platinum")}
               </span>
               <span className="badge badge-outline badge-lg px-4 py-2 text-sm font-medium border-gray-500 text-gray-300 hover:border-gray-400 hover:text-gray-200 transition-colors whitespace-nowrap">
-                Certified Developers
+                {t("partners.certified")}
               </span>
             </div>
           </div>
           <div className="w-full xl:w-2/3 flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-8 justify-center md:justify-end">
             <div className="w-full md:w-auto px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
-                RPA
+                {t("sections.rpa.title")}
               </div>
               <div className="flex flex-col gap-4 justify-center items-center md:items-start mb-10 text-sm">
                 <Link href="/rpa" className="link link-hover text-start">
-                  Por qué RPA
+                  {t("sections.rpa.whyRpa")}
                 </Link>
                 <Link href="#" className="link link-hover text-start">
-                  Rocketbot RPA
+                  {t("sections.rpa.rocketbot")}
                 </Link>
-                {/* <a href="/#" target="_blank" className="link link-hover text-start">
-                  Proceso Robotipy
-                </a> */}
               </div>
             </div>
             <div className="w-full md:w-auto px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
-                SOLUCIONES
+                {t("sections.solutions.title")}
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
                 <Link
                   href="/capacitaciones"
                   className="link link-hover text-start"
                 >
-                  Capacitación de Equipos
+                  {t("sections.solutions.training")}
                 </Link>
                 <Link href="/automation" className="link link-hover text-start">
-                  Automatizaciones de procesos
+                  {t("sections.solutions.automation")}
                 </Link>
                 <Link href="/chatbot" className="link link-hover text-start">
-                  Chatbots
+                  {t("sections.solutions.chatbots")}
                 </Link>
                 <Link
                   href="/desarrollo-software"
                   className="link link-hover text-start"
                 >
-                  Desarrollo de software
+                  {t("sections.solutions.software")}
                 </Link>
               </div>
             </div>
             <div className="w-full md:w-auto px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
-                PRODUCTOS
+                {t("sections.products.title")}
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-4 mb-10 text-sm">
                 <Link href="/projects" className="link link-hover text-start">
-                  Projects (Gestión PM)
+                  {t("sections.products.projects")}
                 </Link>
                 <Link href="/monitor" className="link link-hover text-start">
-                  Monitor (Monitoreo RPA)
+                  {t("sections.products.monitor")}
                 </Link>
                 <Link href="/analysis" className="link link-hover text-start">
-                  Analysis (Análisis Video)
+                  {t("sections.products.analysis")}
                 </Link>
               </div>
             </div>
             <div className="w-full md:w-auto px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
-                RECURSOS
+                {t("sections.resources.title")}
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
-                <Link
-                  href="/blog"
-                  className="link link-hover text-start"
-                >
-                  Blog
+                <Link href="/blog" className="link link-hover text-start">
+                  {t("sections.resources.blog")}
                 </Link>
                 <a
                   href="https://newsletter.robotipy.com"
@@ -129,23 +125,23 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="link link-hover text-start"
                 >
-                  Newsletter
+                  {t("sections.resources.newsletter")}
                 </a>
               </div>
             </div>
             <div className="w-full md:w-auto px-4">
               <div className="footer-title font-semibold tracking-widest text-sm md:text-left mb-3 text-center md:text-left">
-                EMPRESA
+                {t("sections.company.title")}
               </div>
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
                 <Link href="/tos" className="link link-hover text-start">
-                  Términos de servicio
+                  {t("sections.company.tos")}
                 </Link>
                 <Link
                   href="/privacy-policy"
                   className="link link-hover text-start"
                 >
-                  Política de privacidad
+                  {t("sections.company.privacy")}
                 </Link>
               </div>
             </div>

@@ -1,21 +1,21 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const MapsSolutions = () => {
+  const t = useTranslations("mapsSolutions");
   return (
     <section className="py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Nuestras soluciones por el mundo
+            {t("title")}
           </h2>
-          {/* <p className="mt-4 text-lg text-white">Resultados reales que hemos entregado a nuestros clientes.</p> */}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16 items-center">
           <div className="lg:col-span-2 flex justify-center">
             <Image
               src="/assets/mapa.png"
-              alt="Mapa"
+              alt={t("mapAlt")}
               width={1000}
               height={1000}
               className="w-full h-auto rounded-lg"
@@ -28,7 +28,7 @@ const MapsSolutions = () => {
                   +60
                 </p>
                 <p className="text-xs md:text-sm font-semibold tracking-widest text-gray-500 mt-2">
-                  PROYECTOS
+                  {t("projectsLabel")}
                 </p>
               </div>
 
@@ -39,7 +39,7 @@ const MapsSolutions = () => {
                   +8
                 </p>
                 <p className="text-xs md:text-sm font-semibold tracking-widest text-gray-500 mt-2">
-                  PAISES
+                  {t("countriesLabel")}
                 </p>
               </div>
             </div>
