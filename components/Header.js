@@ -142,7 +142,6 @@ const Header = () => {
                 src={logo}
                 alt={`${config.appName} logo`}
                 className="w-8"
-                unoptimized={true}
                 priority={true}
                 width={32}
                 height={32}

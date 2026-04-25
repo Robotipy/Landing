@@ -5,7 +5,7 @@ import Script from "next/script";
 export default function GoogleTagManager() {
   return (
     <>
-      <Script id="google-tag-manager" strategy="afterInteractive">
+      <Script id="google-tag-manager" strategy="lazyOnload">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -13,9 +13,9 @@ export default function GoogleTagManager() {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-56CGK5FP');
         `}
-      </Script>   
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-BL178EBQYH"></Script>
-      <Script id="google-gtag" strategy="afterInteractive">
+      </Script>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-BL178EBQYH" strategy="lazyOnload" />
+      <Script id="google-gtag" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -23,7 +23,7 @@ export default function GoogleTagManager() {
 
           gtag('config', 'G-BL178EBQYH');
         `}
-      </Script>   
+      </Script>
     </>
   );
 } 

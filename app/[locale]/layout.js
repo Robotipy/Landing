@@ -72,9 +72,17 @@ export default async function RootLayout({ children, params }) {
     <html lang={locale} data-theme={config.colors.theme} className={font.className}>
       <head>
         <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
+          rel="preload"
+          as="image"
+          href="/images/background.png"
+          fetchPriority="high"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          />
+        </noscript>
         <meta name="msapplication-TileImage" content={`https://${config.domainName}/images/robotipy-logo.png`} />
         <meta name="msapplication-TileColor" content={config.colors.main} />
         {config.domainName && (
@@ -103,6 +111,12 @@ export default async function RootLayout({ children, params }) {
         </noscript>
         <MetaPixelNoScript />
         <ZohoSalesIQ />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.addEventListener('load',function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/icon?family=Material+Icons';document.head.appendChild(l);});",
+          }}
+        />
       </body>
     </html>
   );
