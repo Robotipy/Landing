@@ -5,6 +5,8 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.js");
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
     domains: [
       // NextJS <Image> component needs to whitelist domains for src={}
       "lh3.googleusercontent.com",
@@ -40,6 +42,24 @@ const nextConfig = {
           {
             key: "Vary",
             value: "Accept",
+          },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/assets/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
