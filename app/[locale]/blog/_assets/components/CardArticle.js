@@ -19,12 +19,13 @@ const CardArticle = ({
           href={`/blog/${article.slug}`}
           className="link link-hover hover:link-primary"
           title={article.title}
+          aria-label={`Read article: ${article.title}`}
           rel="bookmark"
         >
           <figure>
             <Image
               src={article.image.src}
-              alt={article.image.alt}
+              alt={article.image.alt || article.title}
               width={600}
               height={338}
               priority={isImagePriority}

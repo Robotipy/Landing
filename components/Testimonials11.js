@@ -184,8 +184,10 @@ const Testimonial = ({ i }) => {
                 target="_blank"
                 className="shrink-0 "
                 aria-label={testimonial.type?.ariaLabel}
+                rel="noopener noreferrer"
               >
                 {testimonial.type?.svg}
+                <span className="sr-only">{testimonial.type?.ariaLabel}</span>
               </a>
             )}
           </div>

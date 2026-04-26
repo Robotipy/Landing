@@ -1,11 +1,8 @@
 export const dynamic = "force-static";
 
 export function GET() {
-  const siteUrl = process.env.SITE_URL || "https://robotipy.com";
+  const siteUrl = process.env.SITE_URL || "https://www.robotipy.com";
   const body = [
-    "# Content signals — https://contentsignals.org/",
-    "Content-Signal: search=yes, ai-train=no, ai-input=no",
-    "",
     "User-agent: *",
     "Allow: /",
     "",

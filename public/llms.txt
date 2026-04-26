@@ -1,0 +1,32 @@
+# Robotipy
+
+> Robotipy ofrece servicios de automatizacion de procesos (RPA), chatbots con IA y desarrollo de software a medida para empresas en Latinoamerica.
+
+## Sitio principal
+- https://www.robotipy.com/es
+- https://www.robotipy.com/en
+- https://www.robotipy.com/pt
+
+## Servicios
+- RPA: https://www.robotipy.com/es/rpa
+- Chatbots: https://www.robotipy.com/es/chatbot
+- Automatizacion de procesos: https://www.robotipy.com/es/automation
+- Desarrollo de software: https://www.robotipy.com/es/desarrollo-software
+- Capacitaciones: https://www.robotipy.com/es/capacitaciones
+
+## Productos
+- Projects: https://www.robotipy.com/es/projects
+- Monitor: https://www.robotipy.com/es/monitor
+- Analysis: https://www.robotipy.com/es/analysis
+
+## Recursos
+- Blog: https://www.robotipy.com/es/blog
+- Casos de exito: https://www.robotipy.com/es/casos-exito
+- Contacto: https://www.robotipy.com/es/contact-us
+
+## Politicas
+- Privacidad: https://www.robotipy.com/es/privacy-policy
+- Terminos: https://www.robotipy.com/es/tos
+
+## Sitemap
+- https://www.robotipy.com/sitemap.xml

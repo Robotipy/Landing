@@ -1,12 +1,20 @@
 const locales = ["es", "en", "pt"];
 const defaultLocale = "es";
+const siteUrl = process.env.SITE_URL || "https://www.robotipy.com";
 
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://robotipy.com",
+  siteUrl,
   generateRobotsTxt: false,
-  exclude: ["/twitter-image.*", "/opengraph-image.*", "/icon.*"],
+  exclude: [
+    "/twitter-image.*",
+    "/opengraph-image.*",
+    "/icon.*",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/sitemap-*.xml",
+  ],
   alternateRefs: locales.map((l) => ({
-    href: `${process.env.SITE_URL || "https://robotipy.com"}/${l}`,
+    href: `${siteUrl}/${l}`,
     hreflang: l,
   })),
   transform: async (config, path) => {

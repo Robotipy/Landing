@@ -1,6 +1,10 @@
 import config from "@/config";
 import { routing, ogLocaleMap, htmlLangMap } from "@/i18n/routing";
 
+const siteOrigin =
+  process.env.SITE_URL ||
+  `https://www.${config.domainName.replace(/^www\./, "")}`;
+
 const buildAlternates = (locale, canonicalUrlRelative) => {
   if (!canonicalUrlRelative) return undefined;
   const path = canonicalUrlRelative.startsWith("/")
@@ -9,11 +13,11 @@ const buildAlternates = (locale, canonicalUrlRelative) => {
   const suffix = path === "/" ? "" : path;
   const languages = {};
   routing.locales.forEach((l) => {
-    languages[htmlLangMap[l] || l] = `/${l}${suffix}`;
+    languages[htmlLangMap[l] || l] = `${siteOrigin}/${l}${suffix}`;
   });
-  languages["x-default"] = `/${routing.defaultLocale}${suffix}`;
+  languages["x-default"] = `${siteOrigin}/${routing.defaultLocale}${suffix}`;
   return {
-    canonical: `/${locale}${suffix}`,
+    canonical: `${siteOrigin}/${locale}${suffix}`,
     languages,
   };
 };
@@ -49,20 +53,18 @@ export const getSEOTags = ({
     applicationName: config.appName,
     // set a base URL prefix for other fields that require a fully qualified URL (.e.g og:image: og:image: 'https://yourdomain.com/share.png' => '/share.png')
     metadataBase: new URL(
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/"
-        : `https://${config.domainName}/`
+      process.env.NODE_ENV === "development" ? "http://localhost:3000/" : siteOrigin
     ),
 
     openGraph: {
       title: openGraph?.title || finalTitle,
       description: openGraph?.description || finalDescription,
-      url: openGraph?.url || `https://${config.domainName}/${activeLocale}`,
+      url: openGraph?.url || `${siteOrigin}/${activeLocale}`,
       siteName: config.appName,
       // Bing requires og:image with minimum 1200x630 pixels
       images: openGraph?.images || [
         {
-          url: `https://${config.domainName}/images/robotipy-logo.png`,
+          url: `${siteOrigin}/images/robotipy-logo.png`,
           width: 1200,
           height: 630,
           alt: config.appName,
@@ -78,7 +80,7 @@ export const getSEOTags = ({
       // Twitter card image (also used by Bing as fallback)
       images: openGraph?.images || [
         {
-          url: `https://${config.domainName}/images/robotipy-logo.png`,
+          url: `${siteOrigin}/images/robotipy-logo.png`,
           width: 1200,
           height: 630,
           alt: config.appName,
@@ -95,7 +97,7 @@ export const getSEOTags = ({
 
     // Microsoft/Bing specific meta tags for better thumbnail support
     other: {
-      "msapplication-TileImage": `https://${config.domainName}/images/robotipy-logo.png`,
+      "msapplication-TileImage": `${siteOrigin}/images/robotipy-logo.png`,
       "msapplication-TileColor": config.colors.main,
     },
 
@@ -121,8 +123,8 @@ export const renderSchemaTags = () => {
           "@type": "SoftwareApplication",
           name: config.appName,
           description: config.appDescription,
-          image: `https://${config.domainName}/icon.png`,
-          url: `https://${config.domainName}/`,
+          image: `${siteOrigin}/icon.png`,
+          url: `${siteOrigin}/`,
           author: {
             "@type": "Person",
             name: "Danilo Toro",
