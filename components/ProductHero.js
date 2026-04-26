@@ -22,9 +22,9 @@ const ProductHero = ({
                   <h1 className="text-white text-4xl lg:text-6xl font-black leading-tight tracking-[-0.033em]">
                     {title}
                   </h1>
-                  <h2 className="text-white/80 text-lg lg:text-xl max-w-4xl mx-auto font-normal leading-normal pt-6 pb-3">
+                  <p className="text-white/80 text-lg lg:text-xl max-w-4xl mx-auto font-normal leading-normal pt-6 pb-3">
                     {subtitle}
-                  </h2>
+                  </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <ButtonMain text={ctaText} link={ctaLink} type="primary" />

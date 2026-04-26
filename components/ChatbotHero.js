@@ -14,10 +14,10 @@ const ChatbotHero = () => {
                   <h1 className="text-white text-3xl lg:text-6xl font-black leading-tight tracking-[-0.033em] @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
                     Conversaciones que Impulsan tu Negocio, <br/>Interna y Externamente
                   </h1>
-                  <h2 className="text-white/80 text-base md:text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                    Potencia a tus equipos con acceso instantáneo a datos ERP y deleita a tus clientes con servicio inteligente 24/7. 
+                  <p className="text-white/80 text-base md:text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                    Potencia a tus equipos con acceso instantáneo a datos ERP y deleita a tus clientes con servicio inteligente 24/7.
                     Los asistentes conversacionales con IA de Robotipy conectan la brecha entre tus datos y las personas que más los necesitan.
-                  </h2>
+                  </p>
                 </div>
                 <ButtonMain 
                   text="Solicitar Demo Personalizada" 

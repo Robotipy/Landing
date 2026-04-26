@@ -1,77 +1,135 @@
 "use client";
 
+import { Link } from "@/i18n/routing";
 import config from "@/config";
 
+const isExternalUrl = (link) => /^(https?:)?\/\//i.test(link) || /^(mailto:|tel:)/i.test(link);
 
-// Use this button if chat is hidden on some routes. config.js has onlyShowOnRoutes set to ["/"] so it will be hidden on all routes except the home page.
-// If Crisp is not enable, it will open the support email in the default email client.
-const ButtonMain = ({ link, text, type = "primary", tooltipText=null, rounded=false, noblank=false, ...props }) => {
-  const handleClick = () => {
-    console.log(noblank)
-    // open default email client in new window with "need help with ${config.appName}" as subject
-    window.open(`${link}`, noblank ? "_self" : "_blank");
-  };
-  const handleMouseEnter = (event) => {
-    event.target.style.borderColor = config.colors.main;
-    console.log(event.target.style.borderColor);
-  };
-  const handleMouseLeave = (event) => {
-    event.target.style.borderColor = config.colors.secondary;
-    console.log(event.target.style.borderColor);
-  };
-  let buttonStyle;
+const getButtonStyle = (type, rounded) => {
   if (type === "primary" || type === "primary-sm") {
-    buttonStyle = {
+    return {
       backgroundColor: config.colors.background,
       color: "white",
       border: "1px solid " + config.colors.secondary,
       cursor: "pointer",
       borderRadius: rounded ? "10px" : "0px",
-    };    
-  }else if(type === "secondary"){
-    buttonStyle = {
+    };
+  }
+  if (type === "secondary") {
+    return {
       backgroundColor: "transparent",
       color: "white",
       border: "none",
       cursor: "pointer",
     };
-  }else if(type === "tertiary"){
-    buttonStyle = {
+  }
+  if (type === "tertiary") {
+    return {
       backgroundColor: "transparent",
-      // color: config.colors.main,
       border: "none",
       cursor: "pointer",
       padding: ".3rem 0",
     };
-  }else if(type === "quaternary"){
-    buttonStyle = {
+  }
+  if (type === "quaternary") {
+    return {
       backgroundColor: "transparent",
       color: "white",
       border: "1px solid " + config.colors.secondary,
       cursor: "pointer",
     };
   }
+  return {};
+};
 
+const ButtonMain = ({
+  link,
+  text,
+  type = "primary",
+  tooltipText = null,
+  rounded = false,
+  noblank = false,
+  className,
+  onClick,
+  ...props
+}) => {
+  const buttonStyle = getButtonStyle(type, rounded);
   if (type.includes("sm")) {
     buttonStyle.padding = ".6rem";
   }
 
+  const handleMouseEnter = (event) => {
+    event.currentTarget.style.borderColor = config.colors.main;
+  };
+  const handleMouseLeave = (event) => {
+    event.currentTarget.style.borderColor = config.colors.secondary;
+  };
 
+  const sharedClassName =
+    "px-3 lg:px-6 py-2 lg:py-4 text-white rounded-lg" +
+    (className ? ` ${className}` : "");
+
+  const sharedProps = {
+    style: buttonStyle,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    title: tooltipText || undefined,
+    className: sharedClassName,
+    ...props,
+  };
+
+  // No link → render a <button>. Caller is responsible for onClick semantics.
+  if (!link) {
+    return (
+      <button type="button" onClick={onClick} {...sharedProps}>
+        {text}
+      </button>
+    );
+  }
+
+  const opensNewTab = !noblank;
+  const externalProps = opensNewTab
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
+  const newTabHint = opensNewTab ? " (opens in new tab)" : "";
+
+  // External URL or non-http scheme: plain <a>.
+  if (isExternalUrl(link)) {
+    return (
+      <a
+        href={link}
+        onClick={onClick}
+        aria-label={opensNewTab ? `${text}${newTabHint}` : undefined}
+        {...externalProps}
+        {...sharedProps}
+      >
+        {text}
+      </a>
+    );
+  }
+
+  // Internal path that should open in a new tab: still <a> (Link does not
+  // play well with target=_blank because of locale prefixing + prefetch).
+  if (opensNewTab) {
+    return (
+      <a
+        href={link}
+        onClick={onClick}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${text} (opens in new tab)`}
+        {...sharedProps}
+      >
+        {text}
+      </a>
+    );
+  }
+
+  // Internal same-tab navigation: use the i18n Link for SPA routing.
   return (
-    <button
-      style={buttonStyle}
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      data-tooltip-id="tooltip"
-      data-tooltip-content={tooltipText}
-      title={text}
-      className={"px-3 lg:px-6 py-2 lg:py-4 text-white rounded-lg" + (props.className ? props.className : "")}
-      {...props}
-      
-    >
+    <Link href={link} onClick={onClick} {...sharedProps}>
       {text}
-    </button>
+    </Link>
   );
 };
 

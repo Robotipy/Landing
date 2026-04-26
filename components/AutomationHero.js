@@ -16,11 +16,11 @@ const AutomationHero = () => {
                 <h1 className="text-white text-5xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
                   Elimina tareas repetitivas y reduce errores humanos.
                 </h1>
-                <h2 className="text-slate-200 text-lg font-normal leading-normal @[480px]:text-xl @[480px]:font-normal @[480px]:leading-normal">
+                <p className="text-slate-200 text-lg font-normal leading-normal @[480px]:text-xl @[480px]:font-normal @[480px]:leading-normal">
                   Desbloquea la eficiencia operacional, minimiza costos y libera
                   a tu equipo para trabajo de mayor valor con nuestras
                   soluciones de automatización inteligente.
-                </h2>
+                </p>
               </div>
               <a href="/contact-us" 
                 className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 @[480px]:h-14 @[480px]:px-8 bg-accent hover:bg-accent/90 text-white text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-lg @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] transition-colors"

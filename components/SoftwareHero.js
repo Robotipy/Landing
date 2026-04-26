@@ -14,9 +14,9 @@ const SoftwareHero = () => {
                   <h1 className="text-white text-6xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
                     {t.rich("title", { br: () => <br /> })}
                   </h1>
-                  <h2 className="text-white/80 text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal pt-10 pb-5">
+                  <p className="text-white/80 text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal pt-10 pb-5">
                     {t("subtitle")}
-                  </h2>
+                  </p>
                 </div>
                 <ButtonMain
                   text={t("cta")}

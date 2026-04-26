@@ -204,7 +204,7 @@ const Header = () => {
                 width={32}
                 height={32}
               />
-              <h2 className="text-xl font-bold">{config.appName}</h2>
+              <span className="text-xl font-bold">{config.appName}</span>
             </Link>
           </div>
 

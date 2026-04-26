@@ -16,9 +16,9 @@ const TrainingHero = () => {
                       br: () => <br />,
                     })}
                   </h1>
-                  <h2 className="text-white/80 text-base lg:text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                  <p className="text-white/80 text-base lg:text-xl max-w-4xl mx-auto font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
                     {t("subtitle")}
-                  </h2>
+                  </p>
                 </div>
                 <ButtonMain text={t("cta")} link="/contact-us" type="primary" />
               </div>
