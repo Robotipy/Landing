@@ -2,27 +2,24 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { Crisp } from "crisp-sdk-web";
-import { SessionProvider } from "next-auth/react";
+import { useSession, SessionProvider } from "next-auth/react";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
-// Removed react-tooltip import - using native HTML title attribute instead
 import config from "@/config";
 
-// Crisp customer chat support:
-// This component is separated from ClientLayout because it needs to be wrapped with <SessionProvider> to use useSession() hook
+// Crisp customer chat support — the SDK is loaded lazily, only when a
+// crisp.id is configured. With config.crisp.id empty (as currently), the
+// SDK is never fetched and stays out of the JS bundle.
 const CrispChat = () => {
   const pathname = usePathname();
   const { data } = useSession();
 
   useEffect(() => {
-    if (config?.crisp?.id) {
-      // Set up Crisp
+    if (!config?.crisp?.id) return;
+    let cancelled = false;
+    import("crisp-sdk-web").then(({ Crisp }) => {
+      if (cancelled) return;
       Crisp.configure(config.crisp.id);
-
-      // (Optional) If onlyShowOnRoutes array is not empty in config.js file, Crisp will be hidden on the routes in the array.
-      // Use <AppButtonSupport> instead to show it (user clicks on the button to show Crisp—it cleans the UI)
       if (
         config.crisp.onlyShowOnRoutes &&
         !config.crisp.onlyShowOnRoutes?.includes(pathname)
@@ -32,48 +29,34 @@ const CrispChat = () => {
           Crisp.chat.hide();
         });
       }
-    }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [pathname]);
 
-  // Add User Unique ID to Crisp to easily identify users when reaching support (optional)
   useEffect(() => {
-    if (data?.user && config?.crisp?.id) {
+    if (!data?.user || !config?.crisp?.id) return;
+    import("crisp-sdk-web").then(({ Crisp }) => {
       Crisp.session.setData({ userId: data.user?.id });
-    }
+    });
   }, [data]);
 
   return null;
 };
 
-// All the client wrappers are here (they can't be in server components)
-// 1. SessionProvider: Allow the useSession from next-auth (find out if user is auth or not)
-// 2. NextTopLoader: Show a progress bar at the top when navigating between pages
-// 3. Toaster: Show Success/Error messages anywhere from the app with toast()
-// 4. Tooltip: Show tooltips if any JSX elements has these 2 attributes: data-tooltip-id="tooltip" data-tooltip-content=""
-// 5. CrispChat: Set Crisp customer chat support (see above)
 const ClientLayout = ({ children }) => {
   return (
-    <>
-      <SessionProvider>
-        {/* Show a progress bar at the top when navigating between pages */}
-        <NextTopLoader color={config.colors.main} showSpinner={false} />
-
-        {/* Content inside app/page.js files  */}
-        {children}
-
-        {/* Show Success/Error messages anywhere from the app with toast() */}
-        <Toaster
-          toastOptions={{
-            duration: 3000,
-          }}
-        />
-
-        {/* Tooltips removed - use native HTML title attribute instead */}
-
-        {/* Set Crisp customer chat support */}
-        <CrispChat />
-      </SessionProvider>
-    </>
+    <SessionProvider>
+      <NextTopLoader color={config.colors.main} showSpinner={false} />
+      {children}
+      <Toaster
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
+      <CrispChat />
+    </SessionProvider>
   );
 };
 

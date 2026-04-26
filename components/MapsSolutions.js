@@ -16,8 +16,10 @@ const MapsSolutions = () => {
             <Image
               src="/assets/mapa.png"
               alt={t("mapAlt")}
-              width={1000}
-              height={1000}
+              width={1197}
+              height={680}
+              sizes="(max-width: 1024px) 100vw, 800px"
+              quality={70}
               className="w-full h-auto rounded-lg"
             />
           </div>
