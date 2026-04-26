@@ -51,9 +51,9 @@ const AboutPage = () => {
                     <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] font-heading">
                       {t("hero.title")}
                     </h1>
-                    <h2 className="text-slate-200 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal max-w-2xl">
+                    <p className="text-slate-200 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal max-w-2xl">
                       {t("hero.subtitle")}
-                    </h2>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -70,9 +70,9 @@ const AboutPage = () => {
                 >
                   <div className="text-primary text-3xl">{principleIcons[index]}</div>
                   <div className="flex flex-col gap-1">
-                    <h2 className="text-text-primary dark:text-text-primary-dark text-base font-bold leading-tight">
+                    <h3 className="text-text-primary dark:text-text-primary-dark text-base font-bold leading-tight">
                       {t(`principles.items.${key}.title`)}
-                    </h2>
+                    </h3>
                     <p className="text-text-light dark:text-text-dark text-sm font-normal leading-normal">
                       {t(`principles.items.${key}.description`)}
                     </p>

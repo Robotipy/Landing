@@ -58,7 +58,7 @@ export default function PricingPage() {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <section className="py-16 lg:py-24">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">

@@ -7,7 +7,9 @@
       "development": "Desarrollo",
       "cases": "Casos de Estudio",
       "training": "Capacitación",
-      "blog": "Blog"
+      "blog": "Blog",
+      "primary": "Principal",
+      "mobile": "Móvil"
     },
     "dropdowns": {
       "products": {
@@ -54,7 +56,10 @@
           "description": "Automatización de órdenes SAP conectando HubSpot y Cencosud"
         }
       }
-    }
+    },
+    "openMenu": "Abrir menú de navegación",
+    "closeMenu": "Cerrar menú",
+    "mobileMenuLabel": "Navegación del sitio"
   },
   "hero": {
     "title": "Creamos la <strong>inteligencia</strong> que<br></br> tu <strong>negocio</strong> necesita.",
@@ -283,7 +288,8 @@
     "toast": {
       "cannotInvest": "¡Gracias por tu interés! Te contactaremos cuando tengamos opciones que se ajusten a tu presupuesto.",
       "redirecting": "¡Gracias! Redirigiendo para agendar una reunión..."
-    }
+    },
+    "requiredHint": "requerido"
   },
   "about": {
     "hero": {

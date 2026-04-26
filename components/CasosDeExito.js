@@ -90,7 +90,7 @@ const CasosDeExito = () => {
               className="p-2 rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label={t("previous")}
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg aria-hidden="true" focusable="false" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -100,7 +100,7 @@ const CasosDeExito = () => {
               className="p-2 rounded-full border border-gray-600 text-gray-400 hover:text-white hover:border-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label={t("next")}
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg aria-hidden="true" focusable="false" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -155,6 +155,8 @@ const CasosDeExito = () => {
                 <div className="flex items-center text-accent font-semibold text-xs group-hover:gap-2 gap-1 transition-all">
                   {t("seeDetail")}
                   <svg
+                    aria-hidden="true"
+                    focusable="false"
                     className="w-3 h-3 transition-transform group-hover:translate-x-1"
                     fill="none"
                     stroke="currentColor"

@@ -7,7 +7,9 @@
       "development": "Development",
       "cases": "Case Studies",
       "training": "Training",
-      "blog": "Blog"
+      "blog": "Blog",
+      "primary": "Primary",
+      "mobile": "Mobile"
     },
     "dropdowns": {
       "products": {
@@ -54,7 +56,10 @@
           "description": "SAP order automation connecting HubSpot and Cencosud"
         }
       }
-    }
+    },
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close menu",
+    "mobileMenuLabel": "Site navigation"
   },
   "hero": {
     "title": "We build the <strong>intelligence</strong> that<br></br> your <strong>business</strong> needs.",
@@ -283,7 +288,8 @@
     "toast": {
       "cannotInvest": "Thanks for your interest! We'll reach out when we have options that fit your budget.",
       "redirecting": "Thanks! Redirecting to schedule a meeting..."
-    }
+    },
+    "requiredHint": "required"
   },
   "about": {
     "hero": {

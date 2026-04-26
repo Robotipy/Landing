@@ -21,7 +21,7 @@ export default function AnalysisPage() {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <ProductHero
           title={t("hero.title")}
           subtitle={t("hero.subtitle")}

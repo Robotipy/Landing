@@ -94,6 +94,9 @@ export default async function RootLayout({ children, params }) {
         )}
       </head>
       <body style={{ backgroundColor: config.colors.background }}>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ClientLayout>{children}</ClientLayout>
         </NextIntlClientProvider>

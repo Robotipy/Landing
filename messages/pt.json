@@ -7,7 +7,9 @@
       "development": "Desenvolvimento",
       "cases": "Casos de Estudo",
       "training": "Capacitação",
-      "blog": "Blog"
+      "blog": "Blog",
+      "primary": "Principal",
+      "mobile": "Móvel"
     },
     "dropdowns": {
       "products": {
@@ -54,7 +56,10 @@
           "description": "Automação de pedidos SAP conectando HubSpot e Cencosud"
         }
       }
-    }
+    },
+    "openMenu": "Abrir menu de navegação",
+    "closeMenu": "Fechar menu",
+    "mobileMenuLabel": "Navegação do site"
   },
   "hero": {
     "title": "Criamos a <strong>inteligência</strong> que<br></br> seu <strong>negócio</strong> precisa.",
@@ -283,7 +288,8 @@
     "toast": {
       "cannotInvest": "Obrigado pelo interesse! Entraremos em contato quando tivermos opções que se ajustem ao seu orçamento.",
       "redirecting": "Obrigado! Redirecionando para agendar uma reunião..."
-    }
+    },
+    "requiredHint": "obrigatório"
   },
   "about": {
     "hero": {

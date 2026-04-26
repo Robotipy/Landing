@@ -29,7 +29,7 @@ const CapacitacionesPage = () => {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <TrainingHero />
         <TrainingPrograms />
         <TrainingMethodology />

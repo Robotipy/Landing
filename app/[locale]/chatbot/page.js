@@ -19,7 +19,7 @@ const ChatbotPage = () => {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <ChatbotHero />
         <ChatbotFeatures />
         <ChatbotProcess />

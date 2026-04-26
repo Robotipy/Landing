@@ -30,7 +30,7 @@ const DesarrolloSoftwarePage = () => {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <SoftwareHero />
         <SoftwareAdvantages />
         <SoftwareMethodology />

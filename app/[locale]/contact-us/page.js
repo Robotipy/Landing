@@ -26,7 +26,7 @@ function ContactUsContent() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content">
         <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 lg:py-20 lg:px-8 background-image">
           <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto text-center text-white">
             <div className="space-y-4">

@@ -7,6 +7,50 @@ body {
   scroll-behavior: smooth !important;
 }
 
+/* WCAG 2.4.7 — visible keyboard focus on every interactive element. */
+:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* WCAG 2.4.1 — skip-to-content link, only visible when focused. */
+.skip-to-content {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  color: #00182B;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: top 0.15s ease-in-out;
+}
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* WCAG 2.3.3 — respect reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* It makes the HTML progress bar filling smooth when value change. */
 progress::-webkit-progress-value {
   transition: 0.6s width ease-out;
