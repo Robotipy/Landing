@@ -24,7 +24,7 @@ export default function Home() {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <Hero />
         <TrustInUs priority={true} />
         <Solutions />

@@ -16,7 +16,7 @@ export default function ComparisonPage() {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <section className="relative pt-32 pb-12 overflow-hidden bg-base-100">
             <div className="px-8 max-w-7xl mx-auto">
                 <div className="flex flex-col text-center w-full mb-12">
@@ -35,7 +35,7 @@ export default function ComparisonPage() {
             <div className="flex flex-wrap -mx-4 -mb-10 text-center">
               <div className="sm:w-1/2 mb-10 px-4">
                 <div className="rounded-lg h-64 overflow-hidden">
-                  <img alt="content" className="object-cover object-center h-full w-full" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" />
+                  <img alt="Equipo de desarrollo de software a medida trabajando en código." className="object-cover object-center h-full w-full" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" />
                 </div>
                 <h2 className="title-font text-2xl font-medium text-base-content mt-6 mb-3">Software a Medida</h2>
                 <p className="leading-relaxed text-base">Ideal cuando necesita una solución única que no existe en el mercado. Perfecto para crear nuevos productos, plataformas de clientes o sistemas core que requieren escalabilidad y control total.</p>
@@ -48,7 +48,7 @@ export default function ComparisonPage() {
               </div>
               <div className="sm:w-1/2 mb-10 px-4">
                 <div className="rounded-lg h-64 overflow-hidden">
-                  <img alt="content" className="object-cover object-center h-full w-full" src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" />
+                  <img alt="Pantalla mostrando código de un proceso RPA en ejecución." className="object-cover object-center h-full w-full" src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" />
                 </div>
                 <h2 className="title-font text-2xl font-medium text-base-content mt-6 mb-3">RPA (Automatización)</h2>
                 <p className="leading-relaxed text-base">La mejor opción para conectar sistemas existentes sin modificarlos. Ideal para tareas repetitivas, migración de datos y procesos que involucran múltiples aplicaciones legacy.</p>

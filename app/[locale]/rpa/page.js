@@ -24,7 +24,7 @@ export default function Rpa() {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <HeroRPA />
         <WhatIsRpa />
         <CTA />

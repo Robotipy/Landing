@@ -18,7 +18,7 @@ const FeaturePageTemplate = ({
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         <ProductHero
           title={title}
           subtitle={subtitle}

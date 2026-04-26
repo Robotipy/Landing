@@ -19,7 +19,7 @@ export default function BankingPage() {
       <Suspense>
         <Header />
       </Suspense>
-      <main>
+      <main id="main-content">
         {/* Custom Hero Section for Banking */}
         <section className="relative pt-32 pb-12 overflow-hidden bg-base-100">
             <div className="px-8 max-w-7xl mx-auto">
