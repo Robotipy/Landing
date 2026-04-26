@@ -43,24 +43,28 @@ const CasosDeExito = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const checkScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
-  };
-
   useEffect(() => {
-    checkScroll();
     const el = scrollRef.current;
-    if (el) {
-      el.addEventListener("scroll", checkScroll);
-      window.addEventListener("resize", checkScroll);
-      return () => {
-        el.removeEventListener("scroll", checkScroll);
-        window.removeEventListener("resize", checkScroll);
-      };
-    }
+    if (!el) return undefined;
+
+    let frame = 0;
+    const checkScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setCanScrollLeft(el.scrollLeft > 0);
+        setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+      });
+    };
+
+    checkScroll();
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
   }, []);
 
   const scroll = (direction) => {
