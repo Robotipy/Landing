@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
+import { createPortal } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
@@ -102,10 +103,15 @@ const Header = () => {
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
   const hoverTimeoutRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const mobileMenuButtonRef = useRef(null);
   const mobileCloseButtonRef = useRef(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Close menu on route changes (mobile UX) and reset dropdown.
   useEffect(() => {
@@ -184,6 +190,141 @@ const Header = () => {
   const toggleDropdown = (link) => {
     setActiveDropdown((current) => (current === link.href ? null : link.href));
   };
+
+  const mobileMenu = (
+    <div
+      id="mobile-menu"
+      ref={mobileMenuRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={t("mobileMenuLabel")}
+      className={`relative z-50 ${isOpen ? "" : "hidden"}`}
+    >
+      <div className="fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-background-light dark:bg-background-dark sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300">
+        {/* Mobile header */}
+        <div className="flex items-center justify-between">
+          <Link
+            className="flex items-center gap-2 shrink-0"
+            title={`${config.appName} homepage`}
+            href="/"
+          >
+            <Image
+              src={logo}
+              alt={`${config.appName} logo`}
+              className="w-8"
+              priority={true}
+              width={32}
+              height={32}
+            />
+            <span className="font-extrabold text-lg text-text-primary dark:text-text-primary-dark">
+              {config.appName}
+            </span>
+          </Link>
+          <button
+            ref={mobileCloseButtonRef}
+            type="button"
+            aria-label={t("closeMenu")}
+            className="-m-2.5 rounded-md p-2.5 text-text-primary dark:text-text-dark"
+            onClick={() => setIsOpen(false)}
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile navigation */}
+        <nav
+          aria-label={t("nav.mobile")}
+          className="flow-root mt-6"
+        >
+          <div className="py-4">
+            <div className="flex flex-col gap-y-4 items-start">
+              {links.map((link) => {
+                const submenuId = `mobile-submenu-${slugify(link.href + link.label)}`;
+                const isActive = activeDropdown === link.href;
+                return (
+                  <div key={link.href + link.label} className="w-full">
+                    {link.hasDropdown ? (
+                      <div>
+                        <button
+                          type="button"
+                          aria-expanded={isActive}
+                          aria-controls={submenuId}
+                          onClick={() => toggleDropdown(link)}
+                          className="text-base font-medium text-text-primary dark:text-text-dark hover:text-accent transition-colors flex items-center gap-2 w-full text-left"
+                        >
+                          {link.label}
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            className={`w-4 h-4 transition-transform ${isActive ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                        {isActive && (
+                          <div id={submenuId} className="ml-4 mt-2 space-y-2">
+                            {link.dropdownItems.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="block text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors"
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-base font-medium text-text-primary dark:text-text-dark hover:text-accent transition-colors"
+                        title={link.label}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </div>
+                );
+              })}
+              <div className="pt-2">
+                <LanguageSwitcher variant="mobile" />
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+          <Link
+            href="/contact-us"
+            className="flex w-full items-center justify-center rounded-lg h-10 px-4 bg-accent text-white text-sm font-bold hover:bg-opacity-90 transition-all"
+          >
+            {t("cta")}
+          </Link>
+        </nav>
+      </div>
+    </div>
+  );
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-sm py-4">
@@ -346,139 +487,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        id="mobile-menu"
-        ref={mobileMenuRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label={t("mobileMenuLabel")}
-        className={`relative z-50 ${isOpen ? "" : "hidden"}`}
-      >
-        <div className="fixed inset-y-0 right-0 z-10 w-full px-8 py-4 overflow-y-auto bg-background-light dark:bg-background-dark sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300">
-          {/* Mobile header */}
-          <div className="flex items-center justify-between">
-            <Link
-              className="flex items-center gap-2 shrink-0"
-              title={`${config.appName} homepage`}
-              href="/"
-            >
-              <Image
-                src={logo}
-                alt={`${config.appName} logo`}
-                className="w-8"
-                priority={true}
-                width={32}
-                height={32}
-              />
-              <span className="font-extrabold text-lg text-text-primary dark:text-text-primary-dark">
-                {config.appName}
-              </span>
-            </Link>
-            <button
-              ref={mobileCloseButtonRef}
-              type="button"
-              aria-label={t("closeMenu")}
-              className="-m-2.5 rounded-md p-2.5 text-text-primary dark:text-text-dark"
-              onClick={() => setIsOpen(false)}
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile navigation */}
-          <nav
-            aria-label={t("nav.mobile")}
-            className="flow-root mt-6"
-          >
-            <div className="py-4">
-              <div className="flex flex-col gap-y-4 items-start">
-                {links.map((link) => {
-                  const submenuId = `mobile-submenu-${slugify(link.href + link.label)}`;
-                  const isActive = activeDropdown === link.href;
-                  return (
-                    <div key={link.href + link.label} className="w-full">
-                      {link.hasDropdown ? (
-                        <div>
-                          <button
-                            type="button"
-                            aria-expanded={isActive}
-                            aria-controls={submenuId}
-                            onClick={() => toggleDropdown(link)}
-                            className="text-base font-medium text-text-primary dark:text-text-dark hover:text-accent transition-colors flex items-center gap-2 w-full text-left"
-                          >
-                            {link.label}
-                            <svg
-                              aria-hidden="true"
-                              focusable="false"
-                              className={`w-4 h-4 transition-transform ${isActive ? "rotate-180" : ""}`}
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                              />
-                            </svg>
-                          </button>
-                          {isActive && (
-                            <div id={submenuId} className="ml-4 mt-2 space-y-2">
-                              {link.dropdownItems.map((item) => (
-                                <Link
-                                  key={item.href}
-                                  href={item.href}
-                                  className="block text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors"
-                                >
-                                  {item.label}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="text-base font-medium text-text-primary dark:text-text-dark hover:text-accent transition-colors"
-                          title={link.label}
-                        >
-                          {link.label}
-                        </Link>
-                      )}
-                    </div>
-                  );
-                })}
-                <div className="pt-2">
-                  <LanguageSwitcher variant="mobile" />
-                </div>
-              </div>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-700 my-4"></div>
-            <Link
-              href="/contact-us"
-              className="flex w-full items-center justify-center rounded-lg h-10 px-4 bg-accent text-white text-sm font-bold hover:bg-opacity-90 transition-all"
-            >
-              {t("cta")}
-            </Link>
-          </nav>
-        </div>
-      </div>
+      {isMounted && createPortal(mobileMenu, document.body)}
     </header>
   );
 };
