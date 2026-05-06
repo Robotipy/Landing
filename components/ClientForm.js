@@ -9,6 +9,13 @@ import config from "@/config";
 
 const CALENDAR_REDIRECT_URL = "https://calendar.app.google/KE5eYDUF4qy11yVz9";
 
+/** Meta Pixel CompleteRegistration — id matches partner snippet (DOM / GTM). */
+function trackContactCompleteRegistration() {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", "CompleteRegistration");
+  }
+}
+
 const REQUIRED_FIELDS = [
   "name",
   "email",
@@ -92,6 +99,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
     try {
       await apiClient.post("/client", payload);
+      trackContactCompleteRegistration();
 
       if (showInvestmentField && formData.canInvest === "no") {
         toast.success(t("toast.cannotInvest"));
@@ -386,6 +394,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
           <div className="pt-4">
             <button
+              id="botónEnviar"
               type="submit"
               disabled={isLoading}
               aria-busy={isLoading}
