@@ -1,4 +1,5 @@
 import daniloToroImg from "./images/authors/danilo-toro.png";
+import gabrielToroImg from "./images/authors/gabriel-toro.jpeg";
 
 // ==================================================================================================================================================================
 // BLOG AUTHORS 📝
@@ -68,7 +69,7 @@ export const authors = [
     job: "Equipo Robotipy",
     description:
       "Gabriel forma parte del equipo de Robotipy, especializado en automatización de procesos y soluciones RPA para empresas en Chile y Argentina.",
-    avatar: daniloToroImg,
+    avatar: gabrielToroImg,
     socials: [
       {
         name: socialIcons.linkedin.name,
