@@ -22,7 +22,7 @@ const ui = {
   tocList: "list-decimal pl-5 space-y-1.5 text-white/90 text-[15px]",
 
   analogy:
-    "relative rounded-xl border-2 border-dashed border-accent bg-white/5 p-7 my-8 space-y-3",
+    "relative rounded-xl border-2 border-dashed border-accent bg-white/5 pt-10 px-7 pb-7 my-8 space-y-3",
   analogyTag:
     "absolute -top-3 left-6 bg-accent text-white text-[11px] font-bold uppercase tracking-wider rounded-full px-3 py-0.5",
 
