@@ -15,9 +15,11 @@ import { post as casoExitoInteligenciaMercadoAgronegocios } from "./posts/caso-e
 import { post as casoExitoAutomatizacionFinancieraAgroindustria } from "./posts/caso-exito-automatizacion-financiera-agroindustria.js";
 import { post as casoExitoCartolasFactoringVitivinicola } from "./posts/caso-exito-cartolas-factoring-vitivinicola.js";
 import { post as casoExitoConciliacionBancariaAgropecuario } from "./posts/caso-exito-conciliacion-bancaria-agropecuario.js";
+import { post as rpaConPerasYManzanas } from "./posts/rpa-con-peras-y-manzanas.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  rpaConPerasYManzanas,
   casoExitoRpaIaMineriaCostos,
   casoExitoAutomatizacionOrdenesSapSiderurgia,
   casoExitoInteligenciaMercadoAgronegocios,

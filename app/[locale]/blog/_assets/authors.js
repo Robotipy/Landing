@@ -36,6 +36,7 @@ export const socialIcons = {
 // These slugs are used to generate pages in the /blog/author/[authorId].js. It's a way to show all articles from an author.
 export const authorSlugs = {
   DaniloToro: "danilo-toro",
+  GabrielToro: "gabriel-toro",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
@@ -58,6 +59,21 @@ export const authors = [
         name: socialIcons.linkedin.name,
         icon: socialIcons.linkedin.svg,
         url: "https://www.linkedin.com/in/danilotorol/",
+      },
+    ],
+  },
+  {
+    slug: authorSlugs.GabrielToro,
+    name: "Gabriel Toro",
+    job: "Equipo Robotipy",
+    description:
+      "Gabriel forma parte del equipo de Robotipy, especializado en automatización de procesos y soluciones RPA para empresas en Chile y Argentina.",
+    avatar: daniloToroImg,
+    socials: [
+      {
+        name: socialIcons.linkedin.name,
+        icon: socialIcons.linkedin.svg,
+        url: "https://www.linkedin.com/company/robotipy/",
       },
     ],
   },
