@@ -201,10 +201,10 @@ export const post = {
 
         <p className={styles.p}>La clave está en entender qué <strong className={styles.strong}>no</strong> es RPA:</p>
         <ul className={styles.ul}>
-          <li className={styles.li}>❌ No es un robot físico ni mecánico.</li>
-          <li className={styles.li}>❌ No es inteligencia artificial (aunque puede combinarse con ella).</li>
-          <li className={styles.li}>❌ No modifica ni reemplaza los sistemas que ya usas.</li>
-          <li className={styles.li}>❌ No requiere que cambies tu software actual.</li>
+          <li className={styles.li}>No es un robot físico ni mecánico.</li>
+          <li className={styles.li}>No es inteligencia artificial (aunque puede combinarse con ella).</li>
+          <li className={styles.li}>No modifica ni reemplaza los sistemas que ya usas.</li>
+          <li className={styles.li}>No requiere que cambies tu software actual.</li>
         </ul>
 
         <p className={styles.p}>
