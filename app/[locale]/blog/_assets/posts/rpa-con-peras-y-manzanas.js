@@ -22,7 +22,7 @@ const ui = {
   tocList: "list-decimal pl-5 space-y-1.5 text-white/90 text-[15px]",
 
   analogy:
-    "relative rounded-xl border-2 border-dashed border-accent bg-white/5 p-7 my-8 space-y-3",
+    "relative rounded-xl border-2 border-dashed border-accent bg-white/5 pt-10 px-7 pb-7 my-8 space-y-3",
   analogyTag:
     "absolute -top-3 left-6 bg-accent text-white text-[11px] font-bold uppercase tracking-wider rounded-full px-3 py-0.5",
 
@@ -191,7 +191,7 @@ export const post = {
             <strong className={styles.strong}>Ese colaborador es una máquina de seguir instrucciones.</strong>
           </p>
           <p className={styles.p}>
-            El problema: se equivoca, se cansa, tarda, está ausente algunos días y —seamos honestos— odia esa tarea.
+            El problema: se equivoca, se cansa, tarda, está ausente algunos días y (seamos honestos) odia esa tarea.
           </p>
           <p className={styles.p}>
             <strong className={styles.strong}>Un bot RPA es ese colaborador, pero digital.</strong> Hace exactamente los
@@ -201,10 +201,10 @@ export const post = {
 
         <p className={styles.p}>La clave está en entender qué <strong className={styles.strong}>no</strong> es RPA:</p>
         <ul className={styles.ul}>
-          <li className={styles.li}>❌ No es un robot físico ni mecánico.</li>
-          <li className={styles.li}>❌ No es inteligencia artificial (aunque puede combinarse con ella).</li>
-          <li className={styles.li}>❌ No modifica ni reemplaza los sistemas que ya usas.</li>
-          <li className={styles.li}>❌ No requiere que cambies tu software actual.</li>
+          <li className={styles.li}>No es un robot físico ni mecánico.</li>
+          <li className={styles.li}>No es inteligencia artificial (aunque puede combinarse con ella).</li>
+          <li className={styles.li}>No modifica ni reemplaza los sistemas que ya usas.</li>
+          <li className={styles.li}>No requiere que cambies tu software actual.</li>
         </ul>
 
         <p className={styles.p}>
@@ -252,9 +252,9 @@ export const post = {
             <circle cx="572" cy="52" r="14" fill="#00182B" />
             <text x="572" y="57" textAnchor="middle" fill="white" fontSize="13" fontWeight="700" fontFamily="Arial">3</text>
 
-            <text x="110" y="58" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">El bot se activa</text>
-            <text x="380" y="58" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Accede a los sistemas</text>
-            <text x="650" y="58" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Extrae los datos</text>
+            <text x="55" y="57" textAnchor="start" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">El bot se activa</text>
+            <text x="325" y="57" textAnchor="start" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Accede a los sistemas</text>
+            <text x="595" y="57" textAnchor="start" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Extrae los datos</text>
 
             <text x="110" y="78" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">Automáticamente a la</text>
             <text x="110" y="93" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">hora programada o al</text>
@@ -283,13 +283,13 @@ export const post = {
             <circle cx="32" cy="212" r="14" fill="#16a34a" />
             <text x="32" y="217" textAnchor="middle" fill="white" fontSize="13" fontWeight="700" fontFamily="Arial">6</text>
 
-            <text x="650" y="218" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Procesa y compara</text>
-            <text x="380" y="218" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Registra y notifica</text>
-            <text x="110" y="218" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Reporta y cierra</text>
+            <text x="595" y="217" textAnchor="start" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Procesa y compara</text>
+            <text x="325" y="217" textAnchor="start" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Registra y notifica</text>
+            <text x="55" y="217" textAnchor="start" fill="#ffffff" fontSize="14" fontWeight="700" fontFamily="Arial">Reporta y cierra</text>
 
             <text x="650" y="238" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">Aplica las reglas del</text>
             <text x="650" y="253" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">proceso: si coincide OK,</text>
-            <text x="650" y="268" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">si no — genera alerta</text>
+            <text x="650" y="268" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">si no, genera alerta</text>
 
             <text x="380" y="238" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">Ingresa los datos en el</text>
             <text x="380" y="253" textAnchor="middle" fill="#cfd8dc" fontSize="11.5" fontFamily="Arial">sistema contable y envía</text>
@@ -489,7 +489,7 @@ export const post = {
                 <td className={ui.td}><strong className={styles.strong}>RPA</strong></td>
                 <td className={ui.td}>Automatiza pasos repetitivos en cualquier sistema, sin API ni código</td>
                 <td className={ui.td}>No &quot;aprende&quot; solo, requiere reglas claras</td>
-                <td className={ui.td}>—</td>
+                <td className={ui.td}>N/A</td>
               </tr>
               <tr>
                 <td className={ui.td}><strong className={styles.strong}>Macros de Excel</strong></td>
@@ -501,19 +501,19 @@ export const post = {
                 <td className={ui.td}><strong className={styles.strong}>Inteligencia Artificial (IA)</strong></td>
                 <td className={ui.td}>Entiende lenguaje, imágenes, contexto, toma decisiones</td>
                 <td className={ui.td}>No ejecuta pasos operativos por sí sola</td>
-                <td className={ui.td}><span className={ui.badge("green")}>Sí — combo poderoso</span></td>
+                <td className={ui.td}><span className={ui.badge("green")}>Sí (combo poderoso)</span></td>
               </tr>
               <tr>
                 <td className={ui.td}><strong className={styles.strong}>Integración de sistemas (API)</strong></td>
                 <td className={ui.td}>Conecta sistemas a nivel técnico, muy robusta</td>
                 <td className={ui.td}>Requiere que ambos sistemas tengan API. Costosa de desarrollar.</td>
-                <td className={ui.td}><span className={ui.badge("green")}>Sí — complementarios</span></td>
+                <td className={ui.td}><span className={ui.badge("green")}>Sí (complementarios)</span></td>
               </tr>
               <tr>
                 <td className={ui.td}><strong className={styles.strong}>ERP personalizado</strong></td>
                 <td className={ui.td}>Centraliza todos los procesos del negocio</td>
                 <td className={ui.td}>Muy costoso, implementación de meses o años</td>
-                <td className={ui.td}><span className={ui.badge("green")}>Sí — RPA llena los gaps</span></td>
+                <td className={ui.td}><span className={ui.badge("green")}>Sí (RPA llena los gaps)</span></td>
               </tr>
             </tbody>
           </table>
@@ -535,12 +535,12 @@ export const post = {
       {/* SECCIÓN 6 */}
       <section id="para-pymes" className="space-y-3 scroll-mt-24">
         <h2 className={styles.h2}>6. ¿RPA es solo para empresas grandes?</h2>
-        <p className={styles.p}>Esta es la creencia que más nos encontramos —y la que más nos gusta desmentir.</p>
+        <p className={styles.p}>Esta es la creencia que más nos encontramos, y la que más nos gusta desmentir.</p>
 
         <blockquote className={ui.quote}>
           &quot;Pensé que el RPA era solo para el Banco de Chile o para grandes multilatinas. Cuando vi que podíamos
           implementarlo en nuestra PyME por una fracción de lo que esperaba, fue un cambio de juego.&quot;
-          <cite className={ui.cite}>— Gerente de operaciones, empresa de servicios profesionales en Santiago</cite>
+          <cite className={ui.cite}>Gerente de operaciones, empresa de servicios profesionales en Santiago</cite>
         </blockquote>
 
         <p className={styles.p}>
