@@ -1,7 +1,7 @@
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
-import thumbnail from "@/public/blog/que-es-rpa/header.jpeg";
+import thumbnail from "@/public/blog/rpa-con-peras-y-manzanas/header.jpeg";
 import ButtonMain from "@/components/ButtonMain.js";
 
 // Tailwind class helpers tailored for this post.
@@ -109,7 +109,7 @@ export const post = {
   publishedAt: "2026-05-13",
   image: {
     src: thumbnail,
-    urlRelative: "/blog/que-es-rpa/header.jpeg",
+    urlRelative: "/blog/rpa-con-peras-y-manzanas/header.jpeg",
     alt: "RPA con peras y manzanas",
   },
   content: (
