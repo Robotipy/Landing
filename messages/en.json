@@ -62,8 +62,8 @@
     "mobileMenuLabel": "Site navigation"
   },
   "hero": {
-    "title": "We build the <strong>intelligence</strong> that<br></br> your <strong>business</strong> needs.",
-    "subtitle": "Optimize your processes with our automation, <br></br><strong>artificial intelligence and software development solutions.</strong>",
+    "title": "<strong>RPA Automation</strong>, AI and<br></br> <strong>Custom Software</strong>",
+    "subtitle": "Optimize your processes with our RPA automation, <br></br><strong>artificial intelligence and custom software development solutions.</strong>",
     "contactButton": "Contact us",
     "projectsButton": "See our projects"
   },
@@ -371,8 +371,8 @@
     "cta": "Request Training"
   },
   "softwareHero": {
-    "title": "We build the technology <br></br>your business needs to win",
-    "subtitle": "We design and develop robust, scalable and secure web, mobile and enterprise systems tailored to your unique business goals.",
+    "title": "Custom Software Development<br></br>for Enterprises in Latin America",
+    "subtitle": "We design and build custom software, web systems, mobile apps and enterprise platforms that integrate with your stack and accelerate operations.",
     "cta": "Quote your Project"
   },
   "productShared": {
@@ -753,8 +753,12 @@
         "description": "Empower your team with our hands-on courses and advanced specializations in RPA and AI. Training for business and technical teams."
       },
       "desarrolloSoftware": {
-        "title": "Custom Software Development | Robotipy",
-        "description": "We build the technology your business needs to win. Robust, scalable and secure software development tailored to your unique goals."
+        "title": "Custom Software Development for Enterprises | Robotipy",
+        "description": "Custom software development, web systems and mobile apps for companies across Latin America. We integrate RPA, AI and APIs with your legacy systems. Real cases, certified team and measurable ROI."
+      },
+      "roiCalculator": {
+        "title": "RPA ROI Calculator: Estimate Your Automation Returns | Robotipy",
+        "description": "Free RPA ROI calculator. Estimate savings, payback period and NPV for your automation project including Rocketbot licenses, development and maintenance. Instant results."
       }
     }
   }

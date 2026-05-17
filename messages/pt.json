@@ -62,8 +62,8 @@
     "mobileMenuLabel": "Navegação do site"
   },
   "hero": {
-    "title": "Criamos a <strong>inteligência</strong> que<br></br> seu <strong>negócio</strong> precisa.",
-    "subtitle": "Otimize seus processos com nossas soluções de automação, <br></br><strong>inteligência artificial e desenvolvimento de software.</strong>",
+    "title": "<strong>Automação RPA</strong>, IA e<br></br> <strong>Software Sob Medida</strong>",
+    "subtitle": "Otimize seus processos com nossas soluções de automação RPA, <br></br><strong>inteligência artificial e desenvolvimento de software sob medida.</strong>",
     "contactButton": "Fale conosco",
     "projectsButton": "Veja nossos projetos"
   },
@@ -371,8 +371,8 @@
     "cta": "Solicitar Capacitação"
   },
   "softwareHero": {
-    "title": "Construímos a tecnologia <br></br>que seu negócio precisa para vencer",
-    "subtitle": "Projetamos e desenvolvemos sistemas web, móveis e empresariais robustos, escaláveis e seguros, adaptados aos seus objetivos únicos.",
+    "title": "Desenvolvimento de Software Sob Medida<br></br>para Empresas na América Latina",
+    "subtitle": "Projetamos e desenvolvemos software sob medida, sistemas web, apps móveis e plataformas empresariais que se integram ao seu stack e aceleram a operação.",
     "cta": "Cotar seu Projeto"
   },
   "productShared": {
@@ -753,8 +753,12 @@
         "description": "Capacite sua equipe com nossos cursos práticos e especializações avançadas em RPA e IA. Treinamento para equipes empresariais e técnicas."
       },
       "desarrolloSoftware": {
-        "title": "Desenvolvimento de Software Personalizado | Robotipy",
-        "description": "Construímos a tecnologia que seu negócio precisa para vencer. Desenvolvimento de software robusto, escalável e seguro adaptado aos seus objetivos únicos."
+        "title": "Desenvolvimento de Software Sob Medida para Empresas | Robotipy",
+        "description": "Desenvolvimento de software sob medida, sistemas web e apps móveis para empresas na América Latina. Integramos RPA, IA e APIs com seus sistemas legacy. Casos reais, equipe certificada e ROI mensurável."
+      },
+      "roiCalculator": {
+        "title": "Calculadora ROI RPA: Calcule o Retorno da Automação | Robotipy",
+        "description": "Calculadora ROI RPA gratuita. Estime economias, payback e VPL do seu projeto de automação com licenças Rocketbot, desenvolvimento e manutenção. Resultados instantâneos."
       }
     }
   }
