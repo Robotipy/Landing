@@ -62,8 +62,8 @@
     "mobileMenuLabel": "Navegación del sitio"
   },
   "hero": {
-    "title": "<strong>Automatización RPA</strong>, IA y<br></br> <strong>Software a Medida</strong>",
-    "subtitle": "Optimiza tus procesos con nuestras soluciones de automatización RPA, <br></br><strong>inteligencia artificial y desarrollo de software a medida.</strong>",
+    "title": "Creamos la <strong>inteligencia</strong> que<br></br> tu <strong>negocio</strong> necesita.",
+    "subtitle": "Optimiza tus procesos con nuestras soluciones de automatización <br></br><strong>inteligencia artificial y desarrollo de software.</strong>",
     "contactButton": "Contáctanos",
     "projectsButton": "Ve nuestros proyectos"
   },
@@ -733,8 +733,8 @@
     "defaultDescriptionShort": "Automatización de procesos (RPA), Chatbots con IA y desarrollo de software a medida. Soluciones profesionales para optimizar procesos y reducir costos empresariales.",
     "pages": {
       "home": {
-        "title": "Robotipy - Automatización RPA, Chatbots IA y Software",
-        "description": "Automatización de procesos (RPA), Chatbots con IA y desarrollo de software a medida. Soluciones profesionales para optimizar procesos y reducir costos."
+        "title": "Automatización RPA, IA y Software a Medida | Robotipy",
+        "description": "Automatización RPA con Rocketbot, agentes de IA y desarrollo de software a medida para empresas en Latinoamérica. Reduce costos, errores y tiempos con ROI medible."
       },
       "rpa": {
         "title": "RPA con Rocketbot - Automatización de Procesos | Robotipy",

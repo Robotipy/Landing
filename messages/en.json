@@ -62,8 +62,8 @@
     "mobileMenuLabel": "Site navigation"
   },
   "hero": {
-    "title": "<strong>RPA Automation</strong>, AI and<br></br> <strong>Custom Software</strong>",
-    "subtitle": "Optimize your processes with our RPA automation, <br></br><strong>artificial intelligence and custom software development solutions.</strong>",
+    "title": "We build the <strong>intelligence</strong> that<br></br> your <strong>business</strong> needs.",
+    "subtitle": "Optimize your processes with our automation, <br></br><strong>artificial intelligence and software development solutions.</strong>",
     "contactButton": "Contact us",
     "projectsButton": "See our projects"
   },
@@ -733,8 +733,8 @@
     "defaultDescriptionShort": "Process automation (RPA), AI Chatbots and custom software development. Professional solutions to optimize processes and reduce business costs.",
     "pages": {
       "home": {
-        "title": "Robotipy - RPA Automation, AI Chatbots and Software",
-        "description": "Process automation (RPA), AI Chatbots and custom software development. Professional solutions to optimize processes and reduce costs."
+        "title": "RPA Automation, AI and Custom Software | Robotipy",
+        "description": "RPA automation with Rocketbot, AI agents and custom software development for enterprises in Latin America. Cut costs, errors and cycle times with measurable ROI."
       },
       "rpa": {
         "title": "RPA with Rocketbot - Process Automation | Robotipy",
