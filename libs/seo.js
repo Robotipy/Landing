@@ -90,6 +90,19 @@ export const getSEOTags = ({
       creator: "@robotipy",
     },
 
+    // Explicit indexing directives to avoid Search Console warnings about missing meta robots.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+
     // If a canonical URL is given, we add it (locale-prefixed) plus hreflang alternates.
     ...(canonicalUrlRelative && {
       alternates: buildAlternates(activeLocale, canonicalUrlRelative),
