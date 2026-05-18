@@ -5,6 +5,18 @@ import { styles } from "../styles";
 import thumbnail from "@/public/blog/rpa-vs-ia-agentica/header.jpeg"; // TODO: Replace with definitive image
 import ButtonMain from "@/components/ButtonMain.js";
 
+const linkCls = "text-accent underline-offset-2 hover:underline";
+const ExtLink = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener" className={linkCls}>
+    {children}
+  </a>
+);
+const IntLink = ({ href, children }) => (
+  <Link href={href} className={linkCls}>
+    {children}
+  </Link>
+);
+
 const faqs = [
   {
     q: "¿Claude con computer use va a matar al RPA?",
@@ -22,6 +34,37 @@ const faqs = [
     q: "¿Qué es el self-healing RPA?",
     a: "Es un modelo híbrido donde un bot de RPA ejecuta los procesos repetitivos, pero cuando se rompe por un cambio de interfaz, un agente de IA detecta los cambios y reconfigura el bot automáticamente. Proveedores como UiPath y Rocketbot (con su próxima funcionalidad Resilient) ya están integrando esta capacidad de forma nativa.",
   },
+  {
+    q: "¿Robotipy trabaja con IA agéntica o solo con RPA?",
+    a: "Trabajamos con ambos. Nuestros proyectos más recientes combinan bots de RPA con agentes de IA para lograr lo mejor de ambos mundos: la precisión y velocidad del RPA con la inteligencia y adaptabilidad de la IA. Puedes ver ejemplos concretos en nuestros casos de éxito.",
+  },
+];
+
+// FAQs con links inline (renderizado JSX). El texto plano del array faqs[] se
+// usa para el JSON-LD FAQPage en [articleId]/page.js, asi que el contenido
+// debe coincidir palabra por palabra.
+const faqsJsx = [
+  (
+    <>
+      No en el corto plazo. Claude computer use es impresionante para tareas puntuales y de bajo
+      volumen, pero todavía no puede reemplazar la velocidad, precisión y escalabilidad de un bot de
+      RPA para procesos críticos de alto volumen. Lo que sí está haciendo es{" "}
+      <IntLink href="/capacitaciones">democratizar la automatización</IntLink>: ahora cualquier
+      persona sin conocimientos técnicos puede automatizar tareas simples. Eso es revolucionario,
+      pero diferente a &quot;matar&quot; al RPA.
+    </>
+  ),
+  null,
+  null,
+  null,
+  (
+    <>
+      Trabajamos con ambos. Nuestros proyectos más recientes combinan bots de RPA con agentes de IA
+      para lograr lo mejor de ambos mundos: la precisión y velocidad del RPA con la inteligencia y
+      adaptabilidad de la IA. Puedes ver ejemplos concretos en nuestros{" "}
+      <IntLink href="/casos-exito/servicios-tecnicos">casos de éxito</IntLink>.
+    </>
+  ),
 ];
 
 const ui = {
@@ -161,8 +204,9 @@ export const post = {
             un análisis honesto, con datos reales y desde la experiencia
           </strong>
           , de cuándo te conviene un agente IA, cuándo te conviene RPA, y cuándo la respuesta
-          correcta es usar ambos. Lo escribimos como empresa que implementa RPA desde hace años y
-          que ahora también trabaja con IA agéntica, y no tenemos interés en que &quot;gane&quot; uno u otro.
+          correcta es usar ambos. Lo escribimos como{" "}
+          <IntLink href="/rpa">empresa que implementa RPA desde hace años</IntLink>{" "}
+          y que ahora también trabaja con IA agéntica, y no tenemos interés en que &quot;gane&quot; uno u otro.
         </p>
 
         <div className={ui.statGrid}>
@@ -319,11 +363,20 @@ export const post = {
         </ul>
         <p className={styles.p}>Todo esto sin escribir una línea de código. Con lenguaje natural.</p>
         <p className={styles.p}>
-          Desde marzo de 2026, Claude cuenta con un agente de uso de computadora (
-          <em>computer use agent</em>) que puede ver, navegar y controlar un escritorio completo. Le
-          asignas una tarea desde tu celular y el agente la ejecuta de forma autónoma, pidiendo
+          Desde marzo de 2026,{" "}
+          <ExtLink href="https://www.anthropic.com/news/3-5-models-and-computer-use">
+            Claude cuenta con un agente de uso de computadora
+          </ExtLink>{" "}
+          (<em>computer use agent</em>) que puede ver, navegar y controlar un escritorio completo.
+          Le asignas una tarea desde tu celular y el agente la ejecuta de forma autónoma, pidiendo
           permiso antes de acceder a nuevas aplicaciones. OpenAI y Google tienen capacidades similares
-          con Operator y Project Mariner respectivamente.
+          con{" "}
+          <ExtLink href="https://openai.com/index/introducing-operator/">Operator</ExtLink>{" "}
+          y{" "}
+          <ExtLink href="https://deepmind.google/technologies/project-mariner/">
+            Project Mariner
+          </ExtLink>{" "}
+          respectivamente.
         </p>
         <div className={ui.callout("green")}>
           <div className={ui.calloutTitle("green")}>Ejemplo real</div>
@@ -392,7 +445,10 @@ export const post = {
         <div className={ui.callout("red")}>
           <div className={ui.calloutTitle("red")}>Dato Gartner (junio 2025)</div>
           <p className={styles.p}>
-            Gartner proyecta que{" "}
+            <ExtLink href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">
+              Gartner
+            </ExtLink>{" "}
+            proyecta que{" "}
             <strong className={styles.strong}>
               más del 40% de los proyectos de IA agéntica serán cancelados antes de finales de 2027
             </strong>{" "}
@@ -420,10 +476,21 @@ export const post = {
         <h2 className={styles.h2}>4. Dónde RPA sigue ganando (y por mucho)</h2>
         <p className={styles.p}>
           RPA no está muerto. Ni cerca. El mercado global de RPA se estima entre $6 mil millones y
-          $35 mil millones en 2026 según distintos analistas (Grand View Research, Mordor
-          Intelligence, Precedence Research), con proyecciones que alcanzan los $247 mil millones
-          para 2035 y un crecimiento de doble dígito anual, impulsado precisamente por la
-          integración con IA. Hay escenarios donde un bot de RPA es objetivamente la mejor opción:
+          $35 mil millones en 2026 según distintos analistas (
+          <ExtLink href="https://www.grandviewresearch.com/industry-analysis/robotic-process-automation-rpa-market">
+            Grand View Research
+          </ExtLink>
+          ,{" "}
+          <ExtLink href="https://www.mordorintelligence.com/industry-reports/robotic-process-automation-market">
+            Mordor Intelligence
+          </ExtLink>
+          ,{" "}
+          <ExtLink href="https://www.precedenceresearch.com/robotic-process-automation-market">
+            Precedence Research
+          </ExtLink>
+          ), con proyecciones que alcanzan los $247 mil millones para 2035 y un crecimiento de
+          doble dígito anual, impulsado precisamente por la integración con IA. Hay escenarios donde
+          un bot de RPA es objetivamente la mejor opción:
         </p>
 
         <h3 className={styles.h3}>Alto volumen, misma tarea</h3>
@@ -441,9 +508,11 @@ export const post = {
           Softland o Monica, plataformas gubernamentales como el SII en Chile o AFIP en Argentina, y
           sistemas bancarios de los 90s con interfaces de escritorio. RPA puede interactuar con
           cualquier interfaz, sin importar lo antigua que sea, de forma confiable y repetible. El
-          sector financiero lidera la adopción global de RPA con cerca del 28% de participación según
-          Grand View Research, precisamente por esta capacidad de conectar sistemas legacy sin
-          modificarlos.
+          sector financiero lidera la adopción global de RPA con cerca del 28% de participación según{" "}
+          <ExtLink href="https://www.grandviewresearch.com/industry-analysis/robotic-process-automation-rpa-market">
+            Grand View Research
+          </ExtLink>
+          , precisamente por esta capacidad de conectar sistemas legacy sin modificarlos.
         </p>
 
         <h3 className={styles.h3}>Precisión del 99.99% requerida</h3>
@@ -756,18 +825,24 @@ export const post = {
         </p>
         <p className={styles.p}>
           Este modelo híbrido tiene un nombre en la industria:{" "}
-          <strong className={styles.strong}>&quot;self-healing RPA&quot;</strong>. Proveedores como UiPath ya
-          integran agentes de IA que reparan bots automáticamente cuando una interfaz cambia. Según
-          Tech Mahindra, las implementaciones de self-healing reducen el mantenimiento por cambios de
-          UI entre un 60% y 70%. Diversos estudios de la industria reportan que los programas de RPA
-          destinan una porción significativa de su presupuesto al mantenimiento continuo, y el
-          self-healing ataca directamente ese problema.
+          <strong className={styles.strong}>&quot;self-healing RPA&quot;</strong>. Proveedores como{" "}
+          <ExtLink href="https://www.uipath.com/platform/agentic-automation">UiPath</ExtLink>{" "}
+          ya integran agentes de IA que reparan bots automáticamente cuando una interfaz cambia.
+          Según{" "}
+          <ExtLink href="https://www.techmahindra.com/en-in/rpa-services/">Tech Mahindra</ExtLink>
+          , las implementaciones de self-healing reducen el mantenimiento por cambios de UI entre un
+          60% y 70%. Diversos estudios de la industria reportan que los programas de RPA destinan
+          una porción significativa de su presupuesto al mantenimiento continuo, y el self-healing
+          ataca directamente ese problema.
         </p>
         <p className={styles.p}>
           En LATAM,{" "}
-          <strong className={styles.strong}>Rocketbot está desarrollando &quot;Resilient&quot;</strong>, su propia
-          capacidad de auto-reparación que apunta a competir con lo que UiPath ofrece en el mercado
-          enterprise. Como partners de Rocketbot, hemos visto el roadmap de cerca: Resilient
+          <strong className={styles.strong}>
+            <ExtLink href="https://rocketbot.com">Rocketbot</ExtLink> está desarrollando &quot;Resilient&quot;
+          </strong>
+          , su propia capacidad de auto-reparación que apunta a competir con lo que{" "}
+          <ExtLink href="https://www.uipath.com/platform/agentic-automation">UiPath</ExtLink> ofrece
+          en el mercado enterprise. Como partners de Rocketbot, hemos visto el roadmap de cerca: Resilient
           permitirá que los bots detecten cambios en las interfaces y se reconfiguren
           automáticamente, reduciendo drásticamente los tiempos de caída por mantenimiento. Para
           empresas que ya usan Rocketbot, esto significa que el modelo híbrido RPA + IA no será un
@@ -810,10 +885,11 @@ export const post = {
         </div>
         <p className={styles.p}>
           Este framework no es teórico: es exactamente lo que usamos en Robotipy cuando un cliente
-          nos contacta. Le hacemos estas 5 preguntas en la primera reunión de diagnóstico y con las
-          respuestas ya sabemos qué tecnología (o combinación) recomendarle. El 70% de los proyectos
-          que implementamos hoy terminan usando algún grado de modelo híbrido, porque la realidad de
-          las empresas rara vez cabe en una sola categoría.
+          nos contacta. Le hacemos estas 5 preguntas en la{" "}
+          <IntLink href="/#contacto">primera reunión de diagnóstico</IntLink>{" "}
+          y con las respuestas ya sabemos qué tecnología (o combinación) recomendarle. El 70% de los
+          proyectos que implementamos hoy terminan usando algún grado de modelo híbrido, porque la
+          realidad de las empresas rara vez cabe en una sola categoría.
         </p>
         <p className={styles.p}>
           Un error común es elegir la tecnología primero y buscar el problema después. Hemos visto
@@ -842,7 +918,7 @@ export const post = {
                 <span>{f.q}</span>
                 <span className="text-accent text-2xl font-light flex-shrink-0">+</span>
               </summary>
-              <div className={ui.faqA}>{f.a}</div>
+              <div className={ui.faqA}>{faqsJsx[i] || f.a}</div>
             </details>
           ))}
         </div>
