@@ -111,6 +111,27 @@ export default async function Article({ params }) {
         }}
       />
 
+      {Array.isArray(article.faq) && article.faq.length > 0 && (
+        <Script
+          type="application/ld+json"
+          id={`json-ld-faq-${article.slug}`}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: article.faq.map((item) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.a,
+                },
+              })),
+            }),
+          }}
+        />
+      )}
+
       {/* GO BACK LINK */}
       <div className="max-w-6xl mx-auto">
         <Link
