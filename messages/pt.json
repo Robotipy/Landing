@@ -27,9 +27,34 @@
         }
       },
       "cases": {
+        "todos": {
+          "label": "Todos os casos",
+          "description": "Explore todos os casos de sucesso de automação agrupados por indústria"
+        },
         "agricola": {
           "label": "Agrícola",
           "description": "Automação de processos agrícolas, fruticultura e agrotecnológicos"
+        },
+        "alimentos": {
+          "label": "Alimentos"
+        },
+        "estudioJuridico": {
+          "label": "Escritório Jurídico"
+        },
+        "industriasTecnologicas": {
+          "label": "Indústrias Tecnológicas"
+        },
+        "salud": {
+          "label": "Saúde"
+        },
+        "seguros": {
+          "label": "Seguros"
+        },
+        "serviciosTecnicos": {
+          "label": "Serviços Técnicos"
+        },
+        "software": {
+          "label": "Software"
         },
         "automotriz": {
           "label": "Automotivo",
@@ -759,7 +784,25 @@
       "roiCalculator": {
         "title": "Calculadora ROI RPA: Calcule o Retorno da Automação | Robotipy",
         "description": "Calculadora ROI RPA gratuita. Estime economias, payback e VPL do seu projeto de automação com licenças Rocketbot, desenvolvimento e manutenção. Resultados instantâneos."
+      },
+      "successCases": {
+        "title": "Casos de Sucesso de Automação RPA e IA | Robotipy",
+        "description": "Mais de 30 casos reais de automação RPA, IA e software sob medida em agricultura, bancos, seguros, transporte, saúde e mais. Métricas, ferramentas e economias concretas."
       }
+    }
+  },
+  "successCases": {
+    "hero": {
+      "title": "Todos os nossos casos de sucesso",
+      "subtitle": "Mais de 30 automações reais em indústrias da América Latina e Espanha. Cada caso inclui o desafio original, a solução implementada e as métricas de economia."
+    },
+    "jumpTo": "Ir para indústria",
+    "viewIndustry": "Ver página da indústria",
+    "cta": {
+      "title": "Você tem um processo parecido na sua empresa?",
+      "subtitle": "Agende um diagnóstico gratuito de 20 minutos e te dizemos exatamente o que automatizar primeiro e quanto você economizaria.",
+      "primary": "Agendar diagnóstico",
+      "secondary": "Calcular ROI"
     }
   }
 }
