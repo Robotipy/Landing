@@ -48,6 +48,11 @@ const buildLinks = (t) => [
     hasDropdown: true,
     dropdownItems: [
       {
+        href: "/success-cases",
+        label: t("dropdowns.cases.todos.label"),
+        description: t("dropdowns.cases.todos.description"),
+      },
+      {
         href: "/casos-exito/agricola",
         label: t("dropdowns.cases.agricola.label"),
         description: t("dropdowns.cases.agricola.description"),

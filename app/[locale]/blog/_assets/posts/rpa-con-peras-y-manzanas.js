@@ -1,8 +1,36 @@
+import Link from "next/link";
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/rpa-con-peras-y-manzanas/header.jpeg";
 import ButtonMain from "@/components/ButtonMain.js";
+
+const faqs = [
+  {
+    q: "¿El bot RPA puede \"romperse\" si cambia el sistema?",
+    a: "Sí, si cambia la interfaz del sistema que el bot usa (por ejemplo, el SII actualiza su sitio web), puede ser necesario ajustar el bot. Por eso el mantenimiento y soporte son parte fundamental del servicio. En Robotipy, este tipo de ajustes se resuelven rápidamente y forman parte del contrato de soporte.",
+  },
+  {
+    q: "¿Necesito saber programar para usar RPA?",
+    a: "No. Las plataformas modernas como Rocketbot permiten diseñar bots de forma visual, sin escribir código. Tu equipo puede aprender a monitorear y operar los bots con una capacitación básica. El desarrollo técnico lo hace el equipo de Robotipy.",
+  },
+  {
+    q: "¿El bot tiene acceso a información confidencial de mi empresa?",
+    a: "El bot accede solo a los sistemas y datos que tú le das acceso, bajo las mismas credenciales y permisos que defines. Puede implementarse en tu infraestructura local (on-premise) si tienes requerimientos de seguridad estrictos, sin necesidad de exponer datos a la nube.",
+  },
+  {
+    q: "¿RPA reemplaza empleados?",
+    a: "Esta es la pregunta más sensible y la respuesta real es: no reemplaza, libera. La experiencia de nuestros clientes es que las personas que hacían esas tareas repetitivas pasan a enfocarse en trabajo de mayor valor: análisis, atención a clientes, resolución de problemas, estrategia. El bot hace lo mecánico; las personas hacen lo humano.",
+  },
+  {
+    q: "¿Qué pasa si el proceso tiene excepciones o casos especiales?",
+    a: "Los bots pueden manejar múltiples excepciones con reglas condicionales (\"si pasa X, hacer Y; si no, hacer Z\"). Para casos muy inusuales, el bot puede enviar una alerta al equipo humano para que lo resuelva manualmente, y luego continuar con el resto. Ningún proceso es 100% estandarizable, pero RPA cubre el 80–95% de los casos y reduce drásticamente el trabajo manual.",
+  },
+  {
+    q: "¿Funciona con mis sistemas actuales? (SAP, Excel, correo, webs)",
+    a: "Sí. Rocketbot funciona con prácticamente cualquier sistema que tenga interfaz visual: SAP, Oracle, Defontana, Buk, Softland, sistemas web (SII, AFIP, portales bancarios), Excel, Outlook, PDFs, y más. No necesita que los sistemas tengan API.",
+  },
+];
 
 // Tailwind class helpers tailored for this post.
 // Keep the visual structure of the original HTML (callouts, stat cards,
@@ -112,6 +140,7 @@ export const post = {
     urlRelative: "/blog/rpa-con-peras-y-manzanas/header.jpeg",
     alt: "RPA con peras y manzanas",
   },
+  faq: faqs,
   content: (
     <>
       {/* INTRO + STATS */}
@@ -381,7 +410,7 @@ export const post = {
               <tr><td className={ui.td}>Carga de pedidos en ERP</td><td className={ui.td}>Operaciones / Logística</td><td className={ui.td}>Eliminación de carga manual diaria</td><td className={ui.td}><span className={ui.badge("green")}>Fácil</span></td></tr>
               <tr><td className={ui.td}>Envío de reportes automáticos</td><td className={ui.td}>Gerencia / Comercial</td><td className={ui.td}>1–3 horas/semana → automático</td><td className={ui.td}><span className={ui.badge("green")}>Fácil</span></td></tr>
               <tr><td className={ui.td}>Seguimiento de envíos y logística</td><td className={ui.td}>Logística</td><td className={ui.td}>Alertas en tiempo real sin intervención</td><td className={ui.td}><span className={ui.badge("orange")}>Moderado</span></td></tr>
-              <tr><td className={ui.td}>Atención de consultas frecuentes (chatbot)</td><td className={ui.td}>Atención al cliente</td><td className={ui.td}>80% de consultas resueltas sin humano</td><td className={ui.td}><span className={ui.badge("orange")}>Moderado</span></td></tr>
+              <tr><td className={ui.td}>Atención de consultas frecuentes (<Link href="/chatbot" className="link link-accent">chatbot</Link>)</td><td className={ui.td}>Atención al cliente</td><td className={ui.td}>80% de consultas resueltas sin humano</td><td className={ui.td}><span className={ui.badge("orange")}>Moderado</span></td></tr>
               <tr><td className={ui.td}>Procesamiento de solicitudes de seguros</td><td className={ui.td}>Seguros / Salud</td><td className={ui.td}>De días a horas</td><td className={ui.td}><span className={ui.badge("orange")}>Moderado</span></td></tr>
               <tr><td className={ui.td}>Validación de datos entre sistemas</td><td className={ui.td}>TI / Operaciones</td><td className={ui.td}>Eliminación de errores de tipeo</td><td className={ui.td}><span className={ui.badge("green")}>Fácil</span></td></tr>
             </tbody>
@@ -687,14 +716,7 @@ export const post = {
       <section id="faq" className="space-y-3 scroll-mt-24">
         <h2 className={styles.h2}>9. Preguntas Frecuentes sobre RPA</h2>
         <div className="my-6">
-          {[
-            { q: "¿El bot RPA puede \"romperse\" si cambia el sistema?", a: "Sí, si cambia la interfaz del sistema que el bot usa (por ejemplo, el SII actualiza su sitio web), puede ser necesario ajustar el bot. Por eso el mantenimiento y soporte son parte fundamental del servicio. En Robotipy, este tipo de ajustes se resuelven rápidamente y forman parte del contrato de soporte." },
-            { q: "¿Necesito saber programar para usar RPA?", a: "No. Las plataformas modernas como Rocketbot permiten diseñar bots de forma visual, sin escribir código. Tu equipo puede aprender a monitorear y operar los bots con una capacitación básica. El desarrollo técnico lo hace el equipo de Robotipy." },
-            { q: "¿El bot tiene acceso a información confidencial de mi empresa?", a: "El bot accede solo a los sistemas y datos que tú le das acceso, bajo las mismas credenciales y permisos que defines. Puede implementarse en tu infraestructura local (on-premise) si tienes requerimientos de seguridad estrictos, sin necesidad de exponer datos a la nube." },
-            { q: "¿RPA reemplaza empleados?", a: "Esta es la pregunta más sensible y la respuesta real es: no reemplaza, libera. La experiencia de nuestros clientes es que las personas que hacían esas tareas repetitivas pasan a enfocarse en trabajo de mayor valor: análisis, atención a clientes, resolución de problemas, estrategia. El bot hace lo mecánico; las personas hacen lo humano." },
-            { q: "¿Qué pasa si el proceso tiene excepciones o casos especiales?", a: "Los bots pueden manejar múltiples excepciones con reglas condicionales (\"si pasa X, hacer Y; si no, hacer Z\"). Para casos muy inusuales, el bot puede enviar una alerta al equipo humano para que lo resuelva manualmente, y luego continuar con el resto. Ningún proceso es 100% estandarizable, pero RPA cubre el 80–95% de los casos y reduce drásticamente el trabajo manual." },
-            { q: "¿Funciona con mis sistemas actuales? (SAP, Excel, correo, webs)", a: "Sí. Rocketbot funciona con prácticamente cualquier sistema que tenga interfaz visual: SAP, Oracle, Defontana, Buk, Softland, sistemas web (SII, AFIP, portales bancarios), Excel, Outlook, PDFs, y más. No necesita que los sistemas tengan API." },
-          ].map((f, i) => (
+          {faqs.map((f, i) => (
             <details key={i} className={ui.faqItem} open={i === 0}>
               <summary className={ui.faqQ}>
                 <span>{f.q}</span>
@@ -704,6 +726,39 @@ export const post = {
             </details>
           ))}
         </div>
+      </section>
+
+      {/* Cluster temático: links a páginas de servicio */}
+      <section className="space-y-3">
+        <h2 className={styles.h2}>Profundiza en cada servicio</h2>
+        <p className={styles.p}>
+          Si quieres llevar lo que leíste a un proyecto concreto, estas son las páginas donde
+          explicamos cada servicio en detalle:
+        </p>
+        <ul className={styles.ul}>
+          <li className={styles.li}>
+            <Link href="/rpa" className="link link-accent">
+              Automatización RPA con Rocketbot
+            </Link>: cómo construimos bots, qué procesos automatizar primero y nuestra metodología
+            de implementación.
+          </li>
+          <li className={styles.li}>
+            <Link href="/chatbot" className="link link-accent">
+              Chatbots con IA
+            </Link>: asistentes conversacionales conectados a tus datos para atención al cliente y
+            equipos internos.
+          </li>
+          <li className={styles.li}>
+            <Link href="/desarrollo-software" className="link link-accent">
+              Desarrollo de software a medida
+            </Link>: cuando el proceso necesita un sistema propio en vez de (o además de) un bot.
+          </li>
+          <li className={styles.li}>
+            <Link href="/roi-calculator" className="link link-accent">
+              Calculadora ROI RPA
+            </Link>: estima ahorros, payback y VPN antes de presentar el caso de negocio.
+          </li>
+        </ul>
       </section>
 
       {/* CTA */}

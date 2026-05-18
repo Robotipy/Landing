@@ -440,12 +440,30 @@ Detalles del proceso:
           <div className="max-w-7xl mx-auto text-white">
             <div className="text-center mb-12">
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
-                Calculadora de ROI
+                Calculadora ROI RPA
               </h1>
               <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
-                Calcula el retorno de inversión para tu proyecto de automatización. 
-                Configura tus parámetros y ve resultados instantáneos.
+                Calcula el retorno de inversión de tu proyecto de automatización RPA. Estima
+                ahorros anuales, periodo de recuperación (payback) y Valor Presente Neto a 3
+                años con licencias Rocketbot, desarrollo y mantenimiento.
               </p>
+              <div className="max-w-3xl mx-auto mt-6 text-left text-cyan-200 text-sm lg:text-base space-y-3">
+                <h2 className="text-xl lg:text-2xl font-semibold text-cyan-50 text-center">
+                  ¿Cómo funciona la calculadora ROI para automatización RPA?
+                </h2>
+                <p>
+                  La calculadora ROI RPA suma los beneficios anuales (horas liberadas,
+                  reducción de errores, horas extra evitadas, multas y pérdidas
+                  recuperadas) y los compara contra la inversión total: licencias RPA,
+                  desarrollo del robot y mantenimiento. Aplicamos un descuento del 10%
+                  para obtener el VPN a 3 años, la misma metodología que usan los
+                  equipos financieros al evaluar proyectos de tecnología.
+                </p>
+                <p>
+                  Úsala para construir un caso de negocio sólido antes de presentar un
+                  proyecto de automatización al comité de inversión o a finanzas.
+                </p>
+              </div>
               <div className="m-4">
                 <button
                   onClick={() => setShowDemoModal(true)}
