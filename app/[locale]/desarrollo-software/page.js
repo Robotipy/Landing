@@ -10,8 +10,24 @@ import SoftwareSuccessStories from "@/components/SoftwareSuccessStories";
 import SoftwareCTA from "@/components/SoftwareCTA";
 import SoftwareFAQ from "@/components/SoftwareFAQ";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import RelatedReading from "@/components/RelatedReading";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
+
+const softwareRelatedLinks = [
+  {
+    href: "/blog/rpa-con-peras-y-manzanas",
+    title: "RPA con peras y manzanas: cuándo conviene un bot y cuándo un sistema a medida",
+    description:
+      "Guía para decidir si tu proceso necesita un bot RPA, un software propio o ambos integrados.",
+  },
+  {
+    href: "/rpa",
+    title: "Automatización RPA con Rocketbot",
+    description:
+      "Casos donde RPA acelera la automatización antes de invertir en desarrollo de software a medida.",
+  },
+];
 
 const siteOrigin = `https://www.${config.domainName.replace(/^www\./, "")}`;
 
@@ -118,6 +134,10 @@ const DesarrolloSoftwarePage = async ({ params }) => {
         <TestimonialsSection />
         <SoftwareMethodology />
         <SoftwareTechStack />
+        <RelatedReading
+          title="Recursos relacionados"
+          links={softwareRelatedLinks}
+        />
         <SoftwareCTA />
         <SoftwareFAQ />
       </main>

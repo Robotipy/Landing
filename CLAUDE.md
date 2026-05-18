@@ -54,10 +54,32 @@ artículos. Resumen de lo no negociable:
 - Estilos compartidos de contenido: `app/[locale]/blog/_assets/styles.js`.
 - Página dinámica: `app/[locale]/blog/[articleId]/page.js`.
 - Cada post exporta `{ slug, locale, title, description, categories,
-  author, publishedAt, image, content }`.
+  author, publishedAt, image, content }`. Si el post incluye una
+  sección de FAQ, también debe exportar `faq: faqs` (ver siguiente
+  sección).
+
+## SEO: FAQs y Schema markup
+
+Cuando agregues o modifiques una sección de Preguntas Frecuentes
+(en posts del blog o en páginas de servicio), siempre:
+
+- Definir las FAQs en un único array `const faqs = [{ q, a }, ...]`,
+  nunca duplicar el contenido entre el render y el schema.
+- En posts del blog, exportar `faq: faqs` en el objeto `post`. La
+  página dinámica `app/[locale]/blog/[articleId]/page.js` emite
+  automáticamente el JSON-LD `FAQPage` cuando el post lo trae.
+- En páginas de servicio (no blog), emitir el `FAQPage` JSON-LD
+  manualmente en `layout.js` o `page.js`, usando el mismo array que
+  renderiza el componente de UI.
+- El texto del schema debe ser idéntico al texto visible (Google
+  penaliza divergencias).
+- Validar con https://search.google.com/test/rich-results antes de
+  mergear.
 
 ## Antes de cerrar una tarea
 
 - Repasar el checklist final de `CONTENT_GUIDELINES.md`.
 - Verificar que no se introdujeron em-dashes ni emojis-viñeta.
 - Confirmar que el post está registrado en `content.js`.
+- Si el post o la página tiene FAQs, confirmar que el `FAQPage`
+  JSON-LD esté presente y sincronizado con el contenido visible.
