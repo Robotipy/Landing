@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { getArticlesByLocale } from "../_assets/content";
 import BadgeCategory from "../_assets/components/BadgeCategory";
 import Avatar from "../_assets/components/Avatar";
@@ -86,9 +85,8 @@ export default async function Article({ params }) {
   return (
     <>
       {/* SCHEMA JSON-LD MARKUP FOR GOOGLE */}
-      <Script
+      <script
         type="application/ld+json"
-        id={`json-ld-article-${article.slug}`}
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -112,9 +110,8 @@ export default async function Article({ params }) {
       />
 
       {Array.isArray(article.faq) && article.faq.length > 0 && (
-        <Script
+        <script
           type="application/ld+json"
-          id={`json-ld-faq-${article.slug}`}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
