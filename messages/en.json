@@ -27,9 +27,34 @@
         }
       },
       "cases": {
+        "todos": {
+          "label": "All cases",
+          "description": "Browse every automation success story grouped by industry"
+        },
         "agricola": {
           "label": "Agriculture",
           "description": "Automation of agricultural, fruit-growing and agritech processes"
+        },
+        "alimentos": {
+          "label": "Food & Beverage"
+        },
+        "estudioJuridico": {
+          "label": "Law Firm"
+        },
+        "industriasTecnologicas": {
+          "label": "Tech Industries"
+        },
+        "salud": {
+          "label": "Healthcare"
+        },
+        "seguros": {
+          "label": "Insurance"
+        },
+        "serviciosTecnicos": {
+          "label": "Technical Services"
+        },
+        "software": {
+          "label": "Software"
         },
         "automotriz": {
           "label": "Automotive",
@@ -759,7 +784,25 @@
       "roiCalculator": {
         "title": "RPA ROI Calculator: Estimate Your Automation Returns | Robotipy",
         "description": "Free RPA ROI calculator. Estimate savings, payback period and NPV for your automation project including Rocketbot licenses, development and maintenance. Instant results."
+      },
+      "successCases": {
+        "title": "RPA & AI Automation Success Cases | Robotipy",
+        "description": "30+ real automation cases across agriculture, banking, insurance, transport, healthcare and more. Metrics, tools and concrete savings from RPA, AI and custom software projects."
       }
+    }
+  },
+  "successCases": {
+    "hero": {
+      "title": "All our success cases",
+      "subtitle": "30+ real automations across industries in Latin America and Spain. Each case includes the original challenge, the solution we built and the measured savings."
+    },
+    "jumpTo": "Jump to industry",
+    "viewIndustry": "View industry page",
+    "cta": {
+      "title": "Do you have a similar process at your company?",
+      "subtitle": "Book a free 20-minute discovery call and we'll tell you exactly what to automate first and how much you'd save.",
+      "primary": "Book discovery call",
+      "secondary": "Calculate ROI"
     }
   }
 }
