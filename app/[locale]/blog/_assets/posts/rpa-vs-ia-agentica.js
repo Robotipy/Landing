@@ -838,7 +838,7 @@ export const post = {
         <p className={styles.p}>
           En LATAM,{" "}
           <strong className={styles.strong}>
-            <ExtLink href="https://rocketbot.com">Rocketbot</ExtLink> está desarrollando &quot;Resilient&quot;
+            <ExtLink href="https://rocketbot.com">Rocketbot</ExtLink>{" "}está desarrollando &quot;Resilient&quot;
           </strong>
           , su propia capacidad de auto-reparación que apunta a competir con lo que{" "}
           <ExtLink href="https://www.uipath.com/platform/agentic-automation">UiPath</ExtLink> ofrece
