@@ -857,27 +857,27 @@ export const post = {
         </p>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            <Link href="/rpa" className="link link-accent">
+            <Link href="/rpa" className="text-accent underline hover:text-accent/80 visited:text-accent">
               Automatización RPA con Rocketbot
             </Link>
             : cómo construimos bots, qué procesos automatizar primero y nuestra metodología de
             implementación.
           </li>
           <li className={styles.li}>
-            <Link href="/chatbot" className="link link-accent">
+            <Link href="/chatbot" className="text-accent underline hover:text-accent/80 visited:text-accent">
               Chatbots con IA
             </Link>
             : asistentes conversacionales conectados a tus datos para atención al cliente y equipos
             internos.
           </li>
           <li className={styles.li}>
-            <Link href="/roi-calculator" className="link link-accent">
+            <Link href="/roi-calculator" className="text-accent underline hover:text-accent/80 visited:text-accent">
               Calculadora ROI RPA
             </Link>
             : estima ahorros, payback y VPN antes de presentar el caso de negocio.
           </li>
           <li className={styles.li}>
-            <Link href="/success-cases" className="link link-accent">
+            <Link href="/success-cases" className="text-accent underline hover:text-accent/80 visited:text-accent">
               Casos de éxito
             </Link>
             : 30+ automatizaciones reales, con métricas concretas de ahorro, en industrias de
