@@ -71,6 +71,9 @@ module.exports = {
       alternateRefs: locales.map((l) => ({
         href: `${config.siteUrl}/${l}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`,
         hreflang: l,
+        // next-sitemap por defecto concatena `loc` al final de `href`. Como
+        // aqui ya construimos la URL completa, lo deshabilitamos.
+        hrefIsAbsolute: true,
       })),
     };
   },
