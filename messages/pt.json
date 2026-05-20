@@ -791,6 +791,187 @@
       }
     }
   },
+  "roiCalculator": {
+    "hero": {
+      "title": "Calculadora ROI RPA",
+      "subtitle": "Descubra quanto sua empresa pode economizar automatizando um processo. Quatro passos rápidos, sem precisar de dados exatos.",
+      "demo": "Ver demo"
+    },
+    "progress": {
+      "step1": "Seu processo",
+      "step2": "Erros e custos",
+      "step3": "Licenças",
+      "step4": "Relatório"
+    },
+    "nav": {
+      "back": "Voltar",
+      "next": "Próximo",
+      "finish": "Ver relatório"
+    },
+    "step1": {
+      "title": "Conte sobre seu processo",
+      "subtitle": "Escolha um modelo ou descreva o processo que quer automatizar.",
+      "templatesLabel": "Modelos rápidos",
+      "description": {
+        "label": "Descrição breve do processo",
+        "hint": "O que essa pessoa faz manualmente hoje?",
+        "placeholder": "Ex: gerar faturas mensais do ERP e enviar por email aos clientes"
+      },
+      "people": {
+        "label": "Pessoas envolvidas"
+      },
+      "salary": {
+        "label": "Salário mensal por pessoa (USD)"
+      },
+      "days": {
+        "label": "Dias/mês em que o processo roda"
+      },
+      "hours": {
+        "label": "Horas/dia dedicadas ao processo",
+        "unit": "h"
+      },
+      "footnote": "Você não precisa de dados exatos. Uma estimativa aproximada é suficiente para calcular seu ROI."
+    },
+    "step2": {
+      "title": "Impacto de erros e custos extras",
+      "subtitle": "Esses dados melhoram a precisão. Se não se aplicam, deixe em 0.",
+      "callout": "Estimativa: com {errores} erros/mês de {minutos} min cada, você perde ~{costo}/mês em retrabalho.",
+      "errores": {
+        "label": "Erros por mês (aprox.)",
+        "hint": "Quantidade de erros que acontecem mensalmente"
+      },
+      "minPorError": {
+        "label": "Tempo por erro (minutos)",
+        "hint": "Quanto leva para corrigir cada erro"
+      },
+      "horasExtra": {
+        "label": "Horas extras / mês",
+        "hint": "Horas extras causadas por este processo"
+      },
+      "costoHoraExtra": {
+        "label": "Custo hora extra (USD)"
+      },
+      "multas": {
+        "label": "Multas ou perdas por atrasos (USD/mês)",
+        "hint": "O processo gera multas ou perdas se atrasar?"
+      },
+      "exchangeRate": {
+        "label": "Taxa de câmbio (USD para moeda local)",
+        "hint": "Se seus custos estão em USD, deixe 1"
+      },
+      "costoDesarrollo": {
+        "label": "Custo desenvolvimento do robô (USD)",
+        "hint": "Média: $5.800. Varia conforme a complexidade."
+      },
+      "mantenimientoNote": "A manutenção anual é calculada automaticamente como 10% do custo de desenvolvimento."
+    },
+    "step3": {
+      "title": "Licenças recomendadas",
+      "subtitle": "Com base no seu processo, estas são as licenças que você precisa.",
+      "perYear": "/ano",
+      "explanationSingle": "Seu processo consome aproximadamente {horas} horas/mês. Uma {licencia} é suficiente para esse volume.",
+      "explanationWithOrchestrator": "Seu processo consome aproximadamente {horas} horas/mês com {personas} pessoas. Recomendamos {licencia} mais {orquestador} para gerenciar o robô.",
+      "totalLabel": "Total anual em licenças",
+      "localLabel": "Em moeda local"
+    },
+    "step4": {
+      "title": "Seu relatório ROI",
+      "processLabel": "Processo:",
+      "noDescription": "Processo de automação RPA",
+      "roiHero": "Retorno sobre investimento em 3 anos",
+      "metrics": {
+        "annualSavings": "Economia anual",
+        "payback": "Payback",
+        "paybackUnit": "meses",
+        "npv": "VPL (3 anos)",
+        "totalBenefit": "Benefício total 3 anos"
+      },
+      "benefitsTitle": "Benefícios anuais",
+      "benefits": {
+        "productivity": "Economia em produtividade",
+        "errors": "Redução de erros",
+        "overtime": "Economia em horas extras",
+        "fines": "Multas/perdas recuperadas",
+        "total": "Total benefício anual"
+      },
+      "investmentTitle": "Investimento",
+      "investment": {
+        "development": "Desenvolvimento do robô",
+        "licenses": "Licenças anuais (USD)",
+        "maintenance": "Manutenção anual",
+        "year1": "Investimento ano 1",
+        "recurring": "Recorrente anual (anos 2-3)"
+      },
+      "licensesTitle": "Licenças recomendadas",
+      "cta": {
+        "contact": "Falar com um consultor",
+        "email": "Receber relatório por email",
+        "reset": "Recalcular"
+      }
+    },
+    "templates": {
+      "facturacion": {
+        "name": "Faturamento",
+        "description": "Geração e envio de faturas para clientes a partir do sistema contábil"
+      },
+      "conciliacion": {
+        "name": "Conciliação bancária",
+        "description": "Comparar extratos bancários com registros contábeis e marcar diferenças"
+      },
+      "reportes": {
+        "name": "Geração de relatórios",
+        "description": "Coletar dados de várias fontes e gerar relatórios periódicos"
+      },
+      "datos": {
+        "name": "Entrada de dados",
+        "description": "Transcrever informações de documentos físicos ou PDFs para o sistema"
+      },
+      "validacion": {
+        "name": "Validação de documentos",
+        "description": "Verificar dados de documentos contra regras de negócio e bases de dados"
+      },
+      "otro": {
+        "name": "Outro",
+        "description": "Descreva seu próprio processo no campo abaixo"
+      }
+    },
+    "licenseDescriptions": {
+      "S": "1 robô, processos simples",
+      "M": "1 robô, processos intermediários",
+      "L": "1 robô, processos complexos",
+      "OE": "Gestão básica de robôs",
+      "OS": "Gestão padrão de robôs",
+      "OEnt": "Gestão empresarial",
+      "OCorp": "Gestão corporativa"
+    },
+    "footer": "© {year} Robotipy. Calculadora de ROI baseada na metodologia Rocketbot.",
+    "lead": {
+      "title": "Receba o relatório por email",
+      "subtitle": "Digite seus dados e enviaremos a análise detalhada.",
+      "name": "Nome completo",
+      "email": "Email",
+      "company": "Nome da empresa",
+      "phone": "Telefone",
+      "role": "Cargo",
+      "size": "Tamanho da empresa",
+      "sizes": {
+        "placeholder": "Selecionar tamanho da empresa",
+        "s1": "1-10 funcionários",
+        "s2": "11-50 funcionários",
+        "s3": "51-200 funcionários",
+        "s4": "201-500 funcionários",
+        "s5": "501-1000 funcionários",
+        "s6": "1000+ funcionários"
+      },
+      "cancel": "Cancelar",
+      "submit": "Enviar relatório",
+      "submitting": "Enviando...",
+      "successToast": "Relatório enviado para seu email",
+      "errorToast": "Não foi possível enviar o relatório. Tente novamente.",
+      "validationError": "Preencha todos os campos obrigatórios"
+    },
+    "contactSummary": "Calculei o ROI para um processo que quero automatizar e gostaria de mais detalhes.\n\nROI: {roi}\nBenefício anual: {beneficio}\nPayback: {payback} meses\nLicenças recomendadas: {licencias}\n\nDetalhes do processo:\n- Pessoas: {personas}\n- Horas mensais: {horas}\n- Descrição: {descripcion}\n\nVocês podem me contatar para discutir a implementação?"
+  },
   "successCases": {
     "hero": {
       "title": "Todos os nossos casos de sucesso",

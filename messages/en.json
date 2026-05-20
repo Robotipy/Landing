@@ -791,6 +791,187 @@
       }
     }
   },
+  "roiCalculator": {
+    "hero": {
+      "title": "RPA ROI Calculator",
+      "subtitle": "See how much your company can save by automating one process. Four quick steps, no exact numbers required.",
+      "demo": "Watch demo"
+    },
+    "progress": {
+      "step1": "Your process",
+      "step2": "Errors & costs",
+      "step3": "Licenses",
+      "step4": "Report"
+    },
+    "nav": {
+      "back": "Back",
+      "next": "Next",
+      "finish": "See report"
+    },
+    "step1": {
+      "title": "Tell us about your process",
+      "subtitle": "Pick a template or describe the process you want to automate.",
+      "templatesLabel": "Quick templates",
+      "description": {
+        "label": "Short process description",
+        "hint": "What does this person do manually today?",
+        "placeholder": "E.g. generate monthly invoices from the ERP and email them to customers"
+      },
+      "people": {
+        "label": "People involved"
+      },
+      "salary": {
+        "label": "Monthly salary per person (USD)"
+      },
+      "days": {
+        "label": "Days/month the process runs"
+      },
+      "hours": {
+        "label": "Hours/day spent on the process",
+        "unit": "h"
+      },
+      "footnote": "You don't need exact data. A rough estimate is enough to calculate your ROI."
+    },
+    "step2": {
+      "title": "Impact of errors and extra costs",
+      "subtitle": "These inputs improve accuracy. If they don't apply, leave them at 0.",
+      "callout": "Estimate: with {errores} errors/month of {minutos} min each, you're losing ~{costo}/month on rework.",
+      "errores": {
+        "label": "Errors per month (approx.)",
+        "hint": "Number of errors that happen monthly"
+      },
+      "minPorError": {
+        "label": "Time per error (minutes)",
+        "hint": "How long it takes to fix each error"
+      },
+      "horasExtra": {
+        "label": "Overtime hours / month",
+        "hint": "Overtime hours caused by this process"
+      },
+      "costoHoraExtra": {
+        "label": "Overtime hourly cost (USD)"
+      },
+      "multas": {
+        "label": "Fines or losses from delays (USD/month)",
+        "hint": "Does this process trigger fines or losses if delayed?"
+      },
+      "exchangeRate": {
+        "label": "Exchange rate (USD to local currency)",
+        "hint": "If your costs are in USD, leave it at 1"
+      },
+      "costoDesarrollo": {
+        "label": "Bot development cost (USD)",
+        "hint": "Average: $5,800. Varies by complexity."
+      },
+      "mantenimientoNote": "Annual maintenance is auto-calculated as 10% of the development cost."
+    },
+    "step3": {
+      "title": "Recommended licenses",
+      "subtitle": "Based on your process, these are the licenses you need.",
+      "perYear": "/year",
+      "explanationSingle": "Your process consumes roughly {horas} hours/month. A {licencia} is enough to handle this volume.",
+      "explanationWithOrchestrator": "Your process consumes roughly {horas} hours/month with {personas} people. We recommend {licencia} plus {orquestador} to manage the bot.",
+      "totalLabel": "Total annual licenses",
+      "localLabel": "In local currency"
+    },
+    "step4": {
+      "title": "Your ROI report",
+      "processLabel": "Process:",
+      "noDescription": "RPA automation process",
+      "roiHero": "3-year return on investment",
+      "metrics": {
+        "annualSavings": "Annual savings",
+        "payback": "Payback",
+        "paybackUnit": "months",
+        "npv": "NPV (3 years)",
+        "totalBenefit": "Total benefit 3 years"
+      },
+      "benefitsTitle": "Annual benefits",
+      "benefits": {
+        "productivity": "Productivity savings",
+        "errors": "Error reduction",
+        "overtime": "Overtime savings",
+        "fines": "Fines/losses recovered",
+        "total": "Total annual benefit"
+      },
+      "investmentTitle": "Investment",
+      "investment": {
+        "development": "Bot development",
+        "licenses": "Annual licenses (USD)",
+        "maintenance": "Annual maintenance",
+        "year1": "Year 1 investment",
+        "recurring": "Recurring annual (years 2-3)"
+      },
+      "licensesTitle": "Recommended licenses",
+      "cta": {
+        "contact": "Talk to an advisor",
+        "email": "Email me the report",
+        "reset": "Recalculate"
+      }
+    },
+    "templates": {
+      "facturacion": {
+        "name": "Invoicing",
+        "description": "Generate and send invoices to customers from the accounting system"
+      },
+      "conciliacion": {
+        "name": "Bank reconciliation",
+        "description": "Compare bank statements with accounting records and flag differences"
+      },
+      "reportes": {
+        "name": "Reporting",
+        "description": "Pull data from multiple sources and build periodic reports"
+      },
+      "datos": {
+        "name": "Data entry",
+        "description": "Transcribe info from paper documents or PDFs into the system"
+      },
+      "validacion": {
+        "name": "Document validation",
+        "description": "Verify document data against business rules and databases"
+      },
+      "otro": {
+        "name": "Other",
+        "description": "Describe your own process in the field below"
+      }
+    },
+    "licenseDescriptions": {
+      "S": "1 bot, simple processes",
+      "M": "1 bot, intermediate processes",
+      "L": "1 bot, complex processes",
+      "OE": "Basic bot management",
+      "OS": "Standard bot management",
+      "OEnt": "Enterprise bot management",
+      "OCorp": "Corporate bot management"
+    },
+    "footer": "© {year} Robotipy. ROI calculator based on Rocketbot methodology.",
+    "lead": {
+      "title": "Email me the report",
+      "subtitle": "Enter your details and we'll send the full analysis.",
+      "name": "Full name",
+      "email": "Email",
+      "company": "Company name",
+      "phone": "Phone number",
+      "role": "Role",
+      "size": "Company size",
+      "sizes": {
+        "placeholder": "Select company size",
+        "s1": "1-10 employees",
+        "s2": "11-50 employees",
+        "s3": "51-200 employees",
+        "s4": "201-500 employees",
+        "s5": "501-1000 employees",
+        "s6": "1000+ employees"
+      },
+      "cancel": "Cancel",
+      "submit": "Send report",
+      "submitting": "Sending...",
+      "successToast": "Report sent to your email",
+      "errorToast": "Could not send the report. Please try again.",
+      "validationError": "Please fill in all required fields"
+    },
+    "contactSummary": "I calculated the ROI for a process I want to automate and would like more details.\n\nROI: {roi}\nAnnual benefit: {beneficio}\nPayback: {payback} months\nRecommended licenses: {licencias}\n\nProcess details:\n- People: {personas}\n- Monthly hours: {horas}\n- Description: {descripcion}\n\nCan you contact me to discuss implementation?"
+  },
   "successCases": {
     "hero": {
       "title": "All our success cases",
