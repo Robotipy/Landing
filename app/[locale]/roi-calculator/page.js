@@ -1,434 +1,336 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef, Suspense } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "react-hot-toast";
 import Header from "@/components/Header";
-import { Suspense } from "react";
 import config from "@/config";
 import apiClient from "@/libs/api";
 
-// RocketBot licensing data (fixed prices)
 const ROCKETBOT_LICENSES = {
-  licenseS: { name: "Licencia S", price: 2640 },
-  licenseM: { name: "Licencia M", price: 4200 },
-  licenseL: { name: "Licencia L", price: 7590 },
-  orchestratorEntry: { name: "Orquestador Entry", price: 2090 },
-  orchestratorStandard: { name: "Orquestador Standard", price: 4290 },
-  orchestratorEnterprise: { name: "Orquestador Enterprise", price: 8690 },
-  orchestratorCorporate: { name: "Orquestador Corporate", price: 13090 }
-  
+  S:     { name: "Licencia S",             price: 2640 },
+  M:     { name: "Licencia M",             price: 4200 },
+  L:     { name: "Licencia L",             price: 7590 },
+  OE:    { name: "Orquestador Entry",      price: 2090 },
+  OS:    { name: "Orquestador Standard",   price: 4290 },
+  OEnt:  { name: "Orquestador Enterprise", price: 8690 },
+  OCorp: { name: "Orquestador Corporate",  price: 13090 },
 };
 
-// Plantillas de industria
-const INDUSTRY_TEMPLATES = {
-  banking: {
-    name: "Bancario",
-    peopleInProcess: 5,
-    daysPerMonth: 22,
-    hoursPerDay: 8,
-    avgMonthlyCostPerPerson: 2500,
-    reprocessHours: 2,
-    overtimeHours: 1,
-    overtimeCost: 200
+const LICENSE_THRESHOLDS = {
+  bot: { S: 60, M: 160 },
+  orchestrator: {
+    entryMinPeople: 3,
+    entryMinHours: 200,
+    entryMaxHours: 300,
+    standardMaxHours: 500,
   },
-  manufacturing: {
-    name: "Manufactura", 
-    peopleInProcess: 3,
-    daysPerMonth: 20,
-    hoursPerDay: 8,
-    avgMonthlyCostPerPerson: 1800,
-    reprocessHours: 1,
-    overtimeHours: 2,
-    overtimeCost: 160
-  },
-  healthcare: {
-    name: "Salud",
-    peopleInProcess: 4,
-    daysPerMonth: 22,
-    hoursPerDay: 8,
-    avgMonthlyCostPerPerson: 2200,
-    reprocessHours: 1.5,
-    overtimeHours: 1.5,
-    overtimeCost: 180
-  },
-  insurance: {
-    name: "Seguros",
-    peopleInProcess: 6,
-    daysPerMonth: 22,
-    hoursPerDay: 8,
-    avgMonthlyCostPerPerson: 2000,
-    reprocessHours: 2.5,
-    overtimeHours: 2,
-    overtimeCost: 170
-  }
 };
+
+const DISCOUNT_RATE = 0.10;
+const WORKING_DAYS_PER_MONTH = 22;
+const WORKING_HOURS_PER_DAY = 8;
+const MAINTENANCE_RATE = 0.10;
+
+const TEMPLATE_KEYS = ["facturacion", "conciliacion", "reportes", "datos", "validacion", "otro"];
+
+const TEMPLATE_DEFAULTS = {
+  facturacion:  { personas: 1, horasDia: 3, diasMes: 22, erroresMes: 8,  minPorError: 20 },
+  conciliacion: { personas: 1, horasDia: 4, diasMes: 22, erroresMes: 10, minPorError: 45 },
+  reportes:     { personas: 1, horasDia: 2, diasMes: 22, erroresMes: 3,  minPorError: 30 },
+  datos:        { personas: 2, horasDia: 5, diasMes: 22, erroresMes: 15, minPorError: 15 },
+  validacion:   { personas: 1, horasDia: 3, diasMes: 22, erroresMes: 6,  minPorError: 25 },
+  otro:         null,
+};
+
+const CONTACT_URL = "/contact-us";
+
+const DEFAULT_FORM = {
+  descripcion: "",
+  personas: 2,
+  salario: 1000,
+  diasMes: 15,
+  horasDia: 8,
+  erroresMes: 5,
+  minPorError: 30,
+  horasExtraMes: 0,
+  costoHoraExtra: 160,
+  multasMes: 0,
+  exchangeRate: 1,
+  costoDesarrollo: 5800,
+};
+
+function deduceLicenses({ personas, horasDia, diasMes }) {
+  const h = personas * horasDia * diasMes;
+  const bot = h <= LICENSE_THRESHOLDS.bot.S ? "S"
+            : h <= LICENSE_THRESHOLDS.bot.M ? "M"
+            : "L";
+  const t = LICENSE_THRESHOLDS.orchestrator;
+  let orq = null;
+  if (personas >= t.entryMinPeople || h > t.entryMinHours) {
+    if      (h <= t.entryMaxHours)    orq = "OE";
+    else if (h <= t.standardMaxHours) orq = "OS";
+    else                              orq = "OEnt";
+  }
+  return orq ? [bot, orq] : [bot];
+}
+
+function computeROI(f) {
+  const costoHora = f.salario / (WORKING_DAYS_PER_MONTH * WORKING_HOURS_PER_DAY);
+  const totalHorasMes = f.personas * f.horasDia * f.diasMes;
+
+  const ahorroProductividad = totalHorasMes * costoHora * 12;
+  const ahorroErrores       = (f.erroresMes * f.minPorError / 60) * costoHora * 12;
+  const ahorroHorasExtra    = f.horasExtraMes * f.costoHoraExtra * 12;
+  const multasRecuperadas   = f.multasMes * 12;
+  const beneficioAnual = ahorroProductividad + ahorroErrores + ahorroHorasExtra + multasRecuperadas;
+
+  const licencias = deduceLicenses(f);
+  const licenciasAnualUSD = licencias.reduce((sum, key) => sum + ROCKETBOT_LICENSES[key].price, 0);
+  const mantenimiento = f.costoDesarrollo * MAINTENANCE_RATE;
+  const inversionAño1   = f.costoDesarrollo + licenciasAnualUSD + mantenimiento;
+  const recurrenteAnual = licenciasAnualUSD + mantenimiento;
+
+  const benefDesc = [1, 2, 3].reduce(
+    (s, y) => s + beneficioAnual / Math.pow(1 + DISCOUNT_RATE, y), 0
+  );
+  const costoDesc =
+      inversionAño1   / Math.pow(1 + DISCOUNT_RATE, 1)
+    + recurrenteAnual / Math.pow(1 + DISCOUNT_RATE, 2)
+    + recurrenteAnual / Math.pow(1 + DISCOUNT_RATE, 3);
+
+  const VPN = benefDesc - costoDesc;
+  const ROI = costoDesc > 0 ? (VPN / costoDesc) * 100 : 0;
+  const paybackMeses = beneficioAnual > 0 ? (inversionAño1 / beneficioAnual) * 12 : 0;
+
+  return {
+    licencias,
+    licenciasAnualUSD,
+    mantenimiento,
+    inversionAño1,
+    recurrenteAnual,
+    beneficioAnual,
+    beneficioTotal3a: beneficioAnual * 3,
+    VPN,
+    ROI,
+    paybackMeses,
+    ahorroProductividad,
+    ahorroErrores,
+    ahorroHorasExtra,
+    multasRecuperadas,
+    costoHora,
+    totalHorasMes,
+  };
+}
+
+const fmtMoney = (n) => `$${Math.round(n || 0).toLocaleString("en-US")}`;
+const fmtPct   = (n) => `${(n || 0).toFixed(1)}%`;
+
+function track(name, params) {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", name, params || {});
+  }
+}
+
+function ProgressBar({ step, t }) {
+  const labels = [t("progress.step1"), t("progress.step2"), t("progress.step3"), t("progress.step4")];
+  return (
+    <div className="max-w-3xl mx-auto mb-10">
+      <div className="flex items-center justify-between">
+        {labels.map((label, idx) => {
+          const n = idx + 1;
+          const isActive    = n === step;
+          const isCompleted = n < step;
+          return (
+            <div key={n} className="flex-1 flex items-center">
+              <div className="flex flex-col items-center">
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors duration-300 ${
+                    isCompleted
+                      ? "bg-green-500 text-white"
+                      : isActive
+                        ? "bg-teal-500 text-white ring-4 ring-teal-500/30"
+                        : "bg-cyan-900/40 text-cyan-400 border border-cyan-800/30"
+                  }`}
+                >
+                  {isCompleted ? (
+                    <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7 7a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L9 11.6l6.3-6.3a1 1 0 011.4 0z" clipRule="evenodd" />
+                    </svg>
+                  ) : n}
+                </div>
+                <span className={`text-xs mt-2 text-center max-w-[80px] ${isActive ? "text-teal-300 font-semibold" : "text-cyan-400"}`}>
+                  {label}
+                </span>
+              </div>
+              {n < 4 && (
+                <div className={`h-0.5 flex-1 mx-2 -mt-6 transition-colors duration-300 ${
+                  isCompleted ? "bg-green-500" : "bg-cyan-800/40"
+                }`} />
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function NumberField({ label, hint, name, value, onChange, min = 0, step = 1, suffix }) {
+  return (
+    <div className="space-y-2">
+      <label className="text-cyan-50 uppercase text-xs block">{label}</label>
+      <div className="relative">
+        <input
+          name={name}
+          type="number"
+          min={min}
+          step={step}
+          value={value}
+          onChange={(e) => {
+            const v = e.target.value === "" ? 0 : parseFloat(e.target.value);
+            onChange(name, Number.isNaN(v) ? 0 : Math.max(min, v));
+          }}
+          className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        />
+        {suffix && (
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 text-sm pointer-events-none">{suffix}</span>
+        )}
+      </div>
+      {hint && <p className="text-cyan-400 text-xs">{hint}</p>}
+    </div>
+  );
+}
 
 const ROICalculator = () => {
-  // Form state for inputs
-  const [formData, setFormData] = useState({
-    // Process inputs
-    peopleInProcess: 2,
-    daysPerMonth: 15,
-    hoursPerDay: 8,
-    avgMonthlyCostPerPerson: 1000,
-    workingDaysPerMonth: 22,
-    workingHoursPerDay: 8,
-    
-    // Error/reprocess inputs
-    reprocessHours: 0,
-    
-    // Overtime inputs
-    overtimeHours: 0,
-    overtimeCost: 160,
-    
-    // Penalties/fines
-    monthlyFines: 0,
-    monthlyLosses: 0,
-    
-    // Currency
-    exchangeRate: 1,
-    
-    // Selected licenses
-    selectedLicenses: {
-      licenseS: 1,
-      licenseM: 0,
-      licenseL: 0,
-      orchestratorEntry: 0,
-      orchestratorStandard: 0,
-      orchestratorEnterprise: 0,
-      orchestratorCorporate: 0
-    },
-    
-    // Partner costs
-    robotDevelopmentCost: 5800,
-    annualMaintenanceCost: 580
-  });
+  const t = useTranslations("roiCalculator");
 
-  // Lead capture state
-  const [leadData, setLeadData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    role: '',
-    companySize: ''
-  });
-
-  // UI state
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState(DEFAULT_FORM);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [showDemoModal, setShowDemoModal] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
-  const [selectedTemplate, setSelectedTemplate] = useState('');
-  const [showDemoModal, setShowDemoModal] = useState(false);
+  const [leadData, setLeadData] = useState({
+    name: "", email: "", phone: "", companyName: "", role: "", companySize: "",
+  });
 
-  // Calculated values
-  const [calculations, setCalculations] = useState({});
-
-  // Read URL parameters and pre-fill form
+  const startTracked = useRef(false);
   useEffect(() => {
+    if (startTracked.current) return;
+    startTracked.current = true;
+    track("roi_wizard_start");
+
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.size > 0) {
-      setFormData(prev => ({
+      const peopleInProcess = parseInt(urlParams.get("peopleInProcess"));
+      const hoursPerDay = parseFloat(urlParams.get("hoursPerDay"));
+      const avgMonthlyCostPerPerson = parseFloat(urlParams.get("avgMonthlyCostPerPerson"));
+      setFormData((prev) => ({
         ...prev,
-        peopleInProcess: parseInt(urlParams.get('peopleInProcess')) || prev.peopleInProcess,
-        hoursPerDay: parseInt(urlParams.get('hoursPerDay')) || prev.hoursPerDay,
-        avgMonthlyCostPerPerson: parseInt(urlParams.get('avgMonthlyCostPerPerson')) || prev.avgMonthlyCostPerPerson,
-        workingDaysPerMonth: parseInt(urlParams.get('workingDaysPerMonth')) || prev.workingDaysPerMonth,
-        workingHoursPerDay: parseInt(urlParams.get('workingHoursPerDay')) || prev.workingHoursPerDay
+        personas: Number.isFinite(peopleInProcess) ? peopleInProcess : prev.personas,
+        horasDia: Number.isFinite(hoursPerDay) ? hoursPerDay : prev.horasDia,
+        salario: Number.isFinite(avgMonthlyCostPerPerson) ? avgMonthlyCostPerPerson : prev.salario,
       }));
     }
   }, []);
 
-  // Real-time calculations
-  useEffect(() => {
-    calculateROI();
-  }, [formData]);
+  const calculations = useMemo(() => computeROI(formData), [formData]);
+  const recommendedLicenses = calculations.licencias;
 
-  const calculateROI = () => {
-    const {
-      peopleInProcess,
-      daysPerMonth,
-      hoursPerDay,
-      avgMonthlyCostPerPerson,
-      workingDaysPerMonth,
-      workingHoursPerDay,
-      reprocessHours,
-      overtimeHours,
-      overtimeCost,
-      monthlyFines,
-      monthlyLosses,
-      exchangeRate,
-      selectedLicenses,
-      robotDevelopmentCost,
-      annualMaintenanceCost,
-    } = formData;
-
-    // Basic calculations
-    const totalRepetitiveHours = peopleInProcess * daysPerMonth * hoursPerDay;
-    const costPerHour = avgMonthlyCostPerPerson / (workingDaysPerMonth * workingHoursPerDay);
-    const annualProductivitySavings = totalRepetitiveHours * costPerHour * 12;
-    
-    // Error costs
-    const annualReprocessCosts = reprocessHours * costPerHour * 12;
-    
-    // Overtime costs
-    const annualOvertimeCosts = overtimeHours * overtimeCost * 12;
-
-    // Fines costs
-    const annualFines = monthlyFines * 12;
-
-    // Losses costs
-    const annualLosses = monthlyLosses * 12;
-    
-    // Annual benefits
-    const annualBenefits = annualProductivitySavings + annualReprocessCosts + annualOvertimeCosts + annualFines + annualLosses;
-    
-    
-    // License costs
-    const totalLicenseCostUSD = Object.keys(selectedLicenses).reduce((total, key) => {
-      return total + (selectedLicenses[key] * ROCKETBOT_LICENSES[key].price);
-    }, 0);
-    
-    const totalLicenseCostLocal = totalLicenseCostUSD * exchangeRate;
-    
-    // Total investment calculation
-    const totalInvestment = totalLicenseCostLocal + robotDevelopmentCost;
-    
-    // Annual costs (licenses + maintenance)
-    const year1Cost = totalInvestment + annualMaintenanceCost;
-    const year2Cost = annualMaintenanceCost + totalLicenseCostLocal; // Assume 20% annual license fee
-    const year3Cost = annualMaintenanceCost + totalLicenseCostLocal;
-    
-    // 3-year analysis
-    const totalBenefits3Years = annualBenefits * 3;
-    const totalCosts3Years = year1Cost + year2Cost + year3Cost;
-
-    const totalBenefitsNPV = calculateNPV(0.10, [annualBenefits, annualBenefits, annualBenefits]);
-    const totalCostNPV = calculateNPV(0.10, [year1Cost, year2Cost, year3Cost]);
-    
-    // ROI calculations
-    const roi = ((totalBenefitsNPV - totalCostNPV) / totalCostNPV) * 100;
-    const paybackMonths = (year1Cost / (annualBenefits/12));
-    
-    // NPV calculation (10% discount rate)
-    const discountRate = 0.10;
-    const npvYear1 = (annualBenefits - year1Cost) / Math.pow(1 + discountRate, 1);
-    const npvYear2 = (annualBenefits - year2Cost) / Math.pow(1 + discountRate, 2);
-    const npvYear3 = (annualBenefits - year3Cost) / Math.pow(1 + discountRate, 3);
-    const netPresentValue = npvYear1 + npvYear2 + npvYear3;
-
-    setCalculations({
-      totalRepetitiveHours,
-      annualProductivitySavings,
-      annualReprocessCosts,
-      annualOvertimeCosts,
-      annualFines,
-      annualLosses,
-      annualBenefits,
-      totalLicenseCostUSD,
-      totalLicenseCostLocal,
-      totalInvestment,
-      year1Cost,
-      year2Cost,
-      year3Cost,
-      totalBenefits3Years,
-      totalCosts3Years,
-      roi,
-      paybackMonths,
-      netPresentValue,
-      costPerHour
-    });
+  const updateField = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type } = e.target;
-    setFormData(prev => ({
+  const applyTemplate = (key) => {
+    setSelectedTemplate(key);
+    track("roi_wizard_template_used", { template_name: key });
+    const defaults = TEMPLATE_DEFAULTS[key];
+    if (!defaults) return;
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'number' ? parseFloat(value) || 0 : value
+      ...defaults,
+      descripcion: prev.descripcion || t(`templates.${key}.description`),
     }));
   };
 
-  const handleLicenseChange = (license, quantity) => {
-    setFormData(prev => ({
-      ...prev,
-      selectedLicenses: {
-        ...prev.selectedLicenses,
-        [license]: parseInt(quantity) || 0
-      }
-    }));
-  };
-
-  const handleLeadInputChange = (e) => {
-    const { name, value } = e.target;
-    setLeadData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const applyTemplate = (templateKey) => {
-    const template = INDUSTRY_TEMPLATES[templateKey];
-    if (template) {
-      setFormData(prev => ({
-        ...prev,
-        peopleInProcess: template.peopleInProcess,
-        daysPerMonth: template.daysPerMonth,
-        hoursPerDay: template.hoursPerDay,
-        avgMonthlyCostPerPerson: template.avgMonthlyCostPerPerson,
-        reprocessHours: template.reprocessHours,
-        overtimeHours: template.overtimeHours,
-        overtimeCost: template.overtimeCost
-      }));
-      setSelectedTemplate(templateKey);
-      toast.success(`Applied ${template.name} template`);
+  const goNext = () => {
+    if (step === 1) track("roi_wizard_step_2");
+    if (step === 2) track("roi_wizard_step_3");
+    if (step === 3) {
+      track("roi_wizard_complete", {
+        roi_value: Math.round(calculations.ROI),
+        payback_months: Math.round(calculations.paybackMeses * 10) / 10,
+        license_type: recommendedLicenses.join("+"),
+      });
     }
+    setStep((s) => Math.min(4, s + 1));
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const goBack = () => {
+    setStep((s) => Math.max(1, s - 1));
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const resetForm = () => {
-    setFormData({
-      // Process inputs
-      peopleInProcess: 2,
-      daysPerMonth: 15,
-      hoursPerDay: 8,
-      avgMonthlyCostPerPerson: 1000,
-      workingDaysPerMonth: 22,
-      workingHoursPerDay: 8,
-      
-      // Error/reprocess inputs
-      reprocessHours: 0,
-      
-      // Overtime inputs
-      overtimeHours: 0,
-      overtimeCost: 160,
-      
-      // Penalties/fines
-      monthlyFines: 0,
-      monthlyLosses: 0,
-      
-      // Currency
-      exchangeRate: 1,
-      
-      // Selected licenses
-      selectedLicenses: {
-        licenseS: 1,
-        licenseM: 0,
-        licenseL: 0,
-        orchestratorEntry: 0,
-        orchestratorStandard: 0,
-        orchestratorEnterprise: 0,
-        orchestratorCorporate: 0
-      },
-      
-      // Partner costs
-      robotDevelopmentCost: 5800,
-      annualMaintenanceCost: 580
+  const resetWizard = () => {
+    setFormData(DEFAULT_FORM);
+    setSelectedTemplate(null);
+    setStep(1);
+  };
+
+  const handleContact = () => {
+    track("roi_wizard_contact");
+    const licNames = recommendedLicenses.map((k) => ROCKETBOT_LICENSES[k].name).join(", ");
+    const summary = t("contactSummary", {
+      roi: fmtPct(calculations.ROI),
+      beneficio: fmtMoney(calculations.beneficioAnual),
+      payback: calculations.paybackMeses.toFixed(1),
+      licencias: licNames,
+      personas: formData.personas,
+      horas: Math.round(calculations.totalHorasMes),
+      descripcion: formData.descripcion || t("step4.noDescription"),
     });
-    setSelectedTemplate('');
-    toast.success("Formulario restablecido a valores predeterminados");
-  };
-
-  const handleEmailRequest = () => {
-    setShowLeadForm(true);
+    window.location.href = `${CONTACT_URL}?additionalInfo=${encodeURIComponent(summary)}`;
   };
 
   const submitEmailRequest = async (e) => {
     e.preventDefault();
-    
-    // Validate required fields
     if (!leadData.name || !leadData.email || !leadData.companyName) {
-      toast.error("Por favor completa todos los campos requeridos");
+      toast.error(t("lead.validationError"));
       return;
     }
-
     setIsSubmittingEmail(true);
-
     try {
-      // First submit as client (for lead tracking)
       await apiClient.post("/client", leadData);
-      
-      // Then send ROI email
-      await apiClient.post("/roi-calculator", {
-        leadData,
-        formData,
-        calculations
-      });
-      
-      toast.success("¡Reporte de ROI enviado a tu email exitosamente!");
+      await apiClient.post("/roi-calculator", { leadData, formData, calculations });
+      toast.success(t("lead.successToast"));
       setShowLeadForm(false);
-      
-      // Reset lead form
-      setLeadData({
-        name: '',
-        email: '',
-        phone: '',
-        companyName: '',
-        role: '',
-        companySize: ''
-      });
+      setLeadData({ name: "", email: "", phone: "", companyName: "", role: "", companySize: "" });
     } catch (error) {
-      console.error('Error sending ROI report:', error);
-      toast.error(error.message || "Error al enviar el reporte. Por favor intenta de nuevo.");
+      toast.error(error.message || t("lead.errorToast"));
     } finally {
       setIsSubmittingEmail(false);
     }
   };
 
-  const formatCurrency = (amount, currency = "$") => {
-    return `${currency}${amount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+  const handleLeadChange = (e) => {
+    const { name, value } = e.target;
+    setLeadData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const formatPercentage = (percentage) => {
-    return `${percentage.toFixed(2)}%`;
-  };
+  const cardBg = { backgroundColor: config.colors.background };
+  const cardClass = "bg-transparent border border-cyan-800/20 rounded-lg p-6 lg:p-8";
 
-  // Generate ROI summary for contact form
-  const generateROISummary = () => {
-    const { 
-      peopleInProcess, 
-      daysPerMonth, 
-      hoursPerDay, 
-      avgMonthlyCostPerPerson,
-      annualBenefits,
-      roi,
-      paybackMonths,
-      netPresentValue
-    } = { ...formData, ...calculations };
-
-    const totalHours = peopleInProcess * daysPerMonth * hoursPerDay;
-    const monthlyCost = avgMonthlyCostPerPerson * peopleInProcess;
-
-    return `Realicé el cálculo del ROI para un proceso que quiero automatizar y quiero más detalles.
-
-ROI: ${formatPercentage(roi || 0)}
-Beneficio: ${formatCurrency(annualBenefits || 0)} anuales
-Período de recuperación: ${(paybackMonths || 0).toFixed(1)} meses
-
-Detalles del proceso:
-- Horas: ${totalHours} horas mensuales
-- Personas: ${peopleInProcess} personas
-- Días por mes: ${daysPerMonth}
-- Costo total mensual: ${formatCurrency(monthlyCost)}
-
-¿Podrían contactarme para discutir la implementación de esta automatización?`;
-  };
-
-  // Handle contact sales button click
-  const handleContactSales = () => {
-    const roiSummary = generateROISummary();
-    const queryParams = new URLSearchParams({
-      additionalInfo: roiSummary
+  const callout = (() => {
+    if (formData.erroresMes <= 0 || formData.minPorError <= 0) return null;
+    const costoHora = formData.salario / (WORKING_DAYS_PER_MONTH * WORKING_HOURS_PER_DAY);
+    const costoMes = (formData.erroresMes * formData.minPorError / 60) * costoHora;
+    return t("step2.callout", {
+      errores: formData.erroresMes,
+      minutos: formData.minPorError,
+      costo: fmtMoney(costoMes),
     });
-    
-    window.location.href = `/contact-us?${queryParams.toString()}`;
-  };
-
-  // Función VPL (NPV) equivalente a Excel
-  const calculateNPV = (rate, values) => {
-    let npv = 0;
-    for (let i = 0; i < values.length; i++) {
-      npv += values[i] / Math.pow(1 + rate, i + 1);
-    }
-    return npv;
-  };
+  })();
 
   return (
     <>
@@ -436,720 +338,421 @@ Detalles del proceso:
         <Header />
       </Suspense>
       <main className="min-h-screen background-image">
-        <section className="px-4 py-20 lg:py-20 lg:px-8">
-          <div className="max-w-7xl mx-auto text-white">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
-                Calculadora ROI RPA
-              </h1>
-              <p className="text-lg lg:text-xl text-cyan-300 max-w-3xl mx-auto">
-                Calcula el retorno de inversión de tu proyecto de automatización RPA. Estima
-                ahorros anuales, periodo de recuperación (payback) y Valor Presente Neto a 3
-                años con licencias Rocketbot, desarrollo y mantenimiento.
-              </p>
-              <div className="max-w-3xl mx-auto mt-6 text-left text-cyan-200 text-sm lg:text-base space-y-3">
-                <h2 className="text-xl lg:text-2xl font-semibold text-cyan-50 text-center">
-                  ¿Cómo funciona la calculadora ROI para automatización RPA?
-                </h2>
-                <p>
-                  La calculadora ROI RPA suma los beneficios anuales (horas liberadas,
-                  reducción de errores, horas extra evitadas, multas y pérdidas
-                  recuperadas) y los compara contra la inversión total: licencias RPA,
-                  desarrollo del robot y mantenimiento. Aplicamos un descuento del 10%
-                  para obtener el VPN a 3 años, la misma metodología que usan los
-                  equipos financieros al evaluar proyectos de tecnología.
-                </p>
-                <p>
-                  Úsala para construir un caso de negocio sólido antes de presentar un
-                  proyecto de automatización al comité de inversión o a finanzas.
-                </p>
-              </div>
-              <div className="m-4">
-                <button
-                  onClick={() => setShowDemoModal(true)}
-                  className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-lg 
-                    transition-colors duration-200 font-semibold text-base lg:text-lg shadow-lg hover:shadow-xl"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.78-.217-2.78-1.643V5.653z"
-                      clipRule="evenodd"
+        <section className="px-4 py-16 lg:py-20 lg:px-8">
+          <div className="max-w-5xl mx-auto text-white">
+            <div className="text-center mb-10">
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-4">{t("hero.title")}</h1>
+              <p className="text-base lg:text-lg text-cyan-300 max-w-2xl mx-auto">{t("hero.subtitle")}</p>
+              <button
+                onClick={() => setShowDemoModal(true)}
+                className="mt-6 inline-flex items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 border border-teal-500/40 text-teal-200 px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
+                  <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.78-.217-2.78-1.643V5.653z" clipRule="evenodd" />
+                </svg>
+                {t("hero.demo")}
+              </button>
+            </div>
+
+            <ProgressBar step={step} t={t} />
+
+            {step === 1 && (
+              <div className={cardClass} style={cardBg}>
+                <h2 className="text-2xl font-bold text-cyan-50 mb-2">{t("step1.title")}</h2>
+                <p className="text-cyan-300 mb-6">{t("step1.subtitle")}</p>
+
+                <div className="mb-6">
+                  <label className="text-cyan-50 uppercase text-xs block mb-3">{t("step1.templatesLabel")}</label>
+                  <div className="flex flex-wrap gap-2">
+                    {TEMPLATE_KEYS.map((key) => {
+                      const active = selectedTemplate === key;
+                      return (
+                        <button
+                          key={key}
+                          type="button"
+                          onClick={() => applyTemplate(key)}
+                          className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                            active
+                              ? "bg-teal-500 border-teal-400 text-white"
+                              : "bg-cyan-950/50 border-cyan-800/30 text-cyan-100 hover:border-teal-500"
+                          }`}
+                        >
+                          {t(`templates.${key}.name`)}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="space-y-2 mb-6">
+                  <label className="text-cyan-50 uppercase text-xs block">{t("step1.description.label")}</label>
+                  <textarea
+                    name="descripcion"
+                    rows={2}
+                    value={formData.descripcion}
+                    onChange={(e) => updateField("descripcion", e.target.value)}
+                    placeholder={t("step1.description.placeholder")}
+                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  />
+                  <p className="text-cyan-400 text-xs">{t("step1.description.hint")}</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <NumberField
+                    label={t("step1.people.label")}
+                    name="personas"
+                    value={formData.personas}
+                    onChange={updateField}
+                    min={1}
+                  />
+                  <NumberField
+                    label={t("step1.salary.label")}
+                    name="salario"
+                    value={formData.salario}
+                    onChange={updateField}
+                    min={100}
+                    step={50}
+                  />
+                  <NumberField
+                    label={t("step1.days.label")}
+                    name="diasMes"
+                    value={formData.diasMes}
+                    onChange={updateField}
+                    min={1}
+                  />
+                  <div className="space-y-2">
+                    <label className="text-cyan-50 uppercase text-xs block">
+                      {t("step1.hours.label")}
+                      <span className="ml-2 text-teal-300 normal-case font-semibold">
+                        {formData.horasDia}{t("step1.hours.unit")}
+                      </span>
+                    </label>
+                    <input
+                      type="range"
+                      name="horasDia"
+                      min={0.5}
+                      max={8}
+                      step={0.5}
+                      value={formData.horasDia}
+                      onChange={(e) => updateField("horasDia", parseFloat(e.target.value))}
+                      className="w-full accent-teal-500"
                     />
-                  </svg>
-                  Ver Demo
+                  </div>
+                </div>
+
+                <p className="text-cyan-400 text-xs mt-6">{t("step1.footnote")}</p>
+              </div>
+            )}
+
+            {step === 2 && (
+              <div className={cardClass} style={cardBg}>
+                <h2 className="text-2xl font-bold text-cyan-50 mb-2">{t("step2.title")}</h2>
+                <p className="text-cyan-300 mb-6">{t("step2.subtitle")}</p>
+
+                {callout && (
+                  <div className="border-l-4 border-orange-400 bg-orange-500/10 text-orange-100 rounded-md px-4 py-3 mb-6 text-sm">
+                    {callout}
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <NumberField
+                    label={t("step2.errores.label")}
+                    hint={t("step2.errores.hint")}
+                    name="erroresMes"
+                    value={formData.erroresMes}
+                    onChange={updateField}
+                  />
+                  <NumberField
+                    label={t("step2.minPorError.label")}
+                    hint={t("step2.minPorError.hint")}
+                    name="minPorError"
+                    value={formData.minPorError}
+                    onChange={updateField}
+                  />
+                  <NumberField
+                    label={t("step2.horasExtra.label")}
+                    hint={t("step2.horasExtra.hint")}
+                    name="horasExtraMes"
+                    value={formData.horasExtraMes}
+                    onChange={updateField}
+                  />
+                  <NumberField
+                    label={t("step2.costoHoraExtra.label")}
+                    name="costoHoraExtra"
+                    value={formData.costoHoraExtra}
+                    onChange={updateField}
+                    step={0.5}
+                  />
+                  <NumberField
+                    label={t("step2.multas.label")}
+                    hint={t("step2.multas.hint")}
+                    name="multasMes"
+                    value={formData.multasMes}
+                    onChange={updateField}
+                    step={50}
+                  />
+                  <NumberField
+                    label={t("step2.exchangeRate.label")}
+                    hint={t("step2.exchangeRate.hint")}
+                    name="exchangeRate"
+                    value={formData.exchangeRate}
+                    onChange={updateField}
+                    min={0.01}
+                    step={0.01}
+                  />
+                  <NumberField
+                    label={t("step2.costoDesarrollo.label")}
+                    hint={t("step2.costoDesarrollo.hint")}
+                    name="costoDesarrollo"
+                    value={formData.costoDesarrollo}
+                    onChange={updateField}
+                    step={100}
+                  />
+                </div>
+
+                <p className="text-cyan-400 text-xs mt-6">{t("step2.mantenimientoNote")}</p>
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className={cardClass} style={cardBg}>
+                <h2 className="text-2xl font-bold text-cyan-50 mb-2">{t("step3.title")}</h2>
+                <p className="text-cyan-300 mb-6">{t("step3.subtitle")}</p>
+
+                <div className="space-y-3 mb-6">
+                  {recommendedLicenses.map((key) => {
+                    const lic = ROCKETBOT_LICENSES[key];
+                    return (
+                      <div key={key} className="flex items-center justify-between bg-cyan-900/30 border border-cyan-800/30 rounded-lg px-5 py-4">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                              <path d="M11.5 1.75a.75.75 0 011.5 0V4h3.25a.75.75 0 010 1.5H13v1.752A8.252 8.252 0 0120.25 15.5v3.75a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V15.5A8.252 8.252 0 0111 7.252V5.5H7.75a.75.75 0 010-1.5H11V1.75zM8.75 13a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6.5 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <div className="text-cyan-50 font-semibold">{lic.name}</div>
+                            <div className="text-cyan-400 text-sm">{t(`licenseDescriptions.${key}`)}</div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-teal-300 font-bold">{fmtMoney(lic.price)}</div>
+                          <div className="text-cyan-500 text-xs">{t("step3.perYear")}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-4 mb-6 text-cyan-200 text-sm">
+                  {recommendedLicenses.length > 1
+                    ? t("step3.explanationWithOrchestrator", {
+                        horas: Math.round(calculations.totalHorasMes),
+                        personas: formData.personas,
+                        licencia: ROCKETBOT_LICENSES[recommendedLicenses[0]].name,
+                        orquestador: ROCKETBOT_LICENSES[recommendedLicenses[1]].name,
+                      })
+                    : t("step3.explanationSingle", {
+                        horas: Math.round(calculations.totalHorasMes),
+                        licencia: ROCKETBOT_LICENSES[recommendedLicenses[0]].name,
+                      })}
+                </div>
+
+                <div className="bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4 flex justify-between items-center">
+                  <div>
+                    <div className="text-cyan-300 text-xs uppercase">{t("step3.totalLabel")}</div>
+                    <div className="text-yellow-300 font-bold text-xl">{fmtMoney(calculations.licenciasAnualUSD)}</div>
+                  </div>
+                  {formData.exchangeRate !== 1 && (
+                    <div className="text-right">
+                      <div className="text-cyan-300 text-xs uppercase">{t("step3.localLabel")}</div>
+                      <div className="text-cyan-100 font-semibold">{fmtMoney(calculations.licenciasAnualUSD * formData.exchangeRate)}</div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {step === 4 && (
+              <div className="space-y-6">
+                <div className={cardClass} style={cardBg}>
+                  <div className="text-center">
+                    <p className="text-cyan-400 text-sm mb-2">
+                      {t("step4.processLabel")}{" "}
+                      <span className="text-cyan-200">
+                        {(formData.descripcion || t("step4.noDescription")).slice(0, 80)}
+                        {formData.descripcion && formData.descripcion.length > 80 ? "…" : ""}
+                      </span>
+                    </p>
+                    <h2 className="text-2xl font-bold text-cyan-50 mb-6">{t("step4.title")}</h2>
+                    <div className="bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent font-extrabold text-6xl lg:text-8xl leading-none">
+                      {fmtPct(calculations.ROI)}
+                    </div>
+                    <p className="text-cyan-300 mt-2">{t("step4.roiHero")}</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 text-center">
+                    <div className="text-green-300 text-xs uppercase mb-1">{t("step4.metrics.annualSavings")}</div>
+                    <div className="text-green-200 font-bold text-xl">{fmtMoney(calculations.beneficioAnual)}</div>
+                  </div>
+                  <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 text-center">
+                    <div className="text-orange-300 text-xs uppercase mb-1">{t("step4.metrics.payback")}</div>
+                    <div className="text-orange-200 font-bold text-xl">
+                      {calculations.paybackMeses.toFixed(1)} {t("step4.metrics.paybackUnit")}
+                    </div>
+                  </div>
+                  <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 text-center">
+                    <div className="text-purple-300 text-xs uppercase mb-1">{t("step4.metrics.npv")}</div>
+                    <div className="text-purple-200 font-bold text-xl">{fmtMoney(calculations.VPN)}</div>
+                  </div>
+                  <div className="bg-teal-500/10 border border-teal-500/30 rounded-lg p-4 text-center">
+                    <div className="text-teal-300 text-xs uppercase mb-1">{t("step4.metrics.totalBenefit")}</div>
+                    <div className="text-teal-200 font-bold text-xl">{fmtMoney(calculations.beneficioTotal3a)}</div>
+                  </div>
+                </div>
+
+                <div className={cardClass} style={cardBg}>
+                  <h3 className="text-lg font-bold text-cyan-50 mb-4">{t("step4.benefitsTitle")}</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.benefits.productivity")}</span><span className="text-cyan-50">{fmtMoney(calculations.ahorroProductividad)}</span></div>
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.benefits.errors")}</span><span className="text-cyan-50">{fmtMoney(calculations.ahorroErrores)}</span></div>
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.benefits.overtime")}</span><span className="text-cyan-50">{fmtMoney(calculations.ahorroHorasExtra)}</span></div>
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.benefits.fines")}</span><span className="text-cyan-50">{fmtMoney(calculations.multasRecuperadas)}</span></div>
+                    <div className="border-t border-cyan-800/30 pt-2 mt-2 flex justify-between font-semibold">
+                      <span className="text-cyan-50">{t("step4.benefits.total")}</span>
+                      <span className="text-teal-300">{fmtMoney(calculations.beneficioAnual)}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={cardClass} style={cardBg}>
+                  <h3 className="text-lg font-bold text-cyan-50 mb-4">{t("step4.investmentTitle")}</h3>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.investment.development")}</span><span className="text-cyan-50">{fmtMoney(formData.costoDesarrollo)}</span></div>
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.investment.licenses")}</span><span className="text-cyan-50">{fmtMoney(calculations.licenciasAnualUSD)}</span></div>
+                    <div className="flex justify-between"><span className="text-cyan-300">{t("step4.investment.maintenance")}</span><span className="text-cyan-50">{fmtMoney(calculations.mantenimiento)}</span></div>
+                    <div className="border-t border-cyan-800/30 pt-2 mt-2 flex justify-between font-semibold">
+                      <span className="text-cyan-50">{t("step4.investment.year1")}</span>
+                      <span className="text-yellow-300">{fmtMoney(calculations.inversionAño1)}</span>
+                    </div>
+                    <div className="flex justify-between text-cyan-400 text-xs">
+                      <span>{t("step4.investment.recurring")}</span>
+                      <span>{fmtMoney(calculations.recurrenteAnual)}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={cardClass} style={cardBg}>
+                  <h3 className="text-lg font-bold text-cyan-50 mb-4">{t("step4.licensesTitle")}</h3>
+                  <div className="space-y-3">
+                    {recommendedLicenses.map((key) => {
+                      const lic = ROCKETBOT_LICENSES[key];
+                      return (
+                        <div key={key} className="flex items-center justify-between bg-cyan-900/30 border border-cyan-800/30 rounded-lg px-4 py-3">
+                          <div>
+                            <div className="text-cyan-50 font-semibold text-sm">{lic.name}</div>
+                            <div className="text-cyan-400 text-xs">{t(`licenseDescriptions.${key}`)}</div>
+                          </div>
+                          <div className="text-teal-300 font-bold text-sm">{fmtMoney(lic.price)}<span className="text-cyan-500 text-xs ml-1">{t("step3.perYear")}</span></div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <button
+                    onClick={handleContact}
+                    className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 font-semibold"
+                  >
+                    {t("step4.cta.contact")}
+                  </button>
+                  <button
+                    onClick={() => setShowLeadForm(true)}
+                    className="w-full bg-transparent border border-cyan-700 hover:border-teal-500 text-cyan-100 py-3 px-6 rounded-md transition-colors duration-200 font-semibold"
+                  >
+                    {t("step4.cta.email")}
+                  </button>
+                  <button
+                    onClick={resetWizard}
+                    className="w-full bg-transparent border border-cyan-800/40 hover:border-cyan-600 text-cyan-300 py-2 px-6 rounded-md transition-colors duration-200 text-sm"
+                  >
+                    {t("step4.cta.reset")}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {step < 4 && (
+              <div className="flex justify-between mt-8 max-w-3xl mx-auto">
+                <button
+                  onClick={goBack}
+                  disabled={step === 1}
+                  className="px-6 py-2 bg-transparent border border-cyan-800/40 text-cyan-300 rounded-md font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:border-cyan-600 transition-colors"
+                >
+                  {t("nav.back")}
+                </button>
+                <button
+                  onClick={goNext}
+                  className="px-6 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md font-semibold transition-colors"
+                >
+                  {step === 3 ? t("nav.finish") : t("nav.next")}
                 </button>
               </div>
-              
-            </div>
-
-            {/* Industry Templates */}
-            {/* <div className="mb-8 max-w-4xl mx-auto">
-              <h3 className="text-xl font-semibold mb-4 text-cyan-50 text-center">Industry Templates (Optional)</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                {Object.entries(INDUSTRY_TEMPLATES).map(([key, template]) => (
-                  <button
-                    key={key}
-                    onClick={() => applyTemplate(key)}
-                    className={`p-3 rounded-lg border transition-colors ${
-                      selectedTemplate === key
-                        ? 'bg-teal-500 border-teal-400 text-white'
-                        : 'bg-cyan-950/50 border-cyan-800/30 text-cyan-50 hover:border-teal-500'
-                    }`}
-                  >
-                    {template.name}
-                  </button>
-                ))}
-              </div>
-            </div> */}
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Input Form */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Process Parameters */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Parámetros del Proceso</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Personas Involucradas en el Proceso
-                      </label>
-                      <input
-                        name="peopleInProcess"
-                        type="number"
-                        value={formData.peopleInProcess}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Días por Mes (Ejecución del Proceso)
-                      </label>
-                      <input
-                        name="daysPerMonth"
-                        type="number"
-                        value={formData.daysPerMonth}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">Cuántos días por mes se ejecuta este proceso específico</p>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Horas por Día (Dedicadas al Proceso)
-                      </label>
-                      <input
-                        name="hoursPerDay"
-                        type="number"
-                        value={formData.hoursPerDay}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">Cuántas horas por día cada persona dedica a este proceso</p>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Salario Mensual por Persona ($)
-                      </label>
-                      <input
-                        name="avgMonthlyCostPerPerson"
-                        type="number"
-                        value={formData.avgMonthlyCostPerPerson}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">Costo promedio mensual de salario por empleado</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Working Schedule Parameters */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Horario de Trabajo (para cálculo de costos)</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Días Laborales por Mes
-                      </label>
-                      <input
-                        name="workingDaysPerMonth"
-                        type="number"
-                        value={formData.workingDaysPerMonth}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">Total de días laborales por mes (típicamente 20-22)</p>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Horas Laborales por Día
-                      </label>
-                      <input
-                        name="workingHoursPerDay"
-                        type="number"
-                        value={formData.workingHoursPerDay}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">Horas laborales estándar por día (típicamente 8)</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Error and Overtime Costs */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Costos Adicionales</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Horas de Reprocesamiento/Mes
-                      </label>
-                      <input
-                        name="reprocessHours"
-                        type="number"
-                        value={formData.reprocessHours}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Horas Extra/Mes
-                      </label>
-                      <input
-                        name="overtimeHours"
-                        type="number"
-                        value={formData.overtimeHours}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Costo de Hora Extra ($)
-                      </label>
-                      <input
-                        name="overtimeCost"
-                        type="number"
-                        value={formData.overtimeCost}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Tipo de Cambio (USD a Local)
-                      </label>
-                      <input
-                        name="exchangeRate"
-                        type="number"
-                        step="0.01"
-                        disabled
-                        value={formData.exchangeRate}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* RocketBot Licenses */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Licencias de RocketBot</h3>
-                  <div className="space-y-4">
-                    {Object.entries(ROCKETBOT_LICENSES).map(([key, license]) => (
-                      <div key={key} className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <span className="text-cyan-50">{license.name}</span>
-                          <span className="text-cyan-300 ml-2">
-                            (${license.price.toLocaleString()})
-                          </span>
-                        </div>
-                        <input
-                          type="number"
-                          min="0"
-                          value={formData.selectedLicenses[key]}
-                          onChange={(e) => handleLicenseChange(key, e.target.value)}
-                          className="w-20 px-2 py-1 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                             text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Implementation Costs */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-xl font-bold text-cyan-50 mb-6">Costos de Implementación</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Costo de Desarrollo del Robot ($)
-                      </label>
-                      <input
-                        name="robotDevelopmentCost"
-                        type="number"
-                        value={formData.robotDevelopmentCost}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">El costo de desarrollo varía según la complejidad del robot. En promedio, el costo de desarrollo es de $5,800 USD.</p>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-cyan-50 uppercase text-xs block">
-                        Mantenimiento Anual ($)
-                      </label>
-                      <input
-                        name="annualMaintenanceCost"
-                        type="number"
-                        value={formData.annualMaintenanceCost}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                           text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      />
-                      <p className="text-cyan-400 text-xs">El mantenimiento anual suele ser un 10% del costo de desarrollo del robot.</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action buttons */}
-                <div className="flex gap-4">
-                  <button
-                    onClick={resetForm}
-                    className="px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white rounded-md 
-                       transition-colors duration-200 font-semibold"
-                  >
-                    Restablecer Formulario
-                  </button>
-                </div>
-              </div>
-
-              {/* Results Panel */}
-              <div className="space-y-6">
-                {/* Monthly Benefits */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-6"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Beneficios Anuales</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Ahorros de Productividad Anual:</span>
-                      <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.annualBenefits || 0)}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Reducción de Errores:</span>
-                      <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.annualReprocessCosts || 0)}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Ahorros en Horas Extra:</span>
-                      <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.annualOvertimeCosts || 0)}
-                      </span>
-                    </div>
-                    <div className="border-t border-cyan-800/30 pt-3">
-                      <div className="flex justify-between">
-                        <span className="text-cyan-50 font-semibold">Total Anual:</span>
-                        <span className="text-teal-400 font-bold text-lg">
-                          {formatCurrency(calculations.annualBenefits || 0)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Investment Summary */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-6"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Inversión</h3>
-                  <div className="space-y-4">
-                    {/* Pago Único */}
-                    <div className="bg-cyan-900/20 rounded-lg p-4">
-                      <h4 className="text-md font-semibold text-cyan-200 mb-3 flex items-center">
-                        <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                        Pago Inicial (Solo Año 1)
-                      </h4>
-                      <div className="space-y-2">
-                        <div className="flex justify-between">
-                          <span className="text-cyan-300">Desarrollo del Robot:</span>
-                          <span className="text-cyan-50 font-semibold">
-                            {formatCurrency(formData.robotDevelopmentCost)}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-cyan-300">Licencias (USD):</span>
-                          <span className="text-cyan-50">
-                            ${(calculations.totalLicenseCostUSD || 0).toLocaleString()}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-cyan-300">Licencias (Local):</span>
-                          <span className="text-cyan-50">
-                            {formatCurrency(calculations.totalLicenseCostLocal || 0)}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-cyan-300">Mantenimiento:</span>
-                          <span className="text-cyan-50 font-semibold">
-                            {formatCurrency(formData.annualMaintenanceCost)}
-                          </span>
-                        </div>
-                        <div className="border-t border-cyan-700/50 pt-2 mt-3">
-                          <div className="flex justify-between">
-                            <span className="text-cyan-200 font-semibold">Total Pago Único:</span>
-                            <span className="text-blue-400 font-bold">
-                              {formatCurrency(calculations.year1Cost || 0)}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Pago Anual Recurrente */}
-                    <div className="bg-cyan-900/20 rounded-lg p-4">
-                      <h4 className="text-md font-semibold text-cyan-200 mb-3 flex items-center">
-                        <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-                        Pago Anual Recurrente (Años 2, 3 y 4)
-                      </h4>
-                      <div className="space-y-2">
-                        <div className="flex justify-between">
-                          <span className="text-cyan-300">Mantenimiento Anual:</span>
-                          <span className="text-cyan-50 font-semibold">
-                            {formatCurrency(formData.annualMaintenanceCost)}
-                          </span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-cyan-300">Licencias Anuales:</span>
-                          <span className="text-cyan-50">
-                            {formatCurrency((calculations.totalLicenseCostLocal || 0) )}
-                          </span>
-                        </div>
-                        <div className="border-t border-cyan-700/50 pt-2 mt-3">
-                          <div className="flex justify-between">
-                            <span className="text-cyan-200 font-semibold">Total Anual:</span>
-                            <span className="text-green-400 font-bold">
-                              {formatCurrency(formData.annualMaintenanceCost + (calculations.totalLicenseCostLocal || 0))}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Resumen Total */}
-                    <div className="bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4">
-                      <div className="text-center">
-                        <div className="text-cyan-300 text-sm mb-1">Inversión Total Inicial</div>
-                        <div className="text-yellow-400 font-bold text-xl">
-                          {formatCurrency(calculations.year1Cost || 0)}
-                        </div>
-                        <div className="text-cyan-400 text-xs mt-1">
-                          + {formatCurrency(formData.annualMaintenanceCost + (calculations.totalLicenseCostLocal || 0))} anuales los años siguientes
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* ROI Summary */}
-                <div 
-                  className="bg-transparent border border-cyan-800/20 rounded-lg p-6"
-                  style={{ backgroundColor: config.colors.background }}
-                >
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">Análisis de ROI a 3 años</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Beneficio Total:</span>
-                      <span className="text-cyan-50 font-semibold">
-                        {formatCurrency(calculations.totalBenefits3Years || 0)}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Retorno de la inversión:</span>
-                      <span className="text-green-400 font-bold text-lg">
-                        {formatPercentage(calculations.roi || 0)}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-cyan-300">Período de Recuperación:</span>
-                      <span className="text-cyan-50 font-semibold">
-                        {(calculations.paybackMonths || 0).toFixed(1)} meses
-                      </span>
-                    </div>
-                    <div className="border-t border-cyan-800/30 pt-3">
-                      <div className="flex justify-between">
-                        <span className="text-cyan-50 font-semibold">Valor Presente Neto:</span>
-                        <span className="text-green-400 font-bold text-lg">
-                          {formatCurrency(calculations.netPresentValue || 0)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  {/* <button
-                    onClick={handleEmailRequest}
-                    className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md 
-                       transition-colors duration-200 font-semibold"
-                  >
-                    📧 Email Detailed Report
-                  </button> */}
-                  <button
-                    onClick={handleContactSales}
-                    className="w-full bg-cyan-700 hover:bg-cyan-600 text-white py-3 px-6 rounded-md 
-                       transition-colors duration-200 font-semibold"
-                  >
-                    💬 Contactar Ventas
-                  </button>
-                  {/* <button
-                    onClick={() => window.location.href = 'https://calendar.app.google/bp4toLzqWLMT6BWi8'}
-                    className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 px-6 rounded-md 
-                       transition-colors duration-200 font-semibold"
-                  >
-                    📅 Programar Demo
-                  </button> */}
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </section>
 
-        {/* Video Demo Modal */}
         {showDemoModal && (
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4"
-            onClick={() => setShowDemoModal(false)}
-          >
-            <div 
-              className="bg-transparent border border-cyan-800/20 rounded-lg p-6 max-w-5xl w-full relative"
-              style={{ backgroundColor: config.colors.background }}
-              onClick={(e) => e.stopPropagation()}
-            >
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" onClick={() => setShowDemoModal(false)}>
+            <div className="bg-transparent border border-cyan-800/20 rounded-lg p-6 max-w-5xl w-full relative" style={cardBg} onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={() => setShowDemoModal(false)}
-                className="absolute -top-2 -right-2 bg-cyan-700 hover:bg-cyan-600 text-white rounded-full w-10 h-10 
-                  flex items-center justify-center transition-colors duration-200 z-10 shadow-lg"
-                aria-label="Cerrar modal"
+                className="absolute -top-2 -right-2 bg-cyan-700 hover:bg-cyan-600 text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors z-10 shadow-lg"
+                aria-label="close"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-6 h-6"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg>
               </button>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
                 <iframe
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: 0
-                  }}
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0 }}
                   src="https://www.tella.tv/video/cmhich2io00ha04jugkg8h8ag/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=1"
                   allowFullScreen
                   allowTransparency
                   title="Demo Video"
-                ></iframe>
+                />
               </div>
             </div>
           </div>
         )}
 
-        {/* Lead Capture Modal */}
         {showLeadForm && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div 
-              className="bg-transparent border border-cyan-800/20 rounded-lg p-8 max-w-md w-full max-h-[90vh] overflow-y-auto"
-              style={{ backgroundColor: config.colors.background }}
-            >
-              <h3 className="text-2xl font-bold text-cyan-50 mb-6">
-                Obtén tu Reporte de ROI
-              </h3>
-              <p className="text-cyan-300 mb-6">
-                Ingresa tus datos para recibir el análisis detallado de ROI por email.
-              </p>
-              
+            <div className="bg-transparent border border-cyan-800/20 rounded-lg p-8 max-w-md w-full max-h-[90vh] overflow-y-auto" style={cardBg}>
+              <h3 className="text-2xl font-bold text-cyan-50 mb-2">{t("lead.title")}</h3>
+              <p className="text-cyan-300 mb-6 text-sm">{t("lead.subtitle")}</p>
               <form onSubmit={submitEmailRequest} className="space-y-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-cyan-50 uppercase text-xs block">
-                    Nombre Completo *
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={leadData.name}
-                    onChange={handleLeadInputChange}
-                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                       text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                       focus:ring-teal-500 focus:border-transparent"
-                    placeholder="Juan Pérez"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-cyan-50 uppercase text-xs block">
-                    Correo Electrónico *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={leadData.email}
-                    onChange={handleLeadInputChange}
-                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                       text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                       focus:ring-teal-500 focus:border-transparent"
-                    placeholder="juan@empresa.com"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
-                    Nombre de la Empresa *
-                  </label>
-                  <input
-                    id="companyName"
-                    name="companyName"
-                    type="text"
-                    required
-                    value={leadData.companyName}
-                    onChange={handleLeadInputChange}
-                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                       text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                       focus:ring-teal-500 focus:border-transparent"
-                    placeholder="Tu Empresa S.A."
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="text-cyan-50 uppercase text-xs block">
-                    Número de Teléfono
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={leadData.phone}
-                    onChange={handleLeadInputChange}
-                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                       text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                       focus:ring-teal-500 focus:border-transparent"
-                    placeholder="+52 (55) 1234-5678"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
-                    Cargo
-                  </label>
-                  <input
-                    id="role"
-                    name="role"
-                    type="text"
-                    value={leadData.role}
-                    onChange={handleLeadInputChange}
-                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                       text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 
-                       focus:ring-teal-500 focus:border-transparent"
-                    placeholder="CEO, CTO, Gerente, etc."
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
-                    Tamaño de la Empresa
-                  </label>
-                  <select
-                    id="companySize"
-                    name="companySize"
-                    value={leadData.companySize}
-                    onChange={handleLeadInputChange}
-                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md 
-                       text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500 
-                       focus:border-transparent"
-                  >
-                    <option value="">Seleccionar tamaño de empresa</option>
-                    <option value="1-10">1-10 empleados</option>
-                    <option value="11-50">11-50 empleados</option>
-                    <option value="51-200">51-200 empleados</option>
-                    <option value="201-500">201-500 empleados</option>
-                    <option value="501-1000">501-1000 empleados</option>
-                    <option value="1000+">1000+ empleados</option>
-                  </select>
-                </div>
-
-                <div className="flex gap-3 pt-4">
-                  <button
-                    type="button"
-                    onClick={() => setShowLeadForm(false)}
-                    className="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-3 px-6 rounded-md 
-                       transition-colors duration-200 font-semibold"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isSubmittingEmail}
-                    className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md 
-                       transition-colors duration-200 focus:outline-none focus:ring-2 
-                       focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 
-                       disabled:cursor-not-allowed font-semibold"
-                  >
-                    {isSubmittingEmail ? (
-                      <>
-                        <span className="loading loading-spinner loading-sm mr-2"></span>
-                        Enviando...
-                      </>
-                    ) : (
-                      "Enviar Reporte"
-                    )}
+                <input name="name" type="text" required placeholder={t("lead.name")} value={leadData.name} onChange={handleLeadChange} className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input name="email" type="email" required placeholder={t("lead.email")} value={leadData.email} onChange={handleLeadChange} className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input name="companyName" type="text" required placeholder={t("lead.company")} value={leadData.companyName} onChange={handleLeadChange} className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input name="phone" type="tel" placeholder={t("lead.phone")} value={leadData.phone} onChange={handleLeadChange} className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input name="role" type="text" placeholder={t("lead.role")} value={leadData.role} onChange={handleLeadChange} className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <select name="companySize" value={leadData.companySize} onChange={handleLeadChange} className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                  <option value="">{t("lead.sizes.placeholder")}</option>
+                  <option value="1-10">{t("lead.sizes.s1")}</option>
+                  <option value="11-50">{t("lead.sizes.s2")}</option>
+                  <option value="51-200">{t("lead.sizes.s3")}</option>
+                  <option value="201-500">{t("lead.sizes.s4")}</option>
+                  <option value="501-1000">{t("lead.sizes.s5")}</option>
+                  <option value="1000+">{t("lead.sizes.s6")}</option>
+                </select>
+                <div className="flex gap-3 pt-2">
+                  <button type="button" onClick={() => setShowLeadForm(false)} className="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-3 px-6 rounded-md font-semibold">{t("lead.cancel")}</button>
+                  <button type="submit" disabled={isSubmittingEmail} className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed">
+                    {isSubmittingEmail ? t("lead.submitting") : t("lead.submit")}
                   </button>
                 </div>
               </form>
@@ -1157,27 +760,14 @@ Detalles del proceso:
           </div>
         )}
       </main>
-      
-      {/* Copyright Footer */}
+
       <footer className="bg-cyan-900/30 border-t border-cyan-800/20 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-cyan-400 text-sm">
-              © {new Date().getFullYear()} Robotipy. Calculadora de ROI basada en la metodología de 
-              <a 
-                href="https://rocketbot.com" 
-                target="_blank" 
-                rel="noopener"
-                className="text-cyan-300 hover:text-cyan-200 ml-1 font-semibold"
-              >
-                Rocketbot
-              </a>
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-cyan-400 text-sm">{t("footer", { year: new Date().getFullYear() })}</p>
         </div>
       </footer>
     </>
   );
 };
 
-export default ROICalculator; 
+export default ROICalculator;
