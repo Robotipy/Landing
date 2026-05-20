@@ -243,15 +243,20 @@ const ROICalculator = () => {
   };
 
   const applyTemplate = (key) => {
+    const prevTemplate = selectedTemplate;
     setSelectedTemplate(key);
     track("roi_wizard_template_used", { template_name: key });
     const defaults = TEMPLATE_DEFAULTS[key];
     if (!defaults) return;
-    setFormData((prev) => ({
-      ...prev,
-      ...defaults,
-      descripcion: prev.descripcion || t(`templates.${key}.description`),
-    }));
+    const prevTemplateText = prevTemplate ? t(`templates.${prevTemplate}.description`) : "";
+    setFormData((prev) => {
+      const userCustomized = prev.descripcion && prev.descripcion !== prevTemplateText;
+      return {
+        ...prev,
+        ...defaults,
+        descripcion: userCustomized ? prev.descripcion : t(`templates.${key}.description`),
+      };
+    });
   };
 
   const goNext = () => {
