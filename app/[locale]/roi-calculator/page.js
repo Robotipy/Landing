@@ -45,6 +45,10 @@ const TEMPLATE_DEFAULTS = {
 
 const CONTACT_URL = "/contact-us";
 
+const ALL_LICENSE_KEYS = Object.keys(ROCKETBOT_LICENSES);
+
+const DEFAULT_LICENSES = Object.fromEntries(ALL_LICENSE_KEYS.map((k) => [k, 0]));
+
 const DEFAULT_FORM = {
   descripcion: "",
   personas: 2,
@@ -58,6 +62,7 @@ const DEFAULT_FORM = {
   multasMes: 0,
   exchangeRate: 1,
   costoDesarrollo: 5800,
+  mantenimiento: 580,
 };
 
 function deduceLicenses({ personas, horasDia, diasMes }) {
@@ -75,7 +80,7 @@ function deduceLicenses({ personas, horasDia, diasMes }) {
   return orq ? [bot, orq] : [bot];
 }
 
-function computeROI(f) {
+function computeROI(f, licenseQty) {
   const costoHora = f.salario / (WORKING_DAYS_PER_MONTH * WORKING_HOURS_PER_DAY);
   const totalHorasMes = f.personas * f.horasDia * f.diasMes;
 
@@ -85,9 +90,10 @@ function computeROI(f) {
   const multasRecuperadas   = f.multasMes * 12;
   const beneficioAnual = ahorroProductividad + ahorroErrores + ahorroHorasExtra + multasRecuperadas;
 
-  const licencias = deduceLicenses(f);
-  const licenciasAnualUSD = licencias.reduce((sum, key) => sum + ROCKETBOT_LICENSES[key].price, 0);
-  const mantenimiento = f.costoDesarrollo * MAINTENANCE_RATE;
+  const licenciasAnualUSD = Object.entries(licenseQty).reduce(
+    (sum, [key, qty]) => sum + (ROCKETBOT_LICENSES[key]?.price || 0) * qty, 0
+  );
+  const mantenimiento = f.mantenimiento;
   const inversionAño1   = f.costoDesarrollo + licenciasAnualUSD + mantenimiento;
   const recurrenteAnual = licenciasAnualUSD + mantenimiento;
 
@@ -103,8 +109,12 @@ function computeROI(f) {
   const ROI = costoDesc > 0 ? (VPN / costoDesc) * 100 : 0;
   const paybackMeses = beneficioAnual > 0 ? (inversionAño1 / beneficioAnual) * 12 : 0;
 
+  const activeLicenses = Object.entries(licenseQty)
+    .filter(([, qty]) => qty > 0)
+    .map(([key, qty]) => ({ key, qty }));
+
   return {
-    licencias,
+    activeLicenses,
     licenciasAnualUSD,
     mantenimiento,
     inversionAño1,
@@ -208,6 +218,8 @@ const ROICalculator = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState(DEFAULT_FORM);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [selectedLicenses, setSelectedLicenses] = useState(DEFAULT_LICENSES);
+  const [licensesOverridden, setLicensesOverridden] = useState(false);
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
@@ -235,23 +247,42 @@ const ROICalculator = () => {
     }
   }, []);
 
-  const calculations = useMemo(() => computeROI(formData), [formData]);
-  const recommendedLicenses = calculations.licencias;
+  const recommended = useMemo(() => deduceLicenses(formData), [formData]);
+
+  useEffect(() => {
+    if (licensesOverridden) return;
+    const next = { ...DEFAULT_LICENSES };
+    recommended.forEach((key) => { next[key] = 1; });
+    setSelectedLicenses(next);
+  }, [recommended, licensesOverridden]);
+
+  const calculations = useMemo(() => computeROI(formData, selectedLicenses), [formData, selectedLicenses]);
+  const { activeLicenses } = calculations;
+
+  const updateLicenseQty = (key, qty) => {
+    setLicensesOverridden(true);
+    setSelectedLicenses((prev) => ({ ...prev, [key]: Math.max(0, qty) }));
+  };
 
   const updateField = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const applyTemplate = (key) => {
+    const prevTemplate = selectedTemplate;
     setSelectedTemplate(key);
     track("roi_wizard_template_used", { template_name: key });
     const defaults = TEMPLATE_DEFAULTS[key];
     if (!defaults) return;
-    setFormData((prev) => ({
-      ...prev,
-      ...defaults,
-      descripcion: prev.descripcion || t(`templates.${key}.description`),
-    }));
+    const prevTemplateText = prevTemplate ? t(`templates.${prevTemplate}.description`) : "";
+    setFormData((prev) => {
+      const userCustomized = prev.descripcion && prev.descripcion !== prevTemplateText;
+      return {
+        ...prev,
+        ...defaults,
+        descripcion: userCustomized ? prev.descripcion : t(`templates.${key}.description`),
+      };
+    });
   };
 
   const goNext = () => {
@@ -261,7 +292,7 @@ const ROICalculator = () => {
       track("roi_wizard_complete", {
         roi_value: Math.round(calculations.ROI),
         payback_months: Math.round(calculations.paybackMeses * 10) / 10,
-        license_type: recommendedLicenses.join("+"),
+        license_type: activeLicenses.map(({ key }) => key).join("+"),
       });
     }
     setStep((s) => Math.min(4, s + 1));
@@ -275,12 +306,16 @@ const ROICalculator = () => {
   const resetWizard = () => {
     setFormData(DEFAULT_FORM);
     setSelectedTemplate(null);
+    setSelectedLicenses(DEFAULT_LICENSES);
+    setLicensesOverridden(false);
     setStep(1);
   };
 
   const handleContact = () => {
     track("roi_wizard_contact");
-    const licNames = recommendedLicenses.map((k) => ROCKETBOT_LICENSES[k].name).join(", ");
+    const licNames = activeLicenses.map(({ key, qty }) =>
+      qty > 1 ? `${qty}x ${ROCKETBOT_LICENSES[key].name}` : ROCKETBOT_LICENSES[key].name
+    ).join(", ");
     const summary = t("contactSummary", {
       roi: fmtPct(calculations.ROI),
       beneficio: fmtMoney(calculations.beneficioAnual),
@@ -509,9 +544,15 @@ const ROICalculator = () => {
                     onChange={updateField}
                     step={100}
                   />
+                  <NumberField
+                    label={t("step2.mantenimiento.label")}
+                    hint={t("step2.mantenimiento.hint")}
+                    name="mantenimiento"
+                    value={formData.mantenimiento}
+                    onChange={updateField}
+                    step={50}
+                  />
                 </div>
-
-                <p className="text-cyan-400 text-xs mt-6">{t("step2.mantenimientoNote")}</p>
               </div>
             )}
 
@@ -520,43 +561,71 @@ const ROICalculator = () => {
                 <h2 className="text-2xl font-bold text-cyan-50 mb-2">{t("step3.title")}</h2>
                 <p className="text-cyan-300 mb-6">{t("step3.subtitle")}</p>
 
+                <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-4 mb-6 text-cyan-200 text-sm">
+                  {recommended.length > 1
+                    ? t("step3.explanationWithOrchestrator", {
+                        horas: Math.round(calculations.totalHorasMes),
+                        personas: formData.personas,
+                        licencia: ROCKETBOT_LICENSES[recommended[0]].name,
+                        orquestador: ROCKETBOT_LICENSES[recommended[1]].name,
+                      })
+                    : t("step3.explanationSingle", {
+                        horas: Math.round(calculations.totalHorasMes),
+                        licencia: ROCKETBOT_LICENSES[recommended[0]].name,
+                      })}
+                </div>
+
                 <div className="space-y-3 mb-6">
-                  {recommendedLicenses.map((key) => {
+                  {ALL_LICENSE_KEYS.map((key) => {
                     const lic = ROCKETBOT_LICENSES[key];
+                    const qty = selectedLicenses[key] || 0;
+                    const isRecommended = recommended.includes(key);
                     return (
-                      <div key={key} className="flex items-center justify-between bg-cyan-900/30 border border-cyan-800/30 rounded-lg px-5 py-4">
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300" aria-hidden="true">
+                      <div
+                        key={key}
+                        className={`flex items-center justify-between rounded-lg px-5 py-4 border transition-colors ${
+                          qty > 0
+                            ? "bg-cyan-900/40 border-teal-500/40"
+                            : "bg-cyan-900/20 border-cyan-800/20"
+                        }`}
+                      >
+                        <div className="flex items-center gap-4 flex-1 min-w-0">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
+                            qty > 0 ? "bg-teal-500/20 text-teal-300" : "bg-cyan-900/40 text-cyan-500"
+                          }`} aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                               <path d="M11.5 1.75a.75.75 0 011.5 0V4h3.25a.75.75 0 010 1.5H13v1.752A8.252 8.252 0 0120.25 15.5v3.75a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V15.5A8.252 8.252 0 0111 7.252V5.5H7.75a.75.75 0 010-1.5H11V1.75zM8.75 13a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6.5 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
                             </svg>
                           </div>
-                          <div>
-                            <div className="text-cyan-50 font-semibold">{lic.name}</div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className="text-cyan-50 font-semibold">{lic.name}</span>
+                              {isRecommended && (
+                                <span className="text-[10px] uppercase font-bold bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded-full shrink-0">
+                                  {t("step3.recommended")}
+                                </span>
+                              )}
+                            </div>
                             <div className="text-cyan-400 text-sm">{t(`licenseDescriptions.${key}`)}</div>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <div className="text-teal-300 font-bold">{fmtMoney(lic.price)}</div>
-                          <div className="text-cyan-500 text-xs">{t("step3.perYear")}</div>
+                        <div className="flex items-center gap-4 shrink-0 ml-4">
+                          <div className="text-right">
+                            <div className="text-teal-300 font-bold">{fmtMoney(lic.price)}</div>
+                            <div className="text-cyan-500 text-xs">{t("step3.perYear")}</div>
+                          </div>
+                          <input
+                            type="number"
+                            min="0"
+                            max="10"
+                            value={qty}
+                            onChange={(e) => updateLicenseQty(key, parseInt(e.target.value) || 0)}
+                            className="w-16 px-2 py-1.5 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 text-center focus:outline-none focus:ring-2 focus:ring-teal-500"
+                          />
                         </div>
                       </div>
                     );
                   })}
-                </div>
-
-                <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-4 mb-6 text-cyan-200 text-sm">
-                  {recommendedLicenses.length > 1
-                    ? t("step3.explanationWithOrchestrator", {
-                        horas: Math.round(calculations.totalHorasMes),
-                        personas: formData.personas,
-                        licencia: ROCKETBOT_LICENSES[recommendedLicenses[0]].name,
-                        orquestador: ROCKETBOT_LICENSES[recommendedLicenses[1]].name,
-                      })
-                    : t("step3.explanationSingle", {
-                        horas: Math.round(calculations.totalHorasMes),
-                        licencia: ROCKETBOT_LICENSES[recommendedLicenses[0]].name,
-                      })}
                 </div>
 
                 <div className="bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4 flex justify-between items-center">
@@ -648,15 +717,20 @@ const ROICalculator = () => {
                 <div className={cardClass} style={cardBg}>
                   <h3 className="text-lg font-bold text-cyan-50 mb-4">{t("step4.licensesTitle")}</h3>
                   <div className="space-y-3">
-                    {recommendedLicenses.map((key) => {
+                    {activeLicenses.map(({ key, qty }) => {
                       const lic = ROCKETBOT_LICENSES[key];
                       return (
                         <div key={key} className="flex items-center justify-between bg-cyan-900/30 border border-cyan-800/30 rounded-lg px-4 py-3">
                           <div>
-                            <div className="text-cyan-50 font-semibold text-sm">{lic.name}</div>
+                            <div className="text-cyan-50 font-semibold text-sm">
+                              {qty > 1 ? `${qty}x ` : ""}{lic.name}
+                            </div>
                             <div className="text-cyan-400 text-xs">{t(`licenseDescriptions.${key}`)}</div>
                           </div>
-                          <div className="text-teal-300 font-bold text-sm">{fmtMoney(lic.price)}<span className="text-cyan-500 text-xs ml-1">{t("step3.perYear")}</span></div>
+                          <div className="text-teal-300 font-bold text-sm">
+                            {fmtMoney(lic.price * qty)}
+                            <span className="text-cyan-500 text-xs ml-1">{t("step3.perYear")}</span>
+                          </div>
                         </div>
                       );
                     })}

@@ -863,11 +863,15 @@
         "label": "Custo desenvolvimento do robô (USD)",
         "hint": "Média: $5.800. Varia conforme a complexidade."
       },
-      "mantenimientoNote": "A manutenção anual é calculada automaticamente como 10% do custo de desenvolvimento."
+      "mantenimiento": {
+        "label": "Manutenção anual (USD)",
+        "hint": "Padrão: 10% do custo de desenvolvimento. Ajuste conforme necessário."
+      }
     },
     "step3": {
       "title": "Licenças recomendadas",
-      "subtitle": "Com base no seu processo, estas são as licenças que você precisa.",
+      "subtitle": "Com base no seu processo, recomendamos estas licenças. Você pode ajustar as quantidades.",
+      "recommended": "Recomendada",
       "perYear": "/ano",
       "explanationSingle": "Seu processo consome aproximadamente {horas} horas/mês. Uma {licencia} é suficiente para esse volume.",
       "explanationWithOrchestrator": "Seu processo consome aproximadamente {horas} horas/mês com {personas} pessoas. Recomendamos {licencia} mais {orquestador} para gerenciar o robô.",
