@@ -863,11 +863,15 @@
         "label": "Costo desarrollo robot (USD)",
         "hint": "Promedio: $5,800. Varía por complejidad."
       },
-      "mantenimientoNote": "El mantenimiento anual se calcula automáticamente como 10% del costo de desarrollo."
+      "mantenimiento": {
+        "label": "Mantenimiento anual (USD)",
+        "hint": "Default: 10% del costo de desarrollo. Ajusta según tu caso."
+      }
     },
     "step3": {
       "title": "Licencias recomendadas",
-      "subtitle": "Basándonos en tu proceso, estas son las licencias que necesitas.",
+      "subtitle": "Basándonos en tu proceso, recomendamos estas licencias. Puedes ajustar las cantidades.",
+      "recommended": "Recomendada",
       "perYear": "/año",
       "explanationSingle": "Tu proceso consume aproximadamente {horas} horas/mes. Una {licencia} es suficiente para manejar este volumen.",
       "explanationWithOrchestrator": "Tu proceso consume aproximadamente {horas} horas/mes con {personas} personas. Recomendamos {licencia} más {orquestador} para gestionar el bot.",

@@ -863,11 +863,15 @@
         "label": "Bot development cost (USD)",
         "hint": "Average: $5,800. Varies by complexity."
       },
-      "mantenimientoNote": "Annual maintenance is auto-calculated as 10% of the development cost."
+      "mantenimiento": {
+        "label": "Annual maintenance (USD)",
+        "hint": "Default: 10% of development cost. Adjust as needed."
+      }
     },
     "step3": {
       "title": "Recommended licenses",
-      "subtitle": "Based on your process, these are the licenses you need.",
+      "subtitle": "Based on your process, we recommend these licenses. You can adjust the quantities.",
+      "recommended": "Recommended",
       "perYear": "/year",
       "explanationSingle": "Your process consumes roughly {horas} hours/month. A {licencia} is enough to handle this volume.",
       "explanationWithOrchestrator": "Your process consumes roughly {horas} hours/month with {personas} people. We recommend {licencia} plus {orquestador} to manage the bot.",
