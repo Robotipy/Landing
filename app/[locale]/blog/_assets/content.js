@@ -17,9 +17,11 @@ import { post as casoExitoCartolasFactoringVitivinicola } from "./posts/caso-exi
 import { post as casoExitoConciliacionBancariaAgropecuario } from "./posts/caso-exito-conciliacion-bancaria-agropecuario.js";
 import { post as rpaConPerasYManzanas } from "./posts/rpa-con-peras-y-manzanas.js";
 import { post as rpaVsIaAgentica } from "./posts/rpa-vs-ia-agentica.js";
+import { post as queProcesosDeSapSePuedenAutomatizarConRpa } from "./posts/que-procesos-de-sap-se-pueden-automatizar-con-rpa.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  queProcesosDeSapSePuedenAutomatizarConRpa,
   rpaVsIaAgentica,
   rpaConPerasYManzanas,
   casoExitoRpaIaMineriaCostos,

@@ -1,5 +1,6 @@
 import daniloToroImg from "./images/authors/danilo-toro.png";
 import gabrielToroImg from "./images/authors/gabriel-toro.jpeg";
+import ivanCabreraImg from "./images/authors/ivan-cabrera.svg";
 
 // ==================================================================================================================================================================
 // BLOG AUTHORS 📝
@@ -38,6 +39,7 @@ export const socialIcons = {
 export const authorSlugs = {
   DaniloToro: "danilo-toro",
   GabrielToro: "gabriel-toro",
+  IvanCabrera: "ivan-cabrera",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
@@ -70,6 +72,21 @@ export const authors = [
     description:
       "Gabriel forma parte del equipo de Robotipy, especializado en automatización de procesos y soluciones RPA para empresas en Chile y Argentina.",
     avatar: gabrielToroImg,
+    socials: [
+      {
+        name: socialIcons.linkedin.name,
+        icon: socialIcons.linkedin.svg,
+        url: "https://www.linkedin.com/company/robotipy/",
+      },
+    ],
+  },
+  {
+    slug: authorSlugs.IvanCabrera,
+    name: "Ivan Cabrera",
+    job: "CEO de Robotipy Argentina",
+    description:
+      "Ivan lidera Robotipy en Argentina. Acompaña a empresas medianas y grandes a automatizar procesos sobre SAP y otros sistemas, con foco en proyectos que se pagan solos.",
+    avatar: ivanCabreraImg,
     socials: [
       {
         name: socialIcons.linkedin.name,

@@ -48,6 +48,7 @@ export default async function Author({ params }) {
             height={256}
             alt={author.name}
             priority={true}
+            unoptimized={author.avatar?.src?.endsWith?.(".svg") ?? false}
             className="w-[12rem] rounded-2xl md:w-[16rem]"
           />
 
