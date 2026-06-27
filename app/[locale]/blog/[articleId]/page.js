@@ -270,6 +270,7 @@ export default async function Article({ params }) {
               alt={article.author.name}
               width={56}
               height={56}
+              unoptimized={article.author.avatar?.src?.endsWith?.(".svg") ?? false}
               className="h-14 w-14 object-cover object-center"
             />
           </span>
