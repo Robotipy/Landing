@@ -1,6 +1,6 @@
 import daniloToroImg from "./images/authors/danilo-toro.png";
 import gabrielToroImg from "./images/authors/gabriel-toro.jpeg";
-import ivanCabreraImg from "./images/authors/ivan-cabrera.svg";
+import ivanCabreraImg from "./images/authors/ivan-cabrera.png";
 
 // ==================================================================================================================================================================
 // BLOG AUTHORS 📝
