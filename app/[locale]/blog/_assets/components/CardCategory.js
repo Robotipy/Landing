@@ -1,17 +1,17 @@
 import Link from "next/link";
 
-// This is the category card that appears in the home page and in the category page
+// Tarjeta de categoría que aparece en el índice y en la página de categoría.
 const CardCategory = ({ category, tag = "h2" }) => {
   const TitleTag = tag;
 
   return (
     <Link
-      className="p-4 bg-base-200 text-base-content rounded-box duration-200 hover:bg-neutral hover:text-neutral-content"
+      className="rounded-xl border border-white/[0.07] bg-secondary p-4 text-white transition-colors duration-200 hover:border-accent/40 hover:text-accent"
       href={`/blog/category/${category.slug}`}
       title={category.title}
       rel="tag"
     >
-      <TitleTag className="md:text-lg font-medium">
+      <TitleTag className="font-display font-semibold md:text-lg">
         {category?.titleShort || category.title}
       </TitleTag>
     </Link>

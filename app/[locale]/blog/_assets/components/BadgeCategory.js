@@ -1,14 +1,14 @@
 import Link from "next/link";
 
-// This is the category badge that appears in the article page and in <CardArticle /> component
+// Badge de categoría que aparece en la página del artículo y en <CardArticle />.
 const Category = ({ category, extraStyle }) => {
   return (
     <Link
       href={`/blog/category/${category.slug}`}
-      className={`badge badge-sm md:badge-md hover:badge-primary hover:border-white text-primary bg-white ${
+      className={`inline-flex items-center rounded-full border border-accent/25 bg-accent/15 px-2.5 py-0.5 font-display text-xs font-semibold uppercase tracking-[0.04em] text-accent transition-colors hover:bg-accent hover:text-white ${
         extraStyle ? extraStyle : ""
       }`}
-      title={`Posts in ${category.title}`}
+      title={`Posts en ${category.title}`}
       rel="tag"
     >
       {category.titleShort}

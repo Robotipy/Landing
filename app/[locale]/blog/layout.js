@@ -4,14 +4,12 @@ import Footer from "@/components/Footer";
 
 export default async function LayoutBlog({ children }) {
   return (
-    <div>
+    <div className="min-h-screen bg-[#00182B] font-display text-white">
       <Suspense>
         <HeaderBlog />
       </Suspense>
 
-      <main className="min-h-screen mx-auto p-8">{children}</main>
-
-      <div className="h-24" />
+      <main className="min-h-screen">{children}</main>
 
       <Footer />
     </div>
