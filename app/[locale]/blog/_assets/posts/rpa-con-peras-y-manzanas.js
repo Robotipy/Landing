@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/rpa-con-peras-y-manzanas/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 const faqs = [
   {
@@ -141,6 +140,15 @@ export const post = {
     alt: "RPA con peras y manzanas",
   },
   faq: faqs,
+  cta: {
+    titulo: "¿Listo para dejar de hacer tareas repetitivas?",
+    texto:
+      "Agenda un diagnóstico gratuito de 20 minutos y te decimos qué procesos automatizar y cuánto ahorrarías.",
+    botonLabel: "Quiero mi diagnóstico gratuito",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver casos de éxito",
+    linkUrl: "/blog/category/casos-de-exito",
+  },
   content: (
     <>
       {/* INTRO + STATS */}
@@ -761,20 +769,6 @@ export const post = {
         </ul>
       </section>
 
-      {/* CTA */}
-      <section>
-        <div className={ui.cta}>
-          <h2 className={ui.ctaTitle}>¿Listo para dejar de hacer tareas repetitivas?</h2>
-          <p className={ui.ctaText}>
-            Agenda un diagnóstico gratuito de 20 minutos y te mostramos exactamente qué procesos de tu empresa podemos
-            automatizar y cuánto ahorrarías.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <ButtonMain text="Quiero mi diagnóstico gratuito" link="/contact-us" type="primary" />
-            <ButtonMain text="Ver casos de éxito" link="/blog/category/casos-de-exito" type="secondary" />
-          </div>
-        </div>
-      </section>
     </>
   ),
 };

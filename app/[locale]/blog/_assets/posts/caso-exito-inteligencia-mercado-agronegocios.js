@@ -1,7 +1,6 @@
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-inteligencia-mercado-agronegocios",
@@ -19,6 +18,14 @@ export const post = {
     src: null,
     urlRelative: "/blog/caso-exito-inteligencia-mercado-agronegocios/header.jpeg",
     alt: "Automatización inteligencia de mercado agronegocios Argentina",
+  },
+  cta: {
+    titulo: "¿Necesitas inteligencia de mercado sin un equipo grande?",
+    texto: "Evaluamos cómo un bot puede darte los datos para decidir en cada reunión.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -97,12 +104,6 @@ export const post = {
         <p className={`${styles.p} font-semibold text-cyan-400`}>
           El bot no reemplazó al analista, le dio la materia prima para que haga su trabajo real: pensar.
         </p>
-      </section>
-
-      <section className="space-y-3">
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

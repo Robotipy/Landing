@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/tendencias-automatizacion-2025/header.jpeg"; // TODO: Replace
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "tendencias-automatizacion-2025",
@@ -21,6 +20,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/tendencias-automatizacion-2025/header.jpeg", // TODO: Update
     alt: "Tendencias Automatizacion 2025",
+  },
+  cta: {
+    titulo: "¿Tu empresa está lista para lo que viene?",
+    texto: "Te ayudamos a integrar RPA, IA y análisis de datos en una sola estrategia.",
+    botonLabel: "Prepara tu empresa",
+    botonUrl: "/contact-us",
+    linkLabel: "Calcula tu ROI",
+    linkUrl: "/roi-calculator",
   },
   content: (
     <>
@@ -70,9 +77,6 @@ export const post = {
         <p className={styles.p}>
           El 2025 será el año de la integración. Las tecnologías dejarán de verse como silos separados y comenzarán a trabajar en orquesta. Las empresas que logren unificar RPA, IA y análisis de datos tendrán una ventaja competitiva inalcanzable para quienes sigan operando manualmente.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="Prepara tu empresa para el futuro" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

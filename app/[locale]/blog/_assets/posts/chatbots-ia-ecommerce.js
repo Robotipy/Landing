@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/chatbots-ia-ecommerce/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "chatbots-ia-ecommerce",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/chatbots-ia-ecommerce/header.jpeg", 
     alt: "Chatbots IA Ecommerce",
+  },
+  cta: {
+    titulo: "¿Quieres un chatbot que venda y resuelva?",
+    texto: "Diseñamos asistentes conectados a tu ERP, CRM y pasarela de pagos.",
+    botonLabel: "Descubre nuestras soluciones de chatbot",
+    botonUrl: "/chatbot",
+    linkLabel: "Habla con nosotros",
+    linkUrl: "/contact-us",
   },
   content: (
     <>
@@ -78,9 +85,6 @@ export const post = {
         <p className={styles.p}>
           En <strong>Robotipy</strong>, desarrollamos asistentes virtuales que se conectan profundamente con tu infraestructura tecnológica, transformando el chat en un canal de ingresos real.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="Descubre nuestras soluciones de Chatbot" link="/chatbot" type="secondary"/>
-        </div>
       </section>
     </>
   ),

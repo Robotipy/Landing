@@ -2,7 +2,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/caso-exito-rpa-ia-mineria-costos/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-rpa-ia-mineria-costos",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/caso-exito-rpa-ia-mineria-costos/header.jpeg",
     alt: "Automatización RPA e IA en minería del cobre Chile",
+  },
+  cta: {
+    titulo: "¿Quieres reducir costos con RPA e IA?",
+    texto: "Evaluamos tu proceso y te decimos dónde está el ahorro real.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -104,11 +111,8 @@ export const post = {
 
       <section className="space-y-3">
         <p className={styles.p}>
-          Si gestionas proyectos de automatización como este, conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> — nuestra herramienta para gestionar proyectos, recursos y clientes de consultoras de tecnología.
+          Si gestionas proyectos de automatización como este, conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a>, nuestra herramienta para gestionar proyectos, recursos y clientes de consultoras de tecnología.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

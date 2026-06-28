@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/que-procesos-de-sap-se-pueden-automatizar-con-rpa/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 const linkCls = "text-accent underline-offset-2 hover:underline";
 const IntLink = ({ href, children }) => (
@@ -101,6 +100,15 @@ export const post = {
     alt: "Automatización de procesos de SAP con RPA",
   },
   faq: faqs,
+  cta: {
+    titulo: "¿Tienes un proceso de SAP que hoy se hace a mano?",
+    texto:
+      "Escríbenos y lo evaluamos sin compromiso: te decimos si conviene automatizarlo con RPA, por API o una mezcla de las dos.",
+    botonLabel: "Evaluar mi proceso de SAP",
+    botonUrl: "/contact-us",
+    linkLabel: "Cómo calcular el ROI",
+    linkUrl: "/roi-calculator",
+  },
   content: (
     <>
       {/* ── INTRO ── */}
@@ -304,7 +312,7 @@ export const post = {
         <p className={styles.p}>
           La cuenta es directa. Tomas las horas mensuales que el equipo dedica hoy a la tarea, las
           multiplicas por el costo de esa hora, y lo comparas con el costo de construir y mantener el
-          robot. Sumá del lado del beneficio lo que es más difícil de poner en un número pero pesa: los
+          robot. Suma del lado del beneficio lo que es más difícil de poner en un número pero pesa: los
           errores que dejas de cometer, el reproceso que se evita y la gente que vuelve a tareas de más
           valor.
         </p>
@@ -312,8 +320,8 @@ export const post = {
           Un proceso de carga que ocupa a dos personas medio día cada día{" "}
           <IntLink href="/blog/caso-exito-rpa-ia-mineria-costos">se paga solo en pocos meses</IntLink>.
           Por eso recomendamos empezar por un proceso de alto volumen y reglas claras: el primer robot
-          tiene que demostrar el caso para que el resto de la organización lo acompañe. Si querés
-          ponerle números a tu caso puntual, podés usar nuestra{" "}
+          tiene que demostrar el caso para que el resto de la organización lo acompañe. Si quieres
+          ponerle números a tu caso puntual, puedes usar nuestra{" "}
           <IntLink href="/roi-calculator">calculadora de ROI de automatización</IntLink> o pedirnos un
           assessment del proceso.
         </p>
@@ -323,8 +331,8 @@ export const post = {
       <section id="empezar" className="space-y-4 scroll-mt-24">
         <h2 className={styles.h2}>Por dónde empezar</h2>
         <p className={styles.p}>
-          No arranques por el proceso más complejo ni por el que más te molesta. Arrancá por el que
-          tenga la mejor combinación de volumen alto, reglas estables y datos limpios. Documentá cómo
+          No arranques por el proceso más complejo ni por el que más te molesta. Arranca por el que
+          tenga la mejor combinación de volumen alto, reglas estables y datos limpios. Documenta cómo
           se hace hoy, paso a paso, antes de automatizar nada. Esa documentación es la mitad del
           proyecto y es lo que permite que el robot se construya bien a la primera.
         </p>
@@ -351,23 +359,6 @@ export const post = {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <div className={ui.cta}>
-        <h2 className={ui.ctaTitle}>¿Tenés un proceso de SAP que hoy se hace a mano?</h2>
-        <p className={ui.ctaText}>
-          Escribinos y lo evaluamos sin compromiso: te decimos si conviene automatizarlo con RPA, por
-          API o una mezcla de las dos.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <ButtonMain link="/contact-us" text="Evaluar mi proceso de SAP" />
-          <Link
-            href="/blog/como-calcular-el-roi-en-proyectos-rpa"
-            className="inline-block px-7 py-3 rounded-full border border-white/30 text-white font-semibold hover:border-white/60 transition-colors"
-          >
-            Cómo calcular el ROI
-          </Link>
-        </div>
-      </div>
     </>
   ),
 };
