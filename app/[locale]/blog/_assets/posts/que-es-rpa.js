@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
   import { styles } from "../styles";
 import thumbnail from "@/public/blog/que-es-rpa/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "que-es-rpa",
@@ -21,6 +20,14 @@ export const post = {
       src: thumbnail,
       urlRelative: "/blog/que-es-rpa/header.jpeg",
     alt: "¿Qué es RPA?",
+  },
+  cta: {
+    titulo: "¿Quieres saber qué procesos de tu empresa puedes automatizar?",
+    texto: "Identificamos los procesos con mejor retorno y te proponemos por dónde empezar.",
+    botonLabel: "Agenda una consultoría gratuita",
+    botonUrl: "/contact-us",
+    linkLabel: "Calcula tu ROI",
+    linkUrl: "/roi-calculator",
   },
   content: (
     <>
@@ -105,9 +112,6 @@ export const post = {
         <p className={styles.p}>
           En <strong>Robotipy</strong>, ayudamos a las empresas a identificar estos procesos y a implementar soluciones de automatización que generan un retorno de inversión real.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="Agenda una Consultoría Gratuita" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

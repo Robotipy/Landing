@@ -2,7 +2,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/caso-exito-conciliacion-bancaria-agropecuario/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-conciliacion-bancaria-agropecuario",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/caso-exito-conciliacion-bancaria-agropecuario/header.jpeg",
     alt: "Conciliación bancaria automatizada agropecuario Argentina",
+  },
+  cta: {
+    titulo: "¿Tu conciliación bancaria toma días?",
+    texto: "Te mostramos cómo un robot la deja lista para revisar solo las excepciones.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -101,9 +108,6 @@ export const post = {
         <p className={styles.p}>
           Coordinar proyectos multi-entidad como este es más fácil con las herramientas correctas. Descubre <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> para gestionar tus proyectos de automatización.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

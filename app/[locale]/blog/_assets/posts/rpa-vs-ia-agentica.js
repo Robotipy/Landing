@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/rpa-vs-ia-agentica/header.jpeg"; // TODO: Replace with definitive image
-import ButtonMain from "@/components/ButtonMain.js";
 
 const linkCls = "text-accent underline-offset-2 hover:underline";
 const ExtLink = ({ href, children }) => (
@@ -174,6 +173,15 @@ export const post = {
     alt: "RPA vs IA Agéntica comparativa 2026",
   },
   faq: faqs,
+  cta: {
+    titulo: "¿No sabes si necesitas RPA, IA o ambos?",
+    texto:
+      "Analizamos tus procesos y te decimos la mejor tecnología para cada uno, sin venderte algo que no necesitas.",
+    botonLabel: "Agenda tu evaluación gratuita",
+    botonUrl: "/contact-us",
+    linkLabel: "Calcula tu ROI",
+    linkUrl: "/roi-calculator",
+  },
   content: (
     <>
       {/* ── INTRO ── */}
@@ -962,23 +970,6 @@ export const post = {
         </ul>
       </section>
 
-      {/* ── CTA ── */}
-      <div className={ui.cta}>
-        <h2 className={ui.ctaTitle}>¿No sabes si necesitas RPA, IA o ambos?</h2>
-        <p className={ui.ctaText}>
-          Analizamos tus procesos y te decimos cuál es la mejor tecnología para cada uno, sin
-          venderte algo que no necesitas.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <ButtonMain link="/contact-us" text="Agenda tu evaluación gratuita" />
-          <Link
-            href="/roi-calculator"
-            className="inline-block px-7 py-3 rounded-full border border-white/30 text-white font-semibold hover:border-white/60 transition-colors"
-          >
-            Calcula tu ROI
-          </Link>
-        </div>
-      </div>
     </>
   ),
 };

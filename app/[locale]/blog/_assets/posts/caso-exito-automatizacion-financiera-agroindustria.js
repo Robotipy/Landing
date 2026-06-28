@@ -2,7 +2,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/caso-exito-automatizacion-financiera-agroindustria/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-automatizacion-financiera-agroindustria",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/caso-exito-automatizacion-financiera-agroindustria/header.jpeg",
     alt: "Automatización financiera agroindustria Chile RPA",
+  },
+  cta: {
+    titulo: "¿Tu agroindustria pierde horas en tareas financieras?",
+    texto: "Te mostramos qué procesos automatizar primero y cuánto puedes ahorrar.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -95,9 +102,6 @@ export const post = {
         <p className={styles.p}>
           Escalar automatizaciones a múltiples unidades de negocio requiere planificación. <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> te ayuda a gestionar recursos, timelines y clientes en un solo lugar.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

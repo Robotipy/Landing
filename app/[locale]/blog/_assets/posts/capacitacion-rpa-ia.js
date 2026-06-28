@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/capacitacion-rpa-ia/header.jpeg"; // TODO: Replace
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "capacitacion-rpa-ia",
@@ -21,6 +20,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/capacitacion-rpa-ia/header.jpeg", // TODO: Update
     alt: "Capacitacion RPA IA",
+  },
+  cta: {
+    titulo: "¿Quieres que tu equipo tome el control de la automatización?",
+    texto: "Transferimos el conocimiento para que escales con un Centro de Excelencia propio.",
+    botonLabel: "Conoce nuestros programas",
+    botonUrl: "/capacitaciones",
+    linkLabel: "Habla con nosotros",
+    linkUrl: "/contact-us",
   },
   content: (
     <>
@@ -74,9 +81,6 @@ export const post = {
         <p className={styles.p}>
           En Robotipy, no solo implementamos soluciones; transferimos conocimiento. Nuestros programas de capacitación están diseñados para que tu equipo tome el control.
         </p>
-        <div className="flex justify-center mt-5 py-5">
-          <ButtonMain text="Conoce nuestros programas de capacitación" link="/capacitaciones" noblank={true} />
-        </div>
       </section>
     </>
   ),

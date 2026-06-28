@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   // The unique slug to use in the URL. It's also used to generate the canonical URL.
@@ -28,6 +27,14 @@ export const post = {
     // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD.
     urlRelative: "/blog/como-calcular-el-roi-en-proyectos-rpa/header.jpeg",
     alt: "Como Calcular el ROI en Proyectos RPA",
+  },
+  cta: {
+    titulo: "¿Quieres calcular el ROI de tu automatización?",
+    texto: "Usa nuestra calculadora y obtén una estimación precisa en menos de 3 minutos.",
+    botonLabel: "Calcula tu ROI",
+    botonUrl: "/roi-calculator",
+    linkLabel: "Habla con nosotros",
+    linkUrl: "/contact-us",
   },
   // The actual content of the article that will be shown under the <h1> title in the article page.
   content: (
@@ -59,7 +66,7 @@ export const post = {
           Un estudio de Deloitte reveló que solo el 31% de las empresas mide el
           ROI de sus automatizaciones, lo que limita su capacidad de escalar.
           Esta falta de medición no es un problema contable; es un freno
-          estratégico que mantiene a su empresa atada a procesos lentos y
+          estratégico que mantiene a tu empresa atada a procesos lentos y
           obsoletos.
         </p>
       </section>
@@ -79,7 +86,7 @@ export const post = {
         </p>
         <p className={styles.p}>
           Para un líder comercial, entender estos costos es una evaluación de
-          riesgos. Antes de aprobar cualquier proyecto, considere los siguientes
+          riesgos. Antes de aprobar cualquier proyecto, considera los siguientes
           puntos:
         </p>
         <ul className={styles.ul}>
@@ -93,7 +100,7 @@ export const post = {
             <strong className={styles.strong}>
               La Inversión en Implementación:
             </strong>{" "}
-            A menos que tenga un equipo interno especializado, necesitará un
+            A menos que tengas un equipo interno especializado, necesitarás un
             socio para desarrollar y desplegar los robots. Los honorarios de
             consultoría son una parte significativa del presupuesto y dependen
             de la complejidad del proceso.
@@ -102,11 +109,11 @@ export const post = {
             <strong className={styles.strong}>Mantenimiento y Soporte:</strong>{" "}
             Los robots, como cualquier activo, necesitan mantenimiento. Este
             costo anual, usualmente un porcentaje del licenciamiento, garantiza
-            que su inversión siga generando valor a largo plazo
+            que tu inversión siga generando valor a largo plazo
           </li>
           <li className={styles.li}>
             <strong className={styles.strong}>El Costo del Cambio:</strong>{" "}
-            Quizás el costo más subestimado es el humano. Capacitar a su equipo
+            Quizás el costo más subestimado es el humano. Capacitar a tu equipo
             y gestionar la transición es fundamental para que la automatización
             sea adoptada y no rechazada.
           </li>
@@ -294,16 +301,6 @@ export const post = {
           No dejes que tu empresa siga atada a procesos obsoletos. Mide tus
           procesos, calcula el potencial y toma la decisión basada en datos.
         </p>
-      </section>
-      <section className="space-y-3">
-        <h3 className={styles.h3}>¿Quieres Calcular tu Propio ROI?</h3>
-        <p className={styles.p}>
-          Te invitamos a usar nuestra Calculadora de ROI para RPA | Robotipy y
-          obtén una estimación precisa en menos de 3 minutos.
-        </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="Calculadora de ROI para RPA" link="/roi-calculator" type="quaternary"/>
-        </div>
       </section>
     </>
   ),

@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/caso-exito-logistica/header.jpeg"
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-logistica",
@@ -21,6 +20,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/caso-exito-logistica/header.jpeg", 
     alt: "Caso Exito Logistica RPA",
+  },
+  cta: {
+    titulo: "¿Tu operación logística no escala sin sumar personal?",
+    texto: "Te mostramos qué automatizar para crecer sin contratar más en temporada alta.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -78,11 +85,8 @@ export const post = {
           La automatización no solo redujo costos, sino que habilitó la escalabilidad necesaria para afrontar eventos de alta demanda sin contratar personal temporal excesivo.
         </p>
         <p className={styles.p}>
-          Orquestar múltiples bots requiere gestión profesional de proyectos. Conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> — diseñado para consultoras que gestionan automatizaciones en producción.
+          Orquestar múltiples bots requiere gestión profesional de proyectos. Conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a>, diseñado para consultoras que gestionan automatizaciones en producción.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="Ver más Casos de Éxito" link="/casos-exito" type="primary"/>
-        </div>
       </section>
     </>
   ),

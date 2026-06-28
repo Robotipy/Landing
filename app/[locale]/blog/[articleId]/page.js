@@ -6,6 +6,7 @@ import BadgeCategory from "../_assets/components/BadgeCategory";
 import ReadingProgress from "../_assets/components/ReadingProgress";
 import ArticleShare from "../_assets/components/ArticleShare";
 import StickyCta from "../_assets/components/StickyCta";
+import ArticleCta from "../_assets/components/ArticleCta";
 import logo from "@/app/icon.png";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
@@ -77,6 +78,17 @@ const EVERGREEN = [
     meta: "RPA, IA y software a medida",
   },
 ];
+
+// CTA de cierre por defecto (tuteo neutro) para posts que no definen el suyo.
+const DEFAULT_CTA = {
+  titulo: "¿Quieres automatizar procesos como este?",
+  texto:
+    "Cuéntanos tu caso y te decimos por dónde empezar, sin compromiso.",
+  botonLabel: "Agenda una reunión",
+  botonUrl: "/contact-us",
+  linkLabel: "Calcula tu ROI",
+  linkUrl: "/roi-calculator",
+};
 
 export default async function Article({ params }) {
   const resolvedParams = await params;
@@ -261,9 +273,35 @@ export default async function Article({ params }) {
 
         {/* CUERPO */}
         <div className="space-y-12">{article.content}</div>
+      </article>
 
-        {/* BIO DEL AUTOR */}
-        <div className="mx-auto mt-12 flex max-w-[700px] items-center gap-4 rounded-2xl border border-white/[0.07] bg-secondary px-7 py-[26px]">
+      {/* SIGUE LEYENDO */}
+      <div className="relative mx-auto max-w-[880px] px-6 pt-16">
+        <div className="mb-6 font-display text-[22px] font-extrabold text-white">
+          Sigue leyendo
+        </div>
+        <div className="flex flex-wrap gap-5">
+          {readMore.map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="block min-w-[210px] flex-1 rounded-2xl border border-white/[0.07] bg-secondary p-6 transition-colors hover:border-accent/40"
+            >
+              <span className="font-display text-[11px] font-bold uppercase tracking-[0.06em] text-accent">
+                {card.tag}
+              </span>
+              <div className="my-3 font-display text-[18px] font-bold leading-[1.3] text-white">
+                {card.title}
+              </div>
+              <div className="text-[13px] text-white/60">{card.meta}</div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* BIO DEL AUTOR (confianza antes del CTA) */}
+      <div className="mx-auto max-w-[880px] px-6 pt-12">
+        <div className="mx-auto flex max-w-[700px] items-center gap-4 rounded-2xl border border-white/[0.07] bg-secondary px-7 py-[26px]">
           <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-accent/20">
             <Image
               src={article.author.avatar}
@@ -288,30 +326,11 @@ export default async function Article({ params }) {
             </div>
           </div>
         </div>
-      </article>
+      </div>
 
-      {/* SIGUE LEYENDO */}
-      <div className="relative mx-auto max-w-[880px] px-6 pb-[72px] pt-16">
-        <div className="mb-6 font-display text-[22px] font-extrabold text-white">
-          Sigue leyendo
-        </div>
-        <div className="flex flex-wrap gap-5">
-          {readMore.map((card) => (
-            <Link
-              key={card.href}
-              href={card.href}
-              className="block min-w-[210px] flex-1 rounded-2xl border border-white/[0.07] bg-secondary p-6 transition-colors hover:border-accent/40"
-            >
-              <span className="font-display text-[11px] font-bold uppercase tracking-[0.06em] text-accent">
-                {card.tag}
-              </span>
-              <div className="my-3 font-display text-[18px] font-bold leading-[1.3] text-white">
-                {card.title}
-              </div>
-              <div className="text-[13px] text-white/60">{card.meta}</div>
-            </Link>
-          ))}
-        </div>
+      {/* CTA DE CIERRE ÚNICO Y CONTEXTUAL */}
+      <div className="mx-auto max-w-[880px] px-6 pb-[72px]">
+        <ArticleCta {...(article.cta || DEFAULT_CTA)} />
       </div>
     </div>
   );

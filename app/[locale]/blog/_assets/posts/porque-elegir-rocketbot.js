@@ -3,7 +3,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles.js";
 import thumbnail from "@/public/blog/porque-elegir-rocketbot/header.jpeg"; // TODO: Replace
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "porque-elegir-rocketbot",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/porque-elegir-rocketbot/header.jpeg", // TODO: Update
     alt: "Porque Elegir Rocketbot",
+  },
+  cta: {
+    titulo: "¿Pagas licencias de RPA que penalizan tu escalabilidad?",
+    texto: "Evaluamos tu ecosistema y te mostramos el ahorro de TCO con Rocketbot.",
+    botonLabel: "Agenda una evaluación técnica",
+    botonUrl: "/contact-us",
+    linkLabel: "Conoce RPA con Rocketbot",
+    linkUrl: "/rpa",
   },
   content: (
     <>
@@ -113,14 +120,11 @@ export const post = {
         Si buscas una herramienta que te permita escalar sin penalizarte, que te dé la libertad técnica de Python y que te ofrezca un soporte cercano de clase mundial, la respuesta es clara.
         </p>
         <p className={styles.p}>Rocketbot no es solo una alternativa económica; es la evolución lógica del RPA hacia un modelo más eficiente, abierto y escalable.</p>
-        <p className={styles.p}>Deje de pagar costos de licencias que penalizan su escalabilidad. 
-          Agenda una evaluación técnica de su ecosistema actual y reciba una propuesta concreta que demuestre la reducción inmediata en su Costo Total de Propiedad (TCO) gracias a la arquitectura de <a href="https://rocketbot.io/" target="_blank">Rocketbot</a>.</p>
-        <div className="flex justify-center mt-5 py-5">
-          <ButtonMain text="Contactanos" link="/contact-us" noblank={true} />
-        </div>
+        <p className={styles.p}>Deja de pagar costos de licencias que penalizan tu escalabilidad.
+          Agenda una evaluación técnica de tu ecosistema actual y recibe una propuesta concreta que demuestra la reducción inmediata en tu Costo Total de Propiedad (TCO) gracias a la arquitectura de <a href="https://rocketbot.io/" target="_blank">Rocketbot</a>.</p>
       </section>
-      
-       
+
+
     </>
   ),
 };

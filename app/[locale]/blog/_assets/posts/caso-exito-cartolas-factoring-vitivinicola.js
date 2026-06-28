@@ -2,7 +2,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/caso-exito-cartolas-factoring-vitivinicola/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-cartolas-factoring-vitivinicola",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/caso-exito-cartolas-factoring-vitivinicola/header.jpeg",
     alt: "Automatización cartolas factoring vitivinícola Chile",
+  },
+  cta: {
+    titulo: "¿El factoring te consume tiempo administrativo?",
+    texto: "Te decimos si conviene automatizar tu proceso de cesión y cómo hacerlo.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -86,12 +93,6 @@ export const post = {
         <p className={`${styles.p} font-semibold text-cyan-400`}>
           Cada día de retraso en una cesión tiene costo financiero real.
         </p>
-      </section>
-
-      <section className="space-y-3">
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),

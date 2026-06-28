@@ -2,7 +2,6 @@ import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
 import thumbnail from "@/public/blog/caso-exito-automatizacion-ordenes-sap-siderurgia/header.jpeg";
-import ButtonMain from "@/components/ButtonMain.js";
 
 export const post = {
   slug: "caso-exito-automatizacion-ordenes-sap-siderurgia",
@@ -20,6 +19,14 @@ export const post = {
     src: thumbnail,
     urlRelative: "/blog/caso-exito-automatizacion-ordenes-sap-siderurgia/header.jpeg",
     alt: "Automatización RPA SAP siderurgia Chile",
+  },
+  cta: {
+    titulo: "¿Tienes sistemas que no se hablan entre sí?",
+    texto: "Evaluamos si RPA puede conectarlos en semanas, sin tocar las APIs de ninguno.",
+    botonLabel: "Evaluar mi caso",
+    botonUrl: "/contact-us",
+    linkLabel: "Ver más casos de éxito",
+    linkUrl: "/casos-exito",
   },
   content: (
     <>
@@ -106,9 +113,6 @@ export const post = {
         <p className={styles.p}>
           Proyectos con integraciones complejas como este requieren visibilidad total del avance. Conoce <a href="/projects" className="text-cyan-400 hover:underline font-semibold">Robotipy Projects</a> para gestionar este tipo de iniciativas de forma profesional.
         </p>
-        <div className="flex justify-center mt-4">
-          <ButtonMain text="¿Quieres algo similar? Contáctanos" link="/contact-us" type="primary"/>
-        </div>
       </section>
     </>
   ),
