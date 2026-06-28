@@ -65,7 +65,7 @@ const Footer = () => {
                 <Link href="/rpa" className="link link-hover text-start">
                   {t("sections.rpa.whyRpa")}
                 </Link>
-                <Link href="#" className="link link-hover text-start">
+                <Link href="/rocketbot" className="link link-hover text-start">
                   {t("sections.rpa.rocketbot")}
                 </Link>
               </div>
