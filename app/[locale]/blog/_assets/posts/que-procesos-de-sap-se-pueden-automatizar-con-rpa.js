@@ -359,7 +359,7 @@ export const post = {
           API o una mezcla de las dos.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <ButtonMain href="/contact-us" text="Evaluar mi proceso de SAP" />
+          <ButtonMain link="/contact-us" text="Evaluar mi proceso de SAP" />
           <Link
             href="/blog/como-calcular-el-roi-en-proyectos-rpa"
             className="inline-block px-7 py-3 rounded-full border border-white/30 text-white font-semibold hover:border-white/60 transition-colors"
