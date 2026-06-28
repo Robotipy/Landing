@@ -886,7 +886,7 @@ export const post = {
         <p className={styles.p}>
           Este framework no es teórico: es exactamente lo que usamos en Robotipy cuando un cliente
           nos contacta. Le hacemos estas 5 preguntas en la{" "}
-          <IntLink href="/#contacto">primera reunión de diagnóstico</IntLink>{" "}
+          <IntLink href="/contact-us">primera reunión de diagnóstico</IntLink>{" "}
           y con las respuestas ya sabemos qué tecnología (o combinación) recomendarle. El 70% de los
           proyectos que implementamos hoy terminan usando algún grado de modelo híbrido, porque la
           realidad de las empresas rara vez cabe en una sola categoría.
@@ -970,7 +970,7 @@ export const post = {
           venderte algo que no necesitas.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <ButtonMain href="/contact-us" text="Agenda tu evaluación gratuita" />
+          <ButtonMain link="/contact-us" text="Agenda tu evaluación gratuita" />
           <Link
             href="/roi-calculator"
             className="inline-block px-7 py-3 rounded-full border border-white/30 text-white font-semibold hover:border-white/60 transition-colors"

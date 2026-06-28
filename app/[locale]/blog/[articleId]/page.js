@@ -290,37 +290,6 @@ export default async function Article({ params }) {
         </div>
       </article>
 
-      {/* BANDA CTA */}
-      <div className="relative mx-auto mt-14 max-w-[880px] px-6">
-        <div className="relative overflow-hidden rounded-[24px] bg-accent px-10 py-12 text-center">
-          <h2 className="relative mb-3 font-display text-[28px] font-extrabold leading-[1.12] tracking-[-0.01em] text-white md:text-[32px]">
-            ¿Listo para automatizar tus procesos?
-          </h2>
-          <p className="relative mb-7 text-[17px] text-white/90">
-            Conversemos sobre tu caso. Te mostramos dónde automatizar y cuánto
-            puedes ahorrar.
-          </p>
-          <Link
-            href="/contact-us"
-            className="relative inline-flex h-[52px] items-center gap-2.5 rounded-xl bg-white px-[30px] font-display text-[17px] font-semibold text-accent transition hover:-translate-y-px"
-          >
-            Agenda una reunión
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-4 h-4"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </Link>
-        </div>
-      </div>
-
       {/* SIGUE LEYENDO */}
       <div className="relative mx-auto max-w-[880px] px-6 pb-[72px] pt-16">
         <div className="mb-6 font-display text-[22px] font-extrabold text-white">
