@@ -68,7 +68,7 @@ const EVERGREEN = [
   {
     tag: "Casos de éxito",
     title: "Casos reales de automatización",
-    href: "/casos-exito",
+    href: "/success-cases",
     meta: "Resultados medibles",
   },
   {
