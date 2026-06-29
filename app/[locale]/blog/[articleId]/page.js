@@ -159,6 +159,9 @@ export default async function Article({ params }) {
             image: `https://${config.domainName}${article.image.urlRelative}`,
             datePublished: article.publishedAt,
             dateModified: article.publishedAt,
+            ...(article.keywords?.length
+              ? { keywords: article.keywords.join(", ") }
+              : {}),
             author: {
               "@type": "Person",
               name: article.author.name,

@@ -25,10 +25,34 @@ import config from "@/config";
 
 // Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
 
-export const metadata = getSEOTags({
-  title: `Terms and Conditions | ${config.appName}`,
-  canonicalUrlRelative: "/tos",
-});
+const META = {
+  es: {
+    title: `Términos de servicio | ${config.appName}`,
+    description:
+      "Términos de servicio de Robotipy: condiciones de uso de nuestros servicios de automatización RPA, IA y desarrollo de software a medida.",
+  },
+  en: {
+    title: `Terms of Service | ${config.appName}`,
+    description:
+      "Robotipy terms of service: conditions for using our RPA automation, AI and custom software development services.",
+  },
+  pt: {
+    title: `Termos de serviço | ${config.appName}`,
+    description:
+      "Termos de serviço da Robotipy: condições de uso dos nossos serviços de automação RPA, IA e desenvolvimento de software sob medida.",
+  },
+};
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const m = META[locale] || META.es;
+  return getSEOTags({
+    locale,
+    title: m.title,
+    description: m.description,
+    canonicalUrlRelative: "/tos",
+  });
+}
 
 const TOS = () => {
   return (
