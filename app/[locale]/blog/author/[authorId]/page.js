@@ -6,10 +6,12 @@ import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export async function generateMetadata({ params }) {
-  const { authorId } = await params;
+  const { authorId, locale } = await params;
   const author = authors.find((author) => author.slug === authorId);
 
   return getSEOTags({
+    locale,
+    availableLocales: ["es"],
     title: `${author.name}, autor en el Blog de ${config.appName}`,
     description: `${author.name}, autor en el Blog de ${config.appName}`,
     canonicalUrlRelative: `/blog/author/${author.slug}`,

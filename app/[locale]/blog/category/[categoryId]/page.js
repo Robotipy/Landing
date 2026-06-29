@@ -6,10 +6,12 @@ import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
 export async function generateMetadata({ params }) {
-  const { categoryId } = await params;
+  const { categoryId, locale } = await params;
   const category = categories.find((category) => category.slug === categoryId);
 
   return getSEOTags({
+    locale,
+    availableLocales: ["es"],
     title: `${category.title} | Blog de ${config.appName}`,
     description: category.description,
     canonicalUrlRelative: `/blog/category/${category.slug}`,

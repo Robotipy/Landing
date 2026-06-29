@@ -5,17 +5,27 @@ const siteOrigin =
   process.env.SITE_URL ||
   `https://www.${config.domainName.replace(/^www\./, "")}`;
 
-const buildAlternates = (locale, canonicalUrlRelative) => {
+const buildAlternates = (locale, canonicalUrlRelative, availableLocales) => {
   if (!canonicalUrlRelative) return undefined;
   const path = canonicalUrlRelative.startsWith("/")
     ? canonicalUrlRelative
     : `/${canonicalUrlRelative}`;
   const suffix = path === "/" ? "" : path;
+  // Only emit hreflang for locales where the page actually exists, so
+  // single-language pages (e.g. es-only blog posts) don't point hreflang at
+  // /en or /pt URLs that would 404.
+  const locales =
+    Array.isArray(availableLocales) && availableLocales.length
+      ? availableLocales.filter((l) => routing.locales.includes(l))
+      : routing.locales;
+  const xDefaultLocale = locales.includes(routing.defaultLocale)
+    ? routing.defaultLocale
+    : locales[0];
   const languages = {};
-  routing.locales.forEach((l) => {
+  locales.forEach((l) => {
     languages[htmlLangMap[l] || l] = `${siteOrigin}/${l}${suffix}`;
   });
-  languages["x-default"] = `${siteOrigin}/${routing.defaultLocale}${suffix}`;
+  languages["x-default"] = `${siteOrigin}/${xDefaultLocale}${suffix}`;
   return {
     canonical: `${siteOrigin}/${locale}${suffix}`,
     languages,
@@ -35,6 +45,7 @@ export const getSEOTags = ({
   canonicalUrlRelative,
   extraTags,
   locale,
+  availableLocales,
 } = {}) => {
   const activeLocale =
     locale && routing.locales.includes(locale) ? locale : routing.defaultLocale;
@@ -105,7 +116,11 @@ export const getSEOTags = ({
 
     // If a canonical URL is given, we add it (locale-prefixed) plus hreflang alternates.
     ...(canonicalUrlRelative && {
-      alternates: buildAlternates(activeLocale, canonicalUrlRelative),
+      alternates: buildAlternates(
+        activeLocale,
+        canonicalUrlRelative,
+        availableLocales
+      ),
     }),
 
     // Microsoft/Bing specific meta tags for better thumbnail support

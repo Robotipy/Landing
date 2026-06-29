@@ -1,30 +1,34 @@
 import { getSEOTags } from "@/libs/seo";
 
-export const metadata = getSEOTags({
-  title: "Soluciones para el Sector Software | Casos de Éxito Robotipy",
-  description:
-    "Descubre cómo Robotipy ha optimizado los procesos de desarrollo de software a través de la automatización inteligente. Caso de éxito: gestión automatizada de permisos en Google Drive, Jira y Slack con ahorro del 92% de tiempo.",
-  canonicalUrlRelative: "/casos-exito/software",
-  keywords: [
-    "automatización software",
-    "RPA desarrollo software",
-    "gestión permisos automatizada",
-    "automatización Google Drive Jira Slack",
-    "casos de éxito software",
-    "optimización procesos software",
-  ],
-  extraTags: {
-    openGraph: {
-      title: "Soluciones para el Sector Software | Robotipy",
-      description:
-        "Automatización de procesos para empresas de software. Caso de éxito con ahorro del 92% de tiempo en gestión de permisos.",
-      url: "/casos-exito/software",
-      type: "website",
-    },
+const META = {
+  es: {
+    title: "Casos RPA e IA en Empresas de Software | Robotipy",
+    description:
+      "Casos reales de automatización RPA e IA en empresas de software: procesos internos, soporte y reportes con ahorros medibles.",
   },
-});
+  en: {
+    title: "RPA and AI Cases in Software Companies | Robotipy",
+    description:
+      "Real RPA and AI automation cases in software companies: internal processes, support and reports with measurable savings.",
+  },
+  pt: {
+    title: "Casos RPA e IA em Empresas de Software | Robotipy",
+    description:
+      "Casos reais de automação RPA e IA em empresas de software: processos internos, suporte e relatórios com economias mensuráveis.",
+  },
+};
 
-export default function SoftwareLayout({ children }) {
-  return <>{children}</>;
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const m = META[locale] || META.es;
+  return getSEOTags({
+    locale,
+    title: m.title,
+    description: m.description,
+    canonicalUrlRelative: "/casos-exito/software",
+  });
 }
 
+export default function Layout({ children }) {
+  return <>{children}</>;
+}
