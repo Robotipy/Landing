@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
     locale,
     title: m.title,
     description: m.description,
-    canonicalUrlRelative: "/capacitaciones",
+    canonicalUrlRelative: "/automation",
   });
 }
 
