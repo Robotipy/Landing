@@ -457,6 +457,33 @@ const RocketbotPage = async ({ params }) => {
               {t.ctaLink}
             </Link>
           </div>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3 text-[14px]">
+            <span className="text-white/50">
+              {locale === "en" ? "By country:" : "Por país:"}
+            </span>
+            <Link
+              href="/rocketbot/chile"
+              className="font-semibold text-accent hover:underline"
+            >
+              {locale === "en"
+                ? "Rocketbot in Chile"
+                : locale === "pt"
+                ? "Rocketbot no Chile"
+                : "Rocketbot en Chile"}
+            </Link>
+            <span className="text-white/30">·</span>
+            <Link
+              href="/rocketbot/argentina"
+              className="font-semibold text-accent hover:underline"
+            >
+              {locale === "en"
+                ? "Rocketbot in Argentina"
+                : locale === "pt"
+                ? "Rocketbot na Argentina"
+                : "Rocketbot en Argentina"}
+            </Link>
+          </div>
         </section>
 
         {/* ¿QUÉ ES ROCKETBOT? */}
