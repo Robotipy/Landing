@@ -25,10 +25,34 @@ import config from "@/config";
 
 // Please write a simple privacy policy for my site. Add the current date.  Do not add or explain your reasoning. Answer:
 
-export const metadata = getSEOTags({
-  title: `Privacy Policy | ${config.appName}`,
-  canonicalUrlRelative: "/privacy-policy",
-});
+const META = {
+  es: {
+    title: `Política de privacidad | ${config.appName}`,
+    description:
+      "Política de privacidad de Robotipy: cómo recopilamos, usamos y protegemos tus datos personales conforme a la normativa vigente.",
+  },
+  en: {
+    title: `Privacy Policy | ${config.appName}`,
+    description:
+      "Robotipy privacy policy: how we collect, use and protect your personal data in line with applicable regulations.",
+  },
+  pt: {
+    title: `Política de privacidade | ${config.appName}`,
+    description:
+      "Política de privacidade da Robotipy: como coletamos, usamos e protegemos seus dados pessoais conforme a legislação vigente.",
+  },
+};
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const m = META[locale] || META.es;
+  return getSEOTags({
+    locale,
+    title: m.title,
+    description: m.description,
+    canonicalUrlRelative: "/privacy-policy",
+  });
+}
 
 const PrivacyPolicy = () => {
   return (
