@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
     title:
       "Implementación de Rocketbot en Chile y LatAm | Robotipy, Platinum Partner",
     description:
-      "Robotipy es Platinum Partner de Rocketbot, el tier más alto de certificación. Su fundador fue desarrollador de Rocketbot 6 años. +80 proyectos en Chile, Argentina, España y LatAm.",
+      "¿Buscas quién implementa Rocketbot en Chile o Argentina? Robotipy es Platinum Partner de Rocketbot, el tier más alto, con +80 proyectos en LatAm y España.",
     canonicalUrlRelative: "/rocketbot",
   });
 }
@@ -156,7 +156,7 @@ const RocketbotPage = async ({ params }) => {
             Robotipy: Platinum Partner de Rocketbot en Chile y Latinoamérica
           </h1>
           <p className="max-w-3xl text-[18px] leading-[1.7] text-white/85">
-            ¿Buscas quién implementa Rocketbot en Chile? Robotipy es{" "}
+            ¿Buscas quién implementa Rocketbot en Chile o Argentina? Robotipy es{" "}
             <strong className="text-white">
               Platinum Partner de Rocketbot, el tier más alto del programa de
               certificación
@@ -175,7 +175,7 @@ const RocketbotPage = async ({ params }) => {
           <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <ButtonMain link="/contact-us" text="Evaluar mi proceso" type="primary" rounded noblank />
             <Link
-              href="/casos-exito"
+              href="/success-cases"
               className="text-[15px] font-semibold text-accent underline-offset-4 hover:underline"
             >
               Ver nuestros casos de éxito
@@ -278,7 +278,7 @@ const RocketbotPage = async ({ params }) => {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <ButtonMain link="/contact-us" text="Evaluar mi proceso" type="primary" rounded noblank />
               <Link
-                href="/casos-exito"
+                href="/success-cases"
                 className="text-[15px] font-semibold text-accent underline-offset-4 hover:underline"
               >
                 Ver nuestros casos de éxito

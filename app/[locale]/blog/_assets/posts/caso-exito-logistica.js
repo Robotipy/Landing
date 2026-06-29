@@ -27,7 +27,7 @@ export const post = {
     botonLabel: "Evaluar mi caso",
     botonUrl: "/contact-us",
     linkLabel: "Ver más casos de éxito",
-    linkUrl: "/casos-exito",
+    linkUrl: "/success-cases",
   },
   content: (
     <>
