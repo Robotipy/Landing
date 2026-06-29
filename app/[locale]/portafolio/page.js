@@ -311,7 +311,7 @@ export default function PortfolioPage() {
     {
       id: 18,
       industry: "Seguros",
-      categoria: "fianciero",
+      categoria: "financiero",
       challenge: "Procesamiento manual de siniestros pendientes en Ebroker, con validación y notificación manual a clientes según medio preferido.",
       solution: "Automatización completa del procesamiento y validación de siniestros pendientes en Ebroker, notificando automáticamente al cliente según su medio preferido con mensajes predefinidos.",
       results: {
@@ -631,7 +631,7 @@ export default function PortfolioPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-success mb-2">60+</div>
+                <div className="text-4xl font-bold text-success mb-2">36+</div>
                 <div className="text-gray-300">Casos de Éxito</div>
               </div>
               <div>

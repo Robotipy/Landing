@@ -9,10 +9,7 @@ import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export const metadata = {
-  title: "Chatbot Services - Robotipy",
-  description: "AI-powered conversational assistants that connect seamlessly to your data sources, providing natural language interface for both internal teams and external clients.",
-};
+// La metadata localizada (es/en/pt) vive en ./layout.js (generateMetadata).
 
 const chatbotRelatedLinks = [
   {
