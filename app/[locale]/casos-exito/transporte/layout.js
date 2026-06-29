@@ -2,17 +2,17 @@ import { getSEOTags } from "@/libs/seo";
 
 const META = {
   es: {
-    title: "Casos de éxito en transporte y logística | Robotipy",
+    title: "Casos RPA e IA en Transporte y Logística | Robotipy",
     description:
       "Casos reales de RPA e IA en transporte y logística: seguimiento de pedidos, integración con couriers y ERP, y menos tiempo operativo. Métricas incluidas.",
   },
   en: {
-    title: "Transport and logistics success cases | Robotipy",
+    title: "RPA and AI Cases in Transport and Logistics | Robotipy",
     description:
       "Real RPA and AI cases in transport and logistics: order tracking, integration with couriers and ERP, and less operational time. Metrics included.",
   },
   pt: {
-    title: "Casos de sucesso em transporte e logística | Robotipy",
+    title: "Casos RPA e IA em Transporte e Logística | Robotipy",
     description:
       "Casos reais de RPA e IA em transporte e logística: rastreamento de pedidos, integração com couriers e ERP, e menos tempo operacional. Métricas incluídas.",
   },

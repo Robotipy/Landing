@@ -14,7 +14,7 @@ const IntLink = ({ href, children }) => (
 const faqs = [
   {
     q: "¿Quién implementa Rocketbot en Chile?",
-    a: "Robotipy implementa Rocketbot en Chile como Platinum Partner del fabricante, el tier más alto de certificación, con más de 60 proyectos en la región.",
+    a: "Robotipy implementa Rocketbot en Chile como Platinum Partner del fabricante, el tier más alto de certificación, con más de 80 proyectos en la región.",
   },
   {
     q: "¿Qué diferencia a un Platinum Partner de un partner oficial?",
@@ -43,7 +43,7 @@ export const post = {
   locale: "es",
   title: "Robotipy es Platinum Partner de Rocketbot en Latinoamérica",
   description:
-    "Robotipy alcanza el tier Platinum, la máxima certificación de Rocketbot, e implementa RPA en Chile, Argentina y LatAm con más de 60 proyectos.",
+    "Robotipy alcanza el tier Platinum, la máxima certificación de Rocketbot, e implementa RPA en Chile, Argentina y LatAm con más de 80 proyectos.",
   keywords: [
     "rocketbot",
     "rpa chile",

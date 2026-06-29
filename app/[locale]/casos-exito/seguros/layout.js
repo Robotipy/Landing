@@ -2,17 +2,17 @@ import { getSEOTags } from "@/libs/seo";
 
 const META = {
   es: {
-    title: "Casos de éxito en seguros | Robotipy",
+    title: "Casos RPA e IA en Seguros | Robotipy",
     description:
       "Casos reales de automatización RPA e IA en seguros: emisión de pólizas, gestión de siniestros y validación de datos con menos errores y más velocidad.",
   },
   en: {
-    title: "Insurance success cases | Robotipy",
+    title: "RPA and AI Cases in Insurance | Robotipy",
     description:
       "Real RPA and AI automation cases in insurance: policy issuance, claims management and data validation with fewer errors and greater speed.",
   },
   pt: {
-    title: "Casos de sucesso em seguros | Robotipy",
+    title: "Casos RPA e IA em Seguros | Robotipy",
     description:
       "Casos reais de automação RPA e IA em seguros: emissão de apólices, gestão de sinistros e validação de dados com menos erros e mais velocidade.",
   },
