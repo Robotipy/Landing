@@ -44,7 +44,7 @@ export const post = {
   locale: "es",
   title: "Cómo automatizar cuentas por pagar y la carga de facturas",
   description:
-    "Guía práctica para automatizar cuentas por pagar y la carga de facturas con RPA: cómo funciona, qué procesos conviene atacar primero y cómo medir el ROI.",
+    "Te contamos cómo automatizar cuentas por pagar y la carga de facturas: por dónde empezar, cuándo el robot rinde de verdad y cómo sacar la cuenta del ROI",
   keywords: [
     "automatizar cuentas por pagar",
     "automatización de facturas",
