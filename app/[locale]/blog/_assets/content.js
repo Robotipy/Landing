@@ -19,9 +19,11 @@ import { post as rpaConPerasYManzanas } from "./posts/rpa-con-peras-y-manzanas.j
 import { post as rpaVsIaAgentica } from "./posts/rpa-vs-ia-agentica.js";
 import { post as queProcesosDeSapSePuedenAutomatizarConRpa } from "./posts/que-procesos-de-sap-se-pueden-automatizar-con-rpa.js";
 import { post as robotipyPlatinumPartnerRocketbot } from "./posts/robotipy-platinum-partner-rocketbot.js";
+import { post as comoAutomatizarCuentasPorPagar } from "./posts/como-automatizar-cuentas-por-pagar-y-carga-de-facturas.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  comoAutomatizarCuentasPorPagar,
   queProcesosDeSapSePuedenAutomatizarConRpa,
   robotipyPlatinumPartnerRocketbot,
   rpaVsIaAgentica,
