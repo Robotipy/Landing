@@ -229,7 +229,13 @@ export const post = {
         </h2>
         <p className={styles.p}>
           No todo proceso de AP está listo para un robot, y prometer lo contrario
-          sería venderte humo.
+          sería venderte humo. El mes pasado varias empresas nos pidieron
+          automatizar sus cuentas por pagar y, al hacer la cuenta juntos, el ROI
+          no cerraba: el volumen era bajo o el proceso todavía no estaba estable.
+          Se los dijimos de frente y no avanzamos. Preferimos no vender un
+          proyecto que no se iba a pagar antes que cerrar una venta y dejar a un
+          cliente con un robot que no le rinde. Esa franqueza es la que después
+          hace que vuelvan cuando el caso sí cierra.
         </p>
         <p className={styles.p}>
           Si procesas 30 facturas al mes, el caso no cierra: el tiempo de
