@@ -1,11 +1,30 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import ButtonSupport from "@/components/ButtonSupport";
 
 // A simple error boundary to show a nice error page if something goes wrong (Error Boundary)
 // Users can contanct support, go to the main page or try to reset/refresh to fix the error
 export default function Error({ error, reset }) {
+  // Tras un nuevo deploy, un cliente con HTML viejo puede pedir un chunk que ya
+  // no existe (ChunkLoadError). En ese caso recargamos una vez para tomar el
+  // build nuevo, en vez de mostrar la pantalla de error.
+  useEffect(() => {
+    const isChunkError =
+      error?.name === "ChunkLoadError" ||
+      /loading chunk|failed to load chunk|importing a module script failed/i.test(
+        error?.message || ""
+      );
+    if (isChunkError && typeof window !== "undefined") {
+      const KEY = "robotipy:chunk-reload";
+      if (!sessionStorage.getItem(KEY)) {
+        sessionStorage.setItem(KEY, "1");
+        window.location.reload();
+      }
+    }
+  }, [error]);
+
   return (
     <>
       <div className="h-screen w-full flex flex-col justify-center items-center text-center gap-6 p-6">

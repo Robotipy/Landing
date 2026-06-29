@@ -251,10 +251,10 @@
     },
     "whatIs": {
       "title": "What is <strong>RPA?</strong>",
-      "paragraph1": "RPA automation is a powerful tool that lets you boost your business performance. We're not just talking about removing repetitive tasks, but about optimizing the vital processes that define your organization's success. What if the processes that matter most — financial, logistical or decision-making — could run with surgical precision and unmatched speed?",
+      "paragraph1": "RPA automation is a powerful tool that lets you boost your business performance. We're not just talking about removing repetitive tasks, but about optimizing the vital processes that define your organization's success. What if the processes that matter most (financial, logistical or decision-making) could run with surgical precision and unmatched speed?",
       "paragraph2": "The impact would be significant: faster response times, lower operating costs, greater execution accuracy and, most importantly, the ability to focus human resources on activities that truly drive innovation and strategic business growth.",
       "rocketbotParagraph1": "Rocketbot is the ideal RPA platform to drive digital transformation in companies of any size. With global RPA investment now exceeding $60 billion, Rocketbot has positioned itself as a key solution, helping more than 500 customers and automating over 5,000 processes worldwide. Its ability to run processes agilely and efficiently lets it manage up to 10 tasks in parallel within the same environment, accelerating operations without raising costs.",
-      "rocketbotParagraph2": "What truly sets Rocketbot apart is its flexibility and scalability. Built in Python, it offers seamless integration with different environments — on-premise or in the cloud — adapting to the specific needs of every organization, from small businesses to large enterprises. Its focus on democratizing automation also lets anyone in an organization, regardless of technical experience, build and manage robots autonomously. With affordable, expandable licenses from desktop to servers, Rocketbot guarantees an optimized ROI, providing companies with a solution that grows with them without overpaying to run critical processes in parallel."
+      "rocketbotParagraph2": "What truly sets Rocketbot apart is its flexibility and scalability. Built in Python, it offers seamless integration with different environments (on-premise or in the cloud), adapting to the specific needs of every organization, from small businesses to large enterprises. Its focus on democratizing automation also lets anyone in an organization, regardless of technical experience, build and manage robots autonomously. With affordable, expandable licenses from desktop to servers, Rocketbot guarantees an optimized ROI, providing companies with a solution that grows with them without overpaying to run critical processes in parallel."
     }
   },
   "contactPage": {
@@ -433,7 +433,7 @@
     },
     "origin": {
       "heading": "Born from real-world experience",
-      "paragraph": "After deploying 60+ RPA robots in production, we know the hardest part isn't building the bot — it's keeping it running. Monitor was born from that need: a simple tool to know what's happening with your automations without having to check every machine manually."
+      "paragraph": "After deploying 60+ RPA robots in production, we know the hardest part isn't building the bot: it's keeping it running. Monitor was born from that need: a simple tool to know what's happening with your automations without having to check every machine manually."
     },
     "cta": {
       "title": "Keep your robots under control",

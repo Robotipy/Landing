@@ -349,7 +349,7 @@ export default function AIInfoPage() {
                   : Herramienta para calcular el retorno de inversión en proyectos de automatización
                 </li>
                 <li>
-                  <a href="/casos-exito" className="text-accent hover:underline">
+                  <a href="/success-cases" className="text-accent hover:underline">
                     Casos de éxito
                   </a>
                   : Ejemplos reales de implementaciones exitosas por industria
