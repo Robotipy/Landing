@@ -33,6 +33,7 @@ export async function generateMetadata() {
   return getSEOTags({
     locale: "es",
     availableLocales: ["es"],
+    ogLocale: "es_LA",
     title:
       "Implementación de Rocketbot en Argentina | Robotipy, Platinum Partner",
     description:
@@ -102,7 +103,7 @@ const RocketbotArgentinaPage = () => {
             Rocketbot en Argentina · Platinum Partner
           </div>
           <h1 className="mb-6 font-display text-[clamp(30px,4.5vw,46px)] font-extrabold leading-[1.08] tracking-[-0.02em]">
-            Implementación de Rocketbot en Argentina, Robotipy, Platinum Partner
+            Implementación de Rocketbot en Argentina: Robotipy, Platinum Partner
           </h1>
           <p className="max-w-3xl text-[18px] leading-[1.7] text-white/85">
             ¿Buscas quién implementa Rocketbot en Argentina? Robotipy es{" "}
@@ -183,33 +184,46 @@ const RocketbotArgentinaPage = () => {
             </div>
             <div className="rounded-2xl border border-white/[0.07] bg-secondary p-6">
               <h3 className="mb-2 font-display text-[18px] font-bold text-white">
-                Estudio contable agro (en desarrollo)
+                Agronegocios
+              </h3>
+              <p className="text-[15px] leading-[1.6] text-white/75">
+                Inteligencia de mercado automatizada que consolida precios de
+                commodities, tasas y datos macro de más de 10 fuentes públicas
+                para una consultora del campo.{" "}
+                <Link
+                  href="/blog/caso-exito-inteligencia-mercado-agronegocios"
+                  className="text-accent hover:underline"
+                >
+                  Ver el caso
+                </Link>
+                .
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/[0.07] bg-secondary p-6">
+              <h3 className="mb-2 font-display text-[18px] font-bold text-white">
+                Agropecuario
+              </h3>
+              <p className="text-[15px] leading-[1.6] text-white/75">
+                Conciliación multi-banco integrada con el ERP Finnegans en un
+                grupo agropecuario: lo que tomaba horas, ahora en minutos.{" "}
+                <Link
+                  href="/blog/caso-exito-conciliacion-bancaria-agropecuario"
+                  className="text-accent hover:underline"
+                >
+                  Ver el caso
+                </Link>
+                .
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/[0.07] bg-secondary p-6">
+              <h3 className="mb-2 font-display text-[18px] font-bold text-white">
+                Estudio contable agro (en implementación)
               </h3>
               <p className="text-[15px] leading-[1.6] text-white/75">
                 Bot que procesa comprobantes y arma el Libro IVA Compras de AFIP.
-                En desarrollo.
               </p>
             </div>
           </div>
-
-          <p className="mt-6 max-w-3xl text-[15px] leading-[1.7] text-white/70">
-            Sumamos contexto regional ya publicado en el blog:{" "}
-            <Link
-              href="/blog/caso-exito-inteligencia-mercado-agronegocios"
-              className="text-accent hover:underline"
-            >
-              inteligencia de mercado en agronegocios
-            </Link>{" "}
-            que consolida precios de commodities y datos macro de más de 10
-            fuentes, y una{" "}
-            <Link
-              href="/blog/caso-exito-conciliacion-bancaria-agropecuario"
-              className="text-accent hover:underline"
-            >
-              conciliación multi-banco integrada con ERP
-            </Link>
-            .
-          </p>
           <p className="mt-4 text-[13px] text-white/50">
             Casos descritos por industria para resguardar la confidencialidad de
             cada cliente.

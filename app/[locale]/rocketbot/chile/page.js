@@ -48,12 +48,47 @@ const casos = [
     detalle:
       "Bot de factoring que lee los TXT del SII, actualiza SAP y emite un reporte, ejecutándose cada 30 minutos sin errores.",
   },
+  {
+    rubro: "Minería del cobre",
+    detalle: (
+      <>
+        RPA más un agente de IA que automatiza los reportes de costos y permite
+        consultar los datos en lenguaje natural 24/7, eliminando la dependencia
+        de una sola persona.{" "}
+        <Link
+          href="/blog/caso-exito-rpa-ia-mineria-costos"
+          className="text-accent hover:underline"
+        >
+          Ver el caso
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
+    rubro: "Siderurgia",
+    detalle: (
+      <>
+        Automatización del ciclo completo de órdenes de compra en SAP, de la
+        lectura del documento a la creación del pedido, con cero errores de
+        transcripción entre tres sistemas.{" "}
+        <Link
+          href="/blog/caso-exito-automatizacion-ordenes-sap-siderurgia"
+          className="text-accent hover:underline"
+        >
+          Ver el caso
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 export async function generateMetadata() {
   return getSEOTags({
     locale: "es",
     availableLocales: ["es"],
+    ogLocale: "es_LA",
     title: "Implementación de Rocketbot en Chile | Robotipy, Platinum Partner",
     description:
       "Robotipy implementa Rocketbot en Chile: automatización de procesos en SAP, conciliaciones, minería y retail. Platinum Partner, fundador con 6 años desarrollando Rocketbot.",
@@ -122,7 +157,7 @@ const RocketbotChilePage = () => {
             Rocketbot en Chile · Platinum Partner
           </div>
           <h1 className="mb-6 font-display text-[clamp(30px,4.5vw,46px)] font-extrabold leading-[1.08] tracking-[-0.02em]">
-            Implementación de Rocketbot en Chile, Robotipy, Platinum Partner
+            Implementación de Rocketbot en Chile: Robotipy, Platinum Partner
           </h1>
           <p className="max-w-3xl text-[18px] leading-[1.7] text-white/85">
             ¿Buscas quién implementa Rocketbot en Chile? Robotipy es{" "}
