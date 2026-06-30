@@ -7,6 +7,9 @@ import Header from "@/components/Header";
 import config from "@/config";
 import apiClient from "@/libs/api";
 
+// Precios de referencia de Rocketbot. Solo se usan como conveniencia cuando el
+// usuario elige "Rocketbot" en el selector de herramienta; el campo de costo
+// sigue siendo editable y la calculadora es agnóstica de plataforma.
 const ROCKETBOT_LICENSES = {
   S:     { name: "Licencia S",             price: 2640 },
   M:     { name: "Licencia M",             price: 4200 },
@@ -30,7 +33,6 @@ const LICENSE_THRESHOLDS = {
 const DISCOUNT_RATE = 0.10;
 const WORKING_DAYS_PER_MONTH = 22;
 const WORKING_HOURS_PER_DAY = 8;
-const MAINTENANCE_RATE = 0.10;
 
 const TEMPLATE_KEYS = ["facturacion", "conciliacion", "reportes", "datos", "validacion", "otro"];
 
@@ -45,9 +47,7 @@ const TEMPLATE_DEFAULTS = {
 
 const CONTACT_URL = "/contact-us";
 
-const ALL_LICENSE_KEYS = Object.keys(ROCKETBOT_LICENSES);
-
-const DEFAULT_LICENSES = Object.fromEntries(ALL_LICENSE_KEYS.map((k) => [k, 0]));
+const TOOL_KEYS = ["rocketbot", "powerautomate", "uipath", "custom", "otra", "nose"];
 
 const DEFAULT_FORM = {
   descripcion: "",
@@ -61,9 +61,18 @@ const DEFAULT_FORM = {
   costoHoraExtra: 160,
   multasMes: 0,
   exchangeRate: 1,
+  herramienta: "rocketbot",
   costoDesarrollo: 5800,
+  licenciasAnual: 0,
   mantenimiento: 580,
 };
+
+// Campos numéricos que se serializan en la URL para compartir el resultado.
+const SHAREABLE_NUM = [
+  "personas", "salario", "diasMes", "horasDia", "erroresMes", "minPorError",
+  "horasExtraMes", "costoHoraExtra", "multasMes", "exchangeRate",
+  "costoDesarrollo", "licenciasAnual", "mantenimiento",
+];
 
 function deduceLicenses({ personas, horasDia, diasMes }) {
   const h = personas * horasDia * diasMes;
@@ -80,7 +89,7 @@ function deduceLicenses({ personas, horasDia, diasMes }) {
   return orq ? [bot, orq] : [bot];
 }
 
-function computeROI(f, licenseQty) {
+function computeROI(f) {
   const costoHora = f.salario / (WORKING_DAYS_PER_MONTH * WORKING_HOURS_PER_DAY);
   const totalHorasMes = f.personas * f.horasDia * f.diasMes;
 
@@ -90,9 +99,7 @@ function computeROI(f, licenseQty) {
   const multasRecuperadas   = f.multasMes * 12;
   const beneficioAnual = ahorroProductividad + ahorroErrores + ahorroHorasExtra + multasRecuperadas;
 
-  const licenciasAnualUSD = Object.entries(licenseQty).reduce(
-    (sum, [key, qty]) => sum + (ROCKETBOT_LICENSES[key]?.price || 0) * qty, 0
-  );
+  const licenciasAnualUSD = f.licenciasAnual || 0;
   const mantenimiento = f.mantenimiento;
   const inversionAño1   = f.costoDesarrollo + licenciasAnualUSD + mantenimiento;
   const recurrenteAnual = licenciasAnualUSD + mantenimiento;
@@ -107,14 +114,10 @@ function computeROI(f, licenseQty) {
 
   const VPN = benefDesc - costoDesc;
   const ROI = costoDesc > 0 ? (VPN / costoDesc) * 100 : 0;
+  const ROI1a = inversionAño1 > 0 ? ((beneficioAnual - inversionAño1) / inversionAño1) * 100 : 0;
   const paybackMeses = beneficioAnual > 0 ? (inversionAño1 / beneficioAnual) * 12 : 0;
 
-  const activeLicenses = Object.entries(licenseQty)
-    .filter(([, qty]) => qty > 0)
-    .map(([key, qty]) => ({ key, qty }));
-
   return {
-    activeLicenses,
     licenciasAnualUSD,
     mantenimiento,
     inversionAño1,
@@ -123,6 +126,7 @@ function computeROI(f, licenseQty) {
     beneficioTotal3a: beneficioAnual * 3,
     VPN,
     ROI,
+    ROI1a,
     paybackMeses,
     ahorroProductividad,
     ahorroErrores,
@@ -218,8 +222,7 @@ const ROICalculator = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState(DEFAULT_FORM);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [selectedLicenses, setSelectedLicenses] = useState(DEFAULT_LICENSES);
-  const [licensesOverridden, setLicensesOverridden] = useState(false);
+  const [licenciasOverridden, setLicenciasOverridden] = useState(false);
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
@@ -234,38 +237,70 @@ const ROICalculator = () => {
     track("roi_wizard_start");
 
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.size > 0) {
-      const peopleInProcess = parseInt(urlParams.get("peopleInProcess"));
-      const hoursPerDay = parseFloat(urlParams.get("hoursPerDay"));
-      const avgMonthlyCostPerPerson = parseFloat(urlParams.get("avgMonthlyCostPerPerson"));
-      setFormData((prev) => ({
-        ...prev,
-        personas: Number.isFinite(peopleInProcess) ? peopleInProcess : prev.personas,
-        horasDia: Number.isFinite(hoursPerDay) ? hoursPerDay : prev.horasDia,
-        salario: Number.isFinite(avgMonthlyCostPerPerson) ? avgMonthlyCostPerPerson : prev.salario,
-      }));
+    if (urlParams.size === 0) return;
+
+    const next = {};
+    SHAREABLE_NUM.forEach((key) => {
+      const raw = urlParams.get(key);
+      if (raw !== null) {
+        const v = parseFloat(raw);
+        if (Number.isFinite(v)) next[key] = v;
+      }
+    });
+    // Compatibilidad con enlaces antiguos.
+    const legacy = {
+      peopleInProcess: "personas",
+      hoursPerDay: "horasDia",
+      avgMonthlyCostPerPerson: "salario",
+    };
+    Object.entries(legacy).forEach(([param, field]) => {
+      const v = parseFloat(urlParams.get(param));
+      if (Number.isFinite(v)) next[field] = v;
+    });
+    const desc = urlParams.get("descripcion");
+    if (desc) next.descripcion = desc;
+    const herr = urlParams.get("herramienta");
+    if (herr && TOOL_KEYS.includes(herr)) next.herramienta = herr;
+
+    if (Object.keys(next).length > 0) {
+      if ("licenciasAnual" in next) setLicenciasOverridden(true);
+      setFormData((prev) => ({ ...prev, ...next }));
     }
   }, []);
 
   const recommended = useMemo(() => deduceLicenses(formData), [formData]);
+  const recommendedCost = useMemo(
+    () => recommended.reduce((sum, key) => sum + (ROCKETBOT_LICENSES[key]?.price || 0), 0),
+    [recommended]
+  );
+  const recommendedNames = useMemo(
+    () => recommended.map((key) => ROCKETBOT_LICENSES[key].name).join(" + "),
+    [recommended]
+  );
 
+  // Si la herramienta es Rocketbot y el usuario no editó el monto a mano,
+  // autocompletamos el costo de licencias según el volumen del proceso.
   useEffect(() => {
-    if (licensesOverridden) return;
-    const next = { ...DEFAULT_LICENSES };
-    recommended.forEach((key) => { next[key] = 1; });
-    setSelectedLicenses(next);
-  }, [recommended, licensesOverridden]);
+    if (formData.herramienta !== "rocketbot" || licenciasOverridden) return;
+    setFormData((prev) =>
+      prev.licenciasAnual === recommendedCost ? prev : { ...prev, licenciasAnual: recommendedCost }
+    );
+  }, [recommendedCost, formData.herramienta, licenciasOverridden]);
 
-  const calculations = useMemo(() => computeROI(formData, selectedLicenses), [formData, selectedLicenses]);
-  const { activeLicenses } = calculations;
-
-  const updateLicenseQty = (key, qty) => {
-    setLicensesOverridden(true);
-    setSelectedLicenses((prev) => ({ ...prev, [key]: Math.max(0, qty) }));
-  };
+  const calculations = useMemo(() => computeROI(formData), [formData]);
 
   const updateField = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const updateLicencias = (name, value) => {
+    setLicenciasOverridden(true);
+    updateField("licenciasAnual", value);
+  };
+
+  const updateHerramienta = (val) => {
+    if (val === "rocketbot") setLicenciasOverridden(false);
+    setFormData((prev) => ({ ...prev, herramienta: val }));
   };
 
   const applyTemplate = (key) => {
@@ -292,7 +327,7 @@ const ROICalculator = () => {
       track("roi_wizard_complete", {
         roi_value: Math.round(calculations.ROI),
         payback_months: Math.round(calculations.paybackMeses * 10) / 10,
-        license_type: activeLicenses.map(({ key }) => key).join("+"),
+        tool: formData.herramienta,
       });
     }
     setStep((s) => Math.min(4, s + 1));
@@ -306,26 +341,48 @@ const ROICalculator = () => {
   const resetWizard = () => {
     setFormData(DEFAULT_FORM);
     setSelectedTemplate(null);
-    setSelectedLicenses(DEFAULT_LICENSES);
-    setLicensesOverridden(false);
+    setLicenciasOverridden(false);
     setStep(1);
   };
 
   const handleContact = () => {
     track("roi_wizard_contact");
-    const licNames = activeLicenses.map(({ key, qty }) =>
-      qty > 1 ? `${qty}x ${ROCKETBOT_LICENSES[key].name}` : ROCKETBOT_LICENSES[key].name
-    ).join(", ");
+    const herramientaLabel = formData.herramienta
+      ? t(`step3.tools.${formData.herramienta}`)
+      : t("step4.noTool");
     const summary = t("contactSummary", {
       roi: fmtPct(calculations.ROI),
       beneficio: fmtMoney(calculations.beneficioAnual),
       payback: calculations.paybackMeses.toFixed(1),
-      licencias: licNames,
+      herramienta: herramientaLabel,
       personas: formData.personas,
       horas: Math.round(calculations.totalHorasMes),
       descripcion: formData.descripcion || t("step4.noDescription"),
     });
     window.location.href = `${CONTACT_URL}?additionalInfo=${encodeURIComponent(summary)}`;
+  };
+
+  const buildShareUrl = () => {
+    const params = new URLSearchParams();
+    SHAREABLE_NUM.forEach((key) => params.set(key, String(formData[key])));
+    if (formData.herramienta) params.set("herramienta", formData.herramienta);
+    if (formData.descripcion) params.set("descripcion", formData.descripcion);
+    return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+  };
+
+  const handleCopyLink = async () => {
+    track("roi_wizard_share_link");
+    try {
+      await navigator.clipboard.writeText(buildShareUrl());
+      toast.success(t("step4.cta.copied"));
+    } catch {
+      toast.error(t("step4.cta.copyError"));
+    }
+  };
+
+  const handleDownloadPdf = () => {
+    track("roi_wizard_download_pdf");
+    if (typeof window !== "undefined") window.print();
   };
 
   const submitEmailRequest = async (e) => {
@@ -355,6 +412,8 @@ const ROICalculator = () => {
 
   const cardBg = { backgroundColor: config.colors.background };
   const cardClass = "bg-transparent border border-cyan-800/20 rounded-lg p-6 lg:p-8";
+
+  const faqKeys = ["faq1", "faq2", "faq3", "faq4"];
 
   const callout = (() => {
     if (formData.erroresMes <= 0 || formData.minPorError <= 0) return null;
@@ -536,22 +595,6 @@ const ROICalculator = () => {
                     min={0.01}
                     step={0.01}
                   />
-                  <NumberField
-                    label={t("step2.costoDesarrollo.label")}
-                    hint={t("step2.costoDesarrollo.hint")}
-                    name="costoDesarrollo"
-                    value={formData.costoDesarrollo}
-                    onChange={updateField}
-                    step={100}
-                  />
-                  <NumberField
-                    label={t("step2.mantenimiento.label")}
-                    hint={t("step2.mantenimiento.hint")}
-                    name="mantenimiento"
-                    value={formData.mantenimiento}
-                    onChange={updateField}
-                    step={50}
-                  />
                 </div>
               </div>
             )}
@@ -561,82 +604,61 @@ const ROICalculator = () => {
                 <h2 className="text-2xl font-bold text-cyan-50 mb-2">{t("step3.title")}</h2>
                 <p className="text-cyan-300 mb-6">{t("step3.subtitle")}</p>
 
-                <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-4 mb-6 text-cyan-200 text-sm">
-                  {recommended.length > 1
-                    ? t("step3.explanationWithOrchestrator", {
-                        horas: Math.round(calculations.totalHorasMes),
-                        personas: formData.personas,
-                        licencia: ROCKETBOT_LICENSES[recommended[0]].name,
-                        orquestador: ROCKETBOT_LICENSES[recommended[1]].name,
-                      })
-                    : t("step3.explanationSingle", {
-                        horas: Math.round(calculations.totalHorasMes),
-                        licencia: ROCKETBOT_LICENSES[recommended[0]].name,
-                      })}
+                <div className="space-y-2 mb-6">
+                  <label className="text-cyan-50 uppercase text-xs block">{t("step3.herramienta.label")}</label>
+                  <select
+                    name="herramienta"
+                    value={formData.herramienta}
+                    onChange={(e) => updateHerramienta(e.target.value)}
+                    className="w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  >
+                    {TOOL_KEYS.map((key) => (
+                      <option key={key} value={key}>{t(`step3.tools.${key}`)}</option>
+                    ))}
+                  </select>
+                  <p className="text-cyan-400 text-xs">{t("step3.herramienta.hint")}</p>
                 </div>
 
-                <div className="space-y-3 mb-6">
-                  {ALL_LICENSE_KEYS.map((key) => {
-                    const lic = ROCKETBOT_LICENSES[key];
-                    const qty = selectedLicenses[key] || 0;
-                    const isRecommended = recommended.includes(key);
-                    return (
-                      <div
-                        key={key}
-                        className={`flex items-center justify-between rounded-lg px-5 py-4 border transition-colors ${
-                          qty > 0
-                            ? "bg-cyan-900/40 border-teal-500/40"
-                            : "bg-cyan-900/20 border-cyan-800/20"
-                        }`}
-                      >
-                        <div className="flex items-center gap-4 flex-1 min-w-0">
-                          <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
-                            qty > 0 ? "bg-teal-500/20 text-teal-300" : "bg-cyan-900/40 text-cyan-500"
-                          }`} aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                              <path d="M11.5 1.75a.75.75 0 011.5 0V4h3.25a.75.75 0 010 1.5H13v1.752A8.252 8.252 0 0120.25 15.5v3.75a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V15.5A8.252 8.252 0 0111 7.252V5.5H7.75a.75.75 0 010-1.5H11V1.75zM8.75 13a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6.5 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
-                            </svg>
-                          </div>
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2">
-                              <span className="text-cyan-50 font-semibold">{lic.name}</span>
-                              {isRecommended && (
-                                <span className="text-[10px] uppercase font-bold bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded-full shrink-0">
-                                  {t("step3.recommended")}
-                                </span>
-                              )}
-                            </div>
-                            <div className="text-cyan-400 text-sm">{t(`licenseDescriptions.${key}`)}</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-4 shrink-0 ml-4">
-                          <div className="text-right">
-                            <div className="text-teal-300 font-bold">{fmtMoney(lic.price)}</div>
-                            <div className="text-cyan-500 text-xs">{t("step3.perYear")}</div>
-                          </div>
-                          <input
-                            type="number"
-                            min="0"
-                            max="10"
-                            value={qty}
-                            onChange={(e) => updateLicenseQty(key, parseInt(e.target.value) || 0)}
-                            className="w-16 px-2 py-1.5 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 text-center focus:outline-none focus:ring-2 focus:ring-teal-500"
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <NumberField
+                    label={t("step3.desarrollo.label")}
+                    hint={t("step3.desarrollo.hint")}
+                    name="costoDesarrollo"
+                    value={formData.costoDesarrollo}
+                    onChange={updateField}
+                    step={100}
+                  />
+                  <NumberField
+                    label={t("step3.licencias.label")}
+                    hint={
+                      formData.herramienta === "rocketbot"
+                        ? t("step3.licencias.rocketbotHint", { licencias: recommendedNames, total: fmtMoney(recommendedCost) })
+                        : t("step3.licencias.hint")
+                    }
+                    name="licenciasAnual"
+                    value={formData.licenciasAnual}
+                    onChange={updateLicencias}
+                    step={100}
+                  />
+                  <NumberField
+                    label={t("step3.mantenimiento.label")}
+                    hint={t("step3.mantenimiento.hint")}
+                    name="mantenimiento"
+                    value={formData.mantenimiento}
+                    onChange={updateField}
+                    step={50}
+                  />
                 </div>
 
-                <div className="bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4 flex justify-between items-center">
+                <div className="mt-6 bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4 flex justify-between items-center">
                   <div>
                     <div className="text-cyan-300 text-xs uppercase">{t("step3.totalLabel")}</div>
-                    <div className="text-yellow-300 font-bold text-xl">{fmtMoney(calculations.licenciasAnualUSD)}</div>
+                    <div className="text-yellow-300 font-bold text-xl">{fmtMoney(calculations.inversionAño1)}</div>
                   </div>
                   {formData.exchangeRate !== 1 && (
                     <div className="text-right">
                       <div className="text-cyan-300 text-xs uppercase">{t("step3.localLabel")}</div>
-                      <div className="text-cyan-100 font-semibold">{fmtMoney(calculations.licenciasAnualUSD * formData.exchangeRate)}</div>
+                      <div className="text-cyan-100 font-semibold">{fmtMoney(calculations.inversionAño1 * formData.exchangeRate)}</div>
                     </div>
                   )}
                 </div>
@@ -673,13 +695,13 @@ const ROICalculator = () => {
                       {calculations.paybackMeses.toFixed(1)} {t("step4.metrics.paybackUnit")}
                     </div>
                   </div>
+                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 text-center">
+                    <div className="text-blue-300 text-xs uppercase mb-1">{t("step4.metrics.roi1y")}</div>
+                    <div className="text-blue-200 font-bold text-xl">{fmtPct(calculations.ROI1a)}</div>
+                  </div>
                   <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 text-center">
                     <div className="text-purple-300 text-xs uppercase mb-1">{t("step4.metrics.npv")}</div>
                     <div className="text-purple-200 font-bold text-xl">{fmtMoney(calculations.VPN)}</div>
-                  </div>
-                  <div className="bg-teal-500/10 border border-teal-500/30 rounded-lg p-4 text-center">
-                    <div className="text-teal-300 text-xs uppercase mb-1">{t("step4.metrics.totalBenefit")}</div>
-                    <div className="text-teal-200 font-bold text-xl">{fmtMoney(calculations.beneficioTotal3a)}</div>
                   </div>
                 </div>
 
@@ -712,51 +734,45 @@ const ROICalculator = () => {
                       <span>{fmtMoney(calculations.recurrenteAnual)}</span>
                     </div>
                   </div>
+                  <p className="text-cyan-500 text-xs mt-4 border-t border-cyan-800/30 pt-3">{t("step4.formula")}</p>
                 </div>
 
-                <div className={cardClass} style={cardBg}>
-                  <h3 className="text-lg font-bold text-cyan-50 mb-4">{t("step4.licensesTitle")}</h3>
-                  <div className="space-y-3">
-                    {activeLicenses.map(({ key, qty }) => {
-                      const lic = ROCKETBOT_LICENSES[key];
-                      return (
-                        <div key={key} className="flex items-center justify-between bg-cyan-900/30 border border-cyan-800/30 rounded-lg px-4 py-3">
-                          <div>
-                            <div className="text-cyan-50 font-semibold text-sm">
-                              {qty > 1 ? `${qty}x ` : ""}{lic.name}
-                            </div>
-                            <div className="text-cyan-400 text-xs">{t(`licenseDescriptions.${key}`)}</div>
-                          </div>
-                          <div className="text-teal-300 font-bold text-sm">
-                            {fmtMoney(lic.price * qty)}
-                            <span className="text-cyan-500 text-xs ml-1">{t("step3.perYear")}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="space-y-3">
+                <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 p-6 text-center">
+                  <p className="text-cyan-100 mb-4">{t("step4.softCta")}</p>
                   <button
                     onClick={handleContact}
-                    className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 font-semibold"
+                    className="w-full sm:w-auto bg-teal-500 hover:bg-teal-600 text-white py-3 px-8 rounded-md transition-colors duration-200 font-semibold"
                   >
                     {t("step4.cta.contact")}
                   </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <button
+                    onClick={handleDownloadPdf}
+                    className="bg-transparent border border-cyan-700 hover:border-teal-500 text-cyan-100 py-3 px-6 rounded-md transition-colors duration-200 font-semibold text-sm"
+                  >
+                    {t("step4.cta.pdf")}
+                  </button>
+                  <button
+                    onClick={handleCopyLink}
+                    className="bg-transparent border border-cyan-700 hover:border-teal-500 text-cyan-100 py-3 px-6 rounded-md transition-colors duration-200 font-semibold text-sm"
+                  >
+                    {t("step4.cta.copy")}
+                  </button>
                   <button
                     onClick={() => setShowLeadForm(true)}
-                    className="w-full bg-transparent border border-cyan-700 hover:border-teal-500 text-cyan-100 py-3 px-6 rounded-md transition-colors duration-200 font-semibold"
+                    className="bg-transparent border border-cyan-700 hover:border-teal-500 text-cyan-100 py-3 px-6 rounded-md transition-colors duration-200 font-semibold text-sm"
                   >
                     {t("step4.cta.email")}
                   </button>
-                  <button
-                    onClick={resetWizard}
-                    className="w-full bg-transparent border border-cyan-800/40 hover:border-cyan-600 text-cyan-300 py-2 px-6 rounded-md transition-colors duration-200 text-sm"
-                  >
-                    {t("step4.cta.reset")}
-                  </button>
                 </div>
+                <button
+                  onClick={resetWizard}
+                  className="w-full bg-transparent border border-cyan-800/40 hover:border-cyan-600 text-cyan-300 py-2 px-6 rounded-md transition-colors duration-200 text-sm"
+                >
+                  {t("step4.cta.reset")}
+                </button>
               </div>
             )}
 
@@ -777,6 +793,36 @@ const ROICalculator = () => {
                 </button>
               </div>
             )}
+
+            <section className="mt-20 border-t border-cyan-800/20 pt-12">
+              <h2 className="text-2xl lg:text-3xl font-bold text-cyan-50 mb-4">{t("explainer.title")}</h2>
+              <p className="text-cyan-100 text-lg leading-relaxed mb-4">{t("explainer.bluf")}</p>
+              <div className="bg-cyan-950/40 border border-cyan-800/30 rounded-lg p-5 mb-4">
+                <p className="text-teal-200 font-mono text-sm leading-relaxed">{t("explainer.formula")}</p>
+              </div>
+              <p className="text-cyan-300 leading-relaxed">{t("explainer.example")}</p>
+            </section>
+
+            <section className="mt-16">
+              <h2 className="text-2xl lg:text-3xl font-bold text-cyan-50 mb-6">{t("faqHeading")}</h2>
+              <div className="max-w-3xl">
+                {faqKeys.map((key, i) => (
+                  <details
+                    key={key}
+                    className="group mb-3 overflow-hidden rounded-xl border border-cyan-800/30 bg-cyan-950/30"
+                    open={i === 0}
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-semibold text-cyan-50 [&::-webkit-details-marker]:hidden">
+                      <span>{t(`faqs.${key}.q`)}</span>
+                      <span className="ml-4 flex-shrink-0 text-2xl font-light text-teal-300">+</span>
+                    </summary>
+                    <div className="px-5 pb-5 text-[15px] leading-relaxed text-cyan-200">
+                      {t(`faqs.${key}.a`)}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
           </div>
         </section>
 

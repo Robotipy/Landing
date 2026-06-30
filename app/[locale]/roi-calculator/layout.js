@@ -4,6 +4,16 @@ import config from "@/config";
 
 const siteOrigin = `https://www.${config.domainName.replace(/^www\./, "")}`;
 
+const ROI_KEYWORDS = [
+  "calculadora roi rpa",
+  "estimador de costos rpa",
+  "roi en rpa",
+  "rpa days calculator",
+  "cómo calcular roi automatización",
+  "calculadora ahorro automatización",
+  "calculadora roi automatización",
+];
+
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({
@@ -12,23 +22,26 @@ export async function generateMetadata({ params }) {
   });
   return getSEOTags({
     locale,
+    ogLocale: locale === "es" ? "es_LA" : undefined,
     title: t("title"),
     description: t("description"),
+    keywords: ROI_KEYWORDS,
     canonicalUrlRelative: "/roi-calculator",
   });
 }
 
-const buildJsonLd = (locale) => {
+const buildJsonLd = async (locale) => {
+  const t = await getTranslations({ locale, namespace: "roiCalculator" });
   const pageUrl = `${siteOrigin}/${locale}/roi-calculator`;
   const webApp = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Calculadora ROI RPA",
+    name: "Calculadora de ROI de automatización",
     url: pageUrl,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description:
-      "Calculadora gratuita para estimar el ROI, payback y VPN de un proyecto de automatización RPA con licencias Rocketbot.",
+      "Calculadora gratuita para estimar el ahorro, payback, ROI y VPN de automatizar un proceso con RPA, IA o desarrollo a medida.",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     provider: { "@type": "Organization", name: "Robotipy", url: siteOrigin },
   };
@@ -37,45 +50,25 @@ const buildJsonLd = (locale) => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Inicio", item: `${siteOrigin}/${locale}` },
-      { "@type": "ListItem", position: 2, name: "Calculadora ROI RPA", item: pageUrl },
+      { "@type": "ListItem", position: 2, name: t("hero.title"), item: pageUrl },
     ],
   };
+  const faqKeys = ["faq1", "faq2", "faq3", "faq4"];
   const faq = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "¿Cómo se calcula el ROI de un proyecto RPA?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "El ROI de RPA se calcula comparando los beneficios anuales (ahorro de horas, reducción de errores, eliminación de horas extra, multas y pérdidas evitadas) contra la inversión total (licencias, desarrollo y mantenimiento), aplicando un descuento del 10% para obtener el Valor Presente Neto a tres años.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Qué payback típico tiene una automatización RPA?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "La mayoría de procesos repetitivos que automatizamos con Rocketbot recuperan la inversión entre 4 y 12 meses, dependiendo del volumen, costo del personal y complejidad del proceso.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Qué costos incluye una implementación RPA?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Licencias del software RPA (Rocketbot u otro), desarrollo del robot (en promedio USD 5.800 por bot), infraestructura de orquestación y mantenimiento anual (aprox. 10% del desarrollo).",
-        },
-      },
-    ],
+    mainEntity: faqKeys.map((key) => ({
+      "@type": "Question",
+      name: t(`faqs.${key}.q`),
+      acceptedAnswer: { "@type": "Answer", text: t(`faqs.${key}.a`) },
+    })),
   };
   return [webApp, breadcrumb, faq];
 };
 
 export default async function Layout({ children, params }) {
   const { locale } = await params;
-  const jsonLdBlocks = buildJsonLd(locale);
+  const jsonLdBlocks = await buildJsonLd(locale);
   return (
     <>
       {children}

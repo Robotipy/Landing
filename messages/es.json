@@ -782,8 +782,8 @@
         "description": "Desarrollo de software a medida, sistemas web y apps móviles para empresas en Latinoamérica. Integramos RPA, IA y APIs con tus sistemas legacy. Casos reales, equipo certificado y ROI medible."
       },
       "roiCalculator": {
-        "title": "Calculadora ROI RPA: Calcula el Retorno de la Automatización | Robotipy",
-        "description": "Calculadora ROI RPA gratuita. Estima ahorros, payback y VPN de tu proyecto de automatización con licencias Rocketbot, desarrollo y mantenimiento. Resultados instantáneos."
+        "title": "Calculadora de ROI de RPA y automatización | Robotipy",
+        "description": "Calculadora de ROI de automatización gratis. Estima ahorro, payback y ROI de automatizar un proceso con RPA, IA o desarrollo a medida. Sin registro, resultado instantáneo."
       },
       "successCases": {
         "title": "Casos de Éxito de Automatización RPA e IA | Robotipy",
@@ -793,14 +793,14 @@
   },
   "roiCalculator": {
     "hero": {
-      "title": "Calculadora ROI RPA",
-      "subtitle": "Descubre cuánto puede ahorrar tu empresa automatizando un proceso. Cuatro pasos rápidos, sin necesidad de datos exactos.",
+      "title": "Calculadora de ROI de automatización",
+      "subtitle": "Estima cuánto puede ahorrar tu empresa automatizando un proceso con RPA, IA o desarrollo a medida. Cuatro pasos rápidos, sin necesidad de datos exactos.",
       "demo": "Ver demo"
     },
     "progress": {
       "step1": "Tu proceso",
       "step2": "Errores y costos",
-      "step3": "Licencias",
+      "step3": "Costos del proyecto",
       "step4": "Reporte"
     },
     "nav": {
@@ -858,37 +858,51 @@
       "exchangeRate": {
         "label": "Tipo de cambio (USD a moneda local)",
         "hint": "Si tus costos están en USD, deja 1"
-      },
-      "costoDesarrollo": {
-        "label": "Costo desarrollo robot (USD)",
-        "hint": "Promedio: $5,800. Varía por complejidad."
-      },
-      "mantenimiento": {
-        "label": "Mantenimiento anual (USD)",
-        "hint": "Default: 10% del costo de desarrollo. Ajusta según tu caso."
       }
     },
     "step3": {
-      "title": "Licencias recomendadas",
-      "subtitle": "Basándonos en tu proceso, recomendamos estas licencias. Puedes ajustar las cantidades.",
-      "recommended": "Recomendada",
-      "perYear": "/año",
-      "explanationSingle": "Tu proceso consume aproximadamente {horas} horas/mes. Una {licencia} es suficiente para manejar este volumen.",
-      "explanationWithOrchestrator": "Tu proceso consume aproximadamente {horas} horas/mes con {personas} personas. Recomendamos {licencia} más {orquestador} para gestionar el bot.",
-      "totalLabel": "Total anual en licencias",
+      "title": "Costos del proyecto",
+      "subtitle": "Cuánto cuesta automatizar el proceso. Sirve para cualquier herramienta: RPA, IA, Power Automate, UiPath o desarrollo a medida.",
+      "herramienta": {
+        "label": "Herramienta de automatización",
+        "hint": "Solo para estimar el costo de software. Si eliges Rocketbot, lo completamos según el volumen de tu proceso."
+      },
+      "tools": {
+        "rocketbot": "Rocketbot",
+        "powerautomate": "Power Automate",
+        "uipath": "UiPath",
+        "custom": "Desarrollo a medida",
+        "otra": "Otra",
+        "nose": "No sé todavía"
+      },
+      "desarrollo": {
+        "label": "Desarrollo (costo único, USD)",
+        "hint": "Lo que cuesta construir la automatización. Promedio: $5,800. Varía por complejidad."
+      },
+      "licencias": {
+        "label": "Software / licencias por año (USD)",
+        "hint": "Costo anual de licencias o suscripción de la herramienta. Si es desarrollo a medida sin licencias, deja 0.",
+        "rocketbotHint": "Estimado para Rocketbot según tu volumen: {licencias} ({total}/año). Puedes ajustarlo."
+      },
+      "mantenimiento": {
+        "label": "Mantenimiento por año (USD)",
+        "hint": "Soporte y ajustes anuales. Referencia: 10% del costo de desarrollo."
+      },
+      "totalLabel": "Inversión año 1",
       "localLabel": "En moneda local"
     },
     "step4": {
       "title": "Tu reporte ROI",
       "processLabel": "Proceso:",
-      "noDescription": "Proceso de automatización RPA",
+      "noDescription": "Proceso de automatización",
+      "noTool": "Sin definir",
       "roiHero": "Retorno de inversión a 3 años",
       "metrics": {
         "annualSavings": "Ahorro anual",
         "payback": "Payback",
         "paybackUnit": "meses",
-        "npv": "VPN (3 años)",
-        "totalBenefit": "Beneficio total 3 años"
+        "roi1y": "ROI a 1 año",
+        "npv": "VPN (3 años)"
       },
       "benefitsTitle": "Beneficios anuales",
       "benefits": {
@@ -900,15 +914,20 @@
       },
       "investmentTitle": "Inversión",
       "investment": {
-        "development": "Desarrollo del robot",
-        "licenses": "Licencias anuales (USD)",
+        "development": "Desarrollo (único)",
+        "licenses": "Software / licencias por año",
         "maintenance": "Mantenimiento anual",
         "year1": "Inversión año 1",
         "recurring": "Recurrente anual (años 2-3)"
       },
-      "licensesTitle": "Licencias recomendadas",
+      "formula": "ROI = (beneficio neto / costo total) × 100. El beneficio neto es el ahorro anual menos el costo recurrente. El VPN descuenta los flujos a 3 años con una tasa del 10%.",
+      "softCta": "¿Quieres que evaluemos tu proceso con datos reales? Te damos una estimación afinada, sin compromiso.",
       "cta": {
         "contact": "Contactar a un asesor",
+        "pdf": "Descargar PDF",
+        "copy": "Copiar enlace del resultado",
+        "copied": "Enlace copiado al portapapeles",
+        "copyError": "No se pudo copiar el enlace",
         "email": "Recibir el reporte por email",
         "reset": "Recalcular"
       }
@@ -948,7 +967,7 @@
       "OEnt": "Gestión empresarial",
       "OCorp": "Gestión corporativa"
     },
-    "footer": "© {year} Robotipy. Calculadora de ROI basada en la metodología de Rocketbot.",
+    "footer": "© {year} Robotipy. Calculadora de ROI de automatización. Metodología estándar de cálculo de retorno.",
     "lead": {
       "title": "Recibe el reporte por email",
       "subtitle": "Ingresa tus datos y te enviamos el análisis detallado.",
@@ -974,7 +993,32 @@
       "errorToast": "Error al enviar el reporte. Intenta de nuevo.",
       "validationError": "Completa todos los campos requeridos"
     },
-    "contactSummary": "Realicé el cálculo del ROI para un proceso que quiero automatizar y quiero más detalles.\n\nROI: {roi}\nBeneficio anual: {beneficio}\nPayback: {payback} meses\nLicencias recomendadas: {licencias}\n\nDetalles del proceso:\n- Personas: {personas}\n- Horas mensuales: {horas}\n- Descripción: {descripcion}\n\n¿Pueden contactarme para discutir la implementación?"
+    "contactSummary": "Realicé el cálculo del ROI para un proceso que quiero automatizar y quiero más detalles.\n\nROI (3 años): {roi}\nBeneficio anual: {beneficio}\nPayback: {payback} meses\nHerramienta evaluada: {herramienta}\n\nDetalles del proceso:\n- Personas: {personas}\n- Horas mensuales: {horas}\n- Descripción: {descripcion}\n\n¿Pueden contactarme para discutir la implementación?",
+    "faqHeading": "Preguntas frecuentes sobre el ROI de automatizar",
+    "explainer": {
+      "title": "¿Cómo se calcula el ROI de una automatización?",
+      "bluf": "El ROI de una automatización se calcula así: ROI = (beneficio neto anual / costo total) × 100, donde el beneficio neto es el ahorro que genera el robot menos lo que cuesta operarlo.",
+      "formula": "Beneficio neto = horas ahorradas × costo por hora + errores evitados + horas extra + multas evitadas. Costo total = desarrollo (único) + software o licencias por año + mantenimiento.",
+      "example": "Ejemplo: un proceso que ahorra 40 horas al mes a USD 15 la hora genera USD 7.200 al año. Si automatizarlo costó USD 5.800 de desarrollo y USD 600 al año de mantenimiento, el ROI del primer año es (7.200 − 6.400) / 6.400 × 100 = 12,5%, se paga en menos de 11 meses y a tres años el retorno supera el 150%."
+    },
+    "faqs": {
+      "faq1": {
+        "q": "¿Qué es el ROI en RPA?",
+        "a": "El ROI en RPA es el retorno de inversión de automatizar un proceso con robots de software. Compara el ahorro anual que genera el robot (horas, errores, horas extra) contra lo que cuesta construirlo y mantenerlo, expresado como porcentaje."
+      },
+      "faq2": {
+        "q": "¿Cómo estimo el ahorro de automatizar un proceso?",
+        "a": "Multiplica las horas que el proceso consume al mes por el costo por hora de la persona que lo hace, y súmale los errores y reprocesos que el robot elimina. Esa cifra anual es el beneficio que luego comparas con el costo del proyecto."
+      },
+      "faq3": {
+        "q": "¿Cuánto tarda en pagarse una automatización?",
+        "a": "El payback típico de una automatización está entre 4 y 12 meses, según el volumen del proceso, el costo del personal y la complejidad. La calculadora te da el payback exacto en meses con tus propios datos."
+      },
+      "faq4": {
+        "q": "¿Necesito datos exactos para calcular el ROI?",
+        "a": "No. Una estimación cercana es suficiente para tener una idea realista del retorno. Puedes empezar con una plantilla y ajustar los números; el resultado se recalcula al instante."
+      }
+    }
   },
   "successCases": {
     "hero": {

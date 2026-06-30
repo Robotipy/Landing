@@ -782,8 +782,8 @@
         "description": "Custom software development, web systems and mobile apps for companies across Latin America. We integrate RPA, AI and APIs with your legacy systems. Real cases, certified team and measurable ROI."
       },
       "roiCalculator": {
-        "title": "RPA ROI Calculator: Estimate Your Automation Returns | Robotipy",
-        "description": "Free RPA ROI calculator. Estimate savings, payback period and NPV for your automation project including Rocketbot licenses, development and maintenance. Instant results."
+        "title": "RPA & Automation ROI Calculator | Robotipy",
+        "description": "Free automation ROI calculator. Estimate savings, payback and ROI of automating a process with RPA, AI or custom development. No signup, instant result."
       },
       "successCases": {
         "title": "RPA & AI Automation Success Cases | Robotipy",
@@ -793,14 +793,14 @@
   },
   "roiCalculator": {
     "hero": {
-      "title": "RPA ROI Calculator",
-      "subtitle": "See how much your company can save by automating one process. Four quick steps, no exact numbers required.",
+      "title": "Automation ROI calculator",
+      "subtitle": "Estimate how much your company can save by automating one process with RPA, AI or custom development. Four quick steps, no exact data required.",
       "demo": "Watch demo"
     },
     "progress": {
       "step1": "Your process",
       "step2": "Errors & costs",
-      "step3": "Licenses",
+      "step3": "Project costs",
       "step4": "Report"
     },
     "nav": {
@@ -858,37 +858,51 @@
       "exchangeRate": {
         "label": "Exchange rate (USD to local currency)",
         "hint": "If your costs are in USD, leave it at 1"
-      },
-      "costoDesarrollo": {
-        "label": "Bot development cost (USD)",
-        "hint": "Average: $5,800. Varies by complexity."
-      },
-      "mantenimiento": {
-        "label": "Annual maintenance (USD)",
-        "hint": "Default: 10% of development cost. Adjust as needed."
       }
     },
     "step3": {
-      "title": "Recommended licenses",
-      "subtitle": "Based on your process, we recommend these licenses. You can adjust the quantities.",
-      "recommended": "Recommended",
-      "perYear": "/year",
-      "explanationSingle": "Your process consumes roughly {horas} hours/month. A {licencia} is enough to handle this volume.",
-      "explanationWithOrchestrator": "Your process consumes roughly {horas} hours/month with {personas} people. We recommend {licencia} plus {orquestador} to manage the bot.",
-      "totalLabel": "Total annual licenses",
+      "title": "Project costs",
+      "subtitle": "How much it costs to automate the process. It works for any tool: RPA, AI, Power Automate, UiPath or custom development.",
+      "herramienta": {
+        "label": "Automation tool",
+        "hint": "Only to estimate software cost. If you pick Rocketbot, we fill it in based on your process volume."
+      },
+      "tools": {
+        "rocketbot": "Rocketbot",
+        "powerautomate": "Power Automate",
+        "uipath": "UiPath",
+        "custom": "Custom development",
+        "otra": "Other",
+        "nose": "Not sure yet"
+      },
+      "desarrollo": {
+        "label": "Development (one-time cost, USD)",
+        "hint": "What it costs to build the automation. Average: $5,800. Varies by complexity."
+      },
+      "licencias": {
+        "label": "Software / licenses per year (USD)",
+        "hint": "Annual cost of licenses or the tool's subscription. If it's custom development with no licenses, leave it at 0.",
+        "rocketbotHint": "Estimated for Rocketbot based on your volume: {licencias} ({total}/year). You can adjust it."
+      },
+      "mantenimiento": {
+        "label": "Maintenance per year (USD)",
+        "hint": "Annual support and tweaks. Reference: 10% of the development cost."
+      },
+      "totalLabel": "Year 1 investment",
       "localLabel": "In local currency"
     },
     "step4": {
       "title": "Your ROI report",
       "processLabel": "Process:",
-      "noDescription": "RPA automation process",
+      "noDescription": "Automation process",
+      "noTool": "Not defined",
       "roiHero": "3-year return on investment",
       "metrics": {
         "annualSavings": "Annual savings",
         "payback": "Payback",
         "paybackUnit": "months",
-        "npv": "NPV (3 years)",
-        "totalBenefit": "Total benefit 3 years"
+        "roi1y": "1-year ROI",
+        "npv": "NPV (3 years)"
       },
       "benefitsTitle": "Annual benefits",
       "benefits": {
@@ -900,15 +914,20 @@
       },
       "investmentTitle": "Investment",
       "investment": {
-        "development": "Bot development",
-        "licenses": "Annual licenses (USD)",
+        "development": "Development (one-time)",
+        "licenses": "Software / licenses per year",
         "maintenance": "Annual maintenance",
         "year1": "Year 1 investment",
         "recurring": "Recurring annual (years 2-3)"
       },
-      "licensesTitle": "Recommended licenses",
+      "formula": "ROI = (net benefit / total cost) × 100. Net benefit is the annual savings minus the recurring cost. NPV discounts the cash flows over 3 years at a 10% rate.",
+      "softCta": "Want us to assess your process with real data? We'll give you a refined estimate, no strings attached.",
       "cta": {
         "contact": "Talk to an advisor",
+        "pdf": "Download PDF",
+        "copy": "Copy result link",
+        "copied": "Link copied to clipboard",
+        "copyError": "Could not copy the link",
         "email": "Email me the report",
         "reset": "Recalculate"
       }
@@ -948,7 +967,7 @@
       "OEnt": "Enterprise bot management",
       "OCorp": "Corporate bot management"
     },
-    "footer": "© {year} Robotipy. ROI calculator based on Rocketbot methodology.",
+    "footer": "© {year} Robotipy. Automation ROI calculator. Standard return calculation methodology.",
     "lead": {
       "title": "Email me the report",
       "subtitle": "Enter your details and we'll send the full analysis.",
@@ -974,7 +993,32 @@
       "errorToast": "Could not send the report. Please try again.",
       "validationError": "Please fill in all required fields"
     },
-    "contactSummary": "I calculated the ROI for a process I want to automate and would like more details.\n\nROI: {roi}\nAnnual benefit: {beneficio}\nPayback: {payback} months\nRecommended licenses: {licencias}\n\nProcess details:\n- People: {personas}\n- Monthly hours: {horas}\n- Description: {descripcion}\n\nCan you contact me to discuss implementation?"
+    "contactSummary": "I calculated the ROI for a process I want to automate and would like more details.\n\nROI (3 years): {roi}\nAnnual benefit: {beneficio}\nPayback: {payback} months\nTool evaluated: {herramienta}\n\nProcess details:\n- People: {personas}\n- Monthly hours: {horas}\n- Description: {descripcion}\n\nCan you contact me to discuss implementation?",
+    "faqHeading": "Frequently asked questions about automation ROI",
+    "explainer": {
+      "title": "How is the ROI of an automation calculated?",
+      "bluf": "The ROI of an automation is calculated like this: ROI = (annual net benefit / total cost) × 100, where the net benefit is the savings the bot generates minus what it costs to run it.",
+      "formula": "Net benefit = hours saved × cost per hour + errors avoided + overtime + fines avoided. Total cost = development (one-time) + software or licenses per year + maintenance.",
+      "example": "Example: a process that saves 40 hours per month at USD 15 per hour generates USD 7,200 per year. If automating it cost USD 5,800 in development and USD 600 per year in maintenance, the first-year ROI is (7,200 − 6,400) / 6,400 × 100 = 12.5%, it pays for itself in less than 11 months, and over three years the return tops 150%."
+    },
+    "faqs": {
+      "faq1": {
+        "q": "What is ROI in RPA?",
+        "a": "ROI in RPA is the return on investment of automating a process with software robots. It compares the annual savings the bot generates (hours, errors, overtime) against what it costs to build and maintain, expressed as a percentage."
+      },
+      "faq2": {
+        "q": "How do I estimate the savings from automating a process?",
+        "a": "Multiply the hours the process takes per month by the hourly cost of the person doing it, and add the errors and rework the bot removes. That annual figure is the benefit you then compare against the project cost."
+      },
+      "faq3": {
+        "q": "How long does it take for an automation to pay for itself?",
+        "a": "The typical payback of an automation is between 4 and 12 months, depending on the process volume, staff cost and complexity. The calculator gives you the exact payback in months with your own data."
+      },
+      "faq4": {
+        "q": "Do I need exact data to calculate ROI?",
+        "a": "No. A rough estimate is enough to get a realistic idea of the return. You can start with a template and adjust the numbers; the result recalculates instantly."
+      }
+    }
   },
   "successCases": {
     "hero": {
