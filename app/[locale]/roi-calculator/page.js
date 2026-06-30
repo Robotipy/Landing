@@ -6,6 +6,17 @@ import { toast } from "react-hot-toast";
 import Header from "@/components/Header";
 import config from "@/config";
 import apiClient from "@/libs/api";
+import {
+  computeROI,
+  fmtMoney,
+  fmtPct,
+  parseParams,
+  DEFAULT_FORM,
+  SHAREABLE_NUM,
+  TOOL_KEYS,
+  WORKING_DAYS_PER_MONTH,
+  WORKING_HOURS_PER_DAY,
+} from "@/libs/roi";
 
 // Precios de referencia de Rocketbot. Solo se usan como conveniencia cuando el
 // usuario elige "Rocketbot" en el selector de herramienta; el campo de costo
@@ -30,10 +41,6 @@ const LICENSE_THRESHOLDS = {
   },
 };
 
-const DISCOUNT_RATE = 0.10;
-const WORKING_DAYS_PER_MONTH = 22;
-const WORKING_HOURS_PER_DAY = 8;
-
 const TEMPLATE_KEYS = ["facturacion", "conciliacion", "reportes", "datos", "validacion", "otro"];
 
 const TEMPLATE_DEFAULTS = {
@@ -47,8 +54,6 @@ const TEMPLATE_DEFAULTS = {
 
 const CONTACT_URL = "/contact-us";
 
-const TOOL_KEYS = ["rocketbot", "powerautomate", "uipath", "custom", "otra", "nose"];
-
 const ALL_LICENSE_KEYS = Object.keys(ROCKETBOT_LICENSES);
 
 const licensesFromKeys = (keys) =>
@@ -56,31 +61,6 @@ const licensesFromKeys = (keys) =>
 
 const sumLicenses = (selected) =>
   ALL_LICENSE_KEYS.reduce((s, k) => s + (selected[k] ? ROCKETBOT_LICENSES[k].price : 0), 0);
-
-const DEFAULT_FORM = {
-  descripcion: "",
-  personas: 2,
-  salario: 1000,
-  diasMes: 15,
-  horasDia: 8,
-  erroresMes: 5,
-  minPorError: 30,
-  horasExtraMes: 0,
-  costoHoraExtra: 160,
-  multasMes: 0,
-  exchangeRate: 1,
-  herramienta: "rocketbot",
-  costoDesarrollo: 5800,
-  licenciasAnual: 0,
-  mantenimiento: 580,
-};
-
-// Campos numéricos que se serializan en la URL para compartir el resultado.
-const SHAREABLE_NUM = [
-  "personas", "salario", "diasMes", "horasDia", "erroresMes", "minPorError",
-  "horasExtraMes", "costoHoraExtra", "multasMes", "exchangeRate",
-  "costoDesarrollo", "licenciasAnual", "mantenimiento",
-];
 
 function deduceLicenses({ personas, horasDia, diasMes }) {
   const h = personas * horasDia * diasMes;
@@ -96,57 +76,6 @@ function deduceLicenses({ personas, horasDia, diasMes }) {
   }
   return orq ? [bot, orq] : [bot];
 }
-
-function computeROI(f) {
-  const costoHora = f.salario / (WORKING_DAYS_PER_MONTH * WORKING_HOURS_PER_DAY);
-  const totalHorasMes = f.personas * f.horasDia * f.diasMes;
-
-  const ahorroProductividad = totalHorasMes * costoHora * 12;
-  const ahorroErrores       = (f.erroresMes * f.minPorError / 60) * costoHora * 12;
-  const ahorroHorasExtra    = f.horasExtraMes * f.costoHoraExtra * 12;
-  const multasRecuperadas   = f.multasMes * 12;
-  const beneficioAnual = ahorroProductividad + ahorroErrores + ahorroHorasExtra + multasRecuperadas;
-
-  const licenciasAnualUSD = f.licenciasAnual || 0;
-  const mantenimiento = f.mantenimiento;
-  const inversionAño1   = f.costoDesarrollo + licenciasAnualUSD + mantenimiento;
-  const recurrenteAnual = licenciasAnualUSD + mantenimiento;
-
-  const benefDesc = [1, 2, 3].reduce(
-    (s, y) => s + beneficioAnual / Math.pow(1 + DISCOUNT_RATE, y), 0
-  );
-  const costoDesc =
-      inversionAño1   / Math.pow(1 + DISCOUNT_RATE, 1)
-    + recurrenteAnual / Math.pow(1 + DISCOUNT_RATE, 2)
-    + recurrenteAnual / Math.pow(1 + DISCOUNT_RATE, 3);
-
-  const VPN = benefDesc - costoDesc;
-  const ROI = costoDesc > 0 ? (VPN / costoDesc) * 100 : 0;
-  const ROI1a = inversionAño1 > 0 ? ((beneficioAnual - inversionAño1) / inversionAño1) * 100 : 0;
-  const paybackMeses = beneficioAnual > 0 ? (inversionAño1 / beneficioAnual) * 12 : 0;
-
-  return {
-    licenciasAnualUSD,
-    mantenimiento,
-    inversionAño1,
-    recurrenteAnual,
-    beneficioAnual,
-    beneficioTotal3a: beneficioAnual * 3,
-    VPN,
-    ROI,
-    ROI1a,
-    paybackMeses,
-    ahorroProductividad,
-    ahorroErrores,
-    ahorroHorasExtra,
-    multasRecuperadas,
-    costoHora,
-    totalHorasMes,
-  };
-}
-
-const fmtMoney = (n) => `$${Math.round(n || 0).toLocaleString("en-US")}`;
-const fmtPct   = (n) => `${(n || 0).toFixed(1)}%`;
 
 function track(name, params) {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -248,35 +177,10 @@ const ROICalculator = () => {
     startTracked.current = true;
     track("roi_wizard_start");
 
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.size === 0) return;
-
-    const next = {};
-    SHAREABLE_NUM.forEach((key) => {
-      const raw = urlParams.get(key);
-      if (raw !== null) {
-        const v = parseFloat(raw);
-        if (Number.isFinite(v)) next[key] = v;
-      }
-    });
-    // Compatibilidad con enlaces antiguos.
-    const legacy = {
-      peopleInProcess: "personas",
-      hoursPerDay: "horasDia",
-      avgMonthlyCostPerPerson: "salario",
-    };
-    Object.entries(legacy).forEach(([param, field]) => {
-      const v = parseFloat(urlParams.get(param));
-      if (Number.isFinite(v)) next[field] = v;
-    });
-    const desc = urlParams.get("descripcion");
-    if (desc) next.descripcion = desc;
-    const herr = urlParams.get("herramienta");
-    if (herr && TOOL_KEYS.includes(herr)) next.herramienta = herr;
-
-    if (Object.keys(next).length > 0) {
-      if ("licenciasAnual" in next) setLicenciasOverridden(true);
-      setFormData((prev) => ({ ...prev, ...next }));
+    const { values, hasLicencias } = parseParams(window.location.search);
+    if (Object.keys(values).length > 0) {
+      if (hasLicencias) setLicenciasOverridden(true);
+      setFormData((prev) => ({ ...prev, ...values }));
     }
   }, []);
 
@@ -387,18 +291,19 @@ const ROICalculator = () => {
     window.location.href = `${CONTACT_URL}?additionalInfo=${encodeURIComponent(summary)}`;
   };
 
-  const buildShareUrl = () => {
+  const formParams = () => {
     const params = new URLSearchParams();
     SHAREABLE_NUM.forEach((key) => params.set(key, String(formData[key])));
     if (formData.herramienta) params.set("herramienta", formData.herramienta);
     if (formData.descripcion) params.set("descripcion", formData.descripcion);
-    return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    return params.toString();
   };
 
   const handleCopyLink = async () => {
     track("roi_wizard_share_link");
     try {
-      await navigator.clipboard.writeText(buildShareUrl());
+      const url = `${window.location.origin}${window.location.pathname}?${formParams()}`;
+      await navigator.clipboard.writeText(url);
       toast.success(t("step4.cta.copied"));
     } catch {
       toast.error(t("step4.cta.copyError"));
@@ -407,7 +312,8 @@ const ROICalculator = () => {
 
   const handleDownloadPdf = () => {
     track("roi_wizard_download_pdf");
-    if (typeof window !== "undefined") window.print();
+    const url = `${window.location.origin}${window.location.pathname}/report?${formParams()}`;
+    window.open(url, "_blank", "noopener");
   };
 
   const submitEmailRequest = async (e) => {
