@@ -971,6 +971,9 @@
       "OCorp": "Gestão corporativa"
     },
     "footer": "© {year} Robotipy. Calculadora de ROI de automação. Metodologia padrão de cálculo de retorno.",
+    "report": {
+      "back": "Voltar à calculadora"
+    },
     "lead": {
       "title": "Receba o relatório por email",
       "subtitle": "Digite seus dados e enviaremos a análise detalhada.",

@@ -971,6 +971,9 @@
       "OCorp": "Corporate bot management"
     },
     "footer": "© {year} Robotipy. Automation ROI calculator. Standard return calculation methodology.",
+    "report": {
+      "back": "Back to the calculator"
+    },
     "lead": {
       "title": "Email me the report",
       "subtitle": "Enter your details and we'll send the full analysis.",
