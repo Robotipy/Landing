@@ -49,6 +49,14 @@ const CONTACT_URL = "/contact-us";
 
 const TOOL_KEYS = ["rocketbot", "powerautomate", "uipath", "custom", "otra", "nose"];
 
+const ALL_LICENSE_KEYS = Object.keys(ROCKETBOT_LICENSES);
+
+const licensesFromKeys = (keys) =>
+  Object.fromEntries(ALL_LICENSE_KEYS.map((k) => [k, keys.includes(k)]));
+
+const sumLicenses = (selected) =>
+  ALL_LICENSE_KEYS.reduce((s, k) => s + (selected[k] ? ROCKETBOT_LICENSES[k].price : 0), 0);
+
 const DEFAULT_FORM = {
   descripcion: "",
   personas: 2,
@@ -223,6 +231,10 @@ const ROICalculator = () => {
   const [formData, setFormData] = useState(DEFAULT_FORM);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [licenciasOverridden, setLicenciasOverridden] = useState(false);
+  const [licensesTouched, setLicensesTouched] = useState(false);
+  const [selectedLicenses, setSelectedLicenses] = useState(() =>
+    licensesFromKeys(deduceLicenses(DEFAULT_FORM))
+  );
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
@@ -269,23 +281,24 @@ const ROICalculator = () => {
   }, []);
 
   const recommended = useMemo(() => deduceLicenses(formData), [formData]);
-  const recommendedCost = useMemo(
-    () => recommended.reduce((sum, key) => sum + (ROCKETBOT_LICENSES[key]?.price || 0), 0),
-    [recommended]
-  );
-  const recommendedNames = useMemo(
-    () => recommended.map((key) => ROCKETBOT_LICENSES[key].name).join(" + "),
-    [recommended]
-  );
 
-  // Si la herramienta es Rocketbot y el usuario no editó el monto a mano,
-  // autocompletamos el costo de licencias según el volumen del proceso.
+  // Si no tocaron los checkboxes ni escribieron un valor a mano, seguimos la
+  // recomendación de licencias Rocketbot según el volumen del proceso.
+  useEffect(() => {
+    if (formData.herramienta !== "rocketbot" || licensesTouched || licenciasOverridden) return;
+    const next = licensesFromKeys(recommended);
+    setSelectedLicenses((prev) =>
+      ALL_LICENSE_KEYS.every((k) => prev[k] === next[k]) ? prev : next
+    );
+  }, [recommended, formData.herramienta, licensesTouched, licenciasOverridden]);
+
+  // Mientras el monto no sea personalizado, el campo refleja la suma de las
+  // licencias marcadas.
   useEffect(() => {
     if (formData.herramienta !== "rocketbot" || licenciasOverridden) return;
-    setFormData((prev) =>
-      prev.licenciasAnual === recommendedCost ? prev : { ...prev, licenciasAnual: recommendedCost }
-    );
-  }, [recommendedCost, formData.herramienta, licenciasOverridden]);
+    const sum = sumLicenses(selectedLicenses);
+    setFormData((prev) => (prev.licenciasAnual === sum ? prev : { ...prev, licenciasAnual: sum }));
+  }, [selectedLicenses, formData.herramienta, licenciasOverridden]);
 
   const calculations = useMemo(() => computeROI(formData), [formData]);
 
@@ -298,8 +311,18 @@ const ROICalculator = () => {
     updateField("licenciasAnual", value);
   };
 
+  const toggleLicense = (key) => {
+    setLicensesTouched(true);
+    setLicenciasOverridden(false);
+    setSelectedLicenses((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
   const updateHerramienta = (val) => {
-    if (val === "rocketbot") setLicenciasOverridden(false);
+    if (val === "rocketbot") {
+      setLicensesTouched(false);
+      setLicenciasOverridden(false);
+      setSelectedLicenses(licensesFromKeys(recommended));
+    }
     setFormData((prev) => ({ ...prev, herramienta: val }));
   };
 
@@ -342,6 +365,8 @@ const ROICalculator = () => {
     setFormData(DEFAULT_FORM);
     setSelectedTemplate(null);
     setLicenciasOverridden(false);
+    setLicensesTouched(false);
+    setSelectedLicenses(licensesFromKeys(deduceLicenses(DEFAULT_FORM)));
     setStep(1);
   };
 
@@ -619,25 +644,13 @@ const ROICalculator = () => {
                   <p className="text-cyan-400 text-xs">{t("step3.herramienta.hint")}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <NumberField
                     label={t("step3.desarrollo.label")}
                     hint={t("step3.desarrollo.hint")}
                     name="costoDesarrollo"
                     value={formData.costoDesarrollo}
                     onChange={updateField}
-                    step={100}
-                  />
-                  <NumberField
-                    label={t("step3.licencias.label")}
-                    hint={
-                      formData.herramienta === "rocketbot"
-                        ? t("step3.licencias.rocketbotHint", { licencias: recommendedNames, total: fmtMoney(recommendedCost) })
-                        : t("step3.licencias.hint")
-                    }
-                    name="licenciasAnual"
-                    value={formData.licenciasAnual}
-                    onChange={updateLicencias}
                     step={100}
                   />
                   <NumberField
@@ -648,6 +661,63 @@ const ROICalculator = () => {
                     onChange={updateField}
                     step={50}
                   />
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <NumberField
+                    label={t("step3.licencias.label")}
+                    hint={
+                      formData.herramienta === "rocketbot"
+                        ? t("step3.licencias.rocketbotHint")
+                        : t("step3.licencias.hint")
+                    }
+                    name="licenciasAnual"
+                    value={formData.licenciasAnual}
+                    onChange={updateLicencias}
+                    step={100}
+                  />
+
+                  {formData.herramienta === "rocketbot" && (
+                    <div>
+                      <p className="text-cyan-50 uppercase text-xs mb-2">{t("step3.licencias.pickLabel")}</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {ALL_LICENSE_KEYS.map((key) => {
+                          const lic = ROCKETBOT_LICENSES[key];
+                          const checked = !!selectedLicenses[key];
+                          const isRec = recommended.includes(key);
+                          return (
+                            <label
+                              key={key}
+                              className={`flex items-center justify-between gap-3 rounded-lg px-4 py-3 border cursor-pointer transition-colors ${
+                                checked
+                                  ? "bg-cyan-900/40 border-teal-500/40"
+                                  : "bg-cyan-900/20 border-cyan-800/20 hover:border-cyan-700"
+                              }`}
+                            >
+                              <span className="flex items-center gap-3 min-w-0">
+                                <input
+                                  type="checkbox"
+                                  checked={checked}
+                                  onChange={() => toggleLicense(key)}
+                                  className="accent-teal-500 w-4 h-4 shrink-0"
+                                />
+                                <span className="text-cyan-50 text-sm font-medium truncate">{lic.name}</span>
+                                {isRec && (
+                                  <span className="text-[10px] uppercase font-bold bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded-full shrink-0">
+                                    {t("step3.recommended")}
+                                  </span>
+                                )}
+                              </span>
+                              <span className="text-teal-300 text-sm font-semibold shrink-0">
+                                {fmtMoney(lic.price)}
+                                <span className="text-cyan-500 text-xs ml-1">{t("step3.perYear")}</span>
+                              </span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-6 bg-gradient-to-r from-cyan-800/30 to-teal-800/30 rounded-lg p-4 flex justify-between items-center">

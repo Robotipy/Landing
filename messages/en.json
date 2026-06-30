@@ -882,12 +882,15 @@
       "licencias": {
         "label": "Software / licenses per year (USD)",
         "hint": "Annual cost of licenses or the tool's subscription. If it's custom development with no licenses, leave it at 0.",
-        "rocketbotHint": "Estimated for Rocketbot based on your volume: {licencias} ({total}/year). You can adjust it."
+        "rocketbotHint": "Check the licenses that apply or type a custom value.",
+        "pickLabel": "Rocketbot licenses"
       },
       "mantenimiento": {
         "label": "Maintenance per year (USD)",
         "hint": "Annual support and tweaks. Reference: 10% of the development cost."
       },
+      "recommended": "Recommended",
+      "perYear": "/year",
       "totalLabel": "Year 1 investment",
       "localLabel": "In local currency"
     },
