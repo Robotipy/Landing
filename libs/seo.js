@@ -46,6 +46,7 @@ export const getSEOTags = ({
   extraTags,
   locale,
   availableLocales,
+  ogLocale,
 } = {}) => {
   const activeLocale =
     locale && routing.locales.includes(locale) ? locale : routing.defaultLocale;
@@ -81,7 +82,7 @@ export const getSEOTags = ({
           alt: config.appName,
         },
       ],
-      locale: ogLocaleMap[activeLocale] || "es_ES",
+      locale: ogLocale || ogLocaleMap[activeLocale] || "es_ES",
       type: "website",
     },
 
