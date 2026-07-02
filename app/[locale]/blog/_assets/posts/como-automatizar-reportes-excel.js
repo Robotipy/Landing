@@ -215,24 +215,18 @@ export const post = {
           <IntLink href="/monitor">Robotipy Monitor</IntLink>.
         </p>
         <p className={styles.p}>
-          Para los clientes que operan sus propios robots, eso es la diferencia
-          entre un problema resuelto en veinte minutos y un escalado que llega a
-          las 10 AM cuando ya perdiste la reunión.
+          Para los clientes que operan sus propios robots, eso significa que a
+          las 7 AM del martes ya saben qué falló y pueden resolverlo solos.
         </p>
       </section>
 
       <section className="space-y-3">
         <h2 className={styles.h2}>Antes de hablar con nosotros</h2>
         <p className={styles.p}>
-          Si estás evaluando si tu reporte tiene potencial de automatización, hay
-          tres preguntas que vale responder primero: ¿Cuántas veces por semana se
-          ejecuta? ¿La estructura (columnas, fuentes, lógica de cálculo) es la
-          misma desde hace seis meses? ¿Hay una persona que es la única que sabe
-          hacerlo?
-        </p>
-        <p className={styles.p}>
-          Si respondiste &quot;más de una vez&quot;, &quot;sí&quot; y
-          &quot;sí&quot;, probablemente vale la pena explorarlo.
+          El indicio más simple: si hay alguien en tu equipo que es el único que
+          sabe hacer ese reporte, ese proceso es candidato. Cuando esa persona se
+          va de vacaciones y nadie más puede cubrirla, ya tienes el business
+          case.
         </p>
       </section>
 
