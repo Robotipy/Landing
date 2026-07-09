@@ -1,9 +1,31 @@
+import { Link } from "@/i18n/routing";
 import { getArticlesByLocale } from "./_assets/content";
 import { categories } from "./_assets/categories.js";
 import CardArticle from "./_assets/components/CardArticle";
 import CardCategory from "./_assets/components/CardCategory";
 import config from "@/config";
 import { getSEOTags } from "@/libs/seo";
+
+// Los artículos hoy se publican solo en español. Cuando alguien entra al blog
+// en otro idioma, mostramos un aviso con enlace a la versión en español en vez
+// de una grilla vacía.
+const EMPTY_COPY = {
+  en: {
+    heading: "No articles in English yet",
+    body: "We publish the blog in Spanish for now. You can read every article there.",
+    cta: "Read the blog in Spanish",
+  },
+  pt: {
+    heading: "Ainda não há artigos em português",
+    body: "Por enquanto publicamos o blog em espanhol. Você pode ler todos os artigos lá.",
+    cta: "Ler o blog em espanhol",
+  },
+  es: {
+    heading: "Todavía no hay artículos en este idioma",
+    body: "Por ahora publicamos el blog en español. Puedes leer todos los artículos ahí.",
+    cta: "Ver el blog en español",
+  },
+};
 
 export const metadata = getSEOTags({
   title: `Blog de ${config.appName} | Automatización de Procesos, Inteligencia Artificial y Desarrollo de Software`,
@@ -41,26 +63,46 @@ export default async function Blog({ params }) {
         </p>
       </section>
 
-      <section className="mb-20 grid gap-6 md:mb-28 lg:grid-cols-2">
-        {articlesToDisplay.map((article, i) => (
-          <CardArticle
-            article={article}
-            key={article.slug}
-            isImagePriority={i <= 2}
-          />
-        ))}
-      </section>
-
-      <section>
-        <h2 className="mb-8 text-center font-display text-2xl font-extrabold text-white md:mb-12 lg:text-3xl">
-          Explora los artículos por categoría
-        </h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {usedCategories.map((category) => (
-            <CardCategory key={category.slug} category={category} tag="div" />
+      {articlesToDisplay.length === 0 ? (
+        <section className="mx-auto mb-20 max-w-xl rounded-2xl border border-white/10 bg-white/5 px-6 py-12 text-center md:mb-28">
+          <h2 className="mb-3 font-display text-2xl font-extrabold text-white">
+            {(EMPTY_COPY[locale] || EMPTY_COPY.es).heading}
+          </h2>
+          <p className="mb-8 text-[16px] leading-[1.6] text-white/70">
+            {(EMPTY_COPY[locale] || EMPTY_COPY.es).body}
+          </p>
+          <Link
+            href="/blog"
+            locale="es"
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 font-display text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          >
+            {(EMPTY_COPY[locale] || EMPTY_COPY.es).cta}
+          </Link>
+        </section>
+      ) : (
+        <section className="mb-20 grid gap-6 md:mb-28 lg:grid-cols-2">
+          {articlesToDisplay.map((article, i) => (
+            <CardArticle
+              article={article}
+              key={article.slug}
+              isImagePriority={i <= 2}
+            />
           ))}
-        </div>
-      </section>
+        </section>
+      )}
+
+      {usedCategories.length > 0 && (
+        <section>
+          <h2 className="mb-8 text-center font-display text-2xl font-extrabold text-white md:mb-12 lg:text-3xl">
+            Explora los artículos por categoría
+          </h2>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {usedCategories.map((category) => (
+              <CardCategory key={category.slug} category={category} tag="div" />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
