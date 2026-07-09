@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { getArticlesByLocale } from "./_assets/content";
 import { categories } from "./_assets/categories.js";
@@ -27,15 +28,20 @@ const EMPTY_COPY = {
   },
 };
 
-export const metadata = getSEOTags({
-  title: `Blog de ${config.appName} | Automatización de Procesos, Inteligencia Artificial y Desarrollo de Software`,
-  description:
-    "Descubre cómo optimizar y automatizar los procesos de tu empresa para maximizar la eficiencia y construir soluciones que impulsen tu crecimiento empresarial",
-  canonicalUrlRelative: "/blog",
-});
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
+  return getSEOTags({
+    locale,
+    title: `${t("heroTitle", { appName: config.appName })} | ${config.appName}`,
+    description: t("heroSubtitle"),
+    canonicalUrlRelative: "/blog",
+  });
+}
 
 export default async function Blog({ params }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
   const articlesToDisplay = getArticlesByLocale(locale).sort(
     (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
   );
@@ -51,15 +57,13 @@ export default async function Blog({ params }) {
     <div className="mx-auto max-w-[1140px] px-6 py-16">
       <section className="mx-auto mb-16 max-w-3xl text-center md:mb-24">
         <div className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-          Blog
+          {t("eyebrow")}
         </div>
         <h1 className="mb-5 font-display text-[clamp(32px,4.5vw,50px)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white">
-          El Blog de {config.appName}
+          {t("heroTitle", { appName: config.appName })}
         </h1>
         <p className="text-[18px] leading-[1.6] text-white/70">
-          Descubre cómo optimizar y automatizar los procesos de tu empresa para
-          maximizar la eficiencia y construir soluciones que impulsen tu
-          crecimiento empresarial.
+          {t("heroSubtitle")}
         </p>
       </section>
 
@@ -94,7 +98,7 @@ export default async function Blog({ params }) {
       {usedCategories.length > 0 && (
         <section>
           <h2 className="mb-8 text-center font-display text-2xl font-extrabold text-white md:mb-12 lg:text-3xl">
-            Explora los artículos por categoría
+            {t("categoriesHeading")}
           </h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {usedCategories.map((category) => (

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,18 +11,8 @@ import config from "@/config";
 import { categories } from "../categories.js";
 import ButtonSignin from "@/components/ButtonSignin";
 
-const links = [
-  {
-    href: "/blog/",
-    label: "Todos los Posts",
-  },
-];
-
-const cta = (
-  <ButtonSignin text="Contáctanos" extraStyle="btn-white md:btn-sm" />
-);
-
 const ButtonPopoverCategories = () => {
+  const t = useTranslations("blog");
   return (
     <Popover className="relative z-30">
       {({ open }) => (
@@ -30,7 +21,7 @@ const ButtonPopoverCategories = () => {
             className="link no-underline flex flex-nowrap items-center gap-1 text-white hover:text-white/70 active:text-white focus:text-white duration-100"
             title="Abrir categorías del blog"
           >
-            Categorías
+            {t("nav.categories")}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -88,6 +79,7 @@ const ButtonPopoverCategories = () => {
 };
 
 const ButtonAccordionCategories = () => {
+  const t = useTranslations("blog");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -101,7 +93,7 @@ const ButtonAccordionCategories = () => {
         type="button"
         className="link no-underline flex justify-between items-center w-full text-white"
       >
-        Categories
+        {t("nav.categories")}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
@@ -140,8 +132,12 @@ const ButtonAccordionCategories = () => {
 // By default it shows the logo, the links, and the CTA.
 // In the links, there's a popover with the categories.
 const HeaderBlog = () => {
+  const t = useTranslations("blog");
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
+
+  const links = [{ href: "/blog/", label: t("nav.allPosts") }];
+  const cta = <ButtonSignin text={t("nav.contact")} extraStyle="btn-white md:btn-sm" />;
 
   // setIsOpen(false) when the route changes (i.e: when the user clicks on a link on mobile)
   useEffect(() => {
