@@ -22,9 +22,11 @@ import { post as robotipyPlatinumPartnerRocketbot } from "./posts/robotipy-plati
 import { post as comoAutomatizarCuentasPorPagar } from "./posts/como-automatizar-cuentas-por-pagar-y-carga-de-facturas.js";
 import { post as comoAutomatizarReportesExcel } from "./posts/como-automatizar-reportes-excel.js";
 import { post as cuantoCuestaAutomatizarUnProceso } from "./posts/cuanto-cuesta-automatizar-un-proceso.js";
+import { post as rpaParaPymesConvieneOEsSoloParaGrandes } from "./posts/rpa-para-pymes-conviene-o-es-solo-para-grandes.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  rpaParaPymesConvieneOEsSoloParaGrandes,
   cuantoCuestaAutomatizarUnProceso,
   comoAutomatizarReportesExcel,
   comoAutomatizarCuentasPorPagar,
