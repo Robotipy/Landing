@@ -9,6 +9,18 @@ const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i;
 export default function middleware(request) {
   const { pathname } = request.nextUrl;
 
+  // Páginas que hoy solo tienen contenido en español (sin traducción real a
+  // en/pt). Redirigimos sus variantes /en y /pt a /es con 301 para no dejar
+  // duplicados finos indexados. Se pueden re-activar cuando haya traducción.
+  const esOnly = pathname.match(
+    /^\/(?:en|pt)\/(ai-info|automation|casos-exito|chatbot|industries|portafolio|privacy-policy|services|success-cases|tos)(\/.*)?$/
+  );
+  if (esOnly) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/es/${esOnly[1]}${esOnly[2] || ""}`;
+    return NextResponse.redirect(url, 301);
+  }
+
   // El blog es de un solo idioma y vive en /blog (sin prefijo de locale).
   // 1) Redirigimos las variantes con prefijo (/es|/en|/pt/blog...) a /blog...
   const localizedBlog = pathname.match(/^\/(?:es|en|pt)\/blog(\/.*)?$/);
