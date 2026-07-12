@@ -5,12 +5,22 @@ const siteOrigin =
   process.env.SITE_URL ||
   `https://www.${config.domainName.replace(/^www\./, "")}`;
 
-const buildAlternates = (locale, canonicalUrlRelative, availableLocales) => {
+const buildAlternates = (
+  locale,
+  canonicalUrlRelative,
+  availableLocales,
+  localePrefix = true
+) => {
   if (!canonicalUrlRelative) return undefined;
   const path = canonicalUrlRelative.startsWith("/")
     ? canonicalUrlRelative
     : `/${canonicalUrlRelative}`;
   const suffix = path === "/" ? "" : path;
+  // Páginas fuera del sistema de idiomas (el blog vive en /blog sin prefijo):
+  // canonical absoluto sin locale y sin hreflang.
+  if (localePrefix === false) {
+    return { canonical: `${siteOrigin}${suffix}` };
+  }
   // Only emit hreflang for locales where the page actually exists, so
   // single-language pages (e.g. es-only blog posts) don't point hreflang at
   // /en or /pt URLs that would 404.
@@ -47,6 +57,7 @@ export const getSEOTags = ({
   locale,
   availableLocales,
   ogLocale,
+  localePrefix,
 } = {}) => {
   const activeLocale =
     locale && routing.locales.includes(locale) ? locale : routing.defaultLocale;
@@ -120,7 +131,8 @@ export const getSEOTags = ({
       alternates: buildAlternates(
         activeLocale,
         canonicalUrlRelative,
-        availableLocales
+        availableLocales,
+        localePrefix
       ),
     }),
 
