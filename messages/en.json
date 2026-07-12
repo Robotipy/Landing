@@ -1026,6 +1026,17 @@
       }
     }
   },
+  "blog": {
+    "eyebrow": "Blog",
+    "heroTitle": "The {appName} Blog",
+    "heroSubtitle": "Learn how to optimize and automate your company's processes to maximize efficiency and build solutions that drive your business growth.",
+    "categoriesHeading": "Browse articles by category",
+    "nav": {
+      "allPosts": "All Posts",
+      "categories": "Categories",
+      "contact": "Contact us"
+    }
+  },
   "successCases": {
     "hero": {
       "title": "All our success cases",

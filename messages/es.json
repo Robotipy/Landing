@@ -1026,6 +1026,17 @@
       }
     }
   },
+  "blog": {
+    "eyebrow": "Blog",
+    "heroTitle": "El Blog de {appName}",
+    "heroSubtitle": "Descubre cómo optimizar y automatizar los procesos de tu empresa para maximizar la eficiencia y construir soluciones que impulsen tu crecimiento empresarial.",
+    "categoriesHeading": "Explora los artículos por categoría",
+    "nav": {
+      "allPosts": "Todos los Posts",
+      "categories": "Categorías",
+      "contact": "Contáctanos"
+    }
+  },
   "successCases": {
     "hero": {
       "title": "Todos nuestros casos de éxito",
