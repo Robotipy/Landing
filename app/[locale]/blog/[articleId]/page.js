@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
 
   return getSEOTags({
     locale,
-    availableLocales: ["es"],
+    localePrefix: false,
     title: article.title,
     description: article.description,
     canonicalUrlRelative: `/blog/${article.slug}`,

@@ -33,6 +33,7 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale, namespace: "blog" });
   return getSEOTags({
     locale,
+    localePrefix: false,
     title: `${t("heroTitle", { appName: config.appName })} | ${config.appName}`,
     description: t("heroSubtitle"),
     canonicalUrlRelative: "/blog",
