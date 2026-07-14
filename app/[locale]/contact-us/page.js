@@ -46,6 +46,9 @@ function ContactUsContent() {
 
   return (
     <>
+      {/* Oculta el chat de Zoho SalesIQ solo en esta landing: si aparece
+          "desconectado" resta confianza y distrae de la única acción (el form). */}
+      <style>{`#zsiq_float { display: none !important; }`}</style>
       <main id="main-content">
         <section className="min-h-screen flex flex-col items-center px-4 pb-16 lg:px-8 background-image">
           <MinimalHeader />
