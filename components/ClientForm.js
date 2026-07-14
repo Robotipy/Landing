@@ -16,14 +16,9 @@ function trackContactCompleteRegistration() {
   }
 }
 
-const REQUIRED_FIELDS = [
-  "name",
-  "email",
-  "phone",
-  "companyName",
-  "role",
-  "companySize",
-];
+// Solo 3 campos obligatorios: menos fricción para leads que llegan de anuncios.
+// Empresa, cargo y tamaño quedan opcionales (los completa quien quiere).
+const REQUIRED_FIELDS = ["name", "email", "phone"];
 
 const ClientForm = ({ extraStyle, initialValues = {} }) => {
   const t = useTranslations("clientForm");
@@ -253,7 +248,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 aria-required="true"
                 value={formData.phone}
                 onChange={updateField("phone")}
-                pattern="^\+\d{1,4}\s?\(?\d+\)?[\s\-]?\d+[\s\-]?\d*$"
+                pattern="^\+?[\d\s()\-\.]{6,20}$"
                 className={fieldClass("phone")}
                 placeholder={t("placeholders.phone")}
                 title={t("titles.phone")}
@@ -270,15 +265,13 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
             <div className="space-y-2">
               <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
-                {requiredLabel(t("fields.companyName"))}
+                {t("fields.companyName")}
               </label>
               <input
                 id="companyName"
                 name="companyName"
                 type="text"
                 autoComplete="organization"
-                required
-                aria-required="true"
                 value={formData.companyName}
                 onChange={updateField("companyName")}
                 className={fieldClass("companyName")}
@@ -290,15 +283,13 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
             <div className="space-y-2">
               <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
-                {requiredLabel(t("fields.role"))}
+                {t("fields.role")}
               </label>
               <input
                 id="role"
                 name="role"
                 type="text"
                 autoComplete="organization-title"
-                required
-                aria-required="true"
                 value={formData.role}
                 onChange={updateField("role")}
                 className={fieldClass("role")}
@@ -310,13 +301,11 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
             <div className="space-y-2">
               <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
-                {requiredLabel(t("fields.companySize"))}
+                {t("fields.companySize")}
               </label>
               <select
                 id="companySize"
                 name="companySize"
-                required
-                aria-required="true"
                 value={formData.companySize}
                 onChange={updateField("companySize")}
                 className={fieldClass("companySize")}
@@ -412,6 +401,9 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                 t("submit")
               )}
             </button>
+            <p className="text-cyan-400 text-xs text-center mt-3">
+              {t("trustLine")}
+            </p>
           </div>
         </form>
       </div>

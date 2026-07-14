@@ -258,15 +258,30 @@
     }
   },
   "contactPage": {
-    "title": "Let's Build Something Amazing Together",
-    "subtitle": "Share your automation or software development challenges with us. Our expert team will analyze your needs and create a custom solution that transforms your company's processes.",
+    "title": "Automate your processes and get up to 180 hours back every month",
+    "subtitle": "Book a free 30-minute diagnostic: we map your processes, find the one with the highest return and hand you a concrete plan, no strings attached.",
     "successMessage": "Thank you! Your information has been submitted successfully. We'll contact you soon.",
-    "assistanceText": "Need immediate assistance? Contact us directly at"
+    "assistanceText": "Need immediate assistance? Contact us directly at",
+    "stats": {
+      "timeValue": "-90%",
+      "timeLabel": "processing time",
+      "errorsValue": "0",
+      "errorsLabel": "data-entry errors",
+      "projectsValue": "+60",
+      "projectsLabel": "projects delivered",
+      "countriesValue": "8",
+      "countriesLabel": "countries"
+    },
+    "steps": {
+      "step1": "Leave your details and pick the time that works for you.",
+      "step2": "In 30 minutes we review your processes and find the highest-return one.",
+      "step3": "You get a concrete plan with estimated savings and implementation times."
+    }
   },
   "clientForm": {
-    "getInTouch": "Get in Touch",
-    "tellUs": "Tell us about your company and how we can help with automation solutions.",
-    "submit": "Send Information",
+    "getInTouch": "Book your free diagnostic",
+    "tellUs": "Fill in your details and we will set up a 30-minute session, free of charge.",
+    "submit": "Book your free diagnostic",
     "sending": "Sending...",
     "fields": {
       "fullName": "Full Name",
@@ -281,14 +296,14 @@
     "placeholders": {
       "fullName": "John Doe",
       "email": "john@company.com",
-      "phone": "+1 (555) 123-4567",
+      "phone": "+1 555 123 4567",
       "companyName": "Your Company Inc.",
       "role": "CEO, CTO, Manager, etc.",
       "website": "yourcompany.com",
       "additionalInfo": "Tell us more about your business and automation needs..."
     },
     "titles": {
-      "phone": "Enter a number in international format. Ex: +1 (555) 123-4567",
+      "phone": "Include your country code. E.g. +1 555 123 4567",
       "website": "Enter a valid domain. Ex: yourcompany.com or https://yourcompany.com"
     },
     "companySizeOptions": {
@@ -314,7 +329,8 @@
       "cannotInvest": "Thanks for your interest! We'll reach out when we have options that fit your budget.",
       "redirecting": "Thanks! Redirecting to schedule a meeting..."
     },
-    "requiredHint": "required"
+    "requiredHint": "required",
+    "trustLine": "We reply within 24 hours. Free and with no commitment."
   },
   "about": {
     "hero": {

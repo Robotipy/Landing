@@ -258,15 +258,30 @@
     }
   },
   "contactPage": {
-    "title": "Construyamos Algo Increíble Juntos",
-    "subtitle": "Comparte tus desafíos de automatización o desarrollo de software con nosotros. Nuestro equipo de expertos analizará tus necesidades y creará una solución personalizada que transforme los procesos de tu empresa.",
+    "title": "Automatiza tus procesos y recupera hasta 180 horas al mes",
+    "subtitle": "Agenda un diagnóstico gratuito de 30 minutos: mapeamos tus procesos, identificamos el de mayor retorno y te entregamos un plan concreto, sin compromiso.",
     "successMessage": "¡Gracias! Tu información ha sido enviada exitosamente. Te contactaremos pronto.",
-    "assistanceText": "¿Necesitas asistencia inmediata? Contáctanos directamente en"
+    "assistanceText": "¿Necesitas asistencia inmediata? Contáctanos directamente en",
+    "stats": {
+      "timeValue": "-90%",
+      "timeLabel": "tiempo de procesamiento",
+      "errorsValue": "0",
+      "errorsLabel": "errores de digitación",
+      "projectsValue": "+60",
+      "projectsLabel": "proyectos entregados",
+      "countriesValue": "8",
+      "countriesLabel": "países"
+    },
+    "steps": {
+      "step1": "Déjanos tus datos y elige en el calendario el horario que te acomode.",
+      "step2": "En 30 minutos revisamos tus procesos e identificamos el de mayor retorno.",
+      "step3": "Recibes un plan concreto con ahorro estimado y tiempos de implementación."
+    }
   },
   "clientForm": {
-    "getInTouch": "Ponte en Contacto",
-    "tellUs": "Cuéntanos sobre tu empresa y cómo podemos ayudarte con soluciones de automatización.",
-    "submit": "Enviar Información",
+    "getInTouch": "Agenda tu diagnóstico gratis",
+    "tellUs": "Completa tus datos y coordinamos una sesión de 30 minutos, sin costo.",
+    "submit": "Agenda tu diagnóstico gratis",
     "sending": "Enviando...",
     "fields": {
       "fullName": "Nombre Completo",
@@ -281,14 +296,14 @@
     "placeholders": {
       "fullName": "Juan Pérez",
       "email": "juan@empresa.com",
-      "phone": "+52 (55) 1234-5678",
+      "phone": "+56 9 1234 5678",
       "companyName": "Tu Empresa S.A.",
       "role": "CEO, CTO, Gerente, etc.",
       "website": "tuempresa.com",
       "additionalInfo": "Cuéntanos más sobre tu negocio y necesidades de automatización..."
     },
     "titles": {
-      "phone": "Introduce un número con formato internacional. Ej: +52 (55) 1234-5678",
+      "phone": "Incluye el código de tu país. Ej: +56 9 1234 5678",
       "website": "Ingresa un dominio válido. Ej: tuempresa.com o https://tuempresa.com"
     },
     "companySizeOptions": {
@@ -314,7 +329,8 @@
       "cannotInvest": "¡Gracias por tu interés! Te contactaremos cuando tengamos opciones que se ajusten a tu presupuesto.",
       "redirecting": "¡Gracias! Redirigiendo para agendar una reunión..."
     },
-    "requiredHint": "requerido"
+    "requiredHint": "requerido",
+    "trustLine": "Respondemos en menos de 24 horas. Sin costo y sin compromiso."
   },
   "about": {
     "hero": {

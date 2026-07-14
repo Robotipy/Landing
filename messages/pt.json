@@ -258,15 +258,30 @@
     }
   },
   "contactPage": {
-    "title": "Vamos Construir Algo Incrível Juntos",
-    "subtitle": "Compartilhe seus desafios de automação ou desenvolvimento de software conosco. Nossa equipe de especialistas analisará suas necessidades e criará uma solução personalizada que transforme os processos da sua empresa.",
+    "title": "Automatize seus processos e recupere até 180 horas por mês",
+    "subtitle": "Agende um diagnóstico gratuito de 30 minutos: mapeamos seus processos, identificamos o de maior retorno e entregamos um plano concreto, sem compromisso.",
     "successMessage": "Obrigado! Suas informações foram enviadas com sucesso. Entraremos em contato em breve.",
-    "assistanceText": "Precisa de assistência imediata? Fale conosco diretamente em"
+    "assistanceText": "Precisa de assistência imediata? Fale conosco diretamente em",
+    "stats": {
+      "timeValue": "-90%",
+      "timeLabel": "tempo de processamento",
+      "errorsValue": "0",
+      "errorsLabel": "erros de digitação",
+      "projectsValue": "+60",
+      "projectsLabel": "projetos entregues",
+      "countriesValue": "8",
+      "countriesLabel": "países"
+    },
+    "steps": {
+      "step1": "Deixe seus dados e escolha no calendário o horário que preferir.",
+      "step2": "Em 30 minutos revisamos seus processos e identificamos o de maior retorno.",
+      "step3": "Você recebe um plano concreto com economia estimada e prazos de implementação."
+    }
   },
   "clientForm": {
-    "getInTouch": "Entre em Contato",
-    "tellUs": "Conte-nos sobre sua empresa e como podemos ajudar com soluções de automação.",
-    "submit": "Enviar Informações",
+    "getInTouch": "Agende seu diagnóstico grátis",
+    "tellUs": "Preencha seus dados e coordenamos uma sessão de 30 minutos, sem custo.",
+    "submit": "Agende seu diagnóstico grátis",
     "sending": "Enviando...",
     "fields": {
       "fullName": "Nome Completo",
@@ -281,14 +296,14 @@
     "placeholders": {
       "fullName": "João Silva",
       "email": "joao@empresa.com",
-      "phone": "+55 (11) 91234-5678",
+      "phone": "+55 11 91234 5678",
       "companyName": "Sua Empresa Ltda.",
       "role": "CEO, CTO, Gerente, etc.",
       "website": "suaempresa.com",
       "additionalInfo": "Conte-nos mais sobre seu negócio e necessidades de automação..."
     },
     "titles": {
-      "phone": "Digite um número no formato internacional. Ex: +55 (11) 91234-5678",
+      "phone": "Inclua o código do seu país. Ex: +55 11 91234 5678",
       "website": "Digite um domínio válido. Ex: suaempresa.com ou https://suaempresa.com"
     },
     "companySizeOptions": {
@@ -314,7 +329,8 @@
       "cannotInvest": "Obrigado pelo interesse! Entraremos em contato quando tivermos opções que se ajustem ao seu orçamento.",
       "redirecting": "Obrigado! Redirecionando para agendar uma reunião..."
     },
-    "requiredHint": "obrigatório"
+    "requiredHint": "obrigatório",
+    "trustLine": "Respondemos em menos de 24 horas. Sem custo e sem compromisso."
   },
   "about": {
     "hero": {
