@@ -34,6 +34,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
     companySize: initialValues.companySize || "",
     website: initialValues.website || "",
     additionalInfo: initialValues.additionalInfo || "",
+    interest: initialValues.interest || "",
     canInvest: "",
   });
 
@@ -90,7 +91,17 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
         : `https://${formData.website.trim()}`
       : "";
 
-    const payload = { ...formData, website: normalizedWebsite };
+    // El servicio de interés viaja dentro de additionalInfo: el backend y el
+    // correo de leads ya lo soportan sin cambios.
+    const interestLine = formData.interest
+      ? `Servicio de interés: ${t(`interestOptions.${formData.interest}`)}`
+      : "";
+    const additionalInfo = [interestLine, formData.additionalInfo]
+      .filter(Boolean)
+      .join("\n");
+
+    const payload = { ...formData, website: normalizedWebsite, additionalInfo };
+    delete payload.interest;
 
     try {
       await apiClient.post("/client", payload);
@@ -365,6 +376,26 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               {renderError("canInvest")}
             </div>
           )}
+
+          <div className="space-y-2">
+            <label htmlFor="interest" className="text-cyan-50 uppercase text-xs block">
+              {t("fields.interest")}
+            </label>
+            <select
+              id="interest"
+              name="interest"
+              value={formData.interest}
+              onChange={updateField("interest")}
+              className={fieldClass("interest")}
+            >
+              <option value="">{t("interestOptions.placeholder")}</option>
+              <option value="rpa">{t("interestOptions.rpa")}</option>
+              <option value="software">{t("interestOptions.software")}</option>
+              <option value="chatbot">{t("interestOptions.chatbot")}</option>
+              <option value="capacitacion">{t("interestOptions.capacitacion")}</option>
+              <option value="otro">{t("interestOptions.otro")}</option>
+            </select>
+          </div>
 
           <div className="space-y-2">
             <label htmlFor="additionalInfo" className="text-cyan-50 uppercase text-xs block">

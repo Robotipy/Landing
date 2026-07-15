@@ -274,8 +274,56 @@
     },
     "steps": {
       "step1": "Leave your details and pick the time that works for you.",
-      "step2": "In 30 minutes we review your processes and find the highest-return one.",
+      "step2": "In 30 minutes we review your case and find where the highest return is.",
       "step3": "You get a concrete plan with estimated savings and implementation times."
+    },
+    "variants": {
+      "default": {
+        "title": "Automation, software and AI tailored to your company",
+        "subtitle": "Book a free 30-minute call: we review your case, tell you what fits best (RPA, custom software, chatbots or training) and hand you a concrete plan, no strings attached."
+      },
+      "automatizacion": {
+        "title": "Automate your processes and get up to 180 hours back every month",
+        "subtitle": "Book a free 30-minute diagnostic: we map your processes, find the one with the highest return and hand you a concrete plan, no strings attached."
+      },
+      "software": {
+        "title": "The software your operation needs, built to fit",
+        "subtitle": "Book a free 30-minute call: we review your operation and propose the exact solution, no templates and no commitment."
+      },
+      "chatbot": {
+        "title": "Serve your customers 24/7 with AI chatbots",
+        "subtitle": "Book a free 30-minute demo: we review your support flow and show you how much you can automate, no commitment."
+      },
+      "capacitacion": {
+        "title": "Train your team in automation and AI",
+        "subtitle": "Book a free 30-minute call: we assess what your team needs and build a tailored program, no commitment."
+      }
+    },
+    "chooser": {
+      "title": "What are you interested in?",
+      "subtitle": "Pick an area and we will show you how we can help your company.",
+      "cards": {
+        "automatizacion": {
+          "title": "Process automation (RPA)",
+          "desc": "Software robots that do the repetitive work for your team."
+        },
+        "software": {
+          "title": "Custom software",
+          "desc": "Systems, integrations and platforms built for your operation."
+        },
+        "chatbot": {
+          "title": "AI chatbots",
+          "desc": "Customer service 24/7, no queues and no waiting."
+        },
+        "capacitacion": {
+          "title": "Training",
+          "desc": "Train your team in automation and artificial intelligence."
+        },
+        "otro": {
+          "title": "Other / Not sure yet",
+          "desc": "Tell us your case and we will point you in the right direction."
+        }
+      }
     }
   },
   "clientForm": {
@@ -291,7 +339,8 @@
       "role": "Role",
       "companySize": "Company Size",
       "website": "Company Website",
-      "additionalInfo": "Additional Information"
+      "additionalInfo": "Additional Information",
+      "interest": "What are you interested in?"
     },
     "placeholders": {
       "fullName": "John Doe",
@@ -330,7 +379,15 @@
       "redirecting": "Thanks! Redirecting to schedule a meeting..."
     },
     "requiredHint": "required",
-    "trustLine": "We reply within 24 hours. Free and with no commitment."
+    "trustLine": "We reply within 24 hours. Free and with no commitment.",
+    "interestOptions": {
+      "placeholder": "Select an option",
+      "rpa": "Process automation (RPA)",
+      "software": "Custom software",
+      "chatbot": "AI chatbots",
+      "capacitacion": "Training",
+      "otro": "Other / not sure yet"
+    }
   },
   "about": {
     "hero": {
