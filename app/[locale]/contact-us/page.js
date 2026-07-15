@@ -12,10 +12,10 @@ import logo from "@/app/icon.png";
 // sin menú de navegación (una sola acción posible). Solo logo arriba.
 function MinimalHeader() {
   return (
-    <div className="w-full flex items-center justify-center py-5">
-      <div className="flex items-center gap-2">
-        <Image src={logo} alt={`${config.appName} logo`} className="w-8 h-8" priority />
-        <span className="font-bold text-lg text-white">{config.appName}</span>
+    <div className="w-full max-w-6xl mx-auto flex items-center justify-start px-4 lg:px-8 py-6 lg:py-8">
+      <div className="flex items-center gap-3">
+        <Image src={logo} alt={`${config.appName} logo`} className="w-9 h-9" priority />
+        <span className="font-bold text-xl text-white">{config.appName}</span>
       </div>
     </div>
   );
@@ -40,20 +40,20 @@ const VARIANT_TO_INTEREST = {
 function ServiceChooser({ onPick }) {
   const t = useTranslations("contactPage");
   return (
-    <div className="flex flex-col gap-6 items-center w-full max-w-3xl">
-      <div className="space-y-3">
+    <div className="flex flex-col gap-10 items-center w-full max-w-3xl">
+      <div className="space-y-4">
         <h1 className="text-3xl lg:text-5xl font-bold tracking-tight">
           {t("chooser.title")}
         </h1>
         <p className="text-lg text-cyan-300">{t("chooser.subtitle")}</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
         {CHOOSER_OPTIONS.map((key) => (
           <button
             key={key}
             type="button"
             onClick={() => onPick(key)}
-            className={`text-left rounded-lg border border-cyan-800/30 bg-cyan-950/40 px-5 py-4 hover:border-teal-400 hover:bg-cyan-900/40 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 ${
+            className={`text-left rounded-xl border border-cyan-800/30 bg-cyan-950/40 px-6 py-5 hover:border-teal-400 hover:bg-cyan-900/40 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 ${
               key === "otro" ? "md:col-span-2" : ""
             }`}
           >
@@ -113,14 +113,14 @@ function ContactUsContent() {
           "desconectado" resta confianza y distrae de la única acción (el form). */}
       <style>{`#zsiq_float { display: none !important; }`}</style>
       <main id="main-content">
-        <section className="min-h-screen flex flex-col items-center px-4 pb-16 lg:px-8 background-image">
+        <section className="min-h-screen flex flex-col items-center px-4 pb-20 lg:px-8 background-image">
           <MinimalHeader />
-          <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto text-center text-white pt-6">
+          <div className="flex flex-col gap-10 lg:gap-14 items-center max-w-6xl mx-auto text-center text-white pt-10 lg:pt-16">
             {showChooser ? (
               <ServiceChooser onPick={pickService} />
             ) : (
               <>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <h1 className="text-3xl lg:text-5xl font-bold tracking-tight">
                     {t(`variants.${variant}.title`)}
                   </h1>
@@ -166,7 +166,7 @@ function ContactUsContent() {
               </>
             )}
 
-            <div className="mt-4 text-center text-cyan-400 text-sm">
+            <div className="mt-6 text-center text-cyan-400 text-sm">
               <p>
                 {t("assistanceText")}{" "}
                 <a
