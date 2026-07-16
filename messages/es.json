@@ -258,15 +258,78 @@
     }
   },
   "contactPage": {
-    "title": "Construyamos Algo Increíble Juntos",
-    "subtitle": "Comparte tus desafíos de automatización o desarrollo de software con nosotros. Nuestro equipo de expertos analizará tus necesidades y creará una solución personalizada que transforme los procesos de tu empresa.",
+    "title": "Automatiza tus procesos y recupera hasta 180 horas al mes",
+    "subtitle": "Agenda un diagnóstico gratuito de 30 minutos: mapeamos tus procesos, identificamos el de mayor retorno y te entregamos un plan concreto, sin compromiso.",
     "successMessage": "¡Gracias! Tu información ha sido enviada exitosamente. Te contactaremos pronto.",
-    "assistanceText": "¿Necesitas asistencia inmediata? Contáctanos directamente en"
+    "assistanceText": "¿Necesitas asistencia inmediata? Contáctanos directamente en",
+    "stats": {
+      "timeValue": "-90%",
+      "timeLabel": "tiempo de procesamiento",
+      "errorsValue": "0",
+      "errorsLabel": "errores de digitación",
+      "projectsValue": "+60",
+      "projectsLabel": "proyectos entregados",
+      "countriesValue": "8",
+      "countriesLabel": "países"
+    },
+    "steps": {
+      "step1": "Déjanos tus datos y elige en el calendario el horario que te acomode.",
+      "step2": "En 30 minutos revisamos tu caso e identificamos dónde está el mayor retorno.",
+      "step3": "Recibes un plan concreto con ahorro estimado y tiempos de implementación."
+    },
+    "variants": {
+      "default": {
+        "title": "Automatización, software e IA a la medida de tu empresa",
+        "subtitle": "Agenda una reunión gratuita de 30 minutos: revisamos tu caso, te decimos qué te conviene (RPA, software a medida, chatbots o capacitación) y te entregamos un plan concreto, sin compromiso."
+      },
+      "automatizacion": {
+        "title": "Automatiza tus procesos y recupera hasta 180 horas al mes",
+        "subtitle": "Agenda un diagnóstico gratuito de 30 minutos: mapeamos tus procesos, identificamos el de mayor retorno y te entregamos un plan concreto, sin compromiso."
+      },
+      "software": {
+        "title": "El software que tu operación necesita, hecho a tu medida",
+        "subtitle": "Agenda una reunión gratuita de 30 minutos: revisamos tu operación y te proponemos la solución exacta, sin plantillas y sin compromiso."
+      },
+      "chatbot": {
+        "title": "Atiende a tus clientes 24/7 con chatbots de IA",
+        "subtitle": "Agenda una demo gratuita de 30 minutos: revisamos tu flujo de atención y te mostramos cuánto puedes automatizar, sin compromiso."
+      },
+      "capacitacion": {
+        "title": "Capacita a tu equipo en automatización e IA",
+        "subtitle": "Agenda una reunión gratuita de 30 minutos: vemos qué necesita tu equipo y armamos un programa a la medida, sin compromiso."
+      }
+    },
+    "chooser": {
+      "title": "¿Qué te interesa?",
+      "subtitle": "Elige el área y te mostramos cómo podemos ayudar a tu empresa.",
+      "cards": {
+        "automatizacion": {
+          "title": "Automatización de procesos (RPA)",
+          "desc": "Robots de software que hacen el trabajo repetitivo por tu equipo."
+        },
+        "software": {
+          "title": "Software a medida",
+          "desc": "Sistemas, integraciones y plataformas hechos para tu operación."
+        },
+        "chatbot": {
+          "title": "Chatbots con IA",
+          "desc": "Atención a clientes 24/7, sin filas ni esperas."
+        },
+        "capacitacion": {
+          "title": "Capacitación",
+          "desc": "Entrena a tu equipo en automatización e inteligencia artificial."
+        },
+        "otro": {
+          "title": "Otro / No estoy seguro",
+          "desc": "Cuéntanos tu caso y te orientamos sin compromiso."
+        }
+      }
+    }
   },
   "clientForm": {
-    "getInTouch": "Ponte en Contacto",
-    "tellUs": "Cuéntanos sobre tu empresa y cómo podemos ayudarte con soluciones de automatización.",
-    "submit": "Enviar Información",
+    "getInTouch": "Agenda tu diagnóstico gratis",
+    "tellUs": "Completa tus datos y coordinamos una sesión de 30 minutos, sin costo.",
+    "submit": "Agenda tu diagnóstico gratis",
     "sending": "Enviando...",
     "fields": {
       "fullName": "Nombre Completo",
@@ -276,19 +339,20 @@
       "role": "Cargo",
       "companySize": "Tamaño de la Empresa",
       "website": "Sitio Web de la Empresa",
-      "additionalInfo": "Información Adicional"
+      "additionalInfo": "Información Adicional",
+      "interest": "¿Qué te interesa?"
     },
     "placeholders": {
       "fullName": "Juan Pérez",
       "email": "juan@empresa.com",
-      "phone": "+52 (55) 1234-5678",
+      "phone": "+56 9 1234 5678",
       "companyName": "Tu Empresa S.A.",
       "role": "CEO, CTO, Gerente, etc.",
       "website": "tuempresa.com",
       "additionalInfo": "Cuéntanos más sobre tu negocio y necesidades de automatización..."
     },
     "titles": {
-      "phone": "Introduce un número con formato internacional. Ej: +52 (55) 1234-5678",
+      "phone": "Incluye el código de tu país. Ej: +56 9 1234 5678",
       "website": "Ingresa un dominio válido. Ej: tuempresa.com o https://tuempresa.com"
     },
     "companySizeOptions": {
@@ -314,7 +378,16 @@
       "cannotInvest": "¡Gracias por tu interés! Te contactaremos cuando tengamos opciones que se ajusten a tu presupuesto.",
       "redirecting": "¡Gracias! Redirigiendo para agendar una reunión..."
     },
-    "requiredHint": "requerido"
+    "requiredHint": "requerido",
+    "trustLine": "Respondemos en menos de 24 horas. Sin costo y sin compromiso.",
+    "interestOptions": {
+      "placeholder": "Selecciona una opción",
+      "rpa": "Automatización de procesos (RPA)",
+      "software": "Software a medida",
+      "chatbot": "Chatbots con IA",
+      "capacitacion": "Capacitación",
+      "otro": "Otro / no estoy seguro"
+    }
   },
   "about": {
     "hero": {
