@@ -153,7 +153,12 @@ export const post = {
           necesita correr miles de veces exactamente igual. Ahí un agente de IA
           cuesta más por ejecución y puede improvisar donde no debería, y n8n no
           tiene a qué conectarse. Si tu proceso vive ahí, RPA sigue siendo, por
-          ahora, la forma más barata de resolverlo a escala.
+          ahora, la forma más barata de resolverlo a escala. Si lo que dudas es
+          entre un robot y construir una integración propia, lo comparamos en{" "}
+          <IntLink href="/blog/rpa-vs-desarrollo-a-medida">
+            RPA vs desarrollo a medida
+          </IntLink>
+          .
         </p>
       </section>
 

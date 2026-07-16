@@ -23,9 +23,13 @@ import { post as comoAutomatizarCuentasPorPagar } from "./posts/como-automatizar
 import { post as comoAutomatizarReportesExcel } from "./posts/como-automatizar-reportes-excel.js";
 import { post as cuantoCuestaAutomatizarUnProceso } from "./posts/cuanto-cuesta-automatizar-un-proceso.js";
 import { post as rpaParaPymesConvieneOEsSoloParaGrandes } from "./posts/rpa-para-pymes-conviene-o-es-solo-para-grandes.js";
+import { post as erroresComunesAlImplementarRpa } from "./posts/errores-comunes-al-implementar-rpa.js";
+import { post as rpaVsDesarrolloAMedida } from "./posts/rpa-vs-desarrollo-a-medida.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  rpaVsDesarrolloAMedida,
+  erroresComunesAlImplementarRpa,
   rpaParaPymesConvieneOEsSoloParaGrandes,
   cuantoCuestaAutomatizarUnProceso,
   comoAutomatizarReportesExcel,
