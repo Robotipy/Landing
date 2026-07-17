@@ -104,16 +104,18 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
     setStep((s) => Math.max(0, s - 1));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Si aún no es el último paso (p. ej. Enter en un campo), avanzar en vez
-    // de enviar. El envío real solo ocurre desde el botón del paso final.
-    if (step < TOTAL_STEPS - 1) {
-      goNext();
-      return;
+  // Enter en un campo: avanza de paso (o envía si es el último), sin recargar.
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
+      e.preventDefault();
+      if (step < TOTAL_STEPS - 1) goNext();
+      else submitForm();
     }
+  };
 
+  // Envío real: se llama SOLO desde el botón del último paso (nunca por submit
+  // implícito), para que avanzar de paso jamás dispare el envío por accidente.
+  const submitForm = async () => {
     const errors = validate();
     if (Object.keys(errors).length) {
       setFieldErrors(errors);
@@ -245,7 +247,8 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
         <form
           className="space-y-6"
-          onSubmit={handleSubmit}
+          onSubmit={(e) => e.preventDefault()}
+          onKeyDown={handleKeyDown}
           id="form"
           name="form"
           noValidate
@@ -422,8 +425,10 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             )}
             {isLast ? (
               <button
+                key="submit-btn"
                 id="botónEnviar"
-                type="submit"
+                type="button"
+                onClick={submitForm}
                 disabled={isLoading}
                 aria-busy={isLoading}
                 className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
@@ -439,6 +444,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </button>
             ) : (
               <button
+                key="next-btn"
                 type="button"
                 onClick={goNext}
                 className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 font-semibold"
