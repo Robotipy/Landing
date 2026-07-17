@@ -387,6 +387,10 @@
       "chatbot": "Chatbots com IA",
       "capacitacion": "Treinamento",
       "otro": "Outro / ainda não sei"
+    },
+    "whatsapp": {
+      "divider": "ou se preferir",
+      "button": "Fale conosco no WhatsApp"
     }
   },
   "about": {
