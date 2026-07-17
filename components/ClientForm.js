@@ -23,8 +23,10 @@ function trackContactCompleteRegistration() {
 }
 
 // Solo 3 campos obligatorios: menos fricción para leads que llegan de anuncios.
-// Empresa, cargo y tamaño quedan opcionales (los completa quien quiere).
 const REQUIRED_FIELDS = ["name", "email", "phone"];
+// Formulario en 3 pasos (multistep): cada paso pide poco → más gente lo termina.
+const TOTAL_STEPS = 3;
+const STEP_REQUIRED = [["name", "email"], ["phone"], []];
 
 const ClientForm = ({ extraStyle, initialValues = {} }) => {
   const t = useTranslations("clientForm");
@@ -44,6 +46,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
     canInvest: "",
   });
 
+  const [step, setStep] = useState(0);
   const [fieldErrors, setFieldErrors] = useState({});
   const [formError, setFormError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -62,14 +65,43 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
   const validate = () => {
     const errors = {};
     REQUIRED_FIELDS.forEach((field) => {
-      if (!formData[field]) {
-        errors[field] = t("errors.required");
-      }
+      if (!formData[field]) errors[field] = t("errors.required");
     });
     if (showInvestmentField && !formData.canInvest) {
       errors.canInvest = t("errors.investmentRequired");
     }
     return errors;
+  };
+
+  const validateStep = (s) => {
+    const errors = {};
+    (STEP_REQUIRED[s] || []).forEach((field) => {
+      if (!formData[field]) errors[field] = t("errors.required");
+    });
+    if (s === TOTAL_STEPS - 1 && showInvestmentField && !formData.canInvest) {
+      errors.canInvest = t("errors.investmentRequired");
+    }
+    return errors;
+  };
+
+  const goNext = () => {
+    const errors = validateStep(step);
+    if (Object.keys(errors).length) {
+      setFieldErrors(errors);
+      const message = t("errors.required");
+      setFormError(message);
+      toast.error(message);
+      document.getElementById(Object.keys(errors)[0])?.focus();
+      return;
+    }
+    setFormError("");
+    setFieldErrors({});
+    setStep((s) => Math.min(TOTAL_STEPS - 1, s + 1));
+  };
+
+  const goBack = () => {
+    setFormError("");
+    setStep((s) => Math.max(0, s - 1));
   };
 
   const handleSubmit = async (e) => {
@@ -78,13 +110,16 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
     const errors = validate();
     if (Object.keys(errors).length) {
       setFieldErrors(errors);
+      // Volver al primer paso que tenga un error.
+      const firstErr = Object.keys(errors)[0];
+      const stepWithErr = STEP_REQUIRED.findIndex((fs) => fs.includes(firstErr));
+      if (stepWithErr >= 0) setStep(stepWithErr);
       const message = errors.canInvest && Object.keys(errors).length === 1
         ? t("errors.investmentRequired")
         : t("errors.required");
       setFormError(message);
       toast.error(message);
-      const firstInvalid = document.getElementById(Object.keys(errors)[0]);
-      firstInvalid?.focus();
+      setTimeout(() => document.getElementById(firstErr)?.focus(), 0);
       return;
     }
 
@@ -131,8 +166,10 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
         companySize: "",
         website: "",
         additionalInfo: "",
+        interest: "",
         canInvest: "",
       });
+      setStep(0);
     } catch (error) {
       console.error("Error submitting form:", error);
       const message = error.message || t("errors.submitError");
@@ -145,38 +182,30 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
 
   const inputClasses =
     "w-full px-3 py-2 bg-cyan-950/50 border border-cyan-800/30 rounded-md text-cyan-50 placeholder:text-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent";
-  const errorClasses =
-    "border-red-400 focus:ring-red-400";
-
+  const errorClasses = "border-red-400 focus:ring-red-400";
   const fieldClass = (field) =>
     `${inputClasses} ${fieldErrors[field] ? errorClasses : ""}`;
 
   const renderError = (field) =>
     fieldErrors[field] ? (
-      <p
-        id={`${field}-error`}
-        role="alert"
-        className="text-red-300 text-xs mt-1"
-      >
+      <p id={`${field}-error`} role="alert" className="text-red-300 text-xs mt-1">
         {fieldErrors[field]}
       </p>
     ) : null;
 
   const ariaProps = (field) =>
     fieldErrors[field]
-      ? {
-          "aria-invalid": true,
-          "aria-describedby": `${field}-error`,
-        }
+      ? { "aria-invalid": true, "aria-describedby": `${field}-error` }
       : {};
 
   const requiredLabel = (label) => (
     <>
-      {label}{" "}
-      <span aria-hidden="true">*</span>
+      {label} <span aria-hidden="true">*</span>
       <span className="sr-only">{` (${t("requiredHint")})`}</span>
     </>
   );
+
+  const isLast = step === TOTAL_STEPS - 1;
 
   return (
     <div className={`w-full max-w-2xl mx-auto ${extraStyle ? extraStyle : ""}`}>
@@ -184,12 +213,27 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
         className="bg-transparent border border-cyan-800/20 rounded-lg p-8"
         style={{ backgroundColor: config.colors.background }}
       >
-        <div className="mb-8">
+        <div className="mb-6">
           <h2 className="text-2xl lg:text-3xl font-bold text-cyan-50 mb-2">
             {t("getInTouch")}
           </h2>
           <p className="text-cyan-300">{t("tellUs")}</p>
         </div>
+
+        {/* Barra de progreso: motiva a llegar hasta el final. */}
+        <div className="mb-2 flex gap-1.5" aria-hidden="true">
+          {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 flex-1 rounded-full ${
+                i <= step ? "bg-teal-500" : "bg-cyan-900"
+              }`}
+            />
+          ))}
+        </div>
+        <p className="text-teal-300 text-xs mb-6">
+          {t("multistep.progress")} {step + 1} / {TOTAL_STEPS}
+        </p>
 
         <form
           className="space-y-6"
@@ -210,68 +254,50 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-cyan-50 uppercase text-xs block">
-                {requiredLabel(t("fields.fullName"))}
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                aria-required="true"
-                value={formData.name}
-                onChange={updateField("name")}
-                className={fieldClass("name")}
-                placeholder={t("placeholders.fullName")}
-                {...ariaProps("name")}
-              />
-              {renderError("name")}
+          {/* Paso 1: datos de contacto básicos (lo más fácil primero). */}
+          {step === 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-cyan-50 uppercase text-xs block">
+                  {requiredLabel(t("fields.fullName"))}
+                </label>
+                <input
+                  id="name" name="name" type="text" autoComplete="name" required
+                  aria-required="true" value={formData.name}
+                  onChange={updateField("name")} className={fieldClass("name")}
+                  placeholder={t("placeholders.fullName")} {...ariaProps("name")}
+                />
+                {renderError("name")}
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-cyan-50 uppercase text-xs block">
+                  {requiredLabel(t("fields.email"))}
+                </label>
+                <input
+                  id="email" name="email" type="email" autoComplete="email" required
+                  aria-required="true" value={formData.email}
+                  onChange={updateField("email")} className={fieldClass("email")}
+                  placeholder={t("placeholders.email")} {...ariaProps("email")}
+                />
+                {renderError("email")}
+              </div>
             </div>
+          )}
 
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-cyan-50 uppercase text-xs block">
-                {requiredLabel(t("fields.email"))}
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                aria-required="true"
-                value={formData.email}
-                onChange={updateField("email")}
-                className={fieldClass("email")}
-                placeholder={t("placeholders.email")}
-                {...ariaProps("email")}
-              />
-              {renderError("email")}
-            </div>
-
+          {/* Paso 2: teléfono + opción de WhatsApp. */}
+          {step === 1 && (
             <div className="space-y-2">
               <label htmlFor="phone" className="text-cyan-50 uppercase text-xs block">
                 {requiredLabel(t("fields.phone"))}
               </label>
               <input
-                id="phone"
-                name="phone"
-                maxLength="20"
-                type="tel"
-                autoComplete="tel"
-                required
-                aria-required="true"
-                value={formData.phone}
+                id="phone" name="phone" maxLength="20" type="tel" autoComplete="tel"
+                required aria-required="true" value={formData.phone}
                 onChange={updateField("phone")}
                 pattern="^\+?[\d\s()\-\.]{6,20}$"
                 className={fieldClass("phone")}
-                placeholder={t("placeholders.phone")}
-                title={t("titles.phone")}
-                aria-describedby={
-                  fieldErrors.phone ? "phone-error" : "phone-hint"
-                }
+                placeholder={t("placeholders.phone")} title={t("titles.phone")}
+                aria-describedby={fieldErrors.phone ? "phone-error" : "phone-hint"}
                 aria-invalid={fieldErrors.phone ? true : undefined}
               />
               <p id="phone-hint" className="text-cyan-400 text-xs">
@@ -279,188 +305,176 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
               </p>
               {renderError("phone")}
             </div>
-
-            <div className="space-y-2">
-              <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
-                {t("fields.companyName")}
-              </label>
-              <input
-                id="companyName"
-                name="companyName"
-                type="text"
-                autoComplete="organization"
-                value={formData.companyName}
-                onChange={updateField("companyName")}
-                className={fieldClass("companyName")}
-                placeholder={t("placeholders.companyName")}
-                {...ariaProps("companyName")}
-              />
-              {renderError("companyName")}
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
-                {t("fields.role")}
-              </label>
-              <input
-                id="role"
-                name="role"
-                type="text"
-                autoComplete="organization-title"
-                value={formData.role}
-                onChange={updateField("role")}
-                className={fieldClass("role")}
-                placeholder={t("placeholders.role")}
-                {...ariaProps("role")}
-              />
-              {renderError("role")}
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
-                {t("fields.companySize")}
-              </label>
-              <select
-                id="companySize"
-                name="companySize"
-                value={formData.companySize}
-                onChange={updateField("companySize")}
-                className={fieldClass("companySize")}
-                {...ariaProps("companySize")}
-              >
-                <option value="">{t("companySizeOptions.placeholder")}</option>
-                <option value="1-10 Empleados">{t("companySizeOptions.1-10")}</option>
-                <option value="11-50 Empleados">{t("companySizeOptions.11-50")}</option>
-                <option value="51-200 Empleados">{t("companySizeOptions.51-200")}</option>
-                <option value="201-50 Empleados">{t("companySizeOptions.201-500")}</option>
-                <option value="+500">{t("companySizeOptions.500+")}</option>
-              </select>
-              {renderError("companySize")}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="website" className="text-cyan-50 uppercase text-xs block">
-              {t("fields.website")}
-            </label>
-            <input
-              id="website"
-              name="website"
-              type="text"
-              inputMode="url"
-              autoComplete="url"
-              value={formData.website}
-              onChange={updateField("website")}
-              pattern="^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/.*)?$"
-              title={t("titles.website")}
-              className={fieldClass("website")}
-              placeholder={t("placeholders.website")}
-            />
-          </div>
-
-          {showInvestmentField && (
-            <div className="space-y-2">
-              <label htmlFor="canInvest" className="text-cyan-50 text-sm block">
-                {t.rich("investmentDescription", {
-                  strong: (chunks) => <strong>{chunks}</strong>,
-                })}
-              </label>
-              <select
-                id="canInvest"
-                name="canInvest"
-                required
-                aria-required="true"
-                value={formData.canInvest}
-                onChange={updateField("canInvest")}
-                className={fieldClass("canInvest")}
-                {...ariaProps("canInvest")}
-              >
-                <option value="">{t("investmentOptions.placeholder")}</option>
-                <option value="yes">{t("investmentOptions.yes")}</option>
-                <option value="no">{t("investmentOptions.no")}</option>
-              </select>
-              {renderError("canInvest")}
-            </div>
           )}
 
-          <div className="space-y-2">
-            <label htmlFor="interest" className="text-cyan-50 uppercase text-xs block">
-              {t("fields.interest")}
-            </label>
-            <select
-              id="interest"
-              name="interest"
-              value={formData.interest}
-              onChange={updateField("interest")}
-              className={fieldClass("interest")}
-            >
-              <option value="">{t("interestOptions.placeholder")}</option>
-              <option value="rpa">{t("interestOptions.rpa")}</option>
-              <option value="software">{t("interestOptions.software")}</option>
-              <option value="chatbot">{t("interestOptions.chatbot")}</option>
-              <option value="capacitacion">{t("interestOptions.capacitacion")}</option>
-              <option value="otro">{t("interestOptions.otro")}</option>
-            </select>
-          </div>
+          {/* Paso 3: datos de empresa (todos opcionales) + enviar. */}
+          {step === 2 && (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="companyName" className="text-cyan-50 uppercase text-xs block">
+                    {t("fields.companyName")}
+                  </label>
+                  <input
+                    id="companyName" name="companyName" type="text" autoComplete="organization"
+                    value={formData.companyName} onChange={updateField("companyName")}
+                    className={fieldClass("companyName")} placeholder={t("placeholders.companyName")}
+                    {...ariaProps("companyName")}
+                  />
+                  {renderError("companyName")}
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="role" className="text-cyan-50 uppercase text-xs block">
+                    {t("fields.role")}
+                  </label>
+                  <input
+                    id="role" name="role" type="text" autoComplete="organization-title"
+                    value={formData.role} onChange={updateField("role")}
+                    className={fieldClass("role")} placeholder={t("placeholders.role")}
+                    {...ariaProps("role")}
+                  />
+                  {renderError("role")}
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="companySize" className="text-cyan-50 uppercase text-xs block">
+                    {t("fields.companySize")}
+                  </label>
+                  <select
+                    id="companySize" name="companySize" value={formData.companySize}
+                    onChange={updateField("companySize")} className={fieldClass("companySize")}
+                    {...ariaProps("companySize")}
+                  >
+                    <option value="">{t("companySizeOptions.placeholder")}</option>
+                    <option value="1-10 Empleados">{t("companySizeOptions.1-10")}</option>
+                    <option value="11-50 Empleados">{t("companySizeOptions.11-50")}</option>
+                    <option value="51-200 Empleados">{t("companySizeOptions.51-200")}</option>
+                    <option value="201-50 Empleados">{t("companySizeOptions.201-500")}</option>
+                    <option value="+500">{t("companySizeOptions.500+")}</option>
+                  </select>
+                  {renderError("companySize")}
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="interest" className="text-cyan-50 uppercase text-xs block">
+                    {t("fields.interest")}
+                  </label>
+                  <select
+                    id="interest" name="interest" value={formData.interest}
+                    onChange={updateField("interest")} className={fieldClass("interest")}
+                  >
+                    <option value="">{t("interestOptions.placeholder")}</option>
+                    <option value="rpa">{t("interestOptions.rpa")}</option>
+                    <option value="software">{t("interestOptions.software")}</option>
+                    <option value="chatbot">{t("interestOptions.chatbot")}</option>
+                    <option value="capacitacion">{t("interestOptions.capacitacion")}</option>
+                    <option value="otro">{t("interestOptions.otro")}</option>
+                  </select>
+                </div>
+              </div>
 
-          <div className="space-y-2">
-            <label htmlFor="additionalInfo" className="text-cyan-50 uppercase text-xs block">
-              {t("fields.additionalInfo")}
-            </label>
-            <textarea
-              id="additionalInfo"
-              name="additionalInfo"
-              rows={4}
-              value={formData.additionalInfo}
-              onChange={updateField("additionalInfo")}
-              className={fieldClass("additionalInfo")}
-              placeholder={t("placeholders.additionalInfo")}
-            />
-          </div>
+              <div className="space-y-2">
+                <label htmlFor="website" className="text-cyan-50 uppercase text-xs block">
+                  {t("fields.website")}
+                </label>
+                <input
+                  id="website" name="website" type="text" inputMode="url" autoComplete="url"
+                  value={formData.website} onChange={updateField("website")}
+                  pattern="^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}(\/.*)?$"
+                  title={t("titles.website")} className={fieldClass("website")}
+                  placeholder={t("placeholders.website")}
+                />
+              </div>
 
-          <div className="pt-4">
-            <button
-              id="botónEnviar"
-              type="submit"
-              disabled={isLoading}
-              aria-busy={isLoading}
-              className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
-            >
-              {isLoading ? (
-                <>
-                  <span
-                    className="loading loading-spinner loading-sm mr-2"
-                    aria-hidden="true"
-                  ></span>
-                  {t("sending")}
-                </>
-              ) : (
-                t("submit")
+              {showInvestmentField && (
+                <div className="space-y-2">
+                  <label htmlFor="canInvest" className="text-cyan-50 text-sm block">
+                    {t.rich("investmentDescription", {
+                      strong: (chunks) => <strong>{chunks}</strong>,
+                    })}
+                  </label>
+                  <select
+                    id="canInvest" name="canInvest" required aria-required="true"
+                    value={formData.canInvest} onChange={updateField("canInvest")}
+                    className={fieldClass("canInvest")} {...ariaProps("canInvest")}
+                  >
+                    <option value="">{t("investmentOptions.placeholder")}</option>
+                    <option value="yes">{t("investmentOptions.yes")}</option>
+                    <option value="no">{t("investmentOptions.no")}</option>
+                  </select>
+                  {renderError("canInvest")}
+                </div>
               )}
-            </button>
-            <p className="text-cyan-400 text-xs text-center mt-3">
-              {t("trustLine")}
-            </p>
 
-            {/* Opción de WhatsApp: captura a quien prefiere chatear en vez de
-                llenar el formulario (muy común en LatAm). */}
-            <div className="flex items-center gap-3 my-5" aria-hidden="true">
-              <span className="h-px flex-1 bg-cyan-800/40"></span>
-              <span className="text-cyan-400 text-xs">{t("whatsapp.divider")}</span>
-              <span className="h-px flex-1 bg-cyan-800/40"></span>
-            </div>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white py-3 px-6 rounded-md transition-colors duration-200 font-semibold focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
-            >
-              <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true">
-                <path d="M16.003 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.257.59 4.46 1.71 6.402L3.2 28.8l6.56-1.68a12.74 12.74 0 006.243 1.6h.005c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.332-6.635-3.75-9.052A12.72 12.72 0 0016.003 3.2zm0 23.04h-.004a10.6 10.6 0 01-5.4-1.48l-.388-.23-4.03 1.03 1.075-3.93-.253-.403a10.59 10.59 0 01-1.62-5.63c0-5.865 4.774-10.64 10.643-10.64 2.842 0 5.514 1.108 7.523 3.12a10.57 10.57 0 013.117 7.527c0 5.865-4.774 10.64-10.64 10.64zm5.834-7.968c-.32-.16-1.892-.933-2.185-1.04-.293-.107-.507-.16-.72.16-.213.32-.826 1.04-1.013 1.253-.187.213-.373.24-.693.08-.32-.16-1.35-.498-2.572-1.587-.95-.848-1.592-1.895-1.778-2.215-.187-.32-.02-.493.14-.653.144-.143.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.734-.986-2.374-.26-.623-.523-.538-.72-.548l-.613-.01c-.213 0-.56.08-.853.4-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.146 3.093 1.306 3.307.16.213 2.253 3.44 5.457 4.823.763.33 1.358.527 1.822.674.766.243 1.463.209 2.014.127.615-.092 1.892-.773 2.158-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
-              </svg>
-              {t("whatsapp.button")}
-            </a>
+              <div className="space-y-2">
+                <label htmlFor="additionalInfo" className="text-cyan-50 uppercase text-xs block">
+                  {t("fields.additionalInfo")}
+                </label>
+                <textarea
+                  id="additionalInfo" name="additionalInfo" rows={4}
+                  value={formData.additionalInfo} onChange={updateField("additionalInfo")}
+                  className={fieldClass("additionalInfo")} placeholder={t("placeholders.additionalInfo")}
+                />
+              </div>
+            </>
+          )}
+
+          {/* Navegación entre pasos. */}
+          <div className="pt-2 flex gap-3">
+            {step > 0 && (
+              <button
+                type="button"
+                onClick={goBack}
+                className="flex-none px-5 py-3 rounded-md border border-cyan-700/50 text-cyan-200 hover:bg-cyan-900/40 transition-colors font-semibold"
+              >
+                {t("multistep.back")}
+              </button>
+            )}
+            {isLast ? (
+              <button
+                id="botónEnviar"
+                type="submit"
+                disabled={isLoading}
+                aria-busy={isLoading}
+                className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+              >
+                {isLoading ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm mr-2" aria-hidden="true"></span>
+                    {t("sending")}
+                  </>
+                ) : (
+                  t("submit")
+                )}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={goNext}
+                className="flex-1 bg-teal-500 hover:bg-teal-600 text-white py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 font-semibold"
+              >
+                {t("multistep.next")}
+              </button>
+            )}
           </div>
+
+          <p className="text-cyan-400 text-xs text-center">{t("trustLine")}</p>
+
+          {/* Opción de WhatsApp: siempre visible, captura a quien prefiere chatear. */}
+          <div className="flex items-center gap-3 my-1" aria-hidden="true">
+            <span className="h-px flex-1 bg-cyan-800/40"></span>
+            <span className="text-cyan-400 text-xs">{t("whatsapp.divider")}</span>
+            <span className="h-px flex-1 bg-cyan-800/40"></span>
+          </div>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white py-3 px-6 rounded-md transition-colors duration-200 font-semibold focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+          >
+            <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M16.003 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.257.59 4.46 1.71 6.402L3.2 28.8l6.56-1.68a12.74 12.74 0 006.243 1.6h.005c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.332-6.635-3.75-9.052A12.72 12.72 0 0016.003 3.2zm0 23.04h-.004a10.6 10.6 0 01-5.4-1.48l-.388-.23-4.03 1.03 1.075-3.93-.253-.403a10.59 10.59 0 01-1.62-5.63c0-5.865 4.774-10.64 10.643-10.64 2.842 0 5.514 1.108 7.523 3.12a10.57 10.57 0 013.117 7.527c0 5.865-4.774 10.64-10.64 10.64zm5.834-7.968c-.32-.16-1.892-.933-2.185-1.04-.293-.107-.507-.16-.72.16-.213.32-.826 1.04-1.013 1.253-.187.213-.373.24-.693.08-.32-.16-1.35-.498-2.572-1.587-.95-.848-1.592-1.895-1.778-2.215-.187-.32-.02-.493.14-.653.144-.143.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.734-.986-2.374-.26-.623-.523-.538-.72-.548l-.613-.01c-.213 0-.56.08-.853.4-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.146 3.093 1.306 3.307.16.213 2.253 3.44 5.457 4.823.763.33 1.358.527 1.822.674.766.243 1.463.209 2.014.127.615-.092 1.892-.773 2.158-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
+            </svg>
+            {t("whatsapp.button")}
+          </a>
         </form>
       </div>
     </div>
