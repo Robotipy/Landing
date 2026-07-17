@@ -8,8 +8,8 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    // Validate required fields
-    const requiredFields = ['name', 'email', 'phone', 'companyName', 'role', 'companySize'];
+    // Validate required fields (empresa, cargo y tamaño son opcionales en el form)
+    const requiredFields = ['name', 'email', 'phone'];
     for (const field of requiredFields) {
       if (!body[field]) {
         return NextResponse.json({ error: `${field} is required` }, { status: 400 });
@@ -23,13 +23,14 @@ export async function POST(req) {
 
     // Send notification email to all recipients in LEADS_FORWARD
     await sendLeadNotification({
-      subject: `Nuevo Lead - ${escapeHtml(body.companyName)}${body.canInvest === 'no' ? ' ⚠️ Sin presupuesto' : ''}`,
+      subject: `Nuevo Lead${body.companyName ? ` - ${escapeHtml(body.companyName)}` : ''}${body.interest ? ` (${escapeHtml(body.interest)})` : ''}${body.canInvest === 'no' ? ' ⚠️ Sin presupuesto' : ''}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #039695;">Nuevo Lead Recibido</h2>
           ${body.canInvest === 'no' ? '<p style="background-color: #fef3c7; color: #92400e; padding: 10px; border-radius: 4px;"><strong>⚠️ Este lead indicó que NO puede invertir en el rango de $5,500 - $11,000 USD</strong></p>' : ''}
           ${body.canInvest === 'yes' ? '<p style="background-color: #d1fae5; color: #065f46; padding: 10px; border-radius: 4px;"><strong>✅ Este lead indicó que SÍ puede invertir en el rango de $5,500 - $11,000 USD</strong></p>' : ''}
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+            <p style="background-color: #e0f2f1; color: #00695c; padding: 8px 10px; border-radius: 4px;"><strong>Servicio de interés:</strong> ${escapeHtml(body.interest) || 'No especificado'}</p>
             <p><strong>Nombre:</strong> ${escapeHtml(body.name)}</p>
             <p><strong>Email:</strong> <a href="mailto:${escapeHtml(body.email)}">${escapeHtml(body.email)}</a></p>
             <p><strong>Teléfono:</strong> ${escapeHtml(body.phone) || 'No proporcionado'}</p>

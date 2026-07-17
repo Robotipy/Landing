@@ -391,6 +391,11 @@
     "whatsapp": {
       "divider": "or if you prefer",
       "button": "Message us on WhatsApp"
+    },
+    "multistep": {
+      "next": "Continue",
+      "back": "Back",
+      "progress": "Step"
     }
   },
   "about": {
