@@ -132,17 +132,18 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
         : `https://${formData.website.trim()}`
       : "";
 
-    // El servicio de interés viaja dentro de additionalInfo: el backend y el
-    // correo de leads ya lo soportan sin cambios.
-    const interestLine = formData.interest
-      ? `Servicio de interés: ${t(`interestOptions.${formData.interest}`)}`
+    // El servicio de interés lo eligió el visitante en la pantalla inicial
+    // "¿Qué te interesa?" (o llegó por ?servicio= del anuncio). Va como campo
+    // propio y legible para que aparezca claro en el correo del lead.
+    const interestLabel = formData.interest
+      ? t(`interestOptions.${formData.interest}`)
       : "";
-    const additionalInfo = [interestLine, formData.additionalInfo]
-      .filter(Boolean)
-      .join("\n");
 
-    const payload = { ...formData, website: normalizedWebsite, additionalInfo };
-    delete payload.interest;
+    const payload = {
+      ...formData,
+      website: normalizedWebsite,
+      interest: interestLabel,
+    };
 
     try {
       await apiClient.post("/client", payload);
@@ -352,22 +353,6 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
                     <option value="+500">{t("companySizeOptions.500+")}</option>
                   </select>
                   {renderError("companySize")}
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="interest" className="text-cyan-50 uppercase text-xs block">
-                    {t("fields.interest")}
-                  </label>
-                  <select
-                    id="interest" name="interest" value={formData.interest}
-                    onChange={updateField("interest")} className={fieldClass("interest")}
-                  >
-                    <option value="">{t("interestOptions.placeholder")}</option>
-                    <option value="rpa">{t("interestOptions.rpa")}</option>
-                    <option value="software">{t("interestOptions.software")}</option>
-                    <option value="chatbot">{t("interestOptions.chatbot")}</option>
-                    <option value="capacitacion">{t("interestOptions.capacitacion")}</option>
-                    <option value="otro">{t("interestOptions.otro")}</option>
-                  </select>
                 </div>
               </div>
 
