@@ -3,10 +3,14 @@
 import Script from "next/script";
 
 // Microsoft Clarity: mapas de calor y grabaciones de sesión (gratis).
-// El Project ID se toma de NEXT_PUBLIC_CLARITY_ID. Si no está definido,
-// el componente no renderiza nada (seguro para dev/preview).
+// El Project ID de Clarity es público (queda visible en el HTML de cualquier
+// sitio que lo use), así que se deja como valor por defecto para que funcione
+// sin configurar variables en el hosting. Se puede sobrescribir con
+// NEXT_PUBLIC_CLARITY_ID si algún día cambia.
+const DEFAULT_CLARITY_ID = "xo0vsxq2ja";
+
 export default function MicrosoftClarity() {
-  const projectId = process.env.NEXT_PUBLIC_CLARITY_ID;
+  const projectId = process.env.NEXT_PUBLIC_CLARITY_ID || DEFAULT_CLARITY_ID;
   if (!projectId) return null;
 
   return (
