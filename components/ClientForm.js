@@ -107,6 +107,13 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Si aún no es el último paso (p. ej. Enter en un campo), avanzar en vez
+    // de enviar. El envío real solo ocurre desde el botón del paso final.
+    if (step < TOTAL_STEPS - 1) {
+      goNext();
+      return;
+    }
+
     const errors = validate();
     if (Object.keys(errors).length) {
       setFieldErrors(errors);
