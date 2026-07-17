@@ -11,6 +11,7 @@ import "../globals.css";
 import GoogleTagManager from "@/components/scripts/GoogleTagManager";
 import MetaPixel, { MetaPixelNoScript } from "@/components/scripts/MetaPixel";
 import ZohoSalesIQ from "@/components/scripts/ZohoSalesIQ";
+import MicrosoftClarity from "@/components/scripts/MicrosoftClarity";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -92,6 +93,7 @@ export default async function RootLayout({ children, params }) {
             <MetaPixel />
           </>
         )}
+        <MicrosoftClarity />
       </head>
       <body style={{ backgroundColor: config.colors.background }}>
         <a href="#main-content" className="skip-to-content">
