@@ -387,6 +387,10 @@
       "chatbot": "Chatbots con IA",
       "capacitacion": "Capacitación",
       "otro": "Otro / no estoy seguro"
+    },
+    "whatsapp": {
+      "divider": "o si prefieres",
+      "button": "Escríbenos por WhatsApp"
     }
   },
   "about": {

@@ -387,6 +387,10 @@
       "chatbot": "AI chatbots",
       "capacitacion": "Training",
       "otro": "Other / not sure yet"
+    },
+    "whatsapp": {
+      "divider": "or if you prefer",
+      "button": "Message us on WhatsApp"
     }
   },
   "about": {
