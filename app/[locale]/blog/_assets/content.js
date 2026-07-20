@@ -25,9 +25,11 @@ import { post as cuantoCuestaAutomatizarUnProceso } from "./posts/cuanto-cuesta-
 import { post as rpaParaPymesConvieneOEsSoloParaGrandes } from "./posts/rpa-para-pymes-conviene-o-es-solo-para-grandes.js";
 import { post as erroresComunesAlImplementarRpa } from "./posts/errores-comunes-al-implementar-rpa.js";
 import { post as rpaVsDesarrolloAMedida } from "./posts/rpa-vs-desarrollo-a-medida.js";
+import { post as comoDocumentarUnProceso } from "./posts/como-documentar-un-proceso-antes-de-automatizarlo.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  comoDocumentarUnProceso,
   rpaVsDesarrolloAMedida,
   erroresComunesAlImplementarRpa,
   rpaParaPymesConvieneOEsSoloParaGrandes,
