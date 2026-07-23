@@ -26,9 +26,11 @@ import { post as rpaParaPymesConvieneOEsSoloParaGrandes } from "./posts/rpa-para
 import { post as erroresComunesAlImplementarRpa } from "./posts/errores-comunes-al-implementar-rpa.js";
 import { post as rpaVsDesarrolloAMedida } from "./posts/rpa-vs-desarrollo-a-medida.js";
 import { post as comoDocumentarUnProceso } from "./posts/como-documentar-un-proceso-antes-de-automatizarlo.js";
+import { post as idpProcesamientoInteligenteDeDocumentos } from "./posts/idp-procesamiento-inteligente-de-documentos.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  idpProcesamientoInteligenteDeDocumentos,
   comoDocumentarUnProceso,
   rpaVsDesarrolloAMedida,
   erroresComunesAlImplementarRpa,
