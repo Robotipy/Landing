@@ -27,9 +27,15 @@ import { post as erroresComunesAlImplementarRpa } from "./posts/errores-comunes-
 import { post as rpaVsDesarrolloAMedida } from "./posts/rpa-vs-desarrollo-a-medida.js";
 import { post as comoDocumentarUnProceso } from "./posts/como-documentar-un-proceso-antes-de-automatizarlo.js";
 import { post as idpProcesamientoInteligenteDeDocumentos } from "./posts/idp-procesamiento-inteligente-de-documentos.js";
+import { post as comoIntegrarRpaConTuErp } from "./posts/como-integrar-rpa-con-tu-erp-sap-finnegans-y-otros.js";
+import { post as comoMonitorearRobotsRpaEnProduccion } from "./posts/como-monitorear-robots-rpa-en-produccion.js";
+import { post as mantenimientoDeRobotsRpa } from "./posts/mantenimiento-de-robots-rpa.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  mantenimientoDeRobotsRpa,
+  comoMonitorearRobotsRpaEnProduccion,
+  comoIntegrarRpaConTuErp,
   idpProcesamientoInteligenteDeDocumentos,
   comoDocumentarUnProceso,
   rpaVsDesarrolloAMedida,
