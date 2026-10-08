@@ -10,6 +10,12 @@ import RelatedReading from "@/components/RelatedReading";
 
 const rpaRelatedLinks = [
   {
+    href: "/evaluador-automatizacion",
+    title: "Evaluador de automatización",
+    description:
+      "Responde 7 preguntas y descubre si tu proceso se puede automatizar y con qué tecnología.",
+  },
+  {
     href: "/blog/rpa-con-peras-y-manzanas",
     title: "RPA con peras y manzanas: qué es y cómo funciona",
     description:
