@@ -254,6 +254,37 @@ export const successCases = [
     platform: "rocketbot",
   },
 
+  {
+    id: "alimentos-4",
+    categoria: "alimentos",
+    industry: "Alimentos",
+    name: "Carga de Cartolas Bancarias en SAP",
+    challenge: "Cada día el área de finanzas descargaba a mano las cartolas de seis bancos y del adquirente de tarjetas, unas desde portales web y otras desde el correo, las limpiaba en Excel y las cargaba una por una en SAP.",
+    solution: "Robot que descarga las cartolas desde los portales bancarios y el correo, las normaliza, las carga y contabiliza en SAP, valida que el resultado cuadre en cero y envía un reporte consolidado de bancos a finanzas.",
+    metrics: [
+      { value: "7", label: "Fuentes bancarias integradas" },
+      { value: "Diaria", label: "Carga y contabilización en SAP" },
+      { value: "1", label: "Reporte consolidado de bancos" },
+    ],
+    tools: ["sap", "excel", "outlook", "chrome"],
+    platform: "rocketbot",
+  },
+  {
+    id: "alimentos-5",
+    categoria: "alimentos",
+    industry: "Alimentos",
+    name: "Identificación de Pagos de Clientes en SAP",
+    challenge: "Los abonos recibidos en los bancos llegaban sin identificar al cliente, y finanzas debía cruzar a mano RUT y referencias para asignarlos a la cuenta correcta antes de poder compensar las facturas.",
+    solution: "Robot que sube a SAP la información de los deudores de cada banco y revisa las partidas de las cuentas de mayor aplicando reglas por tipo de referencia (transferencias, pagos y cheques), dejando trazabilidad de los casos que requieren revisión manual.",
+    metrics: [
+      { value: "4", label: "Bancos con identificación de deudores" },
+      { value: "5", label: "Reglas de referencia en cuentas de mayor" },
+      { value: "100%", label: "Casos con trazabilidad" },
+    ],
+    tools: ["sap", "excel", "outlook"],
+    platform: "rocketbot",
+  },
+
   // ===== Automotriz =====
   {
     id: "automotriz-1",
@@ -685,14 +716,14 @@ export const successCases = [
     industry: "Proveedor de internet",
     name: "Soporte con Agente de IA",
     challenge: "El equipo de soporte recibía miles de mensajes diarios por WhatsApp y otros canales, sin trazabilidad ni forma de priorizar en los peaks.",
-    solution: "Implementamos una plataforma propia que convierte cada conversación en un ticket y un agente de IA con base de conocimiento que responde las consultas frecuentes y deriva el resto al equipo humano.",
+    solution: "Implementamos Melon Help, nuestra plataforma de atención, que convierte cada conversación en un ticket y suma un agente de IA con base de conocimiento que responde las consultas frecuentes y deriva el resto al equipo humano.",
     metrics: [
       { value: "~2.000", label: "Mensajes por día en peak" },
       { value: "150+", label: "Tickets en un día" },
       { value: "24/7", label: "Primera respuesta con IA" },
     ],
     tools: ["javascript", "nodejs", "postgresql"],
-    platform: "robotipy",
+    platform: "melonhelp",
   },
 
   // ===== Transporte =====

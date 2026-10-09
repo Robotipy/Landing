@@ -9,7 +9,9 @@ export default function SuccessCaseCard({ caseStudy, showIndustryLink = false })
     ? "Formación en"
     : caseStudy.platform === "robotipy"
       ? "Desarrollo"
-      : "Plataforma";
+      : caseStudy.platform === "melonhelp"
+        ? "Producto"
+        : "Plataforma";
   const caseTools = caseStudy.tools.filter((tool) => tools[tool]);
 
   const industryLabel = showIndustryLink && caseStudy.categoria ? (

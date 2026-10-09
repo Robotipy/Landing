@@ -2,59 +2,11 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { tools } from "@/libs/tools";
+import SuccessCaseCard from "@/components/SuccessCaseCard";
+import { successCases as allCases } from "@/libs/successCases";
 
 export default function AlimentosSuccessCases() {
-  const successCases = [
-    {
-      id: 1,
-      industry: "Alimentos",
-      challenge:
-        "Proceso manual de ratificación de Órdenes de Producción (OP) con validación de datos y documentación compleja.",
-      solution:
-        "Automatización del proceso de ratificación de Órdenes de Producción, incluyendo validación automática de datos y generación de documentación requerida.",
-      results: {
-        manualExecution: "4 hr",
-        automatedExecution: "20 min",
-        timeSaving: "92%",
-      },
-      name: "Mercadería OP",
-      tools: ["excel", "pdf", "dynamics"],
-      platform: "rocketbot",
-    },
-    {
-      id: 2,
-      industry: "Alimentos",
-      challenge:
-        "Proceso manual de ratificación de Órdenes de Servicio (OS) con seguimiento de documentación y validaciones.",
-      solution:
-        "Automatización completa del proceso de ratificación de Órdenes de Servicio, incluyendo seguimiento automático de documentación y validaciones.",
-      results: {
-        manualExecution: "3 hr",
-        automatedExecution: "15 min",
-        timeSaving: "92%",
-      },
-      name: "Ratificación OS",
-      tools: ["excel", "pdf", "dynamics"],
-      platform: "rocketbot",
-    },
-    {
-      id: 3,
-      industry: "Alimentos",
-      challenge:
-        "Extracción manual de información de PDFs de Cereal, Leche y Hacienda para ingreso en documentos de Compra y Venta.",
-      solution:
-        "Automatización de la extracción de información desde PDFs de diferentes sectores (Cereal, Leche, Hacienda) y su posterior ingreso en documentos de Compra y Venta.",
-      results: {
-        manualExecution: "5 hr",
-        automatedExecution: "25 min",
-        timeSaving: "92%",
-      },
-      name: "Lectura de Facturas",
-      tools: ["excel", "pdf", "python"],
-      platform: "rocketbot",
-    },
-  ];
+  const successCases = allCases.filter((c) => c.categoria === "alimentos");
 
   return (
     <>
@@ -83,97 +35,7 @@ export default function AlimentosSuccessCases() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
               {successCases.map((caseStudy) => (
-                <div
-                  key={caseStudy.id}
-                  className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-success mb-3">
-                      {caseStudy.name}
-                    </h3>
-
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Desafío:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.challenge}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-300 text-sm">
-                          Solución:
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {caseStudy.solution}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-400">
-                          {caseStudy.results.manualExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Manual
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.automatedExecution}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ejecución Automatizada
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-400">
-                          {caseStudy.results.timeSaving}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          Ahorro de Tiempo
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tools Section */}
-                    <div className="mt-4 justify-between items-center hidden md:flex">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5 text-success">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-4 justify-between items-center md:hidden text-gray-400">
-                      <div className="text-gray-400 text-lg">
-                        <div className="flex items-center gap-2 w-2/5">
-                          <span >Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                        <span>Herramientas automatizadas:</span>
-                      <div className="flex flex-wrap gap-3 w-fit px-0 items-center">
-                        
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <SuccessCaseCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>

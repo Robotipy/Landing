@@ -23,6 +23,9 @@ export async function generateMetadata({ params }) {
     title: m.title,
     description: m.description,
     canonicalUrlRelative: `/casos-exito/${industria}`,
+    openGraph: {
+      images: [{ url: "/images/og/casos-exito-resultados.jpg", width: 1200, height: 630, alt: "Resultados de casos de éxito de Robotipy" }],
+    },
   });
 }
 

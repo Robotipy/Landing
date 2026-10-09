@@ -12,6 +12,9 @@ export async function generateMetadata({ params }) {
     title: t("title"),
     description: t("description"),
     canonicalUrlRelative: "/success-cases",
+    openGraph: {
+      images: [{ url: "/images/og/casos-exito.jpg", width: 1200, height: 630, alt: "Casos de éxito de Robotipy" }],
+    },
   });
 }
 

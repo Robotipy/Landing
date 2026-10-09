@@ -118,6 +118,7 @@ export const tools = {
   jira: <img src="/assets/logos/jira-logo.jfif" alt="Logo de Jira" title="Jira" />,
   flokzu: <img src="/assets/logos/flokzu-logo.jfif" alt="Logo de Flokzu" title="Flokzu" />,
   robotipy: <img src="/images/robotipy-logo.png" alt="Robotipy Logo" title="Robotipy" width={70}/>,
+  melonhelp: <img src="/images/melonhelp-logo.png" alt="Melon Help" title="Melon Help" width={100}/>,
 
 };
 

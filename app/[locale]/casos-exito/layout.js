@@ -13,6 +13,9 @@ export async function generateMetadata({ params }) {
     description: t("description"),
     // Espejo de /success-cases. Apunta canonical alli para evitar contenido duplicado.
     canonicalUrlRelative: "/success-cases",
+    openGraph: {
+      images: [{ url: "/images/og/casos-exito.jpg", width: 1200, height: 630, alt: "Casos de éxito de Robotipy" }],
+    },
   });
 }
 
