@@ -17,7 +17,7 @@ const COPY = {
       title:
         "Implementación de Rocketbot en Chile y LatAm | Robotipy, Platinum Partner",
       description:
-        "¿Buscas quién implementa Rocketbot en Chile o Argentina? Robotipy es Platinum Partner de Rocketbot, el tier más alto, con +80 proyectos en LatAm y España.",
+        "¿Buscas quién implementa Rocketbot en Chile o Argentina? Robotipy es Platinum Partner de Rocketbot, el tier más alto, con +70 proyectos en LatAm y España.",
     },
     home: "Inicio",
     eyebrow: "Platinum Partner de Rocketbot",
@@ -29,7 +29,7 @@ const COPY = {
           Platinum Partner de Rocketbot, el tier más alto del programa de
           certificación
         </strong>
-        , con más de 80 proyectos de automatización en 8 países. Conocemos la
+        , con más de 70 proyectos de automatización en 8 países. Conocemos la
         plataforma desde adentro:{" "}
         <strong className="text-white">
           Danilo Toro, fundador de Robotipy, fue desarrollador de Rocketbot
@@ -70,7 +70,7 @@ const COPY = {
       },
       {
         t: "Experiencia comprobable",
-        d: "Más de 80 proyectos en producción, con casos reales en minería, banca, agro, siderurgia, logística y retail, en Chile, Argentina, Colombia y España.",
+        d: "Más de 70 proyectos en producción, con casos reales en minería, banca, agro, siderurgia, logística y retail, en Chile, Argentina, Colombia y España.",
       },
       {
         t: "De punta a punta",
@@ -111,7 +111,7 @@ const COPY = {
     faqs: [
       {
         q: "¿Quién implementa Rocketbot en Chile?",
-        a: "Robotipy implementa Rocketbot en Chile como Platinum Partner del fabricante, el tier más alto de certificación. Tiene más de 80 proyectos de automatización en la región.",
+        a: "Robotipy implementa Rocketbot en Chile como Platinum Partner del fabricante, el tier más alto de certificación. Tiene más de 70 proyectos de automatización en la región.",
       },
       {
         q: "¿Qué significa ser Platinum Partner de Rocketbot?",
@@ -127,7 +127,7 @@ const COPY = {
       },
       {
         q: "¿En qué países implementa Robotipy?",
-        a: "Robotipy implementa Rocketbot en Chile, Argentina, Colombia y España, con más de 80 proyectos en 8 países.",
+        a: "Robotipy implementa Rocketbot en Chile, Argentina, Colombia y España, con más de 70 proyectos en 8 países.",
       },
       {
         q: "¿Cuánto cuesta implementar Rocketbot?",
@@ -140,7 +140,7 @@ const COPY = {
     meta: {
       title: "Rocketbot Implementation | Robotipy, Platinum Partner",
       description:
-        "Robotipy is a Rocketbot Platinum Partner, the highest certification tier, with 80+ automation projects delivered in Chile, Argentina, Colombia and Spain.",
+        "Robotipy is a Rocketbot Platinum Partner, the highest certification tier, with 70+ automation projects delivered in Chile, Argentina, Colombia and Spain.",
     },
     home: "Home",
     eyebrow: "Rocketbot Platinum Partner",

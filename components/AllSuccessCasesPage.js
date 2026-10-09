@@ -6,6 +6,8 @@ import SuccessCaseCard from "@/components/SuccessCaseCard";
 import { Link } from "@/i18n/routing";
 import config from "@/config";
 import { industries, successCases } from "@/libs/successCases";
+import FaqSection from "@/components/FaqSection";
+import { casosFaqs } from "@/libs/faqs";
 
 const siteOrigin = `https://www.${config.domainName.replace(/^www\./, "")}`;
 
@@ -129,6 +131,13 @@ export default async function AllSuccessCasesPage({ locale, pagePath }) {
             </div>
           </section>
         ))}
+
+        {locale === "es" && (
+          <FaqSection
+            faqs={casosFaqs}
+            title="Preguntas frecuentes sobre nuestros casos"
+          />
+        )}
 
         <section className="py-20 bg-gray-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

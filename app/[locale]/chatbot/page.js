@@ -2,7 +2,8 @@ import ChatbotHero from "@/components/ChatbotHero";
 import ChatbotFeatures from "@/components/ChatbotFeatures";
 import ChatbotProcess from "@/components/ChatbotProcess";
 import ChatbotUseCases from "@/components/ChatbotUseCases";
-import ChatbotFAQ from "@/components/ChatbotFAQ";
+import FaqSection from "@/components/FaqSection";
+import { chatbotFaqs } from "@/libs/faqs";
 import ChatbotCTA from "@/components/ChatbotCTA";
 import RelatedReading from "@/components/RelatedReading";
 import { Suspense } from "react";
@@ -42,7 +43,10 @@ const ChatbotPage = () => {
           links={chatbotRelatedLinks}
         />
         <ChatbotCTA />
-        <ChatbotFAQ />
+        <FaqSection
+          faqs={chatbotFaqs}
+          title="Preguntas frecuentes sobre chatbots con IA"
+        />
       </main>
       <Footer />
     </>

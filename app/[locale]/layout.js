@@ -43,13 +43,42 @@ export default async function RootLayout({ children, params }) {
   setRequestLocale(locale);
   const messages = await getMessages();
 
+  const siteUrl = "https://www.robotipy.com";
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Corporation",
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
     "name": "Robotipy",
-    "url": "https://robotipy.com",
-    "logo": "https://www.robotipy.com/_next/static/media/icon.0921702f.png",
-    "description": "Expertos en automatización de procesos (RPA), Chatbots con IA y desarrollo de software a medida.",
+    "url": siteUrl,
+    "logo": `${siteUrl}/images/robotipy-logo.png`,
+    "description":
+      "Empresa de automatización de procesos fundada en 2023, con equipo en Chile y Argentina. Más de 70 proyectos entregados con RPA, inteligencia artificial y desarrollo de software a medida. Platinum Partner de Rocketbot.",
+    "foundingDate": "2023",
+    "founder": {
+      "@type": "Person",
+      "name": "Danilo Toro",
+      "sameAs": ["https://www.linkedin.com/in/danilotorol/"],
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Chile" },
+      { "@type": "Country", "name": "Argentina" },
+      { "@type": "Place", "name": "Latinoamérica" },
+    ],
+    "knowsAbout": [
+      "Automatización robótica de procesos (RPA)",
+      "Rocketbot",
+      "UiPath",
+      "Power Automate",
+      "n8n",
+      "Agentes de IA con Claude",
+      "Procesamiento inteligente de documentos (IDP)",
+      "Automatización de SAP",
+      "Automatización de Finnegans",
+      "Automatización de AS400",
+      "Automatización de Defontana",
+      "Conciliación bancaria automatizada",
+      "Desarrollo de software a medida",
+    ],
     "memberOf": {
       "@type": "Organization",
       "name": "Rocketbot",
@@ -60,11 +89,16 @@ export default async function RootLayout({ children, params }) {
       "Rocketbot Expert Certification",
       "Mejor caso de éxito en Rocketbot",
     ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "url": `${siteUrl}/es/contact-us`,
+      "availableLanguage": ["es", "en", "pt"],
+      "areaServed": ["CL", "AR"],
+    },
     "sameAs": [
       "https://www.linkedin.com/company/robotipy",
       "https://www.instagram.com/robotipy.dev",
-      "https://projects.robotipy.dev",
-      "https://newsletter.robotipy.com",
     ],
   };
 

@@ -164,7 +164,7 @@ const RocketbotChilePage = () => {
             <Link href="/rocketbot" className="text-accent hover:underline">
               Platinum Partner de Rocketbot
             </Link>
-            , el tier más alto de certificación, con más de 80 proyectos de
+            , el tier más alto de certificación, con más de 70 proyectos de
             automatización. Su fundador, Danilo Toro, fue desarrollador de
             Rocketbot durante 6 años. Implementamos automatizaciones en
             producción para empresas chilenas en SAP, banca, minería y retail.

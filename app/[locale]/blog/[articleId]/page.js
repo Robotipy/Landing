@@ -111,10 +111,21 @@ export default async function Article({ params }) {
   const articleCategories = (article.categories || []).filter(Boolean);
   const category = articleCategories[0];
 
-  const formattedDate = new Date(article.publishedAt).toLocaleDateString(
-    "es-ES",
-    { day: "numeric", month: "long", year: "numeric" }
-  );
+  const formatDate = (date) =>
+    new Date(`${date}T12:00:00Z`).toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+  const formattedDate = formatDate(article.publishedAt);
+  const updatedAt = article.updatedAt || article.publishedAt;
+  const wasUpdated = updatedAt !== article.publishedAt;
+  const siteUrl = `https://www.${config.domainName}`;
+  const articleUrl = `${siteUrl}/blog/${article.slug}`;
+  const authorSameAs = (article.author.socials || [])
+    .map((s) => s.url)
+    .filter((url) => url && !url.includes("/company/"));
 
   const toCard = (a) => ({
     tag: a.categories?.find(Boolean)?.titleShort || "Blog",
@@ -153,27 +164,34 @@ export default async function Article({ params }) {
             "@type": "Article",
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://${config.domainName}/blog/${article.slug}`,
+              "@id": articleUrl,
             },
+            url: articleUrl,
             name: article.title,
             headline: article.title,
             description: article.description,
-            image: `https://${config.domainName}${article.image.urlRelative}`,
+            image: `${siteUrl}${article.image.urlRelative}`,
+            inLanguage: "es",
             datePublished: article.publishedAt,
-            dateModified: article.publishedAt,
+            dateModified: updatedAt,
             ...(article.keywords?.length
               ? { keywords: article.keywords.join(", ") }
               : {}),
             author: {
               "@type": "Person",
               name: article.author.name,
+              ...(article.author.job ? { jobTitle: article.author.job } : {}),
+              url: `${siteUrl}/blog/author/${article.author.slug}`,
+              ...(authorSameAs.length ? { sameAs: authorSameAs } : {}),
             },
             publisher: {
               "@type": "Organization",
+              "@id": `${siteUrl}/#organization`,
               name: config.appName,
+              url: siteUrl,
               logo: {
                 "@type": "ImageObject",
-                url: `https://${config.domainName}/images/robotipy-logo.png`,
+                url: `${siteUrl}/images/robotipy-logo.png`,
               },
             },
           }),
@@ -264,8 +282,27 @@ export default async function Article({ params }) {
               </>
             )}
             <span className="h-[3px] w-[3px] rounded-full bg-white/30" />
-            <span itemProp="datePublished">{formattedDate}</span>
+            <time dateTime={article.publishedAt}>{formattedDate}</time>
+            {wasUpdated && (
+              <>
+                <span className="h-[3px] w-[3px] rounded-full bg-white/30" />
+                <span>
+                  Actualizado el{" "}
+                  <time dateTime={updatedAt}>{formatDate(updatedAt)}</time>
+                </span>
+              </>
+            )}
           </div>
+          <p className="mb-[22px] text-[14px] text-white/60">
+            Por{" "}
+            <Link
+              href={`/blog/author/${article.author.slug}`}
+              className="text-white/80 hover:text-accent"
+            >
+              {article.author.name}
+            </Link>
+            {article.author.job ? `, ${article.author.job}` : ""}
+          </p>
           <h1 className="mb-[18px] font-display text-[34px] font-extrabold leading-[1.07] tracking-[-0.025em] text-white md:text-[42px]">
             {article.title}
           </h1>

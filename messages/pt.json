@@ -267,7 +267,7 @@
       "timeLabel": "tempo de processamento",
       "errorsValue": "0",
       "errorsLabel": "erros de digitação",
-      "projectsValue": "+60",
+      "projectsValue": "+70",
       "projectsLabel": "projetos entregues",
       "countriesValue": "8",
       "countriesLabel": "países"
@@ -401,76 +401,99 @@
   },
   "about": {
     "hero": {
-      "title": "Humanizando a Tecnologia",
-      "subtitle": "Nossa missão é combinar a precisão robótica com a engenhosidade humana para criar soluções de automação inteligente. Nossa visão é um futuro em que a tecnologia capacita as pessoas a alcançar todo o seu potencial."
+      "eyebrow": "Sobre a Robotipy",
+      "title": "Automatizamos processos de finanças e operações desde 2023",
+      "subtitle": "A Robotipy é uma empresa de automação de processos fundada em 2023, com equipe no Chile e na Argentina. Já entregamos mais de 70 projetos com RPA, inteligência artificial e desenvolvimento sob medida, e somos Platinum Partner da Rocketbot."
     },
-    "principles": {
-      "title": "Nossos Princípios",
-      "items": {
-        "results": {
-          "title": "Compromisso com Resultados",
-          "description": "Somos dedicados a entregar resultados mensuráveis e valor tangível aos nossos clientes."
-        },
-        "innovation": {
-          "title": "Inovação Constante",
-          "description": "Buscamos incansavelmente novas ideias e tecnologias para nos manter na vanguarda do setor."
-        },
-        "transparency": {
-          "title": "Transparência Radical",
-          "description": "Acreditamos na comunicação aberta e honesta, construindo confiança com clientes e parceiros."
-        }
+    "facts": {
+      "founded": {
+        "value": "2023",
+        "label": "Ano de fundação"
+      },
+      "projects": {
+        "value": "+70",
+        "label": "Projetos entregues"
+      },
+      "countries": {
+        "value": "Chile e Argentina",
+        "label": "Equipe e clientes"
+      },
+      "partner": {
+        "value": "Platinum",
+        "label": "Partner da Rocketbot"
       }
     },
     "team": {
-      "title": "As Mentes Por Trás da Mágica",
+      "title": "Quem somos",
+      "subtitle": "As pessoas que desenham, constroem e mantêm os robôs dos nossos clientes.",
       "members": {
-        "alice": {
-          "name": "Alice Johnson",
-          "role": "CEO e Fundadora",
-          "description": "Alice é uma líder visionária com mais de 20 anos de experiência na indústria de tecnologia. Apaixonada por usar a tecnologia para resolver problemas reais."
+        "danilo": {
+          "name": "Danilo Toro",
+          "role": "Fundador da Robotipy",
+          "description": "Desenvolvedor e empreendedor, com mais de 7 anos de experiência em automação de processos e desenvolvimento de software."
         },
-        "bob": {
-          "name": "Bob Williams",
-          "role": "CTO",
-          "description": "Bob é o gênio técnico por trás de nossas soluções inovadoras. Tem profundo conhecimento de IA e RPA, e talento para construir sistemas escaláveis."
+        "ivan": {
+          "name": "Ivan Cabrera",
+          "role": "CEO da Robotipy Argentina",
+          "description": "Lidera a Robotipy na Argentina. Ajuda empresas médias e grandes a automatizar processos em SAP e outros sistemas, com foco em projetos que se pagam sozinhos."
         },
-        "charlie": {
-          "name": "Charlie Brown",
-          "role": "Lead Developer",
-          "description": "Charlie é mestre em código, liderando nossa equipe de desenvolvimento com precisão e compromisso com a qualidade. Especialista full-stack apaixonado por arquitetura limpa."
+        "gabriel": {
+          "name": "Gabriel Toro",
+          "role": "Equipe Robotipy",
+          "description": "Especializado em automação de processos e soluções RPA para empresas no Chile e na Argentina."
+        }
+      },
+      "articlesLink": "Ver artigos"
+    },
+    "stack": {
+      "title": "Com o que trabalhamos",
+      "platformsTitle": "Plataformas",
+      "platforms": "Rocketbot, UiPath, Power Automate, n8n, Claude (Anthropic) e Python.",
+      "systemsTitle": "Sistemas que já automatizamos",
+      "systems": "SAP, Finnegans, AS400, Defontana e portais de bancos do Chile e da Argentina."
+    },
+    "principles": {
+      "title": "Como trabalhamos",
+      "items": {
+        "results": {
+          "title": "Preço claro antes de começar",
+          "description": "O diagnóstico não é cobrado. Depois fechamos escopo e preço por escrito, e publicamos quanto custa um projeto típico."
         },
-        "diana": {
-          "name": "Diana Prince",
-          "role": "Líder UX/UI",
-          "description": "Diana garante que nossas soluções não sejam apenas poderosas, mas também intuitivas e fáceis de usar. Defende uma abordagem de design centrada no ser humano."
+        "innovation": {
+          "title": "Dizemos quando não compensa",
+          "description": "Se um processo não se paga com RPA, dizemos isso e propomos outra saída: uma API, desenvolvimento sob medida ou um agente de IA."
+        },
+        "transparency": {
+          "title": "Robôs que podem ser mantidos",
+          "description": "Documentamos cada processo antes de construir e oferecemos suporte e monitoramento opcionais após a entrega."
         }
       }
     },
     "process": {
-      "title": "Como Trabalhamos com Você",
+      "title": "Da primeira reunião ao robô em produção",
       "steps": {
         "discovery": {
-          "title": "Descoberta",
-          "description": "Começamos compreendendo profundamente seus desafios e objetivos. A colaboração com o cliente é fundamental para definir o escopo do projeto e os critérios de sucesso."
+          "title": "Diagnóstico sem custo",
+          "description": "Revisamos o processo com você, estimamos a economia e dizemos se vale a pena automatizar."
         },
         "design": {
-          "title": "Design",
-          "description": "Nossa equipe projeta uma solução centrada no usuário, criando wireframes e protótipos. Trabalhamos com você para refinar o design até a perfeição."
+          "title": "Documentação e escopo",
+          "description": "Documentamos o processo, suas exceções e os sistemas envolvidos, e fechamos escopo e preço por escrito."
         },
         "development": {
-          "title": "Desenvolvimento",
-          "description": "Nossos desenvolvedores dão vida ao design usando metodologia ágil. Você terá atualizações e demos regulares para acompanhar o progresso."
+          "title": "Desenvolvimento e operação assistida",
+          "description": "Construímos o robô com um usuário dedicado, testamos com dados reais e acompanhamos a operação assistida."
         },
         "deployment": {
-          "title": "Implantação",
-          "description": "Cuidamos de todo o processo de implantação e oferecemos suporte contínuo para garantir uma transição tranquila e sucesso duradouro."
+          "title": "Suporte e monitoramento",
+          "description": "Se você precisar, seguimos responsáveis pelo robô com suporte mensal e monitoramento em produção."
         }
       }
     },
     "cta": {
-      "title": "Pronto para Automatizar seu Sucesso?",
-      "subtitle": "Vamos conversar sobre como a Robotipy pode ajudar seu negócio a prosperar com automação inteligente.",
-      "button": "Fale Conosco"
+      "title": "Tem um processo que quer automatizar?",
+      "subtitle": "Conte como ele funciona hoje e diremos, sem custo, se vale a pena automatizá-lo.",
+      "button": "Agende uma reunião"
     }
   },
   "trainingHero": {
@@ -853,8 +876,8 @@
         "description": "Conte-nos seus desafios e agende uma chamada para discutirmos a melhor forma de tornar sua vida mais fácil."
       },
       "about": {
-        "title": "Sobre Nós | Robotipy",
-        "description": "Conheça a Robotipy: nossa equipe, princípios e processo para entregar automação inteligente que humaniza a tecnologia."
+        "title": "Sobre a Robotipy | Automação de processos desde 2023",
+        "description": "A Robotipy é uma empresa de automação de processos fundada em 2023, com mais de 70 projetos no Chile e na Argentina. Conheça a equipe e como trabalhamos."
       },
       "capacitaciones": {
         "title": "Capacitação em IA e Automação | Robotipy",
