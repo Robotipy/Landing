@@ -119,6 +119,12 @@ const Footer = () => {
                 <Link href="/blog" className="link link-hover text-start">
                   {t("sections.resources.blog")}
                 </Link>
+                <Link
+                  href="/evaluador-automatizacion"
+                  className="link link-hover text-start"
+                >
+                  {t("sections.resources.automationAssessment")}
+                </Link>
                 <a
                   href="https://newsletter.robotipy.com"
                   target="_blank"
