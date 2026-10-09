@@ -10,14 +10,100 @@ export const industries = [
   { slug: "automotriz", key: "automotriz" },
   { slug: "estudio-juridico", key: "estudioJuridico" },
   { slug: "financiero", key: "financiero" },
+  { slug: "hoteleria", key: "hoteleria" },
   { slug: "industrias-tecnologicas", key: "industriasTecnologicas" },
+  { slug: "mineria", key: "mineria" },
   { slug: "salud", key: "salud" },
   { slug: "seguros", key: "seguros" },
   { slug: "servicios-profesionales", key: "serviciosProfesionales" },
   { slug: "servicios-tecnicos", key: "serviciosTecnicos" },
   { slug: "software", key: "software" },
+  { slug: "telecomunicaciones", key: "telecomunicaciones" },
   { slug: "transporte", key: "transporte" },
 ];
+
+// Industrias sin carpeta propia en app/[locale]/casos-exito: se renderizan
+// con la ruta dinamica [industria] a partir de este objeto.
+export const industryPages = {
+  hoteleria: {
+    banner: "/assets/banners/servicios-profesionales.jpeg",
+    title: "Soluciones para Hotelería",
+    subtitle:
+      "Automatizamos la operación diaria de hoteles: ocupación, contratos corporativos y estados de pago conectados al PMS, sin digitación manual.",
+    ctaTitle: "¿Tu hotel todavía cuadra la ocupación a mano?",
+    ctaSubtitle:
+      "Te mostramos qué reportes del PMS se pueden automatizar primero y cuánto tiempo libera tu equipo de recepción.",
+    meta: {
+      es: {
+        title: "Casos de Automatización en Hotelería | Robotipy",
+        description:
+          "Casos reales de automatización RPA en hotelería: censo diario de ocupación y estados de pago integrados con el PMS, con métricas de ahorro.",
+      },
+      en: {
+        title: "Hospitality Automation Cases | Robotipy",
+        description:
+          "Real RPA automation cases in hospitality: daily occupancy census and payment statements integrated with the hotel PMS.",
+      },
+      pt: {
+        title: "Casos de Automação em Hotelaria | Robotipy",
+        description:
+          "Casos reais de automação RPA em hotelaria: censo diário de ocupação e estados de pagamento integrados ao PMS do hotel.",
+      },
+    },
+  },
+  mineria: {
+    banner: "/assets/banners/logistica.jpeg",
+    title: "Soluciones para Minería",
+    subtitle:
+      "Software a medida e inteligencia artificial para operaciones mineras: modelos de proceso, simulación de escenarios y apoyo a la toma de decisiones.",
+    ctaTitle: "¿Tus modelos de proceso siguen viviendo en Excel?",
+    ctaSubtitle:
+      "Los llevamos a software con trazabilidad, escenarios comparables y modelos que se calibran con datos reales.",
+    meta: {
+      es: {
+        title: "Casos de Software e IA en Minería | Robotipy",
+        description:
+          "Casos reales de software a medida e IA en minería: gemelo digital de lixiviación con calibración de parámetros y simulación de escenarios.",
+      },
+      en: {
+        title: "Software and AI Cases in Mining | Robotipy",
+        description:
+          "Real custom software and AI cases in mining: a leaching digital twin with parameter calibration and scenario simulation.",
+      },
+      pt: {
+        title: "Casos de Software e IA em Mineração | Robotipy",
+        description:
+          "Casos reais de software sob medida e IA em mineração: gêmeo digital de lixiviação com calibração de parâmetros e simulação de cenários.",
+      },
+    },
+  },
+  telecomunicaciones: {
+    banner: "/assets/banners/financiero.jpeg",
+    title: "Soluciones para Telecomunicaciones",
+    subtitle:
+      "Plataformas de atención con inteligencia artificial para proveedores de internet y telecomunicaciones que reciben miles de mensajes al día.",
+    ctaTitle: "¿Tu soporte no da abasto en los peaks?",
+    ctaSubtitle:
+      "Ordenamos tus canales en tickets y dejamos que un agente de IA resuelva las consultas repetitivas.",
+    meta: {
+      es: {
+        title: "Casos de IA en Telecomunicaciones | Robotipy",
+        description:
+          "Casos reales de software e IA en telecomunicaciones: tickets automáticos desde WhatsApp y agente de IA para soporte con alto volumen.",
+      },
+      en: {
+        title: "AI Cases in Telecommunications | Robotipy",
+        description:
+          "Real software and AI cases in telecommunications: automatic tickets from WhatsApp and an AI support agent for high volume.",
+      },
+      pt: {
+        title: "Casos de IA em Telecomunicações | Robotipy",
+        description:
+          "Casos reais de software e IA em telecomunicações: tickets automáticos a partir do WhatsApp e agente de IA para suporte com alto volume.",
+      },
+    },
+  },
+};
 
 export const successCases = [
   // ===== Agrícola =====
@@ -160,6 +246,37 @@ export const successCases = [
     platform: "rocketbot",
   },
 
+  {
+    id: "automotriz-5",
+    categoria: "automotriz",
+    industry: "Flotas y Rent-a-car",
+    name: "Creación de Materiales en SAP",
+    challenge: "Las solicitudes de repuestos llegaban por correo en planillas Excel y cada material debía validarse contra un maestro SAP de más de 55.000 registros antes de cargarse a mano.",
+    solution: "Robot que lee las solicitudes del correo, valida la plantilla, homologa términos, cruza patente y marca con la API de flota, crea los materiales en SAP y responde al solicitante indicando las líneas con error.",
+    metrics: [
+      { value: "55.000+", label: "Materiales en el maestro" },
+      { value: "~60", label: "Solicitantes en todo Chile" },
+      { value: "100%", label: "Solicitudes con respuesta automática" },
+    ],
+    tools: ["sap", "outlook", "excel", "python"],
+    platform: "rocketbot",
+  },
+  {
+    id: "automotriz-6",
+    categoria: "automotriz",
+    industry: "Rent-a-car",
+    name: "Bloqueo de Disponibilidad por Sucursal",
+    challenge: "Bloquear y desbloquear a mano la disponibilidad de vehículos por sucursal y categoría en un sistema mainframe, mientras los canales de venta externos mueven la demanda todo el día.",
+    solution: "Robot sobre emulador de terminal 3270 con reconexión automática, parametrizado por marca, que corre cada noche y a demanda desde el orquestador y entrega un reporte por ejecución.",
+    metrics: [
+      { value: "2", label: "Marcas operadas" },
+      { value: "34", label: "Sucursales por ejecución" },
+      { value: "~400", label: "Registros por noche" },
+    ],
+    tools: ["sqlserver", "outlook", "excel"],
+    platform: "rocketbot",
+  },
+
   // ===== Estudio Jurídico =====
   {
     id: "estudio-juridico-1",
@@ -241,6 +358,50 @@ export const successCases = [
     platform: "rocketbot",
   },
 
+  {
+    id: "financiero-7",
+    categoria: "financiero",
+    industry: "Cooperativa",
+    name: "Conciliación Bancaria con IA",
+    challenge: "Conciliar a diario los movimientos de varios bancos cuyos portales solo muestran la información en pantalla, con un OCR que fallaba en uno de cada diez registros.",
+    solution: "Robot que recorre los portales bancarios, usa un modelo de IA para leer las pantallas en lugar del OCR y concilia los movimientos contra el sistema contable.",
+    metrics: [
+      { value: "100%", label: "Acierto de lectura en pruebas" },
+      { value: "~90%", label: "Acierto con el OCR anterior" },
+      { value: "Diaria", label: "Conciliación multibanco" },
+    ],
+    tools: ["chrome", "excel", "python"],
+    platform: "rocketbot",
+  },
+
+  // ===== Hotelería =====
+  {
+    id: "hoteleria-1",
+    categoria: "hoteleria",
+    industry: "Cadena hotelera",
+    name: "Censo Diario de Ocupación",
+    challenge: "Cada día las recepciones de tres hoteles hacían el censo cama por cama y lo cruzaban contra los contratos corporativos. Ese dato alimenta la planificación de alimentación, los márgenes por contrato y el pago a proveedores.",
+    solution: "Robot orquestado que extrae del PMS los reportes de limpieza y de contratos por estadía, consolida un Excel maestro mensual por hotel (ocupación real contra reservada, no-shows y porcentaje de ocupación) y lo distribuye por correo.",
+    results: { manualExecution: "9 hr", automatedExecution: "20 min", timeSaving: "96%" },
+    tools: ["excel", "sharepoint", "outlook", "azure"],
+    platform: "rocketbot",
+  },
+  {
+    id: "hoteleria-2",
+    categoria: "hoteleria",
+    industry: "Cadena hotelera",
+    name: "Estados de Pago Corporativos",
+    challenge: "Los estados de pago de cada hotel se sacaban del PMS y se transcribían al formato contable del grupo, hotel por hotel.",
+    solution: "Robot que extrae los estados de pago del PMS, los traduce al formato corporativo con un diccionario por hotel y los deja publicados en SharePoint.",
+    metrics: [
+      { value: "3", label: "Hoteles integrados" },
+      { value: "PMS a ERP", label: "Formato corporativo" },
+      { value: "0", label: "Transcripción manual" },
+    ],
+    tools: ["excel", "sharepoint", "outlook"],
+    platform: "rocketbot",
+  },
+
   // ===== Industrias Tecnológicas =====
   {
     id: "industrias-tecnologicas-1",
@@ -252,6 +413,23 @@ export const successCases = [
     results: { manualExecution: "16 hr", automatedExecution: "3 hr", timeSaving: "81%" },
     tools: ["excel", "powerpoint", "email", "web-scraping", "python"],
     platform: "rocketbot",
+  },
+
+  // ===== Minería =====
+  {
+    id: "mineria-1",
+    categoria: "mineria",
+    industry: "Minería del cobre",
+    name: "Gemelo Digital de Lixiviación",
+    challenge: "El modelo de recuperación de cobre de las pilas de lixiviación vivía en planillas Excel difíciles de calibrar, auditar y usar para comparar escenarios.",
+    solution: "Desarrollamos una plataforma web con motor en Python que simula el circuito desde las pilas hasta la extracción por solventes, calibra los parámetros del proceso con datos reales y combina el modelo fenomenológico con machine learning.",
+    metrics: [
+      { value: "48+", label: "Parámetros calibrados" },
+      { value: "5 de 8", label: "Módulos más precisos que el Excel" },
+      { value: "Web", label: "Escenarios comparables" },
+    ],
+    tools: ["python", "react", "excel"],
+    platform: "robotipy",
   },
 
   // ===== Salud =====
@@ -394,6 +572,23 @@ export const successCases = [
     results: { manualExecution: "4 hr", automatedExecution: "20 min", timeSaving: "92%" },
     tools: ["excel", "google-drive", "jira", "slack"],
     platform: "rocketbot",
+  },
+
+  // ===== Telecomunicaciones =====
+  {
+    id: "telecomunicaciones-1",
+    categoria: "telecomunicaciones",
+    industry: "Proveedor de internet",
+    name: "Soporte con Agente de IA",
+    challenge: "El equipo de soporte recibía miles de mensajes diarios por WhatsApp y otros canales, sin trazabilidad ni forma de priorizar en los peaks.",
+    solution: "Implementamos una plataforma propia que convierte cada conversación en un ticket y un agente de IA con base de conocimiento que responde las consultas frecuentes y deriva el resto al equipo humano.",
+    metrics: [
+      { value: "~2.000", label: "Mensajes por día en peak" },
+      { value: "150+", label: "Tickets en un día" },
+      { value: "24/7", label: "Primera respuesta con IA" },
+    ],
+    tools: ["javascript", "nodejs", "postgresql"],
+    platform: "robotipy",
   },
 
   // ===== Transporte =====

@@ -39,32 +39,45 @@ export default function SuccessCaseCard({ caseStudy, showIndustryLink = false })
           </div>
         </div>
         
-        <div className="grid grid-cols-3 gap-4 mb-4">
-          <div className="text-center">
-            <div className="text-lg font-bold text-gray-400">
-              {caseStudy.results.manualExecution}
-            </div>
-            <div className="text-xs text-gray-400">Ejecución Manual</div>
+        {caseStudy.metrics ? (
+          <div className="grid grid-cols-3 gap-4 mb-4">
+            {caseStudy.metrics.map((m) => (
+              <div key={m.label} className="text-center">
+                <div className="text-lg font-bold text-cyan-400">{m.value}</div>
+                <div className="text-xs text-gray-400">{m.label}</div>
+              </div>
+            ))}
           </div>
-          <div className="text-center">
-            <div className="text-lg font-bold text-cyan-400">
-              {caseStudy.results.automatedExecution}
+        ) : (
+          <div className="grid grid-cols-3 gap-4 mb-4">
+            <div className="text-center">
+              <div className="text-lg font-bold text-gray-400">
+                {caseStudy.results.manualExecution}
+              </div>
+              <div className="text-xs text-gray-400">Ejecución Manual</div>
             </div>
-            <div className="text-xs text-gray-400">Ejecución Automatizada</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-bold text-cyan-400">
-              {caseStudy.results.timeSaving}
+            <div className="text-center">
+              <div className="text-lg font-bold text-cyan-400">
+                {caseStudy.results.automatedExecution}
+              </div>
+              <div className="text-xs text-gray-400">Ejecución Automatizada</div>
             </div>
-            <div className="text-xs text-gray-400">Ahorro de Tiempo</div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-cyan-400">
+                {caseStudy.results.timeSaving}
+              </div>
+              <div className="text-xs text-gray-400">Ahorro de Tiempo</div>
+            </div>
           </div>
-        </div>
-        
+        )}
+
         {/* Tools Section - Desktop */}
         <div className="mt-4 justify-between items-center hidden md:flex">
           <div className="text-gray-400 text-lg">
             <div className="flex items-center gap-2">
-              <span className="text-gray-400 px-1">Plataforma</span>
+              <span className="text-gray-400 px-1">
+                {caseStudy.platform === "robotipy" ? "Desarrollo" : "Plataforma"}
+              </span>
               {tools[caseStudy.platform]}
             </div>
           </div>

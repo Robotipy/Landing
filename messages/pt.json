@@ -79,6 +79,14 @@
         "siderurgia": {
           "label": "Siderurgia",
           "description": "Automação de pedidos SAP conectando HubSpot e Cencosud"
+        },
+        "hoteleria": {
+          "label": "Hotelaria",
+          "description": "Censo de ocupação e estados de pagamento integrados ao PMS"
+        },
+        "telecomunicaciones": {
+          "label": "Telecomunicações",
+          "description": "Suporte com agente de IA e tickets automáticos"
         }
       }
     },
@@ -1149,7 +1157,7 @@
   "successCases": {
     "hero": {
       "title": "Todos os nossos casos de sucesso",
-      "subtitle": "Mais de 30 automações reais em indústrias da América Latina e Espanha. Cada caso inclui o desafio original, a solução implementada e as métricas de economia."
+      "subtitle": "Mais de 40 projetos reais de automação, inteligência artificial e software sob medida na América Latina e Espanha. Cada caso inclui o desafio original, a solução implementada e seus resultados."
     },
     "jumpTo": "Ir para indústria",
     "viewIndustry": "Ver página da indústria",

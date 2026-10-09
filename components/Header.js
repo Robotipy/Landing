@@ -73,6 +73,11 @@ const buildLinks = (t) => [
         description: t("dropdowns.cases.transporte.description"),
       },
       {
+        href: "/casos-exito/hoteleria",
+        label: t("dropdowns.cases.hoteleria.label"),
+        description: t("dropdowns.cases.hoteleria.description"),
+      },
+      {
         href: "/casos-exito/servicios-profesionales",
         label: t("dropdowns.cases.serviciosProfesionales.label"),
         description: t("dropdowns.cases.serviciosProfesionales.description"),

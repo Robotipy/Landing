@@ -79,6 +79,14 @@
         "siderurgia": {
           "label": "Steel Industry",
           "description": "SAP order automation connecting HubSpot and Cencosud"
+        },
+        "hoteleria": {
+          "label": "Hospitality",
+          "description": "Occupancy census and payment statements integrated with the PMS"
+        },
+        "telecomunicaciones": {
+          "label": "Telecommunications",
+          "description": "AI agent support and automatic tickets"
         }
       }
     },
@@ -1149,7 +1157,7 @@
   "successCases": {
     "hero": {
       "title": "All our success cases",
-      "subtitle": "30+ real automations across industries in Latin America and Spain. Each case includes the original challenge, the solution we built and the measured savings."
+      "subtitle": "More than 40 real automation, artificial intelligence and custom software projects across Latin America and Spain. Each case includes the original challenge, the solution we built and its results."
     },
     "jumpTo": "Jump to industry",
     "viewIndustry": "View industry page",

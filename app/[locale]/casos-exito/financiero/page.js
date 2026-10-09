@@ -3,94 +3,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SuccessCaseCard from "@/components/SuccessCaseCard";
+import { successCases as allCases } from "@/libs/successCases";
 
 export default function FinancieroSuccessCases() {
-  const successCases = [
-    {
-      id: 1,
-      industry: "Banca",
-      challenge: "La página de la dirección del trabajo se cae constantemente, lo que dificulta la carga de contratos de nuevos colaboradores.",
-      solution: "Automatización de carga de contratos en la página de la dirección del trabajo, incluyendo validación de datos y confirmación de envío.",
-      results: {
-        manualExecution: "5 hr",
-        automatedExecution: "18 min",
-        timeSaving: "94%"
-      },
-      name: "Carga de Contratos en MIDT",
-      tools: ["excel", "midt", "outlook"],
-      platform: "rocketbot"
-    },
-    {
-      id: 2,
-      industry: "Seguros",
-      challenge: "Buscar el estado de los siniestros abiertos en cada plataforma de seguros y actualizar la información en el portal de elevia",
-      solution: "Automatización que ingresa al sistema de cada seguro, obtiene las observaciones, descarga los adjuntos y actualiza la información en el portal de elevia",
-      results: {
-        manualExecution: "4 hr",
-        automatedExecution: "15 min",
-        timeSaving: "94%"
-      },
-      name: "Actualización de Siniestros",
-      tools: ["chrome", "reale-seguros", "mapfre", "allianz", "axa"],
-      platform: "rocketbot"
-    },
-    {
-      id: 3,
-      industry: "Banca",
-      challenge: "Validación de dominios de correos electrónicos de contacto para documentos a ratificar.",
-      solution: "Automatización de la búsqueda de dominios de correos electrónicos de contacto en los sitios de godaddy, nic chile y whois",
-      results: {
-        manualExecution: "5 hr",
-        automatedExecution: "1 hr",
-        timeSaving: "80%"
-      },
-      name: "Ratificación de Dominios",
-      tools: ["chrome", "sharepoint"],
-      platform: "rocketbot"
-    },
-    {
-      id: 4,
-      industry: "Estudio Contable",
-      challenge: "Extracción manual de información de Facturas de Cereal, Leche y Hacienda para ingreso en documentos de Compra y Venta.",
-      solution: "Automatización que recibe las facturas desde un formulario web y genera los reportes de compra, venta y bienes y servicios",
-      results: {
-        manualExecution: "1 hr",
-        automatedExecution: "7 min",
-        timeSaving: "88%"
-      },
-      name: "Lectura de Facturas",
-      tools: ["excel", "pdf", "outlook", "chrome"],
-      platform: "rocketbot"
-    },
-    {
-      id: 5,
-      industry: "Seguros",
-      challenge: "Notificar por email y whatsapp a los clientes y responsables el estado de los siniestros pendientes en el software ebroker",
-      solution: "Automatización de que ingresa al sistema ebroker, y notifica a los usuarios o respnsables a través de correo o whatsapp el estado de los siniestros",
-      results: {
-        manualExecution: "8 hr",
-        automatedExecution: "1 hr",
-        timeSaving: "88%"
-      },
-      name: "Notificación de Siniestros",
-      tools: ["excel", "outlook", "ebroker", "chrome"],
-      platform: "rocketbot"
-    },
-    {
-      id: 6,
-      industry: "Seguros",
-      challenge: "Resolver tareas pendientes y crear, asignar y/o actualizar siniestros en elevia y reale seguros",
-      solution: "Automatización de que ingresa al sistema elevia, y según el tipo de tarea, crea, asigna y actualiza los siniestros en reale seguros",
-      results: {
-        manualExecution: "30 min",
-        automatedExecution: "1 min",
-        timeSaving: "97%"
-      },
-      name: "Gestión de tareas",
-      tools: ["excel", "outlook", "reale-seguros"],
-      platform: "rocketbot"
-    }
-  ];
+  const successCases = allCases.filter((c) => c.categoria === "financiero");
 
   return (
     <>
