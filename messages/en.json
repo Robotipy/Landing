@@ -87,6 +87,14 @@
         "telecomunicaciones": {
           "label": "Telecommunications",
           "description": "AI agent support and automatic tickets"
+        },
+        "retail": {
+          "label": "Retail and Consumer Goods",
+          "description": "Sales forecasting with scenarios and AI"
+        },
+        "sectorPublico": {
+          "label": "Public Sector",
+          "description": "Computer vision for municipalities"
         }
       }
     },

@@ -13,7 +13,9 @@ export const industries = [
   { slug: "hoteleria", key: "hoteleria" },
   { slug: "industrias-tecnologicas", key: "industriasTecnologicas" },
   { slug: "mineria", key: "mineria" },
+  { slug: "retail", key: "retail" },
   { slug: "salud", key: "salud" },
+  { slug: "sector-publico", key: "sectorPublico" },
   { slug: "seguros", key: "seguros" },
   { slug: "servicios-profesionales", key: "serviciosProfesionales" },
   { slug: "servicios-tecnicos", key: "serviciosTecnicos" },
@@ -26,7 +28,7 @@ export const industries = [
 // con la ruta dinamica [industria] a partir de este objeto.
 export const industryPages = {
   hoteleria: {
-    banner: "/assets/banners/servicios-profesionales.jpeg",
+    banner: "/assets/banners/hoteleria.jpg",
     title: "Soluciones para Hotelería",
     subtitle:
       "Automatizamos la operación diaria de hoteles: ocupación, contratos corporativos y estados de pago conectados al PMS, sin digitación manual.",
@@ -52,7 +54,7 @@ export const industryPages = {
     },
   },
   mineria: {
-    banner: "/assets/banners/logistica.jpeg",
+    banner: "/assets/banners/mineria.jpg",
     title: "Soluciones para Minería",
     subtitle:
       "Software a medida e inteligencia artificial para operaciones mineras: modelos de proceso, simulación de escenarios y apoyo a la toma de decisiones.",
@@ -77,8 +79,60 @@ export const industryPages = {
       },
     },
   },
+  retail: {
+    banner: "/assets/banners/retail.jpg",
+    title: "Soluciones para Retail y Consumo Masivo",
+    subtitle:
+      "Software a medida e inteligencia artificial para planificar la demanda: proyecciones de ventas, escenarios y consultas en lenguaje natural.",
+    ctaTitle: "¿Tus proyecciones de venta se arman a mano cada mes?",
+    ctaSubtitle:
+      "Construimos tableros con escenarios comparables y un asistente de IA que responde sobre tus propios datos.",
+    meta: {
+      es: {
+        title: "Casos de Software e IA en Retail | Robotipy",
+        description:
+          "Casos reales de software a medida e IA en retail y consumo masivo: proyección de ventas con escenarios macroeconómicos y asistente de IA.",
+      },
+      en: {
+        title: "Software and AI Cases in Retail | Robotipy",
+        description:
+          "Real custom software and AI cases in retail and consumer goods: sales forecasting with macroeconomic scenarios and an AI assistant.",
+      },
+      pt: {
+        title: "Casos de Software e IA no Varejo | Robotipy",
+        description:
+          "Casos reais de software sob medida e IA no varejo e bens de consumo: projeção de vendas com cenários macroeconômicos e assistente de IA.",
+      },
+    },
+  },
+  "sector-publico": {
+    banner: "/assets/banners/sector-publico.jpg",
+    title: "Soluciones para el Sector Público",
+    subtitle:
+      "Visión artificial para municipios: conteo de vehículos y personas, zonas de interés y alertas a partir de cámaras existentes o video grabado.",
+    ctaTitle: "¿Tienes cámaras grabando y nadie mirando los datos?",
+    ctaSubtitle:
+      "Convertimos tu video en conteos, flujos y alertas sin cambiar tu infraestructura de cámaras.",
+    meta: {
+      es: {
+        title: "Casos de Visión Artificial en Sector Público | Robotipy",
+        description:
+          "Casos reales de visión artificial para municipios: conteo vehicular y de personas, zonas y alertas a partir de cualquier video.",
+      },
+      en: {
+        title: "Computer Vision Cases in the Public Sector | Robotipy",
+        description:
+          "Real computer vision cases for municipalities: vehicle and people counting, zones and alerts from any video source.",
+      },
+      pt: {
+        title: "Casos de Visão Computacional no Setor Público | Robotipy",
+        description:
+          "Casos reais de visão computacional para municípios: contagem de veículos e pessoas, zonas e alertas a partir de qualquer vídeo.",
+      },
+    },
+  },
   telecomunicaciones: {
-    banner: "/assets/banners/financiero.jpeg",
+    banner: "/assets/banners/telecomunicaciones.jpg",
     title: "Soluciones para Telecomunicaciones",
     subtitle:
       "Plataformas de atención con inteligencia artificial para proveedores de internet y telecomunicaciones que reciben miles de mensajes al día.",
@@ -380,9 +434,9 @@ export const successCases = [
     categoria: "hoteleria",
     industry: "Cadena hotelera",
     name: "Censo Diario de Ocupación",
-    challenge: "Cada día las recepciones de tres hoteles hacían el censo cama por cama y lo cruzaban contra los contratos corporativos. Ese dato alimenta la planificación de alimentación, los márgenes por contrato y el pago a proveedores.",
+    challenge: "Cada día la recepción de cada uno de los tres hoteles dedicaba 1,5 horas a hacer el censo cama por cama y cruzarlo contra los contratos corporativos. Ese dato alimenta la planificación de alimentación, los márgenes por contrato y el pago a proveedores.",
     solution: "Robot orquestado que extrae del PMS los reportes de limpieza y de contratos por estadía, consolida un Excel maestro mensual por hotel (ocupación real contra reservada, no-shows y porcentaje de ocupación) y lo distribuye por correo.",
-    results: { manualExecution: "9 hr", automatedExecution: "20 min", timeSaving: "96%" },
+    results: { manualExecution: "4,5 hr", automatedExecution: "10 min", timeSaving: "96%" },
     tools: ["excel", "sharepoint", "outlook", "azure"],
     platform: "rocketbot",
   },
@@ -432,6 +486,23 @@ export const successCases = [
     platform: "robotipy",
   },
 
+  // ===== Retail =====
+  {
+    id: "retail-1",
+    categoria: "retail",
+    industry: "Consumo masivo",
+    name: "Proyección de Ventas con IA",
+    challenge: "La gerencia necesitaba proyectar ventas bajo distintos escenarios macroeconómicos y consultar los resultados sin depender de reportes armados a mano.",
+    solution: "Desarrollamos una plataforma web en la nube con tableros de proyección por escenario y un asistente de IA por chat que responde preguntas sobre los datos de venta en lenguaje natural.",
+    metrics: [
+      { value: "Escenarios", label: "Macroeconómicos comparables" },
+      { value: "Chat IA", label: "Consultas en lenguaje natural" },
+      { value: "Productivo", label: "Plataforma en la nube" },
+    ],
+    tools: ["react", "python", "postgresql", "aws"],
+    platform: "robotipy",
+  },
+
   // ===== Salud =====
   {
     id: "salud-1",
@@ -443,6 +514,23 @@ export const successCases = [
     results: { manualExecution: "12 hr", automatedExecution: "2 hr", timeSaving: "83%" },
     tools: ["excel", "powerpoint", "email", "web-scraping"],
     platform: "rocketbot",
+  },
+
+  // ===== Sector Público =====
+  {
+    id: "sector-publico-1",
+    categoria: "sector-publico",
+    industry: "Municipio",
+    name: "Analítica de Video con IA",
+    challenge: "El municipio tenía cámaras grabando calles y espacios públicos, pero contar vehículos y personas o detectar eventos requería revisar horas de video a mano.",
+    solution: "Plataforma propia de visión artificial que procesa cualquier video, en vivo o grabado, para contar y clasificar vehículos y personas, definir zonas de interés y generar alertas.",
+    metrics: [
+      { value: "1:1,2", label: "Hora de video vs. tiempo de proceso" },
+      { value: "Cualquier", label: "Cámara o video grabado" },
+      { value: "Zonas", label: "Conteo y alertas por área" },
+    ],
+    tools: ["python", "javascript"],
+    platform: "robotipy",
   },
 
   // ===== Seguros =====

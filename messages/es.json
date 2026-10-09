@@ -87,6 +87,14 @@
         "telecomunicaciones": {
           "label": "Telecomunicaciones",
           "description": "Soporte con agente de IA y tickets automáticos"
+        },
+        "retail": {
+          "label": "Retail y Consumo",
+          "description": "Proyección de ventas con escenarios e IA"
+        },
+        "sectorPublico": {
+          "label": "Sector Público",
+          "description": "Visión artificial para municipios"
         }
       }
     },
