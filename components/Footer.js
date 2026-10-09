@@ -125,6 +125,12 @@ const Footer = () => {
                 >
                   {t("sections.resources.automationAssessment")}
                 </Link>
+                <Link
+                  href="/calculadora-vision-artificial"
+                  className="link link-hover text-start"
+                >
+                  {t("sections.resources.visionCalculator")}
+                </Link>
                 <a
                   href="https://newsletter.robotipy.com"
                   target="_blank"
