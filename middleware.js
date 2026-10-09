@@ -13,7 +13,7 @@ export default function middleware(request) {
   // en/pt). Redirigimos sus variantes /en y /pt a /es con 301 para no dejar
   // duplicados finos indexados. Se pueden re-activar cuando haya traducción.
   const esOnly = pathname.match(
-    /^\/(?:en|pt)\/(ai-info|automation|casos-exito|calculadora-vision-artificial|chatbot|evaluador-automatizacion|industries|portafolio|privacy-policy|services|success-cases|tos)(\/.*)?$/
+    /^\/(?:en|pt)\/(ai-info|automation|calculadora-aforo-vehicular|casos-exito|calculadora-vision-artificial|chatbot|evaluador-automatizacion|industries|portafolio|privacy-policy|services|success-cases|tos)(\/.*)?$/
   );
   if (esOnly) {
     const url = request.nextUrl.clone();

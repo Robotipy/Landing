@@ -31,9 +31,9 @@ const costItems = [
 
 const relatedLinks = [
   {
-    href: "/analysis",
-    title: "Robotipy Analysis: análisis de video con IA",
-    description: "La plataforma para probar visión artificial sobre tus propias grabaciones.",
+    href: "/calculadora-aforo-vehicular",
+    title: "Calculadora de costo de aforo vehicular",
+    description: "Si lo que necesitas es contar vehículos o peatones, compara el conteo manual con el análisis de video.",
   },
   {
     href: "/industries/agtech",
@@ -120,11 +120,7 @@ export default function CalculadoraVisionArtificialPage() {
             defectos que se escapan generan reclamos o mermas, o cuando necesitas trazabilidad que
             hoy no tienes. No conviene si la iluminación cambia sin control, si el producto varía
             demasiado entre lotes o si el ahorro anual no cubre el mantenimiento. En esos casos,
-            empieza con un piloto sobre video grabado en{" "}
-            <Link href="/analysis" className="link link-accent">
-              Robotipy Analysis
-            </Link>{" "}
-            antes de comprar hardware. Si además necesitas mover los datos detectados a tu ERP o
+            empieza con un piloto sobre video grabado antes de comprar hardware. Si además necesitas mover los datos detectados a tu ERP o
             planillas, se complementa con{" "}
             <Link href="/rpa" className="link link-accent">
               RPA

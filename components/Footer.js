@@ -131,6 +131,12 @@ const Footer = () => {
                 >
                   {t("sections.resources.visionCalculator")}
                 </Link>
+                <Link
+                  href="/calculadora-aforo-vehicular"
+                  className="link link-hover text-start"
+                >
+                  {t("sections.resources.trafficCalculator")}
+                </Link>
                 <a
                   href="https://newsletter.robotipy.com"
                   target="_blank"
