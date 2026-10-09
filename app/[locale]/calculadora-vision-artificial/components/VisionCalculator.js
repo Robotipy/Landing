@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "@/i18n/routing";
 import {
   USE_CASES,
   EDGE_DEVICE,
   EXTRA_CAMERA_DEV_FACTOR,
   ANNUAL_MAINTENANCE_RATE,
-  ANALYSIS_URL,
 } from "../data";
 
 const CONDITIONS = [
@@ -317,19 +317,17 @@ export default function VisionCalculator() {
             <p className="text-sm text-white/70 mt-1 leading-relaxed">{r.viability.text}</p>
           </div>
 
-          <a
-            href={ANALYSIS_URL}
-            target="_blank"
-            rel="noopener"
+          <Link
+            href="/contact-us"
             onClick={() =>
               track("vision_calc_cta", { use_case: form.useCase, payback: r.payback })
             }
             className="mt-6 inline-flex items-center justify-center w-full min-h-14 px-6 py-3 leading-tight rounded-xl bg-accent hover:bg-accent/90 text-white font-semibold text-lg text-center transition-colors"
           >
-            Prueba Robotipy Analysis con tu video
-          </a>
+            Agenda un diagnóstico gratuito
+          </Link>
           <p className="text-xs text-white/50 mt-3 text-center">
-            Sube una grabación de tu línea y mide la precisión antes de invertir.
+            30 minutos para revisar tu caso y definir un piloto antes de invertir en hardware.
           </p>
           <p className="text-[11px] text-white/40 mt-4 leading-relaxed">
             Cifras referenciales de mercado. No reemplazan una cotización.

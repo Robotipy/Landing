@@ -5,9 +5,6 @@ export const PAGE_TITLE = "Calculadora de costo de visión artificial | Robotipy
 export const PAGE_DESCRIPTION =
   "Estima cuánto cuesta implementar visión artificial en tu empresa, el ahorro anual y el payback. Control de calidad, conteo, EPP y más. Gratis y sin registro.";
 
-export const ANALYSIS_URL =
-  "https://analysis.robotipy.dev/?utm_source=robotipy.com&utm_medium=calculadora&utm_campaign=vision-artificial";
-
 // Rangos referenciales de mercado en USD. Ajustar con precios reales de Robotipy.
 export const USE_CASES = {
   calidad: {
