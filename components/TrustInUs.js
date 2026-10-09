@@ -68,6 +68,18 @@ const avatars = [
     src: "/assets/logo-cintac.png",
     link: "https://www.cintac.cl",
     width: 150,
+  },
+  {
+    alt: "Promet - Chile",
+    src: "/assets/logo-promet.png",
+    link: "https://www.promet.cl",
+    width: 140,
+  },
+  {
+    alt: "Avis Budget - Chile",
+    src: "/assets/logo-avisbudget.png",
+    link: "https://www.avis.cl",
+    width: 190,
   }
 ];
 
