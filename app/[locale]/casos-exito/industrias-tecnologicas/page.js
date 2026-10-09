@@ -2,27 +2,11 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { tools } from "@/libs/tools";
+import SuccessCaseCard from "@/components/SuccessCaseCard";
+import { successCases as allCases } from "@/libs/successCases";
 
 export default function IndustriasTecnologicasSuccessCases() {
-  const successCases = [
-    {
-      id: 1,
-      industry: "Industrias Tecnológicas",
-      challenge:
-        "Capacitación manual de usuarios en el Programa PDD (Programa de Desarrollo Digital) para industrias tecnológicas, proceso extenso y repetitivo.",
-      solution:
-        "Automatización del programa de capacitación PDD para industrias tecnológicas, optimizando el proceso de formación de usuarios en herramientas digitales y tecnologías emergentes.",
-      results: {
-        manualExecution: "16 hr",
-        automatedExecution: "3 hr",
-        timeSaving: "81%",
-      },
-      name: "Programa PDD - Industrias Tecnológicas",
-      tools: ["excel", "powerpoint", "email", "web-scraping", "python"],
-      platform: "rocketbot",
-    },
-  ];
+  const successCases = allCases.filter((c) => c.categoria === "industrias-tecnologicas");
 
   return (
     <>
@@ -36,7 +20,7 @@ export default function IndustriasTecnologicasSuccessCases() {
                 Soluciones para Industrias Tecnológicas
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Descubre cómo hemos optimizado los procesos de industrias tecnológicas a través de la automatización inteligente, mejorando la capacitación y desarrollo digital.
+                Formamos a los equipos de empresas tecnológicas en automatización, herramientas digitales e inteligencia artificial aplicadas a sus propios procesos.
               </p>
             </div>
           </div>
@@ -51,79 +35,7 @@ export default function IndustriasTecnologicasSuccessCases() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
               {successCases.map((caseStudy) => (
-                <div
-                  key={caseStudy.id}
-                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-success mb-3">
-                      {caseStudy.name}
-                    </h3>
-
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm">
-                          Desafío:
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm">
-                          {caseStudy.challenge}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm">
-                          Solución:
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm">
-                          {caseStudy.solution}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-gray-600 dark:text-gray-400">
-                          {caseStudy.results.manualExecution}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
-                          Ejecución Manual
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-600 dark:text-cyan-400">
-                          {caseStudy.results.automatedExecution}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
-                          Ejecución Automatizada
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold text-cyan-600 dark:text-cyan-400">
-                          {caseStudy.results.timeSaving}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
-                          Ahorro de Tiempo
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 flex justify-between items-center">
-                      <div className="text-gray-600 dark:text-gray-400 text-lg">
-                        <div className="flex items-center gap-2">
-                          <span>Plataforma</span>
-                          {tools[caseStudy.platform]}
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-                        {caseStudy.tools.map((tool) => (
-                          <span key={tool} className="w-5 text-success">
-                            {tools[tool]}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <SuccessCaseCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>

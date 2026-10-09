@@ -4,15 +4,23 @@ import { tools } from "@/libs/tools";
 import Link from "next/link";
 
 export default function SuccessCaseCard({ caseStudy, showIndustryLink = false }) {
+  const isTraining = caseStudy.kind === "capacitacion";
+  const platformLabel = isTraining
+    ? "Formación en"
+    : caseStudy.platform === "robotipy"
+      ? "Desarrollo"
+      : "Plataforma";
+  const caseTools = caseStudy.tools.filter((tool) => tools[tool]);
+
   const industryLabel = showIndustryLink && caseStudy.categoria ? (
     <Link 
       href={`/casos-exito/${caseStudy.categoria}`}
-      className="text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm hover:bg-gray-600 hover:text-white transition-colors cursor-pointer"
+      className="shrink-0 whitespace-nowrap text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm hover:bg-gray-600 hover:text-white transition-colors cursor-pointer"
     >
       {caseStudy.industry}
     </Link>
   ) : (
-    <label className="text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm">
+    <label className="shrink-0 whitespace-nowrap text-gray-400 px-3 py-1 bg-gray-700 rounded-full text-[10px] md:text-sm">
       {caseStudy.industry}
     </label>
   );
@@ -20,7 +28,7 @@ export default function SuccessCaseCard({ caseStudy, showIndustryLink = false })
   return (
     <div className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       <div className="p-6">
-        <div className="flex justify-between items-center gap-2 mb-3">
+        <div className="flex justify-between items-start gap-3 mb-3">
           <h3 className="md:text-xl text-lg font-bold text-success">
             {caseStudy.name}
           </h3>
@@ -48,7 +56,7 @@ export default function SuccessCaseCard({ caseStudy, showIndustryLink = false })
               </div>
             ))}
           </div>
-        ) : (
+        ) : caseStudy.results ? (
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="text-center">
               <div className="text-lg font-bold text-gray-400">
@@ -69,20 +77,18 @@ export default function SuccessCaseCard({ caseStudy, showIndustryLink = false })
               <div className="text-xs text-gray-400">Ahorro de Tiempo</div>
             </div>
           </div>
-        )}
+        ) : null}
 
         {/* Tools Section - Desktop */}
         <div className="mt-4 justify-between items-center hidden md:flex">
           <div className="text-gray-400 text-lg">
             <div className="flex items-center gap-2">
-              <span className="text-gray-400 px-1">
-                {caseStudy.platform === "robotipy" ? "Desarrollo" : "Plataforma"}
-              </span>
+              <span className="text-gray-400 px-1 whitespace-nowrap">{platformLabel}</span>
               {tools[caseStudy.platform]}
             </div>
           </div>
           <div className="flex flex-wrap gap-2 w-fit px-5 items-center">
-            {caseStudy.tools.map((tool) => (
+            {caseTools.map((tool) => (
               <span key={tool} className="w-5 text-success">
                 {tools[tool]}
               </span>
@@ -93,13 +99,13 @@ export default function SuccessCaseCard({ caseStudy, showIndustryLink = false })
         <div className="mt-4 items-center md:hidden text-gray-400">
           <div className="text-gray-400 text-lg">
             <div className="flex items-center gap-2 w-2/5">
-              <span>Plataforma: </span>
+              <span>{platformLabel}: </span>
               {tools[caseStudy.platform]}
             </div>
           </div>
-          <span>Herramientas automatizadas:</span>
+          <span>{isTraining ? "Herramientas enseñadas:" : "Herramientas automatizadas:"}</span>
           <div className="flex flex-wrap gap-3 w-fit px-0 items-center">
-            {caseStudy.tools.map((tool) => (
+            {caseTools.map((tool) => (
               <span key={tool} className="w-5 py-2">
                 {tools[tool]}
               </span>
