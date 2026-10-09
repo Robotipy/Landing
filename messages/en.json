@@ -236,6 +236,9 @@
       "resources": {
         "title": "RESOURCES",
         "blog": "Blog",
+        "automationAssessment": "Automation assessment",
+        "visionCalculator": "Computer vision cost calculator",
+        "trafficCalculator": "Traffic count cost calculator",
         "newsletter": "Newsletter"
       },
       "company": {

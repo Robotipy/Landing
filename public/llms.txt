@@ -21,6 +21,10 @@
 
 ## Recursos
 - Blog: https://www.robotipy.com/es/blog
+- Evaluador de automatizacion (gratis): https://www.robotipy.com/es/evaluador-automatizacion
+- Calculadora ROI: https://www.robotipy.com/es/roi-calculator
+- Calculadora de costo de vision artificial: https://www.robotipy.com/es/calculadora-vision-artificial
+- Calculadora de costo de aforo vehicular (YOAO): https://www.robotipy.com/es/calculadora-aforo-vehicular
 - Casos de exito: https://www.robotipy.com/es/casos-exito
 - Contacto: https://www.robotipy.com/es/contact-us
 

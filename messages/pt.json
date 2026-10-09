@@ -236,6 +236,9 @@
       "resources": {
         "title": "RECURSOS",
         "blog": "Blog",
+        "automationAssessment": "Avaliador de automação",
+        "visionCalculator": "Calculadora de visão computacional",
+        "trafficCalculator": "Calculadora de contagem veicular",
         "newsletter": "Newsletter"
       },
       "company": {
