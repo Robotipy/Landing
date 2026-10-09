@@ -67,6 +67,11 @@ const relatedLinks = [
     title: "IDP: procesamiento inteligente de documentos",
     description: "Cómo automatizar procesos que dependen de PDFs, facturas o escaneos.",
   },
+  {
+    href: "/calculadora-vision-artificial",
+    title: "Calculadora de costo de visión artificial",
+    description: "Si tu proceso es visual (inspección, conteo, EPP), estima inversión y payback.",
+  },
 ];
 
 export default function EvaluadorAutomatizacionPage() {
