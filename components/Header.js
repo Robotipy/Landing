@@ -268,7 +268,7 @@ const Header = () => {
                 return (
                   <div key={link.href + link.label} className="w-full">
                     {link.hasDropdown ? (
-                      <div>
+                      <div data-dropdown-root>
                         <button
                           type="button"
                           aria-expanded={isActive}
@@ -299,7 +299,8 @@ const Header = () => {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="block text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors"
+                                onClick={() => setIsOpen(false)}
+                                className="block py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors"
                               >
                                 {item.label}
                               </Link>
@@ -310,6 +311,7 @@ const Header = () => {
                     ) : (
                       <Link
                         href={link.href}
+                        onClick={() => setIsOpen(false)}
                         className="text-base font-medium text-text-primary dark:text-text-dark hover:text-accent transition-colors"
                         title={link.label}
                       >
@@ -337,7 +339,7 @@ const Header = () => {
   );
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-sm py-4">
+    <header className="sticky top-0 z-50 bg-primary/85 backdrop-blur-md py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and brand */}
@@ -362,7 +364,7 @@ const Header = () => {
           {/* Navigation links - desktop */}
           <nav
             aria-label={t("nav.primary")}
-            className="hidden md:flex items-center gap-8"
+            className="hidden lg:flex items-center gap-8"
           >
             {links.map((link) => {
               const dropdownId = `menu-${slugify(link.href + link.label)}`;
@@ -459,7 +461,7 @@ const Header = () => {
           </nav>
 
           {/* Language switcher + CTA - desktop */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
             <ButtonMain
               text={t("cta")}
@@ -475,7 +477,7 @@ const Header = () => {
             aria-label={t("openMenu")}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            className="md:hidden flex items-center justify-center size-10 rounded-lg bg-gray-100 dark:bg-gray-800 text-text-primary dark:text-text-dark"
+            className="lg:hidden flex items-center justify-center size-10 rounded-lg bg-gray-100 dark:bg-gray-800 text-text-primary dark:text-text-dark"
             onClick={() => setIsOpen(true)}
           >
             <svg

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SuccessCaseCard from "@/components/SuccessCaseCard";
+import IndustryJumpNav from "@/components/IndustryJumpNav";
 import { Link } from "@/i18n/routing";
 import config from "@/config";
 import { industries, successCases } from "@/libs/successCases";
@@ -82,30 +83,16 @@ export default async function AllSuccessCasesPage({ locale, pagePath }) {
           </div>
         </section>
 
-        <section className="py-10 lg:py-12 bg-gray-900 sticky top-0 z-10 border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-gray-300 text-sm uppercase tracking-wider mb-3 text-center">
-              {t("jumpTo")}
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {groups.map((g) => (
-                <a
-                  key={g.slug}
-                  href={`#${g.slug}`}
-                  className="px-4 py-2 bg-gray-800 hover:bg-teal-700 text-white rounded-full text-sm transition-colors"
-                >
-                  {g.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
+        <IndustryJumpNav
+          groups={groups.map(({ slug, label }) => ({ slug, label }))}
+          label={t("jumpTo")}
+        />
 
         {groups.map((g) => (
           <section
             key={g.slug}
             id={g.slug}
-            className="py-16 lg:py-20 scroll-mt-24"
+            className="py-12 lg:py-20 scroll-mt-44"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
