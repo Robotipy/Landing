@@ -14,23 +14,23 @@ const IntLink = ({ href, children }) => (
 const faqs = [
   {
     q: "¿Cuántos proveedores de RPA conviene comparar antes de contratar uno?",
-    a: "Entre dos y tres proveedores suele bastar. Con menos no tienes contra qué comparar, y con más la evaluación se alarga sin aportar información nueva. Pídeles a todos lo mismo: el alcance por escrito, el desglose entre desarrollo, licencia y soporte, y dos referencias de clientes con robots en producción.",
+    a: "Dos o tres proveedores suelen bastar. Con uno solo no tienes contra qué comparar, y si sumas más, la evaluación se alarga sin aportar información nueva. A cada uno solicítale el alcance por escrito y el desglose entre desarrollo, licencia y soporte, junto con dos referencias de clientes que tengan robots en producción.",
   },
   {
     q: "¿Quién debería ser el dueño del código de un robot RPA desarrollado por un proveedor externo?",
-    a: "La empresa que paga el desarrollo debería quedar como dueña del código y de los robots, con archivos fuente, documentación y configuración. Conviene que el contrato lo diga explícitamente: si el código queda solo en manos del proveedor, cambiar de equipo obliga a rehacer el robot.",
+    a: "La empresa que paga el desarrollo debería quedar como dueña del código y de los robots, incluidos los archivos fuente, la documentación y la configuración. Pide que el contrato lo diga de forma explícita. Si el código queda solo en manos del proveedor, cambiar de equipo obliga a rehacer el robot.",
   },
   {
     q: "¿Un proveedor de RPA que accede a datos personales debe cumplir la Ley 21.719 en Chile?",
-    a: "Sí. Cuando un proveedor trata datos personales por cuenta de tu empresa, la Ley 21.719 exige un contrato que fije el objeto del encargo, su duración, la finalidad, el tipo de datos y las obligaciones de cada parte. La ley rige desde el 1 de diciembre de 2026; a octubre de 2026, el Senado tramita un proyecto para postergarla un año.",
+    a: "Sí. Cuando un proveedor trata datos personales por cuenta de tu empresa, la Ley 21.719 exige un contrato que fije el objeto del encargo, su duración, la finalidad, el tipo de datos y las obligaciones de cada parte. La ley comienza a regir el 1 de diciembre de 2026. A octubre de 2026, el Senado tramita un proyecto para postergarla un año.",
   },
   {
     q: "¿Cuánto cuesta un proyecto de RPA con Robotipy?",
-    a: "El desarrollo cuesta en promedio USD 6.000 por proyecto (2026) e incluye un mes de trabajo y la marcha blanca. La licencia de Rocketbot, de USD 2.500, solo se cobra si tu empresa no tiene una propia. El soporte mensual es opcional y parte en USD 300, y el diagnóstico inicial no tiene costo.",
+    a: "En 2026, el desarrollo cuesta en promedio USD 6.000 por proyecto e incluye un mes de trabajo y la marcha blanca. La licencia de Rocketbot cuesta USD 2.500 y solo se cobra si tu empresa no tiene una propia. El soporte mensual es opcional, desde USD 300. El diagnóstico inicial no tiene costo.",
   },
   {
     q: "¿Robotipy trabaja solo con Rocketbot?",
-    a: "No. Robotipy es Platinum Partner de Rocketbot y también ha trabajado con UiPath, Power Automate, n8n, Claude (Anthropic) y Python. Con esas herramientas ha automatizado procesos sobre SAP, Finnegans, AS400, Defontana y portales y cartolas de bancos de Chile y de Argentina.",
+    a: "No. Robotipy es Platinum Partner de Rocketbot, pero también ha trabajado con UiPath, Power Automate, n8n, Claude (Anthropic) y Python. Con esas herramientas ha automatizado procesos sobre SAP, Finnegans, AS400, Defontana y portales y cartolas de bancos de Chile y de Argentina.",
   },
 ];
 
@@ -38,23 +38,23 @@ const filas = [
   { bloque: "Experiencia y referencias" },
   {
     q: "1. ¿Puedo hablar con un cliente de mi industria con un robot en producción?",
-    por: "Una referencia que contesta el teléfono vale más que un logo.",
+    por: "Una llamada a un cliente permite verificar lo que un logo en la presentación no muestra.",
     alerta: "\"Nuestros clientes son confidenciales\", sin otra forma de verificar.",
   },
   {
     q: "2. ¿Ya automatizaron mi ERP, mis bancos o mis portales?",
-    por: "Un sistema nuevo para el proveedor trae una curva de aprendizaje que alguien paga.",
+    por: "Si el sistema es nuevo para el proveedor, la curva de aprendizaje se paga en plazo o en precio.",
     alerta: "\"Todos los sistemas se automatizan igual.\"",
   },
   { bloque: "Método y alcance" },
   {
     q: "3. ¿Cómo documentan el proceso y quién aprueba ese documento?",
-    por: "Las excepciones que no quedan escritas terminan como fallas en producción.",
+    por: "Una excepción que no queda escrita suele aparecer después como falla en producción.",
     alerta: "\"Lo vamos entendiendo sobre la marcha.\"",
   },
   {
     q: "4. ¿Cómo validan el robot antes de apagar el proceso manual?",
-    por: "Sin marcha blanca, los errores aparecen en el cierre del mes.",
+    por: "Sin marcha blanca, los errores aparecen en el cierre de mes.",
     alerta: "\"Lo probamos nosotros y te lo entregamos listo.\"",
   },
   { bloque: "Tecnología y licencias" },
@@ -71,13 +71,13 @@ const filas = [
   { bloque: "Precio y contrato" },
   {
     q: "7. ¿El precio es cerrado y cómo se cobran los cambios de alcance?",
-    por: "Un cobro por hora sin tope deja todo el riesgo de tu lado.",
+    por: "Con un cobro por hora sin tope, todo el riesgo queda de tu lado.",
     alerta: "\"Cotizamos por hora y vamos viendo.\"",
   },
   { bloque: "Después de la entrega" },
   {
     q: "8. ¿Qué pasa cuando cambia una pantalla y quién paga el ajuste?",
-    por: "Un portal o un ERP que se actualiza detiene al robot.",
+    por: "Cuando un portal o un ERP se actualiza, el robot se detiene.",
     alerta: "\"Eso no debería pasar\", sin tarifa de soporte escrita.",
   },
   {
@@ -122,7 +122,7 @@ export const post = {
   locale: "es",
   title: "Cómo elegir un proveedor de RPA en Chile: 12 preguntas antes de firmar",
   description:
-    "Las 12 preguntas para comparar proveedores de RPA en Chile: referencias, precio cerrado, licencias, soporte, monitoreo, propiedad del código y Ley 21.719.",
+    "Doce preguntas para comparar proveedores de RPA en Chile antes de firmar: referencias, precio cerrado, licencias, soporte, monitoreo, propiedad del código y Ley 21.719.",
   keywords: [
     "cómo elegir un proveedor de RPA",
     "proveedor de RPA en Chile",
@@ -136,8 +136,8 @@ export const post = {
     categories.find((category) => category.slug === categorySlugs.tutoriales),
   ],
   author: authors.find((author) => author.slug === authorSlugs.DaniloToro),
-  publishedAt: "2026-10-01",
-  updatedAt: "2026-10-01",
+  publishedAt: "2026-10-09",
+  updatedAt: "2026-10-09",
   image: {
     src: thumbnail,
     urlRelative: "/blog/como-elegir-proveedor-de-rpa/header.jpeg",
@@ -147,7 +147,7 @@ export const post = {
   cta: {
     titulo: "¿Estás comparando propuestas de automatización?",
     texto:
-      "Cuéntanos qué proceso quieres automatizar. El diagnóstico inicial no se cobra y te sirve para comparar nuestra propuesta con las demás.",
+      "Cuéntanos qué proceso quieres automatizar. El diagnóstico inicial no tiene costo y te sirve para comparar nuestra propuesta con las demás.",
     botonLabel: "Pedir diagnóstico",
     botonUrl: "/contact-us",
     linkLabel: "Cuánto cuesta automatizar",
@@ -157,18 +157,15 @@ export const post = {
     <>
       <section className="space-y-4">
         <p className={styles.p}>
-          Un buen proveedor de RPA es el que puede mostrarte procesos parecidos
-          al tuyo funcionando en otros clientes, te da un precio cerrado con el
-          alcance por escrito y deja resuelto qué pasa después de la entrega:
-          quién monitorea el robot, quién lo arregla cuando cambia una pantalla
-          y de quién es el código. La plataforma pesa menos de lo que parece.
-          Las diferencias aparecen en el contrato y en los meses que siguen a la
-          puesta en producción.
+          Un buen proveedor de RPA puede mostrarte procesos parecidos al tuyo
+          funcionando en otros clientes y te da un precio cerrado con el alcance
+          por escrito. Además, deja resuelto qué pasa después de la entrega.
+          Los proveedores se diferencian sobre todo en el contrato y en los
+          meses que siguen a la puesta en producción.
         </p>
         <p className={styles.p}>
-          Si estás comparando dos o tres propuestas parecidas, estas 12
-          preguntas te sirven para ordenarlas. Al final contamos cómo las
-          respondemos en Robotipy y cuándo te conviene otro tipo de proveedor.
+          Si tienes dos o tres propuestas parecidas, estas 12 preguntas te
+          ayudan a compararlas, incluida la nuestra.
         </p>
       </section>
 
@@ -177,9 +174,9 @@ export const post = {
           ¿Qué preguntas hay que hacerle a un proveedor de RPA antes de firmar?
         </h2>
         <p className={styles.p}>
-          Las preguntas que más separan a un proveedor de otro son las del día
-          después: quién mantiene el robot, quién paga los ajustes y de quién es
-          lo construido. La tabla las agrupa en seis bloques.
+          La tabla agrupa las 12 preguntas en seis bloques. Las que más
+          distinguen a un proveedor de otro son las del bloque de después de la
+          entrega (preguntas 8 a 10).
         </p>
         <div className="overflow-x-auto">
           <table className={ui.table}>
@@ -217,18 +214,19 @@ export const post = {
         </h2>
         <p className={styles.p}>
           La experiencia de un proveedor se verifica hablando con clientes que
-          tengan robots en producción, idealmente de tu industria y sobre tus
-          mismos sistemas. Pide dos referencias y llama a las dos. Pregunta
-          cuánto tardó el proyecto frente a lo prometido, cuántas veces falló el
-          robot el primer semestre y cómo respondió el proveedor.
+          tengan robots en producción, idealmente de tu industria y con tus
+          mismos sistemas. Pide dos referencias y llama a las dos. En la
+          llamada, pregunta cuánto tardó el proyecto en comparación con lo
+          prometido y cuántas veces falló el robot durante el primer semestre.
+          También interesa saber cómo respondió el proveedor ante esas fallas.
         </p>
         <p className={styles.p}>
           Un caso publicado sirve si dice qué se automatizó, en qué sistema y
-          con qué resultado. Revisa también si el equipo ya trabajó con tu ERP y
-          tus bancos: SAP, AS400 o el portal de un banco chileno tienen
+          con qué resultado. Revisa además si el equipo ya trabajó con tu ERP y
+          tus bancos. SAP, AS400 o el portal de un banco chileno tienen
           particularidades que se aprenden proyecto a proyecto. Si tu sistema es
-          nuevo para el proveedor, esa curva debería reflejarse en el plazo y en
-          el precio.
+          nuevo para el proveedor, pregunta cómo consideraron ese aprendizaje en
+          el plazo y en el precio.
         </p>
       </section>
 
@@ -238,20 +236,21 @@ export const post = {
         </h2>
         <p className={styles.p}>
           Un proveedor con método documenta el proceso por escrito antes de
-          construir y valida el robot en paralelo con el proceso manual antes de
-          apagarlo. Pregunta cuántas sesiones de relevamiento hace, si graba la
-          pantalla y quién firma el documento. Lo que buscas es que las
-          excepciones queden escritas. En{" "}
+          construir el robot. Luego lo valida en paralelo con el proceso manual,
+          y solo después tu equipo deja de hacerlo a mano. Pregunta cuántas
+          sesiones dedica a entender el
+          proceso, si graba la pantalla y quién firma el documento. El objetivo
+          es que las excepciones queden escritas. En{" "}
           <IntLink href="/blog/como-documentar-un-proceso-antes-de-automatizarlo">
             cómo documentar un proceso antes de automatizarlo
           </IntLink>{" "}
-          contamos un caso donde un campo que todos daban por conocido apareció
+          contamos un caso en que un campo que todos daban por conocido apareció
           con tres largos distintos en tres fuentes.
         </p>
         <p className={styles.p}>
-          Pregunta también por la marcha blanca, el período en que el robot
-          corre junto al proceso manual para comparar resultados, y con qué
-          criterio se da por aprobada.
+          Pregunta también cómo hacen la marcha blanca, que es el período en que
+          el robot opera junto al proceso manual para comparar resultados, y
+          qué criterio usan para darla por aprobada.
         </p>
       </section>
 
@@ -260,37 +259,37 @@ export const post = {
           ¿Importa con qué plataforma de RPA trabaja el proveedor?
         </h2>
         <p className={styles.p}>
-          La plataforma importa menos que la capacidad del proveedor para elegir
-          la herramienta adecuada para cada proceso, y eso lo hace mejor quien
-          trabaja con más de una. Un partner de una sola plataforma tiende a
-          resolver todo con ella, aunque el proceso saliera mejor con una API o
-          un script en Python. Pregunta en qué casos te recomendarían no usar
-          RPA: si la respuesta es &quot;nunca&quot;, ya sabes cómo van a evaluar
-          tu proceso.
+          Lo que más importa es que el proveedor sepa elegir la herramienta
+          adecuada para cada proceso, y eso lo hace mejor quien trabaja con más
+          de una plataforma. Un proveedor que usa una sola tiende a resolver
+          todo con ella, aunque el proceso funcionara mejor con una API o un
+          script en Python. Pregunta en qué casos te recomendarían
+          no usar RPA. Si contestan que en ninguno, es probable que también
+          propongan RPA para tu proceso aunque no sea la mejor opción.
         </p>
         <p className={styles.p}>
           Sobre la licencia, averigua si está incluida, cada cuánto se renueva,
-          cuánto cuesta y a nombre de quién queda. Si está a nombre del
-          proveedor, tu robot depende de esa relación comercial. Si ya tienes
-          una, que no te la cobren de nuevo.
+          cuánto cuesta y a nombre de quién queda. Cuando queda a nombre del
+          proveedor, tu robot depende de esa relación comercial. Si tu empresa
+          ya tiene una licencia, verifica que la propuesta no la cobre otra vez.
         </p>
       </section>
 
       <section className="space-y-3">
         <h2 className={styles.h2}>¿Cómo debería cobrar un proveedor de RPA?</h2>
         <p className={styles.p}>
-          Para un primer proyecto, lo más sano es un precio cerrado por un
+          Para un primer proyecto, lo recomendable es un precio cerrado por un
           alcance escrito, con una regla clara para cotizar los cambios antes de
-          ejecutarlos. El cobro por hora sin tope deja el riesgo de tu lado: si
-          el proveedor subestimó el proceso, la diferencia la pagas tú.
+          ejecutarlos. Si el cobro es por hora y sin tope, cualquier
+          subestimación del proveedor se traslada a tu presupuesto.
         </p>
         <p className={styles.p}>
-          Lee con cuidado la cláusula de cambios, porque durante el desarrollo
-          siempre aparece algo: una excepción que nadie mencionó, un sistema
-          adicional, una regla que el negocio modificó. Cada cambio debería
-          conversarse y cotizarse antes de seguir, en lugar de aparecer en la
-          última factura. Pide además el desglose entre desarrollo, licencia y
-          soporte. En{" "}
+          Lee con cuidado la cláusula de cambios. Durante el desarrollo siempre
+          aparece algo que no estaba previsto, como una excepción que nadie
+          mencionó, un sistema adicional o una regla que el negocio modificó.
+          Cada cambio debería conversarse y cotizarse antes de seguir, para que
+          no aparezca por sorpresa en la última factura. Pide además el desglose
+          entre desarrollo, licencia y soporte. En{" "}
           <IntLink href="/blog/cuanto-cuesta-automatizar-un-proceso">
             cuánto cuesta automatizar un proceso
           </IntLink>{" "}
@@ -303,14 +302,15 @@ export const post = {
           ¿Qué tiene que quedar resuelto para después de la entrega?
         </h2>
         <p className={styles.p}>
-          Antes de firmar tienen que quedar escritas tres cosas: quién arregla
-          el robot cuando cambia el entorno, quién lo monitorea y quién es dueño
-          del código. Un robot que navega por pantalla se detiene cuando un
-          portal se rediseña o el ERP se actualiza, así que pregunta qué cubre
-          la garantía y qué se cobra como soporte. Una falla por un caso que ya
-          existía antes del desarrollo es deuda del análisis del proveedor; un
-          portal que cambió después de la entrega es mantenimiento correctivo,
-          como explicamos en{" "}
+          Antes de firmar deberían quedar por escrito quién arregla el robot
+          cuando cambia el entorno, quién lo monitorea y quién es dueño del
+          código. Un robot que navega por pantalla se detiene cuando un portal
+          se rediseña o cuando el ERP se actualiza. Por eso conviene preguntar
+          qué cubre la garantía y qué se cobra como soporte. Una falla por un
+          caso que ya existía antes del desarrollo le corresponde al proveedor,
+          porque viene de su análisis. En cambio, si un portal cambió después de
+          la entrega, se trata de mantenimiento correctivo, como explicamos
+          en{" "}
           <IntLink href="/blog/mantenimiento-de-robots-rpa">
             mantenimiento de robots RPA
           </IntLink>
@@ -323,10 +323,10 @@ export const post = {
           <IntLink href="/blog/como-monitorear-robots-rpa-en-produccion">
             cómo monitorear robots RPA en producción
           </IntLink>{" "}
-          contamos qué conviene registrar y a quién avisar. Al cierre deberías
-          recibir los archivos fuente, la documentación y la lista de puntos
-          frágiles, para que otro equipo pueda mantener el robot si cambias de
-          proveedor.
+          contamos qué conviene registrar y a quién avisar. Al terminar el
+          contrato deberías recibir los archivos fuente, la documentación y la
+          lista de puntos frágiles del robot. Con eso, otro equipo puede
+          mantenerlo si cambias de proveedor.
         </p>
       </section>
 
@@ -335,64 +335,67 @@ export const post = {
           ¿Qué preguntar sobre credenciales y la Ley 21.719?
         </h2>
         <p className={styles.p}>
-          Cada robot debería operar con un usuario dedicado, con permisos
-          limitados a lo que usa y con las credenciales guardadas fuera del
-          código. Un robot que entra con la cuenta de un analista no deja
+          Cada robot debería operar con un usuario dedicado, cuyos permisos se
+          limiten a lo que necesita, y sus credenciales deberían guardarse fuera
+          del código. Un robot que entra con la cuenta de un analista no deja
           trazabilidad y se detiene cuando esa persona cambia su contraseña.
         </p>
         <p className={styles.p}>
-          Si el proveedor verá datos personales de clientes, trabajadores o
-          proveedores, aplica la Ley 21.719, que rige desde el 1 de diciembre de
-          2026. La ley exige un contrato con quien trata datos por
-          cuenta de tu empresa, que fije el objeto del encargo, su duración, la
-          finalidad, el tipo de datos y las obligaciones de cada parte, y
-          prohíbe que ese tercero delegue el encargo sin tu autorización
-          escrita. A octubre de 2026, el Senado tramita un proyecto del
-          Ejecutivo (boletín 18.623-07) que propone mover la vigencia al 1 de
-          diciembre de 2027; mientras no se publique, rige la fecha de 2026.
+          Si el proveedor tendrá acceso a datos personales de clientes,
+          trabajadores o proveedores, aplica la Ley 21.719, que comienza a regir
+          el 1 de diciembre de 2026. Quien trata datos por cuenta de tu empresa
+          debe firmar contigo un contrato que fije el objeto del encargo, su
+          duración, la finalidad, el tipo de datos y las obligaciones de cada
+          parte. Además, el tercero no puede delegar el
+          encargo sin tu autorización escrita. A octubre de 2026, el Senado
+          tramita un proyecto del Ejecutivo (boletín 18.623-07) que propone
+          mover la vigencia al 1 de diciembre de 2027. Mientras ese cambio no se
+          publique, rige la fecha de 2026.
         </p>
       </section>
 
       <section className="space-y-3">
-        <h2 className={styles.h2}>¿Cómo respondemos nosotros esas preguntas?</h2>
+        <h2 className={styles.h2}>¿Cómo responde Robotipy estas preguntas?</h2>
         <p className={styles.p}>
-          Robotipy es una consultora de automatización fundada en 2023, con más
-          de 70 proyectos entregados, que opera en Chile y en Argentina. Somos{" "}
+          Robotipy es una consultora de automatización fundada en 2023, con
+          operación en Chile y en Argentina. Hemos entregado más de 70 proyectos
+          y somos{" "}
           <IntLink href="/blog/robotipy-platinum-partner-rocketbot">
             Platinum Partner de Rocketbot
-          </IntLink>{" "}
-          y también hemos trabajado con UiPath, Power Automate, n8n, Claude
-          (Anthropic) y Python, sobre SAP, Finnegans, AS400, Defontana y
-          portales bancarios de Chile y de Argentina. Los casos publicados están
-          en{" "}
+          </IntLink>
+          . También hemos trabajado con UiPath, Power Automate, n8n, Claude
+          (Anthropic) y Python. Con esas herramientas hemos automatizado
+          procesos sobre SAP, Finnegans, AS400, Defontana y portales bancarios
+          de Chile y de Argentina. Los casos publicados están en{" "}
           <IntLink href="/casos-exito">casos de éxito</IntLink>.
         </p>
         <p className={styles.p}>
           El desarrollo cuesta en promedio USD 6.000 e incluye un mes de trabajo
-          y la marcha blanca. La licencia de Rocketbot (USD 2.500) se cobra solo
-          si no tienes una propia, el soporte mensual es opcional y parte en USD
-          300, el monitoreo lo hacemos con{" "}
-          <IntLink href="/monitor">Robotipy Monitor</IntLink> y el diagnóstico
-          inicial no se cobra. Sobre código, credenciales y datos, pídenos lo
-          mismo que a cualquier proveedor: que quede escrito en la propuesta.
+          y la marcha blanca. La licencia de Rocketbot, de USD 2.500, se cobra
+          solo si no tienes una propia. El soporte mensual es opcional y cuesta
+          desde USD 300. Monitoreamos los robots con{" "}
+          <IntLink href="/monitor">Robotipy Monitor</IntLink>. El diagnóstico
+          inicial no tiene costo. Lo que acordemos sobre código, credenciales y
+          datos debería quedar escrito en la propuesta, igual que se lo pedirías
+          a cualquier otro proveedor.
         </p>
       </section>
 
       <section className="space-y-3">
-        <h2 className={styles.h2}>¿Cuándo te conviene más otro tipo de proveedor?</h2>
+        <h2 className={styles.h2}>¿Cuándo te conviene otro tipo de proveedor?</h2>
         <p className={styles.p}>
-          Si tu empresa ya está estandarizada en una plataforma de RPA y tiene un
-          partner que la conoce bien, lo más probable es que te convenga seguir
-          con él. Una segunda plataforma suma licencias, servidores y
+          Si tu empresa ya está estandarizada en una plataforma de RPA y tiene
+          un proveedor que la conoce bien, lo más probable es que te convenga
+          seguir con él. Una segunda plataforma suma licencias, servidores y
           conocimiento que mantener.
         </p>
         <p className={styles.p}>
-          También conviene otro perfil si necesitas un integrador global, con
-          presencia en muchos países, para una implementación corporativa en
-          varias regiones a la vez. Y si al hacer estas preguntas descubres que
-          tu proceso todavía cambia cada semana, ningún proveedor es la
-          respuesta por ahora: conviene estabilizarlo primero, como explicamos
-          en{" "}
+          Otro perfil también puede servirte mejor si necesitas un integrador
+          global, con presencia en muchos países, para una implementación
+          corporativa en varias regiones a la vez. Por último, si al hacer estas
+          preguntas descubres que tu proceso todavía cambia cada semana, lo
+          recomendable es estabilizarlo antes de contratar a cualquier
+          proveedor, como explicamos en{" "}
           <IntLink href="/blog/errores-comunes-al-implementar-rpa">
             errores comunes al implementar RPA
           </IntLink>

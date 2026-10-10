@@ -1,55 +1,22 @@
-const fs = require("fs");
-const path = require("path");
-
 const locales = ["es", "en", "pt"];
 const defaultLocale = "es";
 const siteUrl = process.env.SITE_URL || "https://www.robotipy.com";
 
-// Lee slug y fechas de cada post del blog desde el filesystem.
-// Cada archivo en app/[locale]/blog/_assets/posts/ se llama <slug>.js y
-// declara publishedAt (y opcionalmente updatedAt) como "YYYY-MM-DD".
-const postsDir = path.join(__dirname, "app", "[locale]", "blog", "_assets", "posts");
-const readDate = (source, field) => {
-  const match = source.match(new RegExp(`${field}:\\s*"(\\d{4}-\\d{2}-\\d{2})"`));
-  return match ? match[1] : null;
-};
-const blogPosts = fs
-  .readdirSync(postsDir)
-  .filter((f) => f.endsWith(".js"))
-  .map((f) => {
-    const source = fs.readFileSync(path.join(postsDir, f), "utf8");
-    const publishedAt = readDate(source, "publishedAt");
-    return {
-      slug: f.replace(/\.js$/, ""),
-      lastmod: readDate(source, "updatedAt") || publishedAt,
-    };
-  });
-const latestPostDate = blogPosts
-  .map((p) => p.lastmod)
-  .filter(Boolean)
-  .sort()
-  .pop();
-
-// Slugs de categorias y autores (sincronizados con categories.js y authors.js).
-// Si agregas o quitas categorias/autores, actualiza estas listas.
-const categorySlugs = [
-  "RPA",
-  "Tutoriales",
-  "agtech",
-  "fintech",
-  "logistica",
-  "capacitacion",
-  "casos-de-exito",
-];
-const authorSlugs = ["danilo-toro", "gabriel-toro", "ivan-cabrera"];
+// El blog (posts, categorias y autores) no va en este sitemap estatico: lo
+// sirve app/blog-sitemap.xml/route.js, que se regenera cada hora y respeta las
+// fechas de publicacion programadas. Aqui solo se enlaza desde el indice.
+const blogSitemapUrl = `${siteUrl}/blog-sitemap.xml`;
 
 // Paginas que solo existen en espanol: el middleware redirige sus variantes
 // /en y /pt a /es, asi que no se declaran alternativas de idioma.
 const esOnlyPrefixes = [
   "/ai-info",
   "/automation",
+  "/calculadora-aforo-vehicular",
+  "/calculadora-vision-artificial",
   "/casos-exito",
   "/chatbot",
+  "/evaluador-automatizacion",
   "/industries",
   "/portafolio",
   "/preguntas-frecuentes",
@@ -75,20 +42,15 @@ module.exports = {
     "/sitemap.xml",
     "/sitemap-*.xml",
     "/llms.txt",
+    "/blog-sitemap.xml",
     "/api/*",
-    // El blog vive en /blog sin prefijo de idioma; se agrega en additionalPaths.
+    // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
   ],
-  additionalPaths: async () => [
-    { loc: "/blog", lastmod: latestPostDate },
-    ...blogPosts.map((post) => ({
-      loc: `/blog/${post.slug}`,
-      lastmod: post.lastmod || undefined,
-    })),
-    ...categorySlugs.map((slug) => ({ loc: `/blog/category/${slug}` })),
-    ...authorSlugs.map((slug) => ({ loc: `/blog/author/${slug}` })),
-  ],
+  robotsTxtOptions: {
+    additionalSitemaps: [blogSitemapUrl],
+  },
   transform: async (config, p) => {
     const localeMatch = p.match(/^\/([a-z]{2})(\/|$)/);
     const pathLocale = localeMatch ? localeMatch[1] : null;

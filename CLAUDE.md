@@ -58,6 +58,24 @@ artículos. Resumen de lo no negociable:
   sección de FAQ, también debe exportar `faq: faqs` (ver siguiente
   sección).
 
+## Publicación programada
+
+- Un post registrado en `content.js` con `publishedAt` futuro queda
+  oculto hasta ese día (hora de Chile): no sale en listados, su URL da
+  404 y no aparece en el sitemap. Se publica solo, sin redeploy.
+- El sitemap del blog lo sirve `app/blog-sitemap.xml/route.js`
+  (revalida cada hora); next-sitemap solo lo enlaza desde el índice.
+  No volver a agregar posts del blog a `next-sitemap.config.js`.
+- Para enlazar a un post programado usar
+  `<PostLink slug="...">texto</PostLink>` (de
+  `_assets/components/PostLink.js`): muestra texto plano hasta que el
+  destino se publica. Con `IntLink`/`Link` solo se enlaza a posts ya
+  publicados en la fecha del post que enlaza.
+- Para previsualizar en local el blog en otra fecha:
+  `BLOG_TODAY=2026-11-10 npm run start`.
+- Cada post necesita su imagen en `public/blog/<slug>/header.jpeg`
+  (1280x720); sin ella el build falla.
+
 ## SEO: FAQs y Schema markup
 
 Cuando agregues o modifiques una sección de Preguntas Frecuentes

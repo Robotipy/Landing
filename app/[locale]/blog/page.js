@@ -7,6 +7,9 @@ import CardCategory from "./_assets/components/CardCategory";
 import config from "@/config";
 import { getSEOTags } from "@/libs/seo";
 
+// Se regenera cada hora para que los posts programados aparezcan en su fecha.
+export const revalidate = 3600;
+
 // Los artículos hoy se publican solo en español. Cuando alguien entra al blog
 // en otro idioma, mostramos un aviso con enlace a la versión en español en vez
 // de una grilla vacía.
