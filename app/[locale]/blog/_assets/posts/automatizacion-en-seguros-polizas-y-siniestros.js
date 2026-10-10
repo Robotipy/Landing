@@ -249,7 +249,7 @@ export const post = {
       <section className="space-y-3">
         <h2 className={styles.h2}>Cuánto cuesta y por dónde empezar</h2>
         <p className={styles.p}>
-          Un desarrollo de este tipo cuesta en promedio desde unos{" "}
+          Un desarrollo de este tipo cuesta en promedio unos{" "}
           <strong className={styles.strong}>USD 6.000</strong>, con la marcha
           blanca incluida (el detalle está en{" "}
           <IntLink href="/blog/cuanto-cuesta-automatizar-un-proceso">

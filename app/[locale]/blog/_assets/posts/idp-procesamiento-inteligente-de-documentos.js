@@ -174,8 +174,7 @@ export const post = {
           Nosotros implementamos IDP sobre <IntLink href="/rocketbot">Rocketbot</IntLink>,
           del que somos partner, apoyándonos en su capa de IA (AI Studio). En la
           práctica se combinan dos piezas: el OCR y el reconocimiento de imágenes
-          para los documentos escaneados, y Documents GPT, que toma el PDF y
-          devuelve los campos estructurados con procesamiento de lenguaje natural.
+          para los documentos escaneados, y un modelo de lenguaje (Gemini o el AI Studio de Rocketbot, según el proyecto) que toma el PDF y devuelve los campos estructurados.
           Rocketbot publica para esa capa números de 88% menos tiempo de
           procesamiento y 98% menos errores humanos. Son sus cifras, y como toda
           cifra de folleto, marcan el potencial del techo, no lo que vas a
@@ -204,8 +203,7 @@ export const post = {
           Y el cuarto: lo que no pasa la validación, o lo que el modelo devuelve
           con baja confianza, no se inventa ni se descarta. Va a una persona con
           el documento y el campo dudoso resaltado, se corrige en segundos y esa
-          corrección queda registrada. Con <IntLink href="/monitor">Rocketbot
-          Monitor</IntLink> ese pendiente humano se ve y se mide en producción,
+          corrección queda registrada. Con <IntLink href="/monitor">Robotipy Monitor</IntLink> ese pendiente humano se ve y se mide en producción,
           que es como te enteras de qué proveedor o qué tipo de documento te está
           generando el 80% de las revisiones. Suele ser un puñado, y cuando lo
           atiendes puntual, la tasa de intervención baja de golpe.

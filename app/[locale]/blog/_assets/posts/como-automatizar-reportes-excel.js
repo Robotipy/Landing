@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "¿Qué pasa si el sistema fuente cambia la pantalla o el formato del exportable?",
-    a: "Eso genera una excepción que queda registrada y notifica por correo o por Monitor antes de que alguien note que el reporte no llegó. No es un fallo silencioso. El mantenimiento correctivo en esos casos es parte del servicio cuando trabajamos en modalidad de soporte continuo; si el cliente opera el robot propio, documentamos cada punto frágil antes de la entrega para que sepan qué ajustar.",
+    a: "Eso genera una excepción que queda registrada y notifica por correo o por Robotipy Monitor antes de que alguien note que el reporte no llegó. No es un fallo silencioso. El mantenimiento correctivo en esos casos es parte del servicio cuando trabajamos en modalidad de soporte continuo; si el cliente opera el robot propio, documentamos cada punto frágil antes de la entrega para que sepan qué ajustar.",
   },
   {
     q: "¿Cuánto tarda implementar este tipo de bot?",

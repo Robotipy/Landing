@@ -59,7 +59,7 @@ export const post = {
   locale: "es",
   title: "Cuánto cuesta automatizar un proceso (y cómo se cobra)",
   description:
-    "Cuánto cuesta un proyecto de RPA en Chile y Argentina: desde USD 6.000 de desarrollo, cuándo se suma la licencia de USD 2.500 y cómo funciona el soporte mensual opcional.",
+    "Cuánto cuesta un proyecto de RPA en Chile y Argentina: en promedio USD 6.000 de desarrollo, cuándo se suma la licencia de USD 2.500 y cómo funciona el soporte.",
   keywords: [
     "cuánto cuesta automatizar un proceso",
     "precio de RPA",
@@ -92,8 +92,7 @@ export const post = {
     <>
       <section className="space-y-4">
         <p className={styles.p}>
-          Un proyecto de RPA con nosotros arranca, en la mayoría de los casos,
-          alrededor de los USD 6.000. Ese número es el desarrollo: un mes de
+          Un proyecto de RPA con nosotros cuesta en promedio unos USD 6.000. Ese número es el desarrollo: un mes de
           trabajo, con la marcha blanca (el robot corriendo en paralelo al
           proceso manual para validar que todo cuadre antes de apagar el proceso
           viejo) incluida sin costo aparte. Si el cliente todavía no tiene su

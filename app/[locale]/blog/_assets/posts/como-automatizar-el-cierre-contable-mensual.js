@@ -229,7 +229,7 @@ export const post = {
             El orquestador programa la ejecución. El día 3, el cierre empieza a
             la hora fijada sin que nadie apriete un botón, y eso importa porque
             el cierre depende de que las tareas se ejecuten en orden y a tiempo.
-            En Monitor ves si cada ejecución terminó bien, cuánto tardó y qué
+            En <IntLink href="/monitor">Robotipy Monitor</IntLink> ves si cada ejecución terminó bien, cuánto tardó y qué
             quedó pendiente de revisión.
           </li>
           <li className={styles.li}>

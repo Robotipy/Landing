@@ -153,9 +153,7 @@ export const post = {
           <IntLink href="/blog/idp-procesamiento-inteligente-de-documentos">
             procesamiento inteligente de documentos
           </IntLink>
-          , con el agente dentro del robot: Documents GPT lee el PDF y entrega
-          los campos, y el robot los valida y los carga. Un agente que clasifica
-          texto libre sigue el mismo patrón con otro tipo de entrada.
+          , con el agente dentro del robot: el modelo (Gemini o el AI Studio de Rocketbot, según el proyecto) lee el PDF y entrega los campos, y el robot los valida y los carga. Un agente que clasifica texto libre sigue el mismo patrón con otro tipo de entrada. Cuando el agente conversa directamente con personas, por WhatsApp, correo o chat, usamos Melon Help, nuestra plataforma de agentes de IA, y el robot ejecuta en los sistemas lo que el agente resolvió.
         </p>
       </section>
 

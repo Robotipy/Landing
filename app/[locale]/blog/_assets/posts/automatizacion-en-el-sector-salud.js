@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "¿Y si trabajamos con diez financiadores distintos?",
-    a: "Se puede. El tamaño del proyecto depende de cuántos portales distintos hay que operar. El volumen de pacientes casi no influye. Lo habitual es salir a producción con los dos o tres financiadores de más volumen y sumar el resto en etapas posteriores, sin esperar a tener los diez listos. Un desarrollo de este tipo cuesta desde unos USD 6.000, con la marcha blanca incluida, y el soporte posterior, si se contrata, desde USD 300 al mes. El desglose está en cuánto cuesta automatizar un proceso.",
+    a: "Se puede. El tamaño del proyecto depende de cuántos portales distintos hay que operar. El volumen de pacientes casi no influye. Lo habitual es salir a producción con los dos o tres financiadores de más volumen y sumar el resto en etapas posteriores, sin esperar a tener los diez listos. Un desarrollo de este tipo cuesta en promedio unos USD 6.000, con la marcha blanca incluida, y el soporte posterior, si se contrata, desde USD 300 al mes. El desglose está en cuánto cuesta automatizar un proceso.",
   },
 ];
 
@@ -37,7 +37,7 @@ const faqsJsx = [
       hay que operar. El volumen de pacientes casi no influye. Lo habitual es
       salir a producción con los dos o tres financiadores de más volumen y
       sumar el resto en etapas posteriores, sin esperar a tener los diez
-      listos. Un desarrollo de este tipo cuesta desde unos USD 6.000, con la
+      listos. Un desarrollo de este tipo cuesta en promedio unos USD 6.000, con la
       marcha blanca incluida, y el soporte posterior, si se contrata, desde USD
       300 al mes. El desglose está en{" "}
       <IntLink href="/blog/cuanto-cuesta-automatizar-un-proceso">
