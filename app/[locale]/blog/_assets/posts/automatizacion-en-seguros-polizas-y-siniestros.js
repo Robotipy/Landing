@@ -119,7 +119,7 @@ export const post = {
           según el producto.
         </p>
         <p className={styles.p}>
-          El robot que construimos para este tramo toma la cotización aprobada y
+          Un robot para este tramo toma la cotización aprobada y
           la traspasa al sistema de pólizas campo por campo. Antes de emitir
           aplica la misma matriz de reglas de suscripción que hoy revisa una
           persona con una lista impresa al lado, y la póliza sale solo si la

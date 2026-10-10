@@ -136,10 +136,7 @@ export const post = {
         </h2>
         <p className={styles.p}>
           En Chile, una factura electrónica recibida que no se reclama dentro de
-          8 días corridos queda irrevocablemente aceptada y pasa a ser título
-          ejecutivo. Desde ese momento el proveedor puede cobrarla
-          judicialmente, aunque la mercancía nunca haya llegado o haya llegado
-          con diferencias.
+          8 días corridos queda irrevocablemente aceptada. Desde ese momento ya no puedes objetar su contenido, aunque la mercancía haya llegado con diferencias, y el proveedor puede cederla a una empresa de factoring.
         </p>
         <p className={styles.p}>
           El plazo corre aunque la persona responsable esté de vacaciones o el
@@ -149,10 +146,7 @@ export const post = {
           año se acepten por silencio facturas que debieron reclamarse.
         </p>
         <p className={styles.p}>
-          En México el riesgo está en las cancelaciones. Desde 2022, para
-          cancelar un CFDI el emisor necesita que el receptor acepte o rechace la
-          cancelación. Si el receptor no responde en 72 horas, la cancelación
-          procede igual.
+          En México el riesgo está en las cancelaciones. Para cancelar un CFDI, en muchos casos el emisor necesita que el receptor acepte o rechace la cancelación, y si el receptor no responde en 72 horas la cancelación procede igual.
         </p>
       </section>
 

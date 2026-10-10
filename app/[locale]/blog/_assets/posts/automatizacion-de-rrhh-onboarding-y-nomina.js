@@ -130,7 +130,7 @@ export const post = {
           es buena candidata para automatizar.
         </p>
         <p className={styles.p}>
-          El robot que armamos para este ciclo recolecta las planillas desde las
+          Un robot para este ciclo recolecta las planillas desde las
           casillas de correo y carpetas acordadas y valida cada novedad contra
           las reglas que define RR.HH. (empleado activo, período correcto, tope
           de horas, autorización presente). Lo que no pasa la validación queda
