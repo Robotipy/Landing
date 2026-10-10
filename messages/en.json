@@ -422,7 +422,7 @@
     "hero": {
       "eyebrow": "About Robotipy",
       "title": "Automating finance and operations processes since 2023",
-      "subtitle": "Robotipy is a process automation company founded in 2023, with teams in Chile and Argentina. We have delivered more than 70 projects using RPA, artificial intelligence and custom software, and we are a Rocketbot Platinum Partner."
+      "subtitle": "Robotipy is a process automation company founded in 2023, with teams in Chile and Argentina and clients in Colombia and Spain as well. We have delivered more than 70 projects using RPA, artificial intelligence and custom software, and we are a Rocketbot Platinum Partner."
     },
     "facts": {
       "founded": {
@@ -434,8 +434,8 @@
         "label": "Projects delivered"
       },
       "countries": {
-        "value": "Chile and Argentina",
-        "label": "Team and clients"
+        "value": "4 countries",
+        "label": "Chile, Argentina, Colombia and Spain"
       },
       "partner": {
         "value": "Platinum",
@@ -459,7 +459,7 @@
         "gabriel": {
           "name": "Gabriel Toro",
           "role": "Robotipy team",
-          "description": "Specialized in process automation and RPA solutions for companies in Chile and Argentina."
+          "description": "Specialized in process automation and RPA solutions for companies in Chile, Argentina, Colombia and Spain."
         }
       },
       "articlesLink": "Read articles"
@@ -896,7 +896,7 @@
       },
       "about": {
         "title": "About Robotipy | Process automation since 2023",
-        "description": "Robotipy is a process automation company founded in 2023, with more than 70 projects delivered in Chile and Argentina. Meet the team and how we work."
+        "description": "Robotipy is a process automation company founded in 2023, with more than 70 projects delivered in Chile, Argentina, Colombia and Spain. Meet the team and how we work."
       },
       "capacitaciones": {
         "title": "AI and Automation Training | Robotipy",

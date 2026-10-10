@@ -253,7 +253,7 @@ export const post = {
       <section className="space-y-3">
         <p className={styles.p}>
           Danilo Toro, fundador de Robotipy, ayuda a empresas medianas y grandes
-          en Chile y Argentina a decidir qué automatizar y con qué herramienta,
+          en Chile, Argentina, Colombia y España a decidir qué automatizar y con qué herramienta,
           sin vender de más.
         </p>
       </section>

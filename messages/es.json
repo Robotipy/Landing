@@ -422,7 +422,7 @@
     "hero": {
       "eyebrow": "Sobre Robotipy",
       "title": "Automatizamos procesos de finanzas y operaciones desde 2023",
-      "subtitle": "Robotipy es una empresa de automatización de procesos fundada en 2023, con equipo en Chile y en Argentina. Hemos entregado más de 70 proyectos con RPA, inteligencia artificial y desarrollo a medida, y somos Platinum Partner de Rocketbot."
+      "subtitle": "Robotipy es una empresa de automatización de procesos fundada en 2023, con equipo en Chile y en Argentina y clientes también en Colombia y España. Hemos entregado más de 70 proyectos con RPA, inteligencia artificial y desarrollo a medida, y somos Platinum Partner de Rocketbot."
     },
     "facts": {
       "founded": {
@@ -434,8 +434,8 @@
         "label": "Proyectos entregados"
       },
       "countries": {
-        "value": "Chile y Argentina",
-        "label": "Equipo y clientes"
+        "value": "4 países",
+        "label": "Chile, Argentina, Colombia y España"
       },
       "partner": {
         "value": "Platinum",
@@ -459,7 +459,7 @@
         "gabriel": {
           "name": "Gabriel Toro",
           "role": "Equipo Robotipy",
-          "description": "Especializado en automatización de procesos y soluciones RPA para empresas en Chile y Argentina."
+          "description": "Especializado en automatización de procesos y soluciones RPA para empresas en Chile, Argentina, Colombia y España."
         }
       },
       "articlesLink": "Ver artículos"
@@ -896,7 +896,7 @@
       },
       "about": {
         "title": "Sobre Robotipy | Automatización de procesos desde 2023",
-        "description": "Robotipy es una empresa de automatización de procesos fundada en 2023, con más de 70 proyectos en Chile y Argentina. Conoce al equipo y cómo trabajamos."
+        "description": "Robotipy es una empresa de automatización de procesos fundada en 2023, con más de 70 proyectos en Chile, Argentina, Colombia y España. Conoce al equipo y cómo trabajamos."
       },
       "capacitaciones": {
         "title": "Capacitación en IA y Automatización | Robotipy",

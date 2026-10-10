@@ -123,7 +123,7 @@ export const post = {
           difícil.
         </p>
         <p className={styles.p}>
-          En la práctica, en Chile y Argentina esto se ve seguido en tareas muy
+          En la práctica, en Chile, Argentina, Colombia y España esto se ve seguido en tareas muy
           concretas: cargar facturas en el sistema contable, conciliar los
           movimientos del banco contra el ERP, completar trámites repetitivos en
           portales como el SII o AFIP, o bajar certificados y comprobantes uno por
@@ -252,7 +252,7 @@ export const post = {
       <section className="space-y-3">
         <p className={styles.p}>
           Danilo Toro, fundador de Robotipy, trabaja tanto con pymes como con
-          empresas grandes en Chile y Argentina, y prioriza el proceso sobre el
+          empresas grandes en Chile, Argentina, Colombia y España, y prioriza el proceso sobre el
           tamaño de la empresa a la hora de recomendar qué automatizar.
         </p>
       </section>

@@ -53,7 +53,7 @@ export default async function RootLayout({ children, params }) {
     "url": siteUrl,
     "logo": `${siteUrl}/images/robotipy-logo.png`,
     "description":
-      "Empresa de automatización de procesos fundada en 2023, con equipo en Chile y Argentina. Más de 70 proyectos entregados con RPA, inteligencia artificial y desarrollo de software a medida. Platinum Partner de Rocketbot.",
+      "Empresa de automatización de procesos fundada en 2023, con equipo en Chile y Argentina y clientes también en Colombia y España. Más de 70 proyectos entregados con RPA, inteligencia artificial y desarrollo de software a medida. Platinum Partner de Rocketbot.",
     "foundingDate": "2023",
     "founder": {
       "@type": "Person",

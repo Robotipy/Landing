@@ -277,7 +277,7 @@ export const post = {
         </p>
         <p className={styles.p}>
           Danilo Toro, fundador de Robotipy, cotiza personalmente los proyectos de
-          automatización en Chile y Argentina, sin vender de más ni esconder lo
+          automatización en Chile, Argentina, Colombia y España, sin vender de más ni esconder lo
           que no sabe todavía sobre un proceso hasta no verlo.
         </p>
       </section>

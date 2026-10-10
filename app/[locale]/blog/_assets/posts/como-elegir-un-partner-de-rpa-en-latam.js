@@ -77,7 +77,7 @@ export const post = {
     <>
       <section className="space-y-4">
         <p className={styles.p}>
-          En Chile y Argentina, cualquier empresa puede presentarse como
+          En Chile, Argentina, Colombia y España, cualquier empresa puede presentarse como
           "Partner RPA" en LinkedIn al día siguiente de firmar un acuerdo de
           reventa con un fabricante. Ese acuerdo no le exige tener ingenieros
           certificados ni haber entregado un solo proyecto, y nadie regula el

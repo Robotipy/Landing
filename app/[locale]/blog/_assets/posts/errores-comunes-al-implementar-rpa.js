@@ -84,7 +84,7 @@ export const post = {
           comando.
         </p>
         <p className={styles.p}>
-          Van los errores que más veces vemos en empresas de Chile y Argentina,
+          Van los errores que más veces vemos en empresas de Chile, Argentina, Colombia y España,
           con lo que conviene hacer en cada caso. No están ordenados por
           gravedad, sino más o menos en el orden en que aparecen a lo largo de un
           proyecto.

@@ -128,7 +128,7 @@ export const post = {
   locale: "es",
   title: "RPA con Peras y Manzanas: Qué es la Automatización y Cómo Funciona",
   description:
-    "Explicamos qué es RPA (Automatización Robótica de Procesos) de forma simple, sin tecnicismos. Casos reales, ejemplos por industria y cómo implementarlo en tu empresa en Chile y Argentina.",
+    "Explicamos qué es RPA (Automatización Robótica de Procesos) de forma simple, sin tecnicismos. Casos reales, ejemplos por industria y cómo implementarlo en tu empresa en Chile, Argentina, Colombia y España.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.rpa),
   ],
@@ -431,7 +431,7 @@ export const post = {
         <h2 className={styles.h2}>4. Ejemplos reales por industria</h2>
         <p className={styles.p}>
           La teoría es linda, pero lo que convence son los ejemplos. Acá van casos concretos de procesos que Robotipy ha
-          automatizado en empresas de Chile y Argentina:
+          automatizado en empresas de Chile, Argentina, Colombia y España:
         </p>
 
         <div className={ui.industryGrid}>

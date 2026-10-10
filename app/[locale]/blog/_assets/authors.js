@@ -70,7 +70,7 @@ export const authors = [
     name: "Gabriel Toro",
     job: "Equipo Robotipy",
     description:
-      "Gabriel forma parte del equipo de Robotipy, especializado en automatización de procesos y soluciones RPA para empresas en Chile y Argentina.",
+      "Gabriel forma parte del equipo de Robotipy, especializado en automatización de procesos y soluciones RPA para empresas en Chile, Argentina, Colombia y España.",
     avatar: gabrielToroImg,
     socials: [
       {
