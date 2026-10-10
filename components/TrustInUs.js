@@ -26,12 +26,15 @@ const avatars = [
     src: "/assets/logo-promet.png",
     link: "https://www.promet.cl",
     width: 140,
+    // El PNG viene recortado al borde: se limita la altura para igualar al resto.
+    maxHeight: 40,
   },
   {
     alt: "Grupo Cintac - Chile",
     src: "/assets/logo-cintac.png",
     link: "https://www.cintac.cl",
     width: 150,
+    maxHeight: 32,
   },
   {
     alt: "Novagric - España",
@@ -190,6 +193,7 @@ const TrustInUs = ({ priority = false }) => {
                     height={80}
                     title={image.alt}
                     className="object-contain h-full w-auto"
+                    style={image.maxHeight ? { height: image.maxHeight, width: "auto" } : undefined}
                   />
                 )}
               </a>
