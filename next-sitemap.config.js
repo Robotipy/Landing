@@ -46,6 +46,7 @@ module.exports = {
     "/api/*",
     // Propuestas de rediseño: noindex y fuera del sitemap.
     "/*/landing-*",
+    "/*/home-*",
     // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
