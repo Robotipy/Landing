@@ -44,6 +44,8 @@ module.exports = {
     "/llms.txt",
     "/blog-sitemap.xml",
     "/api/*",
+    // Propuestas de rediseño: noindex y fuera del sitemap.
+    "/*/landing-*",
     // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
