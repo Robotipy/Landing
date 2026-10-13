@@ -20,14 +20,6 @@ const pageCss = `
 @keyframes h2-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 .h2-float { animation: h2-float 6s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .h2-float { animation: none; } }
-@keyframes h2-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.h2-marquee { animation: h2-marquee 45s linear infinite; }
-.h2-marquee-wrap:hover .h2-marquee { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) {
-  .h2-marquee { animation: none; width: 100%; }
-  .h2-marquee > ul:first-child { flex-wrap: wrap; flex-shrink: 1; width: 100%; row-gap: 1.5rem; }
-  .h2-marquee-dup { display: none !important; }
-}
 `;
 
 // Sin JavaScript, el contenido con aparición al hacer scroll se muestra igual.

@@ -32,6 +32,29 @@ export const clientLogos = [
   { src: "/assets/logo-kabeli.png", alt: "Kabeli", width: 120 },
 ];
 
+// Banda de clientes de la home principal. Logos recortados al borde (sin
+// márgenes) en public/home-assets/clientes, todos en blanco o a color sobre
+// transparente. aspect = ancho / alto, sirve para igualar el peso visual;
+// scale corrige a ojo los logos muy gruesos o muy finos.
+export const clientBand = [
+  { src: "/home-assets/clientes/minutoverde.png", alt: "Minuto Verde", aspect: 2.41 },
+  { src: "/home-assets/clientes/mitta.png", alt: "MITTA", aspect: 3.88, scale: 0.85 },
+  { src: "/home-assets/clientes/avisbudget.png", alt: "Avis Budget", aspect: 7.44 },
+  { src: "/home-assets/clientes/promet.png", alt: "Promet", aspect: 3.79 },
+  { src: "/home-assets/clientes/cintac.png", alt: "Grupo Cintac", aspect: 6.0 },
+  { src: "/home-assets/clientes/symnetics.png", alt: "Symnetics", aspect: 1.07 },
+  { src: "/home-assets/clientes/novagric.png", alt: "Novagric", aspect: 5.03 },
+  { src: "/home-assets/clientes/biofilm.png", alt: "Biofilm", aspect: 5.34, scale: 0.85 },
+  { src: "/home-assets/clientes/delirio.png", alt: "Grupo Delirio", aspect: 2.72 },
+  { src: "/home-assets/clientes/bioagri.png", alt: "BioAgri", aspect: 3.01, scale: 1.15 },
+  { src: "/home-assets/clientes/digitalbankla.png", alt: "Digital Bank", aspect: 3.92 },
+  { src: "/home-assets/clientes/ecohidro.png", alt: "Ecohidro", aspect: 4.84 },
+  { src: "/home-assets/clientes/ls.png", alt: "Estudio L&S", aspect: 2.69, scale: 0.85 },
+  { src: "/home-assets/clientes/cerezosoftware.png", alt: "Cerezo Software", aspect: 2.38, scale: 1.1 },
+  { src: "/home-assets/clientes/interact.png", alt: "Interact Solutions", aspect: 4.7 },
+  { src: "/home-assets/clientes/kabeli.png", alt: "Kabeli", aspect: 3.12 },
+];
+
 // Equipo publicado en /about y en los autores del blog.
 export const team = [
   {
