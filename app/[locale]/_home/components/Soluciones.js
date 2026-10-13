@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { BrowserFrame, PhoneFrame } from "./frames";
 import Icon from "./icons";
 import { MonitorMock, RobotMock, SoftwareMock } from "./mocks";
 import Reveal from "./Reveal";
@@ -59,31 +58,23 @@ const melonScreen = (
   </figure>
 );
 
+// Toma real de dron procesada con YOAO.
 const yoaoScreen = (
-  <div className="relative pb-6 pr-6 sm:pb-10 sm:pr-10">
+  <figure>
     <div className="overflow-hidden rounded-2xl shadow-2xl shadow-slate-900/25 ring-1 ring-slate-900/10">
       <Image
-        src="/home-assets/yoao-home.jpg"
-        alt="Portada de YOAO: de video a datos, con una cámara que detecta autos, camiones y personas en una zona"
-        width={1600}
-        height={840}
-        sizes="(min-width: 1024px) 640px, 88vw"
+        src="/home-assets/yoao-dron.jpg"
+        alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus, y le asigna un número para seguirlo mientras está en la imagen"
+        width={1642}
+        height={923}
+        sizes="(min-width: 1024px) 680px, 92vw"
         className="block h-auto w-full"
       />
     </div>
-    <div className="absolute bottom-0 right-0 w-[30%] max-w-[190px]">
-      <PhoneFrame>
-        <Image
-          src="/home-assets/yoao-zona.jpg"
-          alt="YOAO en el teléfono: zona marcada sobre una calle y conteo de vehículos por tipo"
-          width={540}
-          height={960}
-          sizes="(min-width: 1024px) 190px, 30vw"
-          className="block h-auto w-full"
-        />
-      </PhoneFrame>
-    </div>
-  </div>
+    <figcaption className="mt-4 text-base text-slate-600">
+      Video de dron procesado con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.
+    </figcaption>
+  </figure>
 );
 
 const tabs = [
