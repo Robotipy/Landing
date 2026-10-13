@@ -68,7 +68,7 @@ export default async function AboutPage({ params }) {
       <Suspense>
         <Header />
       </Suspense>
-      <main className="bg-background-light dark:bg-background-dark">
+      <main className="bg-white">
         <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
             <section className="rounded-lg bg-primary px-6 py-14 md:px-12 text-center">
@@ -87,29 +87,29 @@ export default async function AboutPage({ params }) {
               {factKeys.map((key) => (
                 <div
                   key={key}
-                  className="rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4 text-center"
+                  className="rounded-lg border border-gray-200 bg-white p-4 text-center"
                 >
-                  <dt className="text-text-light dark:text-text-dark text-sm">
+                  <dt className="text-text-light text-sm">
                     {t(`facts.${key}.label`)}
                   </dt>
-                  <dd className="text-text-primary dark:text-text-primary-dark text-xl font-bold mt-1">
+                  <dd className="text-text-primary text-xl font-bold mt-1">
                     {t(`facts.${key}.value`)}
                   </dd>
                 </div>
               ))}
             </dl>
 
-            <h2 className="text-text-primary dark:text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pt-10 font-heading">
+            <h2 className="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pt-10 font-heading">
               {t("team.title")}
             </h2>
-            <p className="text-text-light dark:text-text-dark px-4 pt-2 pb-3">
+            <p className="text-text-light px-4 pt-2 pb-3">
               {t("team.subtitle")}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 p-4">
               {team.map((member) => (
                 <div
                   key={member.key}
-                  className="flex flex-col gap-3 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-background-dark p-5"
+                  className="flex flex-col gap-3 rounded-lg border border-gray-200 bg-white p-5"
                 >
                   <Image
                     src={member.image}
@@ -119,13 +119,13 @@ export default async function AboutPage({ params }) {
                     className="h-24 w-24 rounded-full object-cover"
                   />
                   <div>
-                    <h3 className="text-text-primary dark:text-text-primary-dark text-base font-bold leading-normal">
+                    <h3 className="text-text-primary text-base font-bold leading-normal">
                       {t(`team.members.${member.key}.name`)}
                     </h3>
                     <p className="text-accent text-sm font-bold leading-normal">
                       {t(`team.members.${member.key}.role`)}
                     </p>
-                    <p className="text-text-light dark:text-text-dark text-sm leading-normal mt-2">
+                    <p className="text-text-light text-sm leading-normal mt-2">
                       {t(`team.members.${member.key}.description`)}
                     </p>
                   </div>
@@ -151,48 +151,48 @@ export default async function AboutPage({ params }) {
               ))}
             </div>
 
-            <h2 className="text-text-primary dark:text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10 font-heading">
+            <h2 className="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10 font-heading">
               {t("stack.title")}
             </h2>
             <div className="grid md:grid-cols-2 gap-4 p-4">
-              <div className="rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-background-dark p-5">
-                <h3 className="text-text-primary dark:text-text-primary-dark font-bold">
+              <div className="rounded-lg border border-gray-200 bg-white p-5">
+                <h3 className="text-text-primary font-bold">
                   {t("stack.platformsTitle")}
                 </h3>
-                <p className="text-text-light dark:text-text-dark text-sm mt-2">
+                <p className="text-text-light text-sm mt-2">
                   {t("stack.platforms")}
                 </p>
               </div>
-              <div className="rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-background-dark p-5">
-                <h3 className="text-text-primary dark:text-text-primary-dark font-bold">
+              <div className="rounded-lg border border-gray-200 bg-white p-5">
+                <h3 className="text-text-primary font-bold">
                   {t("stack.systemsTitle")}
                 </h3>
-                <p className="text-text-light dark:text-text-dark text-sm mt-2">
+                <p className="text-text-light text-sm mt-2">
                   {t("stack.systems")}
                 </p>
               </div>
             </div>
 
-            <h2 className="text-text-primary dark:text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10 font-heading">
+            <h2 className="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10 font-heading">
               {t("principles.title")}
             </h2>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 p-4">
               {principleKeys.map((key) => (
                 <div
                   key={key}
-                  className="flex flex-col gap-1 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-background-dark p-4"
+                  className="flex flex-col gap-1 rounded-lg border border-gray-200 bg-white p-4"
                 >
-                  <h3 className="text-text-primary dark:text-text-primary-dark text-base font-bold leading-tight">
+                  <h3 className="text-text-primary text-base font-bold leading-tight">
                     {t(`principles.items.${key}.title`)}
                   </h3>
-                  <p className="text-text-light dark:text-text-dark text-sm leading-normal">
+                  <p className="text-text-light text-sm leading-normal">
                     {t(`principles.items.${key}.description`)}
                   </p>
                 </div>
               ))}
             </div>
 
-            <h2 className="text-text-primary dark:text-text-primary-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10 font-heading">
+            <h2 className="text-text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10 font-heading">
               {t("process.title")}
             </h2>
             <ol className="grid md:grid-cols-2 gap-6 p-4">
@@ -202,10 +202,10 @@ export default async function AboutPage({ params }) {
                     {index + 1}
                   </span>
                   <div>
-                    <h3 className="font-bold text-lg text-text-primary dark:text-text-primary-dark">
+                    <h3 className="font-bold text-lg text-text-primary">
                       {t(`process.steps.${key}.title`)}
                     </h3>
-                    <p className="text-text-light dark:text-text-dark mt-1">
+                    <p className="text-text-light mt-1">
                       {t(`process.steps.${key}.description`)}
                     </p>
                   </div>
@@ -214,10 +214,10 @@ export default async function AboutPage({ params }) {
             </ol>
 
             <div className="text-center py-16 px-4">
-              <h2 className="text-2xl font-bold text-text-primary dark:text-text-primary-dark font-heading">
+              <h2 className="text-2xl font-bold text-text-primary font-heading">
                 {t("cta.title")}
               </h2>
-              <p className="text-text-light dark:text-text-dark mt-2 max-w-xl mx-auto">
+              <p className="text-text-light mt-2 max-w-xl mx-auto">
                 {t("cta.subtitle")}
               </p>
               <Link
