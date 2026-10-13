@@ -1,26 +1,26 @@
 import { Suspense } from "react";
+import { setRequestLocale } from "next-intl/server";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustInUs from "@/components/TrustInUs";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
-import PagePreview from "@/components/PagePreview";
-import PagePreviewCenter from "@/components/PagePreviewCenter";
-import BlogPreview from "@/components/BlogPreview";
-import Image from "next/image";
-import HeroSolutions from "./solutions/HeroSolutions";
-import Offers from "./solutions/Offers";
 import Solutions from "@/components/Solutions";
-import FeaturedCaseStudies from "@/components/FeaturedCaseStudies";
 import MapsSolutions from "@/components/MapsSolutions";
 import CasosDeExito from "@/components/CasosDeExito";
 import ProductsShowcase from "@/components/ProductsShowcase";
+import HomePage from "./_home/HomePage";
 
+// La home nueva solo existe en español. Inglés y portugués siguen con la
+// home anterior, que sí está traducida.
+export default async function Home({ params }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-export default function Home() {
+  if (locale === "es") return <HomePage />;
+
   return (
     <>
-      {/* <Image src="/images/background.png" alt="Background" layout="fill" /> */}
       <Suspense>
         <Header />
       </Suspense>
@@ -31,11 +31,6 @@ export default function Home() {
         <ProductsShowcase />
         <CasosDeExito />
         <MapsSolutions />
-        {/* <PagePreviewCenter /> */}
-        {/* <BlogPreview /> */}
-        {/* <FeaturesAccordion />
-        <Pricing />
-        <FAQ /> */}
         <CTA />
       </main>
       <Footer />

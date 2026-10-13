@@ -1,4 +1,4 @@
-// Piezas de interfaz compartidas del home /home-2.
+// Piezas de interfaz compartidas de la home principal.
 // Paleta: azul marino #00182B, teal de marca rgb(3,150,149) = #039695.
 // Teal oscuro #027a79 para texto chico sobre blanco (contraste AA) y
 // teal claro #4fd1d0 para texto chico sobre azul marino.

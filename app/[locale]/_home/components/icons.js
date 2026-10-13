@@ -1,4 +1,4 @@
-// Íconos de línea propios del home /home-2 (24x24, trazo redondeado).
+// Íconos de línea propios de la home principal (24x24, trazo redondeado).
 
 const paths = {
   chat: (

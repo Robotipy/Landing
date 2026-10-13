@@ -1,16 +1,10 @@
-// Datos del home de prueba /home-2 ("Tecnología en acción").
+// Datos de la home principal en español ("Tecnología en acción").
 // Todo dato sobre Robotipy sale de libs/landingFacts.js o libs/successCases.js:
 // aquí solo se elige qué mostrar y con qué imagen.
 
 import { successCases } from "@/libs/successCases";
 
-export const VARIANT = "home-2";
-
-export const meta = {
-  title: "Robotipy | Automatización con IA, robots y software a medida",
-  description:
-    "Agentes de IA para WhatsApp, robots de software para tareas repetitivas, aplicaciones a medida y productos propios. La primera reunión no tiene costo.",
-};
+export const VARIANT = "home";
 
 // Casos del carrusel, equilibrados por industria y por tipo de solución.
 // metric: índice de case.metrics a destacar. Sin metric se usa results.timeSaving.
