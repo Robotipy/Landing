@@ -10,8 +10,8 @@ import { btnOutlineDark, container, SectionHeading } from "./ui";
 function CaseCard({ item }) {
   return (
     <li className="w-[86%] shrink-0 snap-start sm:w-[calc((100%_-_1.5rem)/2)] lg:w-[calc((100%_-_3rem)/3)]">
-      <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white text-[#00182B] shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 motion-reduce:transform-none">
-        <div className="relative aspect-[2/1] overflow-hidden bg-[#0b2a44]">
+      <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0b2a44] text-white transition duration-300 hover:-translate-y-1 hover:border-[#4fd1d0]/50 motion-reduce:transform-none">
+        <div className="relative aspect-[2/1] overflow-hidden bg-[#123a5a]">
           <Image
             src={item.image}
             alt=""
@@ -19,21 +19,18 @@ function CaseCard({ item }) {
             sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 86vw"
             className={`object-cover ${item.position} transition duration-700 group-hover:scale-105 motion-reduce:transform-none`}
           />
-          <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-sm font-bold text-[#00182B] shadow">
-            {item.kind}
-          </span>
         </div>
         <div className="flex flex-1 flex-col p-6 sm:p-7">
-          <p className="text-base font-semibold text-slate-500">{item.industry}</p>
-          <p className="mt-3 text-5xl font-extrabold leading-none tracking-tight text-[#03807f] sm:text-6xl">
+          <p className="text-base font-semibold text-white/65">{item.industry}</p>
+          <p className="mt-3 text-5xl font-extrabold leading-none tracking-tight text-[#4fd1d0] sm:text-6xl">
             {item.figure}
           </p>
           <p className="mt-2 text-lg font-bold">{item.label}</p>
-          <h3 className="mt-4 text-lg font-semibold text-slate-800">{item.name}</h3>
-          {item.detail && <p className="mt-1 text-lg text-slate-600">{item.detail}</p>}
+          <h3 className="mt-4 text-lg font-semibold text-white/85">{item.name}</h3>
+          {item.detail && <p className="mt-1 text-lg text-white/65">{item.detail}</p>}
           <Link
             href={item.href}
-            className="mt-auto inline-flex items-center gap-2 pt-6 text-lg font-bold text-[#027a79] underline-offset-4 hover:underline"
+            className="mt-auto inline-flex items-center gap-2 pt-6 text-lg font-bold text-[#4fd1d0] underline-offset-4 hover:underline"
             aria-label={`Ver el caso ${item.name} (${item.industry})`}
           >
             Ver el caso
