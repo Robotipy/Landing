@@ -45,14 +45,17 @@ export const clientBand = [
   { src: "/home-assets/clientes/symnetics.png", alt: "Symnetics", aspect: 1.07 },
   { src: "/home-assets/clientes/novagric.png", alt: "Novagric", aspect: 5.03 },
   { src: "/home-assets/clientes/biofilm.png", alt: "Biofilm", aspect: 5.34, scale: 0.85 },
+  { src: "/home-assets/clientes/rentamaq.png", alt: "RentaMaq", aspect: 6.41, scale: 0.85 },
   { src: "/home-assets/clientes/delirio.png", alt: "Grupo Delirio", aspect: 2.72 },
   { src: "/home-assets/clientes/bioagri.png", alt: "BioAgri", aspect: 3.01, scale: 1.15 },
   { src: "/home-assets/clientes/digitalbankla.png", alt: "Digital Bank", aspect: 3.92 },
   { src: "/home-assets/clientes/ecohidro.png", alt: "Ecohidro", aspect: 4.84 },
   { src: "/home-assets/clientes/ls.png", alt: "Estudio L&S", aspect: 2.69, scale: 0.85 },
+  { src: "/home-assets/clientes/caimi.png", alt: "Caimi", aspect: 4.75, scale: 1.1 },
   { src: "/home-assets/clientes/cerezosoftware.png", alt: "Cerezo Software", aspect: 2.38, scale: 1.1 },
   { src: "/home-assets/clientes/interact.png", alt: "Interact Solutions", aspect: 4.7 },
   { src: "/home-assets/clientes/kabeli.png", alt: "Kabeli", aspect: 3.12 },
+  { src: "/home-assets/clientes/rocketbot.png", alt: "Rocketbot", aspect: 8.57 },
 ];
 
 // Equipo publicado en /about y en los autores del blog.
