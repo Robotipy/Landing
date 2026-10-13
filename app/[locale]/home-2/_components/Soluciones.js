@@ -172,7 +172,6 @@ export default function Soluciones() {
         <Reveal>
           <SectionHeading
             id="h2-soluciones-title"
-            eyebrow="Lo que hacemos"
             title="Mira lo que construimos, funcionando"
             lead="Elige un tema y te mostramos cómo se ve en la práctica."
           />

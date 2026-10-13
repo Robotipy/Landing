@@ -4,7 +4,7 @@
 import { BrowserFrame } from "./frames";
 import Icon from "./icons";
 
-function LiveDot({ color = "bg-[#039695]" }) {
+export function LiveDot({ color = "bg-[#039695]" }) {
   return (
     <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
       <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 ${color}`} />

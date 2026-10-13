@@ -25,18 +25,14 @@ export default function MelonHelp() {
       />
       <div className={`${container} relative grid items-center gap-14 lg:grid-cols-12 lg:gap-12`}>
         <Reveal className="lg:col-span-5">
-          <p className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 py-1.5 pl-1.5 pr-4 text-base font-semibold text-[#4fd1d0]">
-            <Image src="/home-assets/melonbot.png" alt="" width={36} height={36} className="h-9 w-9 rounded-full" />
-            Partner implementador de Melon Help
-          </p>
           <h2
             id="h2-melon-title"
-            className="mt-6 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl"
+            className="text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl"
           >
             Atención con IA por WhatsApp, lista para tu equipo
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/80 sm:text-xl">
-            Configuramos Melon Help con la información de tu empresa, lo conectamos a tus canales y
+            Somos partner implementador de Melon Help. Lo configuramos con la información de tu empresa, lo conectamos a tus canales y
             capacitamos a tu equipo. Cada conversación queda registrada como un ticket y ninguna se pierde.
           </p>
 

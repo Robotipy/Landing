@@ -60,7 +60,6 @@ export default function Casos() {
         <Reveal>
           <SectionHeading
             id="h2-casos-title"
-            eyebrow="Casos reales"
             title="Resultados en empresas de muchas industrias"
             lead="Hotelería, rent-a-car, minería, alimentos, seguros y atención al cliente, entre otras."
             dark

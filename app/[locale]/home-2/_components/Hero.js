@@ -82,13 +82,9 @@ export default function Hero() {
         className={`${container} relative grid items-center gap-14 pb-20 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-10 lg:pb-28 lg:pt-16`}
       >
         <div className="animate-opacity lg:col-span-5">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-base font-semibold text-[#4fd1d0]">
-            <span className="h-2 w-2 rounded-full bg-[#039695]" aria-hidden="true" />
-            Empresa de automatización y tecnología
-          </p>
           <h1
             id="h2-hero-title"
-            className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl xl:text-6xl"
+            className="text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl xl:text-6xl"
           >
             Automatizamos tu empresa con <span className="text-[#4fd1d0]">IA, robots y software</span>
           </h1>

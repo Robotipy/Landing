@@ -8,19 +8,6 @@ import { container, SectionHeading } from "./ui";
 
 const byKey = Object.fromEntries(products.map((p) => [p.key, p]));
 
-function OwnBadge({ dark = false }) {
-  return (
-    <span
-      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-bold ${
-        dark ? "bg-white/10 text-[#4fd1d0]" : "bg-[#00182B] text-white"
-      }`}
-    >
-      <Icon name="spark" className="h-4 w-4" />
-      Producto Robotipy
-    </span>
-  );
-}
-
 function ProductLink({ href, children, dark = false }) {
   return (
     <Link
@@ -47,7 +34,6 @@ export default function Productos() {
         <Reveal>
           <SectionHeading
             id="h2-productos-title"
-            eyebrow="Productos propios"
             title="Software creado y mantenido por Robotipy"
             lead="Además de los proyectos a medida, creamos productos propios que puedes usar en tu empresa."
           />
@@ -66,7 +52,6 @@ export default function Productos() {
               />
               <div className="relative grid flex-1 items-center gap-8 sm:grid-cols-2">
                 <div>
-                  <OwnBadge dark />
                   <h3 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">{yoao?.name || "YOAO"}</h3>
                   <p className="mt-4 text-lg leading-relaxed text-white/80 sm:text-xl">{yoao?.description}</p>
                   <ProductLink href="/analysis" dark>
@@ -105,7 +90,6 @@ export default function Productos() {
                 </BrowserFrame>
               </div>
               <div className="mt-6">
-                <OwnBadge />
                 <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-[#00182B] sm:text-3xl">
                   {projects?.name}
                 </h3>
@@ -130,7 +114,6 @@ export default function Productos() {
                   />
                 </div>
                 <div className="sm:col-span-3">
-                  <OwnBadge />
                   <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-[#00182B] sm:text-3xl">
                     {monitor?.name}
                   </h3>

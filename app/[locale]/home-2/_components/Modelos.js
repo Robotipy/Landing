@@ -60,7 +60,6 @@ export default function Modelos() {
           <Reveal>
             <SectionHeading
               id="h2-modelos-title"
-              eyebrow="Formas de trabajar"
               title="Trabajemos de la forma que más te acomode"
               lead="Partimos con una conversación y elegimos juntos el formato que calza con tu empresa."
               align="left"

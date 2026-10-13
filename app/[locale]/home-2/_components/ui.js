@@ -41,28 +41,13 @@ export function CtaButton({
   );
 }
 
-export function Eyebrow({ children, dark = false, className = "" }) {
-  const tone = dark
-    ? "border-white/15 bg-white/5 text-[#4fd1d0]"
-    : "border-[#039695]/20 bg-[#039695]/10 text-[#027a79]";
-  return (
-    <p
-      className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-base font-semibold ${tone} ${className}`}
-    >
-      <span className="h-2 w-2 rounded-full bg-[#039695]" aria-hidden="true" />
-      {children}
-    </p>
-  );
-}
-
-export function SectionHeading({ id, eyebrow, title, lead, dark = false, align = "center" }) {
+export function SectionHeading({ id, title, lead, dark = false, align = "center" }) {
   const alignCls = align === "center" ? "mx-auto text-center items-center" : "items-start text-left";
   return (
     <div className={`flex max-w-3xl flex-col ${alignCls}`}>
-      {eyebrow && <Eyebrow dark={dark}>{eyebrow}</Eyebrow>}
       <h2
         id={id}
-        className={`mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl ${
+        className={`text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl ${
           dark ? "text-white" : "text-[#00182B]"
         }`}
       >

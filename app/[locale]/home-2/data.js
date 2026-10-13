@@ -117,3 +117,35 @@ export function getMelonCase() {
     stats: [c.metrics[0], c.metrics[2]].filter(Boolean),
   };
 }
+
+// Robots hechos con Rocketbot que se muestran en la sección de RPA.
+// detail: dato real del caso; los nombres van en español simple.
+const robotPicks = [
+  { id: "hoteleria-1", name: "Censo diario de ocupación", detail: (c) => `De ${c.results.manualExecution} a ${c.results.automatedExecution}` },
+  { id: "automotriz-6", name: "Disponibilidad de autos por sucursal", detail: (c) => `${c.metrics[2].value} registros por noche` },
+  { id: "seguros-2", name: "Siniestros en portales de aseguradoras", detail: (c) => `Revisión ${c.metrics[2].value.toLowerCase()}` },
+];
+
+export function getRobotCases() {
+  return robotPicks
+    .map((pick) => {
+      const c = successCases.find((item) => item.id === pick.id);
+      if (!c) return null;
+      return { id: c.id, name: pick.name, industry: c.industry, detail: pick.detail(c) };
+    })
+    .filter(Boolean);
+}
+
+// Cifras de dos robots en producción para la tarjeta de resultados.
+export function getRobotStats() {
+  const hotel = successCases.find((item) => item.id === "hoteleria-1");
+  const rentACar = successCases.find((item) => item.id === "automotriz-6");
+  const stats = [];
+  if (hotel?.results) {
+    stats.push({ value: hotel.results.timeSaving, label: "menos tiempo en el censo diario de una cadena hotelera" });
+  }
+  if (rentACar?.metrics?.[2]) {
+    stats.push({ value: rentACar.metrics[2].value, label: "registros por noche en una empresa de arriendo de autos" });
+  }
+  return { stats, href: hotel ? `/casos-exito/${hotel.categoria}` : null, industry: hotel?.industry };
+}
