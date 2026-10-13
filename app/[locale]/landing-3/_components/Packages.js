@@ -181,7 +181,7 @@ export default function Packages() {
 
         {aiProducts.length > 0 && (
           <div className="mt-12">
-            <h3 className="text-base font-bold">Productos propios de IA</h3>
+            <h3 className="text-base font-bold">Productos de IA</h3>
             <p className={`mt-1 text-sm ${textMuted}`}>
               Se cotizan aparte del paquete de automatización.
             </p>

@@ -74,7 +74,16 @@ export const products = [
   {
     key: "melonhelp",
     name: "Melon Help",
-    description: "Plataforma de atención con agentes de IA y tickets desde WhatsApp, Slack y correo.",
+    // No es producto propio: Robotipy es partner implementador.
+    relation: "partner",
+    description:
+      "Plataforma de atención con agentes de IA y tickets desde WhatsApp, Slack y correo. Somos partner implementador.",
+  },
+  {
+    key: "projects",
+    name: "Robotipy Projects",
+    description: "Gestión de proyectos, horas, recursos y soporte para equipos de desarrollo y consultoras.",
+    href: "/projects",
   },
   {
     key: "monitor",

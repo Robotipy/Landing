@@ -716,7 +716,7 @@ export const successCases = [
     industry: "Proveedor de internet",
     name: "Soporte con Agente de IA",
     challenge: "El equipo de soporte recibía miles de mensajes diarios por WhatsApp y otros canales, sin trazabilidad ni forma de priorizar en los peaks.",
-    solution: "Implementamos Melon Help, nuestra plataforma de atención, que convierte cada conversación en un ticket y suma un agente de IA con base de conocimiento que responde las consultas frecuentes y deriva el resto al equipo humano.",
+    solution: "Implementamos Melon Help, una plataforma de atención de la que somos partner, que convierte cada conversación en un ticket y suma un agente de IA con base de conocimiento que responde las consultas frecuentes y deriva el resto al equipo humano.",
     metrics: [
       { value: "~2.000", label: "Mensajes por día en peak" },
       { value: "150+", label: "Tickets en un día" },

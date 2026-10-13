@@ -311,7 +311,7 @@ export const industries = [
     logo: "/images/melonhelp-logo.png",
     servicio: "chatbot",
     heroCaseId: "telecomunicaciones-1",
-    summary: "Tickets y agente de IA con Melon Help, nuestra plataforma de atención.",
+    summary: "Tickets y agente de IA con Melon Help, plataforma de la que somos partner implementador.",
     caseIds: ["telecomunicaciones-1"],
     exception:
       "El agente responde bien lo que está documentado. Por eso el plazo depende de cuánto hay que ordenar la base de conocimiento antes de encenderlo.",
