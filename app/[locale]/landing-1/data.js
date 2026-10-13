@@ -296,7 +296,7 @@ export const resultados = {
 };
 
 const iaSoporte = () => {
-  const mensajes = clean(metric("telecomunicaciones-1", "Mensajes por día en peak"));
+  const mensajes = clean(metric("telecomunicaciones-1", "Mensajes al día en los días de más demanda"));
   const tickets = metric("telecomunicaciones-1", "Tickets en un día");
   const turno = metric("telecomunicaciones-1", "Primera respuesta con IA");
   const plataforma = products.find((p) => p.key === "melonhelp")?.name;

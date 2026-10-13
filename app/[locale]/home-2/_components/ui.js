@@ -1,137 +1,82 @@
-import NextLink from "next/link";
+// Piezas de interfaz compartidas del home /home-2.
+// Paleta: azul marino #00182B, teal de marca rgb(3,150,149) = #039695.
+// Teal oscuro #027a79 para texto chico sobre blanco (contraste AA) y
+// teal claro #4fd1d0 para texto chico sobre azul marino.
+
 import { Link } from "@/i18n/routing";
+import { contactHref } from "@/libs/landingFacts";
+import { VARIANT } from "../data";
+import Icon from "./icons";
 
-// Piezas visuales compartidas por las secciones de /home-2 (sin estado).
+export const container = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
 
-export const container = "mx-auto w-full max-w-[1200px] px-4 md:px-6";
-export const sectionPad = "py-16 md:py-24";
-export const sectionBase = `scroll-mt-20 border-t h2-line ${sectionPad}`;
+const btnBase =
+  "inline-flex min-h-[56px] items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-lg font-bold transition duration-200 hover:-translate-y-0.5 motion-reduce:transform-none";
 
-export function SectionHeader({ eyebrow, title, body, id, className = "" }) {
-  return (
-    <div className={`max-w-3xl ${className}`}>
-      {eyebrow && <p className="h2-eyebrow">{eyebrow}</p>}
-      <h2
-        id={id}
-        className="mt-3 text-[1.75rem] font-semibold leading-tight tracking-tight text-white md:text-4xl"
-      >
-        {title}
-      </h2>
-      {body && <p className="h2-text mt-4 text-base leading-relaxed md:text-lg">{body}</p>}
-    </div>
-  );
+export const btnPrimary = `${btnBase} bg-[#039695] text-[#00182B] shadow-lg shadow-[#039695]/25 hover:bg-[#0bb3b1]`;
+export const btnNavy = `${btnBase} bg-[#00182B] text-white shadow-lg shadow-[#00182B]/20 hover:bg-[#0b2c47]`;
+export const btnOutlineDark = `${btnBase} border-2 border-white/40 text-white hover:border-white hover:bg-white/10`;
+export const btnOutlineLight = `${btnBase} border-2 border-[#00182B]/25 text-[#00182B] hover:border-[#00182B] hover:bg-[#00182B]/5`;
+
+export const textLink =
+  "inline-flex items-center gap-2 text-lg font-bold underline-offset-4 hover:underline";
+
+// Enlace al formulario de contacto con el servicio de la sección.
+export function ctaHref(servicio) {
+  return servicio ? contactHref(VARIANT, { servicio }) : contactHref(VARIANT);
 }
 
-export function Chips({ items = [], className = "", label = "Sistemas" }) {
-  if (!items.length) return null;
+export function CtaButton({
+  servicio,
+  children = "Agenda una reunión",
+  variant = "primary",
+  className = "",
+}) {
+  const cls = variant === "navy" ? btnNavy : btnPrimary;
   return (
-    <ul className={`flex flex-wrap gap-1.5 ${className}`} aria-label={label}>
-      {items.map((item) => (
-        <li key={item} className="h2-chip">
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-// Enlace interno del sitio (con prefijo de idioma).
-export function TextLink({ href, children, className = "", ...rest }) {
-  return (
-    <Link href={href} className={`h2-link ${className}`} {...rest}>
+    <Link href={ctaHref(servicio)} className={`${cls} ${className}`}>
       {children}
+      <Icon name="arrow" className="h-5 w-5" />
     </Link>
   );
 }
 
-// Enlace a un post del blog: el blog vive en /blog sin prefijo de idioma.
-// Si el post todavía no se publica, va como texto plano.
-export function GuideLink({ slug, publicados, children, className = "" }) {
-  if (!publicados?.has(slug)) return <span className={`h2-muted ${className}`}>{children}</span>;
+export function Eyebrow({ children, dark = false, className = "" }) {
+  const tone = dark
+    ? "border-white/15 bg-white/5 text-[#4fd1d0]"
+    : "border-[#039695]/20 bg-[#039695]/10 text-[#027a79]";
   return (
-    <NextLink href={`/blog/${slug}`} className={`h2-link ${className}`}>
-      {children}
-    </NextLink>
-  );
-}
-
-// Saca de una lista los posts programados que todavía no se publican: un
-// título gris sin enlace se lee como enlace roto. Las páginas (href) quedan.
-// Con revalidate cada hora, el post aparece solo el día que se publica.
-export function visibleLinks(items = [], publicados) {
-  return items.filter((item) => (item.href ? true : Boolean(item.slug && publicados?.has(item.slug))));
-}
-
-// Enlace de una lista mixta: página del sitio o post del blog.
-export function MixedLink({ item, publicados, className = "" }) {
-  if (item.kind === "post") {
-    return (
-      <GuideLink slug={item.slug} publicados={publicados} className={className}>
-        {item.label}
-      </GuideLink>
-    );
-  }
-  return (
-    <TextLink href={item.href} className={className}>
-      {item.label}
-    </TextLink>
-  );
-}
-
-// Ficha de caso: cifra arriba, texto, sector, sistemas y enlace a la industria.
-export function CaseCard({ card, topLabel, headingLevel = "p" }) {
-  const Heading = headingLevel;
-  return (
-    <article className="h2-card flex h-full flex-col p-5 md:p-6">
-      {topLabel && <p className="h2-mono h2-muted mb-3 text-xs">{topLabel}</p>}
-      <Heading className="h2-num text-[1.625rem] font-semibold leading-tight text-white md:text-3xl">
-        {card.figure}
-      </Heading>
-      <p className="h2-text mt-2 text-[15px] leading-relaxed">{card.text}</p>
-      <p className="h2-mono h2-muted mt-4 text-xs">{card.sector}</p>
-      {card.chips?.length > 0 && <Chips items={card.chips} className="mt-3" />}
-      <div className="mt-auto pt-5">
-        <TextLink href={card.href} className="inline-flex min-h-11 items-center text-sm font-medium">
-          {card.linkLabel}
-        </TextLink>
-      </div>
-    </article>
-  );
-}
-
-export function Chevron({ className = "" }) {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      className={`h-5 w-5 shrink-0 ${className}`}
-      aria-hidden="true"
+    <p
+      className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-base font-semibold ${tone} ${className}`}
     >
-      <path d="M5 7.5l5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+      <span className="h-2 w-2 rounded-full bg-[#039695]" aria-hidden="true" />
+      {children}
+    </p>
   );
 }
 
-// Estilos del botón principal sobre ButtonMain (texto oscuro sobre acento: 4,8:1).
-export const primaryButtonStyle = {
-  backgroundColor: "rgb(3,150,149)",
-  color: "#00182B",
-  border: "none",
-  borderRadius: "8px",
-};
-
-export const primaryButtonClass =
-  "inline-flex min-h-12 items-center justify-center text-center text-base font-bold leading-tight transition hover:brightness-110";
-
-export const secondaryButtonStyle = {
-  backgroundColor: "transparent",
-  color: "#E6F1F5",
-  border: "none",
-  borderRadius: "8px",
-  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.28)",
-};
-
-export const secondaryButtonClass =
-  "inline-flex min-h-12 items-center justify-center text-center text-base font-semibold leading-tight transition-colors hover:bg-white/5";
+export function SectionHeading({ id, eyebrow, title, lead, dark = false, align = "center" }) {
+  const alignCls = align === "center" ? "mx-auto text-center items-center" : "items-start text-left";
+  return (
+    <div className={`flex max-w-3xl flex-col ${alignCls}`}>
+      {eyebrow && <Eyebrow dark={dark}>{eyebrow}</Eyebrow>}
+      <h2
+        id={id}
+        className={`mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl ${
+          dark ? "text-white" : "text-[#00182B]"
+        }`}
+      >
+        {title}
+      </h2>
+      {lead && (
+        <p
+          className={`mt-5 text-lg leading-relaxed sm:text-xl ${
+            dark ? "text-white/80" : "text-slate-700"
+          }`}
+        >
+          {lead}
+        </p>
+      )}
+    </div>
+  );
+}
