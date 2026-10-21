@@ -68,7 +68,7 @@ export const authors = [
   {
     slug: authorSlugs.GabrielToro,
     name: "Gabriel Toro",
-    job: "Equipo Robotipy",
+    job: "Founder & Marketing Director",
     description:
       "Gabriel forma parte del equipo de Robotipy, especializado en automatización de procesos y soluciones RPA para empresas en Chile, Argentina, Colombia y España.",
     avatar: gabrielToroImg,

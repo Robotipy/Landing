@@ -424,7 +424,7 @@ export const equipo = {
     {
       key: "gabriel",
       nombre: "Gabriel Toro",
-      cargo: "Equipo Robotipy",
+      cargo: "Founder & Marketing Director",
       bio: `Trabaja en automatización de procesos y soluciones RPA para clientes en ${facts.clientCountriesText}.`,
     },
   ],

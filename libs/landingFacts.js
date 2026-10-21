@@ -76,9 +76,9 @@ export const team = [
   },
   {
     name: "Gabriel Toro",
-    role: "Equipo Robotipy",
+    role: "Founder & Marketing Director",
     bio: "Trabaja en automatización de procesos y soluciones RPA para clientes en Chile, Argentina, Colombia y España.",
-    image: "/landing-team/gabriel-toro.jpeg",
+    image: "/landing-team/gabriel-toro-retrato.jpeg",
   },
 ];
 

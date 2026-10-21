@@ -23,7 +23,7 @@ const team = [
   },
   {
     name: "Gabriel Toro",
-    role: "Equipo Robotipy",
+    role: "Founder & Marketing Director",
     text: "Especializado en automatización de procesos y soluciones RPA para empresas en Chile, Argentina, Colombia y España.",
     image: gabrielToroImg,
   },

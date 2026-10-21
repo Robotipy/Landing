@@ -10,9 +10,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
  * @param {string} options.html - Email HTML content
  * @param {string} [options.from] - From email (defaults to env var)
  * @param {string} [options.replyTo] - Reply-to email
+ * @param {Array<{filename: string, content: Buffer}>} [options.attachments] - Archivos adjuntos
  * @returns {Promise<Object>} - Resend response
  */
-export const sendResendEmail = async ({ to, subject, html, from, replyTo }) => {
+export const sendResendEmail = async ({ to, subject, html, from, replyTo, attachments }) => {
   const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'Robotipy <noreply@robotipy.com>';
   
   const response = await resend.emails.send({
@@ -21,6 +22,7 @@ export const sendResendEmail = async ({ to, subject, html, from, replyTo }) => {
     subject,
     html,
     ...(replyTo && { replyTo }),
+    ...(attachments?.length && { attachments }),
   });
 
   return response;
