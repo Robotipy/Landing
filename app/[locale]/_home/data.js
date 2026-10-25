@@ -41,6 +41,7 @@ const casePicks = [
     id: "servicios-profesionales-1",
     kind: "Analítica de video",
     name: "Conteo de tráfico con IA",
+    metric: 0,
     image: "/assets/banners/sector-publico.jpg",
     position: "object-left",
   },

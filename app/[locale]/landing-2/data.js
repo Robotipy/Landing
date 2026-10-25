@@ -193,10 +193,10 @@ const REPO_CASES = [
     const [video, processing] = String(metric(c, 0)).split(":");
     return {
       figure: `${video}\u00a0h de video en ${processing}\u00a0h`,
-      label: "de proceso, con conteo por zonas y alertas",
+      label: "de proceso, con conteo por zona",
       sector: "Municipio",
       summary:
-        "YOAO, nuestra plataforma de video con IA, procesa video en vivo o grabado de las cámaras que el municipio ya tenía, cuenta y clasifica vehículos y personas, y genera alertas por zona.",
+        "YOAO, nuestra plataforma de video con IA, procesa el video grabado con dron y con cámaras fijas, y cuenta y clasifica vehículos y personas por zona, sin aforadores en terreno.",
       systems: ["YOAO", "Cámaras existentes", "Python"],
     };
   }),

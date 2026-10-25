@@ -360,7 +360,7 @@ export const iaAplicada = {
     getCase("sector-publico-1")
       ? {
           texto:
-            "Analítica de video para un municipio: conteo y clasificación de vehículos y personas, con zonas y alertas, sobre cámaras existentes o video grabado.",
+            "Analítica de video para un municipio: conteo y clasificación de vehículos y personas por zona, sobre video grabado con dron y con cámaras fijas.",
         }
       : null,
     {

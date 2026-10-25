@@ -12,6 +12,7 @@ export const categorySlugs = {
   logistica: "logistica",
   capacitacion: "capacitacion",
   casosDeExito: "casos-de-exito",
+  visionArtificial: "vision-artificial",
 };
 
 // All the blog categories data display in the /blog/category/[categoryI].js pages.
@@ -78,5 +79,14 @@ export const categories = [
       "Casos reales de automatización RPA e inteligencia artificial en empresas de Latinoamérica",
     descriptionShort:
       "Casos de éxito reales",
+  },
+  {
+    slug: categorySlugs.visionArtificial,
+    title: "Visión artificial",
+    titleShort: "Visión artificial",
+    description:
+      "Analítica de video y visión artificial para contar vehículos y personas, medir filas y estacionamientos, y controlar la seguridad con cámaras existentes",
+    descriptionShort:
+      "Analítica de video con IA",
   },
 ];

@@ -50,9 +50,11 @@ import { post as comoElegirUnPartnerDeRpaEnLatam } from "./posts/como-elegir-un-
 import { post as rpaEnLaCadenaDeSuministro } from "./posts/rpa-en-la-cadena-de-suministro.js";
 import { post as de1RobotAUnCentroDeExcelenciaDeAutomatizacion } from "./posts/de-1-robot-a-un-centro-de-excelencia-de-automatizacion.js";
 import { post as staffAugmentationEnAutomatizacion } from "./posts/staff-augmentation-en-automatizacion.js";
+import { post as analiticaDeVideoParaMunicipios } from "./posts/analitica-de-video-para-municipios.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  analiticaDeVideoParaMunicipios,
   staffAugmentationEnAutomatizacion,
   de1RobotAUnCentroDeExcelenciaDeAutomatizacion,
   rpaEnLaCadenaDeSuministro,

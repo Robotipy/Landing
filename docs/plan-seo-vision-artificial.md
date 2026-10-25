@@ -54,6 +54,20 @@ Cada subpágina usa el mismo diseño de la pilar (video, texto, FAQ con schema) 
 
 ## 5. Contenido de blog
 
+Publicado el 25 de octubre de 2026: "Analítica de video para municipios: qué medir con las cámaras que ya tienen" (`/blog/analitica-de-video-para-municipios`, categoría Visión artificial). Usa la investigación de 11 municipios de la vault y el piloto con el municipio de San Miguel (Buenos Aires) en forma anónima.
+
+Calendario propuesto, un artículo por semana:
+
+| Semana | Artículo |
+|---|---|
+| 27 oct | Cómo hacer un aforo vehicular: formato, plantilla en Excel y cómo automatizarlo |
+| 3 nov | Caso de éxito: aforo con dron y cámara fija en un municipio del Gran Buenos Aires (con nombre si San Miguel lo autoriza) |
+| 10 nov | Analítica de video en cámaras Hikvision y Dahua: qué trae la cámara y qué no |
+| 17 nov | Cámaras con IA: ¿comprar nuevas o agregar IA a las que ya tienes? |
+| 24 nov | Lectura de patentes en Chile: cómo funciona y qué exige la Ley 21.719 |
+| 1 dic | Contador de personas para tiendas y oficinas de atención |
+| 8 dic | Detección de EPP con IA en faenas |
+
 Ordenado por prioridad. Los dos primeros apuntan a búsquedas que hoy hacen los compradores más probables de YOAO.
 
 | # | Título tentativo | Keyword | Tipo |

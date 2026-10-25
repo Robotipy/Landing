@@ -175,8 +175,8 @@ const es = {
         solution:
           "Procesamos el video de sus cámaras para contar y clasificar vehículos y personas, definir zonas de interés y marcar los eventos relevantes.",
         metrics: [
+          { value: "~3%", label: "Diferencia con el conteo manual en cámara fija" },
           { value: "1:1,2", label: "Hora de video vs. tiempo de proceso" },
-          { value: "Zonas", label: "Conteo y eventos por área" },
         ],
         href: "/casos-exito/sector-publico",
       },
@@ -184,12 +184,12 @@ const es = {
         industry: "Ingeniería vial",
         title: "Clasificación de vehículos para estudios de tránsito",
         challenge:
-          "Revisar los videos de cada estudio para contar y clasificar vehículos tomaba una semana de trabajo manual.",
+          "Revisar los videos de cada estudio para contar y clasificar vehículos tomaba días de trabajo manual.",
         solution:
           "Un modelo clasifica los vehículos de cada video y entrega el reporte consolidado en Excel, listo para el informe.",
         metrics: [
-          { value: "1 día", label: "Por estudio, antes 7 días" },
-          { value: "86%", label: "Menos tiempo de revisión" },
+          { value: "0", label: "Errores de clasificación en 10 sesiones" },
+          { value: "Horas", label: "Por estudio, antes días" },
         ],
         href: "/casos-exito/servicios-profesionales",
       },
@@ -246,7 +246,7 @@ const es = {
   },
   yoao: {
     title: "¿Necesitas un estudio o una medición puntual?",
-    text: "Para aforos, filas, estacionamientos o auditorías de seguridad no hace falta un desarrollo a medida. Subes el video a YOAO, marcas las zonas en la imagen y recibes conteos, tiempos y eventos listos para tu informe. Pagas por hora de video analizada.",
+    text: "Para aforos, filas, estacionamientos o auditorías de seguridad no hace falta un desarrollo a medida. Subes el video a YOAO, marcas las zonas en la imagen y recibes conteos, tiempos y eventos listos para tu informe. Pagas USD 7 por hora de video analizada.",
     buttons: [
       { text: "Conocer YOAO", href: "/analysis" },
       { text: "Calcula el costo de un aforo", href: "/calculadora-aforo-vehicular" },
@@ -273,7 +273,7 @@ const es = {
     },
     {
       q: "¿Cuánto cuesta un proyecto de visión artificial?",
-      a: "Si el caso se resuelve con YOAO, pagas por hora de video analizada, sin costo fijo. Un proyecto a medida con 1 a 4 cámaras parte en torno a USD 10.000 y puede superar los USD 40.000 en control de calidad de alta exigencia. Puedes estimar tu caso en la calculadora de costo de visión artificial.",
+      a: "Si el caso se resuelve con YOAO, pagas USD 7 por hora de video analizada, sin costo fijo. Un proyecto a medida con 1 a 4 cámaras parte en torno a USD 10.000 y puede superar los USD 40.000 en control de calidad de alta exigencia. Puedes estimar tu caso en la calculadora de costo de visión artificial.",
     },
     {
       q: "¿Cuánto demora implementar visión artificial?",
@@ -281,7 +281,7 @@ const es = {
     },
     {
       q: "¿Pueden analizar el video de mis cámaras en vivo?",
-      a: "Sí, como proyecto a medida. Conectamos tus cámaras para procesar el video mientras se graba y enviar alertas en el momento, por ejemplo cuando alguien entra sin casco a una zona o cuando una fila supera un largo definido. Si lo que necesitas es un estudio o una medición, YOAO trabaja sobre video grabado y entrega resultados el mismo día.",
+      a: "Sí, como proyecto a medida. Conectamos tus cámaras para procesar el video mientras se graba y enviar alertas en el momento, por ejemplo cuando alguien entra sin casco a una zona o cuando una fila supera un largo definido. El análisis en vivo se cotiza aparte, porque procesa video de forma continua. Si lo que necesitas es un estudio o una medición, YOAO trabaja sobre video grabado y entrega resultados el mismo día.",
     },
     {
       q: "¿Qué pasa con la privacidad de las personas que aparecen en el video?",
@@ -459,20 +459,20 @@ const en = {
         solution:
           "We process the footage from its cameras to count and classify vehicles and people, define zones of interest and flag relevant events.",
         metrics: [
+          { value: "~3%", label: "Difference from manual counts on a fixed camera" },
           { value: "1:1.2", label: "Hours of video vs. processing time" },
-          { value: "Zones", label: "Counts and events by area" },
         ],
       },
       {
         industry: "Road engineering",
         title: "Vehicle classification for traffic studies",
         challenge:
-          "Reviewing the footage of each study to count and classify vehicles took a week of manual work.",
+          "Reviewing the footage of each study to count and classify vehicles took days of manual work.",
         solution:
           "A model classifies the vehicles in each video and delivers a consolidated Excel report, ready for the study.",
         metrics: [
-          { value: "1 day", label: "Per study, down from 7" },
-          { value: "86%", label: "Less review time" },
+          { value: "0", label: "Classification errors in 10 sessions" },
+          { value: "Hours", label: "Per study, down from days" },
         ],
       },
     ],
@@ -528,7 +528,7 @@ const en = {
   },
   yoao: {
     title: "Need a one-off study or measurement?",
-    text: "For traffic counts, queues, parking or safety audits you don't need custom development. Upload the video to YOAO, draw the zones on the image and get counts, times and events ready for your report. You pay per hour of video analyzed.",
+    text: "For traffic counts, queues, parking or safety audits you don't need custom development. Upload the video to YOAO, draw the zones on the image and get counts, times and events ready for your report. You pay USD 7 per hour of video analyzed.",
     buttons: [{ text: "Learn about YOAO", href: "/analysis" }],
   },
   live: {
@@ -552,7 +552,7 @@ const en = {
     },
     {
       q: "How much does a computer vision project cost?",
-      a: "If YOAO covers the case, you pay per hour of video analyzed, with no fixed fee. A custom project with 1 to 4 cameras starts at around USD 10,000 and can exceed USD 40,000 for demanding quality control.",
+      a: "If YOAO covers the case, you pay USD 7 per hour of video analyzed, with no fixed fee. A custom project with 1 to 4 cameras starts at around USD 10,000 and can exceed USD 40,000 for demanding quality control.",
     },
     {
       q: "How long does it take to implement computer vision?",
@@ -560,7 +560,7 @@ const en = {
     },
     {
       q: "Can you analyze my camera feeds live?",
-      a: "Yes, as a custom project. We connect your cameras to process the video as it is recorded and send instant alerts, for example when someone enters a zone without a hard hat or when a queue exceeds a set length. If you need a study or measurement, YOAO works on recorded video and delivers results the same day.",
+      a: "Yes, as a custom project. We connect your cameras to process the video as it is recorded and send instant alerts, for example when someone enters a zone without a hard hat or when a queue exceeds a set length. Live analysis is quoted separately because it processes video continuously. If you need a study or measurement, YOAO works on recorded video and delivers results the same day.",
     },
     {
       q: "What about the privacy of people who appear on video?",

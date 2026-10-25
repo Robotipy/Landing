@@ -10,15 +10,14 @@ export default function ServiciosProfesionalesSuccessCases() {
       id: 1,
       industry: "Ingeniería Vial",
       challenge:
-        "Reducir el costo de revisar videos de transito manteniendo la precisión en el conteo y clasificaciónde vehiculos",
+        "Reducir el costo de revisar los videos de cada estudio de tránsito sin perder precisión en el conteo y la clasificación de vehículos.",
       solution:
-        "Se construyó un sistema de IA que clasifica los vehiculos en videos de transito, generando un reporte en excel con la información consolidada.",
-      results: {
-        manualExecution: "7 días",
-        automatedExecution: "1 día",
-        timeSaving: "86%",
-      },
-      name: "Traffic Analysis",
+        "Se construyó un sistema de IA que clasifica los vehículos de cada video de tránsito y entrega un reporte en Excel con la información consolidada.",
+      metrics: [
+        { value: "Horas", label: "Para revisar un estudio que antes tomaba días" },
+        { value: "0", label: "Errores de clasificación en 10 sesiones" },
+      ],
+      name: "Conteo y clasificación de vehículos",
       tools: ["python", "javascript"],
       platform: "robotipy",
     },
