@@ -9,7 +9,7 @@ import Solutions from "@/components/Solutions";
 import MapsSolutions from "@/components/MapsSolutions";
 import CasosDeExito from "@/components/CasosDeExito";
 import ProductsShowcase from "@/components/ProductsShowcase";
-import HomePage from "./_home/HomePage";
+import HomeNueva from "./home-4/_components/HomeNueva";
 
 // La home nueva solo existe en español. Inglés y portugués siguen con la
 // home anterior, que sí está traducida.
@@ -17,7 +17,7 @@ export default async function Home({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  if (locale === "es") return <HomePage />;
+  if (locale === "es") return <HomeNueva />;
 
   return (
     <>

@@ -1,4 +1,4 @@
-// Contenido de la propuesta /home-4 (estructura de consultora: Quiénes somos,
+// Contenido de la home principal en español (estructura de consultora: Quiénes somos,
 // Qué hacemos, Perspectivas). Los datos sobre Robotipy salen de
 // libs/landingFacts.js y libs/successCases.js.
 
@@ -43,6 +43,7 @@ export const MENU = [
           { label: "Robots de software (RPA)", href: "/automation" },
           { label: "Agentes de IA y chatbots", href: "/chatbot" },
           { label: "Software a medida", href: "/desarrollo-software" },
+          { label: "Visión artificial", href: "/vision-artificial" },
           { label: "Capacitación", href: "/capacitaciones" },
           { label: "Qué es RPA", href: "/rpa" },
         ],
@@ -131,9 +132,9 @@ export const SERVICES = [
     alt: "Tablero de Robotipy Projects",
   },
   {
-    title: "Analítica de video",
-    text: "Tus cámaras convertidas en datos: conteo de vehículos y personas, zonas y alertas con YOAO.",
-    href: "/analysis",
+    title: "Visión artificial",
+    text: "Tus cámaras convertidas en datos, en vivo o grabado: conteo de vehículos y personas, filas, seguridad y control de calidad. Para estudios y mediciones usamos YOAO, nuestra plataforma de analítica de video.",
+    href: "/vision-artificial",
     image: "/home-assets/yoao-dron.jpg",
     w: 1642,
     h: 923,

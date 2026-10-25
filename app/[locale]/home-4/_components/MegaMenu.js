@@ -38,7 +38,7 @@ export default function MegaMenu() {
   return (
     <header ref={ref} className="fixed inset-x-0 top-0 z-50 bg-[#00182B] text-white">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <Link href="/home-4" className="flex shrink-0 items-center gap-2" onClick={() => setOpen(null)}>
+        <Link href="/" className="flex shrink-0 items-center gap-2" onClick={() => setOpen(null)}>
           <Image src={logo} alt="Robotipy" width={28} height={28} priority />
           <span className="text-lg font-bold tracking-tight">Robotipy</span>
         </Link>
