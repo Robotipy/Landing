@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import config from "@/config";
 import logo from "@/app/icon.png";
 
 const Footer = () => {
   const t = useTranslations("footer");
+  const locale = useLocale();
   return (
     <footer className="border-t border-base-content/10 text-white">
       <div className="px-8 md:px-12 mx-auto py-24">
@@ -94,7 +95,7 @@ const Footer = () => {
                   {t("sections.solutions.software")}
                 </Link>
                 <Link
-                  href="/vision-artificial"
+                  href={locale === "en" ? "/computer-vision" : "/vision-artificial"}
                   className="link link-hover text-start"
                 >
                   {t("sections.solutions.computerVision")}

@@ -24,8 +24,16 @@ const esOnlyPrefixes = [
   "/services",
   "/success-cases",
   "/tos",
-  "/vision-artificial",
 ];
+
+// Paginas con slug distinto en ingles (ruta en espanol: ruta en ingles). Se
+// publican las dos versiones con hreflang entre ellas; portugues redirige a
+// espanol desde middleware.js.
+const translatedPages = { "/vision-artificial": "/computer-vision" };
+const translatedFromEn = Object.fromEntries(
+  Object.entries(translatedPages).map(([es, en]) => [en, es])
+);
+
 const isEsOnly = (pathWithoutLocale) =>
   esOnlyPrefixes.some(
     (prefix) => pathWithoutLocale === prefix || pathWithoutLocale.startsWith(`${prefix}/`)
@@ -50,6 +58,8 @@ module.exports = {
     "/*/home-*",
     // Postulaciones: noindex.
     "/*/trabaja-con-nosotros",
+    // La version en ingles de vision artificial no existe en /es ni /pt.
+    "/es/computer-vision",
     // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
@@ -60,6 +70,24 @@ module.exports = {
   transform: async (config, p) => {
     const localeMatch = p.match(/^\/([a-z]{2})(\/|$)/);
     const pathLocale = localeMatch ? localeMatch[1] : null;
+    const pathAfterLocale = pathLocale ? p.replace(`/${pathLocale}`, "") || "/" : p;
+    const esPath =
+      pathLocale === "en"
+        ? translatedFromEn[pathAfterLocale]
+        : pathLocale === defaultLocale && translatedPages[pathAfterLocale]
+          ? pathAfterLocale
+          : null;
+    if (esPath) {
+      return {
+        loc: p,
+        changefreq: config.changefreq,
+        priority: config.priority,
+        alternateRefs: [
+          { href: `${config.siteUrl}/es${esPath}`, hreflang: "es" },
+          { href: `${config.siteUrl}/en${translatedPages[esPath]}`, hreflang: "en" },
+        ].map((ref) => ({ ...ref, hrefIsAbsolute: true })),
+      };
+    }
     if (pathLocale && pathLocale !== defaultLocale) {
       return null;
     }
