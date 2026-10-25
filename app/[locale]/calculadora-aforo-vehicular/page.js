@@ -46,6 +46,11 @@ const relatedLinks = [
     description: "Para proyectos industriales: control de calidad, EPP, calibre o inventario.",
   },
   {
+    href: "/vision-artificial",
+    title: "Visión artificial para empresas",
+    description: "Filas, estacionamientos, patio logístico, seguridad y proyectos a medida.",
+  },
+  {
     href: "/evaluador-automatizacion",
     title: "Evaluador de automatización de procesos",
     description: "Descubre si otros procesos de tu empresa se pueden automatizar.",

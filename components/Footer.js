@@ -93,6 +93,12 @@ const Footer = () => {
                 >
                   {t("sections.solutions.software")}
                 </Link>
+                <Link
+                  href="/vision-artificial"
+                  className="link link-hover text-start"
+                >
+                  {t("sections.solutions.computerVision")}
+                </Link>
               </div>
             </div>
             <div className="w-full md:w-auto px-4">

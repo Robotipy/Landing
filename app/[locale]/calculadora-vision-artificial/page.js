@@ -31,6 +31,11 @@ const costItems = [
 
 const relatedLinks = [
   {
+    href: "/vision-artificial",
+    title: "Visión artificial para empresas",
+    description: "Casos de uso, casos reales y cómo trabajamos un proyecto de visión artificial.",
+  },
+  {
     href: "/calculadora-aforo-vehicular",
     title: "Calculadora de costo de aforo vehicular",
     description: "Si lo que necesitas es contar vehículos o peatones, compara el conteo manual con el análisis de video.",

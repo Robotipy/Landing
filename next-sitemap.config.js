@@ -24,6 +24,7 @@ const esOnlyPrefixes = [
   "/services",
   "/success-cases",
   "/tos",
+  "/vision-artificial",
 ];
 const isEsOnly = (pathWithoutLocale) =>
   esOnlyPrefixes.some(

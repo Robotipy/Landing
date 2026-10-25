@@ -13,6 +13,7 @@
 - Automatizacion de procesos: https://www.robotipy.com/es/automation
 - Desarrollo de software: https://www.robotipy.com/es/desarrollo-software
 - Capacitaciones: https://www.robotipy.com/es/capacitaciones
+- Vision artificial para empresas: https://www.robotipy.com/es/vision-artificial
 
 ## Productos
 - Projects: https://www.robotipy.com/es/projects
