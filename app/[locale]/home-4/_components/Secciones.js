@@ -8,6 +8,11 @@ import { INDUSTRIES, SERVICES } from "./data";
 
 export const wrap = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
 
+// En móvil las listas largas se deslizan en horizontal en vez de apilarse.
+const scroller =
+  "-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden";
+const scrollerItem = "w-[82%] shrink-0 snap-start sm:w-auto";
+
 // Franja de color con el nombre de la sección. Queda fija bajo el menú
 // mientras se recorre la sección (como las etiquetas de Deloitte).
 export function Banda({ children, tone = "teal" }) {
@@ -32,11 +37,11 @@ export function Declaracion() {
   ];
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Mapa de puntos: el mundo se desvanece bajo el texto y los pilares; los países con clientes (Chile, Argentina, Colombia y España) quedan siempre visibles */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-30 lg:opacity-100 lg:[mask-image:linear-gradient(90deg,rgba(0,0,0,.08)_0%,rgba(0,0,0,.08)_42%,#000_51%,#000_61%,rgba(0,0,0,.12)_69%,rgba(0,0,0,.12)_100%)] lg:[-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.08)_0%,rgba(0,0,0,.08)_42%,#000_51%,#000_61%,rgba(0,0,0,.12)_69%,rgba(0,0,0,.12)_100%)]">
+      {/* Mapa de puntos: el mundo se desvanece bajo el texto y los pilares; los países con clientes (Chile, Argentina, Colombia y España) quedan siempre visibles. Solo desde lg: en móvil queda encima del texto. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block lg:[mask-image:linear-gradient(90deg,rgba(0,0,0,.08)_0%,rgba(0,0,0,.08)_42%,#000_51%,#000_61%,rgba(0,0,0,.12)_69%,rgba(0,0,0,.12)_100%)] lg:[-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.08)_0%,rgba(0,0,0,.08)_42%,#000_51%,#000_61%,rgba(0,0,0,.12)_69%,rgba(0,0,0,.12)_100%)]">
         <img src="/home-4/mundo-base.svg" alt="" className="absolute left-1/2 top-[46%] h-auto w-[170%] max-w-none -translate-y-1/2 translate-x-[-30%] lg:top-1/2 lg:h-[92%] lg:w-auto lg:translate-x-[-23.5%]" />
       </div>
-      <img src="/home-4/mundo-paises.svg" alt="" aria-hidden="true" className="pointer-events-none absolute left-1/2 top-[46%] h-auto w-[170%] max-w-none -translate-y-1/2 translate-x-[-30%] lg:top-1/2 lg:h-[92%] lg:w-auto lg:translate-x-[-23.5%] opacity-70 lg:opacity-90" />
+      <img src="/home-4/mundo-paises.svg" alt="" aria-hidden="true" className="pointer-events-none absolute hidden lg:block left-1/2 top-[46%] h-auto w-[170%] max-w-none -translate-y-1/2 translate-x-[-30%] lg:top-1/2 lg:h-[92%] lg:w-auto lg:translate-x-[-23.5%] lg:opacity-90" />
       <div className={`${wrap} relative grid gap-14 py-20 sm:py-28 lg:grid-cols-12 lg:gap-16`}>
         <div className="lg:col-span-6">
           <div className="h-1 w-16 bg-[#039695]" />
@@ -90,10 +95,10 @@ export function LoUltimo() {
     <section className="bg-[#f5f8f8]">
       <Banda tone="teal">Perspectivas</Banda>
       <div className={`${wrap} py-16 sm:py-20`}>
-        <h2 className="text-center text-4xl font-light text-[#00182B]">Lo último en Robotipy</h2>
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <h2 className="text-center text-3xl font-light text-[#00182B] sm:text-4xl">Lo último en Robotipy</h2>
+        <ul className={`mt-12 ${scroller} sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-4`}>
           {posts.map((p) => (
-            <li key={p.slug}>
+            <li key={p.slug} className={scrollerItem}>
               <NextLink
                 href={`/blog/${p.slug}`}
                 className="group flex h-full flex-col bg-white shadow-sm ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-lg"
@@ -125,12 +130,12 @@ export function Industrias() {
       <div className={`${wrap} py-16 sm:py-20`}>
         <h2 className="text-4xl font-light text-[#00182B]">Conocemos tu industria</h2>
         <p className="mt-4 max-w-2xl text-lg text-slate-600">Casos reales en cada sector, con el antes y el después.</p>
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {INDUSTRIES.map((i) => (
             <li key={i.href}>
-              <Link href={i.href} className="group relative block aspect-[16/9] overflow-hidden bg-[#00182B]">
+              <Link href={i.href} className="group relative block aspect-[4/3] overflow-hidden bg-[#00182B] sm:aspect-[16/9]">
                 <Image src={i.image} alt="" fill sizes="(min-width:1024px) 400px, 50vw" className={`object-cover ${i.position || "object-center"} opacity-75 transition duration-500 group-hover:scale-105 group-hover:opacity-55`} />
-                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#00182B] to-transparent p-5 text-xl font-semibold text-white">
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#00182B] to-transparent p-3 text-base font-semibold text-white sm:p-5 sm:text-xl">
                   {i.label}
                 </span>
               </Link>
@@ -250,9 +255,9 @@ export function CasosDestacados() {
             Ver todos los casos →
           </Link>
         </div>
-        <ul className="mt-12 grid gap-px overflow-hidden bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className={`mt-12 ${scroller} sm:grid sm:grid-cols-2 sm:gap-px sm:bg-white/10 lg:grid-cols-3`}>
           {cases.map((c) => (
-            <li key={c.id} className="bg-[#00182B]">
+            <li key={c.id} className={`${scrollerItem} border border-white/10 bg-[#00182B] sm:border-0`}>
               <Link href={c.href} className="group flex h-full flex-col p-7 transition hover:bg-[#0b2c47]">
                 <p className="text-sm text-white/60">{c.industry}</p>
                 <p className="mt-4 text-5xl font-light text-[#4fd1d0]">{c.figure}</p>
