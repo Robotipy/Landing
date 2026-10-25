@@ -87,7 +87,7 @@ export const getSEOTags = ({
       // Bing requires og:image with minimum 1200x630 pixels
       images: openGraph?.images || [
         {
-          url: `${siteOrigin}/images/robotipy-logo.png`,
+          url: `${siteOrigin}/images/og-default.jpg`,
           width: 1200,
           height: 630,
           alt: config.appName,
@@ -103,7 +103,7 @@ export const getSEOTags = ({
       // Twitter card image (also used by Bing as fallback)
       images: openGraph?.images || [
         {
-          url: `${siteOrigin}/images/robotipy-logo.png`,
+          url: `${siteOrigin}/images/og-default.jpg`,
           width: 1200,
           height: 630,
           alt: config.appName,

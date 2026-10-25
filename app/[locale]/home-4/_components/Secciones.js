@@ -156,7 +156,7 @@ export function Boletin() {
 }
 
 export function Cierre() {
-  const big = [
+  const contacto = [
     { label: "Agenda una reunión", href: "/contact-us" },
     { label: "Ver casos de éxito", href: "/success-cases" },
     { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
@@ -164,6 +164,7 @@ export function Cierre() {
     { label: "Trabaja con nosotros", href: "/trabaja-con-nosotros" },
   ];
   const cols = [
+    { title: "Contáctanos", links: contacto },
     { title: "Qué hacemos", links: SERVICES.map((s) => ({ label: s.title, href: s.href })) },
     {
       title: "Productos",
@@ -185,22 +186,8 @@ export function Cierre() {
   ];
   return (
     <footer className="bg-[#00182B] text-white">
-      <div className={`${wrap} grid gap-12 py-16 lg:grid-cols-12`}>
-        <div className="lg:col-span-5">
-          <h2 className="text-4xl font-light">Contáctanos</h2>
-          <ul className="mt-8 space-y-4">
-            {big.map((b) => (
-              <li key={b.href}>
-                {b.anchor ? (
-                  <a href={b.href} className="text-xl font-light text-white/90 hover:text-[#4fd1d0]">{b.label}</a>
-                ) : (
-                  <Link href={b.href} className="text-xl font-light text-white/90 hover:text-[#4fd1d0]">{b.label}</Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-4">
+      <div className={wrap}>
+        <div className="grid gap-8 py-16 sm:grid-cols-2 lg:grid-cols-5">
           {cols.map((c) => (
             <div key={c.title}>
               <p className="text-xs font-semibold uppercase text-[#4fd1d0]">{c.title}</p>

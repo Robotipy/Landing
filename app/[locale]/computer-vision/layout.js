@@ -2,6 +2,7 @@ import { getSEOTags } from "@/libs/seo";
 import {
   PATHS,
   pageUrl,
+  ogImages,
   alternates,
   buildMetadata,
   buildJsonLd,
@@ -17,7 +18,7 @@ export async function generateMetadata() {
       description: m.description,
       keywords: m.keywords,
       canonicalUrlRelative: PATHS.en,
-      openGraph: { title: m.title, description: m.description, url: pageUrl("en") },
+      openGraph: { title: m.title, description: m.description, url: pageUrl("en"), images: ogImages(m.title) },
     }),
     alternates: alternates("en"),
   };

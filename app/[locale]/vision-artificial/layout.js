@@ -1,5 +1,5 @@
 import { getSEOTags } from "@/libs/seo";
-import { PATHS, pageUrl, alternates, buildMetadata, buildJsonLd } from "./content";
+import { PATHS, pageUrl, ogImages, alternates, buildMetadata, buildJsonLd } from "./content";
 
 export async function generateMetadata() {
   const m = buildMetadata("es");
@@ -11,7 +11,7 @@ export async function generateMetadata() {
       description: m.description,
       keywords: m.keywords,
       canonicalUrlRelative: PATHS.es,
-      openGraph: { title: m.title, description: m.description, url: pageUrl("es") },
+      openGraph: { title: m.title, description: m.description, url: pageUrl("es"), images: ogImages(m.title) },
     }),
     alternates: alternates("es"),
   };

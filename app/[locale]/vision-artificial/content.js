@@ -6,6 +6,8 @@ export const PATHS = { es: "/vision-artificial", en: "/computer-vision" };
 
 const siteOrigin = `https://www.${config.domainName.replace(/^www\./, "")}`;
 export const pageUrl = (locale) => `${siteOrigin}/${locale}${PATHS[locale]}`;
+// Imagen al compartir el enlace (1200x630): la toma de dron analizada con YOAO.
+export const ogImages = (alt) => [{ url: `${siteOrigin}/vision/og-vision-artificial.jpg`, width: 1200, height: 630, alt }];
 
 // hreflang entre las dos versiones (getSEOTags asume el mismo slug en todos
 // los idiomas, y aquí el slug cambia).
