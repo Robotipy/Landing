@@ -115,12 +115,14 @@ export const SERVICES = [
   },
   {
     title: "Agentes de IA",
-    text: "Atención por WhatsApp, Slack y correo con agentes que responden con la información real de tu empresa y derivan a una persona cuando hace falta.",
+    text: "Atención por WhatsApp, Slack y correo con agentes que responden en segundos con la información real de tu empresa. Cada conversación queda como un ticket en Melon Help, la plataforma que implementamos como partner, y pasa a una persona cuando hace falta.",
     href: "/chatbot",
-    image: "/home-assets/melon-tablero.jpg",
-    w: 1440,
-    h: 900,
-    alt: "Tablero de tickets de atención en Melon Help",
+    image: "/home-assets/melon-demo.jpg",
+    w: 1280,
+    h: 720,
+    // La demo ya trae su propio diseño: va sin el marco de navegador.
+    frame: false,
+    alt: "Demo de Melon Help: el mensaje llega por WhatsApp, se crea un ticket y el agente de IA responde con la información del servicio",
   },
   {
     title: "Software a medida",

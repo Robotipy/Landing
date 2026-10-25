@@ -27,7 +27,17 @@ export default function ServiciosCarrusel() {
           </Link>
         </div>
         <div className="flex min-h-[340px] items-center justify-center rounded-2xl bg-[#eef3f3] p-5 sm:min-h-[420px] sm:p-10">
-          {s.image ? (
+          {s.image && s.frame === false ? (
+            <Image
+              src={s.image}
+              alt={s.alt}
+              width={s.w}
+              height={s.h}
+              sizes="(min-width:1024px) 560px, 92vw"
+              quality={90}
+              className="h-auto w-full rounded-xl shadow-[0_24px_60px_rgba(0,24,43,0.18)] ring-1 ring-black/5"
+            />
+          ) : s.image ? (
             <div className="w-full overflow-hidden rounded-xl bg-white shadow-[0_24px_60px_rgba(0,24,43,0.18)] ring-1 ring-black/5">
               <div className="flex gap-1.5 border-b border-slate-200 bg-slate-50 px-4 py-2.5" aria-hidden="true">
                 <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />

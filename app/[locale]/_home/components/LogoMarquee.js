@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Segundos que tarda una vuelta completa a velocidad normal.
 const LOOP_SECONDS_DESKTOP = 45;
@@ -23,13 +23,18 @@ export default function LogoMarquee({ logos }) {
   const trackRef = useRef(null);
   const secondCopyRef = useRef(null);
   const target = useRef(1);
+  // Con movimiento reducido no hay banda: se muestran todos los logos quietos.
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!track || reducedMotion) return;
     let offset = 0;
-    let multiplier = reducedMotion ? 0 : 1;
+    let multiplier = 1;
     let last = performance.now();
     let frame;
 
@@ -38,9 +43,7 @@ export default function LogoMarquee({ logos }) {
       last = now;
       const loopWidth = secondCopyRef.current?.offsetLeft || track.scrollWidth / 2;
       const loopSeconds = window.innerWidth < 768 ? LOOP_SECONDS_MOBILE : LOOP_SECONDS_DESKTOP;
-      // Con movimiento reducido solo avanza si la persona lo pide con el mouse.
-      const goal = reducedMotion && target.current === 1 ? 0 : target.current;
-      multiplier += (goal - multiplier) * Math.min(1, dt * 6);
+      multiplier += (target.current - multiplier) * Math.min(1, dt * 6);
       offset += (loopWidth / loopSeconds) * multiplier * dt;
       offset = ((offset % loopWidth) + loopWidth) % loopWidth;
       track.style.transform = `translate3d(${-offset}px, 0, 0)`;
@@ -48,9 +51,12 @@ export default function LogoMarquee({ logos }) {
     };
     frame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [reducedMotion]);
 
-  const handleMouseMove = (e) => {
+  // Solo el mouse cambia la velocidad: en pantallas táctiles el toque llega
+  // como un mousemove sin mouseleave y dejaba la banda casi detenida.
+  const handlePointerMove = (e) => {
+    if (e.pointerType !== "mouse") return;
     const rect = containerRef.current.getBoundingClientRect();
     const ratio = (e.clientX - rect.left) / rect.width;
     if (ratio < EDGE_ZONE) {
@@ -62,7 +68,8 @@ export default function LogoMarquee({ logos }) {
     }
   };
 
-  const renderList = (copy) =>
+  // fit: en la grilla estática los logos anchos se achican a su columna.
+  const renderList = (copy, fit = false) =>
     logos.map((logo, i) => {
       const h = logoHeight(logo.aspect, logo.scale);
       const w = Math.round(h * logo.aspect);
@@ -71,7 +78,7 @@ export default function LogoMarquee({ logos }) {
           key={`${copy ? "b" : "a"}-${logo.src}`}
           ref={copy && i === 0 ? secondCopyRef : undefined}
           aria-hidden={copy || undefined}
-          className="flex h-12 shrink-0 items-center"
+          className={fit ? "flex h-12 min-w-0 items-center justify-center" : "flex h-12 shrink-0 items-center"}
         >
           <Image
             src={logo.src}
@@ -79,18 +86,26 @@ export default function LogoMarquee({ logos }) {
             width={w}
             height={h}
             sizes={`${w * 2}px`}
-            style={{ height: h, width: w }}
+            style={fit ? { height: h, width: w, maxWidth: "100%", objectFit: "contain" } : { height: h, width: w }}
             className="opacity-85"
           />
         </li>
       );
     });
 
+  if (reducedMotion) {
+    return (
+      <ul className="grid min-w-0 flex-1 grid-cols-3 items-center gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-10" aria-label="Clientes de Robotipy">
+        {renderList(false, true)}
+      </ul>
+    );
+  }
+
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
+      onPointerMove={handlePointerMove}
+      onPointerLeave={() => {
         target.current = 1;
       }}
       className="relative min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
