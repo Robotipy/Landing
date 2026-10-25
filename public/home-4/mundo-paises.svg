@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 670" fill="none">
+<style>.p{transform-box:fill-box;transform-origin:center;animation:p 3.2s ease-out infinite}@keyframes p{0%{opacity:.8;transform:scale(.4)}100%{opacity:0;transform:scale(2.4)}}@media (prefers-reduced-motion:reduce){.p{animation:none;opacity:0}}</style>
+<g fill="#039695">
+<circle cx="525" cy="215" r="3.4"/>
+<circle cx="535" cy="215" r="3.4"/>
+<circle cx="545" cy="215" r="3.4"/>
+<circle cx="555" cy="215" r="3.4"/>
+<circle cx="565" cy="215" r="3.4"/>
+<circle cx="545" cy="225" r="3.4"/>
+<circle cx="555" cy="225" r="3.4"/>
+<circle cx="275" cy="375" r="3.4"/>
+<circle cx="285" cy="375" r="3.4"/>
+<circle cx="275" cy="385" r="3.4"/>
+<circle cx="285" cy="385" r="3.4"/>
+<circle cx="295" cy="385" r="3.4"/>
+<circle cx="305" cy="385" r="3.4"/>
+<circle cx="315" cy="385" r="3.4"/>
+<circle cx="295" cy="395" r="3.4"/>
+<circle cx="305" cy="395" r="3.4"/>
+<circle cx="315" cy="395" r="3.4"/>
+<circle cx="305" cy="405" r="3.4"/>
+<circle cx="315" cy="405" r="3.4"/>
+<circle cx="295" cy="415" r="3.4"/>
+<circle cx="305" cy="415" r="3.4"/>
+<circle cx="315" cy="415" r="3.4"/>
+<circle cx="335" cy="485" r="3.4"/>
+<circle cx="335" cy="495" r="3.4"/>
+<circle cx="345" cy="495" r="3.4"/>
+<circle cx="355" cy="495" r="3.4"/>
+<circle cx="365" cy="495" r="3.4"/>
+<circle cx="375" cy="495" r="3.4"/>
+<circle cx="335" cy="505" r="3.4"/>
+<circle cx="345" cy="505" r="3.4"/>
+<circle cx="355" cy="505" r="3.4"/>
+<circle cx="365" cy="505" r="3.4"/>
+<circle cx="375" cy="505" r="3.4"/>
+<circle cx="335" cy="515" r="3.4"/>
+<circle cx="345" cy="515" r="3.4"/>
+<circle cx="355" cy="515" r="3.4"/>
+<circle cx="365" cy="515" r="3.4"/>
+<circle cx="375" cy="515" r="3.4"/>
+<circle cx="325" cy="525" r="3.4"/>
+<circle cx="345" cy="525" r="3.4"/>
+<circle cx="355" cy="525" r="3.4"/>
+<circle cx="365" cy="525" r="3.4"/>
+<circle cx="325" cy="535" r="3.4"/>
+<circle cx="335" cy="535" r="3.4"/>
+<circle cx="345" cy="535" r="3.4"/>
+<circle cx="355" cy="535" r="3.4"/>
+<circle cx="365" cy="535" r="3.4"/>
+<circle cx="325" cy="545" r="3.4"/>
+<circle cx="335" cy="545" r="3.4"/>
+<circle cx="345" cy="545" r="3.4"/>
+<circle cx="355" cy="545" r="3.4"/>
+<circle cx="365" cy="545" r="3.4"/>
+<circle cx="375" cy="545" r="3.4"/>
+<circle cx="325" cy="555" r="3.4"/>
+<circle cx="335" cy="555" r="3.4"/>
+<circle cx="345" cy="555" r="3.4"/>
+<circle cx="355" cy="555" r="3.4"/>
+<circle cx="365" cy="555" r="3.4"/>
+<circle cx="315" cy="565" r="3.4"/>
+<circle cx="325" cy="565" r="3.4"/>
+<circle cx="335" cy="565" r="3.4"/>
+<circle cx="345" cy="565" r="3.4"/>
+<circle cx="355" cy="565" r="3.4"/>
+<circle cx="325" cy="575" r="3.4"/>
+<circle cx="335" cy="575" r="3.4"/>
+<circle cx="345" cy="575" r="3.4"/>
+<circle cx="315" cy="585" r="3.4"/>
+<circle cx="325" cy="585" r="3.4"/>
+<circle cx="335" cy="585" r="3.4"/>
+<circle cx="315" cy="595" r="3.4"/>
+<circle cx="325" cy="595" r="3.4"/>
+<circle cx="335" cy="595" r="3.4"/>
+<circle cx="315" cy="605" r="3.4"/>
+<circle cx="325" cy="605" r="3.4"/>
+<circle cx="315" cy="615" r="3.4"/>
+<circle cx="325" cy="615" r="3.4"/>
+<circle cx="335" cy="615" r="3.4"/>
+<circle cx="325" cy="625" r="3.4"/>
+<circle cx="335" cy="625" r="3.4"/>
+<circle cx="345" cy="625" r="3.4"/>
+</g>
+<circle class="p" style="animation-delay:0.0s" cx="299" cy="394" r="12" stroke="#039695" stroke-width="2"/>
+<circle cx="299" cy="394" r="4.5" fill="#027a79" stroke="#fff" stroke-width="1.5"/>
+<circle class="p" style="animation-delay:0.8s" cx="324" cy="555" r="12" stroke="#039695" stroke-width="2"/>
+<circle cx="324" cy="555" r="4.5" fill="#027a79" stroke="#fff" stroke-width="1.5"/>
+<circle class="p" style="animation-delay:1.6s" cx="348" cy="548" r="12" stroke="#039695" stroke-width="2"/>
+<circle cx="348" cy="548" r="4.5" fill="#027a79" stroke="#fff" stroke-width="1.5"/>
+<circle class="p" style="animation-delay:2.4s" cx="546" cy="218" r="12" stroke="#039695" stroke-width="2"/>
+<circle cx="546" cy="218" r="4.5" fill="#027a79" stroke="#fff" stroke-width="1.5"/>
+</svg>
