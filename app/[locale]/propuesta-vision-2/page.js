@@ -57,16 +57,16 @@ export default async function Propuesta2({ params }) {
           </div>
           <figure className="mt-16">
             <Image
-              src="/vision/aforo-zona.jpg"
-              alt="Cámara de una autopista en YOAO con dos zonas de pistas marcadas y la línea donde se cuentan los vehículos"
-              width={744}
-              height={418}
-              sizes="(min-width:1024px) 900px, 92vw"
+              src="/home-assets/yoao-dron.jpg"
+              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
+              width={1642}
+              height={923}
+              sizes="(min-width:1280px) 1216px, 92vw"
               priority
-              className="h-auto w-full max-w-4xl ring-1 ring-white/10"
+              className="h-auto w-full ring-1 ring-white/10"
             />
             <figcaption className="mt-3 text-sm text-white/50">
-              Marcas las zonas y la línea de conteo sobre tu propio video.
+              Video de dron procesado con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.
             </figcaption>
           </figure>
         </section>

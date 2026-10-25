@@ -49,15 +49,15 @@ export default async function Propuesta1({ params }) {
           </div>
           <figure>
             <Image
-              src="/vision/aforo-zona.jpg"
-              alt="Cámara de una autopista en YOAO con dos zonas de pistas marcadas y la línea donde se cuentan los vehículos"
-              width={744}
-              height={418}
+              src="/home-assets/yoao-dron.jpg"
+              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
+              width={1642}
+              height={923}
               sizes="(min-width:1024px) 600px, 92vw"
               priority
               className="h-auto w-full"
             />
-            <figcaption className="mt-3 text-sm text-slate-500">Zonas y línea de conteo marcadas sobre el video de una autopista en YOAO.</figcaption>
+            <figcaption className="mt-3 text-sm text-slate-500">Video de dron procesado con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.</figcaption>
           </figure>
         </section>
 

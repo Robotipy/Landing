@@ -46,16 +46,16 @@ export default async function Propuesta3({ params }) {
 
           <figure className="mx-auto mt-14 w-full max-w-4xl px-5">
             <Image
-              src="/vision/aforo-resultados.jpg"
-              alt="Resultados de un aforo en YOAO: vehículos por categoría cada 5 minutos, video anotado y tabla por pista"
-              width={1280}
-              height={636}
+              src="/home-assets/yoao-dron.jpg"
+              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
+              width={1642}
+              height={923}
               sizes="(min-width:1024px) 860px, 92vw"
               priority
               className="h-auto w-full"
             />
             <figcaption className="mt-3 text-sm text-slate-500">
-              Resultados de un aforo en YOAO, nuestra plataforma de analítica de video: conteo por categoría y pista.
+              Video de dron procesado con YOAO, nuestra plataforma de analítica de video.
             </figcaption>
           </figure>
 
@@ -81,6 +81,18 @@ export default async function Propuesta3({ params }) {
               1, un 86% menos de tiempo, con el reporte listo en Excel.{" "}
               <Link href={vial.href} className={link}>Ver el caso</Link>
             </p>
+
+            <figure className="mt-8">
+              <Image
+                src="/vision/aforo-resultados.jpg"
+                alt="Resultados de un aforo en YOAO: vehículos por categoría cada 5 minutos, video anotado y tabla por pista"
+                width={1280}
+                height={636}
+                sizes="(min-width:768px) 720px, 92vw"
+                className="h-auto w-full"
+              />
+              <figcaption className="mt-3 text-sm text-slate-500">Así entrega YOAO los resultados de un aforo.</figcaption>
+            </figure>
 
             <h2 className={h2}>{c.steps.title}</h2>
             <ol className="mt-5 list-decimal space-y-4 pl-6 text-lg leading-relaxed text-slate-700 marker:font-semibold marker:text-[#027a79]">
