@@ -241,7 +241,8 @@
         "training": "Team Training",
         "automation": "Process Automation",
         "chatbots": "Chatbots",
-        "software": "Software Development"
+        "software": "Software Development",
+        "computerVision": "Computer Vision"
       },
       "products": {
         "title": "PRODUCTS",
