@@ -22,55 +22,58 @@ Según `computer_vision/yoao/docs/nuevas-plantillas-2026-09.md`:
 
 Control de calidad, calibre y análisis de video en vivo quedan como proyectos a medida. El video en vivo es la línea que se quiere desarrollar: la pilar lo ofrece con un CTA propio (`origen=vision-artificial-en-vivo`) para medir cuánta demanda llega.
 
-## 3. Clusters de keywords
+## 3. Cómo buscan las empresas (actualizado el 25 de octubre de 2026)
 
-Volúmenes por validar en Search Console y Ahrefs o Keyword Planner.
+Sin acceso a volúmenes (el conector de Ahrefs no está autorizado), se revisó el autocompletado de Google para Chile. Muestra qué frases escribe la gente, no cuántas veces.
 
-| Cluster | Keywords | Página destino |
-|---|---|---|
-| Servicio | visión artificial para empresas, empresa de visión artificial Chile, desarrollo de visión artificial, computer vision empresas | `/es/vision-artificial` (creada) |
-| Conteo y tránsito | conteo vehicular con cámaras, aforo vehicular automático, estudio de tránsito con video | Subpágina + calculadora de aforo |
-| Filas | tiempo de espera en filas, medición de filas con cámaras, gestión de filas | Subpágina |
-| Estacionamientos | ocupación de estacionamientos, rotación de estacionamientos, estudio EISTU estacionamientos | Subpágina |
-| Logística | gestión de patio logístico, tiempo de espera de camiones, uso de andenes | Subpágina |
-| Seguridad | detección de casco con cámaras, detección de caídas, zonas restringidas | Subpágina |
-| Calidad | inspección visual automatizada, control de calidad con visión artificial | Sección a medida de la pilar |
-| Costo | cuánto cuesta un sistema de visión artificial | Calculadora existente |
+| Lo que se escribe | Qué revela |
+|---|---|
+| "vision artificial" + python, curso, en inglés, urjc | El término solo es mayormente académico. Sirve como categoría, no como keyword principal. |
+| "vision artificial industrial", "en la industria", "para control de calidad" | La intención de compra aparece cuando se le suma la industria o el problema. |
+| "análisis de video con ia" + gratis, youtube, deportivo | Intención de consumo. Confirma por qué `/analysis` trae visitas que no compran. |
+| "analítica de video" + hikvision, dahua, cctv; "cámaras con ia" + precio, para negocios, hikvision, dahua; "inteligencia artificial para cámaras de seguridad" | Las empresas buscan desde la cámara que ya tienen, muchas veces por marca. Es la oportunidad más grande. |
+| "conteo de vehículos" + hikvision, dahua, cámara, sistema; "aforo vehicular" + formato, excel, manual, ejemplo; "conteo vehicular informe" | Consultoras e ingenieros de tránsito que hoy cuentan a mano. Es el cliente natural de YOAO. |
+| "lectura de patentes chile", "software lectura de patentes", "cámara lectura de patentes" | Demanda clara y local. |
+| "contador de personas para tienda", "automático"; "conteo de personas" + hikvision, dahua | Retail y recintos. |
+| "detección de epp con ia" | Existe, con poco ruido. |
 
-En español el término comercial es "visión artificial". "Computer vision" y "visión computacional" van como sinónimos dentro del texto.
+Conclusión: las empresas no buscan "visión artificial"; buscan el problema (contar vehículos, leer patentes, contar personas, detectar EPP) o la cámara ("cámaras con IA", "analítica de video Hikvision"). La pilar `/vision-artificial` queda como hub, y el tráfico comprador se captura con páginas y artículos por problema.
 
-## 4. Páginas
+## 4. Páginas por problema
 
-| URL | Estado | Rol |
-|---|---|---|
-| `/es/vision-artificial` | Creada | Pilar: casos de uso (YOAO y a medida), casos reales, proceso, cámaras, FAQ con schema, CTA a reunión |
-| `/es/vision-artificial/aforos-vehiculares` | Pendiente | Caso municipio e ingeniería vial, enlace a calculadora de aforo |
-| `/es/vision-artificial/filas-y-tiempos-de-espera` | Pendiente | Plantilla 3.1 de YOAO |
-| `/es/vision-artificial/estacionamientos` | Pendiente | Plantilla 3.2 |
-| `/es/vision-artificial/patio-logistico` | Pendiente | Plantilla 3.3 |
-| `/es/vision-artificial/seguridad-casco-caidas` | Pendiente | Plantilla 3.4, más EPP y caídas |
+| URL | Keyword principal | Prioridad | Material que ya existe |
+|---|---|---|---|
+| `/es/vision-artificial/conteo-vehicular` | conteo de vehículos con cámara, aforo vehicular automático, sistema de conteo de vehículos | 1 | Dos casos reales, calculadora de aforo, videos de rotonda e intersección |
+| `/es/vision-artificial/camaras-con-ia` | cámaras con inteligencia artificial, analítica de video Hikvision o Dahua, IA para cámaras de seguridad | 2 | Mensaje "funciona con tus cámaras actuales"; comparar la analítica que trae la cámara con YOAO |
+| `/es/vision-artificial/lectura-de-patentes` | lectura de patentes Chile, software lectura de patentes | 3 | Capacidad ALPR de YOAO |
+| `/es/vision-artificial/conteo-de-personas` | contador de personas para tienda, conteo de personas automático | 4 | Videos de fila y supermercado |
+| `/es/vision-artificial/deteccion-epp` | detección de EPP con IA, detección de casco | 5 | Video de la obra con casco y sin casco |
+| `/es/vision-artificial/control-de-calidad` | visión artificial para control de calidad, visión artificial industrial | 6 | Falta un caso real; publicar cuando exista |
 
-Las subpáginas se apoyan en las fichas de `nuevas-plantillas-2026-09.md`, que ya traen problema, entregables, respaldo de mercado y competencia. Conviene publicarlas cuando cada plantilla esté cargada en YOAO, para que el CTA "Probar YOAO" funcione.
-
-La pilar enlaza a `/analysis` (bloque YOAO) y recibe enlaces del footer y de las dos calculadoras. `/analysis` no se toca.
+Cada subpágina usa el mismo diseño de la pilar (video, texto, FAQ con schema) y enlaza a la pilar y a su calculadora cuando existe.
 
 ## 5. Contenido de blog
 
-| # | Título tentativo | Keyword |
-|---|---|---|
-| 1 | Qué es la visión artificial y qué problemas resuelve en una empresa | qué es la visión artificial |
-| 2 | Caso de éxito: conteo vehicular automático para un municipio | conteo vehicular con cámaras |
-| 3 | Cuánto cuesta un proyecto de visión artificial en Chile | costo visión artificial |
-| 4 | Cómo medir el tiempo de espera en filas con las cámaras que ya tienes | tiempo de espera en filas |
-| 5 | Estudios EISTU e IMIV con video: aforos y estacionamientos sin aforadores | aforo vehicular EISTU |
-| 6 | Visión artificial y la Ley 21.719: qué cuidar al analizar video | visión artificial datos personales |
-| 7 | Auditoría de casco y zonas restringidas en faenas con video | detección de casco con cámaras |
-| 8 | Visión artificial vs. revisión manual de video: comparación de costos | ROI visión artificial |
+Ordenado por prioridad. Los dos primeros apuntan a búsquedas que hoy hacen los compradores más probables de YOAO.
+
+| # | Título tentativo | Keyword | Tipo |
+|---|---|---|---|
+| 1 | Cómo hacer un aforo vehicular: formato, plantilla en Excel y cómo automatizarlo | aforo vehicular formato, excel, manual | Guía con plantilla descargable |
+| 2 | Analítica de video en cámaras Hikvision y Dahua: qué trae la cámara y qué no | analítica de video hikvision, dahua | Comparación honesta |
+| 3 | Caso de éxito: conteo vehicular para un municipio | conteo de vehículos con cámara | Caso (formato `caso-exito-*`) |
+| 4 | Caso de éxito: estudios de tránsito de 7 días a 1 | estudio de tránsito vehicular | Caso |
+| 5 | Cámaras con IA: ¿comprar nuevas o agregar IA a las que ya tienes? | cámaras con inteligencia artificial precio | Guía de decisión |
+| 6 | Lectura de patentes en Chile: cómo funciona y qué exige la Ley 21.719 | lectura de patentes chile | Guía |
+| 7 | Contador de personas para tiendas: opciones, precisión y costos | contador de personas para tienda | Guía |
+| 8 | Detección de EPP con IA en faenas: qué se puede medir con las cámaras actuales | detección de epp con ia | Guía |
+| 9 | Visión artificial para control de calidad: cuándo conviene y cuándo no | visión artificial para control de calidad | Guía |
+
+Los casos de éxito de visión artificial hoy solo viven como tarjetas en `/casos-exito`. Publicarlos como artículos, con el video, las cifras y, si el cliente lo autoriza, su nombre, les da una URL propia que puede posicionar y que los LLM pueden citar.
 
 ## 6. Autoridad y señales externas
 
 - Publicar el caso del municipio con nombre si el cliente lo autoriza.
-- Un video demo por caso de uso en YouTube, con transcripción y capítulos.
+- Un video demo por caso de uso en YouTube, con transcripción y capítulos, titulado con la keyword del problema (por ejemplo "Conteo vehicular automático con IA desde un dron"). Ya existen los clips anotados en `referencias-video/salida`.
 - Agregar al Anexo A de `plan-seo-llm-2026.md` prompts como "empresa de visión artificial en Chile" o "cómo medir filas con cámaras".
 
 ## 7. Medición
@@ -84,6 +87,8 @@ La pilar enlaza a `/analysis` (bloque YOAO) y recibe enlaces del footer y de las
 
 ## 8. Orden de ejecución
 
-1. Semana 1: publicar `/vision-artificial` y medir la línea base.
-2. Semanas 2 a 4: subpáginas de aforos y filas, posts 1 a 3.
-3. Semanas 4 a 8: estacionamientos, patio logístico y seguridad, posts 4 a 8.
+1. Semanas 1 y 2: subpágina de conteo vehicular y el artículo del aforo con plantilla en Excel.
+2. Semanas 3 y 4: los dos casos de éxito como artículos y el artículo de Hikvision y Dahua.
+3. Semanas 5 a 8: subpáginas de cámaras con IA y lectura de patentes, artículos 5 a 7.
+4. Semanas 9 a 12: conteo de personas y EPP, artículos 8 y 9. Control de calidad cuando exista un caso.
+5. Desde la semana 1: videos de YouTube con los clips anotados y revisión mensual en Search Console.
