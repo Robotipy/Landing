@@ -54,7 +54,6 @@ module.exports = {
     "/blog-sitemap.xml",
     "/api/*",
     // Propuestas de rediseño: noindex y fuera del sitemap.
-    "/*/landing-*",
     "/*/home-*",
     // Postulaciones: noindex.
     "/*/trabaja-con-nosotros",

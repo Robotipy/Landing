@@ -9,6 +9,15 @@ const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i;
 export default function middleware(request) {
   const { pathname } = request.nextUrl;
 
+  // Las landings de prueba (/landing-1, -2 y -3) se eliminaron: sus URL van a
+  // la home por si algún anuncio antiguo todavía apunta a ellas.
+  if (/^\/(?:es|en|pt)\/landing-[123](\/.*)?$/.test(pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/es";
+    url.search = "";
+    return NextResponse.redirect(url, 301);
+  }
+
   // Visión artificial cambia de slug según el idioma: /es/vision-artificial y
   // /en/computer-vision. Portugués no tiene versión propia y va a español.
   const vision = pathname.match(/^\/(es|en|pt)\/(vision-artificial|computer-vision)\/?$/);
@@ -25,7 +34,7 @@ export default function middleware(request) {
   // en/pt). Redirigimos sus variantes /en y /pt a /es con 301 para no dejar
   // duplicados finos indexados. Se pueden re-activar cuando haya traducción.
   const esOnly = pathname.match(
-    /^\/(?:en|pt)\/(ai-info|automation|calculadora-aforo-vehicular|calculadora-vision-artificial|casos-exito|chatbot|evaluador-automatizacion|industries|landing-1|landing-2|landing-3|home-1|home-2|home-3|portafolio|preguntas-frecuentes|privacy-policy|services|success-cases|tos)(\/.*)?$/
+    /^\/(?:en|pt)\/(ai-info|automation|calculadora-aforo-vehicular|calculadora-vision-artificial|casos-exito|chatbot|evaluador-automatizacion|industries|home-1|home-2|home-3|portafolio|preguntas-frecuentes|privacy-policy|services|success-cases|tos)(\/.*)?$/
   );
   if (esOnly) {
     const url = request.nextUrl.clone();

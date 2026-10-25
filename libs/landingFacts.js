@@ -1,4 +1,4 @@
-// Ficha única de hechos para las landings de propuesta (/landing-1, -2, -3).
+// Ficha única de hechos sobre Robotipy que usan la home y otras páginas.
 // Todo dato que se muestre sobre Robotipy debe salir de aquí o de
 // libs/successCases.js. Si un dato cambia, se cambia una sola vez.
 
