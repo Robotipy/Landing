@@ -2,6 +2,7 @@ import Link from "next/link";
 import { categories, categorySlugs } from "../categories.js";
 import { authors, authorSlugs } from "../authors.js";
 import { styles } from "../styles";
+import PostLink from "../components/PostLink";
 import thumbnail from "@/public/blog/analitica-de-video-para-municipios/header.jpeg";
 
 const linkCls = "text-accent underline-offset-2 hover:underline";
@@ -28,6 +29,10 @@ const faqs = [
   {
     q: "¿Funciona de noche?",
     a: "Funciona cuando la iluminación pública permite distinguir los vehículos en la imagen. Con calles muy oscuras o cámaras sin visión nocturna adecuada, la precisión baja. Lo revisamos con una muestra nocturna antes de comprometer un estudio.",
+  },
+  {
+    q: "¿Sirve para los aforos de un IMIV en Chile?",
+    a: "Sirve para obtener los conteos por movimiento y categoría en bloques de 15 minutos que pide un estudio de tránsito. Los períodos, la duración y el formato exactos los fija la metodología del IMIV y quien lo revisa, así que conviene confirmarlos antes de grabar. A la municipalidad también le sirve para tener sus propios conteos y contrastarlos con los que presentan los proyectos.",
   },
   {
     q: "¿Se pueden recibir alertas en tiempo real?",
@@ -62,9 +67,9 @@ const slug = "analitica-de-video-para-municipios";
 export const post = {
   slug,
   locale: "es",
-  title: "Analítica de video para municipios: qué medir con las cámaras que ya tienen",
+  title: "Analítica de video para municipalidades y municipios: qué medir con las cámaras que ya tienen",
   description:
-    "Qué puede medir un municipio con analítica de video: aforos vehiculares, origen y destino, peatones, eventos y filas. Qué cámaras sirven, cómo hacer un piloto y cuánto cuesta.",
+    "Qué puede medir una municipalidad con analítica de video: aforos vehiculares, origen y destino, peatones, eventos y filas. Qué cámaras sirven, cómo hacer un piloto, cuánto cuesta y cómo se usa en Chile y Argentina.",
   keywords: [
     "analítica de video para municipios",
     "conteo vehicular con cámaras",
@@ -72,6 +77,9 @@ export const post = {
     "cámaras de seguridad con inteligencia artificial",
     "estudio de tránsito con video",
     "visión artificial para municipios",
+    "analítica de video para municipalidades",
+    "televigilancia municipal",
+    "aforos para IMIV",
   ],
   categories: [
     categories.find((category) => category.slug === categorySlugs.visionArtificial),
@@ -102,8 +110,10 @@ export const post = {
           <ExtLink href="https://revistainnovacion.com/nota/12327/vicente_lopez_se_transforma_en_una_ciudad_inteligente_con_tecnologia_de_video/">
             más de 2.300
           </ExtLink>{" "}
-          desde su centro de monitoreo. Casi todas se usan de la misma forma:
-          cuando pasa algo, alguien busca la grabación y la revisa.
+          desde su centro de monitoreo. En Chile, muchas municipalidades operan
+          centros de televigilancia con cámaras en calles y plazas. En los dos
+          países casi todas se usan de la misma forma: cuando pasa algo,
+          alguien busca la grabación y la revisa.
         </p>
         <p className={styles.p}>
           Mientras tanto, cuando el área de tránsito necesita saber cuántos
@@ -272,6 +282,35 @@ export const post = {
           Si el municipio compra por orden de compra y no con tarjeta, lo
           habitual es armar un paquete de horas. Las alertas en vivo, en
           cambio, se cotizan aparte como proyecto a medida.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className={styles.h2}>En Chile: televigilancia, Dirección de Tránsito e IMIV</h2>
+        <p className={styles.p}>
+          En las municipalidades chilenas, las cámaras suelen depender de
+          seguridad pública y se operan desde un centro de televigilancia. La
+          Dirección de Tránsito rara vez las usa para medir, aunque varias
+          están en los mismos cruces que necesita contar. Con el video que ya
+          graban, y revisando que vean el cruce completo, la Dirección de
+          Tránsito puede tener sus propios aforos sin contratar un estudio cada
+          vez.
+        </p>
+        <p className={styles.p}>
+          El otro uso importante es el IMIV. Desde la Ley 20.958, los proyectos
+          que generan viajes deben presentar un Informe de Mitigación de
+          Impacto Vial, que se revisa en la Dirección de Tránsito de la
+          municipalidad o en la Seremi de Transportes, según el tamaño del
+          proyecto. Esos informes se apoyan en aforos de las intersecciones
+          cercanas.
+        </p>
+        <p className={styles.p}>
+          Con video, una consultora puede hacer esos aforos sin aforadores en
+          terreno, y la municipalidad puede tener sus propios conteos para
+          contrastar con los que presentan los proyectos. En{" "}
+          <PostLink slug="como-hacer-un-aforo-vehicular">cómo hacer un aforo vehicular</PostLink>{" "}
+          está el formato de bloques de 15 minutos, con la hora punta y su
+          factor.
         </p>
       </section>
 
