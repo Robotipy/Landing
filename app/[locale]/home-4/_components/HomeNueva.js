@@ -2,7 +2,7 @@ import Clientes from "../../_home/components/Clientes";
 import MegaMenu from "./MegaMenu";
 import ServiciosCarrusel from "./ServiciosCarrusel";
 import HeroCarrusel from "./HeroCarrusel";
-import { Banda, Boletin, CasosDestacados, Cierre, Declaracion, Industrias, LoUltimo, TrabajaConNosotros } from "./Secciones";
+import { Boletin, CasosDestacados, Cierre, Declaracion, Industrias, LoUltimo, TrabajaConNosotros } from "./Secciones";
 
 // Home principal en español, con estructura de consultora (Quiénes somos, Qué
 // hacemos, Perspectivas). La metadata viene de app/[locale]/layout.js.
@@ -24,7 +24,6 @@ export default function HomeNueva() {
         <LoUltimo />
         <style dangerouslySetInnerHTML={{ __html: fadeCss }} />
         <section id="que-hacemos" className="scroll-mt-16 bg-white">
-          <Banda tone="navy">Qué hacemos</Banda>
           <ServiciosCarrusel />
         </section>
         <CasosDestacados />

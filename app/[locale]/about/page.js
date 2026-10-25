@@ -69,20 +69,21 @@ export default async function AboutPage({ params }) {
         <Header />
       </Suspense>
       <main className="bg-white">
+        <section className="bg-primary px-4 py-16 md:py-24 text-center">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-accent text-xs font-bold uppercase tracking-[0.2em] mb-4">
+              {t("hero.eyebrow")}
+            </p>
+            <h1 className="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] font-heading">
+              {t("hero.title")}
+            </h1>
+            <p className="text-slate-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mt-5">
+              {t("hero.subtitle")}
+            </p>
+          </div>
+        </section>
         <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <section className="rounded-lg bg-primary px-6 py-14 md:px-12 text-center">
-              <p className="text-accent text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                {t("hero.eyebrow")}
-              </p>
-              <h1 className="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] font-heading">
-                {t("hero.title")}
-              </h1>
-              <p className="text-slate-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mt-5">
-                {t("hero.subtitle")}
-              </p>
-            </section>
-
             <dl className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 mt-6">
               {factKeys.map((key) => (
                 <div

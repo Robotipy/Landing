@@ -13,17 +13,6 @@ const scroller =
   "-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden";
 const scrollerItem = "w-[82%] shrink-0 snap-start sm:w-auto";
 
-// Franja de color con el nombre de la sección. Queda fija bajo el menú
-// mientras se recorre la sección (como las etiquetas de Deloitte).
-export function Banda({ children, tone = "teal" }) {
-  const bg = tone === "teal" ? "bg-[#039695] text-[#00182B]" : tone === "dark" ? "bg-[#027a79] text-white" : "bg-[#0b2c47] text-white";
-  return (
-    <div className={`sticky top-16 z-30 ${bg}`}>
-      <p className={`${wrap} py-3 text-sm font-semibold`}>{children}</p>
-    </div>
-  );
-}
-
 export function Declaracion() {
   const stats = [
     { value: facts.projects, label: "proyectos" },
@@ -93,7 +82,6 @@ export function LoUltimo() {
     .slice(0, 4);
   return (
     <section className="bg-[#f5f8f8]">
-      <Banda tone="teal">Perspectivas</Banda>
       <div className={`${wrap} py-16 sm:py-20`}>
         <h2 className="text-center text-3xl font-light text-[#00182B] sm:text-4xl">Lo último en Robotipy</h2>
         <ul className={`mt-12 ${scroller} sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-4`}>
@@ -126,7 +114,6 @@ export function LoUltimo() {
 export function Industrias() {
   return (
     <section className="bg-white">
-      <Banda tone="dark">Industrias</Banda>
       <div className={`${wrap} py-16 sm:py-20`}>
         <h2 className="text-4xl font-light text-[#00182B]">Conocemos tu industria</h2>
         <p className="mt-4 max-w-2xl text-lg text-slate-600">Casos reales en cada sector, con el antes y el después.</p>
@@ -244,7 +231,6 @@ export function CasosDestacados() {
   const cases = getCaseCards().slice(0, 6);
   return (
     <section className="bg-[#00182B] text-white">
-      <Banda tone="teal">Casos de éxito</Banda>
       <div className={`${wrap} py-16 sm:py-20`}>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -276,8 +262,7 @@ export function CasosDestacados() {
 
 export function TrabajaConNosotros() {
   return (
-    <section id="trabaja-con-nosotros" className="scroll-mt-16 bg-white">
-      <Banda tone="dark">Carrera en Robotipy</Banda>
+    <section id="trabaja-con-nosotros" className="scroll-mt-16 border-t border-slate-200 bg-white">
       <div className={`${wrap} grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2`}>
         <ul className="grid grid-cols-3 gap-4">
           {team.map((t) => (
