@@ -48,6 +48,8 @@ module.exports = {
     // Propuestas de rediseño: noindex y fuera del sitemap.
     "/*/landing-*",
     "/*/home-*",
+    // Postulaciones: noindex.
+    "/*/trabaja-con-nosotros",
     // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
