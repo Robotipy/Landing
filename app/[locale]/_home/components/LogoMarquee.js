@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 // Segundos que tarda una vuelta completa a velocidad normal.
 const LOOP_SECONDS_DESKTOP = 45;
@@ -11,6 +11,8 @@ const EDGE_ZONE = 0.2;
 const EDGE_MAX_MULTIPLIER = 5;
 // Velocidad con el mouse en el centro: casi quieto para poder mirar.
 const CENTER_MULTIPLIER = 0.15;
+// Con movimiento reducido la banda sigue andando, pero más lento.
+const REDUCED_MOTION_MULTIPLIER = 0.5;
 
 // Alto de cada logo según su proporción, para que todos pesen parecido:
 // los anchos quedan más bajos y los cuadrados más altos.
@@ -23,16 +25,12 @@ export default function LogoMarquee({ logos }) {
   const trackRef = useRef(null);
   const secondCopyRef = useRef(null);
   const target = useRef(1);
-  // Con movimiento reducido no hay banda: se muestran todos los logos quietos.
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track || reducedMotion) return;
+    if (!track) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const baseSpeed = reducedMotion ? REDUCED_MOTION_MULTIPLIER : 1;
     let offset = 0;
     let multiplier = 1;
     let last = performance.now();
@@ -44,14 +42,14 @@ export default function LogoMarquee({ logos }) {
       const loopWidth = secondCopyRef.current?.offsetLeft || track.scrollWidth / 2;
       const loopSeconds = window.innerWidth < 768 ? LOOP_SECONDS_MOBILE : LOOP_SECONDS_DESKTOP;
       multiplier += (target.current - multiplier) * Math.min(1, dt * 6);
-      offset += (loopWidth / loopSeconds) * multiplier * dt;
+      offset += (loopWidth / loopSeconds) * multiplier * baseSpeed * dt;
       offset = ((offset % loopWidth) + loopWidth) % loopWidth;
       track.style.transform = `translate3d(${-offset}px, 0, 0)`;
       frame = requestAnimationFrame(step);
     };
     frame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frame);
-  }, [reducedMotion]);
+  }, []);
 
   // Solo el mouse cambia la velocidad: en pantallas táctiles el toque llega
   // como un mousemove sin mouseleave y dejaba la banda casi detenida.
@@ -68,8 +66,7 @@ export default function LogoMarquee({ logos }) {
     }
   };
 
-  // fit: en la grilla estática los logos anchos se achican a su columna.
-  const renderList = (copy, fit = false) =>
+  const renderList = (copy) =>
     logos.map((logo, i) => {
       const h = logoHeight(logo.aspect, logo.scale);
       const w = Math.round(h * logo.aspect);
@@ -78,7 +75,7 @@ export default function LogoMarquee({ logos }) {
           key={`${copy ? "b" : "a"}-${logo.src}`}
           ref={copy && i === 0 ? secondCopyRef : undefined}
           aria-hidden={copy || undefined}
-          className={fit ? "flex h-12 min-w-0 items-center justify-center" : "flex h-12 shrink-0 items-center"}
+          className="flex h-12 shrink-0 items-center"
         >
           <Image
             src={logo.src}
@@ -86,20 +83,12 @@ export default function LogoMarquee({ logos }) {
             width={w}
             height={h}
             sizes={`${w * 2}px`}
-            style={fit ? { height: h, width: w, maxWidth: "100%", objectFit: "contain" } : { height: h, width: w }}
+            style={{ height: h, width: w }}
             className="opacity-85"
           />
         </li>
       );
     });
-
-  if (reducedMotion) {
-    return (
-      <ul className="grid min-w-0 flex-1 grid-cols-3 items-center gap-x-6 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-10" aria-label="Clientes de Robotipy">
-        {renderList(false, true)}
-      </ul>
-    );
-  }
 
   return (
     <div
