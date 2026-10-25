@@ -52,10 +52,43 @@ const es = {
     "Convertimos el video de tus cámaras, en vivo o grabado, en conteos, tiempos y alertas. Desarrollamos el modelo para tu proceso y conectamos los resultados con tus sistemas.",
   cta: "Agenda una reunión",
   secondaryCta: { text: "Calcula el costo", href: "/calculadora-vision-artificial" },
-  imageAlt:
-    "Toma de dron de una rotonda con tráfico: el modelo de visión artificial detecta cada auto y bus y le asigna un número para seguirlo",
-  imageCaption:
-    "Video de dron procesado con visión artificial. Cada vehículo recibe un número y se sigue mientras cruza la imagen.",
+  heroVideo: {
+    alt: "Rotonda grabada con dron: YOAO detecta cada vehículo y le asigna un número para seguirlo",
+    caption:
+      "Rotonda grabada con dron y analizada con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.",
+  },
+  drone: {
+    alt: "Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo",
+    caption: "Toma de dron procesada con YOAO para un estudio de tránsito.",
+  },
+  // Casos de uso de YOAO agrupados por entorno, cada grupo con su video
+  // (items son posiciones en useCases.yoao).
+  groups: [
+    {
+      title: "Aforos y estudios de tránsito",
+      video: "interseccion",
+      alt: "Intersección vista con dron: YOAO detecta y numera cada vehículo",
+      items: [0, 1],
+    },
+    {
+      title: "Filas y atención",
+      video: "filas",
+      alt: "Fila en un terminal: YOAO sigue a cada persona para medir su espera",
+      items: [2],
+    },
+    {
+      title: "Estacionamientos y patio logístico",
+      video: "estacionamiento",
+      alt: "Estacionamiento visto con dron: YOAO cuenta y sigue cada auto",
+      items: [3, 4],
+    },
+    {
+      title: "Seguridad en faena",
+      video: "seguridad",
+      alt: "Obra en construcción: YOAO marca quién lleva casco y quién no",
+      items: [5],
+    },
+  ],
   intro: {
     title: "Qué hace la visión artificial en una empresa",
     paragraphs: [
@@ -308,10 +341,41 @@ const en = {
     "We turn your camera footage, live or recorded, into counts, wait times and alerts. We build the model for your process and connect the results to your systems.",
   cta: "Book a meeting",
   secondaryCta: { text: "Try YOAO", href: "/analysis" },
-  imageAlt:
-    "Drone shot of a roundabout with traffic: the computer vision model detects every car and bus and assigns it a number to track it",
-  imageCaption:
-    "Drone footage processed with computer vision. Each vehicle gets a number and is tracked while it crosses the frame.",
+  heroVideo: {
+    alt: "Roundabout filmed with a drone: YOAO detects every vehicle and assigns it a number to track it",
+    caption:
+      "Roundabout filmed with a drone and analyzed with YOAO. Each vehicle gets a number and is tracked while it crosses the frame.",
+  },
+  drone: {
+    alt: "Drone shot of a roundabout with traffic: YOAO detects every car and bus and assigns it a number to track it",
+    caption: "Drone footage processed with YOAO for a traffic study.",
+  },
+  groups: [
+    {
+      title: "Traffic counts and studies",
+      video: "interseccion",
+      alt: "Intersection seen from a drone: YOAO detects and numbers every vehicle",
+      items: [0, 1],
+    },
+    {
+      title: "Queues and service",
+      video: "filas",
+      alt: "Queue at a terminal: YOAO tracks each person to measure their wait",
+      items: [2],
+    },
+    {
+      title: "Parking lots and logistics yards",
+      video: "estacionamiento",
+      alt: "Parking lot seen from a drone: YOAO counts and tracks every car",
+      items: [3, 4],
+    },
+    {
+      title: "Site safety",
+      video: "seguridad",
+      alt: "Construction site: YOAO flags who is wearing a hard hat and who is not",
+      items: [5],
+    },
+  ],
   intro: {
     title: "What computer vision does for a business",
     paragraphs: [

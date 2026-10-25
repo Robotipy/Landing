@@ -56,8 +56,6 @@ module.exports = {
     // Propuestas de rediseño: noindex y fuera del sitemap.
     "/*/landing-*",
     "/*/home-*",
-    // Propuestas de diseño de visión artificial: noindex.
-    "/*/propuesta-vision-*",
     // Postulaciones: noindex.
     "/*/trabaja-con-nosotros",
     // La version en ingles de vision artificial no existe en /es ni /pt.
