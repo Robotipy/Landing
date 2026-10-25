@@ -51,9 +51,23 @@ import { post as rpaEnLaCadenaDeSuministro } from "./posts/rpa-en-la-cadena-de-s
 import { post as de1RobotAUnCentroDeExcelenciaDeAutomatizacion } from "./posts/de-1-robot-a-un-centro-de-excelencia-de-automatizacion.js";
 import { post as staffAugmentationEnAutomatizacion } from "./posts/staff-augmentation-en-automatizacion.js";
 import { post as analiticaDeVideoParaMunicipios } from "./posts/analitica-de-video-para-municipios.js";
+import { post as comoHacerUnAforoVehicular } from "./posts/como-hacer-un-aforo-vehicular.js";
+import { post as casoExitoAforoVehicularMunicipio } from "./posts/caso-exito-aforo-vehicular-municipio.js";
+import { post as analiticaDeVideoHikvisionDahua } from "./posts/analitica-de-video-hikvision-dahua.js";
+import { post as camarasConInteligenciaArtificial } from "./posts/camaras-con-inteligencia-artificial.js";
+import { post as lecturaDePatentesChile } from "./posts/lectura-de-patentes-chile.js";
+import { post as contadorDePersonas } from "./posts/contador-de-personas.js";
+import { post as deteccionDeEppConIa } from "./posts/deteccion-de-epp-con-ia.js";
 
 // All the blog articles data display in the /blog/[articleId].js pages.
 const rawArticles = [
+  deteccionDeEppConIa,
+  contadorDePersonas,
+  lecturaDePatentesChile,
+  camarasConInteligenciaArtificial,
+  analiticaDeVideoHikvisionDahua,
+  casoExitoAforoVehicularMunicipio,
+  comoHacerUnAforoVehicular,
   analiticaDeVideoParaMunicipios,
   staffAugmentationEnAutomatizacion,
   de1RobotAUnCentroDeExcelenciaDeAutomatizacion,
