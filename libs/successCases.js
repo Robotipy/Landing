@@ -604,8 +604,8 @@ export const successCases = [
     // results alimenta las landings ("De días a horas"); metrics, las tarjetas de casos.
     results: { manualExecution: "días", automatedExecution: "horas" },
     metrics: [
-      { value: "Horas", label: "Para revisar un estudio que antes tomaba días" },
-      { value: "0", label: "Errores de clasificación en 10 sesiones" },
+      { value: "1:1,2", label: "Hora de video vs. tiempo de proceso" },
+      { value: "Decreto 30", label: "Tipología de vehículos del estudio" },
     ],
     tools: ["python", "javascript"],
     platform: "robotipy",

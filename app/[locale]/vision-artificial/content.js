@@ -188,8 +188,8 @@ const es = {
         solution:
           "Un modelo clasifica los vehículos de cada video y entrega el reporte consolidado en Excel, listo para el informe.",
         metrics: [
-          { value: "0", label: "Errores de clasificación en 10 sesiones" },
-          { value: "Horas", label: "Por estudio, antes días" },
+          { value: "1:1,2", label: "Hora de video vs. tiempo de proceso" },
+          { value: "Decreto 30", label: "Tipología de vehículos del estudio" },
         ],
         href: "/casos-exito/servicios-profesionales",
       },
@@ -471,8 +471,8 @@ const en = {
         solution:
           "A model classifies the vehicles in each video and delivers a consolidated Excel report, ready for the study.",
         metrics: [
-          { value: "0", label: "Classification errors in 10 sessions" },
-          { value: "Hours", label: "Per study, down from days" },
+          { value: "1:1.2", label: "Hours of video vs. processing time" },
+          { value: "Decreto 30", label: "Chilean vehicle categories used in the study" },
         ],
       },
     ],

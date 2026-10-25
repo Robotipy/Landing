@@ -14,8 +14,8 @@ export default function ServiciosProfesionalesSuccessCases() {
       solution:
         "Se construyó un sistema de IA que clasifica los vehículos de cada video de tránsito y entrega un reporte en Excel con la información consolidada.",
       metrics: [
-        { value: "Horas", label: "Para revisar un estudio que antes tomaba días" },
-        { value: "0", label: "Errores de clasificación en 10 sesiones" },
+        { value: "1:1,2", label: "Hora de video vs. tiempo de proceso" },
+        { value: "Decreto 30", label: "Tipología de vehículos del estudio" },
       ],
       name: "Conteo y clasificación de vehículos",
       tools: ["python", "javascript"],
