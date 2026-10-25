@@ -3,9 +3,10 @@ import { Link } from "@/i18n/routing";
 import MegaMenu from "../home-4/_components/MegaMenu";
 import { Cierre, wrap } from "../home-4/_components/Secciones";
 import { c, propuestaMetadata, soloEspanol, FaqLista } from "../vision-artificial/_propuestas/comun";
+import VideoYoao from "../vision-artificial/_propuestas/VideoYoao";
 
-// Propuesta 2: oscura y visual, guiada por capturas reales de YOAO. Cada uso
-// se muestra con el panel de resultados que entrega la plataforma.
+// Propuesta 2: oscura y visual. Cada uso se muestra con un video real
+// analizado con el worker de YOAO.
 export const generateMetadata = () => propuestaMetadata(2);
 
 const [vehiculos, personas, filas, estacionamientos, patio, seguridad] = c.useCases.yoao;
@@ -13,26 +14,26 @@ const [vehiculos, personas, filas, estacionamientos, patio, seguridad] = c.useCa
 const usos = [
   {
     title: "Aforos y estudios de tránsito",
-    image: "/vision/aforo-resultados.jpg",
-    alt: "Resultados de un aforo en YOAO: vehículos por categoría cada 5 minutos, video anotado y tabla por pista",
+    video: "interseccion",
+    alt: "Intersección vista con dron: YOAO detecta y numera cada vehículo",
     items: [vehiculos, personas],
   },
   {
     title: "Filas y atención",
-    image: "/vision/filas-resultados.jpg",
-    alt: "Resultados de filas en YOAO: clientes atendidos, espera media, tiempo de atención y abandonos por hora",
+    video: "filas",
+    alt: "Fila en un terminal: YOAO sigue a cada persona para medir su espera",
     items: [filas],
   },
   {
     title: "Estacionamientos y patio logístico",
-    image: "/vision/estacionamientos-resultados.jpg",
-    alt: "Resultados de estacionamientos en YOAO: ocupación por sector durante el día y duración de las estadías",
+    video: "estacionamiento",
+    alt: "Estacionamiento visto con dron: YOAO cuenta y sigue cada auto",
     items: [estacionamientos, patio],
   },
   {
     title: "Seguridad en faena",
-    image: "/vision/seguridad-resultados.jpg",
-    alt: "Resultados de seguridad en YOAO: cumplimiento de casco por hora y alertas con su clip",
+    video: "seguridad",
+    alt: "Obra en construcción: YOAO marca quién lleva casco y quién no",
     items: [seguridad],
   },
 ];
@@ -56,17 +57,9 @@ export default async function Propuesta2({ params }) {
             </Link>
           </div>
           <figure className="mt-16">
-            <Image
-              src="/home-assets/yoao-dron.jpg"
-              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
-              width={1642}
-              height={923}
-              sizes="(min-width:1280px) 1216px, 92vw"
-              priority
-              className="h-auto w-full ring-1 ring-white/10"
-            />
+            <VideoYoao name="rotonda" label="Rotonda grabada con dron: YOAO detecta cada vehículo y le asigna un número para seguirlo" className="ring-1 ring-white/10" />
             <figcaption className="mt-3 text-sm text-white/50">
-              Video de dron procesado con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.
+              Rotonda grabada con dron y analizada con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.
             </figcaption>
           </figure>
         </section>
@@ -86,7 +79,7 @@ export default async function Propuesta2({ params }) {
             {usos.map((u, k) => (
               <div key={u.title} className={`${wrap} grid items-center gap-10 lg:grid-cols-12 lg:gap-14`}>
                 <div className={`lg:col-span-7 ${k % 2 ? "lg:order-2" : ""}`}>
-                  <Image src={u.image} alt={u.alt} width={1280} height={636} sizes="(min-width:1024px) 700px, 92vw" className="h-auto w-full ring-1 ring-white/10" />
+                  <VideoYoao name={u.video} label={u.alt} className="ring-1 ring-white/10" />
                 </div>
                 <div className="lg:col-span-5">
                   <h3 className="text-3xl font-light leading-tight">{u.title}</h3>
@@ -119,6 +112,17 @@ export default async function Propuesta2({ params }) {
         <section className="border-y border-white/10 bg-[#0b2c47]/40">
           <div className={`${wrap} py-16 sm:py-20`}>
             <h2 className="text-3xl font-light sm:text-4xl">{c.cases.title}</h2>
+            <figure className="mt-10">
+              <Image
+                src="/home-assets/yoao-dron.jpg"
+                alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
+                width={1642}
+                height={923}
+                sizes="(min-width:1280px) 1216px, 92vw"
+                className="h-auto w-full ring-1 ring-white/10"
+              />
+              <figcaption className="mt-3 text-sm text-white/50">Toma de dron procesada con YOAO para un estudio de tránsito.</figcaption>
+            </figure>
             <div className="mt-12 grid gap-12 lg:grid-cols-2">
               {c.cases.items.map((item) => (
                 <article key={item.title}>

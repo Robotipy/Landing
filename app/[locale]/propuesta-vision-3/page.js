@@ -3,6 +3,7 @@ import { Link } from "@/i18n/routing";
 import MegaMenu from "../home-4/_components/MegaMenu";
 import { Cierre } from "../home-4/_components/Secciones";
 import { c, propuestaMetadata, soloEspanol, FaqLista } from "../vision-artificial/_propuestas/comun";
+import VideoYoao from "../vision-artificial/_propuestas/VideoYoao";
 
 // Propuesta 3: mínima. Una columna de texto que se lee como una carta, con una
 // sola imagen y casi sin elementos gráficos.
@@ -45,17 +46,9 @@ export default async function Propuesta3({ params }) {
           </header>
 
           <figure className="mx-auto mt-14 w-full max-w-4xl px-5">
-            <Image
-              src="/home-assets/yoao-dron.jpg"
-              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
-              width={1642}
-              height={923}
-              sizes="(min-width:1024px) 860px, 92vw"
-              priority
-              className="h-auto w-full"
-            />
+            <VideoYoao name="rotonda" label="Rotonda grabada con dron: YOAO detecta cada vehículo y le asigna un número para seguirlo" />
             <figcaption className="mt-3 text-sm text-slate-500">
-              Video de dron procesado con YOAO, nuestra plataforma de analítica de video.
+              Rotonda grabada con dron y analizada con YOAO, nuestra plataforma de analítica de video.
             </figcaption>
           </figure>
 
@@ -84,14 +77,14 @@ export default async function Propuesta3({ params }) {
 
             <figure className="mt-8">
               <Image
-                src="/vision/aforo-resultados.jpg"
-                alt="Resultados de un aforo en YOAO: vehículos por categoría cada 5 minutos, video anotado y tabla por pista"
-                width={1280}
-                height={636}
+                src="/home-assets/yoao-dron.jpg"
+                alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
+                width={1642}
+                height={923}
                 sizes="(min-width:768px) 720px, 92vw"
                 className="h-auto w-full"
               />
-              <figcaption className="mt-3 text-sm text-slate-500">Así entrega YOAO los resultados de un aforo.</figcaption>
+              <figcaption className="mt-3 text-sm text-slate-500">Toma de dron procesada con YOAO para un estudio de tránsito.</figcaption>
             </figure>
 
             <h2 className={h2}>{c.steps.title}</h2>

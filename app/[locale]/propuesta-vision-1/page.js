@@ -3,6 +3,7 @@ import { Link } from "@/i18n/routing";
 import MegaMenu from "../home-4/_components/MegaMenu";
 import { Cierre, wrap } from "../home-4/_components/Secciones";
 import { c, propuestaMetadata, soloEspanol, FaqLista } from "../vision-artificial/_propuestas/comun";
+import VideoYoao from "../vision-artificial/_propuestas/VideoYoao";
 
 // Propuesta 1: editorial clara, con el lenguaje de la home nueva. Listas con
 // separadores, cifras grandes y una sola franja de color.
@@ -27,6 +28,12 @@ function Lista({ title, items }) {
   );
 }
 
+const enVideo = [
+  { name: "filas", caption: "Fila en un terminal: cada persona se sigue para medir cuánto espera." },
+  { name: "seguridad", caption: "Obra en construcción: quién lleva casco y quién no." },
+  { name: "estacionamiento", caption: "Estacionamiento visto con dron: cada auto contado y seguido." },
+];
+
 export default async function Propuesta1({ params }) {
   await soloEspanol(params);
   return (
@@ -48,16 +55,8 @@ export default async function Propuesta1({ params }) {
             </div>
           </div>
           <figure>
-            <Image
-              src="/home-assets/yoao-dron.jpg"
-              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
-              width={1642}
-              height={923}
-              sizes="(min-width:1024px) 600px, 92vw"
-              priority
-              className="h-auto w-full"
-            />
-            <figcaption className="mt-3 text-sm text-slate-500">Video de dron procesado con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.</figcaption>
+            <VideoYoao name="rotonda" label="Rotonda grabada con dron: YOAO detecta cada vehículo y le asigna un número para seguirlo" />
+            <figcaption className="mt-3 text-sm text-slate-500">Rotonda grabada con dron y analizada con YOAO. Cada vehículo recibe un número y se sigue mientras cruza la imagen.</figcaption>
           </figure>
         </section>
 
@@ -87,17 +86,30 @@ export default async function Propuesta1({ params }) {
           </div>
         </section>
 
-        <section className={`${wrap} pt-16 sm:pt-20`}>
+        <section className={`${wrap} py-16 sm:py-20`}>
+          {rule}
+          <h2 className={h2}>Así se ve en video</h2>
+          <div className="mt-10 grid gap-10 md:grid-cols-3">
+            {enVideo.map((v) => (
+              <figure key={v.name}>
+                <VideoYoao name={v.name} label={v.caption} />
+                <figcaption className="mt-3 text-sm leading-relaxed text-slate-500">{v.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section className={wrap}>
           <figure>
             <Image
-              src="/vision/aforo-resultados.jpg"
-              alt="Resultados de un aforo en YOAO: vehículos por categoría cada 5 minutos, video anotado y tabla por pista"
-              width={1280}
-              height={636}
+              src="/home-assets/yoao-dron.jpg"
+              alt="Toma de dron de una rotonda con tráfico: YOAO detecta cada auto y bus y le asigna un número para seguirlo"
+              width={1642}
+              height={923}
               sizes="(min-width:1280px) 1216px, 92vw"
               className="h-auto w-full"
             />
-            <figcaption className="mt-3 text-sm text-slate-500">Resultados de un aforo en YOAO: conteo por categoría y pista, listo para el estudio.</figcaption>
+            <figcaption className="mt-3 text-sm text-slate-500">Toma de dron procesada con YOAO para un estudio de tránsito.</figcaption>
           </figure>
         </section>
 
