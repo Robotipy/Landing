@@ -120,6 +120,7 @@ export default async function RootLayout({ children, params }) {
         </noscript>
         <meta name="msapplication-TileImage" content={`https://${config.domainName}/images/robotipy-logo.png`} />
         <meta name="msapplication-TileColor" content={config.colors.main} />
+        <meta property="og:logo" content={`https://${config.domainName}/images/robotipy-logo.png`} />
         {config.domainName && (
           <>
             <PlausibleProvider domain={config.domainName} />
