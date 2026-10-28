@@ -4,6 +4,11 @@ import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
+const TRANSLATED_SLUGS = [
+  ["vision-artificial", "computer-vision"],
+  ["calculadora-aforo-vehicular", "traffic-count-cost-calculator"],
+];
+
 const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i;
 
 export default function middleware(request) {
@@ -18,23 +23,25 @@ export default function middleware(request) {
     return NextResponse.redirect(url, 301);
   }
 
-  // Visión artificial cambia de slug según el idioma: /es/vision-artificial y
-  // /en/computer-vision. Portugués no tiene versión propia y va a español.
-  const vision = pathname.match(/^\/(es|en|pt)\/(vision-artificial|computer-vision)\/?$/);
-  if (vision) {
-    const target = vision[1] === "en" ? "/en/computer-vision" : "/es/vision-artificial";
+  // Páginas que cambian de slug según el idioma (español, inglés). Portugués
+  // no tiene versión propia y va a español.
+  for (const [es, en] of TRANSLATED_SLUGS) {
+    const match = pathname.match(new RegExp(`^/(es|en|pt)/(${es}|${en})/?$`));
+    if (!match) continue;
+    const target = match[1] === "en" ? `/en/${en}` : `/es/${es}`;
     if (pathname !== target) {
       const url = request.nextUrl.clone();
       url.pathname = target;
       return NextResponse.redirect(url, 301);
     }
+    break;
   }
 
   // Páginas que hoy solo tienen contenido en español (sin traducción real a
   // en/pt). Redirigimos sus variantes /en y /pt a /es con 301 para no dejar
   // duplicados finos indexados. Se pueden re-activar cuando haya traducción.
   const esOnly = pathname.match(
-    /^\/(?:en|pt)\/(ai-info|automation|calculadora-aforo-vehicular|calculadora-vision-artificial|casos-exito|chatbot|evaluador-automatizacion|industries|home-1|home-2|home-3|portafolio|preguntas-frecuentes|privacy-policy|services|success-cases|tos)(\/.*)?$/
+    /^\/(?:en|pt)\/(ai-info|automation|calculadora-vision-artificial|casos-exito|chatbot|evaluador-automatizacion|industries|home-1|home-2|home-3|portafolio|preguntas-frecuentes|privacy-policy|services|success-cases|tos)(\/.*)?$/
   );
   if (esOnly) {
     const url = request.nextUrl.clone();

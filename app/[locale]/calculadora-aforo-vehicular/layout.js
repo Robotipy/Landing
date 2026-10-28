@@ -1,13 +1,14 @@
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 import { PAGE_PATH, PAGE_TITLE, PAGE_DESCRIPTION, faqs } from "./data";
+import { alternates } from "./paths";
 
 const siteOrigin = `https://www.${config.domainName.replace(/^www\./, "")}`;
 const pageUrl = `${siteOrigin}/es${PAGE_PATH}`;
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
-  return getSEOTags({
+  const tags = getSEOTags({
     locale,
     availableLocales: ["es"],
     ogLocale: "es_LA",
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }) {
       url: pageUrl,
     },
   });
+  return { ...tags, alternates: alternates("es") };
 }
 
 const jsonLd = [

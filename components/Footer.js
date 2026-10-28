@@ -139,7 +139,11 @@ const Footer = () => {
                   {t("sections.resources.visionCalculator")}
                 </Link>
                 <Link
-                  href="/calculadora-aforo-vehicular"
+                  href={
+                    locale === "en"
+                      ? "/traffic-count-cost-calculator"
+                      : "/calculadora-aforo-vehicular"
+                  }
                   className="link link-hover text-start"
                 >
                   {t("sections.resources.trafficCalculator")}

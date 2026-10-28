@@ -529,7 +529,10 @@ const en = {
   yoao: {
     title: "Need a one-off study or measurement?",
     text: "For traffic counts, queues, parking or safety audits you don't need custom development. Upload the video to YOAO, draw the zones on the image and get counts, times and events ready for your report. You pay USD 7 per hour of video analyzed.",
-    buttons: [{ text: "Learn about YOAO", href: "/analysis" }],
+    buttons: [
+      { text: "Learn about YOAO", href: "/analysis" },
+      { text: "Calculate a traffic count's cost", href: "/traffic-count-cost-calculator" },
+    ],
   },
   live: {
     title: "Need to analyze your cameras live?",

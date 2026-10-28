@@ -8,12 +8,43 @@ import {
   CREDITS_PER_PACK,
 } from "../data";
 
-const VIDEO_TYPES = [
-  { value: "standard", label: "Cámara fija o celular" },
-  { value: "drone", label: "Dron a gran altura o streaming" },
-];
+const ES_COPY = {
+  numberLocale: "es-CL",
+  scope: "Alcance del estudio",
+  points: "Intersecciones o puntos",
+  hours: "Horas por día",
+  days: "Días",
+  manualTitle: "Si lo hicieras manual",
+  counters: "Aforadores por punto",
+  countersHint: "Una intersección de 4 accesos suele requerir 4 o más.",
+  rate: "Costo por hora de cada aforador",
+  rateHint: "Referencial. Ajústalo a tu ciudad.",
+  digitizing: "Horas de digitación y revisión por cada hora contada",
+  digitizingHint: "Pasar planillas a Excel, cuadrar totales y armar el reporte.",
+  videoTitle: "¿Cómo grabarías?",
+  videoTypes: [
+    { value: "standard", label: "Cámara fija o celular" },
+    { value: "drone", label: "Dron a gran altura o streaming" },
+  ],
+  perHour: (price) => `USD ${price} por hora de video`,
+  savingsShort: "Ahorro",
+  seeResult: "Ver resultado ↓",
+  resultTitle: "Tu comparación",
+  manualLabel: "Aforo manual",
+  videoLabel: "Video con IA",
+  savings: "Ahorro",
+  fieldLine: (hours, cost) => `Terreno manual: ${hours} horas-persona, ${cost}`,
+  digitizingLine: (cost) => `Digitación y revisión: ${cost}`,
+  videoLine: (hours, credits, packs, n) =>
+    `Video a analizar: ${hours} h, ${credits} créditos (${packs} ${n === 1 ? "pack" : "packs"} de 60)`,
+  cta: "Crea tu cuenta y sube tu primer video",
+  ctaNote: "Sin costo fijo mensual ni consumo mínimo.",
+  disclaimer:
+    "Precio de YOAO sin impuestos. No incluye la grabación del video. El costo del aforo manual depende de los valores que ingresaste.",
+  ctaEvent: "aforo_calc_cta",
+};
 
-const DEFAULTS = {
+const ES_DEFAULTS = {
   points: 2,
   hours: 12,
   days: 1,
@@ -22,9 +53,6 @@ const DEFAULTS = {
   digitizing: 0.5,
   video: "standard",
 };
-
-const usd = (n) => `USD ${Math.round(n).toLocaleString("es-CL")}`;
-const num = (n) => Math.round(n).toLocaleString("es-CL");
 
 function track(name, params) {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
@@ -77,8 +105,14 @@ function compute(f) {
   };
 }
 
-export default function AforoCalculator() {
-  const [form, setForm] = useState(DEFAULTS);
+export default function AforoCalculator({
+  copy: t = ES_COPY,
+  defaults = ES_DEFAULTS,
+  signupUrl = SIGNUP_URL,
+}) {
+  const usd = (n) => `USD ${Math.round(n).toLocaleString(t.numberLocale)}`;
+  const num = (n) => Math.round(n).toLocaleString(t.numberLocale);
+  const [form, setForm] = useState(defaults);
   const set = (key) => (value) => setForm((prev) => ({ ...prev, [key]: value }));
   const r = useMemo(() => compute(form), [form]);
   const resultRef = useRef(null);
@@ -96,48 +130,48 @@ export default function AforoCalculator() {
     <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6">
       <div className="lg:col-span-3 space-y-6">
         <fieldset className="border border-white/10 bg-white/5 rounded-2xl p-5">
-          <legend className="sr-only">Alcance del estudio</legend>
+          <legend className="sr-only">{t.scope}</legend>
           <p className="text-white font-semibold text-lg mb-4" aria-hidden="true">
-            <span className="text-accent mr-2">1.</span>Alcance del estudio
+            <span className="text-accent mr-2">1.</span>{t.scope}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <NumberField
               id="points"
-              label="Intersecciones o puntos"
+              label={t.points}
               value={form.points}
               onChange={set("points")}
               min={1}
             />
             <NumberField
               id="hours"
-              label="Horas por día"
+              label={t.hours}
               value={form.hours}
               onChange={set("hours")}
               min={1}
               step={0.5}
             />
-            <NumberField id="days" label="Días" value={form.days} onChange={set("days")} min={1} />
+            <NumberField id="days" label={t.days} value={form.days} onChange={set("days")} min={1} />
           </div>
         </fieldset>
 
         <fieldset className="border border-white/10 bg-white/5 rounded-2xl p-5">
-          <legend className="sr-only">Aforo manual</legend>
+          <legend className="sr-only">{t.manualTitle}</legend>
           <p className="text-white font-semibold text-lg mb-4" aria-hidden="true">
-            <span className="text-accent mr-2">2.</span>Si lo hicieras manual
+            <span className="text-accent mr-2">2.</span>{t.manualTitle}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <NumberField
               id="counters"
-              label="Aforadores por punto"
-              hint="Una intersección de 4 accesos suele requerir 4 o más."
+              label={t.counters}
+              hint={t.countersHint}
               value={form.counters}
               onChange={set("counters")}
               min={1}
             />
             <NumberField
               id="rate"
-              label="Costo por hora de cada aforador"
-              hint="Referencial. Ajústalo a tu ciudad."
+              label={t.rate}
+              hint={t.rateHint}
               suffix="USD"
               value={form.rate}
               onChange={set("rate")}
@@ -146,8 +180,8 @@ export default function AforoCalculator() {
             <div className="sm:col-span-2">
               <NumberField
                 id="digitizing"
-                label="Horas de digitación y revisión por cada hora contada"
-                hint="Pasar planillas a Excel, cuadrar totales y armar el reporte."
+                label={t.digitizing}
+                hint={t.digitizingHint}
                 value={form.digitizing}
                 onChange={set("digitizing")}
                 step={0.25}
@@ -157,12 +191,12 @@ export default function AforoCalculator() {
         </fieldset>
 
         <fieldset className="border border-white/10 bg-white/5 rounded-2xl p-5">
-          <legend className="sr-only">Tipo de video</legend>
+          <legend className="sr-only">{t.videoTitle}</legend>
           <p className="text-white font-semibold text-lg mb-4" aria-hidden="true">
-            <span className="text-accent mr-2">3.</span>¿Cómo grabarías?
+            <span className="text-accent mr-2">3.</span>{t.videoTitle}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {VIDEO_TYPES.map((v) => {
+            {t.videoTypes.map((v) => {
               const checked = form.video === v.value;
               return (
                 <label
@@ -184,7 +218,7 @@ export default function AforoCalculator() {
                   <span className="text-sm">
                     {v.label}
                     <span className="block text-xs text-white/50">
-                      USD {YOAO_PRICE_PER_HOUR[v.value]} por hora de video
+                      {t.perHour(YOAO_PRICE_PER_HOUR[v.value])}
                     </span>
                   </span>
                 </label>
@@ -201,27 +235,27 @@ export default function AforoCalculator() {
         className={`${resultVisible ? "hidden" : "flex"} lg:hidden fixed bottom-0 inset-x-0 z-40 items-center justify-between gap-3 px-4 py-3 bg-primary/95 backdrop-blur border-t border-white/10 text-sm`}
       >
         <span className="text-white/70">
-          Ahorro <strong className="text-white">{usd(Math.max(0, r.savings))}</strong>
+          {t.savingsShort} <strong className="text-white">{usd(Math.max(0, r.savings))}</strong>
         </span>
-        <span className="text-accent font-semibold">Ver resultado ↓</span>
+        <span className="text-accent font-semibold">{t.seeResult}</span>
       </a>
 
       <aside id="resultado" ref={resultRef} className="lg:col-span-2 scroll-mt-28" aria-live="polite">
         <section className="lg:sticky lg:top-28 border border-accent/40 bg-white/5 rounded-2xl p-6">
-          <h2 className="text-sm uppercase tracking-widest text-white/60">Tu comparación</h2>
+          <h2 className="text-sm uppercase tracking-widest text-white/60">{t.resultTitle}</h2>
 
           <div className="grid grid-cols-2 gap-3 mt-5">
             <div className="rounded-xl bg-primary/60 border border-white/10 p-4">
-              <p className="text-xs text-white/60">Aforo manual</p>
+              <p className="text-xs text-white/60">{t.manualLabel}</p>
               <p className="text-xl font-bold text-white mt-1">{usd(r.manual)}</p>
             </div>
             <div className="rounded-xl bg-accent/15 border border-accent/40 p-4">
-              <p className="text-xs text-white/60">Video con IA</p>
+              <p className="text-xs text-white/60">{t.videoLabel}</p>
               <p className="text-xl font-bold text-white mt-1">{usd(r.yoao)}</p>
             </div>
           </div>
 
-          <p className="text-sm text-white/60 mt-5">Ahorro</p>
+          <p className="text-sm text-white/60 mt-5">{t.savings}</p>
           <p className={`text-2xl font-bold ${r.savings > 0 ? "text-success" : "text-error"}`}>
             {usd(r.savings)}
             {r.savings > 0 && (
@@ -230,33 +264,27 @@ export default function AforoCalculator() {
           </p>
 
           <ul className="text-xs text-white/60 mt-3 space-y-1">
-            <li>
-              Terreno manual: {num(r.fieldHours)} horas-persona, {usd(r.fieldCost)}
-            </li>
-            <li>Digitación y revisión: {usd(r.digitizingCost)}</li>
-            <li>
-              Video a analizar: {num(r.videoHours)} h, {num(r.credits)} créditos ({num(r.packs)}{" "}
-              {r.packs === 1 ? "pack" : "packs"} de 60)
-            </li>
+            <li>{t.fieldLine(num(r.fieldHours), usd(r.fieldCost))}</li>
+            <li>{t.digitizingLine(usd(r.digitizingCost))}</li>
+            <li>{t.videoLine(num(r.videoHours), num(r.credits), num(r.packs), r.packs)}</li>
           </ul>
 
           <a
-            href={SIGNUP_URL}
+            href={signupUrl}
             target="_blank"
             rel="noopener"
             onClick={() =>
-              track("aforo_calc_cta", { video_hours: r.videoHours, savings: Math.round(r.savings) })
+              track(t.ctaEvent, { video_hours: r.videoHours, savings: Math.round(r.savings) })
             }
             className="mt-6 inline-flex items-center justify-center w-full min-h-14 px-6 py-3 leading-tight rounded-xl bg-accent hover:bg-accent/90 text-white font-semibold text-lg text-center transition-colors"
           >
-            Crea tu cuenta y sube tu primer video
+            {t.cta}
           </a>
           <p className="text-xs text-white/50 mt-3 text-center">
-            Sin costo fijo mensual ni consumo mínimo.
+            {t.ctaNote}
           </p>
           <p className="text-[11px] text-white/40 mt-4 leading-relaxed">
-            Precio de YOAO sin impuestos. No incluye la grabación del video. El costo del aforo
-            manual depende de los valores que ingresaste.
+            {t.disclaimer}
           </p>
         </section>
       </aside>

@@ -12,7 +12,6 @@ const blogSitemapUrl = `${siteUrl}/blog-sitemap.xml`;
 const esOnlyPrefixes = [
   "/ai-info",
   "/automation",
-  "/calculadora-aforo-vehicular",
   "/calculadora-vision-artificial",
   "/casos-exito",
   "/chatbot",
@@ -29,7 +28,10 @@ const esOnlyPrefixes = [
 // Paginas con slug distinto en ingles (ruta en espanol: ruta en ingles). Se
 // publican las dos versiones con hreflang entre ellas; portugues redirige a
 // espanol desde middleware.js.
-const translatedPages = { "/vision-artificial": "/computer-vision" };
+const translatedPages = {
+  "/vision-artificial": "/computer-vision",
+  "/calculadora-aforo-vehicular": "/traffic-count-cost-calculator",
+};
 const translatedFromEn = Object.fromEntries(
   Object.entries(translatedPages).map(([es, en]) => [en, es])
 );
@@ -57,8 +59,9 @@ module.exports = {
     "/*/home-*",
     // Postulaciones: noindex.
     "/*/trabaja-con-nosotros",
-    // La version en ingles de vision artificial no existe en /es ni /pt.
+    // Las versiones en ingles con slug propio no existen en /es ni /pt.
     "/es/computer-vision",
+    "/es/traffic-count-cost-calculator",
     // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
