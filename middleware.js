@@ -37,6 +37,14 @@ export default function middleware(request) {
     break;
   }
 
+  // Páginas que solo existen en inglés: sus variantes /es y /pt van a /en.
+  const enOnly = pathname.match(/^\/(?:es|pt)\/(how-to-do-a-traffic-count)\/?$/);
+  if (enOnly) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/en/${enOnly[1]}`;
+    return NextResponse.redirect(url, 301);
+  }
+
   // Páginas que hoy solo tienen contenido en español (sin traducción real a
   // en/pt). Redirigimos sus variantes /en y /pt a /es con 301 para no dejar
   // duplicados finos indexados. Se pueden re-activar cuando haya traducción.

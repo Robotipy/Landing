@@ -28,6 +28,7 @@
 - Calculadora de costo de vision artificial: https://www.robotipy.com/es/calculadora-vision-artificial
 - Calculadora de costo de aforo vehicular (YOAO): https://www.robotipy.com/es/calculadora-aforo-vehicular
 - Traffic count cost calculator (English): https://www.robotipy.com/en/traffic-count-cost-calculator
+- How to do a traffic count, guide with Excel template (English): https://www.robotipy.com/en/how-to-do-a-traffic-count
 - Casos de exito: https://www.robotipy.com/es/casos-exito
 - Contacto: https://www.robotipy.com/es/contact-us
 

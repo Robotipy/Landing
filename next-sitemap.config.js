@@ -32,7 +32,10 @@ const translatedPages = {
   "/vision-artificial": "/computer-vision",
   "/calculadora-aforo-vehicular": "/traffic-count-cost-calculator",
 };
-const translatedFromEn = Object.fromEntries(
+// Paginas que solo existen en ingles: el middleware redirige /es y /pt a /en.
+const enOnlyPages = ["/how-to-do-a-traffic-count"];
+
+const translatedFromEn =Object.fromEntries(
   Object.entries(translatedPages).map(([es, en]) => [en, es])
 );
 
@@ -62,6 +65,7 @@ module.exports = {
     // Las versiones en ingles con slug propio no existen en /es ni /pt.
     "/es/computer-vision",
     "/es/traffic-count-cost-calculator",
+    "/es/how-to-do-a-traffic-count",
     // El blog vive en /blog sin prefijo de idioma y tiene su propio sitemap.
     "/*/blog",
     "/*/blog/*",
@@ -73,6 +77,9 @@ module.exports = {
     const localeMatch = p.match(/^\/([a-z]{2})(\/|$)/);
     const pathLocale = localeMatch ? localeMatch[1] : null;
     const pathAfterLocale = pathLocale ? p.replace(`/${pathLocale}`, "") || "/" : p;
+    if (pathLocale === "en" && enOnlyPages.includes(pathAfterLocale)) {
+      return { loc: p, changefreq: config.changefreq, priority: config.priority };
+    }
     const esPath =
       pathLocale === "en"
         ? translatedFromEn[pathAfterLocale]

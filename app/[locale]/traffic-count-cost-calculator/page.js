@@ -51,6 +51,11 @@ const benchmarkSource = {
 
 const relatedLinks = [
   {
+    href: "/how-to-do-a-traffic-count",
+    title: "How to do a traffic count",
+    description: "Format, peak hour factor and a free Excel template for turning movement counts.",
+  },
+  {
     href: "/computer-vision",
     title: "Computer vision for businesses",
     description: "Queues, parking, yards, safety and custom projects with your cameras.",
@@ -172,7 +177,11 @@ export default function TrafficCountCostCalculatorPage() {
               YOAO
             </Link>
             , Robotipy&apos;s video analysis platform: you upload the video, mark the approaches and
-            get counts by movement and vehicle type.
+            get counts by movement and vehicle type. If you count manually today, our guide on{" "}
+            <Link href="/how-to-do-a-traffic-count" className="link link-accent">
+              how to do a traffic count
+            </Link>{" "}
+            explains the format and the peak hour factor, with a free Excel template.
           </p>
         </section>
 
