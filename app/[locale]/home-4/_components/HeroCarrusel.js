@@ -7,25 +7,25 @@ import { team } from "@/libs/landingFacts";
 
 const DURATION = 7000;
 
-// El webinar es un ejemplo para la prueba de diseño: reemplazar por un evento real antes de publicar.
 const SLIDES = [
   {
     key: "promet",
     kicker: "Caso Promet, del Grupo Cintac",
     title: "Así automatizamos el censo diario de sus hoteles",
     text: "Un robot cruza housekeeping, recepción y reservas todos los días. Lo que tomaba horas hoy toma 10 minutos para los tres hoteles.",
-    cta: { label: "Ver el video", href: "https://www.youtube.com/watch?v=NPCkavbRaZM", external: true },
+    cta: { label: "Ver el video", href: "https://www.youtube.com/watch?v=NPCkavbRaZM", external: true, youtube: true },
     full: true,
     video: "/home-4/promet-loop.mp4",
     image: "/home-4/promet-loop.jpg",
   },
   {
-    key: "webinar",
-    kicker: "Webinar gratuito",
-    title: "Agentes de IA y robots: cómo combinarlos sin cambiar tus sistemas",
-    text: "Una hora con casos reales de Chile y Argentina, y espacio para tus preguntas. Con Danilo Toro e Ivan Cabrera.",
-    cta: { label: "Inscríbete", href: "/contact-us?servicio=webinar" },
-    media: "webinar",
+    key: "desayuno",
+    kicker: "Desayuno presencial",
+    title: "Tu equipo trabaja 40 horas. La automatización hace las otras 5",
+    text: "Cómo las áreas de administración y finanzas recuperan esas horas sin contratar.",
+    detail: "27 noviembre · 9:00 AM · Las Condes, Santiago",
+    cta: { label: "Reserva tu cupo", href: "https://luma.com/aktyvwyt", external: true },
+    media: "desayuno",
   },
   {
     key: "evaluador",
@@ -56,19 +56,20 @@ const SLIDES = [
   },
 ];
 
-function WebinarCard() {
-  const speakers = team.filter((t) => ["Danilo Toro", "Ivan Cabrera"].includes(t.name));
+function DesayunoCard() {
+  const speakers = [
+    team.find((t) => t.name === "Danilo Toro"),
+    { name: "Jorge Gallardo", role: "Partner Account Manager · Rocketbot", image: "/landing-team/jorge-gallardo.png" },
+    { name: "Carolina Vera Tapia", role: "BP Hotelería · Jefe de Proyectos TI · Promet", image: "/landing-team/carolina-vera-tapia.png" },
+  ];
   return (
     <div className="w-full max-w-md rounded-2xl bg-white/10 p-8 ring-1 ring-white/20 backdrop-blur-md">
-      <div className="flex items-center justify-between">
-        <span className="rounded-full bg-[#039695] px-3 py-1 text-xs font-semibold text-[#00182B]">En vivo · Gratis</span>
-        <span className="text-sm text-white/70">60 min · Online</span>
-      </div>
+      <span className="rounded-full bg-[#039695] px-3 py-1 text-xs font-semibold text-[#00182B]">Presencial · Cupos limitados</span>
       <div className="mt-8 flex items-end gap-5">
-        <span className="text-7xl font-light leading-none">12</span>
+        <span className="text-7xl font-light leading-none">27</span>
         <div className="pb-1">
           <p className="text-2xl font-light">noviembre</p>
-          <p className="text-white/70">Jueves · 11:00 (Chile)</p>
+          <p className="text-white/70">9:00 AM · Las Condes, Santiago</p>
         </div>
       </div>
       <ul className="mt-8 space-y-4 border-t border-white/15 pt-6">
@@ -203,6 +204,7 @@ export default function HeroCarrusel() {
               <p className="text-base text-[#4fd1d0] sm:text-lg">{s.kicker}</p>
               <h2 className={`mt-4 max-w-3xl text-4xl font-light leading-[1.1] sm:text-5xl ${s.full ? "lg:text-6xl" : "lg:text-[52px]"}`}>{s.title}</h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">{s.text}</p>
+              {s.detail && <p className="mt-3 text-lg font-semibold lg:hidden">{s.detail}</p>}
               <div className="mt-9 flex flex-wrap items-center gap-6">
                 {s.cta.external ? (
                   <a
@@ -210,12 +212,14 @@ export default function HeroCarrusel() {
                     target="_blank"
                     rel="noopener noreferrer"
                     tabIndex={active ? 0 : -1}
-                    aria-label={`${s.cta.label} en YouTube (se abre en una pestaña nueva)`}
+                    aria-label={`${s.cta.label}${s.cta.youtube ? " en YouTube" : ""} (se abre en una pestaña nueva)`}
                     className="inline-flex items-center gap-2.5 rounded-md bg-[#039695] px-8 py-3.5 text-base font-semibold text-[#00182B] transition hover:bg-[#0bb3b1]"
                   >
-                    <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true">
-                      <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
-                    </svg>
+                    {s.cta.youtube && (
+                      <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true">
+                        <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
+                      </svg>
+                    )}
                     {s.cta.label}
                   </a>
                 ) : (
@@ -231,7 +235,7 @@ export default function HeroCarrusel() {
               </div>
               {!s.full && (
                 <div className="hidden justify-center lg:flex">
-                  {s.media === "webinar" && <WebinarCard />}
+                  {s.media === "desayuno" && <DesayunoCard />}
                   {s.media === "evaluador" && <EvaluadorCard />}
                   {s.media === "frame" && <FrameCard src={s.image} alt={s.alt} />}
                 </div>
