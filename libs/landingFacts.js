@@ -57,6 +57,7 @@ export const clientBand = [
   { src: "/home-assets/clientes/cerezosoftware.png", alt: "Cerezo Software", aspect: 2.38, scale: 1.1 },
   { src: "/home-assets/clientes/interact.png", alt: "Interact Solutions", aspect: 4.7 },
   { src: "/home-assets/clientes/kabeli.png", alt: "Kabeli", aspect: 3.12 },
+  { src: "/home-assets/clientes/abastecedor.png", alt: "Abastecedor", aspect: 5.19 },
   { src: "/home-assets/clientes/rocketbot.png", alt: "Rocketbot", aspect: 8.57 },
 ];
 
