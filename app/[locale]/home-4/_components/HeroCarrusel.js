@@ -220,22 +220,23 @@ export default function HeroCarrusel() {
                     rel="noopener noreferrer"
                     tabIndex={active ? 0 : -1}
                     aria-label={`${s.cta.label}${s.cta.youtube ? " en YouTube" : ""} (se abre en una pestaña nueva)`}
-                    className="inline-flex items-center gap-2.5 rounded-md bg-[#039695] px-8 py-3.5 text-base font-semibold text-[#00182B] transition hover:bg-[#0bb3b1]"
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-[#00182B] transition hover:bg-[#4fd1d0]"
                   >
-                    {s.cta.youtube && (
-                      <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true">
-                        <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
-                      </svg>
-                    )}
                     {s.cta.label}
+                    <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </a>
                 ) : (
                   <Link
                     href={s.cta.href}
                     tabIndex={active ? 0 : -1}
-                    className="inline-flex rounded-md bg-[#039695] px-8 py-3.5 text-base font-semibold text-[#00182B] transition hover:bg-[#0bb3b1]"
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-[#00182B] transition hover:bg-[#4fd1d0]"
                   >
                     {s.cta.label}
+                    <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </Link>
                 )}
               </div>
