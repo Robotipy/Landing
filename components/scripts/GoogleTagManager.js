@@ -22,6 +22,8 @@ export default function GoogleTagManager() {
           gtag('js', new Date());
 
           gtag('config', 'G-BL178EBQYH');
+          // Google Ads (cuenta Robotipy 408-961-7901): conversión del formulario de contacto
+          gtag('config', 'AW-18581299087');
         `}
       </Script>
     </>
