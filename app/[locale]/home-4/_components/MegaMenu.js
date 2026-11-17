@@ -66,9 +66,12 @@ export default function MegaMenu() {
         <div className="ml-auto flex items-center gap-3">
           <Link
             href="/contact-us"
-            className="hidden rounded-md bg-[#039695] px-4 py-2 text-sm font-semibold text-[#00182B] transition hover:bg-[#0bb3b1] sm:inline-flex"
+            className="group hidden items-center gap-1.5 rounded-full bg-white px-5 py-2 text-sm font-semibold text-[#00182B] transition hover:bg-[#4fd1d0] sm:inline-flex"
           >
             Contáctanos
+            <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Link>
           <button
             type="button"
@@ -152,8 +155,11 @@ export default function MegaMenu() {
           <Link href="/trabaja-con-nosotros" onClick={() => setMobile(false)} className="block border-b border-white/10 py-3 text-lg">
             Trabaja con nosotros
           </Link>
-          <Link href="/contact-us" className="mt-6 inline-flex rounded-md bg-[#039695] px-5 py-3 font-semibold text-[#00182B]">
+          <Link href="/contact-us" className="group mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-[#00182B] transition hover:bg-[#4fd1d0]">
             Contáctanos
+            <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Link>
         </nav>
       )}
