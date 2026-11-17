@@ -10,7 +10,7 @@ const DURATION = 7000;
 const SLIDES = [
   {
     key: "promet",
-    kicker: "Caso Promet, del Grupo Cintac",
+    kicker: { cat: "Caso de éxito", name: "Promet", sub: "Grupo Cintac" },
     title: "Así automatizamos el censo diario de sus hoteles",
     text: "Un robot cruza housekeeping, recepción y reservas todos los días. Lo que tomaba horas hoy toma 10 minutos para los tres hoteles.",
     cta: { label: "Ver el video", href: "https://www.youtube.com/watch?v=NPCkavbRaZM", external: true, youtube: true },
@@ -20,7 +20,7 @@ const SLIDES = [
   },
   {
     key: "desayuno",
-    kicker: "Desayuno presencial",
+    kicker: { cat: "Evento", name: "Desayuno presencial", sub: "Rocketbot x Robotipy" },
     title: "Tu equipo trabaja 40 horas. La automatización hace las otras 5",
     text: "Cómo las áreas de administración y finanzas recuperan esas horas sin contratar.",
     detail: "27 noviembre · 9:00 AM · Las Condes, Santiago",
@@ -29,7 +29,7 @@ const SLIDES = [
   },
   {
     key: "evaluador",
-    kicker: "Herramienta gratuita",
+    kicker: { cat: "Herramienta gratuita", name: "Evaluador", sub: "de automatización" },
     title: "¿Qué proceso conviene automatizar primero?",
     text: "Responde unas preguntas sobre tu proceso y descubre qué potencial de automatización tiene.",
     cta: { label: "Evaluar mi proceso", href: "/evaluador-automatizacion" },
@@ -37,7 +37,7 @@ const SLIDES = [
   },
   {
     key: "agentes",
-    kicker: "Agentes de IA",
+    kicker: { cat: "Agentes de IA", name: "Melon Help", sub: "Partner implementador" },
     title: "Atiende a tus clientes por WhatsApp a toda hora",
     text: "Agentes que responden con la información real de tu empresa y derivan a una persona cuando hace falta. Somos partner implementador de Melon Help.",
     cta: { label: "Conocer más", href: "/chatbot" },
@@ -47,7 +47,7 @@ const SLIDES = [
   },
   {
     key: "yoao",
-    kicker: "Analítica de video",
+    kicker: { cat: "Analítica de video", name: "YOAO" },
     title: "Tus cámaras convertidas en datos",
     text: "Conteo de vehículos y personas, zonas y alertas con YOAO, sobre las cámaras que ya tienes.",
     cta: { label: "Ver YOAO", href: "/analysis" },
@@ -201,8 +201,15 @@ export default function HeroCarrusel() {
 
             <div className={`relative mx-auto grid h-full w-full max-w-7xl items-end gap-12 px-4 pb-36 pt-28 sm:px-6 sm:pb-40 lg:px-8 ${s.full ? "" : "lg:grid-cols-2 lg:items-center lg:pb-32"}`}>
               <div>
-              <p className="text-base text-[#4fd1d0] sm:text-lg">{s.kicker}</p>
-              <h2 className={`mt-4 max-w-3xl text-4xl font-light leading-[1.1] sm:text-5xl ${s.full ? "lg:text-6xl" : "lg:text-[52px]"}`}>{s.title}</h2>
+              <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm sm:text-[15px]">
+                <span className="text-white/65">{s.kicker.cat}</span>
+                <span aria-hidden="true" className="h-4 w-px bg-white/35" />
+                <span className="font-semibold uppercase tracking-[0.06em] text-white">
+                  {s.kicker.name}
+                  {s.kicker.sub && <span className="ml-2 font-normal normal-case tracking-normal text-white/65">{s.kicker.sub}</span>}
+                </span>
+              </p>
+              <h2 className={`mt-5 max-w-3xl text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl ${s.full ? "lg:text-6xl" : "lg:text-[52px]"}`}>{s.title}</h2>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">{s.text}</p>
               {s.detail && <p className="mt-3 text-lg font-semibold lg:hidden">{s.detail}</p>}
               <div className="mt-9 flex flex-wrap items-center gap-6">
@@ -256,7 +263,7 @@ export default function HeroCarrusel() {
                 key={s.key}
                 type="button"
                 onClick={() => go(k)}
-                aria-label={`Ir a la diapositiva ${k + 1}: ${s.kicker}`}
+                aria-label={`Ir a la diapositiva ${k + 1}: ${s.kicker.cat}, ${s.kicker.name}`}
                 aria-current={active}
                 className={`relative h-2.5 overflow-hidden rounded-full transition-all duration-300 ${
                   active ? "w-12 bg-white/35" : "w-2.5 bg-white/70 hover:bg-white"
