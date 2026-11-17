@@ -15,8 +15,8 @@ const SLIDES = [
     text: "Un robot cruza housekeeping, recepción y reservas todos los días. Lo que tomaba horas hoy toma 10 minutos para los tres hoteles.",
     cta: { label: "Ver el video", href: "https://www.youtube.com/watch?v=NPCkavbRaZM", external: true, youtube: true },
     full: true,
-    video: "/home-4/promet-loop.mp4",
-    image: "/home-4/promet-loop.jpg",
+    video: "/home-4/promet-hotel-loop.mp4",
+    image: "/home-4/promet-hotel-loop.jpg",
   },
   {
     key: "desayuno",
