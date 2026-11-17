@@ -16,6 +16,23 @@ function trackContactCompleteRegistration() {
   }
 }
 
+/** Google Ads: conversión "Enviar formulario de clientes potenciales".
+ *  Si gtag aún no cargó (lazyOnload), se encola en dataLayer y se envía al cargar. */
+function trackGoogleAdsLead() {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== "function") {
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+  }
+  window.gtag("event", "conversion", {
+    send_to: "AW-18581299087/_JhVCLGMsrodEI-_oJxF",
+    value: 1.0,
+    currency: "CLP",
+  });
+}
+
 // Solo 3 campos obligatorios: menos fricción para leads que llegan de anuncios.
 const REQUIRED_FIELDS = ["name", "email", "phone"];
 // Formulario en 3 pasos (multistep): cada paso pide poco → más gente lo termina.
@@ -151,6 +168,7 @@ const ClientForm = ({ extraStyle, initialValues = {} }) => {
     try {
       await apiClient.post("/client", payload);
       trackContactCompleteRegistration();
+      trackGoogleAdsLead();
 
       if (showInvestmentField && formData.canInvest === "no") {
         toast.success(t("toast.cannotInvest"));
