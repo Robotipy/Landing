@@ -154,7 +154,7 @@ export const SERVICES = [
 ];
 
 export const INDUSTRIES = [
-  { label: "Hotelería", href: "/casos-exito/hoteleria", image: "/home-4/promet-loop.jpg", position: "object-center" },
+  { label: "Hotelería", href: "/casos-exito/hoteleria", image: "/home-4/promet-hotel-loop.jpg", position: "object-center" },
   { label: "Minería", href: "/casos-exito/mineria", image: "/assets/banners/mineria.jpg", position: "object-[12%_50%]" },
   { label: "Agrícola", href: "/casos-exito/agricola", image: "/assets/banners/agricola.jpeg" },
   { label: "Financiero", href: "/casos-exito/financiero", image: "/assets/banners/financiero.jpeg" },
