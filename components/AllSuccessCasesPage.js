@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SuccessCaseCard from "@/components/SuccessCaseCard";
 import IndustryJumpNav from "@/components/IndustryJumpNav";
+import FeaturedCaseVideos from "@/components/FeaturedCaseVideos";
 import { Link } from "@/i18n/routing";
 import config from "@/config";
 import { industries, successCases } from "@/libs/successCases";
@@ -82,6 +83,8 @@ export default async function AllSuccessCasesPage({ locale, pagePath }) {
             </p>
           </div>
         </section>
+
+        <FeaturedCaseVideos locale={locale} />
 
         <IndustryJumpNav
           groups={groups.map(({ slug, label }) => ({ slug, label }))}
