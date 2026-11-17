@@ -11,6 +11,8 @@ import { industries, successCases } from "@/libs/successCases";
 import FaqSection from "@/components/FaqSection";
 import { casosFaqs } from "@/libs/faqs";
 
+const SHOW_HERO = false;
+
 const siteOrigin = `https://www.${config.domainName.replace(/^www\./, "")}`;
 
 const buildJsonLd = (locale, pagePath, pageTitle, pageDescription) => {
@@ -66,23 +68,29 @@ export default async function AllSuccessCasesPage({ locale, pagePath }) {
         <Header />
       </Suspense>
       <main id="main-content" className="min-h-screen bg-gray-900">
-        <section
-          className="py-16 lg:py-28"
-          style={{
-            backgroundImage: "url('/assets/banners/agricola.jpeg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-primary/40 py-10 rounded-lg text-white">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              {t("hero.title")}
-            </h1>
-            <p className="text-lg lg:text-xl max-w-3xl mx-auto font-medium">
-              {t("hero.subtitle")}
-            </p>
-          </div>
-        </section>
+        {/* Banner oculto de momento (pedido 2026-11-17). Para volver a mostrarlo, SHOW_HERO = true.
+            El h1 se mantiene para lectores de pantalla y SEO. */}
+        {SHOW_HERO ? (
+          <section
+            className="py-16 lg:py-28"
+            style={{
+              backgroundImage: "url('/assets/banners/agricola.jpeg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-primary/40 py-10 rounded-lg text-white">
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+                {t("hero.title")}
+              </h1>
+              <p className="text-lg lg:text-xl max-w-3xl mx-auto font-medium">
+                {t("hero.subtitle")}
+              </p>
+            </div>
+          </section>
+        ) : (
+          <h1 className="sr-only">{t("hero.title")}</h1>
+        )}
 
         <FeaturedCaseVideos locale={locale} />
 
