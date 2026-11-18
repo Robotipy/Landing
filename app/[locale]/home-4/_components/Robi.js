@@ -3,25 +3,40 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/routing";
 
-// Robi, la mascota de Robotipy, aparece de vez en cuando en la portada:
-// - RobiColgando: cuelga del borde superior de una sección y se balancea al entrar en pantalla.
-// - RobiAsoma: una vez por visita se asoma desde el borde derecho, saluda y se esconde.
-// Ninguno tapa contenido clicable (solo la imagen recibe clics y lleva a contacto),
-// se ocultan en pantallas chicas y respetan prefers-reduced-motion.
+// Robi, la mascota de Robotipy, aparece UNA sola vez por visita (sesión del navegador),
+// de una de estas dos formas, la que ocurra primero:
+// - RobiColgando: al llegar a "Qué hacemos" cae desde el borde de la sección, se balancea,
+//   se suelta y se cae fuera de la vista.
+// - RobiAsoma: desde los 18 s, cuando el visitante ya bajó a las secciones blancas, se asoma
+//   desde el borde derecho, saluda y se esconde.
+// No bloquea clics del resto de la página (solo la imagen lleva a contacto), se oculta en
+// pantallas chicas y con prefers-reduced-motion no se muestra.
+
+const KEY = "robi-visto";
+const yaVisto = () => { try { return sessionStorage.getItem(KEY) === "1"; } catch { return false; } };
+const marcarVisto = () => { try { sessionStorage.setItem(KEY, "1"); } catch {} };
+const sinAnimaciones = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const css = `
-.robi-hang{position:absolute;top:-16px;right:6%;width:140px;z-index:5;transform-origin:22% 2%;opacity:0;transform:translateY(-40px) rotate(-14deg);pointer-events:none}
-.robi-hang.on{animation:robi-drop .7s cubic-bezier(.2,.8,.3,1.2) forwards,robi-swing 2.8s ease-in-out .7s 3 alternate}
+.robi-hang{position:absolute;top:-16px;right:6%;width:140px;z-index:5;transform-origin:22% 2%;opacity:0;pointer-events:none}
+.robi-hang.on{animation:robi-hang 7.2s linear forwards}
 .robi-hang a{pointer-events:auto;display:block}
-@keyframes robi-drop{to{opacity:1;transform:translateY(0) rotate(6deg)}}
-@keyframes robi-swing{from{transform:rotate(6deg)}to{transform:rotate(-5deg)}}
-.robi-peek{position:fixed;right:0;top:46%;width:130px;z-index:40;transform:translateX(120%) rotate(0);pointer-events:none}
+@keyframes robi-hang{
+  0%{opacity:0;transform:translateY(-40px) rotate(-14deg);animation-timing-function:cubic-bezier(.2,.8,.3,1.2)}
+  10%{opacity:1;transform:translateY(0) rotate(6deg);animation-timing-function:ease-in-out}
+  27%{transform:translateY(0) rotate(-5deg);animation-timing-function:ease-in-out}
+  44%{transform:translateY(0) rotate(5deg);animation-timing-function:ease-in-out}
+  61%{transform:translateY(0) rotate(-3deg);animation-timing-function:ease-in-out}
+  74%{opacity:1;transform:translateY(-6px) rotate(0deg);animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  100%{opacity:0;transform:translateY(760px) rotate(38deg)}
+}
+.robi-peek{position:fixed;right:0;top:46%;width:130px;z-index:40;transform:translateX(120%);pointer-events:none}
 .robi-peek.on{animation:robi-peek 5.2s cubic-bezier(.3,.7,.3,1) forwards}
 .robi-peek a{pointer-events:auto;display:block}
 @keyframes robi-peek{0%{transform:translateX(120%) rotate(0)}12%{transform:translateX(26%) rotate(-10deg)}20%{transform:translateX(30%) rotate(-6deg)}28%{transform:translateX(26%) rotate(-10deg)}36%{transform:translateX(30%) rotate(-6deg)}80%{transform:translateX(26%) rotate(-10deg)}100%{transform:translateX(120%) rotate(0)}}
 @media (max-width:1023px){.robi-hang{display:none}}
 @media (max-width:767px){.robi-peek{display:none}}
-@media (prefers-reduced-motion:reduce){.robi-hang.on{animation:none;opacity:1;transform:rotate(4deg)}.robi-peek{display:none}}
+@media (prefers-reduced-motion:reduce){.robi-hang,.robi-peek{display:none}}
 `;
 
 function RobiImg({ src }) {
@@ -35,20 +50,25 @@ function RobiImg({ src }) {
 
 export function RobiColgando() {
   const ref = useRef(null);
-  const [on, setOn] = useState(false);
+  const [estado, setEstado] = useState("espera"); // espera | on | fin
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || yaVisto() || sinAnimaciones() || window.innerWidth < 1024) return;
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setOn(true); io.disconnect(); }
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      if (yaVisto()) return; // ya se asomó en esta visita
+      marcarVisto();
+      setEstado("on");
     }, { rootMargin: "0px 0px -35% 0px" });
     io.observe(el);
     return () => io.disconnect();
   }, []);
+  if (estado === "fin") return null;
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <div ref={ref} className={`robi-hang${on ? " on" : ""}`}>
+      <div ref={ref} className={`robi-hang${estado === "on" ? " on" : ""}`} onAnimationEnd={() => setEstado("fin")}>
         <RobiImg src="/home-4/robi-colgando.webp" />
       </div>
     </>
@@ -56,27 +76,28 @@ export function RobiColgando() {
 }
 
 export function RobiAsoma({ delay = 18000 }) {
-  const [on, setOn] = useState(false);
+  const [estado, setEstado] = useState("espera");
   useEffect(() => {
-    let done = false;
-    try { done = sessionStorage.getItem("robi-asomo") === "1"; } catch {}
-    if (done) return;
+    if (yaVisto() || sinAnimaciones() || window.innerWidth < 768) return;
     let t;
     const intentar = () => {
-      // no se asoma si la pestaña no está visible o si el Robi que cuelga ya está en pantalla
-      const colgado = document.querySelector(".robi-hang");
-      const r = colgado && colgado.getBoundingClientRect();
-      const visible = r && r.bottom > 0 && r.top < window.innerHeight;
-      if (document.visibilityState !== "visible" || visible) { t = setTimeout(intentar, 6000); return; }
-      setOn(true);
-      try { sessionStorage.setItem("robi-asomo", "1"); } catch {}
+      if (yaVisto()) return; // ya colgó en esta visita: no aparece de nuevo
+      // solo se asoma sobre las secciones blancas (no sobre el carrusel oscuro del inicio)
+      const enInicio = window.scrollY < window.innerHeight * 0.9;
+      if (document.visibilityState !== "visible" || enInicio) { t = setTimeout(intentar, 4000); return; }
+      marcarVisto();
+      setEstado("on");
     };
     t = setTimeout(intentar, delay);
     return () => clearTimeout(t);
   }, [delay]);
+  if (estado === "fin") return null;
   return (
-    <div className={`robi-peek${on ? " on" : ""}`} aria-hidden={!on}>
+    <>
+    <style dangerouslySetInnerHTML={{ __html: css }} />
+    <div className={`robi-peek${estado === "on" ? " on" : ""}`} aria-hidden={estado !== "on"} onAnimationEnd={() => setEstado("fin")}>
       <RobiImg src="/home-4/robi-saludo.webp" />
     </div>
+    </>
   );
 }
