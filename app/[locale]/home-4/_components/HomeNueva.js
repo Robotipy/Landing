@@ -2,7 +2,7 @@ import Clientes from "../../_home/components/Clientes";
 import MegaMenu from "./MegaMenu";
 import ServiciosCarrusel from "./ServiciosCarrusel";
 import HeroCarrusel from "./HeroCarrusel";
-import { RobiAsoma, RobiColgando } from "./Robi";
+import { RobiColgando } from "./Robi";
 import { Boletin, CasosDestacados, Cierre, Declaracion, Industrias, LoUltimo, TrabajaConNosotros } from "./Secciones";
 
 // Home principal en español, con estructura de consultora (Quiénes somos, Qué
@@ -34,7 +34,6 @@ export default function HomeNueva() {
         <Boletin />
       </main>
       <Cierre />
-      <RobiAsoma />
     </>
   );
 }
