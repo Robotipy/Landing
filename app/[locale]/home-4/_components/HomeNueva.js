@@ -2,6 +2,7 @@ import Clientes from "../../_home/components/Clientes";
 import MegaMenu from "./MegaMenu";
 import ServiciosCarrusel from "./ServiciosCarrusel";
 import HeroCarrusel from "./HeroCarrusel";
+import { RobiColgando } from "./Robi";
 import { Boletin, CasosDestacados, Cierre, Declaracion, Industrias, LoUltimo, TrabajaConNosotros } from "./Secciones";
 
 // Home principal en español, con estructura de consultora (Quiénes somos, Qué
@@ -23,7 +24,8 @@ export default function HomeNueva() {
         <Declaracion />
         <LoUltimo />
         <style dangerouslySetInnerHTML={{ __html: fadeCss }} />
-        <section id="que-hacemos" className="scroll-mt-16 bg-white">
+        <section id="que-hacemos" className="relative scroll-mt-16 bg-white">
+          <RobiColgando />
           <ServiciosCarrusel />
         </section>
         <CasosDestacados />
