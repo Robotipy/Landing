@@ -31,9 +31,9 @@ const css = `
   100%{opacity:0;transform:translateY(760px) rotate(38deg)}
 }
 .robi-peek{position:fixed;right:0;top:46%;width:130px;z-index:40;transform:translateX(120%);pointer-events:none}
-.robi-peek.on{animation:robi-peek 5.2s cubic-bezier(.3,.7,.3,1) forwards}
+.robi-peek.on{animation:robi-peek 5.5s linear forwards}
 .robi-peek a{pointer-events:auto;display:block}
-@keyframes robi-peek{0%{transform:translateX(120%) rotate(0)}12%{transform:translateX(26%) rotate(-10deg)}20%{transform:translateX(30%) rotate(-6deg)}28%{transform:translateX(26%) rotate(-10deg)}36%{transform:translateX(30%) rotate(-6deg)}80%{transform:translateX(26%) rotate(-10deg)}100%{transform:translateX(120%) rotate(0)}}
+@keyframes robi-peek{0%{transform:translateX(120%) rotate(0);animation-timing-function:cubic-bezier(.2,.8,.3,1)}16%{transform:translateX(26%) rotate(-8deg);animation-timing-function:ease-in-out}38%{transform:translateX(26%) rotate(-3deg);animation-timing-function:ease-in-out}60%{transform:translateX(26%) rotate(-8deg)}80%{transform:translateX(26%) rotate(-8deg);animation-timing-function:cubic-bezier(.5,0,.8,.3)}100%{transform:translateX(120%) rotate(-2deg)}}
 @media (max-width:1023px){.robi-hang{display:none}}
 @media (max-width:767px){.robi-peek{display:none}}
 @media (prefers-reduced-motion:reduce){.robi-hang,.robi-peek{display:none}}
