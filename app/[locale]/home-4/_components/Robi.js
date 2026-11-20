@@ -101,3 +101,96 @@ export function RobiAsoma({ delay = 18000 }) {
     </>
   );
 }
+
+// RobiVideo: versión en video (Higgsfield, fondo quitado) de Robi en "Qué hacemos".
+// 1) Al llegar a la sección, Robi cuelga del borde superior, patalea, se suelta y cae.
+// 2) Al llegar al final de la misma sección, cae en escena, saluda y sale corriendo
+//    hacia la derecha hasta salir de la pantalla.
+// Una sola vez por visita (misma clave que el resto), solo escritorio, sin animación
+// si el visitante la desactivó. Safari usa HEVC con alfa (.mov); el resto WebM VP9 con alfa.
+const cssVideo = `
+.robi-v{position:absolute;z-index:5;pointer-events:none;opacity:0}
+.robi-v video{display:block;width:100%;height:auto}
+.robi-v a{pointer-events:auto;display:block}
+.robi-v.on{opacity:1}
+.robi-cae{top:-34px;right:6%;width:150px}
+.robi-corre{bottom:0;right:0;width:600px}
+.robi-corre a{pointer-events:none}
+.robi-corre.on{animation:robi-aterriza .35s cubic-bezier(.5,0,.75,0) both}
+@keyframes robi-aterriza{from{transform:translateY(-120px)}to{transform:none}}
+@media (max-width:1023px){.robi-v{display:none}}
+@media (prefers-reduced-motion:reduce){.robi-v{display:none}}
+`;
+
+function VideoRobi({ nombre, videoRef, onEnded }) {
+  return (
+    <Link href="/contact-us" aria-label="Robi, la mascota de Robotipy: hablemos" title="¡Hola! Soy Robi. ¿Hablamos?">
+      <video ref={videoRef} muted playsInline preload="none" onEnded={onEnded} aria-hidden="true">
+        <source src={`/home-4/${nombre}.mov`} type='video/quicktime; codecs="hvc1"' />
+        <source src={`/home-4/${nombre}.webm`} type="video/webm" />
+      </video>
+    </Link>
+  );
+}
+
+export function RobiVideo() {
+  const caeBox = useRef(null), correBox = useRef(null);
+  const caeVid = useRef(null), correVid = useRef(null);
+  const [cae, setCae] = useState("espera"); // espera | on | fin
+  const [corre, setCorre] = useState("espera"); // espera | lista | on | fin
+
+  const reproducir = (v, alFallar) => {
+    if (!v) return alFallar();
+    v.load();
+    const p = v.play();
+    if (p && p.catch) p.catch(alFallar);
+  };
+
+  // 1) cuelga y cae, al entrar a la sección
+  useEffect(() => {
+    const el = caeBox.current;
+    if (!el || yaVisto() || sinAnimaciones() || window.innerWidth < 1024) { setCae("fin"); setCorre("fin"); return; }
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      if (yaVisto()) { setCae("fin"); setCorre("fin"); return; }
+      marcarVisto();
+      setCae("on");
+      reproducir(caeVid.current, () => { setCae("fin"); setCorre("fin"); });
+    }, { rootMargin: "0px 0px -35% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // 2) aterriza, saluda y corre, al llegar al final de la sección (solo si ya cayó)
+  useEffect(() => {
+    if (corre !== "lista") return;
+    const el = correBox.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      setCorre("on");
+      reproducir(correVid.current, () => setCorre("fin"));
+    }, { rootMargin: "0px 0px -10% 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [corre]);
+
+  if (cae === "fin" && corre === "fin") return null;
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: cssVideo }} />
+      {cae !== "fin" && (
+        <div ref={caeBox} className={`robi-v robi-cae${cae === "on" ? " on" : ""}`}>
+          <VideoRobi nombre="robi-cae" videoRef={caeVid} onEnded={() => { setCae("fin"); setCorre((c) => (c === "espera" ? "lista" : c)); }} />
+        </div>
+      )}
+      {corre !== "fin" && (
+        <div ref={correBox} className={`robi-v robi-corre${corre === "on" ? " on" : ""}`}>
+          <VideoRobi nombre="robi-corre" videoRef={correVid} onEnded={() => setCorre("fin")} />
+        </div>
+      )}
+    </>
+  );
+}
