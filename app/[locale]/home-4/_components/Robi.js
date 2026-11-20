@@ -107,14 +107,15 @@ export function RobiAsoma({ delay = 18000 }) {
 // 2) Al llegar al final de la misma sección, cae en escena, saluda y sale corriendo
 //    hacia la derecha hasta salir de la pantalla.
 // Una sola vez por visita (misma clave que el resto), solo escritorio, sin animación
-// si el visitante la desactivó. Safari usa HEVC con alfa (.mov); el resto WebM VP9 con alfa.
+// si el visitante la desactivó. Los videos son MP4 sobre blanco puro y se mezclan con
+// mix-blend-mode: multiply, así el blanco desaparece sin halos (funciona en todos los navegadores).
 const cssVideo = `
-.robi-v{position:absolute;z-index:5;pointer-events:none;opacity:0}
+.robi-v{position:absolute;z-index:5;pointer-events:none;opacity:0;mix-blend-mode:multiply}
 .robi-v video{display:block;width:100%;height:auto}
 .robi-v a{pointer-events:auto;display:block}
 .robi-v.on{opacity:1}
-.robi-cae{top:-34px;right:6%;width:150px}
-.robi-corre{bottom:0;right:0;width:600px}
+.robi-cae{top:-50px;right:6%;width:187px}
+.robi-corre{bottom:0;right:0;width:400px}
 .robi-corre a{pointer-events:none}
 .robi-corre.on{animation:robi-aterriza .35s cubic-bezier(.5,0,.75,0) both}
 @keyframes robi-aterriza{from{transform:translateY(-120px)}to{transform:none}}
@@ -126,8 +127,7 @@ function VideoRobi({ nombre, videoRef, onEnded }) {
   return (
     <Link href="/contact-us" aria-label="Robi, la mascota de Robotipy: hablemos" title="¡Hola! Soy Robi. ¿Hablamos?">
       <video ref={videoRef} muted playsInline preload="none" onEnded={onEnded} aria-hidden="true">
-        <source src={`/home-4/${nombre}.mov`} type='video/quicktime; codecs="hvc1"' />
-        <source src={`/home-4/${nombre}.webm`} type="video/webm" />
+        <source src={`/home-4/${nombre}.mp4`} type="video/mp4" />
       </video>
     </Link>
   );
